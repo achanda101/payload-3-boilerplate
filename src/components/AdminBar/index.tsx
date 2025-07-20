@@ -29,15 +29,15 @@ const collectionLabels = {
   },
 }
 
-const Title: React.FC = () => <span>Dashboard</span>
+const Title: React.FC = () => <span>UAF A&P Dashboard</span>
 
 export const AdminBar: React.FC<{
   adminBarProps?: PayloadAdminBarProps
 }> = (props) => {
   const { adminBarProps } = props || {}
   const segments = useSelectedLayoutSegments()
-  const [show, setShow] = useState(false)
-  const collection = collectionLabels?.[segments?.[1]] ? segments?.[1] : 'pages'
+  const [ show, setShow ] = useState(false)
+  const collection = collectionLabels?.[ segments?.[ 1 ] ] ? segments?.[ 1 ] : 'pages'
   const router = useRouter()
 
   const onAuthChange = React.useCallback((user) => {
@@ -63,8 +63,8 @@ export const AdminBar: React.FC<{
           cmsURL={getClientSideURL()}
           collection={collection}
           collectionLabels={{
-            plural: collectionLabels[collection]?.plural || 'Pages',
-            singular: collectionLabels[collection]?.singular || 'Page',
+            plural: collectionLabels[ collection ]?.plural || 'Pages',
+            singular: collectionLabels[ collection ]?.singular || 'Page',
           }}
           logo={<Title />}
           onAuthChange={onAuthChange}
