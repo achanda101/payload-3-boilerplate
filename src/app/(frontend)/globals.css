@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @layer base {
+
   h1,
   h2,
   h3,
@@ -14,7 +15,8 @@
   }
 
   :root {
-    --background: 0 0% 100%;
+    /* --background: 0 0% 100%; */
+    --background: 186, 48%, 30%;
     --foreground: 222.2 84% 4.9%;
 
     --card: 240 5% 96%;
@@ -88,6 +90,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
