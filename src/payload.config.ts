@@ -16,6 +16,7 @@ import { Footer } from './Footer/config'
 import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
+import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { getServerSideURL } from './utilities/getURL'
 
 const filename = fileURLToPath(import.meta.url)
@@ -59,7 +60,7 @@ export default buildConfig({
     },
   },
   // This config helps us configure global or default features that the other editors can inherit
-  editor: defaultLexical,
+  editor: lexicalEditor({}),
   db: postgresAdapter({
     pool: {
       connectionString: process.env.DATABASE_URI || '',

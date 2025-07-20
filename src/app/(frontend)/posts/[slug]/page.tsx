@@ -65,7 +65,7 @@ export default async function Post({ params: paramsPromise }: Args) {
               docs={post.relatedPosts.filter((post) => typeof post === 'object')}
             />
           )}
-          
+
           {/* Add Comments section */}
           <div className="max-w-[48rem] mx-auto mt-16">
             <Comments postId={typeof post.id === 'string' ? parseInt(post.id, 10) : post.id} />
@@ -101,5 +101,5 @@ const queryPostBySlug = cache(async ({ slug }: { slug: string }) => {
     },
   })
 
-  return result.docs?.[0] || null
+  return result.docs?.[ 0 ] || null
 })
