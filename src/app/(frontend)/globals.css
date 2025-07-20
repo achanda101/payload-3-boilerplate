@@ -15,9 +15,9 @@
   }
 
   :root {
-    /* --background: 0 0% 100%; */
-    --background: 286, 54%, 36%;
-    --foreground: 222.2 84% 4.9%;
+    /* Light Theme */
+    --background: 25, 100%, 95%;
+    --foreground: 195, 4%, 22%;
 
     --card: 240 5% 96%;
     --card-foreground: 222.2 84% 4.9%;
@@ -52,9 +52,8 @@
   }
 
   [data-theme='dark'] {
-    /* --background: 0 0% 0%; */
-    --background: 277, 100%, 50%;
-    --foreground: 210 40% 98%;
+    --background: 195, 4%, 22%;
+    --foreground: 0, 0%, 98%;
 
     --card: 0 0% 4%;
     --card-foreground: 210 40% 98%;
