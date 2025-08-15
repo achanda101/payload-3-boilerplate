@@ -1,8 +1,6 @@
 import { cn } from 'src/utilities/cn'
 import React, { Fragment } from 'react'
 
-import type { Page } from '@/payload-types'
-
 import { ArchiveBlock } from '@/blocks/ArchiveBlock/Component'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { ContentBlock } from '@/blocks/Content/Component'
@@ -17,8 +15,15 @@ const blockComponents = {
   mediaBlock: MediaBlock,
 }
 
+// Generic block type that can be used until Page collection is added
+type Block = {
+  blockType: keyof typeof blockComponents
+  id?: string
+  [key: string]: any
+}
+
 export const RenderBlocks: React.FC<{
-  blocks: Page['layout'][0][]
+  blocks: Block[]
 }> = (props) => {
   const { blocks } = props
 
