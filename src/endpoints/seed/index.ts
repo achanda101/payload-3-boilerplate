@@ -3,8 +3,6 @@ import path from 'path'
 import fs from 'fs'
 
 import { contactForm as contactFormData } from './contact-form'
-import { contact as contactPageData } from './contact-page'
-import { home } from './home'
 import { image1 } from './image-1'
 import { image2 } from './image-2'
 import { image3 } from './image-3'
@@ -17,7 +15,6 @@ import { post4 } from './post-4'
 const collections: CollectionSlug[] = [
   'categories',
   'media',
-  'pages',
   'posts',
   'forms',
   'form-submissions',
@@ -320,42 +317,6 @@ export const seed = async ({
       }
     })
 
-    // Create home page
-    payload.logger.info(`— Seeding home page...`)
-
-    await payload.create({
-      collection: 'pages',
-      data: JSON.parse(
-        JSON.stringify(home)
-          .replace(/"\{\{IMAGE_1\}\}"/g, String(imageHomeID))
-          .replace(/"\{\{IMAGE_2\}\}"/g, String(image2ID))
-      )
-    })
-
-    // Create contact form
-    payload.logger.info(`— Seeding contact form...`)
-
-    const contactForm = await payload.create({
-      collection: 'forms',
-      data: JSON.parse(JSON.stringify(contactFormData))
-    })
-
-    let contactFormID: number | string = contactForm.id
-
-    if (payload.db.defaultIDType === 'text') {
-      contactFormID = `"${contactFormID}"`
-    }
-
-    // Create contact page
-    payload.logger.info(`— Seeding contact page...`)
-
-    const contactPage = await payload.create({
-      collection: 'pages',
-      data: JSON.parse(
-        JSON.stringify(contactPageData).replace(/"\{\{CONTACT_FORM_ID\}\}"/g, String(contactFormID))
-      )
-    })
-
     // Update header
     payload.logger.info(`— Seeding header...`)
 
@@ -368,16 +329,6 @@ export const seed = async ({
               type: 'custom',
               label: 'Posts',
               url: '/posts'
-            }
-          },
-          {
-            link: {
-              type: 'reference',
-              label: 'Contact',
-              reference: {
-                relationTo: 'pages',
-                value: contactPage.id
-              }
             }
           }
         ]
