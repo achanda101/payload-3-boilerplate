@@ -17,7 +17,7 @@ type Hero = {
 }
 
 export const RenderHero: React.FC<Hero> = (props) => {
-  const { type } = props || {}
+  const { type, ...heroProps } = props || {}
 
   if (!type || type === 'none') return null
 
@@ -25,5 +25,5 @@ export const RenderHero: React.FC<Hero> = (props) => {
 
   if (!HeroToRender) return null
 
-  return <HeroToRender {...props} />
+  return <HeroToRender {...heroProps} />
 }
