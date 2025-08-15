@@ -23,14 +23,14 @@ export const Users: CollectionConfig = {
       name: 'name',
       type: 'text',
     },
-    // {
-    //   name: 'avatar',
-    //   type: 'upload',
-    //   relationTo: 'media',
-    //   admin: {
-    //     description: 'Upload a profile picture',
-    //   },
-    // },
+    {
+      name: 'avatar',
+      type: 'upload',
+      relationTo: 'media',
+      admin: {
+        description: 'Upload a profile picture',
+      },
+    },
     {
       name: 'role',
       type: 'select',

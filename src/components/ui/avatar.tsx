@@ -1,22 +1,24 @@
-import type { Media, User } from '@/payload-types'
+import type { Media } from '@/payload-types'
+import { getMeUser } from '@/utilities/getMeUser'
 import Image from 'next/image'
 
-export const Avatar = ({ user }: { user: User }) => {
-  // const avatar = user?.avatar as Media
+export const Avatar = async () => {
+  const { user } = await getMeUser()
+  const avatar = user?.avatar as Media
 
-  // if (avatar) {
-  //   return (
-  //     <Image
-  //       style={{
-  //         borderRadius: '50%',
-  //       }}
-  //       src={avatar.url || ''}
-  //       alt={avatar.alt || ''}
-  //       height={25}
-  //       width={25}
-  //     />
-  //   )
-  // } else {
+  if (avatar) {
+    return (
+      <Image
+        style={{
+          borderRadius: '50%',
+        }}
+        src={avatar.thumbnailURL || ''}
+        alt={avatar.alt || ''}
+        height={25}
+        width={25}
+      />
+    )
+  } else {
     return (
       <svg
         className="graphic-account"
@@ -33,7 +35,7 @@ export const Avatar = ({ user }: { user: User }) => {
         ></path>
       </svg>
     )
-  // }
+  }
 }
 
 export default Avatar
