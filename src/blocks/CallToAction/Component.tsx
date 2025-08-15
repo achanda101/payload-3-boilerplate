@@ -1,9 +1,22 @@
 import React from 'react'
 
-import type { CallToActionBlock as CTABlockProps } from '@/payload-types'
-
 import RichText from '@/components/RichText'
 import { CMSLink } from '@/components/Link'
+
+interface CTABlockProps {
+  id?: string
+  richText?: any
+  links?: Array<{
+    link: {
+      type?: 'reference' | 'custom'
+      reference?: any
+      url?: string
+      label: string
+      newTab?: boolean
+    }
+  }>
+  blockType?: 'cta'
+}
 
 export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText }) => {
   return (
