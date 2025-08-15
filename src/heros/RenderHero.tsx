@@ -1,7 +1,5 @@
 import React from 'react'
 
-import type { Page } from '@/payload-types'
-
 import { HighImpactHero } from '@/heros/HighImpact'
 import { LowImpactHero } from '@/heros/LowImpact'
 import { MediumImpactHero } from '@/heros/MediumImpact'
@@ -12,7 +10,13 @@ const heroes = {
   mediumImpact: MediumImpactHero,
 }
 
-export const RenderHero: React.FC<Page['hero']> = (props) => {
+// Generic hero type that can be used until Page collection is added
+type Hero = {
+  type?: keyof typeof heroes | 'none'
+  [key: string]: any
+}
+
+export const RenderHero: React.FC<Hero> = (props) => {
   const { type } = props || {}
 
   if (!type || type === 'none') return null

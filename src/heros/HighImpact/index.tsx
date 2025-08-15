@@ -2,13 +2,25 @@
 import { useHeaderTheme } from '@/providers/HeaderTheme'
 import React, { useEffect } from 'react'
 
-import type { Page } from '@/payload-types'
-
 import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
 
-export const HighImpactHero: React.FC<Page['hero']> = ({ links, media, richText }) => {
+interface HighImpactHeroProps {
+  links?: Array<{
+    link: {
+      type?: 'reference' | 'custom'
+      reference?: any
+      url?: string
+      label: string
+      newTab?: boolean
+    }
+  }>
+  media?: any
+  richText?: any
+}
+
+export const HighImpactHero: React.FC<HighImpactHeroProps> = ({ links, media, richText }) => {
   const { setHeaderTheme } = useHeaderTheme()
 
   useEffect(() => {
