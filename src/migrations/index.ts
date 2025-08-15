@@ -1,9 +1,9 @@
-import * as migration_20250815_150259_remove_pages from './20250815_150259_remove_pages';
+import * as migration_20250815_150758 from './20250815_150758';
 
 export const migrations = [
   {
-    up: migration_20250815_150259_remove_pages.up,
-    down: migration_20250815_150259_remove_pages.down,
-    name: '20250815_150259_remove_pages'
+    up: migration_20250815_150758.up,
+    down: migration_20250815_150758.down,
+    name: '20250815_150758'
   },
 ];
