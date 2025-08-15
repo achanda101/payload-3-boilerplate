@@ -5,8 +5,6 @@ import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import React, { Fragment, JSX } from 'react'
 import { CMSLink } from '@/components/Link'
 import { DefaultNodeTypes, SerializedBlockNode } from '@payloadcms/richtext-lexical'
-import type { BannerBlock as BannerBlockProps } from '@/payload-types'
-
 import {
   IS_BOLD,
   IS_CODE,
@@ -16,10 +14,35 @@ import {
   IS_SUPERSCRIPT,
   IS_UNDERLINE,
 } from './nodeFormat'
-import type {
-  CallToActionBlock as CTABlockProps,
-  MediaBlock as MediaBlockProps,
-} from '@/payload-types'
+
+// Local interfaces for block types (since they don't exist in payload-types yet)
+interface CTABlockProps {
+  id?: string
+  richText?: any
+  links?: Array<{
+    link: {
+      type?: 'reference' | 'custom'
+      reference?: any
+      url?: string
+      label: string
+      newTab?: boolean
+    }
+  }>
+  blockType?: 'cta'
+}
+
+interface MediaBlockProps {
+  media: any
+  id?: string
+  blockType?: 'mediaBlock'
+}
+
+interface BannerBlockProps {
+  style: 'info' | 'warning' | 'error' | 'success'
+  content: any
+  id?: string
+  blockType?: 'banner'
+}
 
 export type NodeTypes =
   | DefaultNodeTypes
