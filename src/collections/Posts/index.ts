@@ -30,6 +30,10 @@ import { getServerSideURL } from '@/utilities/getURL'
 
 export const Posts: CollectionConfig<'posts'> = {
   slug: 'posts',
+  labels: {
+    singular: 'Blogpost',
+    plural: 'Blogposts'
+  },
   access: {
     create: authenticated,
     delete: authenticated,
@@ -49,7 +53,8 @@ export const Posts: CollectionConfig<'posts'> = {
     },
   },
   admin: {
-    defaultColumns: ['title', 'slug', 'updatedAt'],
+    group: 'Content',
+    defaultColumns: ['title', 'authors', 'updatedAt'],
     livePreview: {
       url: ({ data }) => {
         const path = generatePreviewPath({
@@ -60,14 +65,13 @@ export const Posts: CollectionConfig<'posts'> = {
         return `${getServerSideURL()}${path}`
       },
     },
-    preview: (data) => {
-      const path = generatePreviewPath({
-        slug: typeof data?.slug === 'string' ? data.slug : '',
-        collection: 'posts',
-      })
+    //   const path = generatePreviewPath({
+    //     slug: typeof data?.slug === 'string' ? data.slug : '',
+    //     collection: 'posts',
+    //   })
 
-      return `${getServerSideURL()}${path}`
-    },
+    //   return `${getServerSideURL()}${path}`
+    // },
     useAsTitle: 'title',
   },
   fields: [
