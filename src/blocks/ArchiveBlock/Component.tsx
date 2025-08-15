@@ -1,4 +1,17 @@
-import type { Post, ArchiveBlock as ArchiveBlockProps } from '@/payload-types'
+import type { Post, Category } from '@/payload-types'
+
+interface ArchiveBlockProps {
+  id?: string
+  categories?: (number | Category)[] | null
+  introContent?: any
+  limit?: number
+  populateBy?: 'collection' | 'selection'
+  selectedDocs?: Array<{
+    relationTo: 'posts'
+    value: number | Post
+  }>
+  blockType?: 'archive'
+}
 
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
