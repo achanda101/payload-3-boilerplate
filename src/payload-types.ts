@@ -140,22 +140,8 @@ export interface Page {
  */
 export interface Media {
   id: number;
-  alt?: string | null;
-  caption?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
+  alt: string;
+  caption?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -413,6 +399,7 @@ export interface Post {
 export interface User {
   id: number;
   name?: string | null;
+  avatar?: (number | null) | Media;
   role?: ('admin' | 'editor' | 'writer') | null;
   updatedAt: string;
   createdAt: string;
@@ -1046,6 +1033,7 @@ export interface CategoriesSelect<T extends boolean = true> {
  */
 export interface UsersSelect<T extends boolean = true> {
   name?: T;
+  avatar?: T;
   role?: T;
   updatedAt?: T;
   createdAt?: T;

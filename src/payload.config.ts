@@ -23,6 +23,13 @@ const dirname = path.dirname(filename)
 
 export default buildConfig({
   admin: {
+    user: Users.slug,
+    importMap: {
+      baseDir: path.resolve(dirname),
+    },
+    avatar: {
+      Component: '@/components/ui/avatar',
+    },
     components: {
       // The `BeforeLogin` component renders a message that you see while logging into your admin panel.
       // Feel free to delete this at any time. Simply remove the line below and the import `BeforeLogin` statement on line 15.
@@ -31,10 +38,6 @@ export default buildConfig({
       // Feel free to delete this at any time. Simply remove the line below and the import `BeforeDashboard` statement on line 15.
       beforeDashboard: ['@/components/BeforeDashboard'],
     },
-    importMap: {
-      baseDir: path.resolve(dirname),
-    },
-    user: Users.slug,
     livePreview: {
       breakpoints: [
         {
@@ -48,12 +51,6 @@ export default buildConfig({
           name: 'tablet',
           width: 768,
           height: 1024,
-        },
-        {
-          label: 'Desktop',
-          name: 'desktop',
-          width: 1440,
-          height: 900,
         },
       ],
     },
