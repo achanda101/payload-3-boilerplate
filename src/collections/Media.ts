@@ -11,6 +11,13 @@ const dirname = path.dirname(filename)
 
 export const Media: CollectionConfig = {
   slug: 'media',
+  labels: {
+    singular: 'Image',
+    plural: 'Images'
+  },
+  admin: {
+    group: 'Media'
+  },
   access: {
     create: authenticated,
     delete: authenticated,
@@ -77,5 +84,6 @@ export const Media: CollectionConfig = {
         },
       },
     ],
+    mimeTypes: ['image/*'],
   },
 }
