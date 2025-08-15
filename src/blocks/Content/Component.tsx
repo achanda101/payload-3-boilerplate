@@ -1,10 +1,24 @@
 import { cn } from 'src/utilities/cn'
 import React from 'react'
 import RichText from '@/components/RichText'
-
-import type { ContentBlock as ContentBlockProps } from '@/payload-types'
-
 import { CMSLink } from '../../components/Link'
+
+interface ContentBlockProps {
+  id?: string
+  columns?: Array<{
+    enableLink?: boolean
+    link?: {
+      type?: 'reference' | 'custom'
+      reference?: any
+      url?: string
+      label: string
+      newTab?: boolean
+    }
+    richText?: any
+    size?: 'full' | 'half' | 'oneThird' | 'twoThirds'
+  }>
+  blockType?: 'content'
+}
 
 export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
   const { columns } = props
