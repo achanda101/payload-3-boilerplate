@@ -2,14 +2,6 @@ import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-postgres'
 
 export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
   await payload.db.drizzle.execute(sql`
-   DROP TYPE IF EXISTS "public"."enum_posts_status" CASCADE;
-  DROP TYPE IF EXISTS "public"."enum__posts_v_version_status" CASCADE;
-  DROP TYPE IF EXISTS "public"."enum_users_role" CASCADE;
-  DROP TYPE IF EXISTS "public"."enum_redirects_to_type" CASCADE;
-  DROP TYPE IF EXISTS "public"."enum_forms_confirmation_type" CASCADE;
-  DROP TYPE IF EXISTS "public"."enum_header_nav_items_link_type" CASCADE;
-  DROP TYPE IF EXISTS "public"."enum_footer_nav_items_link_type" CASCADE;
-   
    CREATE TYPE "public"."enum_posts_status" AS ENUM('draft', 'published');
   CREATE TYPE "public"."enum__posts_v_version_status" AS ENUM('draft', 'published');
   CREATE TYPE "public"."enum_users_role" AS ENUM('admin', 'editor', 'writer');
