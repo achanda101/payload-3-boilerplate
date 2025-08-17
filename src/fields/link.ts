@@ -85,6 +85,14 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
       admin: {
         condition: (_, siblingData) => siblingData?.type === 'custom',
       },
+      validate: (val) => {
+          if (!val) return 'External URL is required'
+          const isValidUrl = /^https?:\/\/.+/.test(val)
+          if (!isValidUrl) {
+            return 'Please enter a valid URL starting with http:// or https://'
+          }
+          return true
+      },
       label: 'Custom URL',
       required: true,
     },

@@ -1,0 +1,11 @@
+import type { GlobalAfterChangeHook } from 'payload'
+
+import { revalidateTag } from 'next/cache'
+
+export const revalidateContactInfo: GlobalAfterChangeHook = ({ doc, req: { payload } }) => {
+  payload.logger.info(`Revalidating Contact Info`)
+
+  revalidateTag('global_contactInfo')
+
+  return doc
+}

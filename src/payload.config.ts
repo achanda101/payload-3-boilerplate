@@ -10,8 +10,10 @@ import { Categories } from './collections/Categories'
 import { Media } from './collections/Media'
 import { Posts } from './collections/Posts'
 import { Users } from './collections/Users'
-import { Footer } from './Footer/config'
-import { Header } from './Header/config'
+import { Footer } from './globals/Footer/config'
+import { Header } from './globals/Header/config'
+import { Navigation } from './globals/Navigation/config'
+import { ContactInfo } from './globals/ContactInfo/config'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
@@ -62,7 +64,7 @@ export default buildConfig({
   }),
   collections: [Posts, Media, Categories, Users],
   cors: [getServerSideURL()].filter(Boolean),
-  globals: [Header, Footer],
+  globals: [Header, Footer, Navigation, ContactInfo],
   plugins: [
     ...plugins,
     // storage-adapter-placeholder

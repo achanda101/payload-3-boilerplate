@@ -43,10 +43,14 @@ export interface Config {
   globals: {
     header: Header;
     footer: Footer;
+    nav: Nav;
+    contactInfo: ContactInfo;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
+    nav: NavSelect<false> | NavSelect<true>;
+    contactInfo: ContactInfoSelect<false> | ContactInfoSelect<true>;
   };
   locale: null;
   user: User & {
@@ -912,21 +916,9 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Header {
   id: number;
-  navItems?:
-    | {
-        link: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?: {
-            relationTo: 'posts';
-            value: number | Post;
-          } | null;
-          url?: string | null;
-          label: string;
-        };
-        id?: string | null;
-      }[]
-    | null;
+  logo: number | Media;
+  searchEnabled?: boolean | null;
+  languages: ('en' | 'th' | 'hn')[];
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -936,18 +928,67 @@ export interface Header {
  */
 export interface Footer {
   id: number;
-  navItems?:
+  orgName?: string | null;
+  logo: number | Media;
+  smLinks?:
     | {
-        link: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?: {
-            relationTo: 'posts';
-            value: number | Post;
-          } | null;
-          url?: string | null;
-          label: string;
-        };
+        smType?: ('fb' | 'insta' | 'threads' | 'mast' | 'wa' | 'linkedin' | 'scloud' | 'med' | 'sstack') | null;
+        url: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "nav".
+ */
+export interface Nav {
+  id: number;
+  menuItems?:
+    | {
+        label: string;
+        navItems?:
+          | {
+              link: {
+                type?: ('reference' | 'custom') | null;
+                newTab?: boolean | null;
+                reference?: {
+                  relationTo: 'posts';
+                  value: number | Post;
+                } | null;
+                url?: string | null;
+                label: string;
+              };
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  t_and_c: {
+    relationTo: 'posts';
+    value: number | Post;
+  };
+  privacy: {
+    relationTo: 'posts';
+    value: number | Post;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contactInfo".
+ */
+export interface ContactInfo {
+  id: number;
+  emails?:
+    | {
+        label: string;
+        email: string;
+        emailType: 'info' | 'grants' | 'whistle' | 'wsc' | 'general';
         id?: string | null;
       }[]
     | null;
@@ -959,20 +1000,9 @@ export interface Footer {
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
-  navItems?:
-    | T
-    | {
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-            };
-        id?: T;
-      };
+  logo?: T;
+  searchEnabled?: T;
+  languages?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -982,18 +1012,61 @@ export interface HeaderSelect<T extends boolean = true> {
  * via the `definition` "footer_select".
  */
 export interface FooterSelect<T extends boolean = true> {
-  navItems?:
+  orgName?: T;
+  logo?: T;
+  smLinks?:
     | T
     | {
-        link?:
+        smType?: T;
+        url?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "nav_select".
+ */
+export interface NavSelect<T extends boolean = true> {
+  menuItems?:
+    | T
+    | {
+        label?: T;
+        navItems?:
           | T
           | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    reference?: T;
+                    url?: T;
+                    label?: T;
+                  };
+              id?: T;
             };
+        id?: T;
+      };
+  t_and_c?: T;
+  privacy?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contactInfo_select".
+ */
+export interface ContactInfoSelect<T extends boolean = true> {
+  emails?:
+    | T
+    | {
+        label?: T;
+        email?: T;
+        emailType?: T;
         id?: T;
       };
   updatedAt?: T;
