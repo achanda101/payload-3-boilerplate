@@ -24,7 +24,6 @@ export const Navigation: GlobalConfig = {
           required: true,
           admin: {
             placeholder: 'Enter the label for the top level menu item',
-            width: '50%',
           },
         },
         {
@@ -41,12 +40,23 @@ export const Navigation: GlobalConfig = {
             style: {
               alignSelf: 'flex-end'
             },
-            width: '50%',
+            // components: {
+            //   RowLabel: {
+            //     path: 'src/globals/Navigation/NavItemRowLabel.tsx',
+            //   }
+            // },
           }
         },
       ],
       minRows: 1,
-      maxRows: 4
+      maxRows: 4,
+      admin: {
+        components: {
+          RowLabel: {
+            path: 'src/globals/Navigation/MenuItemRowLabel.tsx',
+          }
+        },
+      }
     },
     {
       type: 'row',

@@ -45,7 +45,12 @@ export const ContactInfo: GlobalConfig = {
           ],
           defaultValue: 'info'
         }
-      ]
+      ],
+      admin: {
+        components: {
+          RowLabel: 'src/globals/ContactInfo/EmailItemRowLabel.tsx'
+        }
+      }
     },
   ],
   hooks: {

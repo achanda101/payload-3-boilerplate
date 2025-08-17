@@ -77,7 +77,14 @@ export const Footer: GlobalConfig = {
               return true
           },
         },
-      ]
+      ],
+      admin: {
+        components: {
+          RowLabel: {
+            path: 'src/globals/Footer/SmItemRowLabel.tsx',
+          }
+        },
+      }
     },
   ],
   hooks: {
