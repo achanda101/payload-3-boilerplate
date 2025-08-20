@@ -69,8 +69,14 @@ export const Navigation: GlobalConfig = {
           relationTo: ['posts'],
               required: true,
               admin: {
-            width: '50%'
-          }
+                width: '50%',
+                style: {
+                  backgroundColor: '#f8f9fa',
+                  padding: '20px',
+                  border: '1px solid #dee2e6',
+                  borderRadius: '8px',
+                }
+              }
         },
         {
           name: 'privacy',
@@ -80,7 +86,12 @@ export const Navigation: GlobalConfig = {
           relationTo: ['posts'],
           required: true,
           admin: {
-            width: '50%'
+            width: '50%',
+            style: {
+              padding: '20px',
+              border: '1px solid #dee2e6',
+              borderRadius: '8px',
+            }
           }
         },
       ]

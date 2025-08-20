@@ -29,7 +29,13 @@ export const Header: GlobalConfig = {
           defaultValue: true,
           admin: {
             description: 'Enable or disable the search functionality in the header',
-            width: '50%',
+            width: '35%',
+            style: {
+              backgroundColor: '#f8f9fa',
+              padding: '20px',
+              border: '1px solid #dee2e6',
+              borderRadius: '8px',
+            }
           },
         },
         {
@@ -48,13 +54,30 @@ export const Header: GlobalConfig = {
               label: 'Hindi',
               value: 'hn',
             },
+            {
+              label: 'Indonesian',
+              value: 'in',
+            },
+            {
+              label: 'Nepali',
+              value: 'np',
+            },
+            {
+              label: 'Khmer',
+              value: 'kh',
+            },
           ],
           hasMany: true,
           required: true,
           defaultValue: ['en'],
           admin: {
             description: 'Select languages for the website',
-            width: '50%',
+            width: '65%',
+            style: {
+              padding: '20px',
+              border: '1px solid #dee2e6',
+              borderRadius: '8px',
+            }
           },
         },
       ],

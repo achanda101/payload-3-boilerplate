@@ -169,14 +169,6 @@ export interface Media {
       filesize?: number | null;
       filename?: string | null;
     };
-    square?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
     small?: {
       url?: string | null;
       width?: number | null;
@@ -600,16 +592,6 @@ export interface MediaSelect<T extends boolean = true> {
               filesize?: T;
               filename?: T;
             };
-        square?:
-          | T
-          | {
-              url?: T;
-              width?: T;
-              height?: T;
-              mimeType?: T;
-              filesize?: T;
-              filename?: T;
-            };
         small?:
           | T
           | {
@@ -918,7 +900,7 @@ export interface Header {
   id: number;
   logo: number | Media;
   searchEnabled?: boolean | null;
-  languages: ('en' | 'th' | 'hn')[];
+  languages: ('en' | 'th' | 'hn' | 'in' | 'np' | 'kh')[];
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -935,13 +917,15 @@ export interface Footer {
     description: string;
     url: string;
   };
-  smLinks?:
-    | {
-        smType?: ('fb' | 'insta' | 'threads' | 'mast' | 'wa' | 'linkedin' | 'scloud' | 'med' | 'sstack') | null;
-        url: string;
-        id?: string | null;
-      }[]
-    | null;
+  smLinksGroup?: {
+    smLinks?:
+      | {
+          smType?: ('fb' | 'insta' | 'threads' | 'mast' | 'wa' | 'linkedin' | 'scloud' | 'med' | 'sstack') | null;
+          url: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1026,12 +1010,16 @@ export interface FooterSelect<T extends boolean = true> {
         description?: T;
         url?: T;
       };
-  smLinks?:
+  smLinksGroup?:
     | T
     | {
-        smType?: T;
-        url?: T;
-        id?: T;
+        smLinks?:
+          | T
+          | {
+              smType?: T;
+              url?: T;
+              id?: T;
+            };
       };
   updatedAt?: T;
   createdAt?: T;

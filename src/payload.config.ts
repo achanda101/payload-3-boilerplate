@@ -30,13 +30,19 @@ export default buildConfig({
     avatar: {
       Component: '@/components/ui/avatar',
     },
+    meta: {
+      titleSuffix: '- UAF A&P',
+    },
     components: {
-      // The `BeforeLogin` component renders a message that you see while logging into your admin panel.
-      // Feel free to delete this at any time. Simply remove the line below and the import `BeforeLogin` statement on line 15.
-      beforeLogin: ['@/components/BeforeLogin'],
-      // The `BeforeDashboard` component renders the 'welcome' block that you see after logging into your admin panel.
-      // Feel free to delete this at any time. Simply remove the line below and the import `BeforeDashboard` statement on line 15.
-      beforeDashboard: ['@/components/BeforeDashboard'],
+      beforeLogin: [ '@/components/BeforeLogin' ],
+      beforeDashboard: [ '@/components/BeforeDashboard' ],
+      // afterLogin: [ '@/components/AfterLogin' ],
+      // beforeLogout: [ '@/components/BeforeLogout' ],
+      // afterLogout: [ '@/components/AfterLogout' ],
+      graphics: {
+        Logo: '@/components/Logo/Logo.tsx#Logo',
+        Icon: '@/components/Icon/Icon.tsx#Icon',
+      }
     },
     livePreview: {
       breakpoints: [

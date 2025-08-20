@@ -1,4 +1,5 @@
-import clsx from 'clsx'
+import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 interface Props {
@@ -7,23 +8,16 @@ interface Props {
   priority?: 'auto' | 'high' | 'low'
 }
 
-export const Logo = (props: Props) => {
-  const { loading: loadingFromProps, priority: priorityFromProps, className } = props
-
-  const loading = loadingFromProps || 'lazy'
-  const priority = priorityFromProps || 'low'
-
+export const Logo = () => {
   return (
-    /* eslint-disable @next/next/no-img-element */
-    <img
-      alt="Payload Logo"
-      width={193}
-      height={34}
-      loading={loading}
-      fetchPriority={priority}
-      decoding="async"
-      className={clsx('max-w-[9.375rem] w-full h-[34px]', className)}
-      src="https://raw.githubusercontent.com/payloadcms/payload/main/packages/ui/src/assets/payload-logo-light.svg"
-    />
+    <Link href={`${process.env.NEXT_PUBLIC_SERVER_URL}`}>
+    <Image
+      alt="UAF A&P Logo"
+      width={305}
+      height={70}
+      src="/uafanp-logo.png"
+      />
+      </Link>
   )
 }
+

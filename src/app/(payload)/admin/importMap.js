@@ -22,6 +22,8 @@ import { default as default_9702e426ff612febae1976764fe56710 } from 'src/globals
 import { default as default_760c331c4141744d569a29c3060f6950 } from 'src/globals/Navigation/MenuItemRowLabel.tsx'
 import { default as default_24d932ac7ff0c3e5020bd0c465b1324e } from 'src/globals/ContactInfo/EmailItemRowLabel.tsx'
 import { default as default_3d2179e80a13f7115548460d079b6cda } from '@/components/ui/avatar'
+import { Icon as Icon_c3a8555f846701084023abb33922dc25 } from '@/components/Icon/Icon.tsx'
+import { Logo as Logo_566629f80931517f5befb54103e89cc5 } from '@/components/Logo/Logo.tsx'
 import { default as default_1a7510af427896d367a49dbf838d2de6 } from '@/components/BeforeDashboard'
 import { default as default_8a7ab0eb7ab5c511aba12e68480bfe5e } from '@/components/BeforeLogin'
 
@@ -50,6 +52,8 @@ export const importMap = {
   "src/globals/Navigation/MenuItemRowLabel.tsx#default": default_760c331c4141744d569a29c3060f6950,
   "src/globals/ContactInfo/EmailItemRowLabel.tsx#default": default_24d932ac7ff0c3e5020bd0c465b1324e,
   "@/components/ui/avatar#default": default_3d2179e80a13f7115548460d079b6cda,
+  "@/components/Icon/Icon.tsx#Icon": Icon_c3a8555f846701084023abb33922dc25,
+  "@/components/Logo/Logo.tsx#Logo": Logo_566629f80931517f5befb54103e89cc5,
   "@/components/BeforeDashboard#default": default_1a7510af427896d367a49dbf838d2de6,
   "@/components/BeforeLogin#default": default_8a7ab0eb7ab5c511aba12e68480bfe5e
 }

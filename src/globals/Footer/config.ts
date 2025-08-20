@@ -22,7 +22,13 @@ export const Footer: GlobalConfig = {
           defaultValue: 'Urgent Action Fund Asia Pacific',
           type: 'text',
           admin: {
-            width: '50%'
+            width: '48%',
+            style: {
+              backgroundColor: '#f8f9fa',
+              padding: '20px',
+              border: '1px solid #dee2e6',
+              borderRadius: '8px',
+            }
           }
         },
         {
@@ -32,7 +38,12 @@ export const Footer: GlobalConfig = {
           required: true,
           admin: {
             description: 'Upload the logo for the footer',
-            width: '50%'
+            width: '50%',
+            style: {
+              padding: '20px',
+              border: '1px solid #dee2e6',
+              borderRadius: '8px',
+            }
           },
         },
       ]
@@ -47,7 +58,7 @@ export const Footer: GlobalConfig = {
           fields: [
             {
               name: 'heading',
-              type: 'text',
+              type: 'textarea',
               defaultValue: 'Your support powers Urgent Action',
               required: true,
             },
@@ -80,61 +91,82 @@ export const Footer: GlobalConfig = {
             },
           ],
           admin: {
-            width: '50%',
+            width: '48%',
+            style: {
+              backgroundColor: '#f8f9fa',
+              padding: '20px',
+              border: '1px solid #dee2e6',
+              borderRadius: '8px',
+            }
           },
         },
         {
-          name: 'smLinks',
+          name: 'smLinksGroup', 
           label: 'Social Media Links',
-          labels: {
-            singular: 'Social Media Link',
-            plural: 'Social Media Links'
+          type: 'group',
+          admin: {
+            width: '50%',
+            style: {
+              padding: '20px',
+              border: '1px solid #dee2e6',
+              borderRadius: '8px',
+            }
           },
-          type: 'array',
           fields: [
             {
-              name: 'smType',
-              label: 'Social Media Type',
-              type: 'select',
-              options: [
-                { label: 'Facebook', value: 'fb' },
-                { label: 'Instagram', value: 'insta' },
-                { label: 'Threads', value: 'threads' },
-                { label: 'Mastodon', value: 'mast' },
-                { label: 'Whatsapp', value: 'wa'},
-                { label: 'LinkedIn', value: 'linkedin' },
-                { label: 'Soundcloud', value: 'scloud' },
-                { label: 'Medium', value: 'med' },
-                { label: 'Substack', value: 'sstack' },
-              ]
-            },
-            {
-              name: 'url',
-              label: 'URL',
-              type: 'text',
-              required: true,
+              name: 'smLinks',
+              label: '',
+              labels: {
+                singular: 'Social Media Link',
+                plural: 'Social Media Links'
+              },
+              type: 'array',
+              fields: [
+                {
+                  name: 'smType',
+                  label: 'Social Media Type',
+                  type: 'select',
+                  options: [
+                    { label: 'Facebook', value: 'fb' },
+                    { label: 'Instagram', value: 'insta' },
+                    { label: 'Threads', value: 'threads' },
+                    { label: 'Mastodon', value: 'mast' },
+                    { label: 'Whatsapp', value: 'wa'},
+                    { label: 'LinkedIn', value: 'linkedin' },
+                    { label: 'Soundcloud', value: 'scloud' },
+                    { label: 'Medium', value: 'med' },
+                    { label: 'Substack', value: 'sstack' },
+                  ]
+                },
+                {
+                  name: 'url',
+                  label: 'URL',
+                  type: 'text',
+                  required: true,
+                  admin: {
+                    description: 'Enter an external URL (https://example.com)',
+                  },
+                  validate: (val) => {
+                      if (!val) return 'External URL is required'
+                      const isValidUrl = /^https?:\/\/.+/.test(val)
+                      if (!isValidUrl) {
+                        return 'Please enter a valid URL starting with http:// or https://'
+                      }
+                      return true
+                  },
+                },
+              ],
               admin: {
-                description: 'Enter an external URL (https://example.com)',
-              },
-              validate: (val) => {
-                  if (!val) return 'External URL is required'
-                  const isValidUrl = /^https?:\/\/.+/.test(val)
-                  if (!isValidUrl) {
-                    return 'Please enter a valid URL starting with http:// or https://'
+                components: {
+                  RowLabel: {
+                    path: 'src/globals/Footer/SmItemRowLabel.tsx',
                   }
-                  return true
+                },
+                description: 'Add links to your social media profiles. Icons will be auto-selected by type.',
+                width: '50%',
               },
             },
-          ],
-          admin: {
-            components: {
-              RowLabel: {
-                path: 'src/globals/Footer/SmItemRowLabel.tsx',
-              }
-            },
-            description: 'Add links to your social media profiles. Icons will be auto-selected by type.',
-            width: '50%',
-          },
+          ]
         },
       ],
     },
