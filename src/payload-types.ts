@@ -928,8 +928,13 @@ export interface Header {
  */
 export interface Footer {
   id: number;
-  orgName?: string | null;
+  orgName: string;
   logo: number | Media;
+  donateCTA: {
+    heading: string;
+    description: string;
+    url: string;
+  };
   smLinks?:
     | {
         smType?: ('fb' | 'insta' | 'threads' | 'mast' | 'wa' | 'linkedin' | 'scloud' | 'med' | 'sstack') | null;
@@ -1014,6 +1019,13 @@ export interface HeaderSelect<T extends boolean = true> {
 export interface FooterSelect<T extends boolean = true> {
   orgName?: T;
   logo?: T;
+  donateCTA?:
+    | T
+    | {
+        heading?: T;
+        description?: T;
+        url?: T;
+      };
   smLinks?:
     | T
     | {
