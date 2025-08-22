@@ -491,7 +491,7 @@ export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
       "id" serial PRIMARY KEY NOT NULL,
       "logo_id" integer,
       "search_enabled" boolean DEFAULT true,
-      "languages" "enum_header_languages"[] DEFAULT ARRAY['en'],
+      "languages" "enum_header_languages"[] DEFAULT ARRAY['en']::"enum_header_languages"[],
       "updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
       "created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
     );
