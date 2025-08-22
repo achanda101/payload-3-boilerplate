@@ -24,22 +24,14 @@ export default async function Page({ params: paramsPromise }: Args) {
 
   if (!Number.isInteger(sanitizedPageNumber)) notFound()
 
-  let posts: any = { docs: [], totalDocs: 0, totalPages: 0, page: sanitizedPageNumber }
-  let hasError = false
-
-  try {
-    const payload = await getPayload({ config: configPromise })
-    posts = await payload.find({
-      collection: 'posts',
-      depth: 1,
-      limit: 12,
-      page: sanitizedPageNumber,
-      overrideAccess: false,
-    })
-  } catch (error) {
-    console.error('Failed to fetch paginated posts:', error)
-    hasError = true
-  }
+  const payload = await getPayload({ config: configPromise })
+  const posts = await payload.find({
+    collection: 'posts',
+    depth: 1,
+    limit: 12,
+    page: sanitizedPageNumber,
+    overrideAccess: false,
+  })
 
   return (
     <div className="pt-24 pb-24">
@@ -50,24 +42,7 @@ export default async function Page({ params: paramsPromise }: Args) {
         </div>
       </div>
 
-      {hasError ? (
-        <div className="container">
-          <div className="flex flex-col items-center justify-center py-16 px-6">
-            <div className="text-center max-w-2xl">
-              <h2 className="text-2xl font-bold mb-4 text-red-600">Database Connection Error</h2>
-              <p className="text-gray-600 dark:text-gray-400 mb-6">
-                Unable to connect to the database. Please check your database connection and try again.
-              </p>
-              <Link
-                href="/admin"
-                className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200"
-              >
-                Go to Admin Dashboard
-              </Link>
-            </div>
-          </div>
-        </div>
-      ) : posts.docs.length === 0 ? (
+      {posts.docs.length === 0 ? (
         <div className="container">
           <div className="flex flex-col items-center justify-center py-16 px-6">
             <div className="text-center max-w-2xl">
@@ -77,7 +52,7 @@ export default async function Page({ params: paramsPromise }: Args) {
               </p>
               <Link
                 href="/admin"
-                className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200"
+                className="inline-flex items-center px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white font-medium rounded-lg transition-colors duration-200"
               >
                 Go to Admin Dashboard
               </Link>

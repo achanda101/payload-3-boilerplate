@@ -12,7 +12,7 @@ export const Avatar = async () => {
         style={{
           borderRadius: '50%',
         }}
-        src={avatar.thumbnailURL || ''}
+        src={avatar.sizes?.thumbnail?.url || avatar.url || ''}
         alt={avatar.alt || ''}
         height={25}
         width={25}
