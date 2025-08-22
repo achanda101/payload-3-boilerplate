@@ -8,6 +8,7 @@ import { fileURLToPath } from 'url'
 
 import { Categories } from './collections/Categories'
 import { Media } from './collections/Media'
+import { Documents } from './collections/Documents'
 import { Posts } from './collections/Posts'
 import { Users } from './collections/Users'
 import { Footer } from './globals/Footer/config'
@@ -155,7 +156,7 @@ export default buildConfig({
     defaultLocale: 'en', // required
     fallback: true, // defaults to true
   },
-  collections: [Posts, Media, Categories, Users],
+  collections: [Posts, Media, Documents, Categories, Users],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer, Navigation, ContactInfo],
   plugins: [
