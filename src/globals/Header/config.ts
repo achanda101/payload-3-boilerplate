@@ -4,6 +4,7 @@ import { revalidateHeader } from './hooks/revalidateHeader'
 
 export const Header: GlobalConfig = {
   slug: 'header',
+  label: 'Header: Logo, Languages & Search',
   access: {
     read: () => true,
   },
@@ -45,6 +46,14 @@ export const Header: GlobalConfig = {
             {
               label: 'English',
               value: 'en',
+            },
+            {
+              label: 'Uighur',
+              value: 'ug',
+            },
+            {
+              label: 'Arabic',
+              value: 'ar',
             },
             {
               label: 'Bahasa Indonesia',

@@ -75,6 +75,16 @@ export default buildConfig({
         code: 'en',
       },
       {
+        label: 'Uighur',
+        code: 'ug',
+        rtl: true,
+      },
+      {
+        label: 'Arabic',
+        code: 'ar',
+        rtl: true,
+      },
+      {
         label: 'Bahasa Indonesia',
         code: 'bi',
       },
