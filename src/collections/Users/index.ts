@@ -26,7 +26,7 @@ export const Users: CollectionConfig = {
     {
       name: 'avatar',
       type: 'upload',
-      relationTo: 'media',
+      relationTo: 'mediaCloud',
       admin: {
         description: 'Upload a profile picture',
       },

@@ -1,5 +1,6 @@
 // storage-adapter-import-placeholder
 import { postgresAdapter } from '@payloadcms/db-postgres'
+import { s3Storage } from '@payloadcms/storage-s3'
 
 import sharp from 'sharp' // sharp-import
 import path from 'path'
@@ -8,6 +9,7 @@ import { fileURLToPath } from 'url'
 
 import { Categories } from './collections/Categories'
 import { Media } from './collections/Media'
+import { MediaCloud } from './collections/MediaCloud'
 import { Documents } from './collections/Documents'
 import { Posts } from './collections/Posts'
 import { Users } from './collections/Users'
@@ -156,12 +158,25 @@ export default buildConfig({
     defaultLocale: 'en', // required
     fallback: true, // defaults to true
   },
-  collections: [Posts, Media, Documents, Categories, Users],
+  collections: [Posts, Media, MediaCloud, Documents, Categories, Users],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer, Navigation, ContactInfo],
   plugins: [
     ...plugins,
-    // storage-adapter-placeholder
+    s3Storage({
+      collections: {
+        mediaCloud: true
+      },
+      bucket: process.env.S3_BUCKET || '',
+      config: {
+        region: process.env.S3_REGION || '',
+        endpoint: process.env.S3_ENDPOINT || '',
+        credentials: {
+          accessKeyId: process.env.S3_ACCESS_KEY_ID || '',
+          secretAccessKey: process.env.S3_SECRET_ACCESS_KEY || '',
+        },
+      },
+    }),
   ],
   endpoints: [
     {
