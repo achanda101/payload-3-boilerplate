@@ -1,5 +1,5 @@
 {
-  "id": "dcbea695-470b-4eca-8221-f84ec5f08d43",
+  "id": "c1b9b8df-62fe-4b2d-9d4d-d03bb1381fb9",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -306,10 +306,10 @@
         }
       },
       "foreignKeys": {
-        "posts_locales_meta_image_id_media_cloud_id_fk": {
-          "name": "posts_locales_meta_image_id_media_cloud_id_fk",
+        "posts_locales_meta_image_id_media_id_fk": {
+          "name": "posts_locales_meta_image_id_media_id_fk",
           "tableFrom": "posts_locales",
-          "tableTo": "media_cloud",
+          "tableTo": "media",
           "columnsFrom": [
             "meta_image_id"
           ],
@@ -1008,10 +1008,10 @@
         }
       },
       "foreignKeys": {
-        "_posts_v_locales_version_meta_image_id_media_cloud_id_fk": {
-          "name": "_posts_v_locales_version_meta_image_id_media_cloud_id_fk",
+        "_posts_v_locales_version_meta_image_id_media_id_fk": {
+          "name": "_posts_v_locales_version_meta_image_id_media_id_fk",
           "tableFrom": "_posts_v_locales",
-          "tableTo": "media_cloud",
+          "tableTo": "media",
           "columnsFrom": [
             "version_meta_image_id"
           ],
@@ -2673,10 +2673,10 @@
         }
       },
       "foreignKeys": {
-        "users_avatar_id_media_cloud_id_fk": {
-          "name": "users_avatar_id_media_cloud_id_fk",
+        "users_avatar_id_media_id_fk": {
+          "name": "users_avatar_id_media_id_fk",
           "tableFrom": "users",
-          "tableTo": "media_cloud",
+          "tableTo": "media",
           "columnsFrom": [
             "avatar_id"
           ],
@@ -5596,10 +5596,10 @@
         }
       },
       "foreignKeys": {
-        "search_meta_image_id_media_cloud_id_fk": {
-          "name": "search_meta_image_id_media_cloud_id_fk",
+        "search_meta_image_id_media_id_fk": {
+          "name": "search_meta_image_id_media_id_fk",
           "tableFrom": "search",
-          "tableTo": "media_cloud",
+          "tableTo": "media",
           "columnsFrom": [
             "meta_image_id"
           ],
@@ -6778,10 +6778,10 @@
         }
       },
       "foreignKeys": {
-        "header_logo_id_media_cloud_id_fk": {
-          "name": "header_logo_id_media_cloud_id_fk",
+        "header_logo_id_media_id_fk": {
+          "name": "header_logo_id_media_id_fk",
           "tableFrom": "header",
-          "tableTo": "media_cloud",
+          "tableTo": "media",
           "columnsFrom": [
             "logo_id"
           ],
@@ -6941,10 +6941,10 @@
         }
       },
       "foreignKeys": {
-        "footer_logo_id_media_cloud_id_fk": {
-          "name": "footer_logo_id_media_cloud_id_fk",
+        "footer_logo_id_media_id_fk": {
+          "name": "footer_logo_id_media_id_fk",
           "tableFrom": "footer",
-          "tableTo": "media_cloud",
+          "tableTo": "media",
           "columnsFrom": [
             "logo_id"
           ],

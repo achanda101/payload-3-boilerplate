@@ -15,7 +15,7 @@ export const Header: GlobalConfig = {
     {
       name: 'logo',
       type: 'upload',
-      relationTo: 'mediaCloud',
+      relationTo: 'media',
       required: true,
       admin: {
         description: 'Upload the logo for the header',

@@ -1,7 +1,7 @@
 import * as migration_20250822_094221_fresh_prod from './20250822_094221_fresh_prod';
 import * as migration_20250822_095146_add_arabic from './20250822_095146_add_arabic';
 import * as migration_20250822_123116_documents_collection from './20250822_123116_documents_collection';
-import * as migration_20250822_141325_s3_cloudflare_storage from './20250822_141325_s3_cloudflare_storage';
+import * as migration_20250822_142350_s3_cloudflare_add from './20250822_142350_s3_cloudflare_add';
 
 export const migrations = [
   {
@@ -20,8 +20,8 @@ export const migrations = [
     name: '20250822_123116_documents_collection',
   },
   {
-    up: migration_20250822_141325_s3_cloudflare_storage.up,
-    down: migration_20250822_141325_s3_cloudflare_storage.down,
-    name: '20250822_141325_s3_cloudflare_storage'
+    up: migration_20250822_142350_s3_cloudflare_add.up,
+    down: migration_20250822_142350_s3_cloudflare_add.down,
+    name: '20250822_142350_s3_cloudflare_add'
   },
 ];

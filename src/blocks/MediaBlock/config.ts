@@ -7,7 +7,7 @@ export const MediaBlock: Block = {
     {
       name: 'media',
       type: 'upload',
-      relationTo: 'mediaCloud',
+      relationTo: 'media',
       required: true,
     },
   ],
