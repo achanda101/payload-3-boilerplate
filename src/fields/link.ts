@@ -77,7 +77,7 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
       label: 'Document to link to',
       maxDepth: 1,
       relationTo: ['posts'],
-      required: true,
+      // required: true,
     },
     {
       name: 'url',
@@ -119,7 +119,7 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
             width: '50%',
           },
           label: 'Label',
-          required: true,
+          // required: true,
         },
       ],
     })

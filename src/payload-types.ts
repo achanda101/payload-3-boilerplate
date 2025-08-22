@@ -1057,7 +1057,7 @@ export interface Header {
   /**
    * Upload the logo for the header
    */
-  logo: number | MediaCloud;
+  logo?: (number | null) | MediaCloud;
   /**
    * Enable or disable the search functionality in the header
    */
@@ -1099,7 +1099,7 @@ export interface Footer {
   /**
    * Upload the logo for the footer
    */
-  logo: number | MediaCloud;
+  logo?: (number | null) | MediaCloud;
   donateCTA: {
     heading: string;
     /**
@@ -1140,7 +1140,7 @@ export interface Nav {
         label: string;
         navItems?:
           | {
-              link: {
+              link?: {
                 type?: ('reference' | 'custom') | null;
                 newTab?: boolean | null;
                 reference?: {
@@ -1148,7 +1148,7 @@ export interface Nav {
                   value: number | Post;
                 } | null;
                 url?: string | null;
-                label: string;
+                label?: string | null;
               };
               id?: string | null;
             }[]
@@ -1156,14 +1156,14 @@ export interface Nav {
         id?: string | null;
       }[]
     | null;
-  t_and_c: {
+  t_and_c?: {
     relationTo: 'posts';
     value: number | Post;
-  };
-  privacy: {
+  } | null;
+  privacy?: {
     relationTo: 'posts';
     value: number | Post;
-  };
+  } | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
