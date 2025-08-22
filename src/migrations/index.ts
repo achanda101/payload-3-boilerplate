@@ -7,6 +7,7 @@ import * as migration_20250820_094041_footer_admin from './20250820_094041_foote
 import * as migration_20250822_062937_languages from './20250822_062937_languages';
 import * as migration_20250822_071854_new_languages from './20250822_071854_new_languages';
 import * as migration_20250822_073645_test_new_langs from './20250822_073645_test_new_langs';
+import * as migration_20250822_080446_remove_langs from './20250822_080446_remove_langs';
 
 export const migrations = [
   {
@@ -52,6 +53,11 @@ export const migrations = [
   {
     up: migration_20250822_073645_test_new_langs.up,
     down: migration_20250822_073645_test_new_langs.down,
-    name: '20250822_073645_test_new_langs'
+    name: '20250822_073645_test_new_langs',
+  },
+  {
+    up: migration_20250822_080446_remove_langs.up,
+    down: migration_20250822_080446_remove_langs.down,
+    name: '20250822_080446_remove_langs'
   },
 ];

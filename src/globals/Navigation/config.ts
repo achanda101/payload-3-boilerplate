@@ -23,6 +23,7 @@ export const Navigation: GlobalConfig = {
           type: 'text',
           required: true,
           localized: true,
+          defaultValue: 'Menu Item',
           admin: {
             placeholder: 'Enter the label for the top level menu item',
           },
