@@ -1,10 +1,10 @@
-import type { Media } from '@/payload-types'
+import type { MediaCloud } from '@/payload-types'
 import { getMeUser } from '@/utilities/getMeUser'
 import Image from 'next/image'
 
 export const Avatar = async () => {
   const { user } = await getMeUser()
-  const avatar = user?.avatar as Media
+  const avatar = user?.avatar as MediaCloud
 
   if (avatar) {
     return (
