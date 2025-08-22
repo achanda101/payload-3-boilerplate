@@ -23,6 +23,7 @@ export const ContactInfo: GlobalConfig = {
           name: 'label',
           type: 'text',
           required: true,
+          localized: true,
           admin: {
             description: 'Enter label for the contact (example: For Whistleblower Concerns)',
           },

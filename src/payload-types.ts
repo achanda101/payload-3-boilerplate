@@ -52,7 +52,25 @@ export interface Config {
     nav: NavSelect<false> | NavSelect<true>;
     contactInfo: ContactInfoSelect<false> | ContactInfoSelect<true>;
   };
-  locale: null;
+  locale:
+    | 'en'
+    | 'bi'
+    | 'bn-IN'
+    | 'br'
+    | 'ch'
+    | 'prs-Arab'
+    | 'km'
+    | 'hi'
+    | 'ms'
+    | 'ne'
+    | 'ps-Arab'
+    | 'pcm'
+    | 'si'
+    | 'tl'
+    | 'ta'
+    | 'th'
+    | 'vi'
+    | 'ur';
   user: User & {
     collection: 'users';
   };
@@ -900,7 +918,26 @@ export interface Header {
   id: number;
   logo: number | Media;
   searchEnabled?: boolean | null;
-  languages: ('en' | 'th' | 'hn' | 'in' | 'np' | 'kh')[];
+  languages: (
+    | 'en'
+    | 'bi'
+    | 'bn-IN'
+    | 'br'
+    | 'ch'
+    | 'prs-Arab'
+    | 'km'
+    | 'hi'
+    | 'ms'
+    | 'ne'
+    | 'ps-Arab'
+    | 'pcm'
+    | 'si'
+    | 'tl'
+    | 'ta'
+    | 'th'
+    | 'vi'
+    | 'ur'
+  )[];
   updatedAt?: string | null;
   createdAt?: string | null;
 }

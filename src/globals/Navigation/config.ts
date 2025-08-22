@@ -22,6 +22,7 @@ export const Navigation: GlobalConfig = {
           name: 'label',
           type: 'text',
           required: true,
+          localized: true,
           admin: {
             placeholder: 'Enter the label for the top level menu item',
           },

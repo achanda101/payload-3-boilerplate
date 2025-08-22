@@ -21,6 +21,7 @@ export const Footer: GlobalConfig = {
           required: true,
           defaultValue: 'Urgent Action Fund Asia Pacific',
           type: 'text',
+          localized: true,
           admin: {
             width: '48%',
             style: {
@@ -61,6 +62,7 @@ export const Footer: GlobalConfig = {
               type: 'textarea',
               defaultValue: 'Your support powers Urgent Action',
               required: true,
+              localized: true,
             },
             {
               name: 'description',
@@ -69,7 +71,8 @@ export const Footer: GlobalConfig = {
               required: true,
               admin: {
                 description: 'A short description to encourage donations',
-              }
+              },
+              localized: true,
             },
             {
               name: 'url',

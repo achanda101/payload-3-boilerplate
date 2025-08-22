@@ -47,24 +47,72 @@ export const Header: GlobalConfig = {
               value: 'en',
             },
             {
+              label: 'Bahasa Indonesia',
+              value: 'bi',
+            },
+            {
+              label: 'Bangla',
+              value: 'bn-IN',
+            },
+            {
+              label: 'Burmese',
+              value: 'br',
+            },
+            {
+              label: 'Chinese Simplified',
+              value: 'ch',
+            },
+            {
+              label: 'Dari',
+              value: 'prs-Arab',
+            },
+            {
+              label: 'Khmer',
+              value: 'km',
+            },
+            {
+              label: 'Hindi',
+              value: 'hi',
+            },
+            {
+              label: 'Malay',
+              value: 'ms',
+            },
+            {
+              label: 'Nepali',
+              value: 'ne',
+            },
+            {
+              label: 'Pashto',
+              value: 'ps-Arab',
+            },
+            {
+              label: 'Pigdin English',
+              value: 'pcm',
+            },
+            {
+              label: 'Sinhala',
+              value: 'si',
+            },
+            {
+              label: 'Tagalog',
+              value: 'tl',
+            },
+            {
+              label: 'Tamil',
+              value: 'ta',
+            },
+            {
               label: 'Thai',
               value: 'th',
             },
             {
-              label: 'Hindi',
-              value: 'hn',
+              label: 'Vietnamese',
+              value: 'vi',
             },
             {
-              label: 'Indonesian',
-              value: 'in',
-            },
-            {
-              label: 'Nepali',
-              value: 'np',
-            },
-            {
-              label: 'Khmer',
-              value: 'kh',
+              label: 'Urdu',
+              value: 'ur', 
             },
           ],
           hasMany: true,

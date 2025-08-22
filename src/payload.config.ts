@@ -68,6 +68,87 @@ export default buildConfig({
       connectionString: process.env.DATABASE_URI || '',
     },
   }),
+  localization: {
+    locales: [
+      {
+        label: 'English',
+        code: 'en',
+      },
+      {
+        label: 'Bahasa Indonesia',
+        code: 'bi',
+      },
+      {
+        label: 'Bangla',
+        code: 'bn-IN',
+      },
+      {
+        label: 'Burmese',
+        code: 'br',
+      },
+      {
+        label: 'Chinese Simplified',
+        code: 'ch',
+      },
+      {
+        label: 'Dari',
+        code: 'prs-Arab',
+        rtl: true,
+      },
+      {
+        label: 'Khmer',
+        code: 'km',
+      },
+      {
+        label: 'Hindi',
+        code: 'hi',
+      },
+      {
+        label: 'Malay',
+        code: 'ms',
+      },
+      {
+        label: 'Nepali',
+        code: 'ne',
+      },
+      {
+        label: 'Pashto',
+        code: 'ps-Arab',
+        rtl: true,
+      },
+      {
+        label: 'Pigdin English',
+        code: 'pcm',
+      },
+      {
+        label: 'Sinhala',
+        code: 'si',
+      },
+      {
+        label: 'Tagalog',
+        code: 'tl',
+      },
+      {
+        label: 'Tamil',
+        code: 'ta',
+      },
+      {
+        label: 'Thai',
+        code: 'th',
+      },
+      {
+        label: 'Vietnamese',
+        code: 'vi',
+      },
+      {
+        label: 'Urdu',
+        code: 'ur',
+        rtl: true,
+      },
+    ],
+    defaultLocale: 'en', // required
+    fallback: true, // defaults to true
+  },
   collections: [Posts, Media, Categories, Users],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer, Navigation, ContactInfo],
