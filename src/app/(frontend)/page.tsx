@@ -40,6 +40,7 @@ export default async function Page() {
         <div className="prose dark:prose-invert max-w-none">
           <h1>Welcome</h1>
           <p>Latest posts from our blog</p>
+          <p>Will the images break this time?</p>
         </div>
       </div>
 
