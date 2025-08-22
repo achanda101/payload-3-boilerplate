@@ -187,7 +187,7 @@ export interface Post {
     /**
      * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
      */
-    image?: (number | null) | Media;
+    image?: (number | null) | MediaCloud;
     description?: string | null;
   };
   publishedAt?: string | null;
@@ -225,9 +225,9 @@ export interface Category {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media".
+ * via the `definition` "mediaCloud".
  */
-export interface Media {
+export interface MediaCloud {
   id: number;
   alt: string;
   caption?: string | null;
@@ -295,7 +295,7 @@ export interface User {
   /**
    * Upload a profile picture
    */
-  avatar?: (number | null) | Media;
+  avatar?: (number | null) | MediaCloud;
   role?: ('admin' | 'editor' | 'writer') | null;
   updatedAt: string;
   createdAt: string;
@@ -317,9 +317,9 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "mediaCloud".
+ * via the `definition` "media".
  */
-export interface MediaCloud {
+export interface Media {
   id: number;
   alt: string;
   caption?: string | null;
@@ -627,7 +627,7 @@ export interface Search {
   meta?: {
     title?: string | null;
     description?: string | null;
-    image?: (number | null) | Media;
+    image?: (number | null) | MediaCloud;
   };
   categories?:
     | {
@@ -1198,7 +1198,7 @@ export interface Header {
   /**
    * Upload the logo for the header
    */
-  logo: number | Media;
+  logo: number | MediaCloud;
   /**
    * Enable or disable the search functionality in the header
    */
@@ -1240,7 +1240,7 @@ export interface Footer {
   /**
    * Upload the logo for the footer
    */
-  logo: number | Media;
+  logo: number | MediaCloud;
   donateCTA: {
     heading: string;
     /**
@@ -1458,7 +1458,7 @@ export interface CodeBlock {
  * via the `definition` "MediaBlock".
  */
 export interface MediaBlock {
-  media: number | Media;
+  media: number | MediaCloud;
   id?: string | null;
   blockName?: string | null;
   blockType: 'mediaBlock';

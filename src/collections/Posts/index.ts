@@ -149,7 +149,7 @@ export const Posts: CollectionConfig<'posts'> = {
               hasGenerateFn: true,
             }),
             MetaImageField({
-              relationTo: 'media',
+              relationTo: 'mediaCloud',
             }),
 
             MetaDescriptionField({}),
