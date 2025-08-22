@@ -1,5 +1,6 @@
 import * as migration_20250822_151534_fresh_prod from './20250822_151534_fresh_prod';
 import * as migration_20250822_160409_adding_locale_to_blogpost from './20250822_160409_adding_locale_to_blogpost';
+import * as migration_20250822_163934_no_default_vals from './20250822_163934_no_default_vals';
 
 export const migrations = [
   {
@@ -10,6 +11,11 @@ export const migrations = [
   {
     up: migration_20250822_160409_adding_locale_to_blogpost.up,
     down: migration_20250822_160409_adding_locale_to_blogpost.down,
-    name: '20250822_160409_adding_locale_to_blogpost'
+    name: '20250822_160409_adding_locale_to_blogpost',
+  },
+  {
+    up: migration_20250822_163934_no_default_vals.up,
+    down: migration_20250822_163934_no_default_vals.down,
+    name: '20250822_163934_no_default_vals'
   },
 ];
