@@ -80,7 +80,6 @@ export const Posts: CollectionConfig<'posts'> = {
       type: 'text',
       required: true,
       localized: true,
-      defaultValue: 'Blog Post Title',
     },
     {
       type: 'tabs',
