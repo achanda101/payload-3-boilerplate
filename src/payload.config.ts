@@ -76,6 +76,11 @@ export default buildConfig({
         code: 'en',
       },
       {
+        label: 'Arabic',
+        code: 'ar',
+        rtl: true,
+      },
+      {
         label: 'Bahasa Indonesia',
         code: 'bi',
       },

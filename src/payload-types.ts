@@ -54,6 +54,7 @@ export interface Config {
   };
   locale:
     | 'en'
+    | 'ar'
     | 'bi'
     | 'bn-IN'
     | 'br'
@@ -920,6 +921,7 @@ export interface Header {
   searchEnabled?: boolean | null;
   languages: (
     | 'en'
+    | 'ar'
     | 'bi'
     | 'bn-IN'
     | 'br'

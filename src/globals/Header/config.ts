@@ -48,6 +48,10 @@ export const Header: GlobalConfig = {
               value: 'en',
             },
             {
+              label: 'Arabic',
+              value: 'ar',
+            },
+            {
               label: 'Bahasa Indonesia',
               value: 'bi',
             },
