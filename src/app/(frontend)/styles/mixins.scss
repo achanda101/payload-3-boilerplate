@@ -1,0 +1,95 @@
+@use 'variables' as vars;
+
+// Responsive breakpoints
+@mixin mobile {
+  @media (max-width: #{vars.$mobile - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{vars.$tablet}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{vars.$desktop}) {
+    @content;
+  }
+}
+
+@mixin large-desktop {
+  @media (min-width: #{vars.$large-desktop}) {
+    @content;
+  }
+}
+
+// Flexbox utilities
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// Button reset
+@mixin button-reset {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+// Container
+@mixin container {
+  max-width: vars.$large-desktop;
+  margin: 0 auto;
+  padding: 0 vars.$spacing-md;
+  
+  @include tablet {
+    padding: 0 vars.$spacing-xl;
+  }
+}
+
+// Card style
+@mixin card {
+  background: vars.$white;
+  border-radius: vars.$radius-lg;
+  box-shadow: vars.$shadow-md;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: vars.$shadow-lg;
+  }
+}
+
+// Text truncation
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Overlay
+@mixin overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: vars.$overlay;
+}

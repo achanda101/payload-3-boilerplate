@@ -1,4 +1,8 @@
 import type { Metadata } from 'next'
+
+import { cn } from 'src/utilities/cn'
+import { GeistMono } from 'geist/font/mono'
+import { GeistSans } from 'geist/font/sans'
 import React from 'react'
 
 import { AdminBar } from '@/components/AdminBar'
@@ -10,14 +14,14 @@ import { InitTheme } from '@/providers/Theme/InitTheme'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import { draftMode } from 'next/headers'
 
-import './styles/globals.scss';
+import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html className={cn(GeistSans.variable, GeistMono.variable)} lang="en" suppressHydrationWarning>
       <head>
         <InitTheme />
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
@@ -32,11 +36,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           />
           <LivePreviewListener />
 
-          <div className="grid grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-4">
           {/* <Header /> */}
           {children}
-            {/* <Footer /> */}
-          </div>
+          {/* <Footer /> */}
         </Providers>
       </body>
     </html>

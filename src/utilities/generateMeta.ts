@@ -27,8 +27,8 @@ export const generateMeta = async (args: {
     `${getServerSideURL()}`
 
   const title = doc?.meta?.title
-    ? doc?.meta?.title + ' | Payload Website Template'
-    : 'Payload Website Template'
+    ? doc?.meta?.title + ' | Urgent Action Fund: Asia & Pacific'
+    : 'Urgent Action Fund: Asia & Pacific'
 
   return {
     description: doc?.meta?.description,
