@@ -26,7 +26,7 @@ export const Footer: GlobalConfig = {
           admin: {
             width: '48%',
             style: {
-              backgroundColor: '#f8f9fa',
+              backgroundColor: '#f1f6fa',
               padding: '20px',
               border: '1px solid #dee2e6',
               borderRadius: '8px',
@@ -97,7 +97,7 @@ export const Footer: GlobalConfig = {
           admin: {
             width: '48%',
             style: {
-              backgroundColor: '#f8f9fa',
+              backgroundColor: '#f1f6fa',
               padding: '20px',
               border: '1px solid #dee2e6',
               borderRadius: '8px',

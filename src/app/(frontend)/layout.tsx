@@ -30,9 +30,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               preview: isEnabled,
             }}
           />
-          <LivePreviewListener />
 
           <div className="grid grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-4">
+            <LivePreviewListener />
           {/* <Header /> */}
           {children}
             {/* <Footer /> */}

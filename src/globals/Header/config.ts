@@ -32,7 +32,7 @@ export const Header: GlobalConfig = {
             description: 'Enable or disable the search functionality in the header',
             width: '35%',
             style: {
-              backgroundColor: '#f8f9fa',
+              backgroundColor: '#f1f6fa',
               padding: '20px',
               border: '1px solid #dee2e6',
               borderRadius: '8px',

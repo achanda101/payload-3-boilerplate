@@ -50,7 +50,7 @@ h2,
 h3,
 h4 {
   font-family: $font-heading;
-  color: $text-dark;
+  color: $color-body-text;
   margin-bottom: $spacing-md;
   font-weight: 700;
   /* Enable stylistic set for Roslindale */
@@ -75,7 +75,7 @@ h4 {
 
 h5 {
   font-family: $font-subheading;
-  color: $text-dark;
+  color: $color-body-text;
   margin-bottom: $spacing-sm;
   font-size: $font-size-xl;
 }

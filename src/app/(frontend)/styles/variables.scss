@@ -7,11 +7,23 @@ $text-light: #64748b;
 $white: #ffffff;
 $background: #f8fafc;
 $overlay: rgba(0, 0, 0, 0.4);
+/* Urgent Action Fund A&P Brand Colors */
+$color-background: hsla(38, 100%, 96%, 1);
+$color-body-text: hsla(30, 4%, 10%, 1);
+$color-body-text-light: hsla(28, 8%, 51%, 1);
+$color-light-sky: hsla(215, 96%, 81%, 1);
+$color-sky: hsla(207, 72%, 62%, 1);
+$color-light-forest: hsla(153, 54%, 80%, 1);
+$color-forest: hsla(153, 62%, 43%, 1);
+$color-light-turmeric: hsla(34, 100%, 75%, 1);
+$color-turmeric: hsla(34, 100%, 62%, 1);
+$color-maroon: hsla(341, 100%, 30%, 1);
+$color-rose: hsla(324, 100%, 82%, 1);
 
 // Typography
 // $font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 $font-heading: 'Roslindale Display Narrow Semibold', serif;
-$font-subheading: 'Schibsted Grotesk Regular';
+$font-subheading: 'Schibsted Grotesk Regular', sans-serif;
 $font-body: 'Schibsted Grotesk Regular', sans-serif;
 $font-body-bold: 'Schibsted Grotesk Bold', sans-serif;
 $font-body-italic: 'Schibsted Grotesk Italic', sans-serif;
