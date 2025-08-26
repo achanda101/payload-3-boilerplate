@@ -101,6 +101,23 @@ h5 {
   border: 0;
 }
 
+.bg-background {
+  background-color: $color-background;
+}
+
+.bg-sky {
+  background-color: $color-sky;
+}
+.bg-forest {
+  background-color: $color-forest;
+}
+.bg-turmeric {
+  background-color: $color-turmeric;
+}
+.bg-rose {
+  background-color: $color-rose;
+}
+
 .page_column_layout {
     /* Using 12 column layout */
     @apply grid grid-cols-6 md:grid-cols-8 lg:grid-cols-12;
@@ -168,4 +185,25 @@ button.pill-button {
             }
         }
     }
+}
+
+.dropdown-menu {
+    @apply absolute top-full left-1/2 transform -translate-x-1/2 mt-1 bg-background px-4 py-3 z-50 transition-all duration-300;
+    border: 1px solid $color-body-text-light;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-lg;
+    min-width: max-content;
+}
+
+.dropdown-menu-item {
+  @apply block px-2 py-2 text-sm text-gray-800 leading-tight whitespace-nowrap;
+  margin-inline: calc($spacing-md);
+  &:hover {
+    background-color: $color-sky;
+    border-radius: $radius-lg;
+    margin-inline: calc($spacing-sm);
+    @media (hover: hover) {
+      cursor: pointer;
+    }
+  }
 }

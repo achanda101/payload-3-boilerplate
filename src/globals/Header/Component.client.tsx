@@ -1,9 +1,10 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import languageOptions from './languageOptions.json'
+import { NavMenuClient } from './NavMenu.client'
 
 interface Language {
   value: string;
@@ -28,16 +29,57 @@ interface HeaderClientProps {
 
 export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   const { logo, searchEnabled, languages = [] } = data || {}
-  const [ isSearchOpen, setIsSearchOpen ] = useState(false)
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const [selectedLanguage, setSelectedLanguage] = useState(languages[0] || 'en')
+  const [navData, setNavData] = useState(null)
+  
   const toggleSearch = () => setIsSearchOpen(!isSearchOpen)
 
-  console.log('Header data:', data)
+  const handleLanguageChange = async (newLanguage: string) => {
+    setSelectedLanguage(newLanguage)
+    
+    // Fetch nav data for the selected language
+    try {
+      const response = await fetch(`/api/globals/nav?locale=${newLanguage}&depth=1`)
+      const data = await response.json()
+      setNavData(data)
+      console.log('Fetched navigation data:', data)
+    } catch (error) {
+      console.error('Failed to fetch navigation data:', error)
+    }
+  }
+
+  useEffect(() => {
+    // Initial fetch
+    handleLanguageChange(selectedLanguage)
+  }, [])
+
 
   return (
     <header className="site-header">
       <div className="site-header-content">
         <div className="site-header-toprow">
-          <select defaultValue={languages[ 0 ]} className='language-selector'>
+          <span style={{display: 'inline-flex', alignItems: 'center'}}>
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="lg:w-4 lg:h-4"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <select 
+            value={selectedLanguage} 
+            onChange={(e) => handleLanguageChange(e.target.value)}
+            className='language-selector'
+          >
             {languages.map((langValue: string) => {
               const langOption = languageOptions.find(option => option.value === langValue)
               return (
@@ -46,7 +88,8 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
                 </option>
               )
             })}
-          </select>
+            </select>
+            </span>
         </div>
         <div className='site-header-bottomrow'>
           {logo && typeof logo === 'object' && logo.url ? (
@@ -59,6 +102,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           ) : (
               <Link href="/">Home</Link>
           )}
+          <NavMenuClient data={navData} />
           <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
             {searchEnabled && (
               <button onClick={toggleSearch} className='search-icon'>
