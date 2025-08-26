@@ -10,10 +10,18 @@ interface Language {
   label: string;
 }
 
+interface MediaCloud {
+  id: number;
+  alt: string;
+  url?: string | null;
+  width?: number | null;
+  height?: number | null;
+}
+
 interface HeaderClientProps {
   data?: {
-    logo?: { url: string; width: number; height: number };
-    searchEnabled?: boolean;
+    logo?: (number | null) | MediaCloud;
+    searchEnabled?: boolean | null;
     languages: string[];
   };
 }
@@ -41,8 +49,13 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           </select>
         </div>
         <div className='site-header-bottomrow'>
-          {logo?.url ? (
-              <Image src={logo.url} alt="Site Logo" width={logo.width} height={logo.height} />
+          {logo && typeof logo === 'object' && logo.url ? (
+              <Image 
+                src={logo.url} 
+                alt={logo.alt || "Site Logo"} 
+                width={logo.width || 100} 
+                height={logo.height || 50} 
+              />
           ) : (
               <Link href="/">Home</Link>
           )}
