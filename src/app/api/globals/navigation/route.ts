@@ -8,7 +8,7 @@ export async function GET(request: NextRequest) {
   const depth = parseInt(searchParams.get('depth') || '2')
 
   try {
-    const navData = await getCachedGlobal('navigation', depth, locale)() as Nav
+    const navData = await getCachedGlobal('nav', depth, locale)() as Nav
     
     return NextResponse.json(navData)
   } catch (error) {
