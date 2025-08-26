@@ -1,0 +1,71 @@
+'use client'
+
+import React, { useState } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import languageOptions from './languageOptions.json'
+
+interface Language {
+  value: string;
+  label: string;
+}
+
+interface HeaderClientProps {
+  data?: {
+    logo?: { url: string; width: number; height: number };
+    searchEnabled?: boolean;
+    languages: string[];
+  };
+}
+
+export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
+  const { logo, searchEnabled, languages = [] } = data || {}
+  const [ isSearchOpen, setIsSearchOpen ] = useState(false)
+  const toggleSearch = () => setIsSearchOpen(!isSearchOpen)
+
+  console.log('Header data:', data)
+
+  return (
+    <header className="site-header">
+      <div className="site-header-content">
+        <div className="site-header-toprow">
+          <select defaultValue={languages[ 0 ]} className='language-selector'>
+            {languages.map((langValue: string) => {
+              const langOption = languageOptions.find(option => option.value === langValue)
+              return (
+                <option key={langValue} value={langValue}>
+                  {langOption?.label || langValue}
+                </option>
+              )
+            })}
+          </select>
+        </div>
+        <div className='site-header-bottomrow'>
+          {logo?.url ? (
+              <Image src={logo.url} alt="Site Logo" width={logo.width} height={logo.height} />
+          ) : (
+              <Link href="/">Home</Link>
+          )}
+          <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+            {searchEnabled && (
+              <button onClick={toggleSearch} className='search-icon'>
+                {isSearchOpen ?
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Menu / Close_MD"> <path id="Vector" d="M18 18L12 12M12 12L6 6M12 12L18 6M12 12L6 18" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> </g> </g></svg> :
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fillRule="evenodd" clipRule="evenodd" d="M15 10.5C15 12.9853 12.9853 15 10.5 15C8.01472 15 6 12.9853 6 10.5C6 8.01472 8.01472 6 10.5 6C12.9853 6 15 8.01472 15 10.5ZM14.1793 15.2399C13.1632 16.0297 11.8865 16.5 10.5 16.5C7.18629 16.5 4.5 13.8137 4.5 10.5C4.5 7.18629 7.18629 4.5 10.5 4.5C13.8137 4.5 16.5 7.18629 16.5 10.5C16.5 11.8865 16.0297 13.1632 15.2399 14.1792L20.0304 18.9697L18.9697 20.0303L14.1793 15.2399Z" fill="#080341"></path> </g></svg>
+                }
+              </button>
+            )}
+            <button className="pill-button dark">Donate</button>
+          </div>
+          
+        </div>
+      </div>
+      {isSearchOpen && (
+        <div className="search-bar" style={{ position: 'absolute', top: '60px', right: '20px', backgroundColor: '#fff', border: '1px solid #ccc', padding: '10px' }}>
+          <input type="text" placeholder="Search..." style={{ padding: '5px', width: '200px' }} />
+        </div>
+      )}
+    </header>
+  )
+
+}

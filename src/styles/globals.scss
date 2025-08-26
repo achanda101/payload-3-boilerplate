@@ -30,10 +30,10 @@
     font-weight: normal;
 }
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 @import 'reset';
 @import 'variables';
@@ -42,7 +42,7 @@
 body {
   font-family: $font-body;
   color: $text-dark;
-  background-color: $background;
+  background-color: $color-background;
 }
 
 h1,
@@ -99,4 +99,73 @@ h5 {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+.page_column_layout {
+    /* Using 12 column layout */
+    @apply grid grid-cols-6 md:grid-cols-8 lg:grid-cols-12;
+}
+
+.frame_layout {
+    /* Corresponds to each frame in the Figma doc */
+    @apply flex flex-col gap-[2.5rem] lg:gap-[5rem] py-[1.25rem] lg:py-[2.5rem];
+}
+
+// Header Component styles
+.site-header {
+  @apply w-full px-[1.25rem] py-[1.25rem] lg:px-[5rem] lg:py-[2.5rem];
+}
+.site-header-content {
+  @apply flex flex-col gap-2 lg:gap-4 mx-0;
+  .site-header-toprow {
+    @apply flex justify-end;
+  }
+  .site-header-bottomrow {
+    @apply flex justify-between items-center;
+  }
+  .language-selector {
+    background-color: $color-background;
+    font-family: $font-body;
+    font-size: $font-size-sm;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+
+  .search-icon {
+    @apply flex items-center justify-center w-[3rem] h-[3rem] rounded-full border-[1.5px] p-[0.25rem] border-black;
+
+  }
+}
+
+button.pill-button {
+    font-family: $font-body;
+    font-size: $font-size-sm;
+    text-transform: capitalize;
+    border: 1px solid $color-body-text;
+    border-radius: 50px;
+    padding-inline: calc($spacing-lg);
+    padding-block: calc($spacing-lg/2);
+    width: fit-content;
+    text-transform: capitalize;
+
+    &:hover {
+        @media (hover: hover) {
+            cursor: pointer;
+        }
+    }
+
+    &.bold {
+        font-weight: 700;
+    }
+
+    &.dark {
+        background-color: $color-body-text;
+        color: white;
+
+        &:hover {
+            @media (hover: hover) {
+                opacity: 85%;
+            }
+        }
+    }
 }

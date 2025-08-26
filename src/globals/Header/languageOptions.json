@@ -1,0 +1,81 @@
+[
+  {
+    "label": "English",
+    "value": "en"
+  },
+  {
+    "label": "Arabic",
+    "value": "ar",
+    "dir": "rtl"
+  },
+  {
+    "label": "Bahasa Indonesia",
+    "value": "bi"
+  },
+  {
+    "label": "Bangla",
+    "value": "bn-IN"
+  },
+  {
+    "label": "Burmese",
+    "value": "br"
+  },
+  {
+    "label": "Chinese Mandarin",
+    "value": "ch"
+  },
+  {
+    "label": "Dari",
+    "value": "prs-Arab",
+    "dir": "rtl"
+  },
+  {
+    "label": "Khmer",
+    "value": "km"
+  },
+  {
+    "label": "Hindi",
+    "value": "hi"
+  },
+  {
+    "label": "Malay",
+    "value": "ms"
+  },
+  {
+    "label": "Nepali",
+    "value": "ne"
+  },
+  {
+    "label": "Pashto",
+    "value": "ps-Arab"
+  },
+  {
+    "label": "Pigdin English",
+    "value": "pcm"
+  },
+  {
+    "label": "Sinhala",
+    "value": "si"
+  },
+  {
+    "label": "Tagalog",
+    "value": "tl"
+  },
+  {
+    "label": "Tamil",
+    "value": "ta"
+  },
+  {
+    "label": "Thai",
+    "value": "th"
+  },
+  {
+    "label": "Vietnamese",
+    "value": "vi"
+  },
+  {
+    "label": "Urdu",
+    "value": "ur",
+    "dir": "rtl"
+  }
+]

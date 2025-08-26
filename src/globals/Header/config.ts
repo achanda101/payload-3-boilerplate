@@ -1,6 +1,7 @@
 import type { GlobalConfig } from 'payload'
 
 import { revalidateHeader } from './hooks/revalidateHeader'
+import languageOptions from './languageOptions.json'
 
 export const Header: GlobalConfig = {
   slug: 'header',
@@ -42,84 +43,7 @@ export const Header: GlobalConfig = {
         {
           name: 'languages',
           type: 'select',
-          options: [
-            {
-              label: 'English',
-              value: 'en',
-            },
-            {
-              label: 'Arabic',
-              value: 'ar',
-            },
-            {
-              label: 'Bahasa Indonesia',
-              value: 'bi',
-            },
-            {
-              label: 'Bangla',
-              value: 'bn-IN',
-            },
-            {
-              label: 'Burmese',
-              value: 'br',
-            },
-            {
-              label: 'Chinese Simplified',
-              value: 'ch',
-            },
-            {
-              label: 'Dari',
-              value: 'prs-Arab',
-            },
-            {
-              label: 'Khmer',
-              value: 'km',
-            },
-            {
-              label: 'Hindi',
-              value: 'hi',
-            },
-            {
-              label: 'Malay',
-              value: 'ms',
-            },
-            {
-              label: 'Nepali',
-              value: 'ne',
-            },
-            {
-              label: 'Pashto',
-              value: 'ps-Arab',
-            },
-            {
-              label: 'Pigdin English',
-              value: 'pcm',
-            },
-            {
-              label: 'Sinhala',
-              value: 'si',
-            },
-            {
-              label: 'Tagalog',
-              value: 'tl',
-            },
-            {
-              label: 'Tamil',
-              value: 'ta',
-            },
-            {
-              label: 'Thai',
-              value: 'th',
-            },
-            {
-              label: 'Vietnamese',
-              value: 'vi',
-            },
-            {
-              label: 'Urdu',
-              value: 'ur', 
-            },
-          ],
+          options: languageOptions,
           hasMany: true,
           required: true,
           defaultValue: ['en'],

@@ -20,6 +20,7 @@ import { ContactInfo } from './globals/ContactInfo/config'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
+import languageOptions from './globals/Header/languageOptions.json'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -73,88 +74,11 @@ export default buildConfig({
     },
   }),
   localization: {
-    locales: [
-      {
-        label: 'English',
-        code: 'en',
-      },
-      {
-        label: 'Arabic',
-        code: 'ar',
-        rtl: true,
-      },
-      {
-        label: 'Bahasa Indonesia',
-        code: 'bi',
-      },
-      {
-        label: 'Bangla',
-        code: 'bn-IN',
-      },
-      {
-        label: 'Burmese',
-        code: 'br',
-      },
-      {
-        label: 'Chinese Simplified',
-        code: 'ch',
-      },
-      {
-        label: 'Dari',
-        code: 'prs-Arab',
-        rtl: true,
-      },
-      {
-        label: 'Khmer',
-        code: 'km',
-      },
-      {
-        label: 'Hindi',
-        code: 'hi',
-      },
-      {
-        label: 'Malay',
-        code: 'ms',
-      },
-      {
-        label: 'Nepali',
-        code: 'ne',
-      },
-      {
-        label: 'Pashto',
-        code: 'ps-Arab',
-        rtl: true,
-      },
-      {
-        label: 'Pigdin English',
-        code: 'pcm',
-      },
-      {
-        label: 'Sinhala',
-        code: 'si',
-      },
-      {
-        label: 'Tagalog',
-        code: 'tl',
-      },
-      {
-        label: 'Tamil',
-        code: 'ta',
-      },
-      {
-        label: 'Thai',
-        code: 'th',
-      },
-      {
-        label: 'Vietnamese',
-        code: 'vi',
-      },
-      {
-        label: 'Urdu',
-        code: 'ur',
-        rtl: true,
-      },
-    ],
+    locales: languageOptions.map(lang => ({
+      label: lang.label,
+      code: lang.value,
+      ...(lang.dir && { rtl: lang.dir === 'rtl' })
+    })),
     defaultLocale: 'en', // required
     fallback: true, // defaults to true
   },

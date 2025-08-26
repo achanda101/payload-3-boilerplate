@@ -3,14 +3,15 @@ import React from 'react'
 
 import { AdminBar } from '@/components/AdminBar'
 // import { Footer } from '@/globals/Footer/Component'
-// import { Header } from '@/globals/Header/Component'
+import { Header } from '@/globals/Header/Component'
+import { ColumnIndicators } from './components/ColumnIndicators'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { Providers } from '@/providers'
 import { InitTheme } from '@/providers/Theme/InitTheme'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import { draftMode } from 'next/headers'
 
-import './styles/globals.scss';
+import '@/styles/globals.scss';
 import { getServerSideURL } from '@/utilities/getURL'
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
@@ -31,12 +32,27 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             }}
           />
 
-          <div className="grid grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-4">
+          <Header />
+          
+          <div className="w-full px-[1.25rem] pt-[1.25rem] lg:px-[5rem] lg:pt-[2.5rem]">
+          {process.env.NODE_ENV === 'development' && (
+            <div className="page_column_layout gap-6">
+              <ColumnIndicators />
+            </div>
+          )}
+          
+          <main className="flex flex-col gap-[2.5rem] md:gap-[5rem]">
             <LivePreviewListener />
-          {/* <Header /> */}
-          {children}
-            {/* <Footer /> */}
+              {children}
+          </main>
+         
+          {process.env.NODE_ENV === 'development' && (
+            <div className="page_column_layout gap-6">
+              <ColumnIndicators />
+            </div>
+          )}
           </div>
+          {/* <Footer /> */}
         </Providers>
       </body>
     </html>
