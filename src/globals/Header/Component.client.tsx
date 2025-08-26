@@ -43,7 +43,6 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
       const response = await fetch(`/api/globals/nav?locale=${newLanguage}&depth=1`)
       const data = await response.json()
       setNavData(data)
-      console.log('Fetched navigation data:', data)
     } catch (error) {
       console.error('Failed to fetch navigation data:', error)
     }

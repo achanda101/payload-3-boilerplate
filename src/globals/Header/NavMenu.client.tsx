@@ -25,7 +25,7 @@ interface NavMenuClientProps {
         link?: LinkField
       }>
     }>
-  }
+  } | null
 }
 
 interface DropdownMenuProps {
@@ -104,7 +104,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ label, id, children }) => {
 }
 
 export const NavMenuClient: React.FC<NavMenuClientProps> = ({ data }) => {
-  if (!data?.menuItems) {
+  if (!data || !data.menuItems) {
     return null
   }
 
