@@ -1106,6 +1106,7 @@ export interface Footer {
      * A short description to encourage donations
      */
     description: string;
+    buttonText: string;
     /**
      * Enter a URL to the donation platform (https://example.com/donate)
      */
@@ -1211,6 +1212,7 @@ export interface FooterSelect<T extends boolean = true> {
     | {
         heading?: T;
         description?: T;
+        buttonText?: T;
         url?: T;
       };
   smLinksGroup?:

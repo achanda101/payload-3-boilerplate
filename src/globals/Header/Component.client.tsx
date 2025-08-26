@@ -31,7 +31,9 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   const { logo, searchEnabled, languages = [] } = data || {}
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [selectedLanguage, setSelectedLanguage] = useState(languages[0] || 'en')
-  const [navData, setNavData] = useState(null)
+  const [ navData, setNavData ] = useState(null)
+  const [donateUrl, setDonateUrl] = useState('')
+  const [ donateButtonText, setDonateButtonText ] = useState('Donate')
   
   const toggleSearch = () => setIsSearchOpen(!isSearchOpen)
 
@@ -46,6 +48,15 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
     } catch (error) {
       console.error('Failed to fetch navigation data:', error)
     }
+    // Fetch donate URL and button text from footer global
+    try {
+        const response = await fetch(`/api/globals/footer?locale=${newLanguage}&depth=1`)
+        const data = await response.json()
+        setDonateUrl(data?.donateCTA?.url || '')
+        setDonateButtonText(data?.donateCTA?.buttonText || 'Donate')
+      } catch (error) {
+        console.error('Failed to fetch footer Donate CTA data:', error)
+      }
   }
 
   useEffect(() => {
@@ -91,7 +102,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
             </span>
         </div>
         <div className='site-header-bottomrow'>
-          {logo && typeof logo === 'object' && logo.url ? (
+          {logo && typeof logo === 'object' && 'url' in logo && logo.url ? (
               <Image 
                 src={logo.url} 
                 alt={logo.alt || "Site Logo"} 
@@ -111,14 +122,14 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
                 }
               </button>
             )}
-            <button className="pill-button dark">Donate</button>
+            <button className="pill-button dark" onClick={() => window.location.href = donateUrl}>{donateButtonText}</button>
           </div>
           
         </div>
       </div>
       {isSearchOpen && (
-        <div className="search-bar" style={{ position: 'absolute', top: '60px', right: '20px', backgroundColor: '#fff', border: '1px solid #ccc', padding: '10px' }}>
-          <input type="text" placeholder="Search..." style={{ padding: '5px', width: '200px' }} />
+        <div className="search-bar">
+          <input type="text" placeholder="Search..." />
         </div>
       )}
     </header>

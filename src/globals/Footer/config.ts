@@ -76,6 +76,13 @@ export const Footer: GlobalConfig = {
               localized: true,
             },
             {
+              name: 'buttonText',
+              type: 'text',
+              defaultValue: 'Donate',
+              required: true,
+              localized: true,
+            },
+            {
               name: 'url',
               label: 'URL',
               type: 'text',

@@ -5,7 +5,12 @@ import Link from 'next/link'
 
 interface LinkField {
   type: 'reference' | 'custom'
-  reference?: any
+  reference?: {
+    value?: {
+      title?: string
+      slug?: string
+    }
+  }
   url?: string
   label?: string
   newTab?: boolean
@@ -66,10 +71,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ label, id, children }) => {
       onMouseLeave={handleMouseLeave}
       data-dropdown={id}
     >
-      <button
-        className="flex items-start gap-1 lg:gap-1 text-black text-base font-normal leading-[1.35] hover:opacity-80 transition-opacity dropdown-trigger max-w-[150px] text-left"
-        data-dropdown-trigger={id}
-      >
+      <button data-dropdown-trigger={id}>
         {label}
         <svg
           width="20"
@@ -108,23 +110,38 @@ export const NavMenuClient: React.FC<NavMenuClientProps> = ({ data }) => {
     return null
   }
 
+  // create an array of color names to use for menu items
+  const colors = [ 'sky', 'rose', 'turmeric', 'forest' ];
+
   return (
     <nav className="flex items-center gap-6">
-      {data.menuItems.map((menuItem) => (
+      {data.menuItems.map((menuItem, index) => (
         <DropdownMenu
           key={menuItem.id || 'unknown'}
           id={menuItem.id || 'unknown'}
-          label={ menuItem.label || 'Menu Item'}
+          label={menuItem.label || 'Menu Item'}
         >
-          {menuItem.navItems?.map((navItem) => (
-            <Link
-              key={navItem.id}
-              href={navItem.url || '#'}
-              className="dropdown-menu-item"
-            >
-              <span>{navItem.link?.label}</span>
-            </Link>
-          ))}
+          {menuItem.navItems?.map((navItem) => {
+            const getHref = () => {
+              if (!navItem.link) return '#'
+              if (navItem.link.type === 'reference') {
+                return navItem.link.reference?.value?.slug || '#'
+              } else {
+                return navItem.link.url || '#'
+              }
+            }
+            const menuItemClasses = `dropdown-menu-item ${colors[index % colors.length]}`
+
+            return (
+              <Link
+                key={navItem.id}
+                href={getHref()}
+                className={menuItemClasses}
+              >
+                <span>{navItem.link?.label}</span>
+              </Link>
+            )
+          })}
         </DropdownMenu>
       ))}
     </nav>

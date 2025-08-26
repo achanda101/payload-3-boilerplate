@@ -149,7 +149,7 @@ h5 {
   }
 
   .search-icon {
-    @apply flex items-center justify-center w-[3rem] h-[3rem] rounded-full border-[1.5px] p-[0.25rem] border-black;
+    @apply flex items-center justify-center w-[3rem] h-[3rem] rounded-full border-[1.5px] p-[0.5rem] border-black;
 
   }
 }
@@ -187,6 +187,13 @@ button.pill-button {
     }
 }
 
+.dropdown-container {
+    button {
+      @apply flex items-start gap-1 lg:gap-1 text-base font-normal leading-[1.35] hover:opacity-80 transition-opacity  max-w-[150px] text-left;
+      color: $color-body-text;
+    }
+}
+
 .dropdown-menu {
     @apply absolute top-full left-1/2 transform -translate-x-1/2 mt-1 bg-background px-4 py-3 z-50 transition-all duration-300;
     border: 1px solid $color-body-text-light;
@@ -197,13 +204,52 @@ button.pill-button {
 
 .dropdown-menu-item {
   @apply block px-2 py-2 text-sm text-gray-800 leading-tight whitespace-nowrap;
-  margin-inline: calc($spacing-md);
+  margin-inline: calc($spacing-xs);
+  padding-inline: 1rem;
+  padding-block: 0.65rem;
+  text-align: center;
   &:hover {
-    background-color: $color-sky;
-    border-radius: $radius-lg;
-    margin-inline: calc($spacing-sm);
+    border-radius: $radius-xl;
     @media (hover: hover) {
       cursor: pointer;
     }
+  }
+  &.sky {
+    &:hover {
+      background-color: $color-sky;
+    }
+  }
+  &.rose {
+    &:hover {
+      background-color: $color-rose;
+    }
+  }
+  &.forest {
+    &:hover {
+      background-color: $color-forest;
+    }
+  }
+  &.turmeric {
+    &:hover {
+      background-color: $color-turmeric;
+    }
+  }
+}
+
+.search-bar {
+  position: absolute; 
+  top: 13rem; 
+  left: 2rem;
+  width: calc(100% - 5rem);
+  background-color: $color-background;
+  border: 1px solid $color-body-text;
+  padding: $spacing-md;
+  border-radius: $radius-md;
+  box-shadow: $shadow-lg;
+  z-index: 1000;
+
+  input {
+    padding: 5px;
+    width: 100%;
   }
 }
