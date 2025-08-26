@@ -40,6 +40,8 @@ export default async function Page() {
       <h3>Apply for a grant today.</h3>
       <h2>Latest Publications &<br/>Reports</h2>
       <p>UAF A&P offers funding to women and non-binary activists, their families and their organisations in times of crisis</p>
+      <p>Will it pull the latest from Git???</p>
+      <button className="pill-button dark">Apply for a Grant</button>
     </div>
   )
 }
