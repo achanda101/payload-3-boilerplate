@@ -1100,6 +1100,12 @@ export interface Footer {
    * Upload the logo for the footer
    */
   logo?: (number | null) | MediaCloud;
+  newsletterSub?: {
+    description?: string | null;
+    inputPlaceholder?: string | null;
+    buttonText?: string | null;
+    url?: string | null;
+  };
   donateCTA: {
     heading: string;
     /**
@@ -1207,6 +1213,14 @@ export interface HeaderSelect<T extends boolean = true> {
 export interface FooterSelect<T extends boolean = true> {
   orgName?: T;
   logo?: T;
+  newsletterSub?:
+    | T
+    | {
+        description?: T;
+        inputPlaceholder?: T;
+        buttonText?: T;
+        url?: T;
+      };
   donateCTA?:
     | T
     | {

@@ -195,7 +195,7 @@ button.pill-button {
 }
 
 .dropdown-menu {
-    @apply absolute top-full left-1/2 transform -translate-x-1/2 mt-1 bg-background px-4 py-3 z-50 transition-all duration-300;
+    @apply absolute top-full left-1/2 transform -translate-x-1/2 mt-1 bg-background px-3 py-3 z-50 transition-all duration-300;
     border: 1px solid $color-body-text-light;
     border-radius: $radius-lg;
     box-shadow: $shadow-lg;
@@ -204,9 +204,9 @@ button.pill-button {
 
 .dropdown-menu-item {
   @apply block px-2 py-2 text-sm text-gray-800 leading-tight whitespace-nowrap;
-  margin-inline: calc($spacing-xs);
+  margin-inline: calc($spacing-xs/2);
   padding-inline: 1rem;
-  padding-block: 0.65rem;
+  padding-block: 1rem;
   text-align: center;
   &:hover {
     border-radius: $radius-xl;
@@ -238,9 +238,9 @@ button.pill-button {
 
 .search-bar {
   position: absolute; 
-  top: 13rem; 
-  left: 2rem;
-  width: calc(100% - 5rem);
+  top: 12rem; 
+  left: 4rem;
+  width: calc(100% - 8rem);
   background-color: $color-background;
   border: 1px solid $color-body-text;
   padding: $spacing-md;
@@ -251,5 +251,6 @@ button.pill-button {
   input {
     padding: 5px;
     width: 100%;
+    background-color: $color-background;
   }
 }

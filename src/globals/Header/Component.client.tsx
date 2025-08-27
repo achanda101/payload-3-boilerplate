@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import languageOptions from './languageOptions.json'
 import { NavMenuClient } from './NavMenu.client'
+import { useLanguage } from '../../contexts/LanguageContext'
 
 interface Language {
   value: string;
@@ -29,20 +30,25 @@ interface HeaderClientProps {
 
 export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   const { logo, searchEnabled, languages = [] } = data || {}
+  const { selectedLanguage, setSelectedLanguage, setAvailableLanguages } = useLanguage()
   const [isSearchOpen, setIsSearchOpen] = useState(false)
-  const [selectedLanguage, setSelectedLanguage] = useState(languages[0] || 'en')
   const [ navData, setNavData ] = useState(null)
   const [donateUrl, setDonateUrl] = useState('')
   const [ donateButtonText, setDonateButtonText ] = useState('Donate')
+
+  // Update available languages when data changes
+  useEffect(() => {
+    if (languages.length > 0) {
+      setAvailableLanguages(languages)
+    }
+  }, [languages, setAvailableLanguages])
   
   const toggleSearch = () => setIsSearchOpen(!isSearchOpen)
 
-  const handleLanguageChange = async (newLanguage: string) => {
-    setSelectedLanguage(newLanguage)
-    
+  const fetchDataForLanguage = async (language: string) => {
     // Fetch nav data for the selected language
     try {
-      const response = await fetch(`/api/globals/nav?locale=${newLanguage}&depth=1`)
+      const response = await fetch(`/api/globals/nav?locale=${language}&depth=1`)
       const data = await response.json()
       setNavData(data)
     } catch (error) {
@@ -50,7 +56,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
     }
     // Fetch donate URL and button text from footer global
     try {
-        const response = await fetch(`/api/globals/footer?locale=${newLanguage}&depth=1`)
+        const response = await fetch(`/api/globals/footer?locale=${language}&depth=1`)
         const data = await response.json()
         setDonateUrl(data?.donateCTA?.url || '')
         setDonateButtonText(data?.donateCTA?.buttonText || 'Donate')
@@ -59,9 +65,14 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
       }
   }
 
+  const handleLanguageChange = async (newLanguage: string) => {
+    setSelectedLanguage(newLanguage)
+    await fetchDataForLanguage(newLanguage)
+  }
+
   useEffect(() => {
-    // Initial fetch
-    handleLanguageChange(selectedLanguage)
+    // Initial fetch without changing the selected language
+    fetchDataForLanguage(selectedLanguage)
   }, [])
 
 

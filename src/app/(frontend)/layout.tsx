@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import React from 'react'
 
 import { AdminBar } from '@/components/AdminBar'
-// import { Footer } from '@/globals/Footer/Component'
+import { Footer } from '@/globals/Footer/Component'
 import { Header } from '@/globals/Header/Component'
 import { ColumnIndicators } from './components/ColumnIndicators'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
@@ -52,7 +52,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             </div>
           )}
           </div>
-          {/* <Footer /> */}
+          <Footer />
         </Providers>
       </body>
     </html>

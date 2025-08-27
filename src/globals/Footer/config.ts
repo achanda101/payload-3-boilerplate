@@ -5,7 +5,7 @@ import { array } from 'node_modules/payload/dist/fields/validations'
 
 export const Footer: GlobalConfig = {
   slug: 'footer',
-  label: 'Footer: Social Media & Donate CTA',
+  label: 'Footer: Social Media Links, Donate CTA & Newsletter',
   access: {
     read: () => true,
   },
@@ -24,7 +24,7 @@ export const Footer: GlobalConfig = {
           type: 'text',
           localized: true,
           admin: {
-            width: '48%',
+            width: '50%',
             style: {
               backgroundColor: '#f1f6fa',
               padding: '20px',
@@ -48,6 +48,70 @@ export const Footer: GlobalConfig = {
             }
           },
         },
+      ]
+    },
+    {
+      type: 'row',
+      fields: [
+        {
+          name: 'newsletterSub',
+          label: 'Newsletter Subscription Section',
+          type: 'group',
+          fields: [
+            {
+              name: 'description',
+              label: 'Description',
+              type: 'text',
+              defaultValue: 'Subscribe to our newsletter.',
+              localized: true,
+              admin: {
+                width: '25%',
+              }
+            },
+            {
+              name: 'inputPlaceholder',
+              label: 'Input Placeholder',
+              type: 'text',
+              defaultValue: 'Enter your email',
+              localized: true,
+              admin: {
+                width: '25%',
+              }
+            },
+            {
+              name: 'buttonText',
+              label: 'Button Text',
+              type: 'text',
+              defaultValue: 'Subscribe',
+              localized: true,
+              admin: {
+                width: '25%',
+              }
+            },
+            {
+              name: 'url',
+              label: 'Subscription URL',
+              type: 'text',
+              defaultValue: 'https://example.com/subscribe',
+              validate: (val) => {
+                  if (!val) return 'External URL is required'
+                  const isValidUrl = /^https?:\/\/.+/.test(val)
+                  if (!isValidUrl) {
+                    return 'Please enter a valid URL starting with http:// or https://'
+                  }
+                  return true
+              },
+            }
+          ],
+          admin: {
+            style: {
+              backgroundColor: '#f1f6fa',
+              padding: '20px',
+              border: '1px solid #dee2e6',
+              borderRadius: '8px',
+            },
+          }
+        }
       ]
     },
     {
@@ -102,7 +166,7 @@ export const Footer: GlobalConfig = {
             },
           ],
           admin: {
-            width: '48%',
+            width: '50%',
             style: {
               backgroundColor: '#f1f6fa',
               padding: '20px',
