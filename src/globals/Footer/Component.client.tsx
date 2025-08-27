@@ -37,9 +37,8 @@ interface FooterClientProps {
   }
 }
 
-export const FooterClient: React.FC<FooterClientProps> = ({ data }) => {
+export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
 
-  const { logo, donateCTA, newsletterSub, smLinksGroup } = data || {}
   const { selectedLanguage } = useLanguage()
   const [ donateCTAData, setDonateCTAData ] = useState<NonNullable<FooterClientProps['data']>['donateCTA']>({})
   const [newsletterData, setNewsletterData] = useState<NonNullable<FooterClientProps['data']>['newsletterSub']>({})

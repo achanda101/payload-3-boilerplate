@@ -28,20 +28,31 @@ interface HeaderClientProps {
   };
 }
 
-export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
-  const { logo, searchEnabled, languages = [] } = data || {}
+export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
   const { selectedLanguage, setSelectedLanguage, setAvailableLanguages } = useLanguage()
   const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const [headerData, setHeaderData] = useState<Partial<NonNullable<HeaderClientProps['data']>>>({})
   const [ navData, setNavData ] = useState(null)
   const [donateUrl, setDonateUrl] = useState('')
   const [ donateButtonText, setDonateButtonText ] = useState('Donate')
 
-  // Update available languages when data changes
+  // Fetch header data and set available languages
   useEffect(() => {
-    if (languages.length > 0) {
-      setAvailableLanguages(languages)
+    const fetchHeaderData = async () => {
+      try {
+        const response = await fetch('/api/globals/header?depth=1')
+        const data = await response.json()
+        setHeaderData(data)
+        if (data.languages && data.languages.length > 0) {
+          setAvailableLanguages(data.languages)
+        }
+      } catch (error) {
+        console.error('Failed to fetch header data:', error)
+      }
     }
-  }, [languages, setAvailableLanguages])
+    
+    fetchHeaderData()
+  }, [])
   
   const toggleSearch = () => setIsSearchOpen(!isSearchOpen)
 
@@ -101,7 +112,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
             onChange={(e) => handleLanguageChange(e.target.value)}
             className='language-selector'
           >
-            {languages.map((langValue: string) => {
+            {(headerData.languages || []).map((langValue: string) => {
               const langOption = languageOptions.find(option => option.value === langValue)
               return (
                 <option key={langValue} value={langValue}>
@@ -113,19 +124,19 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
             </span>
         </div>
         <div className='site-header-bottomrow'>
-          {logo && typeof logo === 'object' && 'url' in logo && logo.url ? (
+          {headerData.logo && typeof headerData.logo === 'object' && 'url' in headerData.logo && headerData.logo.url ? (
               <Image 
-                src={logo.url} 
-                alt={logo.alt || "Site Logo"} 
-                width={logo.width || 100} 
-                height={logo.height || 50} 
+                src={headerData.logo.url} 
+                alt={headerData.logo.alt || "Site Logo"} 
+                width={headerData.logo.width || 100} 
+                height={headerData.logo.height || 50} 
               />
           ) : (
               <Link href="/">Home</Link>
           )}
           <NavMenuClient data={navData} />
           <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
-            {searchEnabled && (
+            {headerData.searchEnabled && (
               <button onClick={toggleSearch} className='search-icon'>
                 {isSearchOpen ?
                   <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Menu / Close_MD"> <path id="Vector" d="M18 18L12 12M12 12L6 6M12 12L18 6M12 12L6 18" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> </g> </g></svg> :
