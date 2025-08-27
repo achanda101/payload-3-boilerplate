@@ -41,8 +41,8 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data }) => {
 
   const { logo, donateCTA, newsletterSub, smLinksGroup } = data || {}
   const { selectedLanguage } = useLanguage()
-  const [ donateCTAData, setDonateCTAData ] = useState<FooterClientProps['data']['donateCTA']>({})
-  const [newsletterData, setNewsletterData] = useState<FooterClientProps['data']['newsletterSub']>({})
+  const [ donateCTAData, setDonateCTAData ] = useState<NonNullable<FooterClientProps['data']>['donateCTA']>({})
+  const [newsletterData, setNewsletterData] = useState<NonNullable<FooterClientProps['data']>['newsletterSub']>({})
 
   const handleLanguageChange = async (newLanguage: string) => {
     try {
