@@ -41,7 +41,7 @@ interface FooterClientProps {
 export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
 
   const { selectedLanguage } = useLanguage()
-  const [ orgLogo, setOrgLogo ] = useState<NonNullable<FooterClientProps[ 'data' ]>[ 'logo' ]>({})
+  const [ orgLogo, setOrgLogo ] = useState<NonNullable<FooterClientProps[ 'data' ]>[ 'logo' ]>(null)
   const [ orgName, setOrgName ] = useState('Urgent Action Fund Asia & Pacific')
   const [ donateCTAData, setDonateCTAData ] = useState<NonNullable<FooterClientProps[ 'data' ]>[ 'donateCTA' ]>({})
   const [ newsletterData, setNewsletterData ] = useState<NonNullable<FooterClientProps[ 'data' ]>[ 'newsletterSub' ]>({})
@@ -57,7 +57,7 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
       setNewsletterData(data?.newsletterSub || {})
       setSmLinks(data?.smLinksGroup || { smLinks: [] })
       setOrgName(data?.orgName || 'Urgent Action Fund Asia & Pacific')
-      setOrgLogo(data?.logo || {})
+      setOrgLogo(data?.logo || null)
     } catch (error) {
       console.error('Failed to fetch footer Donate CTA data and Newsletter data:', error)
     }
