@@ -53,6 +53,7 @@ export const Posts: CollectionConfig<'posts'> = {
     // },
   },
   admin: {
+    hidden: true,
     group: 'Content',
     defaultColumns: ['title', 'authors', 'updatedAt'],
     livePreview: {

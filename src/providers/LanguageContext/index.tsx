@@ -69,7 +69,6 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({
   const [selectedLanguage, setSelectedLanguageState] = useState<string>(() => {
     if (typeof window !== 'undefined') {
       const savedLanguage = getCookie(LANGUAGE_COOKIE_NAME)
-      console.log('Initializing language:', { savedLanguage, defaultLanguages, defaultLanguage })
       // Trust the saved language initially, validation happens when server languages are loaded
       return savedLanguage || defaultLanguage
     }

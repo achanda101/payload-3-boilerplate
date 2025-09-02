@@ -12,7 +12,7 @@ const BeforeDashboard: React.FC = () => {
         <h4>Welcome to your dashboard!</h4>
         <br />
         <p>
-          <Link href="/">View Homepage</Link> <em>(Staging Site)</em>
+          <Link href="/">View Homepage</Link>
         </p>
       </Banner>
       

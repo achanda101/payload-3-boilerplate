@@ -36,9 +36,9 @@ export default async function Page() {
 
   return (
     <div>
-      <h3>Need Support?</h3>
-      <h3>Apply for a grant today.</h3>
-      <h2>Latest Publications &<br/>Reports</h2>
+      <h2>Feminist Futures.<br/>Forged In Fire.</h2>
+      <h3>Need Support?<br/>Apply for a grant today.</h3>
+      <h1><sup>$</sup>7.9M</h1>
       <p>UAF A&P offers funding to women and non-binary activists, their families and their organisations in times of crisis</p>
       <p>Will it pull the latest from Git???</p>
       <button className="pill-button dark">Apply for a Grant</button>

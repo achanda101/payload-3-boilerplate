@@ -5,6 +5,7 @@
   },
   {
     "label": "Arabic",
+    "display": "العربية",
     "value": "ar",
     "dir": "rtl"
   },
@@ -14,39 +15,48 @@
   },
   {
     "label": "Bangla",
+    "display": "বাংলা",
     "value": "bn-IN"
   },
   {
     "label": "Burmese",
+    "display": "ဗမာစာ",
     "value": "br"
   },
   {
-    "label": "Chinese Mandarin",
+    "label": "Mandarin",
+    "display": "中文",
     "value": "ch"
   },
   {
     "label": "Dari",
+    "display": "دری",
     "value": "prs-Arab",
     "dir": "rtl"
   },
   {
     "label": "Khmer",
+    "display": "ខ្មែរ",
     "value": "km"
   },
   {
     "label": "Hindi",
+    "display": "हिन्दी",
     "value": "hi"
   },
   {
     "label": "Malay",
+    "display": "Melayu",
     "value": "ms"
   },
   {
     "label": "Nepali",
+    "display": "नेपाली",
     "value": "ne"
   },
   {
     "label": "Pashto",
+    "display": "پښتو",
     "value": "ps-Arab"
   },
   {
@@ -55,6 +65,7 @@
   },
   {
     "label": "Sinhala",
+    "display": "සිංහල",
     "value": "si"
   },
   {
@@ -63,18 +74,22 @@
   },
   {
     "label": "Tamil",
+    "display": "தமிழ்",
     "value": "ta"
   },
   {
     "label": "Thai",
+    "display": "ไทย",
     "value": "th"
   },
   {
     "label": "Vietnamese",
+    "display": "Tiếng Việt",
     "value": "vi"
   },
   {
     "label": "Urdu",
+    "display": "اردو",
     "value": "ur",
     "dir": "rtl"
   }

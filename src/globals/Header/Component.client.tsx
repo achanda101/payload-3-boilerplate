@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import languageOptions from './languageOptions.json'
 import { NavMenuClient } from './NavMenu.client'
-import { useLanguage } from '../../contexts/LanguageContext'
+import { useLanguage } from '../../providers/LanguageContext'
 
 interface Language {
   value: string;
@@ -84,7 +84,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
   useEffect(() => {
     // Initial fetch without changing the selected language
     fetchDataForLanguage(selectedLanguage)
-  }, [])
+  }, [selectedLanguage])
 
 
   return (
@@ -116,7 +116,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
               const langOption = languageOptions.find(option => option.value === langValue)
               return (
                 <option key={langValue} value={langValue}>
-                  {langOption?.label || langValue}
+                  {langOption?.display || langOption?.label || langValue}
                 </option>
               )
             })}
