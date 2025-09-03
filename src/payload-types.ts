@@ -103,12 +103,14 @@ export interface Config {
     footer: Footer;
     nav: Nav;
     contactInfo: ContactInfo;
+    homepage: Homepage;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
     nav: NavSelect<false> | NavSelect<true>;
     contactInfo: ContactInfoSelect<false> | ContactInfoSelect<true>;
+    homepage: HomepageSelect<false> | HomepageSelect<true>;
   };
   locale:
     | 'en'
@@ -1124,7 +1126,9 @@ export interface Footer {
      */
     smLinks?:
       | {
-          smType?: ('fb' | 'insta' | 'threads' | 'mast' | 'wa' | 'linkedin' | 'scloud' | 'med' | 'sstack') | null;
+          smType?:
+            | ('fb' | 'insta' | 'threads' | 'mast' | 'wa' | 'linkedin' | 'scloud' | 'med' | 'sstack' | 'spotify')
+            | null;
           /**
            * Enter an external URL (https://example.com)
            */
@@ -1193,6 +1197,31 @@ export interface ContactInfo {
     | null;
   updatedAt?: string | null;
   createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "homepage".
+ */
+export interface Homepage {
+  id: number;
+  heroSection?: {
+    heroTitle?: string | null;
+    heroSubtitle?: string | null;
+    ctaButtonText?: string | null;
+    link?: {
+      type?: ('reference' | 'custom') | null;
+      newTab?: boolean | null;
+      reference?: {
+        relationTo: 'posts';
+        value: number | Post;
+      } | null;
+      url?: string | null;
+      label?: string | null;
+    };
+  };
+  _status?: ('draft' | 'published') | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1288,6 +1317,32 @@ export interface ContactInfoSelect<T extends boolean = true> {
         emailType?: T;
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "homepage_select".
+ */
+export interface HomepageSelect<T extends boolean = true> {
+  heroSection?:
+    | T
+    | {
+        heroTitle?: T;
+        heroSubtitle?: T;
+        ctaButtonText?: T;
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+            };
+      };
+  _status?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

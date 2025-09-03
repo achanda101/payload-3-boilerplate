@@ -211,6 +211,7 @@ export const Footer: GlobalConfig = {
                     { label: 'Soundcloud', value: 'scloud' },
                     { label: 'Medium', value: 'med' },
                     { label: 'Substack', value: 'sstack' },
+                    { label: 'Spotify', value: 'spotify' },
                   ]
                 },
                 {

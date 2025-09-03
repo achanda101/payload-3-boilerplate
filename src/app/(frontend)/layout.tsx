@@ -32,27 +32,29 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             }}
           />
 
-          <Header />
+          {/* <LivePreviewListener /> */}
+          <div>
+            <Header />
+            
+            <div className="w-full px-[1.25rem] pt-[1.25rem] lg:px-[5rem] lg:pt-[2.5rem]">
+            {process.env.NODE_ENV === 'development' && (
+              <div className="page_column_layout gap-6">
+                <ColumnIndicators />
+              </div>
+            )}
+            
+            <main className="flex flex-col gap-[2.5rem] md:gap-[5rem]">
+                {children}
+            </main>
           
-          <div className="w-full px-[1.25rem] pt-[1.25rem] lg:px-[5rem] lg:pt-[2.5rem]">
-          {process.env.NODE_ENV === 'development' && (
-            <div className="page_column_layout gap-6">
-              <ColumnIndicators />
+            {process.env.NODE_ENV === 'development' && (
+              <div className="page_column_layout gap-6">
+                <ColumnIndicators />
+              </div>
+            )}
             </div>
-          )}
-          
-          <main className="flex flex-col gap-[2.5rem] md:gap-[5rem]">
-            <LivePreviewListener />
-              {children}
-          </main>
-         
-          {process.env.NODE_ENV === 'development' && (
-            <div className="page_column_layout gap-6">
-              <ColumnIndicators />
-            </div>
-          )}
+            <Footer />
           </div>
-          <Footer />
         </Providers>
       </body>
     </html>

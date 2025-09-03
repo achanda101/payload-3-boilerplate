@@ -21,6 +21,7 @@ import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
 import languageOptions from './globals/Header/languageOptions.json'
+import { Homepage } from './globals/Homepage/config'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -50,6 +51,9 @@ export default buildConfig({
       }
     },
     livePreview: {
+      url: process.env.NEXT_PUBLIC_DOMAIN_URL || 'http://localhost:3000',
+      // collections: ['pages', 'posts'],
+      globals: ['homepage'],
       breakpoints: [
         {
           label: 'Mobile',
@@ -84,7 +88,7 @@ export default buildConfig({
   },
   collections: [Posts, MediaCloud, Documents, Categories, Users],
   cors: [getServerSideURL()].filter(Boolean),
-  globals: [Header, Footer, Navigation, ContactInfo],
+  globals: [ Header, Footer, Navigation, ContactInfo, Homepage ],
   plugins: [
     ...plugins,
     s3Storage({

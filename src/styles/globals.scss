@@ -122,7 +122,7 @@ h4 {
   }
 }
 
-h5 {
+h5, h6 {
   font-family: $font-subheading;
   color: $color-body-text;
   margin-bottom: $spacing-sm;
@@ -133,6 +133,14 @@ h5 {
   @media (min-width: $tablet) {
     font-size: $font-size-xl;
     font-weight: 400;
+  }
+}
+
+h6 {
+  font-size: $font-size-mob-lg;
+  font-weight: 700;
+  @media (min-width: $tablet) {
+    font-size: $font-size-lg;
   }
 }
 
@@ -278,12 +286,20 @@ li {
     // border: 1px dotted hsla(0, 0%, 0%, 0.2);
     // border-radius: 8px;
     padding: calc($spacing-sm);
-    font-weight: bold;
-    font-size: 18px;
+    // font-weight: bold;
+    font-size: $font-size-base;
     display: flex;
     height: max-content;
     // align-items: center;
     // justify-content: center;
+
+    li, a {
+      font-size: $font-size-base-mob;
+      font-weight: normal;
+      @media (max-width: 1000px) {
+        font-size: $font-size-base;
+      }
+    }
 }
 
 .div-i { 
@@ -448,21 +464,6 @@ button.pill-button {
         @media (hover: hover) {
             cursor: pointer;
         }
-    }
-}
-
-.contact-email {
-  display: flex;
-  flex-direction: column;
-  width: fit-content;
-    p {
-      font-size: $font-size-tag-mob-sm;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: $color-body-text;
-      @media (min-width: $tablet) {
-        font-size: $font-size-tag-sm;
-      }
     }
 }
 

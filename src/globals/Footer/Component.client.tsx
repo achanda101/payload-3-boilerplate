@@ -172,7 +172,7 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
                         <Link
                           href={getHref()}
                         >
-                          <span>{navItem.link?.label}</span>
+                          {navItem.link?.label}
                         </Link>
                       </li>
                     )
@@ -288,7 +288,7 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
           )}
         </div>
         <div className="footer-grid-item div-f">
-          {orgName && <p>{orgName}</p>}
+          {orgName && <h6>{orgName}</h6>}
           <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
             {smLinks?.smLinks?.map((smLink, index) => (
               smLink.smType && smLink.url && (
@@ -309,8 +309,8 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
             <div className="footer-grid-item div-g">
                 {contactInfo.emails.map((emailObj, index) => (
                   emailObj.email && (
-                    <div key={index} className='contact-email'>
-                      <p>{emailObj.label || emailObj.email}</p>
+                    <div key={index}>
+                      <p className='tag'>{emailObj.label || emailObj.email}</p>
                       <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
                         <a href={`mailto:${emailObj.email}`}>{emailObj.email}</a>
                         <Image
