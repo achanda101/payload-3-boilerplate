@@ -41,11 +41,11 @@ export const Navigation: GlobalConfig = {
             style: {
               alignSelf: 'flex-end'
             },
-            // components: {
-            //   RowLabel: {
-            //     path: 'src/globals/Navigation/NavItemRowLabel.tsx',
-            //   }
-            // },
+            components: {
+              RowLabel: {
+                path: 'src/globals/Navigation/NavItemRowLabel.tsx',
+              }
+            },
           }
         },
       ],

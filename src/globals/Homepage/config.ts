@@ -23,34 +23,46 @@ export const Homepage: GlobalConfig = {
           fields: [
             {
               name: 'heroTitle',
-              type: 'text',
+              type: 'textarea',
+              localized: true,
               admin: {
                 placeholder: 'Enter the main title for the hero section',
               },
             },
             {
               name: 'heroSubtitle',
-              type: 'text',
+              type: 'textarea',
+              localized: true,
               admin: {
                 placeholder: 'Enter a subtitle for the hero section',
               },
             },
             {
-              name: 'ctaButtonText',
-              type: 'text',
-              admin: {
-                placeholder: 'Enter the text for the CTA button in hero section',
+              name: 'ctaButton',
+              labels: {
+                singular: 'CTA Button',
+                plural: 'CTA Buttons'
               },
-            },
-            link({
+              type: 'array',
+              maxRows: 1,
+              fields: [
+                link({
                   appearances: false,
-            }),
+                }),
+              ],
+              admin: {
+                components: {
+                  RowLabel: {
+                    path: 'src/globals/Homepage/CtaButtonRowLabel.tsx',
+                  }
+                },
+              }
+            },
           ]
         },
       ]
     }
   ],
-  timestamps: true,
   versions: {
     drafts: {
       autosave: {
@@ -61,5 +73,5 @@ export const Homepage: GlobalConfig = {
   },
   hooks: {
       afterChange: [revalidateHomepage],
-    },
+  },
 }

@@ -1207,21 +1207,25 @@ export interface Homepage {
   heroSection?: {
     heroTitle?: string | null;
     heroSubtitle?: string | null;
-    ctaButtonText?: string | null;
-    link?: {
-      type?: ('reference' | 'custom') | null;
-      newTab?: boolean | null;
-      reference?: {
-        relationTo: 'posts';
-        value: number | Post;
-      } | null;
-      url?: string | null;
-      label?: string | null;
-    };
+    ctaButton?:
+      | {
+          link?: {
+            type?: ('reference' | 'custom') | null;
+            newTab?: boolean | null;
+            reference?: {
+              relationTo: 'posts';
+              value: number | Post;
+            } | null;
+            url?: string | null;
+            label?: string | null;
+          };
+          id?: string | null;
+        }[]
+      | null;
   };
   _status?: ('draft' | 'published') | null;
-  updatedAt: string;
-  createdAt: string;
+  updatedAt?: string | null;
+  createdAt?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1331,15 +1335,19 @@ export interface HomepageSelect<T extends boolean = true> {
     | {
         heroTitle?: T;
         heroSubtitle?: T;
-        ctaButtonText?: T;
-        link?:
+        ctaButton?:
           | T
           | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    reference?: T;
+                    url?: T;
+                    label?: T;
+                  };
+              id?: T;
             };
       };
   _status?: T;
