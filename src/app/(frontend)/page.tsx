@@ -1,7 +1,7 @@
 import type { Metadata } from 'next/types'
 import React from 'react'
 import { Homepage } from '@/globals/Homepage/Component'
-import { Hero } from './components/Hero/Hero'
+import { HomeHero } from './components/HomeHero/HomeHero'
 import { ColumnIndicators } from './components/ColumnIndicators'
 
 export const dynamic = 'force-static'
@@ -20,7 +20,7 @@ export default async function Page() {
           )}
       </div> */}
         
-      <Hero />
+      <HomeHero />
         
       <div className="w-full px-[1.25rem] pt-[1.25rem] lg:px-[5rem] lg:pt-[2.5rem]">
         {process.env.NODE_ENV === 'development' && (

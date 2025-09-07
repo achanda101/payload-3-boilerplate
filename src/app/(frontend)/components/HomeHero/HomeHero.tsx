@@ -24,7 +24,7 @@ interface HeroProps {
   }
 }
 
-export const Hero: React.FC<HeroProps> = ({ data = {} }) => {
+export const HomeHero: React.FC<HeroProps> = ({ data = {} }) => {
 
   const { selectedLanguage } = useLanguage()
   const [ heroData, setHeroData ] = useState<NonNullable<HeroProps[ 'data' ]>[ 'heroSection' ]>({})
