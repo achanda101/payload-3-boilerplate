@@ -4,7 +4,6 @@ import React from 'react'
 import { AdminBar } from '@/components/AdminBar'
 import { Footer } from '@/globals/Footer/Component'
 import { Header } from '@/globals/Header/Component'
-import { ColumnIndicators } from './components/ColumnIndicators'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { Providers } from '@/providers'
 import { InitTheme } from '@/providers/Theme/InitTheme'
@@ -21,8 +20,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="en" suppressHydrationWarning>
       <head>
         <InitTheme />
-        <link href="/favicon.ico" rel="icon" sizes="32x32" />
-        <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+        <link href="/uafanp-icon.svg" rel="icon" type="image/svg+xml" />
       </head>
       <body>
         <Providers>
@@ -35,24 +33,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           {/* <LivePreviewListener /> */}
           <div>
             <Header />
-            
-            <div className="w-full px-[1.25rem] pt-[1.25rem] lg:px-[5rem] lg:pt-[2.5rem]">
-            {process.env.NODE_ENV === 'development' && (
-              <div className="page_column_layout gap-6">
-                <ColumnIndicators />
-              </div>
-            )}
-            
-            <main className="flex flex-col gap-[2.5rem] md:gap-[5rem]">
-                {children}
-            </main>
-          
-            {process.env.NODE_ENV === 'development' && (
-              <div className="page_column_layout gap-6">
-                <ColumnIndicators />
-              </div>
-            )}
-            </div>
+            {children}
             <Footer />
           </div>
         </Providers>

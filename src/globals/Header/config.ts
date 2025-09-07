@@ -10,7 +10,10 @@ export const Header: GlobalConfig = {
     read: () => true,
   },
   admin: {
-    group: 'Site Settings',
+    group: {
+      name: 'Site Settings',
+      order: '1'
+    }
   },
    fields: [
     {

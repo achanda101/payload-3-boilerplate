@@ -5,8 +5,17 @@ import { link } from '@/fields/link'
 export const Homepage: GlobalConfig = {
   slug: 'homepage',
   label: 'Homepage',
+  access: {
+    read: () => true,
+  },
   admin: {
-    group: 'Content',
+    group: {
+      name: 'Content',
+      order: '1'
+    },
+    livePreview: {
+      url: ({ data }) => `${process.env.PAYLOAD_URL}/preview/${data.globalType}`
+    }
   },
   fields: [
     {
@@ -44,11 +53,25 @@ export const Homepage: GlobalConfig = {
                 plural: 'CTA Buttons'
               },
               type: 'array',
-              maxRows: 1,
+              maxRows: 2,
               fields: [
-                link({
-                  appearances: false,
-                }),
+                {
+                  type: 'row',
+                  fields: [
+                    {
+                      name: 'buttonPrimary',
+                      type: 'checkbox',
+                      defaultValue: false,
+                      admin: {
+                        description: 'Is it a primary button? (dark coloured)',
+                        width: '30%',
+                      }
+                    },
+                    link({
+                      appearances: false,
+                    }),
+                  ]
+                },
               ],
               admin: {
                 components: {

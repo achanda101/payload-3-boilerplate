@@ -51,7 +51,7 @@ export default buildConfig({
       }
     },
     livePreview: {
-      url: process.env.NEXT_PUBLIC_DOMAIN_URL || 'http://localhost:3000',
+      url: process.env.PAYLOAD_URL || 'http://localhost:3000',
       // collections: ['pages', 'posts'],
       globals: ['homepage'],
       breakpoints: [
@@ -88,7 +88,7 @@ export default buildConfig({
   },
   collections: [Posts, MediaCloud, Documents, Categories, Users],
   cors: [getServerSideURL()].filter(Boolean),
-  globals: [ Header, Footer, Navigation, ContactInfo, Homepage ],
+  globals: [ Homepage, Header, Footer, Navigation, ContactInfo ],
   plugins: [
     ...plugins,
     s3Storage({

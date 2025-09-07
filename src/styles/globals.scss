@@ -38,6 +38,7 @@
 @import 'reset';
 @import 'variables';
 @import 'mixins';
+@import 'hero';
 
 body {
   font-family: $font-body;
@@ -82,7 +83,7 @@ h1 {
 
 h2 {
   font-size: $font-size-mob-4xl;
-  line-height: 110%;
+  line-height: 100%;
 
   @media (min-width: $tablet) {
     font-size: $font-size-4xl;
@@ -421,7 +422,7 @@ button.pill-button {
     text-transform: capitalize;
     border: 1px solid $color-body-text;
     border-radius: $radius-2xl;
-    padding-inline: calc($spacing-lg);
+    padding-inline: calc($spacing-xl);
     padding-block: calc($spacing-lg/2);
     width: fit-content;
     text-transform: capitalize;
@@ -430,10 +431,12 @@ button.pill-button {
     @media (min-width: $tablet) {
       font-size: $font-size-button;
     }
-
+    transition: background-color 100ms ease-in-out;
     &:hover {
         @media (hover: hover) {
             cursor: pointer;
+            background-color: $color-body-text;
+            color: white;
         }
     }
 
@@ -447,7 +450,7 @@ button.pill-button {
 
         &:hover {
             @media (hover: hover) {
-                opacity: 85%;
+                opacity: 80%;
             }
         }
     }
