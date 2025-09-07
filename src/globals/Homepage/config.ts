@@ -1,6 +1,7 @@
 import type { GlobalConfig } from "payload";
 import { revalidateHomepage } from "./hooks/revalidateHomepage";
 import { link } from '@/fields/link'
+import { SecondaryCTA } from "@/blocks/SecondaryCTA/config";
 
 export const Homepage: GlobalConfig = {
   slug: 'homepage',
@@ -84,7 +85,20 @@ export const Homepage: GlobalConfig = {
           ]
         },
       ]
-    }
+    },
+    {
+      type: 'blocks',
+      name: 'secondaryCTA',
+      blocks: [ SecondaryCTA ],
+      labels: {
+        singular: 'A Secondary CTA Block',
+        plural: 'Secondary CTA Blocks'
+      },
+      admin: {
+        initCollapsed: true,
+        isSortable: true,
+      },
+    },
   ],
   versions: {
     drafts: {

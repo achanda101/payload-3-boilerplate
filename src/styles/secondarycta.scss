@@ -1,0 +1,31 @@
+@use 'variables' as vars;
+@use 'mixins' as mix;
+
+.secondaryCTA {
+  @include mix.flex-center;
+  @include mix.flex-column;
+  gap: 0.5rem;
+  width: 100%;
+  margin-inline: auto;
+  text-align: center;
+  .seccondaryCTA_titles {
+    width: 85%;
+    @media (min-width: vars.$tablet) {
+      width: 45%;
+    }
+  }
+  
+  & > *:last-child {
+    margin-top: 2rem;
+  }
+
+  .secondaryCTA_buttons {
+    @include mix.flex-column;
+    gap: 1rem;
+    @media (min-width: vars.$tablet) {
+      flex-direction: row;
+      @include mix.flex-center;
+      gap: 1.5rem;
+    }
+  }
+}

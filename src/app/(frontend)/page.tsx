@@ -1,15 +1,13 @@
 import type { Metadata } from 'next/types'
 import React from 'react'
-import { Homepage } from '@/globals/Homepage/Component'
 import { HomeHero } from './components/HomeHero/HomeHero'
+import { PageContent } from './components/PageContent/PageContent'
 import { ColumnIndicators } from './components/ColumnIndicators'
 
 export const dynamic = 'force-static'
 export const revalidate = 600
 
-export default async function Page() {
- 
-
+export default function Page() {
   return (
     <>
       {/* <div className="w-full px-[1.25rem] pt-[1.25rem] lg:px-[5rem] lg:pt-[2.5rem]">
@@ -30,7 +28,7 @@ export default async function Page() {
         )}
             
         <main className="flex flex-col gap-[2.5rem] md:gap-[5rem]">
-            <p>Remaining page content</p>
+          <PageContent />
         </main>
       
         {process.env.NODE_ENV === 'development' && (

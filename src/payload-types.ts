@@ -1079,6 +1079,34 @@ export interface Homepage {
         }[]
       | null;
   };
+  secondaryCTA?:
+    | {
+        ctaTitle?: string | null;
+        ctaSubtitle?: string | null;
+        ctaButton?:
+          | {
+              /**
+               * Is it a primary button? (dark coloured)
+               */
+              buttonPrimary?: boolean | null;
+              link?: {
+                type?: ('reference' | 'custom') | null;
+                newTab?: boolean | null;
+                reference?: {
+                  relationTo: 'posts';
+                  value: number | Post;
+                } | null;
+                url?: string | null;
+                label?: string | null;
+              };
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'secondarycta';
+      }[]
+    | null;
   _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1255,6 +1283,33 @@ export interface HomepageSelect<T extends boolean = true> {
                     label?: T;
                   };
               id?: T;
+            };
+      };
+  secondaryCTA?:
+    | T
+    | {
+        secondarycta?:
+          | T
+          | {
+              ctaTitle?: T;
+              ctaSubtitle?: T;
+              ctaButton?:
+                | T
+                | {
+                    buttonPrimary?: T;
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          reference?: T;
+                          url?: T;
+                          label?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
             };
       };
   _status?: T;
