@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useLanguage } from '@/providers/LanguageContext'
-import { SecondaryCTA } from './components/secondaryCTA'
+import { SecondaryCTA } from './components/SecondaryCTA'
 
 interface PageProps {
   data?: {
