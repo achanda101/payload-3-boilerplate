@@ -1,23 +1,30 @@
 import type { CollectionConfig } from 'payload'
 
-import { authenticated } from '../../access/authenticated'
+import { authenticated } from '@/access/authenticated'
+import { canUpdateUser } from '@/access/canUpdateUser'
+import { canUnlockUser } from '@/access/canUnlockUser'
 import { upload } from 'node_modules/payload/dist/fields/validations'
 
 export const Users: CollectionConfig = {
   slug: 'users',
   access: {
     admin: authenticated,
-    create: authenticated,
-    delete: authenticated,
+    create: canUpdateUser,
+    delete: canUpdateUser,
     read: authenticated,
-    update: authenticated,
+    update: canUpdateUser,
+    unlock: canUnlockUser
   },
   admin: {
     defaultColumns: ['name', 'email', 'role'],
     useAsTitle: 'name',
     group: 'Admin',
   },
-  auth: true,
+  auth: {
+    // property controls how deeply "populated"
+    // relationship docs are that are stored in the req.user
+    depth: 1
+  },
   fields: [
     {
       name: 'name',

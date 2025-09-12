@@ -67,6 +67,7 @@ export interface Config {
   };
   blocks: {};
   collections: {
+    grants: Grant;
     posts: Post;
     mediaCloud: MediaCloud;
     documents: Document;
@@ -82,6 +83,7 @@ export interface Config {
   };
   collectionsJoins: {};
   collectionsSelect: {
+    grants: GrantsSelect<false> | GrantsSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
     mediaCloud: MediaCloudSelect<false> | MediaCloudSelect<true>;
     documents: DocumentsSelect<false> | DocumentsSelect<true>;
@@ -160,68 +162,64 @@ export interface UserAuthOperations {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "posts".
+ * via the `definition` "grants".
  */
-export interface Post {
+export interface Grant {
   id: number;
   title: string;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  relatedPosts?: (number | Post)[] | null;
-  categories?: (number | Category)[] | null;
-  meta?: {
-    title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (number | null) | MediaCloud;
-    description?: string | null;
-  };
-  publishedAt?: string | null;
-  authors?: (number | User)[] | null;
-  populatedAuthors?:
+  heroBlock?:
     | {
+        title?: string | null;
+        subtitle?: string | null;
+        /**
+         * Upload a mascot image for the Hero section
+         */
+        heroImage?: (number | null) | MediaCloud;
+        /**
+         * Badge Text (e.g., "Rapid Response Fund") or the date of availability (e.g., "Applications open until 15th June")
+         */
+        badgeText?: string | null;
+        badgeType?: ('info' | 'imp') | null;
+        headerColour?: ('blank' | 'forest' | 'turmeric' | 'sky' | 'rose') | null;
+        heroButtons?:
+          | {
+              /**
+               * Is it a primary button? (dark coloured)
+               */
+              buttonPrimary?: boolean | null;
+              link?: {
+                type?: ('reference' | 'custom') | null;
+                newTab?: boolean | null;
+                reference?:
+                  | ({
+                      relationTo: 'grants';
+                      value: number | Grant;
+                    } | null)
+                  | ({
+                      relationTo: 'posts';
+                      value: number | Post;
+                    } | null);
+                url?: string | null;
+                label?: string | null;
+              };
+              id?: string | null;
+            }[]
+          | null;
+        heroContact?: {
+          label?: string | null;
+          email?: string | null;
+        };
         id?: string | null;
-        name?: string | null;
+        blockName?: string | null;
+        blockType: 'grantsHeroBlock';
       }[]
     | null;
+  publishedAt?: string | null;
   slug?: string | null;
   slugLock?: boolean | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "categories".
- */
-export interface Category {
-  id: number;
-  title: string;
-  parent?: (number | null) | Category;
-  breadcrumbs?:
-    | {
-        doc?: (number | null) | Category;
-        url?: string | null;
-        label?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt: string;
-  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -284,6 +282,71 @@ export interface MediaCloud {
       filename?: string | null;
     };
   };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "posts".
+ */
+export interface Post {
+  id: number;
+  title: string;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  relatedPosts?: (number | Post)[] | null;
+  categories?: (number | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | MediaCloud;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories".
+ */
+export interface Category {
+  id: number;
+  title: string;
+  parent?: (number | null) | Category;
+  breadcrumbs?:
+    | {
+        doc?: (number | null) | Category;
+        url?: string | null;
+        label?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -585,6 +648,10 @@ export interface PayloadLockedDocument {
   id: number;
   document?:
     | ({
+        relationTo: 'grants';
+        value: number | Grant;
+      } | null)
+    | ({
         relationTo: 'posts';
         value: number | Post;
       } | null)
@@ -661,6 +728,56 @@ export interface PayloadMigration {
   batch?: number | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "grants_select".
+ */
+export interface GrantsSelect<T extends boolean = true> {
+  title?: T;
+  heroBlock?:
+    | T
+    | {
+        grantsHeroBlock?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              heroImage?: T;
+              badgeText?: T;
+              badgeType?: T;
+              headerColour?: T;
+              heroButtons?:
+                | T
+                | {
+                    buttonPrimary?: T;
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          reference?: T;
+                          url?: T;
+                          label?: T;
+                        };
+                    id?: T;
+                  };
+              heroContact?:
+                | T
+                | {
+                    label?: T;
+                    email?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+      };
+  publishedAt?: T;
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1068,10 +1185,15 @@ export interface Homepage {
           link?: {
             type?: ('reference' | 'custom') | null;
             newTab?: boolean | null;
-            reference?: {
-              relationTo: 'posts';
-              value: number | Post;
-            } | null;
+            reference?:
+              | ({
+                  relationTo: 'grants';
+                  value: number | Grant;
+                } | null)
+              | ({
+                  relationTo: 'posts';
+                  value: number | Post;
+                } | null);
             url?: string | null;
             label?: string | null;
           };
@@ -1083,6 +1205,10 @@ export interface Homepage {
     | {
         ctaTitle?: string | null;
         ctaSubtitle?: string | null;
+        contact?: {
+          label?: string | null;
+          email?: string | null;
+        };
         ctaButton?:
           | {
               /**
@@ -1092,10 +1218,15 @@ export interface Homepage {
               link?: {
                 type?: ('reference' | 'custom') | null;
                 newTab?: boolean | null;
-                reference?: {
-                  relationTo: 'posts';
-                  value: number | Post;
-                } | null;
+                reference?:
+                  | ({
+                      relationTo: 'grants';
+                      value: number | Grant;
+                    } | null)
+                  | ({
+                      relationTo: 'posts';
+                      value: number | Post;
+                    } | null);
                 url?: string | null;
                 label?: string | null;
               };
@@ -1215,10 +1346,15 @@ export interface Nav {
               link?: {
                 type?: ('reference' | 'custom') | null;
                 newTab?: boolean | null;
-                reference?: {
-                  relationTo: 'posts';
-                  value: number | Post;
-                } | null;
+                reference?:
+                  | ({
+                      relationTo: 'grants';
+                      value: number | Grant;
+                    } | null)
+                  | ({
+                      relationTo: 'posts';
+                      value: number | Post;
+                    } | null);
                 url?: string | null;
                 label?: string | null;
               };
@@ -1293,6 +1429,12 @@ export interface HomepageSelect<T extends boolean = true> {
           | {
               ctaTitle?: T;
               ctaSubtitle?: T;
+              contact?:
+                | T
+                | {
+                    label?: T;
+                    email?: T;
+                  };
               ctaButton?:
                 | T
                 | {

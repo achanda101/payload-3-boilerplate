@@ -11,6 +11,7 @@ import { Categories } from './collections/Categories'
 // import { Media } from './collections/Media'
 import { MediaCloud } from './collections/MediaCloud'
 import { Documents } from './collections/Documents'
+import { Grants } from './collections/Grants'
 import { Posts } from './collections/Posts'
 import { Users } from './collections/Users'
 import { Footer } from './globals/Footer/config'
@@ -38,6 +39,16 @@ export default buildConfig({
     },
     meta: {
       titleSuffix: '- UAF A&P',
+      title: 'CMS Dashboard',
+      description: 'Content Management System for the UAF A&P website',
+      icons: [
+        {
+          url: '/uafanp.ico',
+          rel: 'icon',
+          type: 'image/ico',
+          sizes: '16x16 32x32'
+        }
+      ]
     },
     components: {
       beforeLogin: [ '@/components/BeforeLogin' ],
@@ -86,7 +97,7 @@ export default buildConfig({
     defaultLocale: 'en', // required
     fallback: true, // defaults to true
   },
-  collections: [Posts, MediaCloud, Documents, Categories, Users],
+  collections: [Grants, Posts, MediaCloud, Documents, Categories, Users],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [ Homepage, Header, Footer, Navigation, ContactInfo ],
   plugins: [

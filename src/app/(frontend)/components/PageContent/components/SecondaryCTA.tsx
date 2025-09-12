@@ -2,7 +2,6 @@ import React from 'react';
 import Link from 'next/link'
 
 interface SecondaryCTAProps {
-  key: number;
   title: string;
   subtitle: string;
   ctaButton: {
@@ -16,13 +15,12 @@ interface SecondaryCTAProps {
 }
 
 export const SecondaryCTA: React.FC<SecondaryCTAProps> = ({
-  key,
   title,
   subtitle,
   ctaButton
 }) => {
   return (
-    <div key={key} className="secondaryCTA">
+    <div className="secondaryCTA">
       <div className="seccondaryCTA_titles">
         <h3 style={{ whiteSpace: 'pre-line' }}>{title}</h3>
         <p style={{ whiteSpace: 'pre-line' }}>{subtitle}</p>

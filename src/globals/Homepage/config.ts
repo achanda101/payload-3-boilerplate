@@ -1,4 +1,6 @@
 import type { GlobalConfig } from "payload";
+import { authenticated } from '@/access/authenticated'
+import { canUpdateUser } from '@/access/canUpdateUser'
 import { revalidateHomepage } from "./hooks/revalidateHomepage";
 import { link } from '@/fields/link'
 import { SecondaryCTA } from "@/blocks/SecondaryCTA/config";
@@ -7,7 +9,9 @@ export const Homepage: GlobalConfig = {
   slug: 'homepage',
   label: 'Homepage',
   access: {
-    read: () => true,
+    read: authenticated,
+    update: canUpdateUser,
+    readVersions: canUpdateUser
   },
   admin: {
     group: {

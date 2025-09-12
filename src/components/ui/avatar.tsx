@@ -5,14 +5,15 @@ import Image from 'next/image'
 export const Avatar = async () => {
   const { user } = await getMeUser()
   const avatar = user?.avatar as MediaCloud
+  const avatarUrl = avatar?.sizes?.thumbnail?.url || avatar?.url
 
-  if (avatar) {
+  if (avatar && avatarUrl) {
     return (
       <Image
         style={{
           borderRadius: '50%',
         }}
-        src={avatar.sizes?.thumbnail?.url || avatar.url || ''}
+        src={avatarUrl}
         alt={avatar.alt || ''}
         height={25}
         width={25}

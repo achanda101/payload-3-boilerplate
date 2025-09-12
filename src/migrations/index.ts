@@ -8,6 +8,7 @@ import * as migration_20250903_074659_drafts_on from './20250903_074659_drafts_o
 import * as migration_20250907_094051_homepage from './20250907_094051_homepage';
 import * as migration_20250907_172910_homepage_hero from './20250907_172910_homepage_hero';
 import * as migration_20250907_225629_homepage_secondaryCTA from './20250907_225629_homepage_secondaryCTA';
+import * as migration_20250912_183156_grant_pages from './20250912_183156_grant_pages';
 
 export const migrations = [
   {
@@ -58,6 +59,11 @@ export const migrations = [
   {
     up: migration_20250907_225629_homepage_secondaryCTA.up,
     down: migration_20250907_225629_homepage_secondaryCTA.down,
-    name: '20250907_225629_homepage_secondaryCTA'
+    name: '20250907_225629_homepage_secondaryCTA',
+  },
+  {
+    up: migration_20250912_183156_grant_pages.up,
+    down: migration_20250912_183156_grant_pages.down,
+    name: '20250912_183156_grant_pages'
   },
 ];

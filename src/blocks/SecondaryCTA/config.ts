@@ -11,20 +11,51 @@ export const SecondaryCTA: Block = {
   imageURL: '/collection_icons/secondaryCTABlock-icon.png',
   fields: [
     {
-      name: 'ctaTitle',
-      type: 'textarea',
-      localized: true,
-      admin: {
-        placeholder: 'Enter title for the CTA Block',
-      },
-    },
-    {
-      name: 'ctaSubtitle',
-      type: 'textarea',
-      localized: true,
-      admin: {
-        placeholder: 'Enter subtitle for the CTA Block',
-      },
+      type: 'row',
+      fields: [
+        {
+          type: 'group',
+          fields: [
+            {
+              name: 'ctaTitle',
+              type: 'textarea',
+              localized: true,
+              admin: {
+                placeholder: 'Enter title for the CTA Block',
+              },
+            },
+            {
+              name: 'ctaSubtitle',
+              type: 'textarea',
+              localized: true,
+              admin: {
+                placeholder: 'Enter subtitle for the CTA Block',
+              },
+            },
+          ],
+          admin: {
+            width: '50%'
+          }
+        },
+        {
+          name: 'contact',
+          type: 'group',
+          fields: [
+            {
+              name: 'label',
+              type: 'text',
+              localized: true,
+            },
+            {
+              name: 'email',
+              type: 'email',
+            }
+          ],
+          admin: {
+            width: '50%'
+          }
+        },
+      ]
     },
     {
       name: 'ctaButton',
