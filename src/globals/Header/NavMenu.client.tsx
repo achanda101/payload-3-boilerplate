@@ -6,6 +6,7 @@ import Link from 'next/link'
 interface LinkField {
   type: 'reference' | 'custom'
   reference?: {
+    relationTo?: string
     value?: {
       title?: string
       slug?: string
@@ -125,7 +126,7 @@ export const NavMenuClient: React.FC<NavMenuClientProps> = ({ data }) => {
             const getHref = () => {
               if (!navItem.link) return '#'
               if (navItem.link.type === 'reference') {
-                return navItem.link.reference?.value?.slug || '#'
+                return `/${navItem.link.reference?.relationTo}/${navItem.link.reference?.value?.slug}` || '#'
               } else {
                 return navItem.link.url || '#'
               }

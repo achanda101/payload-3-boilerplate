@@ -218,6 +218,19 @@ li {
 // Header Component styles
 .site-header {
   @apply w-full px-[1.25rem] py-[1.25rem] lg:px-[5rem] lg:py-[2.5rem];
+
+  &.sky {
+    background-color: $color-sky;
+  }
+  &.turmeric {
+    background-color: $color-turmeric;
+  }
+  &.forest {
+    background-color: $color-forest;
+  }
+  &.rose {
+    background-color: $color-rose;
+  }
 }
 .site-header-content {
   @apply flex flex-col gap-2 lg:gap-4 mx-0;

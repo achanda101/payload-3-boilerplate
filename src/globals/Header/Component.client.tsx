@@ -5,7 +5,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import languageOptions from './languageOptions.json'
 import { NavMenuClient } from './NavMenu.client'
-import { useLanguage } from '../../providers/LanguageContext'
+import { useLanguage } from '@/providers/LanguageContext'
+import { useHeaderTheme } from '@/providers/HeaderTheme'
 
 interface Language {
   value: string;
@@ -30,6 +31,7 @@ interface HeaderClientProps {
 
 export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
   const { selectedLanguage, setSelectedLanguage, setAvailableLanguages } = useLanguage()
+  const { headerTheme } = useHeaderTheme()
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [headerData, setHeaderData] = useState<Partial<NonNullable<HeaderClientProps['data']>>>({})
   const [ navData, setNavData ] = useState(null)
@@ -88,7 +90,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
 
 
   return (
-    <header className="site-header">
+    <header className={`site-header ${headerTheme}`}>
       <div className="site-header-content">
         <div className="site-header-toprow">
           <span style={{display: 'inline-flex', alignItems: 'center'}}>
@@ -125,12 +127,14 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
         </div>
         <div className='site-header-bottomrow'>
           {headerData.logo && typeof headerData.logo === 'object' && 'url' in headerData.logo && headerData.logo.url ? (
+            <Link href="/">
               <Image 
                 src={headerData.logo.url} 
                 alt={headerData.logo.alt || "Site Logo"} 
                 width={headerData.logo.width || 100} 
                 height={headerData.logo.height || 50} 
               />
+            </Link>
           ) : (
               <Link href="/">Home</Link>
           )}

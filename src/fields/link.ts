@@ -73,6 +73,7 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
             },
             label: 'Download link',
           },
+          // TODO: add checkboxes for Pill Button Dark & Pill Button Outline and remove Primary Button checkboxes elsewhere
         ],
       },
     ],

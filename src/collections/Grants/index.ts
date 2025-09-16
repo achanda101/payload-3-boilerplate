@@ -21,9 +21,11 @@ export const Grants: CollectionConfig<'grants'> = {
   },
   access: {
     create: authenticated,
-    delete: canUpdateUser,
+    //TODO: Fix RBAC for delete
+    delete: authenticated,
     read: authenticatedOrPublished,
-    update: canUpdateUser,
+    //TODO: Fix RBAC - writer should be able to update only their records
+    update: authenticated,
   },
   admin: {
     group: 'Content',
@@ -46,7 +48,6 @@ export const Grants: CollectionConfig<'grants'> = {
       label: 'Title of Grant page',
       type: 'text',
       required: true,
-      localized: true,
       unique: true
     },
     {

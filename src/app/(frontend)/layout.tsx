@@ -6,7 +6,7 @@ import { Footer } from '@/globals/Footer/Component'
 import { Header } from '@/globals/Header/Component'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { Providers } from '@/providers'
-import { InitTheme } from '@/providers/Theme/InitTheme'
+// import { InitTheme } from '@/providers/Theme/InitTheme'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import { draftMode } from 'next/headers'
 
@@ -19,7 +19,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <InitTheme />
+        {/* <InitTheme /> */}
         <link href="/uafanp-icon.svg" rel="icon" type="image/svg+xml" />
       </head>
       <body>
