@@ -55,7 +55,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
   const { selectedLanguage } = useLanguage()
   const { setHeaderTheme } = useHeaderTheme()
   const [ heroBlock, setHeroBlock ] = useState<NonNullable<HeroProps[ 'data' ]>[ 'heroBlock' ]>({})
-  const [ heroHeaderImg, setHeroHeaderImg ] = useState('')
+  const [ heroHeaderImg, setHeroHeaderImg ] = useState('grants-wavy-header-blank')
 
   const handleLanguageChange = useCallback(async (newLanguage: string) => {
     const fetchPath = `/api/${collection}/${docId}?locale=${newLanguage}&depth=1`

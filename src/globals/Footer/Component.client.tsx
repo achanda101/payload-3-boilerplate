@@ -146,9 +146,12 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
             <h5>{newsletterData.description}</h5>
           )}
         </div>
-        <div className="footer-grid-item div-j">
-          <input type="text" placeholder={newsletterData?.inputPlaceholder} />
-          <button className="pill-button dark" onClick={() => window.location.href = newsletterData?.url || '#'}>{newsletterData?.buttonText}</button>
+          <div className="footer-grid-item div-j">
+            <form method="post" action="http://list.uafanp.org/subscription/form" style={{display: 'flex'}}>
+              <input type="email" name="email" placeholder={newsletterData?.inputPlaceholder} />
+              <input id="c41c8" type="checkbox" name="l" defaultChecked value="c41c894d-7563-4c8c-ad30-51cb77907cbf"/>
+              <button type='submit' className="pill-button dark">{newsletterData?.buttonText}</button>
+            </form>
         </div>
         <div className="footer-grid-item div-k"></div>
         <div className="footer-grid-item div-a">
