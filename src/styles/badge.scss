@@ -1,0 +1,16 @@
+@use 'variables' as vars;
+@use 'mixins' as mix;
+
+.badge {
+  padding: 3px 10px;
+  border-radius: vars.$spacing-sm;
+  &.info {
+    background-color: vars.$color-turmeric;
+  }
+  &.imp {
+    background-color: red;
+    * {
+      color: white;
+    }
+  }
+}

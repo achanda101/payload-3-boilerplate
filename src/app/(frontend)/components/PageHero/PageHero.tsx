@@ -101,6 +101,21 @@ export const PageHero: React.FC<PageHeroProps> = ({
         priority
       />
       <div className="hero-content">
+        {heroBlock?.heroImage && typeof heroBlock.heroImage === 'object' && heroBlock.heroImage.url ? (
+          <Image
+            src={heroBlock.heroImage.url}
+            alt="Header image"
+            width={heroBlock.heroImage.width || 800}
+            height={heroBlock.heroImage.height || 600}
+            style={{ width: '100%', height: 'auto' }}
+            priority
+          />
+        ) : null}
+        {heroBlock?.badgeText ? (
+          <div className={`badge ${heroBlock?.badgeType}`}>
+            <p className="tag">{heroBlock?.badgeText}</p>
+          </div>
+        ) : null}  
         <h2 style={{ whiteSpace: 'pre-line' }}>{heroBlock?.title}</h2>
         <p style={{ whiteSpace: 'pre-line' }}>{heroBlock?.subtitle}</p>
         <div className="hero-buttons">
