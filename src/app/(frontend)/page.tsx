@@ -4,8 +4,8 @@ import { HomeHero } from './components/HomeHero/HomeHero'
 import { PageContent } from './components/PageContent/PageContent'
 import { ColumnIndicators } from './components/ColumnIndicators'
 
-export const dynamic = 'force-static'
-export const revalidate = 600
+// export const dynamic = 'force-static'
+// export const revalidate = 600
 
 export default function Page() {
   return (

@@ -25,7 +25,7 @@ interface HeroProps {
 }
 
 export const HomeHero: React.FC<HeroProps> = ({ data = {} }) => {
-
+// TODO: reset headerTheme value to blank
   const { selectedLanguage } = useLanguage()
   const [ heroData, setHeroData ] = useState<NonNullable<HeroProps[ 'data' ]>[ 'heroSection' ]>({})
   

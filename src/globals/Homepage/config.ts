@@ -1,5 +1,6 @@
 import type { GlobalConfig } from "payload";
 import { authenticated } from '@/access/authenticated'
+import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
 import { canUpdateUser } from '@/access/canUpdateUser'
 import { revalidateHomepage } from "./hooks/revalidateHomepage";
 import { link } from '@/fields/link'
@@ -9,7 +10,7 @@ export const Homepage: GlobalConfig = {
   slug: 'homepage',
   label: 'Homepage',
   access: {
-    read: authenticated,
+    read: authenticatedOrPublished,
     update: canUpdateUser,
     readVersions: canUpdateUser
   },
