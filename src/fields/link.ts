@@ -6,12 +6,12 @@ export type LinkAppearances = 'default' | 'outline'
 
 export const appearanceOptions: Record<LinkAppearances, { label: string; value: string }> = {
   default: {
-    label: 'Default',
-    value: 'default',
+    label: 'Primary',
+    value: 'primary',
   },
   outline: {
-    label: 'Outline',
-    value: 'outline',
+    label: 'Secondary',
+    value: 'secondary',
   },
 }
 
@@ -58,9 +58,20 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
               style: {
                 alignSelf: 'flex-end',
               },
-              width: '50%',
+              width: '25%',
             },
             label: 'Open in new tab',
+          },
+          {
+            name: 'downloadLink',
+            type: 'checkbox',
+            admin: {
+              style: {
+                alignSelf: 'flex-end',
+              },
+              width: '25%',
+            },
+            label: 'Download link',
           },
         ],
       },

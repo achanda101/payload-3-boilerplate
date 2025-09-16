@@ -190,6 +190,7 @@ export interface Grant {
               link?: {
                 type?: ('reference' | 'custom') | null;
                 newTab?: boolean | null;
+                downloadLink?: boolean | null;
                 reference?:
                   | ({
                       relationTo: 'grants';
@@ -212,6 +213,51 @@ export interface Grant {
         id?: string | null;
         blockName?: string | null;
         blockType: 'grantsHeroBlock';
+      }[]
+    | null;
+  contentBlocks?:
+    | {
+        multicols?:
+          | {
+              title?: string | null;
+              colContent?: {
+                root: {
+                  type: string;
+                  children: {
+                    type: string;
+                    version: number;
+                    [k: string]: unknown;
+                  }[];
+                  direction: ('ltr' | 'rtl') | null;
+                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                  indent: number;
+                  version: number;
+                };
+                [k: string]: unknown;
+              } | null;
+              addLink?: boolean | null;
+              link?: {
+                type?: ('reference' | 'custom') | null;
+                newTab?: boolean | null;
+                downloadLink?: boolean | null;
+                reference?:
+                  | ({
+                      relationTo: 'grants';
+                      value: number | Grant;
+                    } | null)
+                  | ({
+                      relationTo: 'posts';
+                      value: number | Post;
+                    } | null);
+                url?: string | null;
+                label?: string | null;
+              };
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'mcolInfoBlock';
       }[]
     | null;
   publishedAt?: string | null;
@@ -756,6 +802,7 @@ export interface GrantsSelect<T extends boolean = true> {
                       | {
                           type?: T;
                           newTab?: T;
+                          downloadLink?: T;
                           reference?: T;
                           url?: T;
                           label?: T;
@@ -767,6 +814,34 @@ export interface GrantsSelect<T extends boolean = true> {
                 | {
                     label?: T;
                     email?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+      };
+  contentBlocks?:
+    | T
+    | {
+        mcolInfoBlock?:
+          | T
+          | {
+              multicols?:
+                | T
+                | {
+                    title?: T;
+                    colContent?: T;
+                    addLink?: T;
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          reference?: T;
+                          url?: T;
+                          label?: T;
+                        };
+                    id?: T;
                   };
               id?: T;
               blockName?: T;
@@ -1185,6 +1260,7 @@ export interface Homepage {
           link?: {
             type?: ('reference' | 'custom') | null;
             newTab?: boolean | null;
+            downloadLink?: boolean | null;
             reference?:
               | ({
                   relationTo: 'grants';
@@ -1218,6 +1294,7 @@ export interface Homepage {
               link?: {
                 type?: ('reference' | 'custom') | null;
                 newTab?: boolean | null;
+                downloadLink?: boolean | null;
                 reference?:
                   | ({
                       relationTo: 'grants';
@@ -1346,6 +1423,7 @@ export interface Nav {
               link?: {
                 type?: ('reference' | 'custom') | null;
                 newTab?: boolean | null;
+                downloadLink?: boolean | null;
                 reference?:
                   | ({
                       relationTo: 'grants';
@@ -1414,6 +1492,7 @@ export interface HomepageSelect<T extends boolean = true> {
                 | {
                     type?: T;
                     newTab?: T;
+                    downloadLink?: T;
                     reference?: T;
                     url?: T;
                     label?: T;
@@ -1444,6 +1523,7 @@ export interface HomepageSelect<T extends boolean = true> {
                       | {
                           type?: T;
                           newTab?: T;
+                          downloadLink?: T;
                           reference?: T;
                           url?: T;
                           label?: T;
@@ -1526,6 +1606,7 @@ export interface NavSelect<T extends boolean = true> {
                 | {
                     type?: T;
                     newTab?: T;
+                    downloadLink?: T;
                     reference?: T;
                     url?: T;
                     label?: T;

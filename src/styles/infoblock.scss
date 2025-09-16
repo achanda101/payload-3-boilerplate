@@ -1,0 +1,60 @@
+@use 'variables' as vars;
+@use 'mixins' as mix;
+
+.separator {
+  width: 100%;
+  height: 1px;
+  background-color: vars.$color-body-text;
+}
+
+.multicol_text {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: vars.$spacing-lg;  
+  margin-block: 1.5rem;
+}
+
+/* Mobile styles */
+@media (max-width: vars.$tablet) {
+    .multicol_text {
+        grid-template-columns: repeat(2, 1fr);
+        gap: vars.$spacing-md vars.$spacing-md;
+    }
+}
+
+/* Extra small mobile */
+@media (max-width: vars.$mobile) {
+    .multicol_text {
+        gap: vars.$spacing-sm vars.$spacing-sm;
+    }
+}
+
+
+.singlecol_text {
+  @include mix.flex-center;
+  @include mix.flex-column;
+  gap: 0.5rem;
+  width: 100%;
+  margin-inline: auto;
+  text-align: center;
+  .singlecol_title {
+    width: 85%;
+    @media (min-width: vars.$tablet) {
+      width: 45%;
+    }
+  }
+  
+  & > *:last-child {
+    margin-top: 2rem;
+  }
+
+  .singlecol_buttons {
+    @include mix.flex-column;
+    gap: 1rem;
+    @media (min-width: vars.$tablet) {
+      flex-direction: row;
+      @include mix.flex-center;
+      gap: 1.5rem;
+    }
+  }
+}

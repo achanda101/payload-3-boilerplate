@@ -5,6 +5,7 @@ import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
 import { canUpdateUser } from '@/access/canUpdateUser'
 
 import { GrantsHeroBlock } from "@/blocks/GrantsHeroBlock/config"
+import { MultiColumnInfoBlock } from '@/blocks/MultiColumnInfoBlock/config'
 import { revalidateGrant } from './hooks/revalidateGrant'
 import { slugField } from '@/fields/slug'
 
@@ -59,6 +60,19 @@ export const Grants: CollectionConfig<'grants'> = {
       maxRows: 1,
       admin: {
         initCollapsed: true,
+      }
+    },
+    {
+      type: 'blocks',
+      name: 'contentBlocks',
+      blocks: [ MultiColumnInfoBlock ],
+      labels: {
+        singular: 'A Content Block',
+        plural: 'Content Blocks'
+      },
+      admin: {
+        initCollapsed: true,
+        isSortable: true
       }
     },
     {
