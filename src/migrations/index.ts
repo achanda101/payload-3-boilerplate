@@ -9,7 +9,7 @@ import * as migration_20250907_094051_homepage from './20250907_094051_homepage'
 import * as migration_20250907_172910_homepage_hero from './20250907_172910_homepage_hero';
 import * as migration_20250907_225629_homepage_secondaryCTA from './20250907_225629_homepage_secondaryCTA';
 import * as migration_20250912_183156_grant_pages from './20250912_183156_grant_pages';
-import * as migration_20250916_142522_linkfield_additions from './20250916_142522_linkfield_additions';
+import * as migration_20250916_143422_grant_multicol_linkfield_additions from './20250916_143422_grant_multicol_linkfield_additions';
 
 export const migrations = [
   {
@@ -68,8 +68,8 @@ export const migrations = [
     name: '20250912_183156_grant_pages',
   },
   {
-    up: migration_20250916_142522_linkfield_additions.up,
-    down: migration_20250916_142522_linkfield_additions.down,
-    name: '20250916_142522_linkfield_additions'
+    up: migration_20250916_143422_grant_multicol_linkfield_additions.up,
+    down: migration_20250916_143422_grant_multicol_linkfield_additions.down,
+    name: '20250916_143422_grant_multicol_linkfield_additions'
   },
 ];
