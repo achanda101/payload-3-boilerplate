@@ -108,6 +108,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
             width={heroBlock.heroImage.width || 800}
             height={heroBlock.heroImage.height || 600}
             style={{ width: '100%', height: 'auto' }}
+            className='hero-mascot'
             priority
           />
         ) : null}
@@ -118,21 +119,31 @@ export const PageHero: React.FC<PageHeroProps> = ({
         ) : null}  
         <h2 style={{ whiteSpace: 'pre-line' }}>{heroBlock?.title}</h2>
         <p style={{ whiteSpace: 'pre-line' }}>{heroBlock?.subtitle}</p>
-        <div className="hero-buttons">
-            {heroBlock?.heroButtons && heroBlock.heroButtons.length > 0 && (
-            heroBlock.heroButtons.map((cta, index) => (
-                <Link
-                  key={index}
-                  href={cta.link?.url || '#'}
-                  target={cta.link?.newTab ? '_blank' : '_self'}
-                >
-                  <button className={`pill-button ${cta.buttonPrimary ? 'dark' : ''}`}>
-                    {cta.link?.label}
-                  </button>
-                </Link>
-              ))
+        <div>
+          <div className="hero-buttons">
+              {heroBlock?.heroButtons && heroBlock.heroButtons.length > 0 && (
+              heroBlock.heroButtons.map((cta, index) => (
+                  <Link
+                    key={index}
+                    href={cta.link?.url || '#'}
+                    target={cta.link?.newTab ? '_blank' : '_self'}
+                  >
+                    <button className={`pill-button ${cta.buttonPrimary ? 'dark' : ''}`}>
+                      {cta.link?.label}
+                    </button>
+                  </Link>
+                ))
+              )}
+          </div>
+          <div className="hero-contact">
+            {heroBlock?.heroContact?.label && heroBlock?.heroContact?.email && (
+              <div className="hero-contact">
+              <span>{heroBlock.heroContact.label}</span>
+              <a href={`mailto:${heroBlock.heroContact.email}`}>{heroBlock.heroContact.email}</a>
+              </div>
             )}
-        </div>
+            </div>
+          </div>
       </div>
     </section>
   )

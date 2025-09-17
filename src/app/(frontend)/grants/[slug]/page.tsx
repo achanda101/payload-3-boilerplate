@@ -15,7 +15,6 @@ type Args = {
 
 export default async function Page({ params: paramsPromise }: Args) {
   const { slug = '' } = await paramsPromise
-  const collection = 'grants'
   const page = await queryPageBySlug({ slug })
 
   // Need to find out the document id using the collection name and slug value

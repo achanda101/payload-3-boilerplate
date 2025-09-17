@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useLanguage } from '@/providers/LanguageContext'
+import { useHeaderTheme } from '@/providers/HeaderTheme'
 
 interface HeroProps {
   data?: {
@@ -25,8 +26,8 @@ interface HeroProps {
 }
 
 export const HomeHero: React.FC<HeroProps> = ({ data = {} }) => {
-// TODO: reset headerTheme value to blank
   const { selectedLanguage } = useLanguage()
+  const { setHeaderTheme } = useHeaderTheme()
   const [ heroData, setHeroData ] = useState<NonNullable<HeroProps[ 'data' ]>[ 'heroSection' ]>({})
   
   
@@ -42,9 +43,11 @@ export const HomeHero: React.FC<HeroProps> = ({ data = {} }) => {
   }
 
   useEffect(() => {
+    // Set the header colour to transparent
+    setHeaderTheme('blank')
     // Any side effects based on selectedLanguage can be handled here
     handleLanguageChange(selectedLanguage)
-  }, [ selectedLanguage ])
+  }, [ selectedLanguage, setHeaderTheme ])
 
   return (
     <section className="hero-banner">
