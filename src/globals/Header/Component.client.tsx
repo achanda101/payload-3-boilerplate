@@ -54,7 +54,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
     }
     
     fetchHeaderData()
-  }, [])
+  }, [setAvailableLanguages])
   
   const toggleSearch = () => setIsSearchOpen(!isSearchOpen)
 

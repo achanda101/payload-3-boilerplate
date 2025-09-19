@@ -12,7 +12,7 @@ interface CharacterCounterProps {
   [key: string]: any;
 }
 
-const characterCounter = ({ field, path }: CharacterCounterProps): React.ReactElement => {
+const CharacterCounter = ({ field, path }: CharacterCounterProps): React.ReactElement => {
   const { value } = useField<string>({ path: path || field.name });
   
   const count: number = value ? value.length : 0;
@@ -47,4 +47,4 @@ const characterCounter = ({ field, path }: CharacterCounterProps): React.ReactEl
   );
 };
 
-export default characterCounter;
+export default CharacterCounter;
