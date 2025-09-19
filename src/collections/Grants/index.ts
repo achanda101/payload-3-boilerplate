@@ -1,10 +1,11 @@
 import type { CollectionConfig } from 'payload'
+import { link } from "@/fields/link"
 
 import { authenticated } from '@/access/authenticated'
 import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
 import { canUpdateUser } from '@/access/canUpdateUser'
 
-import { GrantsHeroBlock } from "@/blocks/GrantsHeroBlock/config"
+import { HeroBlock } from "@/blocks/HeroBlock/config"
 import { MultiColumnInfoBlock } from '@/blocks/MultiColumnInfoBlock/config'
 import { revalidateGrant } from './hooks/revalidateGrant'
 import { slugField } from '@/fields/slug'
@@ -21,10 +22,10 @@ export const Grants: CollectionConfig<'grants'> = {
   },
   access: {
     create: authenticated,
-    //TODO: Fix RBAC for delete
+    //TODO: Grant - Fix RBAC for delete
     delete: authenticated,
     read: authenticatedOrPublished,
-    //TODO: Fix RBAC - writer should be able to update only their records
+    //TODO: Grant - Fix RBAC - writer should be able to update only their records
     update: authenticated,
   },
   admin: {
@@ -44,24 +45,146 @@ export const Grants: CollectionConfig<'grants'> = {
   },
   fields: [
     {
-      name: 'title',
-      label: 'Title of Grant page',
-      type: 'text',
-      required: true,
-      unique: true
+      type: 'row',
+      fields: [
+        {
+          name: 'title',
+          label: 'Title of Grant page',
+          type: 'text',
+          required: true,
+          unique: true,
+          admin: {
+            width: '50%',
+            style: {
+              paddingBlock: '8px',
+              paddingInline: '10px',
+              border: '1px solid #dee2e6',
+              borderRadius: '8px',
+              marginBottom: '5px'
+            }
+          }
+        },
+        {
+          type: 'group',
+          fields: [
+            {
+              name: 'pageType',
+              label: 'Select Page Type',
+              required: true,
+              type: 'radio',
+              options: [
+                { label: 'Landing Page', value: 'landing' },
+                { label: 'Individual Grant', value: 'individual'}
+              ],
+              defaultValue: 'landing',
+              admin: {
+                layout: 'horizontal',
+              }
+            },
+            {
+              name: 'grantCard',
+              type: 'relationship',
+              hasMany: false,
+              label: 'Select related Grant Card',
+              relationTo: 'grantcards',
+              required: true,
+              admin: {
+                condition: (siblingData) => siblingData?.pageType === 'individual' || false,
+              }
+            }
+          ],
+          admin: {
+            width: '50%',
+            style: {
+              backgroundColor: '#f1f6fa',
+              paddingBlock: '8px',
+              paddingInline: '10px',
+              border: '1px solid #dee2e6',
+              borderRadius: '8px',
+              marginBottom: '5px'
+            }
+          }
+        },
+      ]
     },
     {
-      type: 'blocks',
-      name: 'heroBlock',
-      blocks: [ GrantsHeroBlock ],
-      labels: {
-        singular: 'A Grant Page Hero Block',
-        plural: 'Grant Page Hero Blocks'
-      },
-      maxRows: 1,
+      label: 'Hero Block',
+      type: 'collapsible',
       admin: {
         initCollapsed: true,
-      }
+      },
+      fields: [
+        {
+          type: 'row',
+          fields: [
+            {
+              name: 'heroTitle',
+              type: 'textarea',
+              localized: true,
+              admin: {
+                placeholder: 'Enter title for the Hero',
+                width: '50%'
+              },
+            },
+            {
+              name: 'heroSubtitle',
+              type: 'textarea',
+              localized: true,
+              admin: {
+                placeholder: 'Enter subtitle for the Hero',
+                width: '50%'
+              },
+            },
+          ]
+        },
+        {
+          name: 'bgType',
+          label: 'Hero Background Design Type',
+          type: 'radio',
+          options: [
+            { label: 'Coloured Wavy Top', value: 'wavy_top' },
+            { label: 'Coloured Wavy Fullscreen', value: 'wavy_full' },
+            { label: 'Transparent Wavy Top', value: 'trans_wavy_top' },
+            { label: 'Coloured Blob', value: 'blob'}
+          ]
+        },
+        {
+          name: 'buttons',
+          labels: {
+            singular: 'Hero Button',
+            plural: 'Hero Buttons'
+          },
+          type: 'array',
+          maxRows: 2,
+          fields: [
+            link({
+              appearances: false,
+            }),
+          ],
+          admin: {
+            components: {
+              RowLabel: {
+                path: 'src/blocks/HeroBlock/HeroButtonRowLabel.tsx',
+              }
+            },
+          }
+        },
+        {
+          name: 'heroContact',
+          type: 'group',
+          fields: [
+            {
+              name: 'label',
+              type: 'text',
+              localized: true,
+            },
+            {
+              name: 'email',
+              type: 'email',
+            }
+          ],
+        },
+      ]
     },
     {
       type: 'blocks',

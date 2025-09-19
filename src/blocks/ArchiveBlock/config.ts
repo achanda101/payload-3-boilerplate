@@ -56,6 +56,7 @@ export const Archive: Block = {
         },
       ],
     },
+    // TODO: use the relationship type and hasMany: true to insert grant cards in diff pages. A Grant Card collection must be created
     {
       name: 'categories',
       type: 'relationship',

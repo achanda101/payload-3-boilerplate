@@ -49,31 +49,61 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
                 label: 'Custom URL',
                 value: 'custom',
               },
+              {
+                label: 'Email',
+                value: 'email'
+              }
             ],
           },
           {
-            name: 'newTab',
-            type: 'checkbox',
-            admin: {
-              style: {
-                alignSelf: 'flex-end',
+            type: 'group',
+            fields: [
+              {
+                name: 'newTab',
+                type: 'checkbox',
+                admin: {
+                  style: {
+                    alignSelf: 'flex-end',
+                  },
+                  width: '25%',
+                },
+                label: 'Open in new tab',
               },
-              width: '25%',
-            },
-            label: 'Open in new tab',
-          },
-          {
-            name: 'downloadLink',
-            type: 'checkbox',
-            admin: {
-              style: {
-                alignSelf: 'flex-end',
+              {
+                name: 'downloadLink',
+                type: 'checkbox',
+                admin: {
+                  style: {
+                    alignSelf: 'flex-end',
+                  },
+                  width: '25%',
+                },
+                label: 'Download link',
               },
-              width: '25%',
-            },
-            label: 'Download link',
+              {
+                name: 'pillSolid',
+                type: 'checkbox',
+                admin: {
+                  style: {
+                    alignSelf: 'flex-end',
+                  },
+                  width: '25%',
+                },
+                label: 'Pill Button (Solid)',
+              },
+              {
+                name: 'pillOutline',
+                type: 'checkbox',
+                admin: {
+                  style: {
+                    alignSelf: 'flex-end',
+                  },
+                  width: '25%',
+                },
+                label: 'Pill Button (Outline)',
+              },
+            ]
           },
-          // TODO: add checkboxes for Pill Button Dark & Pill Button Outline and remove Primary Button checkboxes elsewhere
         ],
       },
     ],
@@ -106,6 +136,15 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
           return true
       },
       label: 'Custom URL',
+      required: true,
+    },
+    {
+      name: 'email',
+      type: 'email',
+      admin: {
+        condition: (_, siblingData) => siblingData?.type === 'email',
+      },
+      label: 'Provide email',
       required: true,
     },
   ]

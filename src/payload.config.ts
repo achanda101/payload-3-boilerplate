@@ -12,6 +12,7 @@ import { Categories } from './collections/Categories'
 import { MediaCloud } from './collections/MediaCloud'
 import { Documents } from './collections/Documents'
 import { Grants } from './collections/Grants'
+import { GrantCards } from './collections/GrantCards'
 import { Posts } from './collections/Posts'
 import { Users } from './collections/Users'
 import { Footer } from './globals/Footer/config'
@@ -26,6 +27,9 @@ import { Homepage } from './globals/Homepage/config'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
+
+// TODO: use folders to organise collections (Media, Grant Cards, etc)
+// But folders is in BETA as of Sept 2025 https://payloadcms.com/docs/folders/overview
 
 export default buildConfig({
   admin: {
@@ -97,7 +101,7 @@ export default buildConfig({
     defaultLocale: 'en', // required
     fallback: true, // defaults to true
   },
-  collections: [Grants, Posts, MediaCloud, Documents, Categories, Users],
+  collections: [Grants, GrantCards, Posts, MediaCloud, Documents, Categories, Users],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [ Homepage, Header, Footer, Navigation, ContactInfo ],
   plugins: [

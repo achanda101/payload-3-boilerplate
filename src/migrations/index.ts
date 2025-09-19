@@ -11,6 +11,7 @@ import * as migration_20250907_225629_homepage_secondaryCTA from './20250907_225
 import * as migration_20250912_183156_grant_pages from './20250912_183156_grant_pages';
 import * as migration_20250916_143422_grant_multicol_linkfield_additions from './20250916_143422_grant_multicol_linkfield_additions';
 import * as migration_20250916_195858_header_theme from './20250916_195858_header_theme';
+import * as migration_20250918_202458_major_rework from './20250918_202458_major_rework';
 
 export const migrations = [
   {
@@ -76,6 +77,11 @@ export const migrations = [
   {
     up: migration_20250916_195858_header_theme.up,
     down: migration_20250916_195858_header_theme.down,
-    name: '20250916_195858_header_theme'
+    name: '20250916_195858_header_theme',
+  },
+  {
+    up: migration_20250918_202458_major_rework.up,
+    down: migration_20250918_202458_major_rework.down,
+    name: '20250918_202458_major_rework'
   },
 ];

@@ -67,23 +67,9 @@ export const SecondaryCTA: Block = {
       minRows: 1,
       maxRows: 2,
       fields: [
-        {
-          type: 'row',
-          fields: [
-            {
-              name: 'buttonPrimary',
-              type: 'checkbox',
-              defaultValue: false,
-              admin: {
-                description: 'Is it a primary button? (dark coloured)',
-                width: '30%',
-              }
-            },
-            link({
-              appearances: false,
-            }),
-          ]
-        },
+        link({
+          appearances: false,
+        }),
       ],
       admin: {
         components: {

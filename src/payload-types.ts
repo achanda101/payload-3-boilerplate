@@ -68,6 +68,7 @@ export interface Config {
   blocks: {};
   collections: {
     grants: Grant;
+    grantcards: Grantcard;
     posts: Post;
     mediaCloud: MediaCloud;
     documents: Document;
@@ -84,6 +85,7 @@ export interface Config {
   collectionsJoins: {};
   collectionsSelect: {
     grants: GrantsSelect<false> | GrantsSelect<true>;
+    grantcards: GrantcardsSelect<false> | GrantcardsSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
     mediaCloud: MediaCloudSelect<false> | MediaCloudSelect<true>;
     documents: DocumentsSelect<false> | DocumentsSelect<true>;
@@ -167,54 +169,39 @@ export interface UserAuthOperations {
 export interface Grant {
   id: number;
   title: string;
-  heroBlock?:
+  pageType: 'landing' | 'individual';
+  grantCard?: (number | null) | Grantcard;
+  heroTitle?: string | null;
+  heroSubtitle?: string | null;
+  bgType?: ('wavy_top' | 'wavy_full' | 'trans_wavy_top' | 'blob') | null;
+  buttons?:
     | {
-        title?: string | null;
-        subtitle?: string | null;
-        /**
-         * Upload a mascot image for the Hero section
-         */
-        heroImage?: (number | null) | MediaCloud;
-        /**
-         * Badge Text (e.g., "Rapid Response Fund") or the date of availability (e.g., "Applications open until 15th June")
-         */
-        badgeText?: string | null;
-        badgeType?: ('info' | 'imp') | null;
-        headerColour?: ('blank' | 'forest' | 'turmeric' | 'sky' | 'rose') | null;
-        heroButtons?:
-          | {
-              /**
-               * Is it a primary button? (dark coloured)
-               */
-              buttonPrimary?: boolean | null;
-              link?: {
-                type?: ('reference' | 'custom') | null;
-                newTab?: boolean | null;
-                downloadLink?: boolean | null;
-                reference?:
-                  | ({
-                      relationTo: 'grants';
-                      value: number | Grant;
-                    } | null)
-                  | ({
-                      relationTo: 'posts';
-                      value: number | Post;
-                    } | null);
-                url?: string | null;
-                label?: string | null;
-              };
-              id?: string | null;
-            }[]
-          | null;
-        heroContact?: {
-          label?: string | null;
+        link?: {
+          type?: ('reference' | 'custom' | 'email') | null;
+          newTab?: boolean | null;
+          downloadLink?: boolean | null;
+          pillSolid?: boolean | null;
+          pillOutline?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'grants';
+                value: number | Grant;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
           email?: string | null;
+          label?: string | null;
         };
         id?: string | null;
-        blockName?: string | null;
-        blockType: 'grantsHeroBlock';
       }[]
     | null;
+  heroContact?: {
+    label?: string | null;
+    email?: string | null;
+  };
   contentBlocks?:
     | {
         multicols?:
@@ -237,9 +224,11 @@ export interface Grant {
               } | null;
               addLink?: boolean | null;
               link?: {
-                type?: ('reference' | 'custom') | null;
+                type?: ('reference' | 'custom' | 'email') | null;
                 newTab?: boolean | null;
                 downloadLink?: boolean | null;
+                pillSolid?: boolean | null;
+                pillOutline?: boolean | null;
                 reference?:
                   | ({
                       relationTo: 'grants';
@@ -250,6 +239,7 @@ export interface Grant {
                       value: number | Post;
                     } | null);
                 url?: string | null;
+                email?: string | null;
                 label?: string | null;
               };
               id?: string | null;
@@ -261,6 +251,66 @@ export interface Grant {
       }[]
     | null;
   publishedAt?: string | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "grantcards".
+ */
+export interface Grantcard {
+  id: number;
+  title: string;
+  desc?: string | null;
+  showHome?: boolean | null;
+  order?: number | null;
+  activePeriod?: ('open_all_year' | 'specific_period' | 'closed') | null;
+  startDate?: string | null;
+  endDate?: string | null;
+  cardColour?: ('forest' | 'turmeric' | 'sky' | 'rose' | 'lavender' | 'fire' | 'trans') | null;
+  /**
+   * Upload a mascot image for the Grant Card
+   */
+  mascot?: (number | null) | MediaCloud;
+  /**
+   * Badge Text (e.g., "Rapid Response Fund") or the date of availability (e.g., "Applications open until 15th June")
+   */
+  badgeText?: string | null;
+  badgeType?: ('info' | 'imp' | 'inactive') | null;
+  grantSpecs?:
+    | {
+        spec?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  grantUses?: string | null;
+  cardButtons?:
+    | {
+        link?: {
+          type?: ('reference' | 'custom' | 'email') | null;
+          newTab?: boolean | null;
+          downloadLink?: boolean | null;
+          pillSolid?: boolean | null;
+          pillOutline?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'grants';
+                value: number | Grant;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          email?: string | null;
+          label?: string | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
   slug?: string | null;
   slugLock?: boolean | null;
   updatedAt: string;
@@ -698,6 +748,10 @@ export interface PayloadLockedDocument {
         value: number | Grant;
       } | null)
     | ({
+        relationTo: 'grantcards';
+        value: number | Grantcard;
+      } | null)
+    | ({
         relationTo: 'posts';
         value: number | Post;
       } | null)
@@ -781,43 +835,34 @@ export interface PayloadMigration {
  */
 export interface GrantsSelect<T extends boolean = true> {
   title?: T;
-  heroBlock?:
+  pageType?: T;
+  grantCard?: T;
+  heroTitle?: T;
+  heroSubtitle?: T;
+  bgType?: T;
+  buttons?:
     | T
     | {
-        grantsHeroBlock?:
+        link?:
           | T
           | {
-              title?: T;
-              subtitle?: T;
-              heroImage?: T;
-              badgeText?: T;
-              badgeType?: T;
-              headerColour?: T;
-              heroButtons?:
-                | T
-                | {
-                    buttonPrimary?: T;
-                    link?:
-                      | T
-                      | {
-                          type?: T;
-                          newTab?: T;
-                          downloadLink?: T;
-                          reference?: T;
-                          url?: T;
-                          label?: T;
-                        };
-                    id?: T;
-                  };
-              heroContact?:
-                | T
-                | {
-                    label?: T;
-                    email?: T;
-                  };
-              id?: T;
-              blockName?: T;
+              type?: T;
+              newTab?: T;
+              downloadLink?: T;
+              pillSolid?: T;
+              pillOutline?: T;
+              reference?: T;
+              url?: T;
+              email?: T;
+              label?: T;
             };
+        id?: T;
+      };
+  heroContact?:
+    | T
+    | {
+        label?: T;
+        email?: T;
       };
   contentBlocks?:
     | T
@@ -837,8 +882,11 @@ export interface GrantsSelect<T extends boolean = true> {
                           type?: T;
                           newTab?: T;
                           downloadLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
                           reference?: T;
                           url?: T;
+                          email?: T;
                           label?: T;
                         };
                     id?: T;
@@ -848,6 +896,53 @@ export interface GrantsSelect<T extends boolean = true> {
             };
       };
   publishedAt?: T;
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "grantcards_select".
+ */
+export interface GrantcardsSelect<T extends boolean = true> {
+  title?: T;
+  desc?: T;
+  showHome?: T;
+  order?: T;
+  activePeriod?: T;
+  startDate?: T;
+  endDate?: T;
+  cardColour?: T;
+  mascot?: T;
+  badgeText?: T;
+  badgeType?: T;
+  grantSpecs?:
+    | T
+    | {
+        spec?: T;
+        id?: T;
+      };
+  grantUses?: T;
+  cardButtons?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              downloadLink?: T;
+              pillSolid?: T;
+              pillOutline?: T;
+              reference?: T;
+              url?: T;
+              email?: T;
+              label?: T;
+            };
+        id?: T;
+      };
   slug?: T;
   slugLock?: T;
   updatedAt?: T;
@@ -1253,14 +1348,12 @@ export interface Homepage {
     heroSubtitle?: string | null;
     ctaButton?:
       | {
-          /**
-           * Is it a primary button? (dark coloured)
-           */
-          buttonPrimary?: boolean | null;
           link?: {
-            type?: ('reference' | 'custom') | null;
+            type?: ('reference' | 'custom' | 'email') | null;
             newTab?: boolean | null;
             downloadLink?: boolean | null;
+            pillSolid?: boolean | null;
+            pillOutline?: boolean | null;
             reference?:
               | ({
                   relationTo: 'grants';
@@ -1271,6 +1364,7 @@ export interface Homepage {
                   value: number | Post;
                 } | null);
             url?: string | null;
+            email?: string | null;
             label?: string | null;
           };
           id?: string | null;
@@ -1287,14 +1381,12 @@ export interface Homepage {
         };
         ctaButton?:
           | {
-              /**
-               * Is it a primary button? (dark coloured)
-               */
-              buttonPrimary?: boolean | null;
               link?: {
-                type?: ('reference' | 'custom') | null;
+                type?: ('reference' | 'custom' | 'email') | null;
                 newTab?: boolean | null;
                 downloadLink?: boolean | null;
+                pillSolid?: boolean | null;
+                pillOutline?: boolean | null;
                 reference?:
                   | ({
                       relationTo: 'grants';
@@ -1305,6 +1397,7 @@ export interface Homepage {
                       value: number | Post;
                     } | null);
                 url?: string | null;
+                email?: string | null;
                 label?: string | null;
               };
               id?: string | null;
@@ -1421,9 +1514,11 @@ export interface Nav {
         navItems?:
           | {
               link?: {
-                type?: ('reference' | 'custom') | null;
+                type?: ('reference' | 'custom' | 'email') | null;
                 newTab?: boolean | null;
                 downloadLink?: boolean | null;
+                pillSolid?: boolean | null;
+                pillOutline?: boolean | null;
                 reference?:
                   | ({
                       relationTo: 'grants';
@@ -1434,6 +1529,7 @@ export interface Nav {
                       value: number | Post;
                     } | null);
                 url?: string | null;
+                email?: string | null;
                 label?: string | null;
               };
               id?: string | null;
@@ -1486,15 +1582,17 @@ export interface HomepageSelect<T extends boolean = true> {
         ctaButton?:
           | T
           | {
-              buttonPrimary?: T;
               link?:
                 | T
                 | {
                     type?: T;
                     newTab?: T;
                     downloadLink?: T;
+                    pillSolid?: T;
+                    pillOutline?: T;
                     reference?: T;
                     url?: T;
+                    email?: T;
                     label?: T;
                   };
               id?: T;
@@ -1517,15 +1615,17 @@ export interface HomepageSelect<T extends boolean = true> {
               ctaButton?:
                 | T
                 | {
-                    buttonPrimary?: T;
                     link?:
                       | T
                       | {
                           type?: T;
                           newTab?: T;
                           downloadLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
                           reference?: T;
                           url?: T;
+                          email?: T;
                           label?: T;
                         };
                     id?: T;
@@ -1607,8 +1707,11 @@ export interface NavSelect<T extends boolean = true> {
                     type?: T;
                     newTab?: T;
                     downloadLink?: T;
+                    pillSolid?: T;
+                    pillOutline?: T;
                     reference?: T;
                     url?: T;
+                    email?: T;
                     label?: T;
                   };
               id?: T;

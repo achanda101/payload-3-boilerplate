@@ -18,7 +18,7 @@ export const slugField: Slug = (fieldToUse = 'title', overrides = {}) => {
     defaultValue: true,
     admin: {
       hidden: true,
-      position: 'sidebar',
+      // position: 'sidebar',
     },
     ...checkboxOverrides,
   }
@@ -36,7 +36,7 @@ export const slugField: Slug = (fieldToUse = 'title', overrides = {}) => {
       beforeValidate: [formatSlugHook(fieldToUse)],
     },
     admin: {
-      position: 'sidebar',
+      // position: 'sidebar',
       ...(slugOverrides?.admin || {}),
       components: {
         Field: {
