@@ -28,18 +28,20 @@ interface GrantCardData {
     id: number;
     link: {
       type: string;
-      newTab: boolean;
-      downloadLink: boolean;
-      pillSolid: boolean;
-      pillOutline: boolean;
-      url: string;
+      newTab?: boolean;
+      downloadLink?: boolean;
+      pillSolid?: boolean;
+      pillOutline?: boolean;
+      url?: string;
       label: string;
       email?: string;
       reference?: {
-        relationTo: string;
-        value: number;
+        relationTo?: string;
+        value: {
+          slug?: string;
+        };
       }
-    }[];
+    };
   }[];
 }
 
