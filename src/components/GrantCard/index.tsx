@@ -55,7 +55,7 @@ export const GrantCard: React.FC<GrantCardProps> = ({
   desc,
   cardColour,
   mascot,
-  grantSpecs='',
+  grantSpecs=[],
   grantUses='',
   cardButtons,
   specialGrant=false
