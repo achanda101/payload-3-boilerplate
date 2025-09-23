@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { useLanguage } from '@/providers/LanguageContext'
 import { SecondaryCTA } from './components/SecondaryCTA'
 import { GrantCardGrid } from '@/components/GrantCardGrid'
+import { ColumnIndicators } from '../ColumnIndicators'
 
 interface PageProps {
   data?: {
@@ -39,7 +40,6 @@ export const PageContent: React.FC<PageProps> = ({ data = {} }) => {
 
       const grantCardsData = data.grantCards
       setGrantCards(grantCardsData || [])
-      console.log('Fetched Grant Cards:', grantCardsData || [])
       
     } catch (error) {
       console.error('Failed to fetch Secondary CTA Section data:', error)
@@ -63,14 +63,19 @@ export const PageContent: React.FC<PageProps> = ({ data = {} }) => {
             />
         ))
       )}
+      {process.env.NODE_ENV === 'development' && (
+        <div className="page_column_layout gap-6">
+          <ColumnIndicators />
+        </div>
+      )}
       {/* Grant Cards Section */}
        <div className="page_column_layout gap-6">
         <GrantCardGrid
           grantCards={grantCards}
           showSpecialGrantCard={true}
         />
-       </div>
-       </div>
+      </div>
+    </div>
 
   )
 }

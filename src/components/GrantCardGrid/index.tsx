@@ -58,8 +58,7 @@ export const GrantCardGrid: React.FC<GrantCardGridProps> = ({ grantCards, showSp
   return (
     <>
       {colouredCards.length > 0 ?  (colouredCards.map((card, index) => {
-        const isLastOddCard = index === colouredCards.length - 1 && colouredCards.length % 2 === 1;
-        console.log('isLastOddCard', isLastOddCard);
+        const isLastOddCard = index === colouredCards.length - 1 && colouredCards.length % 2 === 1;        
         
         if (isLastOddCard) {
           return (

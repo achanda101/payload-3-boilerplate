@@ -14,7 +14,7 @@ const setCookie = (name: string, value: string, days: number = 365) => {
     
     // Test if cookie was actually set
     const wasSet = getCookie(name) === value
-    console.log('Cookie set attempt:', { name, value, wasSet, cookieString })
+    // console.log('Cookie set attempt:', { name, value, wasSet, cookieString })
     
     return wasSet
   } catch (error) {
@@ -88,7 +88,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({
   useEffect(() => {
     if (availableLanguages.length > 1 && !availableLanguages.includes(selectedLanguage)) {
       // Only reset if we have actual languages from the server and current language is not available
-      console.log('Language not available, switching from', selectedLanguage, 'to', availableLanguages[0])
+      // console.log('Language not available, switching from', selectedLanguage, 'to', availableLanguages[0])
       const newLanguage = availableLanguages[0] || defaultLanguage
       setSelectedLanguage(newLanguage)
     }

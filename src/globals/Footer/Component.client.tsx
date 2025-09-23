@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useLanguage } from '../../providers/LanguageContext'
@@ -48,6 +48,9 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
   const [ navData, setNavData ] = useState<any>(null)
   const [ contactInfo, setContactInfo ] = useState<{ emails?: Array<{ email?: string; label?: string }> }>({})
   const [ smLinks, setSmLinks ] = useState<NonNullable<FooterClientProps[ 'data' ]>[ 'smLinksGroup' ]>({ smLinks: [] })
+  const [ showModal, setShowModal ] = useState(false)
+  const [ subscribedEmail, setSubscribedEmail ] = useState('')
+  const emailInputRef = useRef<HTMLInputElement>(null)
   
   const handleLanguageChange = async (newLanguage: string) => {
     try {
@@ -83,6 +86,14 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
     // Any side effects based on selectedLanguage can be handled here
     handleLanguageChange(selectedLanguage)
   }, [ selectedLanguage ])
+
+  const handleSubscriptionSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const formData = new FormData(e.currentTarget)
+    const email = formData.get('email') as string
+    setSubscribedEmail(email)
+    setShowModal(true)
+  }
 
 
 
@@ -147,8 +158,9 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
           )}
         </div>
           <div className="footer-grid-item div-j">
-            <form method="post" action="https://list.uafanp.org/subscription/form" style={{display: 'flex'}}>
-              <input type="email" name="email" placeholder={newsletterData?.inputPlaceholder} />
+            {/* <form method="post" action="https://list.uafanp.org/subscription/form" style={{display: 'flex'}}> */}
+            <form onSubmit={handleSubscriptionSubmit} style={{display: 'flex'}}>
+              <input type="email" name="email" placeholder={newsletterData?.inputPlaceholder} ref={emailInputRef} />
               <input id="c41c8" type="checkbox" name="l" defaultChecked value="c41c894d-7563-4c8c-ad30-51cb77907cbf"/>
               <button type='submit' className="pill-button dark">{newsletterData?.buttonText}</button>
             </form>
@@ -165,7 +177,7 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
                     const getHref = () => {
                       if (!navItem.link) return '#'
                       if (navItem.link.type === 'reference') {
-                        return navItem.link.reference?.value?.slug || '#'
+                        return `/${navItem.link.reference?.relationTo}/${navItem.link.reference?.value?.slug}` || '#'
                       } else {
                         return navItem.link.url || '#'
                       }
@@ -174,6 +186,7 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
                       <li key={index}>
                         <Link
                           href={getHref()}
+                          target={navItem.link?.newTab ? '_blank' : '_self'}
                         >
                           {navItem.link?.label}
                         </Link>
@@ -196,7 +209,7 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
                     const getHref = () => {
                       if (!navItem.link) return '#'
                       if (navItem.link.type === 'reference') {
-                        return navItem.link.reference?.value?.slug || '#'
+                        return `/${navItem.link.reference?.relationTo}/${navItem.link.reference?.value?.slug}` || '#'
                       } else {
                         return navItem.link.url || '#'
                       }
@@ -205,6 +218,7 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
                       <li key={index}>
                         <Link
                           href={getHref()}
+                          target={navItem.link?.newTab ? '_blank' : '_self'}
                         >
                           <span>{navItem.link?.label}</span>
                         </Link>
@@ -227,7 +241,7 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
                     const getHref = () => {
                       if (!navItem.link) return '#'
                       if (navItem.link.type === 'reference') {
-                        return navItem.link.reference?.value?.slug || '#'
+                        return `/${navItem.link.reference?.relationTo}/${navItem.link.reference?.value?.slug}` || '#'
                       } else {
                         return navItem.link.url || '#'
                       }
@@ -236,6 +250,7 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
                       <li key={index}>
                         <Link
                           href={getHref()}
+                          target={navItem.link?.newTab ? '_blank' : '_self'}
                         >
                           <span>{navItem.link?.label}</span>
                         </Link>
@@ -253,12 +268,11 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
               <p className='tag'>{navData.menuItems?.[ 3 ]?.label}</p>
               {navData.menuItems?.[ 3 ]?.navItems && (
                 <ul>
-                
                   {navData.menuItems?.[ 3 ]?.navItems?.map((navItem, index) => {
                     const getHref = () => {
                       if (!navItem.link) return '#'
                       if (navItem.link.type === 'reference') {
-                        return navItem.link.reference?.value?.slug || '#'
+                        return `/${navItem.link.reference?.relationTo}/${navItem.link.reference?.value?.slug}` || '#'
                       } else {
                         return navItem.link.url || '#'
                       }
@@ -267,6 +281,7 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
                       <li key={index}>
                         <Link
                           href={getHref()}
+                          target={navItem.link?.newTab ? '_blank' : '_self'}
                         >
                           <span>{navItem.link?.label}</span>
                         </Link>
@@ -337,6 +352,45 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
         </p>
       </div>
       </footer>
+      
+      {showModal && (
+        <div className="modal-overlay" style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 1000
+        }}>
+          <div className="modal-content" style={{
+            backgroundColor: '#fff8eb',
+            padding: '3rem',
+            borderRadius: '8px',
+            textAlign: 'center',
+            maxWidth: '400px',
+            width: '90%'
+          }}>
+            <h6 style={{ marginBottom: '1rem' }}>Thank you!</h6>
+            <p>{subscribedEmail} is now subscribed to our newsletter.</p>
+            <button 
+              onClick={() => {
+                setShowModal(false)
+                if (emailInputRef.current) {
+                  emailInputRef.current.value = ''
+                }
+              }}
+              className="pill-button dark"
+              style={{ marginTop: '1rem' }}
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      )}
       </>
     
       
