@@ -13,4 +13,7 @@
       color: white;
     }
   }
+  &.inactive {
+    background-color: gray;
+  }
 }

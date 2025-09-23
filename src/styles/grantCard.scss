@@ -1,0 +1,11 @@
+@use 'variables' as vars;
+@use 'mixins' as mix;
+
+.grant-card {
+  @apply rounded-3xl flex flex-col justify-between px-[1.5rem] py-[2rem];
+  background-color: transparent;
+
+  @media (min-width: vars.$tablet) {
+    @apply aspect-square px-[2.5rem] py-[3.75rem];
+  }
+}

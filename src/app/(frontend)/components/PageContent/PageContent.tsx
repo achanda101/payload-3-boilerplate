@@ -5,6 +5,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useLanguage } from '@/providers/LanguageContext'
 import { SecondaryCTA } from './components/SecondaryCTA'
+import { GrantCardGrid } from '@/components/GrantCardGrid'
+import { ColumnIndicators } from '../ColumnIndicators'
 
 interface PageProps {
   data?: {
@@ -28,12 +30,17 @@ interface PageProps {
 export const PageContent: React.FC<PageProps> = ({ data = {} }) => {
   const { selectedLanguage } = useLanguage()
   const [ secCTAData, setSecCTAData ] = useState<NonNullable<PageProps[ 'data' ]>[ 'secondaryCTA' ]>([])
+  const [ grantCards, setGrantCards ] = useState([])
 
   const handleLanguageChange = async (newLanguage: string) => {
     try {
-      const response = await fetch(`/api/globals/homepage?locale=${newLanguage}&depth=1`)
+      const response = await fetch(`/api/globals/homepage?locale=${newLanguage}&depth=2`)
       const data = await response.json()
       setSecCTAData(data?.secondaryCTA || [])
+
+      const grantCardsData = data.grantCards
+      setGrantCards(grantCardsData || [])
+      console.log('Fetched Grant Cards:', grantCardsData || [])
       
     } catch (error) {
       console.error('Failed to fetch Secondary CTA Section data:', error)
@@ -46,7 +53,7 @@ export const PageContent: React.FC<PageProps> = ({ data = {} }) => {
   
   
   return (
-    <div>
+    <div className='frame_layout'>
       {secCTAData && secCTAData.length > 0 && (
         secCTAData.map((cta, index) => (
           <SecondaryCTA
@@ -57,6 +64,15 @@ export const PageContent: React.FC<PageProps> = ({ data = {} }) => {
             />
         ))
       )}
-    </div>
+      {/* Grant Cards Section */}
+       <div className="page_column_layout gap-6">
+          <ColumnIndicators />
+        <GrantCardGrid
+          grantCards={grantCards}
+          showSpecialGrantCard={true}
+        />
+       </div>
+       </div>
+
   )
 }

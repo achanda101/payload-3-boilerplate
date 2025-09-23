@@ -86,26 +86,31 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
             },
             {
               type: 'group',
-              label: 'Card Display',
+              label: 'Badge Details',
               fields: [
                 {
-                  name: 'showHome',
-                  label: 'Display Grant Card on Homepage',
-                  type: 'checkbox',
-                  defaultValue: true,
+                  name: 'badgeText',
+                  type: 'text',
+                  localized: true,
+                  admin: {
+                    placeholder: 'E.g., Rapid Response Fund, Applications open until 15th June',
+                  },
                 },
                 {
-                  name: 'order',
-                  label: 'Order of Display',
-                  type: 'number',
-                  min: 1,
-                }
+                  name: 'badgeType',
+                  type: 'select',
+                  options: [
+                    { label: 'Information (orange)', value: 'info' },
+                    { label: 'Important (red)', value: 'imp' },
+                    { label: 'Inactive (grey)', value: 'inactive' }
+                  ],
+                  defaultValue: 'info',
+                },
               ],
               admin: {
                 style: {
                   backgroundColor: '#f1f6fa',
                   paddingBlock: '8px',
-                  paddingBottom: '20px',
                   paddingInline: '10px',
                   border: '1px solid #dee2e6',
                   borderRadius: '8px',
@@ -139,7 +144,7 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
                       value: 'specific_period'
                     },
                     {
-                      label: 'Closed',
+                      label: 'Closed (Card will not be displayed)',
                       value: 'closed'
                     },
                   ],
@@ -189,6 +194,9 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
                     { label: 'Transparent', value: 'trans'}
                   ],
                   defaultValue: 'forest',
+                  admin: { 
+                    description: 'Select a colour for the Grant Card background. Choose "Transparent" if it is a Special Grant.',
+                  }
                 },
                 {
                   name: 'mascot',
@@ -220,108 +228,68 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
       type: 'row',
       fields: [
         {
-          type: 'group',
-          label: 'Badge Details',
+          name: 'grantSpecs',
+          label: 'Grant Details (eg: Availability, Amount, Timeframe)',
+          labels: {
+            singular: 'Grant Specification',
+            plural: 'Grant Specifications'
+          },
+          type: 'array',
+          maxRows: 3,
           fields: [
             {
-              name: 'badgeText',
+              name: 'spec',
+              label: 'Specification',
               type: 'text',
               localized: true,
+              maxLength: 20,
               admin: {
-                description: 'Badge Text (e.g., "Rapid Response Fund") or the date of availability (e.g., "Applications open until 15th June")',
-              },
-            },
-            {
-              name: 'badgeType',
-              type: 'select',
-              options: [
-                { label: 'Information (orange)', value: 'info' },
-                { label: 'Important (red)', value: 'imp' },
-                { label: 'Inactive (grey)', value: 'inactive' }
-              ],
-              defaultValue: 'info',
-            },
+                components: {
+                  afterInput: [
+                    {
+                      path: '@/utilities/characterCounter.tsx'
+                    }
+                  ]
+                }
+              }
+            }
           ],
           admin: {
             width: '50%',
-            style: {
-              backgroundColor: '#f1f6fa',
-              paddingBlock: '8px',
-              paddingInline: '10px',
-              border: '1px solid #dee2e6',
-              borderRadius: '8px',
-              marginBottom: '5px'
-            }
+            components: {
+              RowLabel: {
+                path: 'src/collections/GrantCards/GrantCardSpecRowLabel.tsx',
+              }
+            },
           }
         },
         {
-          type: 'group',
-          label: 'Grant Details (eg: Availability, Amount, Timeframe)',
-          fields: [
-            {
-              name: 'grantSpecs',
-              label: '',
-              labels: {
-                singular: 'Grant Specification',
-                plural: 'Grant Specifications'
-              },
-              type: 'array',
-              maxRows: 3,
-              fields: [
-                {
-                  name: 'spec',
-                  label: 'Specification',
-                  type: 'text',
-                  localized: true,
-                  maxLength: 20,
-                  admin: {
-                    components: {
-                      afterInput: [
-                        {
-                          path: '@/utilities/characterCounter.tsx'
-                        }
-                      ]
-                    }
-                  }
-                }
-              ],
-              admin: {
-                components: {
-                  RowLabel: {
-                    path: 'src/collections/GrantCards/GrantCardSpecRowLabel.tsx',
-                  }
-                },
-              }
-            },
-            {
-              name: 'grantUses',
-              label: 'Common Uses',
-              type: 'textarea',
-              localized: true,
-              maxLength: 200,
-              admin: {
-                  components: {
-                    afterInput: [
-                      {
-                        path: '@/utilities/characterCounter.tsx'
-                      }
-                    ]
-                  }
-                }
-            }
-          ],
+          name: 'grantUses',
+          label: 'Common Uses',
+          type: 'textarea',
+          localized: true,
+          maxLength: 200,
           admin: {
-            width: '50%',
-            style: {
-              paddingBlock: '8px',
-              paddingInline: '10px',
-              border: '1px solid #dee2e6',
-              borderRadius: '8px',
-              marginBottom: '5px'
+            width: '30%',
+            components: {
+              afterInput: [
+                {
+                  path: '@/utilities/characterCounter.tsx'
+                }
+              ]
             }
           }
         }
       ],
+      admin: {
+        style: {
+          paddingBlock: '8px',
+          paddingInline: '10px',
+          border: '1px solid #dee2e6',
+          borderRadius: '8px',
+          marginBottom: '5px'
+        }
+      }
     },
     {
       name: 'cardButtons',

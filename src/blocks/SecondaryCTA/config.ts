@@ -5,8 +5,8 @@ import { link } from '@/fields/link'
 export const SecondaryCTA: Block = {
   slug: 'secondarycta',
   labels: {
-    singular: 'Secondary CTA Block',
-    plural: 'Secondary CTA Blocks',
+    singular: 'Call-to-Action Block',
+    plural: 'Call-to-Action Blocks',
   },
   imageURL: '/collection_icons/secondaryCTABlock-icon.png',
   fields: [

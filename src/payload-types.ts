@@ -265,21 +265,19 @@ export interface Grantcard {
   id: number;
   title: string;
   desc?: string | null;
-  showHome?: boolean | null;
-  order?: number | null;
+  badgeText?: string | null;
+  badgeType?: ('info' | 'imp' | 'inactive') | null;
   activePeriod?: ('open_all_year' | 'specific_period' | 'closed') | null;
   startDate?: string | null;
   endDate?: string | null;
+  /**
+   * Select a colour for the Grant Card background. Choose "Transparent" if it is a Special Grant.
+   */
   cardColour?: ('forest' | 'turmeric' | 'sky' | 'rose' | 'lavender' | 'fire' | 'trans') | null;
   /**
    * Upload a mascot image for the Grant Card
    */
   mascot?: (number | null) | MediaCloud;
-  /**
-   * Badge Text (e.g., "Rapid Response Fund") or the date of availability (e.g., "Applications open until 15th June")
-   */
-  badgeText?: string | null;
-  badgeType?: ('info' | 'imp' | 'inactive') | null;
   grantSpecs?:
     | {
         spec?: string | null;
@@ -909,15 +907,13 @@ export interface GrantsSelect<T extends boolean = true> {
 export interface GrantcardsSelect<T extends boolean = true> {
   title?: T;
   desc?: T;
-  showHome?: T;
-  order?: T;
+  badgeText?: T;
+  badgeType?: T;
   activePeriod?: T;
   startDate?: T;
   endDate?: T;
   cardColour?: T;
   mascot?: T;
-  badgeText?: T;
-  badgeType?: T;
   grantSpecs?:
     | T
     | {
@@ -1408,6 +1404,10 @@ export interface Homepage {
         blockType: 'secondarycta';
       }[]
     | null;
+  /**
+   * Select grants to feature on the homepage in the order you want them to appear.
+   */
+  grantCards?: (number | Grantcard)[] | null;
   _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1634,6 +1634,7 @@ export interface HomepageSelect<T extends boolean = true> {
               blockName?: T;
             };
       };
+  grantCards?: T;
   _status?: T;
   updatedAt?: T;
   createdAt?: T;

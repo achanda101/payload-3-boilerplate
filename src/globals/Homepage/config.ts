@@ -80,21 +80,32 @@ export const Homepage: GlobalConfig = {
     {
       type: 'blocks',
       name: 'secondaryCTA',
+      label: 'Call-to-Action Blocks',
       blocks: [ SecondaryCTA ],
       labels: {
-        singular: 'A Secondary CTA Block',
-        plural: 'Secondary CTA Blocks'
+        singular: 'A Call-to-Action Block',
+        plural: 'Call-to-Action Blocks'
       },
       admin: {
         initCollapsed: true,
         isSortable: true,
       },
     },
+    {
+      name: 'grantCards',
+      label: 'Grant Cards',
+      type: 'relationship',
+      relationTo: 'grantcards',
+      hasMany: true,
+      admin: {
+        description: 'Select grants to feature on the homepage in the order you want them to appear.',
+      },
+    },
   ],
   versions: {
     drafts: {
       autosave: {
-        interval: 375,
+        interval: 2000,
         showSaveDraftButton: true,
       },
     },
