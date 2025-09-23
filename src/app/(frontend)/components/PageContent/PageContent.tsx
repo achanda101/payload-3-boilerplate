@@ -6,7 +6,6 @@ import Image from 'next/image'
 import { useLanguage } from '@/providers/LanguageContext'
 import { SecondaryCTA } from './components/SecondaryCTA'
 import { GrantCardGrid } from '@/components/GrantCardGrid'
-import { ColumnIndicators } from '../ColumnIndicators'
 
 interface PageProps {
   data?: {
@@ -66,7 +65,6 @@ export const PageContent: React.FC<PageProps> = ({ data = {} }) => {
       )}
       {/* Grant Cards Section */}
        <div className="page_column_layout gap-6">
-          <ColumnIndicators />
         <GrantCardGrid
           grantCards={grantCards}
           showSpecialGrantCard={true}
