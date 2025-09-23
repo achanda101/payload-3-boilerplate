@@ -18,7 +18,7 @@ interface GrantCardData {
   title: string;
   desc: string;
   cardColour?: string;
-  mascot: (number | null) | MediaCloud;
+  mascot?: MediaCloud | null;
   grantSpecs: {
     id: number
     spec: string
