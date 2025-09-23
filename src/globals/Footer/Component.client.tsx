@@ -91,8 +91,12 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
     const email = formData.get('email') as string
-    setSubscribedEmail(email)
-    setShowModal(true)
+    
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (email && emailRegex.test(email)) {
+      setSubscribedEmail(email)
+      setShowModal(true)
+    }
   }
 
 
