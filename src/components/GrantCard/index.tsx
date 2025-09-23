@@ -157,11 +157,11 @@ export const GrantCard: React.FC<GrantCardProps> = ({
               </div>
               )}
 
-            <div className="text-center mb-3">
+            <div className="text-center mb-2">
               <h5>{title}</h5>
             </div>
               
-            <p className="text-center mb-4">
+            <p className="text-center mb-2">
               {desc}
             </p>
 
@@ -186,7 +186,7 @@ export const GrantCard: React.FC<GrantCardProps> = ({
                 width={Math.min(mascot?.width || 220, 220)}
                 height={180}
                 alt={(typeof mascot === 'object' && mascot?.alt) || 'Mascot Image'}
-                className="mx-auto object-contain max-w-[220px] h-[180px] my-4"
+                className="mx-auto object-contain max-w-[220px] h-[180px] my-1"
             />
           </div>
 
@@ -214,7 +214,7 @@ export const GrantCard: React.FC<GrantCardProps> = ({
                 </div>
               )}
 
-            <div className='flex items-center justify-center gap-[0.5rem] mt-[2.5rem]'>
+            <div className='flex items-center justify-center gap-[0.5rem] mt-[1.2rem]'>
               {cardButtons?.map((button, index) => {
                 const getHref = () => {
                   if (!button.link) return '#'
