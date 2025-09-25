@@ -245,7 +245,7 @@ export const Grants: CollectionConfig<'grants'> = {
   versions: {
     drafts: {
       autosave: {
-        interval: 1500, // Changed from 100ms to 1500ms to prevent flickering
+        interval: 2000, // Changed from 100ms to 1500ms to prevent flickering
       },
     },
     maxPerDoc: 50,
