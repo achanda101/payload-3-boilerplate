@@ -132,7 +132,8 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
                 src={headerData.logo.url} 
                 alt={headerData.logo.alt || "Site Logo"} 
                 width={headerData.logo.width || 100} 
-                height={headerData.logo.height || 50} 
+                height={headerData.logo.height || 50}
+                className="object-contain max-w-[12rem] md:max-w-[14rem] lg:max-w-[19rem] h-auto"
               />
             </Link>
           ) : (
