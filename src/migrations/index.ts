@@ -12,8 +12,7 @@ import * as migration_20250912_183156_grant_pages from './20250912_183156_grant_
 import * as migration_20250916_143422_grant_multicol_linkfield_additions from './20250916_143422_grant_multicol_linkfield_additions';
 import * as migration_20250916_195858_header_theme from './20250916_195858_header_theme';
 import * as migration_20250918_202458_major_rework from './20250918_202458_major_rework';
-import * as migration_20250923_103856_grant_cards from './20250923_103856_grant_cards';
-import * as migration_20250925_194632_grant_pages_cards from './20250925_194632_grant_pages_cards';
+import * as migration_20250925_200531_grant_pages_cards from './20250925_200531_grant_pages_cards';
 
 export const migrations = [
   {
@@ -87,13 +86,8 @@ export const migrations = [
     name: '20250918_202458_major_rework',
   },
   {
-    up: migration_20250923_103856_grant_cards.up,
-    down: migration_20250923_103856_grant_cards.down,
-    name: '20250923_103856_grant_cards',
-  },
-  {
-    up: migration_20250925_194632_grant_pages_cards.up,
-    down: migration_20250925_194632_grant_pages_cards.down,
-    name: '20250925_194632_grant_pages_cards'
+    up: migration_20250925_200531_grant_pages_cards.up,
+    down: migration_20250925_200531_grant_pages_cards.down,
+    name: '20250925_200531_grant_pages_cards'
   },
 ];
