@@ -298,16 +298,19 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
           )}
         </div>
         <div className="footer-grid-item div-e">
-          {orgLogo && typeof orgLogo !== 'number' && orgLogo.url ? (
-            <Image
-              src={orgLogo.url}
-              alt={orgLogo.alt || "Site Logo"}
-              width={orgLogo.width || 100}
-              height={orgLogo.height || 50}
-            />
-          ) : (
+            {orgLogo && typeof orgLogo !== 'number' && orgLogo.url ? (
+              <Link href="/">
+                <Image
+                  src={orgLogo.url}
+                  alt={orgLogo.alt || "Site Logo"}
+                  width={orgLogo.width || 100}
+                  height={orgLogo.height || 50}
+                  className="object-contain max-w-[12rem] md:max-w-[14rem] lg:max-w-[19rem] h-auto"
+                />
+              </Link>
+            ) : (
             <Link href="/">Home</Link>
-          )}
+            )}
         </div>
         <div className="footer-grid-item div-f">
           {orgName && <h6>{orgName}</h6>}
@@ -395,8 +398,6 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
           </div>
         </div>
       )}
-      </>
-    
-      
+    </>   
   )
 }
