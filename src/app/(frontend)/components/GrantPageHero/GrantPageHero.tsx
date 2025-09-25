@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useLanguage } from '@/providers/LanguageContext'
 import { useHeaderTheme } from '@/providers/HeaderTheme'
+import { url } from 'inspector'
 
 interface MediaCloud {
   id: number;
@@ -68,6 +69,36 @@ export const GrantPageHero: React.FC<GrantPageHeroProps> = ({
   const { selectedLanguage } = useLanguage()
   const { setHeaderTheme } = useHeaderTheme()
   const [ heroHeaderImg, setHeroHeaderImg ] = useState('wavy_top-trans')
+  const [ heroBlock, setHeroBlock ] = useState < {
+    title?: string | null,
+    subtitle?: string | null,
+    badgeText?: string | null,
+    badgeType?: string | null,
+    heroImage?: MediaCloud | null,
+    heroButtons?: {
+      id: number;
+      link: {
+        type: string;
+        newTab?: boolean;
+        downloadLink?: boolean;
+        pillSolid?: boolean;
+        pillOutline?: boolean;
+        url?: string;
+        label: string;
+        email?: string;
+        reference?: {
+          relationTo?: string;
+          value: {
+            slug?: string;
+          };
+        }
+      }
+    }[],
+    heroContact?: {
+      label?: string | null,
+      email?: string | null
+    },
+  }>({})
 
   const handleLanguageChange = useCallback(async (newLanguage: string) => {
     const fetchPath = `/api/${collection}/${docId}?locale=${newLanguage}&depth=2`
@@ -76,10 +107,27 @@ export const GrantPageHero: React.FC<GrantPageHeroProps> = ({
       const response = await fetch(fetchPath)
       const data = await response.json()
       const headerColour = getHeaderColour(data.pageType, data.grantCard)
-      // TODO: write the headerImageName function logic
-      const headerImgName = getHeaderImgName(data.bgType, headerColour)
       setHeroHeaderImg(`${data.bgType}-${headerColour}`)
       setHeaderTheme(headerColour)
+      setHeroBlock({
+        title: data.heroTitle,
+        subtitle: data.heroSubtitle,
+        badgeText: data.grantCard?.badgeText,
+        badgeType: data.grantCard?.badgeType,
+        heroImage: data.grantCard?.mascot,
+        heroButtons: data.heroButtons?.map((button: { id: number; link: any; }, index: number) => ({
+          id: button.id,
+          type: button.link.type,
+          link: button.link,
+          pillSolid: button.link.pillSolid,
+          url: button.link.url,
+          label: button.link.label,
+          newTab: button.link.newTab,
+          email: button.link.email,
+          reference: button.link.reference,
+        })),
+        heroContact: data.heroContact,
+      })
       
     } catch (error) {
       console.error('Failed to fetch Hero and Grant Card data on Page:', error)
@@ -136,17 +184,29 @@ export const GrantPageHero: React.FC<GrantPageHeroProps> = ({
         <div>
           <div className="hero-buttons">
               {heroBlock?.heroButtons && heroBlock.heroButtons.length > 0 && (
-              heroBlock.heroButtons.map((cta, index) => (
-                  <Link
-                    key={index}
-                    href={cta.link?.url || '#'}
-                    target={cta.link?.newTab ? '_blank' : '_self'}
-                  >
-                    <button className={`pill-button ${cta.buttonPrimary ? 'dark' : ''}`}>
-                      {cta.link?.label}
-                    </button>
-                  </Link>
-                ))
+                heroBlock.heroButtons.map((btn, index) => {
+                  const getHref = () => {
+                    if (!btn.link) return '#'
+                    if (btn.link.type === 'reference') {
+                      return `/${btn.link.reference?.relationTo}/${btn.link.reference?.value?.slug}` || '#'
+                    } else if (btn.link.type === 'email') {
+                      return `mailto:${btn.link.email}` || '#'
+                    } else {
+                      return btn.link.url || '#'
+                    }
+                  }
+                  return (
+                    <Link
+                      key={index}
+                      href={getHref()}
+                      target={btn.link?.newTab ? '_blank' : '_self'}
+                    >
+                      <button className={`pill-button ${btn.link.pillSolid ? 'dark' : ''}`}>
+                        {btn.link?.label}
+                      </button>
+                    </Link>
+                  )
+                })
               )}
           </div>
           <div className="hero-contact">
