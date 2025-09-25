@@ -10,6 +10,7 @@ import { fileURLToPath } from 'url'
 import { Categories } from './collections/Categories'
 // import { Media } from './collections/Media'
 import { MediaCloud } from './collections/MediaCloud'
+import { AssetCloud } from './collections/AssetCloud'
 import { Documents } from './collections/Documents'
 import { Grants } from './collections/Grants'
 import { GrantCards } from './collections/GrantCards'
@@ -101,7 +102,7 @@ export default buildConfig({
     defaultLocale: 'en', // required
     fallback: true, // defaults to true
   },
-  collections: [Grants, GrantCards, Posts, MediaCloud, Documents, Categories, Users],
+  collections: [Grants, GrantCards, Posts, MediaCloud, AssetCloud, Documents, Categories, Users],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [ Homepage, Header, Footer, Navigation, ContactInfo ],
   plugins: [
@@ -109,6 +110,7 @@ export default buildConfig({
     s3Storage({
       collections: {
         mediaCloud: true,
+        assetCloud: true,
         documents: true,
       },
       bucket: process.env.S3_BUCKET || '',

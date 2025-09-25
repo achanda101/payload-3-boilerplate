@@ -9,14 +9,18 @@ import { authenticated } from '../access/authenticated'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
-export const MediaCloud: CollectionConfig = {
-  slug: 'mediaCloud',
+export const AssetCloud: CollectionConfig = {
+  slug: 'assetCloud',
   labels: {
-    singular: 'Image',
-    plural: 'Images'
+    singular: 'Design Asset',
+    plural: 'Design Assets'
   },
-  admin: {
-    group: 'Media'
+  admin: {  
+    group: {
+      name: 'Media',
+      order: '2'
+    },
+    description: 'Upload and manage design assets like logos, mascots, icons, brand illustrations here.',
   },
   access: {
     create: authenticated,
@@ -36,8 +40,6 @@ export const MediaCloud: CollectionConfig = {
     },
   ],
   upload: {
-    // Upload to the public/media directory in Next.js making them publicly accessible even outside of Payload
-    // staticDir: path.resolve(dirname, '../../public/media'),
     adminThumbnail: 'small',
     imageSizes: [
       {

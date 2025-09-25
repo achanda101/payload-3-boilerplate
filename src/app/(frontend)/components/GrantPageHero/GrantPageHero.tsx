@@ -7,7 +7,7 @@ import { useLanguage } from '@/providers/LanguageContext'
 import { useHeaderTheme } from '@/providers/HeaderTheme'
 import { url } from 'inspector'
 
-interface MediaCloud {
+interface AssetCloud {
   id: number;
   alt: string;
   url?: string | null;
@@ -51,7 +51,7 @@ interface HeroProps {
       badgeText?: string | null,
       badgeType?: string | null,
       cardColour?: string | null,
-      mascot?: MediaCloud | null,
+      mascot?: AssetCloud | null,
     },
     grantCardsGrid?: []
   }
@@ -74,7 +74,7 @@ export const GrantPageHero: React.FC<GrantPageHeroProps> = ({
     subtitle?: string | null,
     badgeText?: string | null,
     badgeType?: string | null,
-    heroImage?: MediaCloud | null,
+    heroImage?: AssetCloud | null,
     heroButtons?: {
       id: number;
       link: {

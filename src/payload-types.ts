@@ -71,6 +71,7 @@ export interface Config {
     grantcards: Grantcard;
     posts: Post;
     mediaCloud: MediaCloud;
+    assetCloud: AssetCloud;
     documents: Document;
     categories: Category;
     users: User;
@@ -88,6 +89,7 @@ export interface Config {
     grantcards: GrantcardsSelect<false> | GrantcardsSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
     mediaCloud: MediaCloudSelect<false> | MediaCloudSelect<true>;
+    assetCloud: AssetCloudSelect<false> | AssetCloudSelect<true>;
     documents: DocumentsSelect<false> | DocumentsSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
@@ -281,7 +283,7 @@ export interface Grantcard {
   /**
    * Upload a mascot image for the Grant Card
    */
-  mascot?: (number | null) | MediaCloud;
+  mascot?: (number | null) | AssetCloud;
   grantSpecs?:
     | {
         spec?: string | null;
@@ -320,10 +322,12 @@ export interface Grantcard {
   _status?: ('draft' | 'published') | null;
 }
 /**
+ * Upload and manage design assets like logos, mascots, icons, brand illustrations here.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "mediaCloud".
+ * via the `definition` "assetCloud".
  */
-export interface MediaCloud {
+export interface AssetCloud {
   id: number;
   alt: string;
   caption?: string | null;
@@ -448,6 +452,68 @@ export interface Category {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "mediaCloud".
+ */
+export interface MediaCloud {
+  id: number;
+  alt: string;
+  caption?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+  sizes?: {
+    thumbnail?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    small?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    medium?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    large?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    xlarge?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
@@ -477,6 +543,8 @@ export interface User {
   password?: string | null;
 }
 /**
+ * Upload and manage documents like PDFs, Word files, text files here.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "documents".
  */
@@ -762,6 +830,10 @@ export interface PayloadLockedDocument {
         value: number | MediaCloud;
       } | null)
     | ({
+        relationTo: 'assetCloud';
+        value: number | AssetCloud;
+      } | null)
+    | ({
         relationTo: 'documents';
         value: number | Document;
       } | null)
@@ -985,6 +1057,79 @@ export interface PostsSelect<T extends boolean = true> {
  * via the `definition` "mediaCloud_select".
  */
 export interface MediaCloudSelect<T extends boolean = true> {
+  alt?: T;
+  caption?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+  sizes?:
+    | T
+    | {
+        thumbnail?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        small?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        medium?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        large?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        xlarge?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+      };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "assetCloud_select".
+ */
+export interface AssetCloudSelect<T extends boolean = true> {
   alt?: T;
   caption?: T;
   updatedAt?: T;
@@ -1426,7 +1571,7 @@ export interface Header {
   /**
    * Upload the logo for the header
    */
-  logo?: (number | null) | MediaCloud;
+  logo?: (number | null) | AssetCloud;
   /**
    * Enable or disable the search functionality in the header
    */
@@ -1468,7 +1613,7 @@ export interface Footer {
   /**
    * Upload the logo for the footer
    */
-  logo?: (number | null) | MediaCloud;
+  logo?: (number | null) | AssetCloud;
   newsletterSub?: {
     description?: string | null;
     inputPlaceholder?: string | null;

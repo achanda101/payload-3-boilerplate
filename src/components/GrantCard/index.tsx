@@ -4,7 +4,7 @@ import { ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-interface MediaCloud {
+interface AssetCloud {
   id: number;
   alt: string;
   url?: string | null;
@@ -20,7 +20,7 @@ interface GrantCardProps {
   title: string;
   desc: string;
   cardColour?: string;
-  mascot?: MediaCloud | null;
+  mascot?: AssetCloud | null;
   grantSpecs: {
     id: number
     spec: string

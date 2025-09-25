@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { useLanguage } from '@/providers/LanguageContext'
 import { useHeaderTheme } from '@/providers/HeaderTheme'
 
-interface MediaCloud {
+interface AssetCloud {
   id: number;
   alt: string;
   url?: string | null;
@@ -22,7 +22,7 @@ interface HeroProps {
       title?: string | null,
       subtitle?: string | null,
       headerColour?: string | null,
-      heroImage?: (number | null) | MediaCloud;
+      heroImage?: (number | null) | AssetCloud;
       heroButtons?: {
         id: number;
         buttonPrimary?: boolean,

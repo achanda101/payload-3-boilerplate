@@ -12,11 +12,15 @@ const dirname = path.dirname(filename)
 export const Documents: CollectionConfig = {
   slug: 'documents',
   labels: {
-    singular: 'Document on Cloud',
-    plural: 'Documents on Cloud'
+    singular: 'Document',
+    plural: 'Documents'
   },
   admin: {
-    group: 'Media'
+    group: {
+      name: 'Media',
+      order: '3'
+    },
+    description: 'Upload and manage documents like PDFs, Word files, text files here.',
   },
   access: {
     create: authenticated,
@@ -36,8 +40,6 @@ export const Documents: CollectionConfig = {
     },
   ],
   upload: {
-    // Upload to the public/media directory in Next.js making them publicly accessible even outside of Payload
-    staticDir: path.resolve(dirname, '../../public/media/documents'),
     adminThumbnail: 'small',
     mimeTypes: ['application/pdf', 'application/msword', 'text/plain'],
   },

@@ -201,7 +201,7 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
                 {
                   name: 'mascot',
                   type: 'upload',
-                  relationTo: 'mediaCloud',
+                  relationTo: 'assetCloud',
                   admin: {
                     description: 'Upload a mascot image for the Grant Card',
                   },

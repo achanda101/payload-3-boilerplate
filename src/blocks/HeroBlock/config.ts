@@ -35,7 +35,7 @@ export const HeroBlock: Block = {
     {
       name: 'mascot',
       type: 'upload',
-      relationTo: 'mediaCloud',
+      relationTo: 'assetCloud',
       admin: {
         description: 'Upload a mascot image for the Hero section',
       },

@@ -13,7 +13,7 @@ interface Language {
   label: string;
 }
 
-interface MediaCloud {
+interface AssetCloud {
   id: number;
   alt: string;
   url?: string | null;
@@ -23,7 +23,7 @@ interface MediaCloud {
 
 interface HeaderClientProps {
   data?: {
-    logo?: (number | null) | MediaCloud;
+    logo?: (number | null) | AssetCloud;
     searchEnabled?: boolean | null;
     languages: string[];
   };

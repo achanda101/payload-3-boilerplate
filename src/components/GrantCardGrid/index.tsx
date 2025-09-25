@@ -1,7 +1,7 @@
 import React from 'react'
 import { GrantCard } from '@/components/GrantCard'
 
-interface MediaCloud {
+interface AssetCloud {
   id: number;
   alt: string;
   url?: string | null;
@@ -18,7 +18,7 @@ interface GrantCardData {
   title: string;
   desc: string;
   cardColour?: string;
-  mascot?: MediaCloud | null;
+  mascot?: AssetCloud | null;
   grantSpecs: {
     id: number
     spec: string

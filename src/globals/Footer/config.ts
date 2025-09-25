@@ -36,7 +36,7 @@ export const Footer: GlobalConfig = {
         {
           name: 'logo',
           type: 'upload',
-          relationTo: 'mediaCloud',
+          relationTo: 'assetCloud',
           // required: true,
           admin: {
             description: 'Upload the logo for the footer',
@@ -92,7 +92,7 @@ export const Footer: GlobalConfig = {
               name: 'url',
               label: 'Subscription URL',
               type: 'text',
-              defaultValue: 'https://example.com/subscribe',
+              defaultValue: 'https://list.uafanp.org/subscription/form',
               validate: (val) => {
                   if (!val) return 'External URL is required'
                   const isValidUrl = /^https?:\/\/.+/.test(val)

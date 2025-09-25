@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { useLanguage } from '../../providers/LanguageContext'
 import { set } from 'react-hook-form'
 
-interface MediaCloud {
+interface AssetCloud {
   id: number;
   alt: string;
   url?: string | null;
@@ -16,7 +16,7 @@ interface MediaCloud {
 
 interface FooterClientProps {
   data?: {
-    logo?: (number | null) | MediaCloud;
+    logo?: (number | null) | AssetCloud;
     donateCTA?: {
       heading?: string;
       description?: string;
