@@ -163,7 +163,7 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
         </div>
           <div className="footer-grid-item div-j">
             {/* <form method="post" action="https://list.uafanp.org/subscription/form" style={{display: 'flex'}}> */}
-            <form onSubmit={handleSubscriptionSubmit} style={{display: 'flex'}}>
+            <form onSubmit={handleSubscriptionSubmit} action="https://list.uafanp.org/subscription/form" style={{display: 'flex'}}>
               <input type="email" name="email" placeholder={newsletterData?.inputPlaceholder} ref={emailInputRef} />
               <input id="c41c8" type="checkbox" name="l" defaultChecked value="c41c894d-7563-4c8c-ad30-51cb77907cbf"/>
               <button type='submit' className="pill-button dark">{newsletterData?.buttonText}</button>

@@ -10,14 +10,14 @@ export interface ContextType {
 }
 
 const initialContext: ContextType = {
-  headerTheme: 'blank',
+  headerTheme: 'trans',
   setHeaderTheme: () => null,
 }
 
 const HeaderThemeContext = createContext(initialContext)
 
 export const HeaderThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [headerTheme, setThemeState] = useState<string | null>('')
+  const [headerTheme, setThemeState] = useState<string | null>('trans')
 
   const setHeaderTheme = useCallback((themeToSet: string | null) => {
     setThemeState(themeToSet)

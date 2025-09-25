@@ -1,3 +1,4 @@
+import { default as default_7823a8020c9c4eca50f1f6d1d7bc4a6d } from 'src/fields/radio/RadioWithImage.tsx'
 import { default as default_9099c018665609f4fc43aaebf9fc76b1 } from 'src/blocks/HeroBlock/HeroButtonRowLabel.tsx'
 import { RscEntryLexicalCell as RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
 import { RscEntryLexicalField as RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
@@ -39,6 +40,7 @@ import { default as default_8a7ab0eb7ab5c511aba12e68480bfe5e } from '@/component
 import { S3ClientUploadHandler as S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24 } from '@payloadcms/storage-s3/client'
 
 export const importMap = {
+  "src/fields/radio/RadioWithImage.tsx#default": default_7823a8020c9c4eca50f1f6d1d7bc4a6d,
   "src/blocks/HeroBlock/HeroButtonRowLabel.tsx#default": default_9099c018665609f4fc43aaebf9fc76b1,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalCell": RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalField": RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e,

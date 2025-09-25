@@ -1,6 +1,6 @@
 import type { Metadata } from 'next/types'
 import React, { cache } from 'react'
-import { PageHero } from '../../components/PageHero/PageHero'
+import { GrantPageHero } from '../../components/GrantPageHero/GrantPageHero'
 import { PageContent } from '../../components/PageContent/PageContent'
 
 import { getPayload } from 'payload'
@@ -17,10 +17,15 @@ export default async function Page({ params: paramsPromise }: Args) {
   const { slug = '' } = await paramsPromise
   const page = await queryPageBySlug({ slug })
 
+  console.log('page', page)
+  if (!page) {
+    console.log('No page found')
+  }
+
   // Need to find out the document id using the collection name and slug value
   return (
     <>
-      <PageHero
+      <GrantPageHero
         collection='grants'
         docId={page.id}
       /> 

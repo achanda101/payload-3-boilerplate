@@ -173,8 +173,8 @@ export interface Grant {
   grantCard?: (number | null) | Grantcard;
   heroTitle?: string | null;
   heroSubtitle?: string | null;
-  bgType?: ('wavy_top' | 'wavy_full' | 'trans_wavy_top' | 'blob') | null;
-  buttons?:
+  bgType?: ('wavy_top' | 'wavy_full' | 'center_blob') | null;
+  heroButtons?:
     | {
         link?: {
           type?: ('reference' | 'custom' | 'email') | null;
@@ -202,6 +202,10 @@ export interface Grant {
     label?: string | null;
     email?: string | null;
   };
+  /**
+   * Select grants to feature on the landing page, in the order you want them to appear.
+   */
+  grantCardsGrid?: (number | Grantcard)[] | null;
   contentBlocks?:
     | {
         multicols?:
@@ -838,7 +842,7 @@ export interface GrantsSelect<T extends boolean = true> {
   heroTitle?: T;
   heroSubtitle?: T;
   bgType?: T;
-  buttons?:
+  heroButtons?:
     | T
     | {
         link?:
@@ -862,6 +866,7 @@ export interface GrantsSelect<T extends boolean = true> {
         label?: T;
         email?: T;
       };
+  grantCardsGrid?: T;
   contentBlocks?:
     | T
     | {

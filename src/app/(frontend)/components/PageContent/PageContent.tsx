@@ -69,11 +69,13 @@ export const PageContent: React.FC<PageProps> = ({ data = {} }) => {
         </div>
       )}
       {/* Grant Cards Section */}
-       <div className="page_column_layout gap-6">
-        <GrantCardGrid
-          grantCards={grantCards}
-          showSpecialGrantCard={true}
-        />
+      <div className="page_column_layout gap-6">
+        {grantCards && grantCards.length > 0 && (
+          <GrantCardGrid
+            grantCards={grantCards}
+            showSpecialGrantCard={true}
+          />
+        )}
       </div>
     </div>
 

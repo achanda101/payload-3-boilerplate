@@ -18,58 +18,71 @@ interface MediaCloud {
 
 interface HeroProps {
   data?: {
-    heroBlock?: {
-      title?: string | null,
-      subtitle?: string | null,
-      headerColour?: string | null,
-      heroImage?: (number | null) | MediaCloud;
-      heroButtons?: {
-        id: number;
-        buttonPrimary?: boolean,
-        link?: {
-          type: string | null,
-          newTab?: boolean | null,
-          url?: string | null,
-          label?: string | null
+    heroTitle?: string | null,
+    heroSubtitle?: string | null,
+    pageType?: 'landing' | 'individual',
+    bgType?: string | null,
+    heroButtons?: {
+      id: number;
+      link: {
+        type: string;
+        newTab?: boolean;
+        downloadLink?: boolean;
+        pillSolid?: boolean;
+        pillOutline?: boolean;
+        url?: string;
+        label: string;
+        email?: string;
+        reference?: {
+          relationTo?: string;
+          value: {
+            slug?: string;
+          };
         }
-      }[],
+      }
+    }[],
+    heroContact?: {
+      label?: string | null,
+      email?: string | null
+    },
+    grantCard?: {
+      id: number;
       badgeText?: string | null,
       badgeType?: string | null,
-      heroContact?: {
-        label?: string | null,
-        email?: string | null
-      }
-    }
+      cardColour?: string | null,
+      mascot?: MediaCloud | null,
+    },
+    grantCardsGrid?: []
   }
 }
 
-interface PageHeroProps {
+interface GrantPageHeroProps {
   collection: string;
   docId: number;
 }
 
-export const PageHero: React.FC<PageHeroProps> = ({ 
+export const GrantPageHero: React.FC<GrantPageHeroProps> = ({ 
   collection,
   docId
  }) => {
   const { selectedLanguage } = useLanguage()
   const { setHeaderTheme } = useHeaderTheme()
-  const [ heroBlock, setHeroBlock ] = useState<NonNullable<HeroProps[ 'data' ]>[ 'heroBlock' ]>({})
-  const [ heroHeaderImg, setHeroHeaderImg ] = useState('grants-wavy-header-blank')
+  const [ heroHeaderImg, setHeroHeaderImg ] = useState('wavy_top-trans')
 
   const handleLanguageChange = useCallback(async (newLanguage: string) => {
-    const fetchPath = `/api/${collection}/${docId}?locale=${newLanguage}&depth=1`
+    const fetchPath = `/api/${collection}/${docId}?locale=${newLanguage}&depth=2`
     
     try {
       const response = await fetch(fetchPath)
       const data = await response.json()
-      const headerColour = data?.heroBlock?.[ 0 ]?.headerColour || ''
-      setHeroBlock(data?.heroBlock?.[ 0 ] || {})
-      setHeroHeaderImg(`grants-wavy-header-${headerColour}`)
-      setHeaderTheme(data.heroBlock?.[ 0 ].headerColour)
+      const headerColour = getHeaderColour(data.pageType, data.grantCard)
+      // TODO: write the headerImageName function logic
+      const headerImgName = getHeaderImgName(data.bgType, headerColour)
+      setHeroHeaderImg(`${data.bgType}-${headerColour}`)
+      setHeaderTheme(headerColour)
       
     } catch (error) {
-      console.error('Failed to fetch Hero Block data on Page:', error)
+      console.error('Failed to fetch Hero and Grant Card data on Page:', error)
     }
   }, [collection, docId, setHeaderTheme])
 
@@ -150,3 +163,10 @@ export const PageHero: React.FC<PageHeroProps> = ({
   )
 }
 
+
+const getHeaderColour = (pageType: 'landing' | 'individual', grantCard: {}) => {
+  if (pageType === 'individual' && grantCard && typeof grantCard === 'object' && 'cardColour' in grantCard) {
+    return `${(grantCard as { cardColour?: string | null }).cardColour}`.trim() || 'trans'
+  }
+  return 'trans'
+}

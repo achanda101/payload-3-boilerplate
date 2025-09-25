@@ -3,9 +3,7 @@ import { link } from "@/fields/link"
 
 import { authenticated } from '@/access/authenticated'
 import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
-import { canUpdateUser } from '@/access/canUpdateUser'
 
-import { HeroBlock } from "@/blocks/HeroBlock/config"
 import { MultiColumnInfoBlock } from '@/blocks/MultiColumnInfoBlock/config'
 import { revalidateGrant } from './hooks/revalidateGrant'
 import { slugField } from '@/fields/slug'
@@ -142,14 +140,20 @@ export const Grants: CollectionConfig<'grants'> = {
           label: 'Hero Background Design Type',
           type: 'radio',
           options: [
-            { label: 'Coloured Wavy Top', value: 'wavy_top' },
-            { label: 'Coloured Wavy Fullscreen', value: 'wavy_full' },
-            { label: 'Transparent Wavy Top', value: 'trans_wavy_top' },
-            { label: 'Coloured Blob', value: 'blob'}
-          ]
+            { label: 'Wavy Top', value: 'wavy_top' },
+            { label: 'Wavy Fullscreen', value: 'wavy_full' },
+            { label: 'Center Blob', value: 'center_blob' }
+          ],
+          admin: {
+            components: {
+              Field: {
+                path: 'src/fields/radio/RadioWithImage.tsx',
+              }
+            }
+          },
         },
         {
-          name: 'buttons',
+          name: 'heroButtons',
           labels: {
             singular: 'Hero Button',
             plural: 'Hero Buttons'
@@ -162,6 +166,7 @@ export const Grants: CollectionConfig<'grants'> = {
             }),
           ],
           admin: {
+            disableListColumn: true,
             components: {
               RowLabel: {
                 path: 'src/blocks/HeroBlock/HeroButtonRowLabel.tsx',
@@ -183,8 +188,24 @@ export const Grants: CollectionConfig<'grants'> = {
               type: 'email',
             }
           ],
+          admin: {
+            disableListColumn: true,
+          }
         },
       ]
+    },
+    {
+      name: 'grantCardsGrid',
+      label: 'Grant Cards Grid',
+      type: 'relationship',
+      relationTo: 'grantcards',
+      hasMany: true,
+      admin: {
+        description: 'Select grants to feature on the landing page, in the order you want them to appear.',
+        isSortable: true,
+        condition: ({ pageType }) => pageType === 'landing' || false,
+        disableListColumn: true,
+      }
     },
     {
       type: 'blocks',
@@ -196,7 +217,8 @@ export const Grants: CollectionConfig<'grants'> = {
       },
       admin: {
         initCollapsed: true,
-        isSortable: true
+        isSortable: true,
+        disableListColumn: true,
       }
     },
     {
@@ -206,7 +228,6 @@ export const Grants: CollectionConfig<'grants'> = {
         date: {
           pickerAppearance: 'dayAndTime',
         },
-        position: 'sidebar'
       },
       hooks: {
         beforeChange: [
@@ -224,7 +245,7 @@ export const Grants: CollectionConfig<'grants'> = {
   versions: {
     drafts: {
       autosave: {
-        interval: 2000, // Changed from 100ms to 2000ms to prevent flickering
+        interval: 1500, // Changed from 100ms to 1500ms to prevent flickering
       },
     },
     maxPerDoc: 50,
