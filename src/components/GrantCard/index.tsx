@@ -114,7 +114,7 @@ export const GrantCard: React.FC<GrantCardProps> = ({
               </div>
             )}
 
-            <ButtonArray btnArray={cardButtons} />
+            <ButtonArray btnArray={cardButtons} colStackOnMobile={false} />
 
             <hr/>
           </div>
@@ -188,7 +188,7 @@ export const GrantCard: React.FC<GrantCardProps> = ({
                 </div>
               )}
 
-              <ButtonArray btnArray={cardButtons} />
+              <ButtonArray btnArray={cardButtons} colStackOnMobile={false} />
 
 
             {/* Mobile Read Less Button - Only show when expanded */}
