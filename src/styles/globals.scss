@@ -38,6 +38,7 @@
 @import 'reset';
 @import 'variables';
 @import 'mixins';
+@import 'buttons';
 @import 'hero';
 @import 'secondarycta';
 @import 'infoblock';
@@ -459,45 +460,6 @@ hr {
       text-align: center;
     }
   }
-}
-
-button.pill-button {
-    font-family: $font-body;
-    text-transform: capitalize;
-    border: 1px solid $color-body-text;
-    border-radius: $radius-2xl;
-    padding-inline: calc($spacing-xl);
-    padding-block: calc($spacing-lg/2);
-    width: fit-content;
-    text-transform: capitalize;
-    font-size: $font-size-button-mob;
-    font-weight: 500;
-    @media (min-width: $tablet) {
-      font-size: $font-size-button;
-    }
-    transition: background-color 100ms ease-in-out;
-    &:hover {
-        @media (hover: hover) {
-            cursor: pointer;
-            background-color: $color-body-text;
-            color: white;
-        }
-    }
-
-    &.bold {
-        font-weight: 700;
-    }
-
-    &.dark {
-        background-color: $color-body-text;
-        color: white;
-
-        &:hover {
-            @media (hover: hover) {
-                opacity: 80%;
-            }
-        }
-    }
 }
 
 .social-icon {

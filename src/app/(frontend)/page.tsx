@@ -30,12 +30,7 @@ export default function Page() {
         <main className="flex flex-col gap-[2.5rem] md:gap-[5rem]">
           <PageContent />
         </main>
-      
-        {process.env.NODE_ENV === 'development' && (
-          <div className="page_column_layout gap-6">
-            <ColumnIndicators />
-          </div>
-        )}
+
       </div>
     </>
   )

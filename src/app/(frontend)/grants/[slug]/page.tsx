@@ -1,7 +1,6 @@
 import type { Metadata } from 'next/types'
 import React, { cache } from 'react'
-import { GrantPageHero } from '../../components/GrantPageHero/GrantPageHero'
-import { PageContent } from '../../components/PageContent/PageContent'
+import { GrantPage } from '../../components/GrantPage/GrantPage'
 
 import { getPayload } from 'payload'
 import { draftMode } from 'next/headers'
@@ -20,7 +19,7 @@ export default async function Page({ params: paramsPromise }: Args) {
   // Need to find out the document id using the collection name and slug value
   return (
     <>
-      <GrantPageHero
+      <GrantPage
         collection='grants'
         docId={page.id}
       /> 

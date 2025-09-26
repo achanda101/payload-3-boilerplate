@@ -7,42 +7,31 @@ import { useLanguage } from '@/providers/LanguageContext'
 import { SecondaryCTA } from './components/SecondaryCTA'
 import { GrantCardGrid } from '@/components/GrantCardGrid'
 import { ColumnIndicators } from '../ColumnIndicators'
+import { set } from 'react-hook-form'
 
 interface PageProps {
   data?: {
-    secondaryCTA?: {
-      id: number,
-      ctaTitle?: string | '',
-      ctaSubtitle?: string | '',
-      ctaButton?: {
-        id: number,
-        buttonPrimary: boolean,
-        link: {
-          newTab: boolean,
-          url: string,
-          label: string
-        }
-      }[],
-    }[],
+    contentBlocks: [
+      { blockType: string } 
+    ],
   }
 }
 
 export const PageContent: React.FC<PageProps> = ({ data = {} }) => {
   const { selectedLanguage } = useLanguage()
-  const [ secCTAData, setSecCTAData ] = useState<NonNullable<PageProps[ 'data' ]>[ 'secondaryCTA' ]>([])
-  const [ grantCards, setGrantCards ] = useState([])
+  const [ contentBlocks, setContentBlocks ] = useState(data.contentBlocks || [])
 
   const handleLanguageChange = async (newLanguage: string) => {
     try {
       const response = await fetch(`/api/globals/homepage?locale=${newLanguage}&depth=2`)
-      const data = await response.json()
-      setSecCTAData(data?.secondaryCTA || [])
-
-      const grantCardsData = data.grantCards
-      setGrantCards(grantCardsData || [])
+      const responseData = await response.json()
+      
+      if (responseData?.contentBlocks?.length > 0) {
+        setContentBlocks(responseData.contentBlocks)
+      }
       
     } catch (error) {
-      console.error('Failed to fetch Secondary CTA Section data:', error)
+      console.error('Failed to fetch Content Blocks data:', error)
     }
   }
   
@@ -53,30 +42,41 @@ export const PageContent: React.FC<PageProps> = ({ data = {} }) => {
   
   return (
     <div className='frame_layout'>
-      {secCTAData && secCTAData.length > 0 && (
-        secCTAData.map((cta, index) => (
-          <SecondaryCTA
-            key={index}
-            title={cta?.ctaTitle || ''}
-            subtitle={cta?.ctaSubtitle || ''}
-            ctaButton={cta?.ctaButton || []}
-            />
-        ))
-      )}
-      {process.env.NODE_ENV === 'development' && (
-        <div className="page_column_layout gap-6">
-          <ColumnIndicators />
-        </div>
-      )}
-      {/* Grant Cards Section */}
-      <div className="page_column_layout gap-6">
-        {grantCards && grantCards.length > 0 && (
-          <GrantCardGrid
-            grantCards={grantCards}
-            showSpecialGrantCard={true}
-          />
-        )}
-      </div>
+      {contentBlocks && contentBlocks.length > 0 && contentBlocks.map((block, index) => {
+        if (block.blockType === 'secondarycta') {
+          return (
+            <React.Fragment key={index}>
+              <SecondaryCTA
+                title={(block as any).ctaTitle || ''}
+                subtitle={(block as any).ctaSubtitle || ''}
+                ctaButton={(block as any).ctaButton || []}
+              />
+              {process.env.NODE_ENV === 'development' && (
+                <div className="page_column_layout gap-6">
+                  <ColumnIndicators />
+                </div>
+              )}
+            </React.Fragment>
+          )
+        }
+        if (block.blockType === 'grantCardGridBlock') {
+          return (
+            <React.Fragment key={index}>
+              <div className="page_column_layout gap-6">
+                <GrantCardGrid
+                  grantCards={(block as any).grantCardGrid || []}
+                />
+              </div>
+              {process.env.NODE_ENV === 'development' && (
+                <div className="page_column_layout gap-6">
+                  <ColumnIndicators />
+                </div>
+              )}
+            </React.Fragment>
+          )
+        }
+      })}
+      
     </div>
 
   )

@@ -15,10 +15,10 @@ import {
 export const MultiColumnInfoBlock: Block = {
   slug: 'mcolInfoBlock',
   labels: {
-    singular: 'Multiple Column Info Block',
-    plural: 'Multiple Column Info Blocks'
+    singular: 'Multi-Column Info Block',
+    plural: 'Multi-Column Info Blocks'
   },
-  imageURL: '/collection_icons/multi-column-info-block-icon.png',
+  imageURL: '/block_icons/multi-column-info-block-icon.png',
   fields: [
     {
       name: 'multicols',

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Button } from '@/components/ui/button';
 import { ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ButtonArray } from '@/components/ButtonArray';
 
 interface AssetCloud {
   id: number;
@@ -114,33 +114,7 @@ export const GrantCard: React.FC<GrantCardProps> = ({
               </div>
             )}
 
-            <div className='flex items-center justify-center gap-[0.5rem]'>
-            
-              {cardButtons?.map((button, index) => {
-                const getHref = () => {
-                  if (!button.link) return '#'
-                  if (button.link.type === 'reference') {
-                    return `/${button.link.reference?.relationTo}/${button.link.reference?.value?.slug}` || '#'
-                  } else if (button.link.type === 'email') {
-                    return `mailto:${button.link.email}` || '#'
-                  } else {
-                    return button.link.url || '#'
-                  }
-                }
-                return (
-                  <Link
-                    key={index}
-                    href={getHref()}
-                    target={button.link?.newTab ? '_blank' : '_self'}
-                  >
-                    <button className={`pill-button ${button.link.pillSolid ? 'dark' : ''}`}>
-                      {button.link.label}
-                    </button>
-                  </Link>
-                )
-              })}
-
-            </div>
+            <ButtonArray btnArray={cardButtons} />
 
             <hr/>
           </div>
@@ -214,31 +188,7 @@ export const GrantCard: React.FC<GrantCardProps> = ({
                 </div>
               )}
 
-            <div className='flex items-center justify-center gap-[0.5rem] mt-[1.2rem]'>
-              {cardButtons?.map((button, index) => {
-                const getHref = () => {
-                  if (!button.link) return '#'
-                  if (button.link.type === 'reference') {
-                    return `/${button.link.reference?.relationTo}/${button.link.reference?.value?.slug}` || '#'
-                  } else if (button.link.type === 'email') {
-                    return `mailto:${button.link.email}` || '#'
-                  } else {
-                    return button.link.url || '#'
-                  }
-                }
-                return (
-                  <Link
-                    key={index}
-                    href={getHref()}
-                    target={button.link?.newTab ? '_blank' : '_self'}
-                  >
-                    <button className={`pill-button ${button.link.pillSolid ? 'dark' : ''}`}>
-                      {button.link.label}
-                    </button>
-                  </Link>
-                )
-              })}
-            </div>
+              <ButtonArray btnArray={cardButtons} />
 
 
             {/* Mobile Read Less Button - Only show when expanded */}

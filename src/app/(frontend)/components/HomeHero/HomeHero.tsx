@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useLanguage } from '@/providers/LanguageContext'
 import { useHeaderTheme } from '@/providers/HeaderTheme'
+import { ButtonArray } from '@/components/ButtonArray'
 
 interface HeroProps {
   data?: {
@@ -13,12 +14,21 @@ interface HeroProps {
       heroSubtitle?: string | null,
       ctaButton?: {
         id: number,
-        buttonPrimary?: boolean,
-        link?: {
-          type: string | null,
-          newTab?: boolean | null,
-          url?: string | null,
-          label?: string | null
+        link: {
+          type: string;
+          newTab?: boolean;
+          downloadLink?: boolean;
+          pillSolid?: boolean;
+          pillOutline?: boolean;
+          url?: string;
+          label: string;
+          email?: string;
+          reference?: {
+            relationTo?: string;
+            value: {
+              slug?: string;
+            };
+          }
         }
       }[],
    }
@@ -71,23 +81,11 @@ export const HomeHero: React.FC<HeroProps> = ({ data = {} }) => {
         className="mobile-image"
         priority
       />
-      <div className="hero-content">
-        <h2 style={{ whiteSpace: 'pre-line' }}>{heroData?.heroTitle}</h2>
-        <p style={{ whiteSpace: 'pre-line' }}>{heroData?.heroSubtitle}</p>
-        <div className="hero-buttons">
-          {heroData?.ctaButton && heroData.ctaButton.length > 0 && (
-          heroData.ctaButton.map((cta, index) => (
-              <Link
-                key={index}
-                href={cta.link?.url || '#'}
-                target={cta.link?.newTab ? '_blank' : '_self'}
-              >
-                <button className={`pill-button ${cta.buttonPrimary ? 'dark' : ''}`}>
-                  {cta.link?.label}
-                </button>
-              </Link>
-            ))
-          )}
+      <div className="hero-container">
+        <div className="hero-content">
+          <h2 style={{ whiteSpace: 'pre-line' }}>{heroData?.heroTitle}</h2>
+          <p style={{ whiteSpace: 'pre-line' }}>{heroData?.heroSubtitle}</p>
+          <ButtonArray btnArray={heroData?.ctaButton || []} colStackOnMobile={true} />
         </div>
       </div>
       

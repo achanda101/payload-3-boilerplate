@@ -28,7 +28,7 @@ export const Grants: CollectionConfig<'grants'> = {
   },
   admin: {
     group: 'Content',
-    defaultColumns: ['title', 'updatedAt', '_status'],
+    defaultColumns: ['title', 'pageType', 'grantCard', 'bgType'],
     livePreview: {
       url: ({ data }) => {
         const path = generatePreviewPath({

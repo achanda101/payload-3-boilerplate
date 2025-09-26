@@ -7,7 +7,7 @@ export const HeroBlock: Block = {
     singular: 'Hero Block',
     plural: 'Hero Blocks'
   },
-  imageURL: '/collection_icons/hero-block-icon.png',
+  imageURL: '/block_icons/hero-block-icon.png',
   fields: [
     {
       type: 'row',

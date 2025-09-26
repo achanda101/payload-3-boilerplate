@@ -1,15 +1,27 @@
 import React from 'react';
 import Link from 'next/link'
+import { ButtonArray } from '@/components/ButtonArray';
 
 interface SecondaryCTAProps {
   title: string;
   subtitle: string;
   ctaButton: {
-    buttonPrimary: boolean;
+    id: number,
     link: {
-      newTab: boolean;
-      url: string;
+      type: string;
+      newTab?: boolean;
+      downloadLink?: boolean;
+      pillSolid?: boolean;
+      pillOutline?: boolean;
+      url?: string;
       label: string;
+      email?: string;
+      reference?: {
+        relationTo?: string;
+        value: {
+          slug?: string;
+        };
+      }
     }
   }[];
 }
@@ -25,7 +37,9 @@ export const SecondaryCTA: React.FC<SecondaryCTAProps> = ({
         <h3 style={{ whiteSpace: 'pre-line' }}>{title}</h3>
         <p style={{ whiteSpace: 'pre-line' }}>{subtitle}</p>
       </div>
-      <div className="secondaryCTA_buttons">
+      <ButtonArray btnArray={ctaButton} colStackOnMobile={true} />
+
+      {/* <div className="secondaryCTA_buttons">
         {ctaButton && ctaButton.length > 0 && (
         ctaButton.map((cta, index) => (
             <Link
@@ -39,7 +53,7 @@ export const SecondaryCTA: React.FC<SecondaryCTAProps> = ({
             </Link>
           ))
         )}
-      </div>
+      </div> */}
     </div>
   )
 }

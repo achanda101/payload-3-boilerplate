@@ -1517,47 +1517,54 @@ export interface Homepage {
         }[]
       | null;
   };
-  secondaryCTA?:
-    | {
-        ctaTitle?: string | null;
-        ctaSubtitle?: string | null;
-        contact?: {
-          label?: string | null;
-          email?: string | null;
-        };
-        ctaButton?:
-          | {
-              link?: {
-                type?: ('reference' | 'custom' | 'email') | null;
-                newTab?: boolean | null;
-                downloadLink?: boolean | null;
-                pillSolid?: boolean | null;
-                pillOutline?: boolean | null;
-                reference?:
-                  | ({
-                      relationTo: 'grants';
-                      value: number | Grant;
-                    } | null)
-                  | ({
-                      relationTo: 'posts';
-                      value: number | Post;
-                    } | null);
-                url?: string | null;
-                email?: string | null;
-                label?: string | null;
-              };
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'secondarycta';
-      }[]
+  contentBlocks?:
+    | (
+        | {
+            ctaTitle?: string | null;
+            ctaSubtitle?: string | null;
+            contact?: {
+              label?: string | null;
+              email?: string | null;
+            };
+            ctaButton?:
+              | {
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'secondarycta';
+          }
+        | {
+            /**
+             * Select Grant Cards in the order you want them to appear.
+             */
+            grantCardGrid?: (number | Grantcard)[] | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'grantCardGridBlock';
+          }
+      )[]
     | null;
-  /**
-   * Select grants to feature on the homepage in the order you want them to appear.
-   */
-  grantCards?: (number | Grantcard)[] | null;
   _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1748,7 +1755,7 @@ export interface HomepageSelect<T extends boolean = true> {
               id?: T;
             };
       };
-  secondaryCTA?:
+  contentBlocks?:
     | T
     | {
         secondarycta?:
@@ -1783,8 +1790,14 @@ export interface HomepageSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        grantCardGridBlock?:
+          | T
+          | {
+              grantCardGrid?: T;
+              id?: T;
+              blockName?: T;
+            };
       };
-  grantCards?: T;
   _status?: T;
   updatedAt?: T;
   createdAt?: T;

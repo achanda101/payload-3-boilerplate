@@ -5,6 +5,7 @@ import { canUpdateUser } from '@/access/canUpdateUser'
 import { revalidateHomepage } from "./hooks/revalidateHomepage";
 import { link } from '@/fields/link'
 import { SecondaryCTA } from "@/blocks/SecondaryCTA/config";
+import { GrantCardGridBlock } from "@/blocks/GrantCardGridBlock/config";
 
 export const Homepage: GlobalConfig = {
   slug: 'homepage',
@@ -79,29 +80,29 @@ export const Homepage: GlobalConfig = {
     },
     {
       type: 'blocks',
-      name: 'secondaryCTA',
-      label: 'Call-to-Action Blocks',
-      blocks: [ SecondaryCTA ],
+      name: 'contentBlocks',
+      label: 'Content Blocks',
+      blocks: [ SecondaryCTA, GrantCardGridBlock ],
       labels: {
-        singular: 'A Call-to-Action Block',
-        plural: 'Call-to-Action Blocks'
+        singular: 'A Content Block',
+        plural: 'Content Blocks'
       },
       admin: {
         initCollapsed: true,
         isSortable: true,
       },
     },
-    {
-      name: 'grantCards',
-      label: 'Grant Cards',
-      type: 'relationship',
-      relationTo: 'grantcards',
-      hasMany: true,
-      admin: {
-        description: 'Select grants to feature on the homepage in the order you want them to appear.',
-        isSortable: true,
-      },
-    },
+    // {
+    //   name: 'grantCards',
+    //   label: 'Grant Cards',
+    //   type: 'relationship',
+    //   relationTo: 'grantcards',
+    //   hasMany: true,
+    //   admin: {
+    //     description: 'Select grants to feature on the homepage in the order you want them to appear.',
+    //     isSortable: true,
+    //   },
+    // },
   ],
   versions: {
     drafts: {
