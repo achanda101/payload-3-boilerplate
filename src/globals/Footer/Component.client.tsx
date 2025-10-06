@@ -115,7 +115,7 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
               throw new Error(errorData.message || 'Subscription failed');
           }
       } catch (error) {
-          setSubscribeMsg(error.message || 'An error occurred. Please try again.');
+          setSubscribeMsg(`Error message:${error.message}. ${email} subscription failed.` || 'An error occurred. Please try again.');
       }
 
       setShowModal(true)
