@@ -49,7 +49,7 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
   const [ contactInfo, setContactInfo ] = useState<{ emails?: Array<{ email?: string; label?: string }> }>({})
   const [ smLinks, setSmLinks ] = useState<NonNullable<FooterClientProps[ 'data' ]>[ 'smLinksGroup' ]>({ smLinks: [] })
   const [ showModal, setShowModal ] = useState(false)
-  const [ subscribedEmail, setSubscribedEmail ] = useState('')
+  const [ subscribeMsg, setSubscribeMsg ] = useState('')
   const emailInputRef = useRef<HTMLInputElement>(null)
   
   const handleLanguageChange = async (newLanguage: string) => {
@@ -87,14 +87,37 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
     handleLanguageChange(selectedLanguage)
   }, [ selectedLanguage ])
 
-  const handleSubscriptionSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubscriptionSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
     const email = formData.get('email') as string
     
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (email && emailRegex.test(email)) {
-      setSubscribedEmail(email)
+      // Make call to add email to the subscription list
+      try {
+          const response = await fetch('https://list.uafanp.org/api/public/subscription', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                email: email,     
+                // TODO: put the list UUID in env vars
+                list_uuids: ['c41c894d-7563-4c8c-ad30-51cb77907cbf']
+              })
+          });
+
+        if (response.ok) {
+          setSubscribeMsg(`${email} successfully subscribed! You should be receiving newsletters from UAF A&P in your email.`)
+          } else {
+              const errorData = await response.json();
+              throw new Error(errorData.message || 'Subscription failed');
+          }
+      } catch (error) {
+          setSubscribeMsg(error.message || 'An error occurred. Please try again.');
+      }
+
       setShowModal(true)
     }
   }
@@ -381,8 +404,7 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
             maxWidth: '400px',
             width: '90%'
           }}>
-            <h6 style={{ marginBottom: '1rem' }}>Thank you!</h6>
-            <p>{subscribedEmail} is now subscribed to our newsletter.</p>
+            <p>{subscribeMsg}</p>
             <button 
               onClick={() => {
                 setShowModal(false)

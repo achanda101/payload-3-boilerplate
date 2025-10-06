@@ -1,4 +1,5 @@
 import { Block } from "payload";
+import { populateGrantCards } from "./hooks/populateGrantCards";
 
 export const GrantCardGridBlock: Block = {
   slug: 'grantCardGridBlock',
@@ -13,8 +14,16 @@ export const GrantCardGridBlock: Block = {
       type: 'relationship',
       relationTo: 'grantcards',
       hasMany: true,
+      filterOptions: {
+        activePeriod: {
+          not_equals: 'closed'
+        }
+      },
       admin: {
-        description: 'Select Grant Cards in the order you want them to appear.',
+        description: 'Grant Cards to display. Pre-populated with all active grants (excludes closed grants). You can reorder or remove cards as needed.',
+      },
+      hooks: {
+        afterRead: [populateGrantCards],
       }
     }
   ]

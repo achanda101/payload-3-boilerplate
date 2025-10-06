@@ -92,17 +92,6 @@ export const Homepage: GlobalConfig = {
         isSortable: true,
       },
     },
-    // {
-    //   name: 'grantCards',
-    //   label: 'Grant Cards',
-    //   type: 'relationship',
-    //   relationTo: 'grantcards',
-    //   hasMany: true,
-    //   admin: {
-    //     description: 'Select grants to feature on the homepage in the order you want them to appear.',
-    //     isSortable: true,
-    //   },
-    // },
   ],
   versions: {
     drafts: {

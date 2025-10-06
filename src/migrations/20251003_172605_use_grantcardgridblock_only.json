@@ -1,5 +1,5 @@
 {
-  "id": "86e00fad-d6b2-4a65-8544-2395098dbccd",
+  "id": "c14b96c1-ed39-474f-bd11-9641875c5990",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -496,6 +496,109 @@
         "grants_blocks_mcol_info_block_parent_id_fk": {
           "name": "grants_blocks_mcol_info_block_parent_id_fk",
           "tableFrom": "grants_blocks_mcol_info_block",
+          "tableTo": "grants",
+          "columnsFrom": [
+            "_parent_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.grants_blocks_grant_card_grid_block": {
+      "name": "grants_blocks_grant_card_grid_block",
+      "schema": "",
+      "columns": {
+        "_order": {
+          "name": "_order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "_parent_id": {
+          "name": "_parent_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "_path": {
+          "name": "_path",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "varchar",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "block_name": {
+          "name": "block_name",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "grants_blocks_grant_card_grid_block_order_idx": {
+          "name": "grants_blocks_grant_card_grid_block_order_idx",
+          "columns": [
+            {
+              "expression": "_order",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "grants_blocks_grant_card_grid_block_parent_id_idx": {
+          "name": "grants_blocks_grant_card_grid_block_parent_id_idx",
+          "columns": [
+            {
+              "expression": "_parent_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "grants_blocks_grant_card_grid_block_path_idx": {
+          "name": "grants_blocks_grant_card_grid_block_path_idx",
+          "columns": [
+            {
+              "expression": "_path",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "grants_blocks_grant_card_grid_block_parent_id_fk": {
+          "name": "grants_blocks_grant_card_grid_block_parent_id_fk",
+          "tableFrom": "grants_blocks_grant_card_grid_block",
           "tableTo": "grants",
           "columnsFrom": [
             "_parent_id"
@@ -1506,6 +1609,115 @@
         "_grants_v_blocks_mcol_info_block_parent_id_fk": {
           "name": "_grants_v_blocks_mcol_info_block_parent_id_fk",
           "tableFrom": "_grants_v_blocks_mcol_info_block",
+          "tableTo": "_grants_v",
+          "columnsFrom": [
+            "_parent_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public._grants_v_blocks_grant_card_grid_block": {
+      "name": "_grants_v_blocks_grant_card_grid_block",
+      "schema": "",
+      "columns": {
+        "_order": {
+          "name": "_order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "_parent_id": {
+          "name": "_parent_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "_path": {
+          "name": "_path",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "_uuid": {
+          "name": "_uuid",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "block_name": {
+          "name": "block_name",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "_grants_v_blocks_grant_card_grid_block_order_idx": {
+          "name": "_grants_v_blocks_grant_card_grid_block_order_idx",
+          "columns": [
+            {
+              "expression": "_order",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "_grants_v_blocks_grant_card_grid_block_parent_id_idx": {
+          "name": "_grants_v_blocks_grant_card_grid_block_parent_id_idx",
+          "columns": [
+            {
+              "expression": "_parent_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "_grants_v_blocks_grant_card_grid_block_path_idx": {
+          "name": "_grants_v_blocks_grant_card_grid_block_path_idx",
+          "columns": [
+            {
+              "expression": "_path",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "_grants_v_blocks_grant_card_grid_block_parent_id_fk": {
+          "name": "_grants_v_blocks_grant_card_grid_block_parent_id_fk",
+          "tableFrom": "_grants_v_blocks_grant_card_grid_block",
           "tableTo": "_grants_v",
           "columnsFrom": [
             "_parent_id"

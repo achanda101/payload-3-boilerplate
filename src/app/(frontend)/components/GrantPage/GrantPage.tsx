@@ -6,6 +6,7 @@ import { useLanguage } from '@/providers/LanguageContext'
 import { useHeaderTheme } from '@/providers/HeaderTheme'
 import { ButtonArray } from '@/components/ButtonArray'
 import { GrantCardGrid } from '@/components/GrantCardGrid'
+import { ColumnIndicators } from '../ColumnIndicators'
 
 interface AssetCloud {
   id: number;
@@ -60,7 +61,10 @@ export const GrantPage: React.FC<GrantPageProps> = ({
       email?: string | null
     },
   }>({})
-  const [ grantCardGrid, setGrantCardGrid ] = useState([])
+  const [ contentBlocks, setContentBlocks ] = useState<Array<{
+    blockType: string;
+    [key: string]: any;
+  }>>([])
 
   const handleLanguageChange = useCallback(async (newLanguage: string) => {
     const fetchPath = `/api/${collection}/${docId}?locale=${newLanguage}&depth=2`
@@ -91,16 +95,17 @@ export const GrantPage: React.FC<GrantPageProps> = ({
         })),
         heroContact: data.heroContact,
       })
-      setGrantCardGrid(data.grantCardsGrid || [])
+      if (data?.contentBlocks?.length > 0) {
+        setContentBlocks(data.contentBlocks)
+      }
       
     } catch (error) {
-      console.error('Failed to fetch Hero and Grant Card data on Page:', error)
+      console.error('Failed to fetch Hero and Content Blocks data on Page:', error)
     }
   }, [collection, docId, setHeaderTheme])
 
 
   useEffect(() => {
-      // Any side effects based on selectedLanguage can be handled here
       handleLanguageChange(selectedLanguage)
     }, [ selectedLanguage, handleLanguageChange ])
 
@@ -165,11 +170,24 @@ export const GrantPage: React.FC<GrantPageProps> = ({
       <div className="w-full px-[1.25rem] lg:px-[5rem]">
         
         <div className='frame_layout'>
-          <div className="page_column_layout gap-6">
-            <GrantCardGrid
-              grantCards={grantCardGrid}
-            />
-          </div>
+          {contentBlocks && contentBlocks.length > 0 && contentBlocks.map((block, index) => {
+              if (block.blockType === 'grantCardGridBlock') {
+                return (
+                  <React.Fragment key={index}>
+                    <div className="page_column_layout gap-6">
+                      <GrantCardGrid
+                        grantCards={(block as any) || []}
+                      />
+                    </div>
+                    {process.env.NODE_ENV === 'development' && (
+                      <div className="page_column_layout gap-6">
+                        <ColumnIndicators />
+                      </div>
+                    )}
+                  </React.Fragment>
+                )
+              }
+            })}
         </div>
         
       </div>

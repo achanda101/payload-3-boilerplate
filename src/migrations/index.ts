@@ -1,5 +1,5 @@
 import * as migration_20250925_225645_fresh_prod from './20250925_225645_fresh_prod';
-import * as migration_20250926_194500_restructure_page_content from './20250926_194500_restructure_page_content';
+import * as migration_20251003_172605_use_grantcardgridblock_only from './20251003_172605_use_grantcardgridblock_only';
 
 export const migrations = [
   {
@@ -8,8 +8,8 @@ export const migrations = [
     name: '20250925_225645_fresh_prod',
   },
   {
-    up: migration_20250926_194500_restructure_page_content.up,
-    down: migration_20250926_194500_restructure_page_content.down,
-    name: '20250926_194500_restructure_page_content'
+    up: migration_20251003_172605_use_grantcardgridblock_only.up,
+    down: migration_20251003_172605_use_grantcardgridblock_only.down,
+    name: '20251003_172605_use_grantcardgridblock_only'
   },
 ];

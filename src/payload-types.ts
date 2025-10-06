@@ -204,57 +204,64 @@ export interface Grant {
     label?: string | null;
     email?: string | null;
   };
-  /**
-   * Select grants to feature on the landing page, in the order you want them to appear.
-   */
-  grantCardsGrid?: (number | Grantcard)[] | null;
   contentBlocks?:
-    | {
-        multicols?:
-          | {
-              title?: string | null;
-              colContent?: {
-                root: {
-                  type: string;
-                  children: {
-                    type: string;
-                    version: number;
+    | (
+        | {
+            multicols?:
+              | {
+                  title?: string | null;
+                  colContent?: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: string;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
                     [k: string]: unknown;
-                  }[];
-                  direction: ('ltr' | 'rtl') | null;
-                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                  indent: number;
-                  version: number;
-                };
-                [k: string]: unknown;
-              } | null;
-              addLink?: boolean | null;
-              link?: {
-                type?: ('reference' | 'custom' | 'email') | null;
-                newTab?: boolean | null;
-                downloadLink?: boolean | null;
-                pillSolid?: boolean | null;
-                pillOutline?: boolean | null;
-                reference?:
-                  | ({
-                      relationTo: 'grants';
-                      value: number | Grant;
-                    } | null)
-                  | ({
-                      relationTo: 'posts';
-                      value: number | Post;
-                    } | null);
-                url?: string | null;
-                email?: string | null;
-                label?: string | null;
-              };
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'mcolInfoBlock';
-      }[]
+                  } | null;
+                  addLink?: boolean | null;
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'mcolInfoBlock';
+          }
+        | {
+            /**
+             * Grant Cards to display. Pre-populated with all active grants (excludes closed grants). You can reorder or remove cards as needed.
+             */
+            grantCardGrid?: (number | Grantcard)[] | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'grantCardGridBlock';
+          }
+      )[]
     | null;
   publishedAt?: string | null;
   slug?: string | null;
@@ -938,7 +945,6 @@ export interface GrantsSelect<T extends boolean = true> {
         label?: T;
         email?: T;
       };
-  grantCardsGrid?: T;
   contentBlocks?:
     | T
     | {
@@ -966,6 +972,13 @@ export interface GrantsSelect<T extends boolean = true> {
                         };
                     id?: T;
                   };
+              id?: T;
+              blockName?: T;
+            };
+        grantCardGridBlock?:
+          | T
+          | {
+              grantCardGrid?: T;
               id?: T;
               blockName?: T;
             };
@@ -1556,7 +1569,7 @@ export interface Homepage {
           }
         | {
             /**
-             * Select Grant Cards in the order you want them to appear.
+             * Grant Cards to display. Pre-populated with all active grants (excludes closed grants). You can reorder or remove cards as needed.
              */
             grantCardGrid?: (number | Grantcard)[] | null;
             id?: string | null;

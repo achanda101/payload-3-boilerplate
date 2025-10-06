@@ -5,6 +5,7 @@ import { authenticated } from '@/access/authenticated'
 import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
 
 import { MultiColumnInfoBlock } from '@/blocks/MultiColumnInfoBlock/config'
+import { GrantCardGridBlock } from "@/blocks/GrantCardGridBlock/config";
 import { revalidateGrant } from './hooks/revalidateGrant'
 import { slugField } from '@/fields/slug'
 
@@ -195,22 +196,9 @@ export const Grants: CollectionConfig<'grants'> = {
       ]
     },
     {
-      name: 'grantCardsGrid',
-      label: 'Grant Cards Grid',
-      type: 'relationship',
-      relationTo: 'grantcards',
-      hasMany: true,
-      admin: {
-        description: 'Select grants to feature on the landing page, in the order you want them to appear.',
-        isSortable: true,
-        condition: ({ pageType }) => pageType === 'landing' || false,
-        disableListColumn: true,
-      }
-    },
-    {
       type: 'blocks',
       name: 'contentBlocks',
-      blocks: [ MultiColumnInfoBlock ],
+      blocks: [ MultiColumnInfoBlock, GrantCardGridBlock ],
       labels: {
         singular: 'A Content Block',
         plural: 'Content Blocks'

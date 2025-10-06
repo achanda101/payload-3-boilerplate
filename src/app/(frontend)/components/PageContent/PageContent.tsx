@@ -1,13 +1,10 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
 import { useLanguage } from '@/providers/LanguageContext'
 import { SecondaryCTA } from './components/SecondaryCTA'
 import { GrantCardGrid } from '@/components/GrantCardGrid'
 import { ColumnIndicators } from '../ColumnIndicators'
-import { set } from 'react-hook-form'
 
 interface PageProps {
   data?: {
@@ -34,7 +31,7 @@ export const PageContent: React.FC<PageProps> = ({ data = {} }) => {
       console.error('Failed to fetch Content Blocks data:', error)
     }
   }
-  
+ 
   useEffect(() => {
     handleLanguageChange(selectedLanguage)
   }, [ selectedLanguage ])
@@ -64,7 +61,7 @@ export const PageContent: React.FC<PageProps> = ({ data = {} }) => {
             <React.Fragment key={index}>
               <div className="page_column_layout gap-6">
                 <GrantCardGrid
-                  grantCards={(block as any).grantCardGrid || []}
+                  grantCards={block as any}
                 />
               </div>
               {process.env.NODE_ENV === 'development' && (

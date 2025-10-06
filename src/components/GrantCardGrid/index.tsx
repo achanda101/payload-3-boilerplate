@@ -46,18 +46,19 @@ interface GrantCardData {
 }
 
 interface GrantCardGridProps {
-  grantCards: GrantCardData[],
-  showSpecialGrantCard?: boolean
+  grantCards: {
+    grantCardGrid: GrantCardData[],
+  }
 }
 
-export const GrantCardGrid: React.FC<GrantCardGridProps> = ({ grantCards, showSpecialGrantCard=false }) => {
+export const GrantCardGrid: React.FC<GrantCardGridProps> = ({ grantCards }) => {
 
-  const colouredCards = grantCards.filter(card => card.cardColour && card.cardColour !== 'trans' && card.activePeriod !== 'closed');
-  const transparentCards = grantCards.filter(card => !card.cardColour || card.cardColour === 'trans' && card.activePeriod !== 'closed');
+  const colouredCards = grantCards?.grantCardGrid?.filter(card => card.cardColour && card.cardColour !== 'trans');
+  const transparentCards = grantCards?.grantCardGrid?.filter(card => card.cardColour && card.cardColour === 'trans');
 
   return (
     <>
-      {colouredCards.length > 0 ?  (colouredCards.map((card, index) => {
+      {colouredCards?.length > 0 ?  (colouredCards.map((card, index) => {
         const isLastOddCard = index === colouredCards.length - 1 && colouredCards.length % 2 === 1;        
         
         if (isLastOddCard) {
@@ -74,7 +75,7 @@ export const GrantCardGrid: React.FC<GrantCardGridProps> = ({ grantCards, showSp
           )
         }
       })) : null}
-      {showSpecialGrantCard && transparentCards.length > 0 ? (transparentCards.map((card, index) => {
+      {transparentCards?.length > 0 ? (transparentCards.map((card, index) => {
         const isLastOddCard = index === transparentCards.length - 1 && transparentCards.length % 2 === 1
         
         if (isLastOddCard) {
