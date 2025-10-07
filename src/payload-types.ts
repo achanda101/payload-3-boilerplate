@@ -241,6 +241,38 @@ export interface Grant {
             blockType: 'mcolInfoBlock';
           }
         | {
+            title?: string | null;
+            desc?: string | null;
+            colBtns?:
+              | {
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'scolInfoBlk';
+          }
+        | {
             /**
              * Grant Cards to display. Pre-populated with all active grants (excludes closed grants). You can reorder or remove cards as needed.
              */
@@ -986,6 +1018,33 @@ export interface GrantsSelect<T extends boolean = true> {
                     title?: T;
                     colContent?: T;
                     addLink?: T;
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          label?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        scolInfoBlk?:
+          | T
+          | {
+              title?: T;
+              desc?: T;
+              colBtns?:
+                | T
+                | {
                     link?:
                       | T
                       | {

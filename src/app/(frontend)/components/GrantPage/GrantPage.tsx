@@ -7,7 +7,8 @@ import { useHeaderTheme } from '@/providers/HeaderTheme'
 import { ButtonArray } from '@/components/ButtonArray'
 import { GrantCardGrid } from '@/components/GrantCardGrid'
 import { MultiStepProcess } from '@/components/MultiStepProcess'
-import {MultiColumnInfo} from '@/components/MultiColumnInfoBlock'
+import { MultiColumnInfo } from '@/components/MultiColumnInfoBlock'
+import { SingleColumnInfo } from '@/components/SingleColumnInfoBlock'
 import { ColumnIndicators } from '../ColumnIndicators'
 
 interface AssetCloud {
@@ -216,6 +217,25 @@ export const GrantPage: React.FC<GrantPageProps> = ({
                   <div className="page_column_layout gap-6">
                     <MultiColumnInfo
                       infoColumns={block.multicols}
+                    />
+                  </div>
+                  
+                  {process.env.NODE_ENV === 'development' && (
+                    <div className="page_column_layout gap-6">
+                      <ColumnIndicators />
+                    </div>
+                  )}
+                </React.Fragment>
+              )
+            }
+            if (block.blockType === 'scolInfoBlk') {
+              return (
+                <React.Fragment key={index}>
+                  <div className="page_column_layout gap-6">
+                    <SingleColumnInfo
+                      title={block.title}
+                      desc={block.desc}
+                      buttons={block.colBtns}
                     />
                   </div>
                   
