@@ -261,6 +261,45 @@ export interface Grant {
             blockName?: string | null;
             blockType: 'grantCardGridBlock';
           }
+        | {
+            title?: string | null;
+            subtitle?: string | null;
+            steps?:
+              | {
+                  stepTitle?: string | null;
+                  title?: string | null;
+                  icon?:
+                    | (
+                        | 'FileText'
+                        | 'Clock'
+                        | 'ShieldCheck'
+                        | 'Vote'
+                        | 'ScrollText'
+                        | 'Banknote'
+                        | 'Rocket'
+                        | 'FileCheck'
+                      )
+                    | null;
+                  /**
+                   * Enter details for the step in bullet form
+                   */
+                  details?:
+                    | {
+                        bullet?: string | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  /**
+                   * Enter any extra information that maybe useful in the step.
+                   */
+                  tip?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'mstepProcess';
+          }
       )[]
     | null;
   publishedAt?: string | null;
@@ -979,6 +1018,29 @@ export interface GrantsSelect<T extends boolean = true> {
           | T
           | {
               grantCardGrid?: T;
+              id?: T;
+              blockName?: T;
+            };
+        mstepProcess?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              steps?:
+                | T
+                | {
+                    stepTitle?: T;
+                    title?: T;
+                    icon?: T;
+                    details?:
+                      | T
+                      | {
+                          bullet?: T;
+                          id?: T;
+                        };
+                    tip?: T;
+                    id?: T;
+                  };
               id?: T;
               blockName?: T;
             };

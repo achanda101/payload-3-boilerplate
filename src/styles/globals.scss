@@ -44,10 +44,11 @@
 @import 'infoblock';
 @import 'badge';
 @import 'grantCard';
+@import 'cards';
 
 body {
   font-family: $font-body;
-  color: $text-dark;
+  color: $color-body-text;
   background-color: $color-background;
   font-weight: 500;
   font-size: $font-size-base-mob;
@@ -150,12 +151,36 @@ h6 {
   }
 }
 
+.text-color-dark {
+  color: $color-body-text;
+}
+.text-color-light {
+  color: $color-body-text-light;
+}
+.text-color-vlight {
+  color: $color-body-text-vlight;
+}
+.bg-color-dark {
+  background-color: $color-body-text;
+}
+.bg-color-light {
+  background-color: $color-body-text-light;
+}
+.bg-color-vlight {
+  background-color: $color-body-text-vlight;
+}
+
 li {
   font-size: $font-size-base-mob;
   line-height: 2;
   @media (min-width: $tablet) {
     font-size: $font-size-base;
   }
+
+  &.tight {
+    line-height: 1.5;
+  }
+
 }
 
 .tag {

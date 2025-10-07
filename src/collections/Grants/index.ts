@@ -6,6 +6,7 @@ import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
 
 import { MultiColumnInfoBlock } from '@/blocks/MultiColumnInfoBlock/config'
 import { GrantCardGridBlock } from "@/blocks/GrantCardGridBlock/config";
+import { MultiStepProcess } from "@/blocks/MultiStepProcessBlock/config";
 import { revalidateGrant } from './hooks/revalidateGrant'
 import { slugField } from '@/fields/slug'
 
@@ -198,7 +199,7 @@ export const Grants: CollectionConfig<'grants'> = {
     {
       type: 'blocks',
       name: 'contentBlocks',
-      blocks: [ MultiColumnInfoBlock, GrantCardGridBlock ],
+      blocks: [ MultiColumnInfoBlock, GrantCardGridBlock, MultiStepProcess ],
       labels: {
         singular: 'A Content Block',
         plural: 'Content Blocks'

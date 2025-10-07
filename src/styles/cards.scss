@@ -1,0 +1,16 @@
+@use 'variables' as vars;
+@use 'mixins' as mix;
+
+.beige_wavycard {
+  background-image: url('/card_bg/beige-wavyborder-card.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.turmeric_wavycard {
+  background-image: url('/card_bg/yellow-wavyborder-card.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}

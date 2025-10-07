@@ -6,6 +6,7 @@ import { useLanguage } from '@/providers/LanguageContext'
 import { useHeaderTheme } from '@/providers/HeaderTheme'
 import { ButtonArray } from '@/components/ButtonArray'
 import { GrantCardGrid } from '@/components/GrantCardGrid'
+import { MultiStepProcess } from '@/components/MultiStepProcess'
 import { ColumnIndicators } from '../ColumnIndicators'
 
 interface AssetCloud {
@@ -187,6 +188,24 @@ export const GrantPage: React.FC<GrantPageProps> = ({
                   </React.Fragment>
                 )
               }
+            if (block.blockType === 'mstepProcess') {
+              return (
+                <React.Fragment key={index}>
+                  <div className="page_column_layout gap-6">
+                    <MultiStepProcess
+                      title={block.title}
+                      subtitle={block.subtitle}
+                      steps={block.steps}
+                    />
+                  </div>
+                  {process.env.NODE_ENV === 'development' && (
+                    <div className="page_column_layout gap-6">
+                      <ColumnIndicators />
+                    </div>
+                  )}
+                </React.Fragment>
+              )
+            }
             })}
         </div>
         
