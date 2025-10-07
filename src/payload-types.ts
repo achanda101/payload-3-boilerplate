@@ -182,6 +182,7 @@ export interface Grant {
           type?: ('reference' | 'custom' | 'email') | null;
           newTab?: boolean | null;
           downloadLink?: boolean | null;
+          arrowLink?: boolean | null;
           pillSolid?: boolean | null;
           pillOutline?: boolean | null;
           reference?:
@@ -210,26 +211,13 @@ export interface Grant {
             multicols?:
               | {
                   title?: string | null;
-                  colContent?: {
-                    root: {
-                      type: string;
-                      children: {
-                        type: string;
-                        version: number;
-                        [k: string]: unknown;
-                      }[];
-                      direction: ('ltr' | 'rtl') | null;
-                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                      indent: number;
-                      version: number;
-                    };
-                    [k: string]: unknown;
-                  } | null;
+                  colContent?: string | null;
                   addLink?: boolean | null;
                   link?: {
                     type?: ('reference' | 'custom' | 'email') | null;
                     newTab?: boolean | null;
                     downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
                     pillSolid?: boolean | null;
                     pillOutline?: boolean | null;
                     reference?:
@@ -343,6 +331,7 @@ export interface Grantcard {
           type?: ('reference' | 'custom' | 'email') | null;
           newTab?: boolean | null;
           downloadLink?: boolean | null;
+          arrowLink?: boolean | null;
           pillSolid?: boolean | null;
           pillOutline?: boolean | null;
           reference?:
@@ -969,6 +958,7 @@ export interface GrantsSelect<T extends boolean = true> {
               type?: T;
               newTab?: T;
               downloadLink?: T;
+              arrowLink?: T;
               pillSolid?: T;
               pillOutline?: T;
               reference?: T;
@@ -1002,6 +992,7 @@ export interface GrantsSelect<T extends boolean = true> {
                           type?: T;
                           newTab?: T;
                           downloadLink?: T;
+                          arrowLink?: T;
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
@@ -1082,6 +1073,7 @@ export interface GrantcardsSelect<T extends boolean = true> {
               type?: T;
               newTab?: T;
               downloadLink?: T;
+              arrowLink?: T;
               pillSolid?: T;
               pillOutline?: T;
               reference?: T;
@@ -1573,6 +1565,7 @@ export interface Homepage {
             type?: ('reference' | 'custom' | 'email') | null;
             newTab?: boolean | null;
             downloadLink?: boolean | null;
+            arrowLink?: boolean | null;
             pillSolid?: boolean | null;
             pillOutline?: boolean | null;
             reference?:
@@ -1607,6 +1600,7 @@ export interface Homepage {
                     type?: ('reference' | 'custom' | 'email') | null;
                     newTab?: boolean | null;
                     downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
                     pillSolid?: boolean | null;
                     pillOutline?: boolean | null;
                     reference?:
@@ -1749,6 +1743,7 @@ export interface Nav {
                 type?: ('reference' | 'custom' | 'email') | null;
                 newTab?: boolean | null;
                 downloadLink?: boolean | null;
+                arrowLink?: boolean | null;
                 pillSolid?: boolean | null;
                 pillOutline?: boolean | null;
                 reference?:
@@ -1820,6 +1815,7 @@ export interface HomepageSelect<T extends boolean = true> {
                     type?: T;
                     newTab?: T;
                     downloadLink?: T;
+                    arrowLink?: T;
                     pillSolid?: T;
                     pillOutline?: T;
                     reference?: T;
@@ -1853,6 +1849,7 @@ export interface HomepageSelect<T extends boolean = true> {
                           type?: T;
                           newTab?: T;
                           downloadLink?: T;
+                          arrowLink?: T;
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
@@ -1946,6 +1943,7 @@ export interface NavSelect<T extends boolean = true> {
                     type?: T;
                     newTab?: T;
                     downloadLink?: T;
+                    arrowLink?: T;
                     pillSolid?: T;
                     pillOutline?: T;
                     reference?: T;

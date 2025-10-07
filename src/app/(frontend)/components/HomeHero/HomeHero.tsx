@@ -16,13 +16,14 @@ interface HeroProps {
         id: number,
         link: {
           type: string;
-          newTab?: boolean;
-          downloadLink?: boolean;
-          pillSolid?: boolean;
-          pillOutline?: boolean;
-          url?: string;
-          label: string;
-          email?: string;
+          newTab?: boolean | null;
+          downloadLink?: boolean | null;
+          arrowLink?: boolean | null;
+          pillSolid?: boolean | null;
+          pillOutline?: boolean | null;
+          url?: string | null;
+          label: string | null;
+          email?: string | null;
           reference?: {
             relationTo?: string;
             value: {
@@ -63,7 +64,7 @@ export const HomeHero: React.FC<HeroProps> = ({ data = {} }) => {
     <section className="hero-banner">
       <Image
         src="/heroes/homepage-hero-blob-birds.svg"
-        alt="Homepage Hero Banner with an orange blob in the center with birds flying around. The title and subtitle are placed within the blob."
+        alt="Homepage Hero Banner with an fire red blob in the center with birds flying around. The title and subtitle are placed within the blob."
         width={1440}
         height={100}
         sizes="(min-width: 769px) 100vw, 0vw"
@@ -73,7 +74,7 @@ export const HomeHero: React.FC<HeroProps> = ({ data = {} }) => {
       />
       <Image
         src="/heroes/homepage-hero-blob-birds_mobile.svg"
-        alt="Homepage Hero Banner with an orange blob in the center with birds flying around. The title and subtitle are placed within the blob."
+        alt="Homepage Hero Banner with an fire red blob in the center with birds flying around. The title and subtitle are placed within the blob."
         width={800}
         height={100}
         sizes="(max-width: 768px) 100vw, 0vw"

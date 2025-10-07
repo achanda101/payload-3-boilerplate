@@ -7,13 +7,14 @@ interface ButtonItem {
   id: number;
   link: {
     type: string;
-    newTab?: boolean;
-    downloadLink?: boolean;
-    pillSolid?: boolean;
-    pillOutline?: boolean;
-    url?: string;
-    label: string;
-    email?: string;
+    newTab?: boolean | null;
+    downloadLink?: boolean | null;
+    arrowLink?: boolean | null;
+    pillSolid?: boolean | null;
+    pillOutline?: boolean | null;
+    url?: string | null;
+    label: string | null;
+    email?: string | null;
     reference?: {
       relationTo?: string;
       value: {
@@ -63,6 +64,7 @@ export const ButtonArray: React.FC<{ btnArray: ButtonArrayProps, colStackOnMobil
               classes.push('download')
               break
             default:
+              classes.push('arrow')
               break
           }
           return classes.join(' ')

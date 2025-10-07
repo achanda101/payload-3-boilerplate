@@ -64,15 +64,70 @@ button.pill-button {
 }
 
 button.download {
-    background-color: vars.$color-lavender;
-    color: white;
-    border: none;
-    font-weight: 600;
+  background-color: transparent;
+  color: vars.$color-body-text;
+  border: none;
+  font-weight: 600;
 
-    &:hover {
-        @media (hover: hover) {
-          cursor: pointer;
-          opacity: 80%;
-        }
-    }
+  &:hover {
+      @media (hover: hover) {
+        cursor: pointer;
+        opacity: 70%;
+      }
+  }
+
+  &::after {
+    content: '';
+    background-image: url('/icons/cloud.svg');
+    background-size: cover;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    margin-left: 0.25em;
+    vertical-align: middle;
+  }
+}
+
+button.arrow {
+  background-color: transparent;
+  color: vars.$color-body-text;
+  border: none;
+  font-weight: 600;
+
+  &:hover {
+      @media (hover: hover) {
+        cursor: pointer;
+        opacity: 70%;
+      }
+  }
+
+  &::after {
+    content: '';
+    background-image: url('/icons/right.svg');
+    background-size: cover;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    margin-left: 0.25em;
+    vertical-align: middle;
+  }
+}
+
+button.underline,
+.underline {
+  background-color: transparent;
+  color: vars.$color-body-text;
+  border: none;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: vars.$color-turmeric;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 2px;
+
+  &:hover {
+      @media (hover: hover) {
+        cursor: pointer;
+        opacity: 70%;
+      }
+  }
 }

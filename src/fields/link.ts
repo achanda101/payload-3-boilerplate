@@ -65,7 +65,7 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
                   style: {
                     alignSelf: 'flex-end',
                   },
-                  width: '25%',
+                  width: '20%',
                 },
                 label: 'Open in new tab',
               },
@@ -76,9 +76,20 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
                   style: {
                     alignSelf: 'flex-end',
                   },
-                  width: '25%',
+                  width: '20%',
                 },
                 label: 'Download link',
+              },
+              {
+                name: 'arrowLink',
+                type: 'checkbox',
+                admin: {
+                  style: {
+                    alignSelf: 'flex-end',
+                  },
+                  width: '20%',
+                },
+                label: 'Arrow link',
               },
               {
                 name: 'pillSolid',
@@ -87,7 +98,7 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
                   style: {
                     alignSelf: 'flex-end',
                   },
-                  width: '25%',
+                  width: '20%',
                 },
                 label: 'Pill Button (Solid)',
               },
@@ -98,7 +109,7 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
                   style: {
                     alignSelf: 'flex-end',
                   },
-                  width: '25%',
+                  width: '20%',
                 },
                 label: 'Pill Button (Outline)',
               },

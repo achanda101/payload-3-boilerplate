@@ -7,6 +7,7 @@ import { useHeaderTheme } from '@/providers/HeaderTheme'
 import { ButtonArray } from '@/components/ButtonArray'
 import { GrantCardGrid } from '@/components/GrantCardGrid'
 import { MultiStepProcess } from '@/components/MultiStepProcess'
+import {MultiColumnInfo} from '@/components/MultiColumnInfoBlock'
 import { ColumnIndicators } from '../ColumnIndicators'
 
 interface AssetCloud {
@@ -42,13 +43,14 @@ export const GrantPage: React.FC<GrantPageProps> = ({
       id: number;
       link: {
         type: string;
-        newTab?: boolean;
-        downloadLink?: boolean;
-        pillSolid?: boolean;
-        pillOutline?: boolean;
-        url?: string;
-        label: string;
-        email?: string;
+        newTab?: boolean | null;
+        downloadLink?: boolean | null;
+        arrowLink?: boolean | null;
+        pillSolid?: boolean | null;
+        pillOutline?: boolean | null;
+        url?: string | null;
+        label: string | null;
+        email?: string | null;
         reference?: {
           relationTo?: string;
           value: {
@@ -161,7 +163,9 @@ export const GrantPage: React.FC<GrantPageProps> = ({
               {heroBlock?.heroContact?.label && heroBlock?.heroContact?.email && (
                 <div className="hero-contact">
                 <span>{heroBlock.heroContact.label}</span>
-                <a href={`mailto:${heroBlock.heroContact.email}`}>{heroBlock.heroContact.email}</a>
+                  <a href={`mailto:${heroBlock.heroContact.email}`} className='underline'>
+                    {heroBlock.heroContact.email}
+                  </a>
                 </div>
               )}
             </div>
@@ -198,6 +202,23 @@ export const GrantPage: React.FC<GrantPageProps> = ({
                       steps={block.steps}
                     />
                   </div>
+                  {process.env.NODE_ENV === 'development' && (
+                    <div className="page_column_layout gap-6">
+                      <ColumnIndicators />
+                    </div>
+                  )}
+                </React.Fragment>
+              )
+            }
+            if (block.blockType === 'mcolInfoBlock') {
+              return (
+                <React.Fragment key={index}>
+                  <div className="page_column_layout gap-6">
+                    <MultiColumnInfo
+                      infoColumns={block.multicols}
+                    />
+                  </div>
+                  
                   {process.env.NODE_ENV === 'development' && (
                     <div className="page_column_layout gap-6">
                       <ColumnIndicators />

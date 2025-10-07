@@ -1,17 +1,6 @@
 import { Block } from "payload";
 import { link } from "@/fields/link";
 
-import { lexicalEditor } from '@payloadcms/richtext-lexical';
-import {
-  BoldFeature,
-  ItalicFeature,
-  UnderlineFeature,
-  UnorderedListFeature,
-  OrderedListFeature,
-  ParagraphFeature,
-  InlineToolbarFeature
-} from '@payloadcms/richtext-lexical';
-
 export const MultiColumnInfoBlock: Block = {
   slug: 'mcolInfoBlock',
   labels: {
@@ -39,26 +28,8 @@ export const MultiColumnInfoBlock: Block = {
         {
           name: 'colContent',
           label: 'Column Content',
-          type: 'richText',
+          type: 'textarea',
           localized: true,
-          editor: lexicalEditor({
-            features: ({ defaultFeatures }) => [
-              // Text formatting features
-              BoldFeature(),
-              ItalicFeature(), 
-              UnderlineFeature(),
-              
-              // List features
-              UnorderedListFeature(),
-              OrderedListFeature(),
-              
-              // Essential features for basic functionality
-              ParagraphFeature(),
-
-              // IMPORTANT: Add the floating toolbar feature
-              InlineToolbarFeature(),
-            ],
-          }),
         },
         {
           name: 'addLink',
