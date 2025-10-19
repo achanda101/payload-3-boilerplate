@@ -4,6 +4,8 @@ import { default as default_c0d5d01d32ac50f71415a0f2c1f7d69d } from 'src/blocks/
 import { default as default_daacf7414940409fcbf02b9d8bf656a3 } from 'src/blocks/SingleColumnInfoBlock/ColumnButtonRowLabel.tsx'
 import { default as default_713b67fc22309aee14d297adc3ec99f0 } from 'src/blocks/MultiStepProcessBlock/StepDetailsRowLabel.tsx'
 import { default as default_bee8c59357eba9e569e2cee8808c4c7e } from 'src/blocks/MultiStepProcessBlock/StepTitlesRowLabel.tsx'
+import { default as default_61a405578f4c7fecb96b7bb974956c79 } from 'src/blocks/ComparisonBlock/ComparisonRowLabel.tsx'
+import { default as default_00fabe4924f35a63ef8ae43361e4f50d } from 'src/blocks/ComparisonBlock/ButtonRowLabel.tsx'
 import { SlugComponent as SlugComponent_92cc057d0a2abb4f6cf0307edf59f986 } from '@/fields/slug/SlugComponent'
 import { default as default_7baef2a5f372f8eb3e6c3c9a98bc5194 } from '@/utilities/characterCounter.tsx'
 import { default as default_fade8116570b03adfdc99c640cfd1f1c } from 'src/collections/GrantCards/GrantCardSpecRowLabel.tsx'
@@ -47,6 +49,8 @@ export const importMap = {
   "src/blocks/SingleColumnInfoBlock/ColumnButtonRowLabel.tsx#default": default_daacf7414940409fcbf02b9d8bf656a3,
   "src/blocks/MultiStepProcessBlock/StepDetailsRowLabel.tsx#default": default_713b67fc22309aee14d297adc3ec99f0,
   "src/blocks/MultiStepProcessBlock/StepTitlesRowLabel.tsx#default": default_bee8c59357eba9e569e2cee8808c4c7e,
+  "src/blocks/ComparisonBlock/ComparisonRowLabel.tsx#default": default_61a405578f4c7fecb96b7bb974956c79,
+  "src/blocks/ComparisonBlock/ButtonRowLabel.tsx#default": default_00fabe4924f35a63ef8ae43361e4f50d,
   "@/fields/slug/SlugComponent#SlugComponent": SlugComponent_92cc057d0a2abb4f6cf0307edf59f986,
   "@/utilities/characterCounter.tsx#default": default_7baef2a5f372f8eb3e6c3c9a98bc5194,
   "src/collections/GrantCards/GrantCardSpecRowLabel.tsx#default": default_fade8116570b03adfdc99c640cfd1f1c,

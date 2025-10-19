@@ -320,6 +320,64 @@ export interface Grant {
             blockName?: string | null;
             blockType: 'mstepProcess';
           }
+        | {
+            title?: string | null;
+            desc?: string | null;
+            lftGrp?: {
+              title?: string | null;
+              desc?: string | null;
+              /**
+               * Points in the left column will have a checkmark
+               */
+              lftPoints?:
+                | {
+                    point?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+            };
+            rtGrp?: {
+              title?: string | null;
+              desc?: string | null;
+              /**
+               * Points in the right column will have a cross mark
+               */
+              rtPoints?:
+                | {
+                    point?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+            };
+            buttons?:
+              | {
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'comparisonBlk';
+          }
       )[]
     | null;
   publishedAt?: string | null;
@@ -1089,6 +1147,57 @@ export interface GrantsSelect<T extends boolean = true> {
                           id?: T;
                         };
                     tip?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        comparisonBlk?:
+          | T
+          | {
+              title?: T;
+              desc?: T;
+              lftGrp?:
+                | T
+                | {
+                    title?: T;
+                    desc?: T;
+                    lftPoints?:
+                      | T
+                      | {
+                          point?: T;
+                          id?: T;
+                        };
+                  };
+              rtGrp?:
+                | T
+                | {
+                    title?: T;
+                    desc?: T;
+                    rtPoints?:
+                      | T
+                      | {
+                          point?: T;
+                          id?: T;
+                        };
+                  };
+              buttons?:
+                | T
+                | {
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          label?: T;
+                        };
                     id?: T;
                   };
               id?: T;

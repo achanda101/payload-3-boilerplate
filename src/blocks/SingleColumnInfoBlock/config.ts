@@ -4,8 +4,8 @@ import { link } from "@/fields/link";
 export const SingleColumnInfoBlock: Block = {
   slug: 'scolInfoBlk',
   labels: {
-    singular: 'Single Column Info Block',
-    plural: 'Single Column Info Blocks'
+    singular: 'Call-to-Action Block',
+    plural: 'Call-to-Action Blocks'
   },
   imageURL: '/block_icons/single-column-info-block-icon.png',
   fields: [

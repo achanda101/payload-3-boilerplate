@@ -12,6 +12,7 @@ interface AssetCloud {
 }
 
 interface GrantCardData {
+  _status: ('draft' | 'published') | null;
   badgeText: string;
   badgeType: string;
   activePeriod: string;
@@ -53,8 +54,8 @@ interface GrantCardGridProps {
 
 export const GrantCardGrid: React.FC<GrantCardGridProps> = ({ grantCards }) => {
 
-  const colouredCards = grantCards?.grantCardGrid?.filter(card => card.cardColour && card.cardColour !== 'trans');
-  const transparentCards = grantCards?.grantCardGrid?.filter(card => card.cardColour && card.cardColour === 'trans');
+  const colouredCards = grantCards?.grantCardGrid?.filter(card => card.cardColour && card.cardColour !== 'trans' && card._status !== "draft");
+  const transparentCards = grantCards?.grantCardGrid?.filter(card => card.cardColour && card.cardColour === 'trans' && card._status !== "draft");
 
   return (
     <>

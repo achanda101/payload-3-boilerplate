@@ -1,0 +1,25 @@
+.checkmark {
+  &::before {
+    content: '';
+    background-image: url('/icons/check.svg');
+    background-size: cover;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    margin-right: 0.25em;
+    vertical-align: middle;
+  }
+}
+
+.crossmark {
+  &::before {
+    content: '';
+    background-image: url('/icons/cross.svg');
+    background-size: cover;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    margin-right: 0.25em;
+    vertical-align: middle;
+  }
+}

@@ -8,7 +8,7 @@ export const SecondaryCTA: Block = {
     singular: 'Call-to-Action Block',
     plural: 'Call-to-Action Blocks',
   },
-  imageURL: '/block_icons/secondaryCTABlock-icon.png',
+  imageURL: '/block_icons/cta-block-icon.gif',
   fields: [
     {
       type: 'row',

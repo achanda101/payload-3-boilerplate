@@ -9,6 +9,7 @@ import { GrantCardGrid } from '@/components/GrantCardGrid'
 import { MultiStepProcess } from '@/components/MultiStepProcess'
 import { MultiColumnInfo } from '@/components/MultiColumnInfoBlock'
 import { SingleColumnInfo } from '@/components/SingleColumnInfoBlock'
+import { ComparisonBlock } from '@/components/ComparisonBlock'
 import { ColumnIndicators } from '../ColumnIndicators'
 
 interface AssetCloud {
@@ -236,6 +237,27 @@ export const GrantPage: React.FC<GrantPageProps> = ({
                       title={block.title}
                       desc={block.desc}
                       buttons={block.colBtns}
+                    />
+                  </div>
+                  
+                  {process.env.NODE_ENV === 'development' && (
+                    <div className="page_column_layout gap-6">
+                      <ColumnIndicators />
+                    </div>
+                  )}
+                </React.Fragment>
+              )
+            }
+            if (block.blockType === 'comparisonBlk') {
+              return (
+                <React.Fragment key={index}>
+                  <div className="page_column_layout gap-6">
+                    <ComparisonBlock
+                      title={block.title}
+                      desc={block.desc}
+                      buttons={block.buttons}
+                      lftCol={block.lftGrp}
+                      rtCol={block.rtGrp}
                     />
                   </div>
                   

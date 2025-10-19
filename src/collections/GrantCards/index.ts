@@ -3,7 +3,6 @@ import { link } from "@/fields/link";
 
 import { authenticated } from '@/access/authenticated'
 import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
-import { canUpdateUser } from '@/access/canUpdateUser'
 
 import { slugField } from '@/fields/slug'
 import { generatePreviewPath } from '@/utilities/generatePreviewPath'

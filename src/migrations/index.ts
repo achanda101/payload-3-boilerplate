@@ -3,6 +3,7 @@ import * as migration_20251003_172605_use_grantcardgridblock_only from './202510
 import * as migration_20251007_085527_multistepprocess from './20251007_085527_multistepprocess';
 import * as migration_20251007_191006_multicolinfo from './20251007_191006_multicolinfo';
 import * as migration_20251007_211229_singlecolinfo from './20251007_211229_singlecolinfo';
+import * as migration_20251019_062935_comparisonblk from './20251019_062935_comparisonblk';
 
 export const migrations = [
   {
@@ -28,6 +29,11 @@ export const migrations = [
   {
     up: migration_20251007_211229_singlecolinfo.up,
     down: migration_20251007_211229_singlecolinfo.down,
-    name: '20251007_211229_singlecolinfo'
+    name: '20251007_211229_singlecolinfo',
+  },
+  {
+    up: migration_20251019_062935_comparisonblk.up,
+    down: migration_20251019_062935_comparisonblk.down,
+    name: '20251019_062935_comparisonblk'
   },
 ];

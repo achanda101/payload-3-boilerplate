@@ -45,6 +45,7 @@
 @import 'badge';
 @import 'grantCard';
 @import 'cards';
+@import 'bullets';
 
 body {
   font-family: $font-body;
@@ -248,6 +249,9 @@ li {
 }
 .bg-fire {
   background-color: $color-fire;
+}
+.bg-beige {
+  background-color: $color-beige;
 }
 
 hr {
