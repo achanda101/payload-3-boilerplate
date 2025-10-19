@@ -94,6 +94,13 @@ export const ComparisonBlock: React.FC<ComparisonBlockProps> = ({
           </div>
         </div>
       )}
+      <div className="col-span-full">
+          <div className="flex items-center justify-center">
+            {buttons && (
+              <ButtonArray btnArray={buttons} colStackOnMobile={true} />
+            )}
+          </div>
+      </div>
     </>
   )
 }
