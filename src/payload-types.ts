@@ -179,7 +179,7 @@ export interface Grant {
   heroButtons?:
     | {
         link?: {
-          type?: ('reference' | 'custom' | 'email') | null;
+          type?: ('reference' | 'custom' | 'email' | 'document') | null;
           newTab?: boolean | null;
           downloadLink?: boolean | null;
           arrowLink?: boolean | null;
@@ -196,6 +196,10 @@ export interface Grant {
               } | null);
           url?: string | null;
           email?: string | null;
+          doc?: {
+            relationTo: 'documents';
+            value: number | Document;
+          } | null;
           label?: string | null;
         };
         id?: string | null;
@@ -214,7 +218,7 @@ export interface Grant {
                   colContent?: string | null;
                   addLink?: boolean | null;
                   link?: {
-                    type?: ('reference' | 'custom' | 'email') | null;
+                    type?: ('reference' | 'custom' | 'email' | 'document') | null;
                     newTab?: boolean | null;
                     downloadLink?: boolean | null;
                     arrowLink?: boolean | null;
@@ -231,6 +235,10 @@ export interface Grant {
                         } | null);
                     url?: string | null;
                     email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
                     label?: string | null;
                   };
                   id?: string | null;
@@ -246,7 +254,7 @@ export interface Grant {
             colBtns?:
               | {
                   link?: {
-                    type?: ('reference' | 'custom' | 'email') | null;
+                    type?: ('reference' | 'custom' | 'email' | 'document') | null;
                     newTab?: boolean | null;
                     downloadLink?: boolean | null;
                     arrowLink?: boolean | null;
@@ -263,6 +271,10 @@ export interface Grant {
                         } | null);
                     url?: string | null;
                     email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
                     label?: string | null;
                   };
                   id?: string | null;
@@ -352,7 +364,7 @@ export interface Grant {
             buttons?:
               | {
                   link?: {
-                    type?: ('reference' | 'custom' | 'email') | null;
+                    type?: ('reference' | 'custom' | 'email' | 'document') | null;
                     newTab?: boolean | null;
                     downloadLink?: boolean | null;
                     arrowLink?: boolean | null;
@@ -369,6 +381,10 @@ export interface Grant {
                         } | null);
                     url?: string | null;
                     email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
                     label?: string | null;
                   };
                   id?: string | null;
@@ -418,7 +434,7 @@ export interface Grantcard {
   cardButtons?:
     | {
         link?: {
-          type?: ('reference' | 'custom' | 'email') | null;
+          type?: ('reference' | 'custom' | 'email' | 'document') | null;
           newTab?: boolean | null;
           downloadLink?: boolean | null;
           arrowLink?: boolean | null;
@@ -435,6 +451,10 @@ export interface Grantcard {
               } | null);
           url?: string | null;
           email?: string | null;
+          doc?: {
+            relationTo: 'documents';
+            value: number | Document;
+          } | null;
           label?: string | null;
         };
         id?: string | null;
@@ -668,7 +688,7 @@ export interface User {
   password?: string | null;
 }
 /**
- * Upload and manage documents like PDFs, Word files, text files here.
+ * Upload and manage documents like PDFs, Word files, text files here. Maximum file size is 50MB.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "documents".
@@ -1054,6 +1074,7 @@ export interface GrantsSelect<T extends boolean = true> {
               reference?: T;
               url?: T;
               email?: T;
+              doc?: T;
               label?: T;
             };
         id?: T;
@@ -1088,6 +1109,7 @@ export interface GrantsSelect<T extends boolean = true> {
                           reference?: T;
                           url?: T;
                           email?: T;
+                          doc?: T;
                           label?: T;
                         };
                     id?: T;
@@ -1115,6 +1137,7 @@ export interface GrantsSelect<T extends boolean = true> {
                           reference?: T;
                           url?: T;
                           email?: T;
+                          doc?: T;
                           label?: T;
                         };
                     id?: T;
@@ -1196,6 +1219,7 @@ export interface GrantsSelect<T extends boolean = true> {
                           reference?: T;
                           url?: T;
                           email?: T;
+                          doc?: T;
                           label?: T;
                         };
                     id?: T;
@@ -1247,6 +1271,7 @@ export interface GrantcardsSelect<T extends boolean = true> {
               reference?: T;
               url?: T;
               email?: T;
+              doc?: T;
               label?: T;
             };
         id?: T;
@@ -1730,7 +1755,7 @@ export interface Homepage {
     ctaButton?:
       | {
           link?: {
-            type?: ('reference' | 'custom' | 'email') | null;
+            type?: ('reference' | 'custom' | 'email' | 'document') | null;
             newTab?: boolean | null;
             downloadLink?: boolean | null;
             arrowLink?: boolean | null;
@@ -1747,6 +1772,10 @@ export interface Homepage {
                 } | null);
             url?: string | null;
             email?: string | null;
+            doc?: {
+              relationTo: 'documents';
+              value: number | Document;
+            } | null;
             label?: string | null;
           };
           id?: string | null;
@@ -1765,7 +1794,7 @@ export interface Homepage {
             ctaButton?:
               | {
                   link?: {
-                    type?: ('reference' | 'custom' | 'email') | null;
+                    type?: ('reference' | 'custom' | 'email' | 'document') | null;
                     newTab?: boolean | null;
                     downloadLink?: boolean | null;
                     arrowLink?: boolean | null;
@@ -1782,6 +1811,10 @@ export interface Homepage {
                         } | null);
                     url?: string | null;
                     email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
                     label?: string | null;
                   };
                   id?: string | null;
@@ -1908,7 +1941,7 @@ export interface Nav {
         navItems?:
           | {
               link?: {
-                type?: ('reference' | 'custom' | 'email') | null;
+                type?: ('reference' | 'custom' | 'email' | 'document') | null;
                 newTab?: boolean | null;
                 downloadLink?: boolean | null;
                 arrowLink?: boolean | null;
@@ -1925,6 +1958,10 @@ export interface Nav {
                     } | null);
                 url?: string | null;
                 email?: string | null;
+                doc?: {
+                  relationTo: 'documents';
+                  value: number | Document;
+                } | null;
                 label?: string | null;
               };
               id?: string | null;
@@ -1989,6 +2026,7 @@ export interface HomepageSelect<T extends boolean = true> {
                     reference?: T;
                     url?: T;
                     email?: T;
+                    doc?: T;
                     label?: T;
                   };
               id?: T;
@@ -2023,6 +2061,7 @@ export interface HomepageSelect<T extends boolean = true> {
                           reference?: T;
                           url?: T;
                           email?: T;
+                          doc?: T;
                           label?: T;
                         };
                     id?: T;
@@ -2117,6 +2156,7 @@ export interface NavSelect<T extends boolean = true> {
                     reference?: T;
                     url?: T;
                     email?: T;
+                    doc?: T;
                     label?: T;
                   };
               id?: T;

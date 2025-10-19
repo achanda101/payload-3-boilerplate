@@ -15,6 +15,12 @@ interface ButtonItem {
     url?: string | null;
     label: string | null;
     email?: string | null;
+    doc?: {
+      relationTo: string;
+      value: {
+        url?: string;
+      }
+    } | null;
     reference?: {
       relationTo?: string;
       value: {
@@ -46,6 +52,8 @@ export const ButtonArray: React.FC<{ btnArray: ButtonArrayProps, colStackOnMobil
             return `/${button.link.reference?.relationTo}/${button.link.reference?.value?.slug}` || '#'
           } else if (button.link.type === 'email') {
             return `mailto:${button.link.email}` || '#'
+          } else if (button.link.type === 'document') {
+            return `${button.link.doc?.value?.url}` || '#'
           } else {
             return button.link.url || '#'
           }
@@ -53,20 +61,40 @@ export const ButtonArray: React.FC<{ btnArray: ButtonArrayProps, colStackOnMobil
 
         const getBtnClassName = () => {
           const classes: string[] = []
-          switch (true) {
-            case button.link.pillSolid:
+
+          // Handle download link variants
+          if (button.link.downloadLink) {
+            classes.push('download')
+            if (button.link.pillSolid) {
               classes.push('pill-button', 'dark')
-              break
-            case button.link.pillOutline:
+            } else if (button.link.pillOutline) {
               classes.push('pill-button', 'outline')
-              break
-            case button.link.downloadLink:
-              classes.push('download')
-              break
-            default:
-              classes.push('arrow')
-              break
+            }
           }
+
+          // Handle arrow link variants
+          else if (button.link.arrowLink) {
+            classes.push('arrow')
+            if (button.link.pillSolid) {
+              classes.push('pill-button', 'dark')
+            } else if (button.link.pillOutline) {
+              classes.push('pill-button', 'outline')
+            }
+          }
+
+          // Handle pill buttons without download or arrow link
+          else if (button.link.pillSolid) {
+            classes.push('pill-button', 'dark')
+          }
+          else if (button.link.pillOutline) {
+            classes.push('pill-button', 'outline')
+          }
+
+          // Default to underline if no specific variant is set
+          else {
+            classes.push('underline')
+          }
+
           return classes.join(' ')
         }
 

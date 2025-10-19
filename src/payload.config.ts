@@ -33,6 +33,11 @@ const dirname = path.dirname(filename)
 // But folders is in BETA as of Sept 2025 https://payloadcms.com/docs/folders/overview
 
 export default buildConfig({
+  upload: {
+    limits: {
+      fileSize: 50 * 1024 * 1024, // 50MB, written in bytes
+    },
+  },
   admin: {
     user: Users.slug,
     theme: 'light',
@@ -124,7 +129,7 @@ export default buildConfig({
         forcePathStyle: true,
         tls: true,
         signingEscapePath: false
-      },
+      }
     }),
   ],
   endpoints: [

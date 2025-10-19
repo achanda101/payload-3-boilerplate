@@ -88,6 +88,18 @@ button.download {
   }
 }
 
+button.download.pill-button.dark {
+  &::after {
+    background-image: url('/icons/cloud_white.svg');
+  }
+}
+
+button.download.pill-button.outline:hover {
+  &::after {
+    background-image: url('/icons/cloud_white.svg');
+  }
+}
+
 button.arrow {
   background-color: transparent;
   color: vars.$color-body-text;
@@ -110,6 +122,18 @@ button.arrow {
     display: inline-block;
     margin-left: 0.25em;
     vertical-align: middle;
+  }
+}
+
+button.arrow.pill-button.dark {
+  &::after {
+    background-image: url('/icons/right_white.svg');
+  }
+}
+
+button.arrow.pill-button.outline:hover {
+  &::after {
+    background-image: url('/icons/right_white.svg');
   }
 }
 

@@ -1,13 +1,8 @@
 import type { CollectionConfig } from 'payload'
 
-import path from 'path'
-import { fileURLToPath } from 'url'
-
 import { anyone } from '../access/anyone'
 import { authenticated } from '../access/authenticated'
 
-const filename = fileURLToPath(import.meta.url)
-const dirname = path.dirname(filename)
 
 export const Documents: CollectionConfig = {
   slug: 'documents',
@@ -20,7 +15,7 @@ export const Documents: CollectionConfig = {
       name: 'Media',
       order: '3'
     },
-    description: 'Upload and manage documents like PDFs, Word files, text files here.',
+    description: 'Upload and manage documents like PDFs, Word files, text files here. Maximum file size is 50MB.',
   },
   access: {
     create: authenticated,
@@ -41,6 +36,6 @@ export const Documents: CollectionConfig = {
   ],
   upload: {
     adminThumbnail: 'small',
-    mimeTypes: ['application/pdf', 'application/msword', 'text/plain'],
-  },
+    mimeTypes: [ 'application/pdf', 'application/msword', 'text/plain' ],
+  }
 }

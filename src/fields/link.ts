@@ -52,6 +52,10 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
               {
                 label: 'Email',
                 value: 'email'
+              },
+              {
+                label: 'Document Link',
+                value: 'document'
               }
             ],
           },
@@ -78,7 +82,7 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
                   },
                   width: '20%',
                 },
-                label: 'Download link',
+                label: 'Download icon',
               },
               {
                 name: 'arrowLink',
@@ -89,7 +93,7 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
                   },
                   width: '20%',
                 },
-                label: 'Arrow link',
+                label: 'Arrow icon',
               },
               {
                 name: 'pillSolid',
@@ -127,10 +131,9 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
       admin: {
         condition: (_, siblingData) => siblingData?.type === 'reference',
       },
-      label: 'Document to link to',
+      label: 'Page to link to',
       maxDepth: 2,
       relationTo: ['grants','posts'],
-      // required: true,
     },
     {
       name: 'url',
@@ -157,6 +160,16 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
       },
       label: 'Provide email',
       required: true,
+    },
+    {
+      name: 'doc',
+      type: 'relationship',
+      admin: {
+        condition: (_, siblingData) => siblingData?.type === 'document',
+      },
+      label: 'Document to link to',
+      maxDepth: 2,
+      relationTo: ['documents'],
     },
   ]
 
