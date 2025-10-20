@@ -6,6 +6,8 @@ import { default as default_713b67fc22309aee14d297adc3ec99f0 } from 'src/blocks/
 import { default as default_bee8c59357eba9e569e2cee8808c4c7e } from 'src/blocks/MultiStepProcessBlock/StepTitlesRowLabel.tsx'
 import { default as default_61a405578f4c7fecb96b7bb974956c79 } from 'src/blocks/ComparisonBlock/ComparisonRowLabel.tsx'
 import { default as default_00fabe4924f35a63ef8ae43361e4f50d } from 'src/blocks/ComparisonBlock/ButtonRowLabel.tsx'
+import { default as default_1a9ffe2ecb6c21575f372ee551bb072c } from 'src/blocks/YellowCardDeck/LinkRowLabel.tsx'
+import { default as default_c3b1d2cac4d8e3a4a8069107bce3fe04 } from 'src/blocks/YellowCardDeck/CardRowLabel.tsx'
 import { SlugComponent as SlugComponent_92cc057d0a2abb4f6cf0307edf59f986 } from '@/fields/slug/SlugComponent'
 import { default as default_7baef2a5f372f8eb3e6c3c9a98bc5194 } from '@/utilities/characterCounter.tsx'
 import { default as default_fade8116570b03adfdc99c640cfd1f1c } from 'src/collections/GrantCards/GrantCardSpecRowLabel.tsx'
@@ -51,6 +53,8 @@ export const importMap = {
   "src/blocks/MultiStepProcessBlock/StepTitlesRowLabel.tsx#default": default_bee8c59357eba9e569e2cee8808c4c7e,
   "src/blocks/ComparisonBlock/ComparisonRowLabel.tsx#default": default_61a405578f4c7fecb96b7bb974956c79,
   "src/blocks/ComparisonBlock/ButtonRowLabel.tsx#default": default_00fabe4924f35a63ef8ae43361e4f50d,
+  "src/blocks/YellowCardDeck/LinkRowLabel.tsx#default": default_1a9ffe2ecb6c21575f372ee551bb072c,
+  "src/blocks/YellowCardDeck/CardRowLabel.tsx#default": default_c3b1d2cac4d8e3a4a8069107bce3fe04,
   "@/fields/slug/SlugComponent#SlugComponent": SlugComponent_92cc057d0a2abb4f6cf0307edf59f986,
   "@/utilities/characterCounter.tsx#default": default_7baef2a5f372f8eb3e6c3c9a98bc5194,
   "src/collections/GrantCards/GrantCardSpecRowLabel.tsx#default": default_fade8116570b03adfdc99c640cfd1f1c,

@@ -394,6 +394,62 @@ export interface Grant {
             blockName?: string | null;
             blockType: 'comparisonBlk';
           }
+        | {
+            title?: string | null;
+            desc?: string | null;
+            /**
+             * Add yellow cards to be displayed in the deck
+             */
+            cards?:
+              | {
+                  title?: string | null;
+                  subtitle?: string | null;
+                  desc?: string | null;
+                  /**
+                   * Mascot image for the yellow card
+                   */
+                  mascot?: (number | null) | AssetCloud;
+                  /**
+                   * Position of the mascot image on the yellow card
+                   */
+                  mascotPos?: ('top_left' | 'center') | null;
+                  links?:
+                    | {
+                        desc?: string | null;
+                        link?: {
+                          type?: ('reference' | 'custom' | 'email' | 'document') | null;
+                          newTab?: boolean | null;
+                          downloadLink?: boolean | null;
+                          arrowLink?: boolean | null;
+                          pillSolid?: boolean | null;
+                          pillOutline?: boolean | null;
+                          reference?:
+                            | ({
+                                relationTo: 'grants';
+                                value: number | Grant;
+                              } | null)
+                            | ({
+                                relationTo: 'posts';
+                                value: number | Post;
+                              } | null);
+                          url?: string | null;
+                          email?: string | null;
+                          doc?: {
+                            relationTo: 'documents';
+                            value: number | Document;
+                          } | null;
+                          label?: string | null;
+                        };
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'ylwDeck';
+          }
       )[]
     | null;
   publishedAt?: string | null;
@@ -1221,6 +1277,45 @@ export interface GrantsSelect<T extends boolean = true> {
                           email?: T;
                           doc?: T;
                           label?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        ylwDeck?:
+          | T
+          | {
+              title?: T;
+              desc?: T;
+              cards?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    desc?: T;
+                    mascot?: T;
+                    mascotPos?: T;
+                    links?:
+                      | T
+                      | {
+                          desc?: T;
+                          link?:
+                            | T
+                            | {
+                                type?: T;
+                                newTab?: T;
+                                downloadLink?: T;
+                                arrowLink?: T;
+                                pillSolid?: T;
+                                pillOutline?: T;
+                                reference?: T;
+                                url?: T;
+                                email?: T;
+                                doc?: T;
+                                label?: T;
+                              };
+                          id?: T;
                         };
                     id?: T;
                   };

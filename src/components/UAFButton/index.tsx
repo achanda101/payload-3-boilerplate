@@ -12,6 +12,12 @@ interface ButtonProps {
     url?: string | null;
     label: string | null;
     email?: string | null;
+    doc?: {
+      relationTo: string;
+      value: {
+        url?: string;
+      }
+    } | null;
     reference?: {
       relationTo?: string;
       value: {
@@ -27,6 +33,8 @@ export const UAFButton: React.FC<ButtonProps> = ({ button }) => {
       return `/${button.reference?.relationTo}/${button.reference?.value?.slug}` || '#'
     } else if (button.type === 'email') {
       return `mailto:${button.email}` || '#'
+    } else if (button.type === 'document') {
+      return `${button.doc?.value?.url}` || '#'
     } else {
       return button.url || '#'
     }
@@ -34,23 +42,40 @@ export const UAFButton: React.FC<ButtonProps> = ({ button }) => {
 
   const getBtnClassName = () => {
     const classes: string[] = []
-    switch (true) {
-      case button.pillSolid:
+
+    // Handle download link variants
+    if (button.downloadLink) {
+      classes.push('download')
+      if (button.pillSolid) {
         classes.push('pill-button', 'dark')
-        break
-      case button.pillOutline:
+      } else if (button.pillOutline) {
         classes.push('pill-button', 'outline')
-        break
-      case button.downloadLink:
-        classes.push('download')
-        break
-      case button.arrowLink:
-        classes.push('arrow')
-        break
-      default:
-        classes.push('underline')
-        break
+      }
     }
+
+    // Handle arrow link variants
+    else if (button.arrowLink) {
+      classes.push('arrow')
+      if (button.pillSolid) {
+        classes.push('pill-button', 'dark')
+      } else if (button.pillOutline) {
+        classes.push('pill-button', 'outline')
+      }
+    }
+
+    // Handle pill buttons without download or arrow link
+    else if (button.pillSolid) {
+      classes.push('pill-button', 'dark')
+    }
+    else if (button.pillOutline) {
+      classes.push('pill-button', 'outline')
+    }
+
+    // Default to underline if no specific variant is set
+    else {
+      classes.push('underline')
+    }
+
     return classes.join(' ')
   }
 

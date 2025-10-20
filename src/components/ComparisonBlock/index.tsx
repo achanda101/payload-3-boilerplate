@@ -55,7 +55,7 @@ export const ComparisonBlock: React.FC<ComparisonBlockProps> = ({
       )}
 
       {lftCol && (
-        <div className="col-span-6 md:col-start-2 lg:col-start-1 bg-beige rounded-[2.5rem] py-[3.75rem] px-[2.5rem]">
+        <div className="col-span-6 md:col-start-2 lg:col-start-1 bg-beige rounded-[2.5rem] py-[2rem] lg:py-[3.75rem] px-[1.25rem] lg:px-[2.5rem]">
           <div className="flex flex-col">
             {lftCol.title && <h4>{lftCol.title}</h4>}
             {lftCol.desc && <p>{lftCol.desc}</p>}
@@ -75,7 +75,7 @@ export const ComparisonBlock: React.FC<ComparisonBlockProps> = ({
         </div>
       )}
       {rtCol && (
-        <div className="col-span-6 md:col-start-2 lg:col-start-7 py-[3.75rem] px-[2.5rem]">
+        <div className="col-span-6 md:col-start-2 lg:col-start-7 py-[2rem] lg:py-[3.75rem] px-[1.25rem] lg:px-[2.5rem]">
           <div className="flex flex-col">
             {rtCol.title && <h4>{rtCol.title}</h4>}
             {rtCol.desc && <p>{rtCol.desc}</p>}

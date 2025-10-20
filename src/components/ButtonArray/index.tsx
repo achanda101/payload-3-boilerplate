@@ -4,7 +4,7 @@ import { get } from "http";
 
 
 interface ButtonItem { 
-  id: number;
+  id: string;
   link: {
     type: string;
     newTab?: boolean | null;

@@ -11,9 +11,10 @@ import { MultiColumnInfo } from '@/components/MultiColumnInfoBlock'
 import { SingleColumnInfo } from '@/components/SingleColumnInfoBlock'
 import { ComparisonBlock } from '@/components/ComparisonBlock'
 import { ColumnIndicators } from '../ColumnIndicators'
+import { YellowCardDeck } from '@/components/YellowCardDeck'
 
 interface AssetCloud {
-  id: number;
+  id: string;
   alt: string;
   url?: string | null;
   width?: number | null;
@@ -251,7 +252,7 @@ export const GrantPage: React.FC<GrantPageProps> = ({
             if (block.blockType === 'comparisonBlk') {
               return (
                 <React.Fragment key={index}>
-                  <div className="page_column_layout gap-6">
+                  <div className="page_column_layout  gap-0 md:gap-0 lg:gap-6">
                     <ComparisonBlock
                       title={block.title}
                       desc={block.desc}
@@ -266,6 +267,19 @@ export const GrantPage: React.FC<GrantPageProps> = ({
                       <ColumnIndicators />
                     </div>
                   )}
+                </React.Fragment>
+              )
+            }
+            if (block.blockType === 'ylwDeck') {
+              return (
+                <React.Fragment key={index}>
+                  <div className="page_column_layout gap-6">
+                    <YellowCardDeck
+                      title={block.title}
+                      desc={block.desc}
+                      cards={block.cards}
+                    />
+                  </div>
                 </React.Fragment>
               )
             }

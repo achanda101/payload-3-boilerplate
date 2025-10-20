@@ -9,6 +9,8 @@ import { SingleColumnInfoBlock } from '@/blocks/SingleColumnInfoBlock/config'
 import { GrantCardGridBlock } from "@/blocks/GrantCardGridBlock/config"
 import { MultiStepProcess } from "@/blocks/MultiStepProcessBlock/config"
 import { ComparisonBlock } from '@/blocks/ComparisonBlock/config'
+import { YellowCardDeck } from '@/blocks/YellowCardDeck/config'
+
 import { revalidateGrant } from './hooks/revalidateGrant'
 import { slugField } from '@/fields/slug'
 
@@ -201,7 +203,7 @@ export const Grants: CollectionConfig<'grants'> = {
     {
       type: 'blocks',
       name: 'contentBlocks',
-      blocks: [ MultiColumnInfoBlock, SingleColumnInfoBlock, GrantCardGridBlock, MultiStepProcess, ComparisonBlock ],
+      blocks: [ MultiColumnInfoBlock, SingleColumnInfoBlock, GrantCardGridBlock, MultiStepProcess, ComparisonBlock, YellowCardDeck],
       labels: {
         singular: 'A Content Block',
         plural: 'Content Blocks'

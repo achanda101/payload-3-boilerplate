@@ -5,6 +5,7 @@ import * as migration_20251007_191006_multicolinfo from './20251007_191006_multi
 import * as migration_20251007_211229_singlecolinfo from './20251007_211229_singlecolinfo';
 import * as migration_20251019_062935_comparisonblk from './20251019_062935_comparisonblk';
 import * as migration_20251019_085555_buttonvariants from './20251019_085555_buttonvariants';
+import * as migration_20251020_064241_yellowcarddesk from './20251020_064241_yellowcarddesk';
 
 export const migrations = [
   {
@@ -40,6 +41,11 @@ export const migrations = [
   {
     up: migration_20251019_085555_buttonvariants.up,
     down: migration_20251019_085555_buttonvariants.down,
-    name: '20251019_085555_buttonvariants'
+    name: '20251019_085555_buttonvariants',
+  },
+  {
+    up: migration_20251020_064241_yellowcarddesk.up,
+    down: migration_20251020_064241_yellowcarddesk.down,
+    name: '20251020_064241_yellowcarddesk'
   },
 ];
