@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { useLanguage } from '@/providers/LanguageContext'
 import { SecondaryCTA } from './components/SecondaryCTA'
 import { GrantCardGrid } from '@/components/GrantCardGrid'
+import { FeatureCard } from '@/components/FeatureCard'
 import { ColumnIndicators } from '../ColumnIndicators'
 
 interface PageProps {
@@ -64,6 +65,27 @@ export const PageContent: React.FC<PageProps> = ({ data = {} }) => {
                   grantCards={block as any}
                 />
               </div>
+              {process.env.NODE_ENV === 'development' && (
+                <div className="page_column_layout gap-6">
+                  <ColumnIndicators />
+                </div>
+              )}
+            </React.Fragment>
+          )
+        }
+        if (block.blockType === 'featCrd') {
+          return (
+            <React.Fragment key={index}>
+              
+              <FeatureCard
+                title={block.title}
+                subtitle={block.subtitle}
+                desc={block.desc}
+                tags={block.tags}
+                image={block.image}
+                link={block.link}
+              />
+
               {process.env.NODE_ENV === 'development' && (
                 <div className="page_column_layout gap-6">
                   <ColumnIndicators />

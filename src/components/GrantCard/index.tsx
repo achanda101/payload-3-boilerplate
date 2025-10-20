@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { ButtonArray } from '@/components/ButtonArray';
 
 interface AssetCloud {

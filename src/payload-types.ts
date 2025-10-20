@@ -450,6 +450,48 @@ export interface Grant {
             blockName?: string | null;
             blockType: 'ylwDeck';
           }
+        | {
+            /**
+             * Upload an image for the Feature Card
+             */
+            image?: (number | null) | MediaCloud;
+            title?: string | null;
+            subtitle?: string | null;
+            tags?:
+              | {
+                  tag?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            desc?: string | null;
+            link?: {
+              type?: ('reference' | 'custom' | 'email' | 'document') | null;
+              newTab?: boolean | null;
+              downloadLink?: boolean | null;
+              arrowLink?: boolean | null;
+              pillSolid?: boolean | null;
+              pillOutline?: boolean | null;
+              reference?:
+                | ({
+                    relationTo: 'grants';
+                    value: number | Grant;
+                  } | null)
+                | ({
+                    relationTo: 'posts';
+                    value: number | Post;
+                  } | null);
+              url?: string | null;
+              email?: string | null;
+              doc?: {
+                relationTo: 'documents';
+                value: number | Document;
+              } | null;
+              label?: string | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featCrd';
+          }
       )[]
     | null;
   publishedAt?: string | null;
@@ -1322,6 +1364,37 @@ export interface GrantsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        featCrd?:
+          | T
+          | {
+              image?: T;
+              title?: T;
+              subtitle?: T;
+              tags?:
+                | T
+                | {
+                    tag?: T;
+                    id?: T;
+                  };
+              desc?: T;
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    downloadLink?: T;
+                    arrowLink?: T;
+                    pillSolid?: T;
+                    pillOutline?: T;
+                    reference?: T;
+                    url?: T;
+                    email?: T;
+                    doc?: T;
+                    label?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   publishedAt?: T;
   slug?: T;
@@ -1880,6 +1953,43 @@ export interface Homepage {
   contentBlocks?:
     | (
         | {
+            multicols?:
+              | {
+                  title?: string | null;
+                  colContent?: string | null;
+                  addLink?: boolean | null;
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email' | 'document') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'mcolInfoBlock';
+          }
+        | {
             ctaTitle?: string | null;
             ctaSubtitle?: string | null;
             contact?: {
@@ -1927,6 +2037,205 @@ export interface Homepage {
             id?: string | null;
             blockName?: string | null;
             blockType: 'grantCardGridBlock';
+          }
+        | {
+            title?: string | null;
+            subtitle?: string | null;
+            steps?:
+              | {
+                  stepTitle?: string | null;
+                  title?: string | null;
+                  icon?:
+                    | (
+                        | 'FileText'
+                        | 'Clock'
+                        | 'ShieldCheck'
+                        | 'Vote'
+                        | 'ScrollText'
+                        | 'Banknote'
+                        | 'Rocket'
+                        | 'FileCheck'
+                      )
+                    | null;
+                  /**
+                   * Enter details for the step in bullet form
+                   */
+                  details?:
+                    | {
+                        bullet?: string | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  /**
+                   * Enter any extra information that maybe useful in the step.
+                   */
+                  tip?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'mstepProcess';
+          }
+        | {
+            title?: string | null;
+            desc?: string | null;
+            lftGrp?: {
+              title?: string | null;
+              desc?: string | null;
+              /**
+               * Points in the left column will have a checkmark
+               */
+              lftPoints?:
+                | {
+                    point?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+            };
+            rtGrp?: {
+              title?: string | null;
+              desc?: string | null;
+              /**
+               * Points in the right column will have a cross mark
+               */
+              rtPoints?:
+                | {
+                    point?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+            };
+            buttons?:
+              | {
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email' | 'document') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'comparisonBlk';
+          }
+        | {
+            title?: string | null;
+            desc?: string | null;
+            /**
+             * Add yellow cards to be displayed in the deck
+             */
+            cards?:
+              | {
+                  title?: string | null;
+                  subtitle?: string | null;
+                  desc?: string | null;
+                  /**
+                   * Mascot image for the yellow card
+                   */
+                  mascot?: (number | null) | AssetCloud;
+                  /**
+                   * Position of the mascot image on the yellow card
+                   */
+                  mascotPos?: ('top_left' | 'center') | null;
+                  links?:
+                    | {
+                        desc?: string | null;
+                        link?: {
+                          type?: ('reference' | 'custom' | 'email' | 'document') | null;
+                          newTab?: boolean | null;
+                          downloadLink?: boolean | null;
+                          arrowLink?: boolean | null;
+                          pillSolid?: boolean | null;
+                          pillOutline?: boolean | null;
+                          reference?:
+                            | ({
+                                relationTo: 'grants';
+                                value: number | Grant;
+                              } | null)
+                            | ({
+                                relationTo: 'posts';
+                                value: number | Post;
+                              } | null);
+                          url?: string | null;
+                          email?: string | null;
+                          doc?: {
+                            relationTo: 'documents';
+                            value: number | Document;
+                          } | null;
+                          label?: string | null;
+                        };
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'ylwDeck';
+          }
+        | {
+            /**
+             * Upload an image for the Feature Card
+             */
+            image?: (number | null) | MediaCloud;
+            title?: string | null;
+            subtitle?: string | null;
+            tags?:
+              | {
+                  tag?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            desc?: string | null;
+            link?: {
+              type?: ('reference' | 'custom' | 'email' | 'document') | null;
+              newTab?: boolean | null;
+              downloadLink?: boolean | null;
+              arrowLink?: boolean | null;
+              pillSolid?: boolean | null;
+              pillOutline?: boolean | null;
+              reference?:
+                | ({
+                    relationTo: 'grants';
+                    value: number | Grant;
+                  } | null)
+                | ({
+                    relationTo: 'posts';
+                    value: number | Post;
+                  } | null);
+              url?: string | null;
+              email?: string | null;
+              doc?: {
+                relationTo: 'documents';
+                value: number | Document;
+              } | null;
+              label?: string | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featCrd';
           }
       )[]
     | null;
@@ -2130,6 +2439,35 @@ export interface HomepageSelect<T extends boolean = true> {
   contentBlocks?:
     | T
     | {
+        mcolInfoBlock?:
+          | T
+          | {
+              multicols?:
+                | T
+                | {
+                    title?: T;
+                    colContent?: T;
+                    addLink?: T;
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          doc?: T;
+                          label?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
         secondarycta?:
           | T
           | {
@@ -2168,6 +2506,151 @@ export interface HomepageSelect<T extends boolean = true> {
           | T
           | {
               grantCardGrid?: T;
+              id?: T;
+              blockName?: T;
+            };
+        mstepProcess?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              steps?:
+                | T
+                | {
+                    stepTitle?: T;
+                    title?: T;
+                    icon?: T;
+                    details?:
+                      | T
+                      | {
+                          bullet?: T;
+                          id?: T;
+                        };
+                    tip?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        comparisonBlk?:
+          | T
+          | {
+              title?: T;
+              desc?: T;
+              lftGrp?:
+                | T
+                | {
+                    title?: T;
+                    desc?: T;
+                    lftPoints?:
+                      | T
+                      | {
+                          point?: T;
+                          id?: T;
+                        };
+                  };
+              rtGrp?:
+                | T
+                | {
+                    title?: T;
+                    desc?: T;
+                    rtPoints?:
+                      | T
+                      | {
+                          point?: T;
+                          id?: T;
+                        };
+                  };
+              buttons?:
+                | T
+                | {
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          doc?: T;
+                          label?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        ylwDeck?:
+          | T
+          | {
+              title?: T;
+              desc?: T;
+              cards?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    desc?: T;
+                    mascot?: T;
+                    mascotPos?: T;
+                    links?:
+                      | T
+                      | {
+                          desc?: T;
+                          link?:
+                            | T
+                            | {
+                                type?: T;
+                                newTab?: T;
+                                downloadLink?: T;
+                                arrowLink?: T;
+                                pillSolid?: T;
+                                pillOutline?: T;
+                                reference?: T;
+                                url?: T;
+                                email?: T;
+                                doc?: T;
+                                label?: T;
+                              };
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        featCrd?:
+          | T
+          | {
+              image?: T;
+              title?: T;
+              subtitle?: T;
+              tags?:
+                | T
+                | {
+                    tag?: T;
+                    id?: T;
+                  };
+              desc?: T;
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    downloadLink?: T;
+                    arrowLink?: T;
+                    pillSolid?: T;
+                    pillOutline?: T;
+                    reference?: T;
+                    url?: T;
+                    email?: T;
+                    doc?: T;
+                    label?: T;
+                  };
               id?: T;
               blockName?: T;
             };

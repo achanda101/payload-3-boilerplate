@@ -6,6 +6,12 @@ import { revalidateHomepage } from "./hooks/revalidateHomepage";
 import { link } from '@/fields/link'
 import { SecondaryCTA } from "@/blocks/SecondaryCTA/config";
 import { GrantCardGridBlock } from "@/blocks/GrantCardGridBlock/config";
+import { MultiColumnInfoBlock } from '@/blocks/MultiColumnInfoBlock/config';
+import { MultiStepProcess } from "@/blocks/MultiStepProcessBlock/config"
+import { ComparisonBlock } from '@/blocks/ComparisonBlock/config'
+import { YellowCardDeck } from '@/blocks/YellowCardDeck/config'
+import { FeatureCard } from '@/blocks/FeatureCard/config'
+
 
 export const Homepage: GlobalConfig = {
   slug: 'homepage',
@@ -82,7 +88,7 @@ export const Homepage: GlobalConfig = {
       type: 'blocks',
       name: 'contentBlocks',
       label: 'Content Blocks',
-      blocks: [ SecondaryCTA, GrantCardGridBlock ],
+      blocks: [ MultiColumnInfoBlock, SecondaryCTA, GrantCardGridBlock, MultiStepProcess, ComparisonBlock, YellowCardDeck, FeatureCard ],
       labels: {
         singular: 'A Content Block',
         plural: 'Content Blocks'

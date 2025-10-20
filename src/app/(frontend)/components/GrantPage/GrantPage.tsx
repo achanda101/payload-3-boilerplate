@@ -12,6 +12,7 @@ import { SingleColumnInfo } from '@/components/SingleColumnInfoBlock'
 import { ComparisonBlock } from '@/components/ComparisonBlock'
 import { ColumnIndicators } from '../ColumnIndicators'
 import { YellowCardDeck } from '@/components/YellowCardDeck'
+import { FeatureCard } from '@/components/FeatureCard'
 
 interface AssetCloud {
   id: string;
@@ -283,7 +284,29 @@ export const GrantPage: React.FC<GrantPageProps> = ({
                 </React.Fragment>
               )
             }
-            })}
+            if (block.blockType === 'featCrd') {
+              return (
+                <React.Fragment key={index}>
+                  
+                  <FeatureCard
+                    title={block.title}
+                    subtitle={block.subtitle}
+                    desc={block.desc}
+                    tags={block.tags}
+                    image={block.image}
+                    link={block.link}
+                  />
+
+                  {process.env.NODE_ENV === 'development' && (
+                    <div className="page_column_layout gap-6">
+                      <ColumnIndicators />
+                    </div>
+                  )}
+                </React.Fragment>
+              )
+            }
+            return null
+          })}
         </div>
         
       </div>
