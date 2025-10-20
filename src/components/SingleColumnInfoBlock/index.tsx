@@ -5,7 +5,7 @@ interface SingleColumnInfoProps {
   title: string | null;
   desc: string | null;
   buttons?: {
-    id: number;
+    id: string;
     link: {
       type: string;
       newTab?: boolean | null;

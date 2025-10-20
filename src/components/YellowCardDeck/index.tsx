@@ -22,7 +22,7 @@ interface YellowCardDeckProps {
     subtitle: string | null;
     desc: string | null;
     mascot?: {
-      id: number;
+      id: string;
       alt: string | null;
       url?: string | null;
       width?: number | null;

@@ -7,7 +7,7 @@ import { useLanguage } from '@/providers/LanguageContext'
 import { useHeaderTheme } from '@/providers/HeaderTheme'
 
 interface AssetCloud {
-  id: number;
+  id: string;
   alt: string;
   url?: string | null;
   width?: number | null;
@@ -24,7 +24,7 @@ interface HeroProps {
       headerColour?: string | null,
       heroImage?: (number | null) | AssetCloud;
       heroButtons?: {
-        id: number;
+        id: string;
         buttonPrimary?: boolean,
         link?: {
           type: string | null,

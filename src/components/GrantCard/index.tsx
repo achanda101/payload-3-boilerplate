@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { ButtonArray } from '@/components/ButtonArray';
 
 interface AssetCloud {
-  id: number;
+  id: string;
   alt: string;
   url?: string | null;
   width?: number | null;
@@ -22,12 +22,12 @@ interface GrantCardProps {
   cardColour?: string;
   mascot?: AssetCloud | null;
   grantSpecs: {
-    id: number
+    id: string
     spec: string
   }[];
   grantUses: string;
   cardButtons: {
-    id: number;
+    id: string;
     link: {
       type: string;
       newTab?: boolean | null;

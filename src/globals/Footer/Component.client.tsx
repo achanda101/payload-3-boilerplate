@@ -7,7 +7,7 @@ import { useLanguage } from '../../providers/LanguageContext'
 import { set } from 'react-hook-form'
 
 interface AssetCloud {
-  id: number;
+  id: string;
   alt: string;
   url?: string | null;
   width?: number | null;

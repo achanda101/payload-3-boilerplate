@@ -2,7 +2,7 @@ import React from 'react'
 import { GrantCard } from '@/components/GrantCard'
 
 interface AssetCloud {
-  id: number;
+  id: string;
   alt: string;
   url?: string | null;
   width?: number | null;
@@ -21,12 +21,12 @@ interface GrantCardData {
   cardColour?: string;
   mascot?: AssetCloud | null;
   grantSpecs: {
-    id: number
+    id: string
     spec: string
   }[];
   grantUses: string;
   cardButtons: {
-    id: number;
+    id: string;
     link: {
       type: string;
       newTab?: boolean;

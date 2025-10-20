@@ -6,7 +6,7 @@ interface SecondaryCTAProps {
   title: string;
   subtitle: string;
   ctaButton: {
-    id: number,
+    id: string,
     link: {
       type: string;
       newTab?: boolean | null;

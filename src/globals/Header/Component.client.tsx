@@ -14,7 +14,7 @@ interface Language {
 }
 
 interface AssetCloud {
-  id: number;
+  id: string;
   alt: string;
   url?: string | null;
   width?: number | null;

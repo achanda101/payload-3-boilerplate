@@ -13,7 +13,7 @@ interface HeroProps {
       heroTitle?: string | null,
       heroSubtitle?: string | null,
       ctaButton?: {
-        id: number,
+        id: string
         link: {
           type: string;
           newTab?: boolean | null;
@@ -46,7 +46,10 @@ export const HomeHero: React.FC<HeroProps> = ({ data = {} }) => {
     try {
       const response = await fetch(`/api/globals/homepage?locale=${newLanguage}&depth=1`)
       const data = await response.json()
-      setHeroData(data?.heroSection || {})
+      setHeroData({
+        ...data?.heroSection,
+        ctaButton: data?.heroSection?.ctaButton ?? []
+      })
       
     } catch (error) {
       console.error('Failed to fetch Hero Section data:', error)

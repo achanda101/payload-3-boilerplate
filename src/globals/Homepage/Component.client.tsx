@@ -12,7 +12,7 @@ interface HomepageClientProps {
       heroTitle?: string | null,
       heroSubtitle?: string | null,
       ctaButton?: {
-        id: number,
+        id: string,
         link?: {
           type: string | null,
           newTab?: boolean | null,
