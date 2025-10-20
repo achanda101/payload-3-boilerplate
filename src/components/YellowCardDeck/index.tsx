@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ChevronDown, ChevronUp, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+// import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import {
   Carousel,
   CarouselContent,
@@ -11,6 +11,7 @@ import {
 import WheelGestures from "embla-carousel-wheel-gestures";
 import Image from 'next/image'
 import { UAFButton } from "@/components/UAFButton";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 interface YellowCardDeckProps {
   title: string | null;
@@ -67,21 +68,19 @@ export const YellowCardDeck: React.FC<YellowCardDeckProps> = ({
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [ canScrollNext, setCanScrollNext ] = useState(false);
 
-  console.log('Deck:', title);
-  console.log('Total cards:', cards.length);
-  const cardWidth = (cards.length > 0? 100/cards.length : 0);
-  console.log('Calculated cardWidth:', cardWidth);
+  const isDesktop = useMediaQuery('(min-width: 1024px)');
+  const isTablet = useMediaQuery('(min-width: 768px) and (max-width: 1023px)');
+  let currentCardWidth = 0;
 
   // Calculate width based on the number of cards and available space
-  // Desktop view constraints
-  const desk_maxCardWidth = 28; // Maximum card width
-  const desk_minCardWidth = 18; // Minimum card width
-  const desk_desiredCardWidth = Math.max(100 / cards.length, desk_minCardWidth);
-  const desk_currentCardWidth = Math.min(desk_desiredCardWidth, desk_maxCardWidth);
-  
-  // Tablet view constraints
-  const tab_maxCardWidth = 42; // Maximum card width
-  const tab_currentCardWidth = Math.min(100 / cards.length, tab_maxCardWidth);
+  if (isDesktop) {
+    const desiredCardWidth = Math.max(100 / cards.length, 18);
+    currentCardWidth = Math.min(desiredCardWidth, 28);
+  }
+  if (isTablet) {
+    const desiredCardWidth = Math.max(100 / cards.length, 40);
+    currentCardWidth = Math.min(desiredCardWidth, 48);
+  }
   
   useEffect(() => {
     if (!api) return;
@@ -130,7 +129,10 @@ export const YellowCardDeck: React.FC<YellowCardDeckProps> = ({
                   className="pl-4 mx-auto basis-auto"
                 >
                     <div className="turmeric_wavycard">
-                    <div className={`px-[3rem] py-[2rem] md:w-[${tab_currentCardWidth}vw] lg:w-[${desk_currentCardWidth}vw] h-full`}>
+                    <div
+                      className={`px-[3rem] py-[2rem] h-full`}
+                      style={{ width: `${currentCardWidth}vw` }}
+                    >
                         {card.mascot && (
                           <div className={`${card.mascotPos === 'top_left' ? 'p-0' : 'flex justify-center'}`}>
                             <Image
