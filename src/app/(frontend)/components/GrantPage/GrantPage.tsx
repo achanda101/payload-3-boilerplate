@@ -43,7 +43,7 @@ export const GrantPage: React.FC<GrantPageProps> = ({
     badgeType?: string | null,
     heroImage?: AssetCloud | null,
     heroButtons?: {
-      id: number;
+      id: string;
       link: {
         type: string;
         newTab?: boolean | null;
@@ -88,7 +88,7 @@ export const GrantPage: React.FC<GrantPageProps> = ({
         badgeText: data.grantCard?.badgeText,
         badgeType: data.grantCard?.badgeType,
         heroImage: data.grantCard?.mascot,
-        heroButtons: data.heroButtons?.map((button: { id: number; link: any; }, index: number) => ({
+        heroButtons: data.heroButtons?.map((button: { id: string; link: any; }, index: number) => ({
           id: button.id,
           type: button.link.type,
           link: button.link,
