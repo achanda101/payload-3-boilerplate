@@ -5,6 +5,7 @@ import { useLanguage } from '@/providers/LanguageContext'
 import { SecondaryCTA } from './components/SecondaryCTA'
 import { GrantCardGrid } from '@/components/GrantCardGrid'
 import { FeatureCard } from '@/components/FeatureCard'
+import { ListingCardDeck } from '@/components/ListingCardDeck'
 import { ColumnIndicators } from '../ColumnIndicators'
 
 interface PageProps {
@@ -94,6 +95,20 @@ export const PageContent: React.FC<PageProps> = ({ data = {} }) => {
             </React.Fragment>
           )
         }
+        if (block.blockType === 'listCrdDck') {
+          return (
+            <React.Fragment key={index}>
+              <div className="page_column_layout gap-6">
+                <ListingCardDeck
+                  title={block.title}
+                  cards={block.cards}
+                  buttons={block.buttons}
+                />
+              </div>
+            </React.Fragment>
+          )
+        }
+        return null;
       })}
       
     </div>

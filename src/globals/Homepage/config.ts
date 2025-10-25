@@ -11,6 +11,7 @@ import { MultiStepProcess } from "@/blocks/MultiStepProcessBlock/config"
 import { ComparisonBlock } from '@/blocks/ComparisonBlock/config'
 import { YellowCardDeck } from '@/blocks/YellowCardDeck/config'
 import { FeatureCard } from '@/blocks/FeatureCard/config'
+import { ListingCardDeck } from '@/blocks/ListingCardDeck/config'
 
 
 export const Homepage: GlobalConfig = {
@@ -88,7 +89,7 @@ export const Homepage: GlobalConfig = {
       type: 'blocks',
       name: 'contentBlocks',
       label: 'Content Blocks',
-      blocks: [ MultiColumnInfoBlock, SecondaryCTA, GrantCardGridBlock, MultiStepProcess, ComparisonBlock, YellowCardDeck, FeatureCard ],
+      blocks: [ MultiColumnInfoBlock, SecondaryCTA, GrantCardGridBlock, MultiStepProcess, ComparisonBlock, YellowCardDeck, FeatureCard, ListingCardDeck ],
       labels: {
         singular: 'A Content Block',
         plural: 'Content Blocks'

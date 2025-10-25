@@ -9,6 +9,9 @@ import { default as default_00fabe4924f35a63ef8ae43361e4f50d } from 'src/blocks/
 import { default as default_1a9ffe2ecb6c21575f372ee551bb072c } from 'src/blocks/YellowCardDeck/LinkRowLabel.tsx'
 import { default as default_c3b1d2cac4d8e3a4a8069107bce3fe04 } from 'src/blocks/YellowCardDeck/CardRowLabel.tsx'
 import { default as default_e37006a7cf11c12e8542664bcd713ed6 } from 'src/blocks/FeatureCard/TagRowLabel.tsx'
+import { default as default_5af37ed1fa40c1f3964f3a2be1d5514b } from 'src/blocks/ListingCardDeck/TagRowLabel.tsx'
+import { default as default_0e824bbae1e3a2ad0be49040bd886a72 } from 'src/blocks/ListingCardDeck/CardRowLabel.tsx'
+import { default as default_d2c224faee96d42b95d01b57439e2ee9 } from 'src/blocks/ListingCardDeck/ButtonRowLabel.tsx'
 import { SlugComponent as SlugComponent_92cc057d0a2abb4f6cf0307edf59f986 } from '@/fields/slug/SlugComponent'
 import { default as default_7baef2a5f372f8eb3e6c3c9a98bc5194 } from '@/utilities/characterCounter.tsx'
 import { default as default_fade8116570b03adfdc99c640cfd1f1c } from 'src/collections/GrantCards/GrantCardSpecRowLabel.tsx'
@@ -57,6 +60,9 @@ export const importMap = {
   "src/blocks/YellowCardDeck/LinkRowLabel.tsx#default": default_1a9ffe2ecb6c21575f372ee551bb072c,
   "src/blocks/YellowCardDeck/CardRowLabel.tsx#default": default_c3b1d2cac4d8e3a4a8069107bce3fe04,
   "src/blocks/FeatureCard/TagRowLabel.tsx#default": default_e37006a7cf11c12e8542664bcd713ed6,
+  "src/blocks/ListingCardDeck/TagRowLabel.tsx#default": default_5af37ed1fa40c1f3964f3a2be1d5514b,
+  "src/blocks/ListingCardDeck/CardRowLabel.tsx#default": default_0e824bbae1e3a2ad0be49040bd886a72,
+  "src/blocks/ListingCardDeck/ButtonRowLabel.tsx#default": default_d2c224faee96d42b95d01b57439e2ee9,
   "@/fields/slug/SlugComponent#SlugComponent": SlugComponent_92cc057d0a2abb4f6cf0307edf59f986,
   "@/utilities/characterCounter.tsx#default": default_7baef2a5f372f8eb3e6c3c9a98bc5194,
   "src/collections/GrantCards/GrantCardSpecRowLabel.tsx#default": default_fade8116570b03adfdc99c640cfd1f1c,

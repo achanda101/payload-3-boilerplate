@@ -58,10 +58,10 @@ export const FeatureCard: React.FC<FeatureCardProps> = ({
               <h4>{title}</h4>
             </div>
           )}
-          {image && (
+          {image && image.url && (
             <div className="md:col-span-4 col-start-1 lg:col-span-5">
               <Image
-                src={image.url || ''}
+                src={image.url}
                 alt={image.alt || 'Feature Card Image'}
                 width={image.width || 300}
                 height={image.height || 200}
@@ -97,9 +97,9 @@ export const FeatureCard: React.FC<FeatureCardProps> = ({
         {/* Mobile View */}
         <div className="flex flex-col gap-2">
           {title && <h4>{title}</h4>}
-          {image && (
+          {image && image.url && (
             <Image
-              src={image.url || ''}
+              src={image.url}
               alt={image.alt || 'Feature Card Image'}
               width={image.width || 300}
               height={image.height || 200}

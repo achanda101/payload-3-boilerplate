@@ -13,6 +13,7 @@ import { ComparisonBlock } from '@/components/ComparisonBlock'
 import { ColumnIndicators } from '../ColumnIndicators'
 import { YellowCardDeck } from '@/components/YellowCardDeck'
 import { FeatureCard } from '@/components/FeatureCard'
+import { ListingCardDeck } from '@/components/ListingCardDeck'
 
 interface AssetCloud {
   id: string;
@@ -302,6 +303,19 @@ export const GrantPage: React.FC<GrantPageProps> = ({
                       <ColumnIndicators />
                     </div>
                   )}
+                </React.Fragment>
+              )
+            }
+            if (block.blockType === 'listCrdDck') {
+              return (
+                <React.Fragment key={index}>
+                  <div className="page_column_layout gap-6">
+                    <ListingCardDeck
+                      title={block.title}
+                      cards={block.cards}
+                      buttons={block.buttons}
+                    />
+                  </div>
                 </React.Fragment>
               )
             }

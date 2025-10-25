@@ -492,6 +492,82 @@ export interface Grant {
             blockName?: string | null;
             blockType: 'featCrd';
           }
+        | {
+            title?: string | null;
+            /**
+             * Add listing cards to be displayed in the deck
+             */
+            cards?:
+              | {
+                  title?: string | null;
+                  desc?: string | null;
+                  image?: (number | null) | MediaCloud;
+                  tags?:
+                    | {
+                        tag?: string | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email' | 'document') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            buttons?:
+              | {
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email' | 'document') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'listCrdDck';
+          }
       )[]
     | null;
   publishedAt?: string | null;
@@ -1395,6 +1471,62 @@ export interface GrantsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        listCrdDck?:
+          | T
+          | {
+              title?: T;
+              cards?:
+                | T
+                | {
+                    title?: T;
+                    desc?: T;
+                    image?: T;
+                    tags?:
+                      | T
+                      | {
+                          tag?: T;
+                          id?: T;
+                        };
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          doc?: T;
+                          label?: T;
+                        };
+                    id?: T;
+                  };
+              buttons?:
+                | T
+                | {
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          doc?: T;
+                          label?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   publishedAt?: T;
   slug?: T;
@@ -2237,6 +2369,82 @@ export interface Homepage {
             blockName?: string | null;
             blockType: 'featCrd';
           }
+        | {
+            title?: string | null;
+            /**
+             * Add listing cards to be displayed in the deck
+             */
+            cards?:
+              | {
+                  title?: string | null;
+                  desc?: string | null;
+                  image?: (number | null) | MediaCloud;
+                  tags?:
+                    | {
+                        tag?: string | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email' | 'document') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            buttons?:
+              | {
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email' | 'document') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'listCrdDck';
+          }
       )[]
     | null;
   _status?: ('draft' | 'published') | null;
@@ -2650,6 +2858,62 @@ export interface HomepageSelect<T extends boolean = true> {
                     email?: T;
                     doc?: T;
                     label?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        listCrdDck?:
+          | T
+          | {
+              title?: T;
+              cards?:
+                | T
+                | {
+                    title?: T;
+                    desc?: T;
+                    image?: T;
+                    tags?:
+                      | T
+                      | {
+                          tag?: T;
+                          id?: T;
+                        };
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          doc?: T;
+                          label?: T;
+                        };
+                    id?: T;
+                  };
+              buttons?:
+                | T
+                | {
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          doc?: T;
+                          label?: T;
+                        };
+                    id?: T;
                   };
               id?: T;
               blockName?: T;
