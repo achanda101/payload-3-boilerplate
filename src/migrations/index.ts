@@ -8,6 +8,7 @@ import * as migration_20251019_085555_buttonvariants from './20251019_085555_but
 import * as migration_20251020_064241_yellowcarddesk from './20251020_064241_yellowcarddesk';
 import * as migration_20251020_180931_general_feature_card from './20251020_180931_general_feature_card';
 import * as migration_20251025_205300_listingcarddeck from './20251025_205300_listingcarddeck';
+import * as migration_20251031_103809_faqblock from './20251031_103809_faqblock';
 
 export const migrations = [
   {
@@ -58,6 +59,11 @@ export const migrations = [
   {
     up: migration_20251025_205300_listingcarddeck.up,
     down: migration_20251025_205300_listingcarddeck.down,
-    name: '20251025_205300_listingcarddeck'
+    name: '20251025_205300_listingcarddeck',
+  },
+  {
+    up: migration_20251031_103809_faqblock.up,
+    down: migration_20251031_103809_faqblock.down,
+    name: '20251031_103809_faqblock'
   },
 ];

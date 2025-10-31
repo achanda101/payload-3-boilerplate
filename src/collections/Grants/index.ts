@@ -12,6 +12,7 @@ import { ComparisonBlock } from '@/blocks/ComparisonBlock/config'
 import { YellowCardDeck } from '@/blocks/YellowCardDeck/config'
 import { FeatureCard } from '@/blocks/FeatureCard/config'
 import { ListingCardDeck } from '@/blocks/ListingCardDeck/config'
+import { FaqBlock } from '@/blocks/FaqBlock/config'
 
 import { revalidateGrant } from './hooks/revalidateGrant'
 import { slugField } from '@/fields/slug'
@@ -206,7 +207,18 @@ export const Grants: CollectionConfig<'grants'> = {
     {
       type: 'blocks',
       name: 'contentBlocks',
-      blocks: [ MultiColumnInfoBlock, SingleColumnInfoBlock, GrantCardGridBlock, MultiStepProcess, ComparisonBlock, YellowCardDeck, FeatureCard, ListingCardDeck],
+      blockReferences: [
+        'scolInfoBlk',
+        'mcolInfoBlock',
+        'grantCardGridBlock',
+        'mstepProcess',
+        'comparisonBlk',
+        'ylwDeck',
+        'featCrd',
+        'listCrdDck',
+        'faqBlk',
+      ],
+      blocks: [],
       labels: {
         singular: 'A Content Block',
         plural: 'Content Blocks'

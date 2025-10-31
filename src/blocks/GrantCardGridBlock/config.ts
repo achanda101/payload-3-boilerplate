@@ -10,6 +10,17 @@ export const GrantCardGridBlock: Block = {
   imageURL: '/block_icons/grant-card-grid-block-icon.png',
   fields: [
     {
+      name: 'title',
+      type: 'text',
+      localized: true,
+    },
+    {
+      name: 'desc',
+      label: 'Description',
+      type: 'textarea',
+      localized: true,
+    },
+    {
       name: 'grantCardGrid',
       type: 'relationship',
       relationTo: 'grantcards',

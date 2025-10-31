@@ -1,17 +1,8 @@
 import type { GlobalConfig } from "payload";
-import { authenticated } from '@/access/authenticated'
 import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
 import { canUpdateUser } from '@/access/canUpdateUser'
 import { revalidateHomepage } from "./hooks/revalidateHomepage";
 import { link } from '@/fields/link'
-import { SecondaryCTA } from "@/blocks/SecondaryCTA/config";
-import { GrantCardGridBlock } from "@/blocks/GrantCardGridBlock/config";
-import { MultiColumnInfoBlock } from '@/blocks/MultiColumnInfoBlock/config';
-import { MultiStepProcess } from "@/blocks/MultiStepProcessBlock/config"
-import { ComparisonBlock } from '@/blocks/ComparisonBlock/config'
-import { YellowCardDeck } from '@/blocks/YellowCardDeck/config'
-import { FeatureCard } from '@/blocks/FeatureCard/config'
-import { ListingCardDeck } from '@/blocks/ListingCardDeck/config'
 
 
 export const Homepage: GlobalConfig = {
@@ -89,7 +80,18 @@ export const Homepage: GlobalConfig = {
       type: 'blocks',
       name: 'contentBlocks',
       label: 'Content Blocks',
-      blocks: [ MultiColumnInfoBlock, SecondaryCTA, GrantCardGridBlock, MultiStepProcess, ComparisonBlock, YellowCardDeck, FeatureCard, ListingCardDeck ],
+      blockReferences: [
+        'secondarycta',
+        'mcolInfoBlock',
+        'grantCardGridBlock',
+        'mstepProcess',
+        'comparisonBlk',
+        'ylwDeck',
+        'featCrd',
+        'listCrdDck',
+        'faqBlk',
+      ],
+      blocks: [],
       labels: {
         singular: 'A Content Block',
         plural: 'Content Blocks'

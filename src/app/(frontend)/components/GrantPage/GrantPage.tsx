@@ -14,6 +14,7 @@ import { ColumnIndicators } from '../ColumnIndicators'
 import { YellowCardDeck } from '@/components/YellowCardDeck'
 import { FeatureCard } from '@/components/FeatureCard'
 import { ListingCardDeck } from '@/components/ListingCardDeck'
+import { FaqBlock } from '@/components/FaqBlock'
 
 interface AssetCloud {
   id: string;
@@ -186,6 +187,8 @@ export const GrantPage: React.FC<GrantPageProps> = ({
                   <React.Fragment key={index}>
                     <div className="page_column_layout gap-6">
                       <GrantCardGrid
+                        title={block.title}
+                        desc={block.desc}
                         grantCards={(block as any) || []}
                       />
                     </div>
@@ -314,6 +317,20 @@ export const GrantPage: React.FC<GrantPageProps> = ({
                       title={block.title}
                       cards={block.cards}
                       buttons={block.buttons}
+                    />
+                  </div>
+                </React.Fragment>
+              )
+            }
+            if (block.blockType === 'faqBlk') {
+              return (
+                <React.Fragment key={index}>
+                  <div className="page_column_layout gap-6">
+                    <FaqBlock
+                      title={block.title}
+                      desc={block.desc}
+                      link={block.link}
+                      faqs={block.faqs}
                     />
                   </div>
                 </React.Fragment>

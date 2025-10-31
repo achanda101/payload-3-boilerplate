@@ -63,6 +63,8 @@ export const PageContent: React.FC<PageProps> = ({ data = {} }) => {
             <React.Fragment key={index}>
               <div className="page_column_layout gap-6">
                 <GrantCardGrid
+                  title={block.title}
+                  desc={block.desc}
                   grantCards={block as any}
                 />
               </div>

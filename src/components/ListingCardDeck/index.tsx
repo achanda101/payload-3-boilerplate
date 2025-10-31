@@ -147,7 +147,7 @@ export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({
                 className="pl-0 mx-auto basis-auto"
               >
                 <div
-                      className={`px-[2rem] py-0 h-full flex flex-col`}
+                      className={`px-[1rem] md:px-[2rem] py-0 h-full flex flex-col`}
                       style={{ width: `${currentCardWidth}vw` }}
                 >
                   {card.image?.url && (
@@ -156,7 +156,7 @@ export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({
                         src={card.image.url}
                         alt={card.image.alt || 'Listing Card Image'}
                         fill
-                        sizes="(max-width: 768px) 100vw, 120px"
+                        sizes="(max-width: 768px) 80vw, (max-width: 1023px) 48vw, 28vw"
                         className="object-cover"
                         style={{
                           objectPosition: `${card.image.focalX ?? 50}% ${card.image.focalY ?? 50}%`,
@@ -186,7 +186,7 @@ export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({
           {canScrollPrev && (
             <button
               onClick={() => api?.scrollPrev()}
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-background border-2 border-border flex items-center justify-center hover:bg-black hover:text-white hover:border-white transition-colors z-10"
+              className="hidden absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-background border-2 border-border md:flex items-center justify-center hover:bg-black hover:text-white hover:border-white transition-colors z-10"
               aria-label="Previous slide"
             >
               <ChevronLeft className="w-6 h-6" />
@@ -196,7 +196,7 @@ export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({
           {canScrollNext && (
             <button
               onClick={() => api?.scrollNext()}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-background border-2 border-border flex items-center justify-center hover:bg-black hover:text-white hover:border-white transition-colors z-10"
+              className="hidden absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-background border-2 border-border md:flex items-center justify-center hover:bg-black hover:text-white hover:border-white transition-colors z-10"
               aria-label="Next slide"
             >
               <ChevronRight className="w-6 h-6" />
@@ -204,8 +204,8 @@ export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({
           )}
         </Carousel>
         {buttons &&
-          <div className="mt-[3rem]">
-            <ButtonArray btnArray={buttons} colStackOnMobile={false} />
+          <div className="pt-[1rem] md:pt-[3rem]">
+            <ButtonArray btnArray={buttons} colStackOnMobile={true} />
           </div>
         }
       </div>

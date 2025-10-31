@@ -47,18 +47,26 @@ interface GrantCardData {
 }
 
 interface GrantCardGridProps {
+  title: string | null;
+  desc: string | null;
   grantCards: {
     grantCardGrid: GrantCardData[],
   }
 }
 
-export const GrantCardGrid: React.FC<GrantCardGridProps> = ({ grantCards }) => {
+export const GrantCardGrid: React.FC<GrantCardGridProps> = ({ title, desc, grantCards }) => {
 
   const colouredCards = grantCards?.grantCardGrid?.filter(card => card.cardColour && card.cardColour !== 'trans' && card._status !== "draft");
   const transparentCards = grantCards?.grantCardGrid?.filter(card => card.cardColour && card.cardColour === 'trans' && card._status !== "draft");
 
   return (
     <>
+      {title && (
+        <h3 className="col-span-full text-center">{title}</h3>
+      )}
+      {desc && (
+        <p className="col-span-full text-center -mt-6">{desc}</p>
+      )}
       {colouredCards?.length > 0 ?  (colouredCards.map((card, index) => {
         const isLastOddCard = index === colouredCards.length - 1 && colouredCards.length % 2 === 1;        
         
