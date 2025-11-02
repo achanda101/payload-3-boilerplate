@@ -116,10 +116,7 @@ export const Homepage: GlobalConfig = {
   ],
   versions: {
     drafts: {
-      autosave: {
-        interval: 2000,
-        showSaveDraftButton: true,
-      },
+      autosave: false,
     },
   },
   hooks: {
