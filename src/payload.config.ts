@@ -26,18 +26,6 @@ import { getServerSideURL } from './utilities/getURL'
 import languageOptions from './globals/Header/languageOptions.json'
 import { Homepage } from './globals/Homepage/config'
 
-// BLOCKS
-import { MultiColumnInfoBlock } from '@/blocks/MultiColumnInfoBlock/config'
-import { SingleColumnInfoBlock } from '@/blocks/SingleColumnInfoBlock/config'
-import { GrantCardGridBlock } from "@/blocks/GrantCardGridBlock/config"
-import { MultiStepProcess } from "@/blocks/MultiStepProcessBlock/config"
-import { ComparisonBlock } from '@/blocks/ComparisonBlock/config'
-import { YellowCardDeck } from '@/blocks/YellowCardDeck/config'
-import { FeatureCard } from '@/blocks/FeatureCard/config'
-import { ListingCardDeck } from '@/blocks/ListingCardDeck/config'
-import { FaqBlock } from '@/blocks/FaqBlock/config'
-import { SecondaryCTA } from '@/blocks/SecondaryCTA/config'
-
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
@@ -120,19 +108,6 @@ export default buildConfig({
     fallback: true, // defaults to true
   },
   collections: [ Grants, GrantCards, Posts, MediaCloud, AssetCloud, Documents, Categories, Users ],
-  blocks: [
-    SecondaryCTA,
-    SingleColumnInfoBlock,
-    MultiColumnInfoBlock,
-    SingleColumnInfoBlock,
-    GrantCardGridBlock,
-    MultiStepProcess,
-    ComparisonBlock,
-    YellowCardDeck,
-    FeatureCard,
-    ListingCardDeck,
-    FaqBlock,
-  ],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [ Homepage, Header, Footer, Navigation, ContactInfo ],
   plugins: [

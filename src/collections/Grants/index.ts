@@ -4,6 +4,13 @@ import { link } from "@/fields/link"
 import { authenticated } from '@/access/authenticated'
 import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
 
+import { revalidateGrant } from './hooks/revalidateGrant'
+import { slugField } from '@/fields/slug'
+
+import { generatePreviewPath } from '@/utilities/generatePreviewPath'
+import { getServerSideURL } from '@/utilities/getURL'
+
+// BLOCKS
 import { MultiColumnInfoBlock } from '@/blocks/MultiColumnInfoBlock/config'
 import { SingleColumnInfoBlock } from '@/blocks/SingleColumnInfoBlock/config'
 import { GrantCardGridBlock } from "@/blocks/GrantCardGridBlock/config"
@@ -11,15 +18,9 @@ import { MultiStepProcess } from "@/blocks/MultiStepProcessBlock/config"
 import { ComparisonBlock } from '@/blocks/ComparisonBlock/config'
 import { YellowCardDeck } from '@/blocks/YellowCardDeck/config'
 import { FeatureCard } from '@/blocks/FeatureCard/config'
+import { FeatureCardAccordion } from '@/blocks/FeatureCardAccordion/config'
 import { ListingCardDeck } from '@/blocks/ListingCardDeck/config'
 import { FaqBlock } from '@/blocks/FaqBlock/config'
-
-import { revalidateGrant } from './hooks/revalidateGrant'
-import { slugField } from '@/fields/slug'
-
-import { generatePreviewPath } from '@/utilities/generatePreviewPath'
-import { getServerSideURL } from '@/utilities/getURL'
-
 
 
 export const Grants: CollectionConfig<'grants'> = {
@@ -207,18 +208,18 @@ export const Grants: CollectionConfig<'grants'> = {
     {
       type: 'blocks',
       name: 'contentBlocks',
-      blockReferences: [
-        'scolInfoBlk',
-        'mcolInfoBlock',
-        'grantCardGridBlock',
-        'mstepProcess',
-        'comparisonBlk',
-        'ylwDeck',
-        'featCrd',
-        'listCrdDck',
-        'faqBlk',
-      ],
-      blocks: [],
+      blocks: [
+          SingleColumnInfoBlock,
+          MultiColumnInfoBlock,
+          GrantCardGridBlock,
+          MultiStepProcess,
+          ComparisonBlock,
+          YellowCardDeck,
+          FeatureCard,
+          FeatureCardAccordion,
+          ListingCardDeck,
+          FaqBlock,
+        ],
       labels: {
         singular: 'A Content Block',
         plural: 'Content Blocks'

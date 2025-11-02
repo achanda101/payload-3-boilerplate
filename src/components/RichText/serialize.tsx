@@ -209,7 +209,6 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
             case 'link': {
               const fields = node.fields
 
-              console.log('link fields', fields)
 
               return (
                 <CMSLink

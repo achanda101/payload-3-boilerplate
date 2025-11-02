@@ -4,6 +4,18 @@ import { canUpdateUser } from '@/access/canUpdateUser'
 import { revalidateHomepage } from "./hooks/revalidateHomepage";
 import { link } from '@/fields/link'
 
+// BLOCKS
+import { MultiColumnInfoBlock } from '@/blocks/MultiColumnInfoBlock/config'
+import { GrantCardGridBlock } from "@/blocks/GrantCardGridBlock/config"
+import { MultiStepProcess } from "@/blocks/MultiStepProcessBlock/config"
+import { ComparisonBlock } from '@/blocks/ComparisonBlock/config'
+import { YellowCardDeck } from '@/blocks/YellowCardDeck/config'
+import { FeatureCard } from '@/blocks/FeatureCard/config'
+import { FeatureCardAccordion } from '@/blocks/FeatureCardAccordion/config'
+import { ListingCardDeck } from '@/blocks/ListingCardDeck/config'
+import { FaqBlock } from '@/blocks/FaqBlock/config'
+import { SecondaryCTA } from '@/blocks/SecondaryCTA/config'
+
 
 export const Homepage: GlobalConfig = {
   slug: 'homepage',
@@ -80,18 +92,18 @@ export const Homepage: GlobalConfig = {
       type: 'blocks',
       name: 'contentBlocks',
       label: 'Content Blocks',
-      blockReferences: [
-        'secondarycta',
-        'mcolInfoBlock',
-        'grantCardGridBlock',
-        'mstepProcess',
-        'comparisonBlk',
-        'ylwDeck',
-        'featCrd',
-        'listCrdDck',
-        'faqBlk',
-      ],
-      blocks: [],
+      blocks: [
+          SecondaryCTA,
+          MultiColumnInfoBlock,
+          GrantCardGridBlock,
+          MultiStepProcess,
+          ComparisonBlock,
+          YellowCardDeck,
+          FeatureCard,
+          FeatureCardAccordion,
+          ListingCardDeck,
+          FaqBlock,
+        ],
       labels: {
         singular: 'A Content Block',
         plural: 'Content Blocks'
