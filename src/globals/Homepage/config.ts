@@ -100,7 +100,7 @@ export const Homepage: GlobalConfig = {
           ComparisonBlock,
           YellowCardDeck,
           FeatureCard,
-          // FeatureCardAccordion,
+          FeatureCardAccordion,
           ListingCardDeck,
           FaqBlock,
         ],
