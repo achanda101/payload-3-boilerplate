@@ -315,9 +315,7 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
   ],
   versions: {
     drafts: {
-      autosave: {
-        interval: 2000, // Changed from 100ms to 2000ms to prevent flickering
-      },
+      autosave: false,
     },
     maxPerDoc: 50,
   },
