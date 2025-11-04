@@ -177,7 +177,6 @@ export const Grants: CollectionConfig<'grants'> = {
             }),
           ],
           admin: {
-            disableListColumn: true,
             components: {
               RowLabel: {
                 path: 'src/blocks/HeroBlock/HeroButtonRowLabel.tsx',
