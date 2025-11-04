@@ -288,7 +288,7 @@ export interface Grant {
             title?: string | null;
             desc?: string | null;
             /**
-             * Grant Cards to display. Pre-populated with all active grants (excludes closed grants). You can reorder or remove cards as needed.
+             * Grant Cards to display - only active grants (excludes closed grants). You can reorder or remove cards as needed.
              */
             grantCardGrid?: (number | Grantcard)[] | null;
             id?: string | null;
@@ -2329,7 +2329,7 @@ export interface Homepage {
             title?: string | null;
             desc?: string | null;
             /**
-             * Grant Cards to display. Pre-populated with all active grants (excludes closed grants). You can reorder or remove cards as needed.
+             * Grant Cards to display - only active grants (excludes closed grants). You can reorder or remove cards as needed.
              */
             grantCardGrid?: (number | Grantcard)[] | null;
             id?: string | null;

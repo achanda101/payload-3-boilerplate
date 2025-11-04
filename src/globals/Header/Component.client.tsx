@@ -70,12 +70,8 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
   
   const toggleSearch = () => setIsSearchOpen(!isSearchOpen)
 
-  const handleNavigation = (href: string) => {
-    setIsNavigating(true)
-    setTimeout(() => {
-      setIsMobileMenuOpen(false)
-      setIsNavigating(false)
-    }, 300)
+  const handleNavigation = () => {
+    setIsMobileMenuOpen(false)
   }
 
   const fetchDataForLanguage = async (language: string) => {
@@ -213,7 +209,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
           <input type="text" placeholder="Search..." />
         </div>
       )}
-      <Sheet open={isMobileMenuOpen}>
+      <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
           <SheetPortal>
             <SheetOverlay />
             <SheetPrimitive.Content className={cn(
@@ -285,7 +281,11 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
                             const getHref = () => {
                               if (!navItem.link) return '#'
                               if (navItem.link.type === 'reference') {
-                                return `/${navItem.link.reference?.relationTo}/${navItem.link.reference?.value?.slug}` || '#'
+                                const ref = navItem.link.reference
+                                if (ref?.relationTo && ref?.value?.slug) {
+                                  return `/${ref.relationTo}/${ref.value.slug}`
+                                }
+                                return '#'
                               } else {
                                 return navItem.link.url || '#'
                               }

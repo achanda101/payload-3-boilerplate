@@ -31,11 +31,8 @@ export const GrantCardGridBlock: Block = {
         }
       },
       admin: {
-        description: 'Grant Cards to display. Pre-populated with all active grants (excludes closed grants). You can reorder or remove cards as needed.',
+        description: 'Grant Cards to display - only active grants (excludes closed grants). You can reorder or remove cards as needed.',
       },
-      hooks: {
-        afterRead: [populateGrantCards],
-      }
     }
   ]
 }
