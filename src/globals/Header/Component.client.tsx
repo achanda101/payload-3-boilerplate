@@ -222,7 +222,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
                 {/* Logo + Close Button */}
                 <div className="flex justify-between items-center mt-7 mb-6 flex-shrink-0">
                   {headerData.logo && typeof headerData.logo === 'object' && 'url' in headerData.logo && headerData.logo.url ? (
-                    <Link href="/" onClick={() => handleNavigation('/')}>
+                    <Link href="/" onClick={() => handleNavigation()}>
                       <Image
                         src={headerData.logo.url}
                         alt={headerData.logo.alt || "Site Logo"}
@@ -232,7 +232,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
                       />
                     </Link>
                   ) : (
-                    <Link href="/" onClick={() => handleNavigation('/')} className="font-bold">Menu</Link>
+                    <Link href="/" onClick={() => handleNavigation()} className="font-bold">Menu</Link>
                   )}
                   <button
                     onClick={() => setIsMobileMenuOpen(false)}
