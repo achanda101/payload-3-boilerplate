@@ -215,7 +215,7 @@ export const Grants: CollectionConfig<'grants'> = {
           ComparisonBlock,
           YellowCardDeck,
           FeatureCard,
-          FeatureCardAccordion,
+          // FeatureCardAccordion,
           ListingCardDeck,
           FaqBlock,
         ],

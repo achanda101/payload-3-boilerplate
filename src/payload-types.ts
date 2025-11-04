@@ -495,60 +495,6 @@ export interface Grant {
             blockType: 'featCrd';
           }
         | {
-            /**
-             * Title for the block
-             */
-            title?: string | null;
-            featCrds?:
-              | {
-                  accTitle?: string | null;
-                  accContent?: {
-                    root: {
-                      type: string;
-                      children: {
-                        type: string;
-                        version: number;
-                        [k: string]: unknown;
-                      }[];
-                      direction: ('ltr' | 'rtl') | null;
-                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                      indent: number;
-                      version: number;
-                    };
-                    [k: string]: unknown;
-                  } | null;
-                  crdTag?: string | null;
-                  crdContent?: {
-                    root: {
-                      type: string;
-                      children: {
-                        type: string;
-                        version: number;
-                        [k: string]: unknown;
-                      }[];
-                      direction: ('ltr' | 'rtl') | null;
-                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                      indent: number;
-                      version: number;
-                    };
-                    [k: string]: unknown;
-                  } | null;
-                  /**
-                   * Upload a mascot image for the feature card
-                   */
-                  mascot?: (number | null) | AssetCloud;
-                  /**
-                   * Select a colour for the Feature Card background.
-                   */
-                  crdColour?: ('forest' | 'turmeric' | 'sky' | 'rose' | 'lavender' | 'fire') | null;
-                  id?: string | null;
-                }[]
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'featCrdAcc';
-          }
-        | {
             title?: string | null;
             /**
              * Add listing cards to be displayed in the deck
@@ -1587,24 +1533,6 @@ export interface GrantsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        featCrdAcc?:
-          | T
-          | {
-              title?: T;
-              featCrds?:
-                | T
-                | {
-                    accTitle?: T;
-                    accContent?: T;
-                    crdTag?: T;
-                    crdContent?: T;
-                    mascot?: T;
-                    crdColour?: T;
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
         listCrdDck?:
           | T
           | {
@@ -2536,60 +2464,6 @@ export interface Homepage {
             blockType: 'featCrd';
           }
         | {
-            /**
-             * Title for the block
-             */
-            title?: string | null;
-            featCrds?:
-              | {
-                  accTitle?: string | null;
-                  accContent?: {
-                    root: {
-                      type: string;
-                      children: {
-                        type: string;
-                        version: number;
-                        [k: string]: unknown;
-                      }[];
-                      direction: ('ltr' | 'rtl') | null;
-                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                      indent: number;
-                      version: number;
-                    };
-                    [k: string]: unknown;
-                  } | null;
-                  crdTag?: string | null;
-                  crdContent?: {
-                    root: {
-                      type: string;
-                      children: {
-                        type: string;
-                        version: number;
-                        [k: string]: unknown;
-                      }[];
-                      direction: ('ltr' | 'rtl') | null;
-                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                      indent: number;
-                      version: number;
-                    };
-                    [k: string]: unknown;
-                  } | null;
-                  /**
-                   * Upload a mascot image for the feature card
-                   */
-                  mascot?: (number | null) | AssetCloud;
-                  /**
-                   * Select a colour for the Feature Card background.
-                   */
-                  crdColour?: ('forest' | 'turmeric' | 'sky' | 'rose' | 'lavender' | 'fire') | null;
-                  id?: string | null;
-                }[]
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'featCrdAcc';
-          }
-        | {
             title?: string | null;
             /**
              * Add listing cards to be displayed in the deck
@@ -3138,24 +3012,6 @@ export interface HomepageSelect<T extends boolean = true> {
                     email?: T;
                     doc?: T;
                     label?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        featCrdAcc?:
-          | T
-          | {
-              title?: T;
-              featCrds?:
-                | T
-                | {
-                    accTitle?: T;
-                    accContent?: T;
-                    crdTag?: T;
-                    crdContent?: T;
-                    mascot?: T;
-                    crdColour?: T;
-                    id?: T;
                   };
               id?: T;
               blockName?: T;
