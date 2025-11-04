@@ -9,7 +9,7 @@ import { useLanguage } from '@/providers/LanguageContext'
 import { useHeaderTheme } from '@/providers/HeaderTheme'
 import * as SheetPrimitive from "@radix-ui/react-dialog";
 import { Sheet, SheetPortal, SheetOverlay } from '@/components/ui/sheet';
-import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
+import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { cn } from "src/utilities/cn";
 import {
   Collapsible,
@@ -219,9 +219,9 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
             <SheetPrimitive.Content className={cn(
               "fixed right-0 top-0 z-50 h-screen w-full border-l shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500 data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right lg:hidden"
             )} style={{ backgroundColor: 'hsl(39, 100%, 96%)' }}>
-              <VisuallyHidden>
+              <VisuallyHidden.Root>
                 <SheetPrimitive.Title>Navigation Menu</SheetPrimitive.Title>
-              </VisuallyHidden>
+              </VisuallyHidden.Root>
               <div className="flex flex-col h-full p-6" style={{ backgroundColor: 'hsl(39, 100%, 96%)' }}>
                 {/* Logo + Close Button */}
                 <div className="flex justify-between items-center mt-7 mb-6 flex-shrink-0">
