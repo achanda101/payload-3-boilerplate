@@ -296,7 +296,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
                                 key={navItem.id}
                                 href={getHref()}
                                 className="block hover:text-gray-600 transition-colors"
-                                onClick={() => handleNavigation(getHref())}
+                                onClick={() => handleNavigation()}
                               >
                                 <p>{navItem.link?.label}</p>
                               </Link>
