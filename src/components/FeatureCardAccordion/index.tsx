@@ -89,10 +89,10 @@ export const FeatureCardAccordion: React.FC<FeatureCardAccordionProps> = ({
                       </div>
                       
                       <div className="text-base leading-relaxed mb-6">
-                        {card.accContent && typeof card.accContent === 'object' ? (
-                          serializeLexical({ nodes: card.accContent.root?.children || [] })
+                        {card.crdContent && typeof card.crdContent === 'object' ? (
+                          serializeLexical({ nodes: card.crdContent.root?.children || [] })
                         ) : (
-                            <p>{card.accContent}</p>
+                            <p>{card.crdContent}</p>
                         )}
                       </div>
                       {card.mascot && (
@@ -100,9 +100,9 @@ export const FeatureCardAccordion: React.FC<FeatureCardAccordionProps> = ({
                           <Image
                             src={card.mascot.url || ''}
                             alt={card.mascot.alt || 'Mascot Image'}
-                            width={Math.min(card.mascot.width || 120, 120)}
-                            height={150}
-                            sizes="(max-width: 768px) 100vw, 120px"
+                            width={card.mascot.width || 85}
+                            height={card.mascot.height || 85}
+                            sizes="85px"
                             className='object-contain max-w-[85px] h-[85px]'
                           />
                       </div>
@@ -153,9 +153,9 @@ export const FeatureCardAccordion: React.FC<FeatureCardAccordionProps> = ({
                     <Image
                       src={activeData.mascot.url || ''}
                       alt={activeData.mascot.alt || 'Mascot Image'}
-                      width={Math.min(activeData.mascot.width || 120, 120)}
-                      height={150}
-                      sizes="(max-width: 768px) 100vw, 120px"
+                      width={activeData.mascot.width || 85}
+                      height={activeData.mascot.height || 85}
+                      sizes="85px"
                       className='object-contain max-w-[85px] h-[85px]'
                     />
                   </div>

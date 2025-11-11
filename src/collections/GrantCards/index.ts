@@ -93,7 +93,7 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
                   localized: true,
                   maxLength: 50,
                   admin: {
-                    placeholder: 'E.g., Rapid Response Fund, Applications open until 15th June',
+                    placeholder: 'E.g., Applications open until 15th June',
                     components: {
                       afterInput: [
                         {
