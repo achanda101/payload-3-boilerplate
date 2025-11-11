@@ -218,6 +218,7 @@ export interface Grant {
               label?: string | null;
               email?: string | null;
             };
+            uiType?: ('lrg_txt_cta' | 'md_txt_cta' | 'min_cta' | 'puffy_beige_cta') | null;
             ctaButton?:
               | {
                   link?: {
@@ -1448,6 +1449,7 @@ export interface GrantsSelect<T extends boolean = true> {
                     label?: T;
                     email?: T;
                   };
+              uiType?: T;
               ctaButton?:
                 | T
                 | {
@@ -2323,6 +2325,7 @@ export interface Homepage {
               label?: string | null;
               email?: string | null;
             };
+            uiType?: ('lrg_txt_cta' | 'md_txt_cta' | 'min_cta' | 'puffy_beige_cta') | null;
             ctaButton?:
               | {
                   link?: {
@@ -3061,6 +3064,7 @@ export interface HomepageSelect<T extends boolean = true> {
                     label?: T;
                     email?: T;
                   };
+              uiType?: T;
               ctaButton?:
                 | T
                 | {

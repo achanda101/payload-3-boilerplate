@@ -1,5 +1,5 @@
 {
-  "id": "b821104b-536b-4043-8d2b-210c115a774f",
+  "id": "9d24e3f1-aa6e-413c-9b1f-7d7e1953f84a",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -437,6 +437,14 @@
           "type": "varchar",
           "primaryKey": false,
           "notNull": false
+        },
+        "ui_type": {
+          "name": "ui_type",
+          "type": "enum_grants_blocks_secondarycta_ui_type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'lrg_txt_cta'"
         },
         "block_name": {
           "name": "block_name",
@@ -5860,6 +5868,14 @@
           "type": "varchar",
           "primaryKey": false,
           "notNull": false
+        },
+        "ui_type": {
+          "name": "ui_type",
+          "type": "enum__grants_v_blocks_secondarycta_ui_type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'lrg_txt_cta'"
         },
         "_uuid": {
           "name": "_uuid",
@@ -20139,6 +20155,14 @@
           "primaryKey": false,
           "notNull": false
         },
+        "ui_type": {
+          "name": "ui_type",
+          "type": "enum_homepage_blocks_secondarycta_ui_type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'lrg_txt_cta'"
+        },
         "block_name": {
           "name": "block_name",
           "type": "varchar",
@@ -25412,6 +25436,14 @@
           "type": "varchar",
           "primaryKey": false,
           "notNull": false
+        },
+        "ui_type": {
+          "name": "ui_type",
+          "type": "enum__homepage_v_blocks_secondarycta_ui_type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'lrg_txt_cta'"
         },
         "_uuid": {
           "name": "_uuid",
@@ -31760,6 +31792,16 @@
         "document"
       ]
     },
+    "public.enum_grants_blocks_secondarycta_ui_type": {
+      "name": "enum_grants_blocks_secondarycta_ui_type",
+      "schema": "public",
+      "values": [
+        "lrg_txt_cta",
+        "md_txt_cta",
+        "min_cta",
+        "puffy_beige_cta"
+      ]
+    },
     "public.enum_grants_blocks_mcol_info_block_multicols_link_type": {
       "name": "enum_grants_blocks_mcol_info_block_multicols_link_type",
       "schema": "public",
@@ -31915,6 +31957,16 @@
         "custom",
         "email",
         "document"
+      ]
+    },
+    "public.enum__grants_v_blocks_secondarycta_ui_type": {
+      "name": "enum__grants_v_blocks_secondarycta_ui_type",
+      "schema": "public",
+      "values": [
+        "lrg_txt_cta",
+        "md_txt_cta",
+        "min_cta",
+        "puffy_beige_cta"
       ]
     },
     "public.enum__grants_v_blocks_mcol_info_block_multicols_link_type": {
@@ -32288,6 +32340,16 @@
         "document"
       ]
     },
+    "public.enum_homepage_blocks_secondarycta_ui_type": {
+      "name": "enum_homepage_blocks_secondarycta_ui_type",
+      "schema": "public",
+      "values": [
+        "lrg_txt_cta",
+        "md_txt_cta",
+        "min_cta",
+        "puffy_beige_cta"
+      ]
+    },
     "public.enum_homepage_blocks_mcol_info_block_multicols_link_type": {
       "name": "enum_homepage_blocks_mcol_info_block_multicols_link_type",
       "schema": "public",
@@ -32426,6 +32488,16 @@
         "custom",
         "email",
         "document"
+      ]
+    },
+    "public.enum__homepage_v_blocks_secondarycta_ui_type": {
+      "name": "enum__homepage_v_blocks_secondarycta_ui_type",
+      "schema": "public",
+      "values": [
+        "lrg_txt_cta",
+        "md_txt_cta",
+        "min_cta",
+        "puffy_beige_cta"
       ]
     },
     "public.enum__homepage_v_blocks_mcol_info_block_multicols_link_type": {

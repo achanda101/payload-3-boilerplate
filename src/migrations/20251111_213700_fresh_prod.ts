@@ -4,7 +4,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   await db.execute(sql`
    CREATE TYPE "public"."_locales" AS ENUM('en', 'ar', 'bi', 'bn-IN', 'br', 'ch', 'prs-Arab', 'km', 'hi', 'ms', 'ne', 'ps-Arab', 'pcm', 'si', 'tl', 'ta', 'th', 'vi', 'ur');
   CREATE TYPE "public"."enum_grants_hero_buttons_link_type" AS ENUM('reference', 'custom', 'email', 'document');
-  CREATE TYPE "public"."enum_grants_blocks_scol_info_blk_col_btns_link_type" AS ENUM('reference', 'custom', 'email', 'document');
+  CREATE TYPE "public"."enum_grants_blocks_secondarycta_cta_button_link_type" AS ENUM('reference', 'custom', 'email', 'document');
   CREATE TYPE "public"."enum_grants_blocks_mcol_info_block_multicols_link_type" AS ENUM('reference', 'custom', 'email', 'document');
   CREATE TYPE "public"."enum_grants_blocks_mstep_process_steps_icon" AS ENUM('FileText', 'Clock', 'ShieldCheck', 'Vote', 'ScrollText', 'Banknote', 'Rocket', 'FileCheck');
   CREATE TYPE "public"."enum_grants_blocks_comparison_blk_buttons_link_type" AS ENUM('reference', 'custom', 'email', 'document');
@@ -20,7 +20,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum_grants_bg_type" AS ENUM('wavy_top', 'wavy_full', 'center_blob');
   CREATE TYPE "public"."enum_grants_status" AS ENUM('draft', 'published');
   CREATE TYPE "public"."enum__grants_v_version_hero_buttons_link_type" AS ENUM('reference', 'custom', 'email', 'document');
-  CREATE TYPE "public"."enum__grants_v_blocks_scol_info_blk_col_btns_link_type" AS ENUM('reference', 'custom', 'email', 'document');
+  CREATE TYPE "public"."enum__grants_v_blocks_secondarycta_cta_button_link_type" AS ENUM('reference', 'custom', 'email', 'document');
   CREATE TYPE "public"."enum__grants_v_blocks_mcol_info_block_multicols_link_type" AS ENUM('reference', 'custom', 'email', 'document');
   CREATE TYPE "public"."enum__grants_v_blocks_mstep_process_steps_icon" AS ENUM('FileText', 'Clock', 'ShieldCheck', 'Vote', 'ScrollText', 'Banknote', 'Rocket', 'FileCheck');
   CREATE TYPE "public"."enum__grants_v_blocks_comparison_blk_buttons_link_type" AS ENUM('reference', 'custom', 'email', 'document');
@@ -107,11 +107,11 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"_parent_id" varchar NOT NULL
   );
   
-  CREATE TABLE "grants_blocks_scol_info_blk_col_btns" (
+  CREATE TABLE "grants_blocks_secondarycta_cta_button" (
   	"_order" integer NOT NULL,
   	"_parent_id" varchar NOT NULL,
   	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_grants_blocks_scol_info_blk_col_btns_link_type" DEFAULT 'reference',
+  	"link_type" "enum_grants_blocks_secondarycta_cta_button_link_type" DEFAULT 'reference',
   	"link_new_tab" boolean,
   	"link_download_link" boolean,
   	"link_arrow_link" boolean,
@@ -121,24 +121,26 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"link_email" varchar
   );
   
-  CREATE TABLE "grants_blocks_scol_info_blk_col_btns_locales" (
+  CREATE TABLE "grants_blocks_secondarycta_cta_button_locales" (
   	"link_label" varchar,
   	"id" serial PRIMARY KEY NOT NULL,
   	"_locale" "_locales" NOT NULL,
   	"_parent_id" varchar NOT NULL
   );
   
-  CREATE TABLE "grants_blocks_scol_info_blk" (
+  CREATE TABLE "grants_blocks_secondarycta" (
   	"_order" integer NOT NULL,
   	"_parent_id" integer NOT NULL,
   	"_path" text NOT NULL,
   	"id" varchar PRIMARY KEY NOT NULL,
+  	"contact_email" varchar,
   	"block_name" varchar
   );
   
-  CREATE TABLE "grants_blocks_scol_info_blk_locales" (
-  	"title" varchar,
-  	"desc" varchar,
+  CREATE TABLE "grants_blocks_secondarycta_locales" (
+  	"cta_title" varchar,
+  	"cta_subtitle" varchar,
+  	"contact_label" varchar,
   	"id" serial PRIMARY KEY NOT NULL,
   	"_locale" "_locales" NOT NULL,
   	"_parent_id" varchar NOT NULL
@@ -199,7 +201,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   );
   
   CREATE TABLE "grants_blocks_mstep_process_steps_details_locales" (
-  	"bullet" varchar,
+  	"bullet" jsonb,
   	"id" serial PRIMARY KEY NOT NULL,
   	"_locale" "_locales" NOT NULL,
   	"_parent_id" varchar NOT NULL
@@ -215,7 +217,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TABLE "grants_blocks_mstep_process_steps_locales" (
   	"step_title" varchar,
   	"title" varchar,
-  	"tip" varchar,
+  	"tip" jsonb,
   	"id" serial PRIMARY KEY NOT NULL,
   	"_locale" "_locales" NOT NULL,
   	"_parent_id" varchar NOT NULL
@@ -602,11 +604,11 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"_parent_id" integer NOT NULL
   );
   
-  CREATE TABLE "_grants_v_blocks_scol_info_blk_col_btns" (
+  CREATE TABLE "_grants_v_blocks_secondarycta_cta_button" (
   	"_order" integer NOT NULL,
   	"_parent_id" integer NOT NULL,
   	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__grants_v_blocks_scol_info_blk_col_btns_link_type" DEFAULT 'reference',
+  	"link_type" "enum__grants_v_blocks_secondarycta_cta_button_link_type" DEFAULT 'reference',
   	"link_new_tab" boolean,
   	"link_download_link" boolean,
   	"link_arrow_link" boolean,
@@ -617,25 +619,27 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"_uuid" varchar
   );
   
-  CREATE TABLE "_grants_v_blocks_scol_info_blk_col_btns_locales" (
+  CREATE TABLE "_grants_v_blocks_secondarycta_cta_button_locales" (
   	"link_label" varchar,
   	"id" serial PRIMARY KEY NOT NULL,
   	"_locale" "_locales" NOT NULL,
   	"_parent_id" integer NOT NULL
   );
   
-  CREATE TABLE "_grants_v_blocks_scol_info_blk" (
+  CREATE TABLE "_grants_v_blocks_secondarycta" (
   	"_order" integer NOT NULL,
   	"_parent_id" integer NOT NULL,
   	"_path" text NOT NULL,
   	"id" serial PRIMARY KEY NOT NULL,
+  	"contact_email" varchar,
   	"_uuid" varchar,
   	"block_name" varchar
   );
   
-  CREATE TABLE "_grants_v_blocks_scol_info_blk_locales" (
-  	"title" varchar,
-  	"desc" varchar,
+  CREATE TABLE "_grants_v_blocks_secondarycta_locales" (
+  	"cta_title" varchar,
+  	"cta_subtitle" varchar,
+  	"contact_label" varchar,
   	"id" serial PRIMARY KEY NOT NULL,
   	"_locale" "_locales" NOT NULL,
   	"_parent_id" integer NOT NULL
@@ -700,7 +704,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   );
   
   CREATE TABLE "_grants_v_blocks_mstep_process_steps_details_locales" (
-  	"bullet" varchar,
+  	"bullet" jsonb,
   	"id" serial PRIMARY KEY NOT NULL,
   	"_locale" "_locales" NOT NULL,
   	"_parent_id" integer NOT NULL
@@ -717,7 +721,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TABLE "_grants_v_blocks_mstep_process_steps_locales" (
   	"step_title" varchar,
   	"title" varchar,
-  	"tip" varchar,
+  	"tip" jsonb,
   	"id" serial PRIMARY KEY NOT NULL,
   	"_locale" "_locales" NOT NULL,
   	"_parent_id" integer NOT NULL
@@ -1935,7 +1939,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   );
   
   CREATE TABLE "homepage_blocks_mstep_process_steps_details_locales" (
-  	"bullet" varchar,
+  	"bullet" jsonb,
   	"id" serial PRIMARY KEY NOT NULL,
   	"_locale" "_locales" NOT NULL,
   	"_parent_id" varchar NOT NULL
@@ -1951,7 +1955,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TABLE "homepage_blocks_mstep_process_steps_locales" (
   	"step_title" varchar,
   	"title" varchar,
-  	"tip" varchar,
+  	"tip" jsonb,
   	"id" serial PRIMARY KEY NOT NULL,
   	"_locale" "_locales" NOT NULL,
   	"_parent_id" varchar NOT NULL
@@ -2429,7 +2433,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   );
   
   CREATE TABLE "_homepage_v_blocks_mstep_process_steps_details_locales" (
-  	"bullet" varchar,
+  	"bullet" jsonb,
   	"id" serial PRIMARY KEY NOT NULL,
   	"_locale" "_locales" NOT NULL,
   	"_parent_id" integer NOT NULL
@@ -2446,7 +2450,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TABLE "_homepage_v_blocks_mstep_process_steps_locales" (
   	"step_title" varchar,
   	"title" varchar,
-  	"tip" varchar,
+  	"tip" jsonb,
   	"id" serial PRIMARY KEY NOT NULL,
   	"_locale" "_locales" NOT NULL,
   	"_parent_id" integer NOT NULL
@@ -2943,10 +2947,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   
   ALTER TABLE "grants_hero_buttons" ADD CONSTRAINT "grants_hero_buttons_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "grants_hero_buttons_locales" ADD CONSTRAINT "grants_hero_buttons_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants_hero_buttons"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "grants_blocks_scol_info_blk_col_btns" ADD CONSTRAINT "grants_blocks_scol_info_blk_col_btns_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants_blocks_scol_info_blk"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "grants_blocks_scol_info_blk_col_btns_locales" ADD CONSTRAINT "grants_blocks_scol_info_blk_col_btns_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants_blocks_scol_info_blk_col_btns"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "grants_blocks_scol_info_blk" ADD CONSTRAINT "grants_blocks_scol_info_blk_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "grants_blocks_scol_info_blk_locales" ADD CONSTRAINT "grants_blocks_scol_info_blk_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants_blocks_scol_info_blk"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "grants_blocks_secondarycta_cta_button" ADD CONSTRAINT "grants_blocks_secondarycta_cta_button_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants_blocks_secondarycta"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "grants_blocks_secondarycta_cta_button_locales" ADD CONSTRAINT "grants_blocks_secondarycta_cta_button_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants_blocks_secondarycta_cta_button"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "grants_blocks_secondarycta" ADD CONSTRAINT "grants_blocks_secondarycta_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "grants_blocks_secondarycta_locales" ADD CONSTRAINT "grants_blocks_secondarycta_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants_blocks_secondarycta"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "grants_blocks_mcol_info_block_multicols" ADD CONSTRAINT "grants_blocks_mcol_info_block_multicols_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants_blocks_mcol_info_block"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "grants_blocks_mcol_info_block_multicols_locales" ADD CONSTRAINT "grants_blocks_mcol_info_block_multicols_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants_blocks_mcol_info_block_multicols"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "grants_blocks_mcol_info_block" ADD CONSTRAINT "grants_blocks_mcol_info_block_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants"("id") ON DELETE cascade ON UPDATE no action;
@@ -3005,10 +3009,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "grants_rels" ADD CONSTRAINT "grants_rels_grantcards_fk" FOREIGN KEY ("grantcards_id") REFERENCES "public"."grantcards"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_grants_v_version_hero_buttons" ADD CONSTRAINT "_grants_v_version_hero_buttons_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_grants_v_version_hero_buttons_locales" ADD CONSTRAINT "_grants_v_version_hero_buttons_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v_version_hero_buttons"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "_grants_v_blocks_scol_info_blk_col_btns" ADD CONSTRAINT "_grants_v_blocks_scol_info_blk_col_btns_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v_blocks_scol_info_blk"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "_grants_v_blocks_scol_info_blk_col_btns_locales" ADD CONSTRAINT "_grants_v_blocks_scol_info_blk_col_btns_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v_blocks_scol_info_blk_col_btns"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "_grants_v_blocks_scol_info_blk" ADD CONSTRAINT "_grants_v_blocks_scol_info_blk_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "_grants_v_blocks_scol_info_blk_locales" ADD CONSTRAINT "_grants_v_blocks_scol_info_blk_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v_blocks_scol_info_blk"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_grants_v_blocks_secondarycta_cta_button" ADD CONSTRAINT "_grants_v_blocks_secondarycta_cta_button_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v_blocks_secondarycta"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_grants_v_blocks_secondarycta_cta_button_locales" ADD CONSTRAINT "_grants_v_blocks_secondarycta_cta_button_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v_blocks_secondarycta_cta_button"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_grants_v_blocks_secondarycta" ADD CONSTRAINT "_grants_v_blocks_secondarycta_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_grants_v_blocks_secondarycta_locales" ADD CONSTRAINT "_grants_v_blocks_secondarycta_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v_blocks_secondarycta"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_grants_v_blocks_mcol_info_block_multicols" ADD CONSTRAINT "_grants_v_blocks_mcol_info_block_multicols_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v_blocks_mcol_info_block"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_grants_v_blocks_mcol_info_block_multicols_locales" ADD CONSTRAINT "_grants_v_blocks_mcol_info_block_multicols_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v_blocks_mcol_info_block_multicols"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_grants_v_blocks_mcol_info_block" ADD CONSTRAINT "_grants_v_blocks_mcol_info_block_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v"("id") ON DELETE cascade ON UPDATE no action;
@@ -3294,13 +3298,13 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "grants_hero_buttons_order_idx" ON "grants_hero_buttons" USING btree ("_order");
   CREATE INDEX "grants_hero_buttons_parent_id_idx" ON "grants_hero_buttons" USING btree ("_parent_id");
   CREATE UNIQUE INDEX "grants_hero_buttons_locales_locale_parent_id_unique" ON "grants_hero_buttons_locales" USING btree ("_locale","_parent_id");
-  CREATE INDEX "grants_blocks_scol_info_blk_col_btns_order_idx" ON "grants_blocks_scol_info_blk_col_btns" USING btree ("_order");
-  CREATE INDEX "grants_blocks_scol_info_blk_col_btns_parent_id_idx" ON "grants_blocks_scol_info_blk_col_btns" USING btree ("_parent_id");
-  CREATE UNIQUE INDEX "grants_blocks_scol_info_blk_col_btns_locales_locale_parent_id_unique" ON "grants_blocks_scol_info_blk_col_btns_locales" USING btree ("_locale","_parent_id");
-  CREATE INDEX "grants_blocks_scol_info_blk_order_idx" ON "grants_blocks_scol_info_blk" USING btree ("_order");
-  CREATE INDEX "grants_blocks_scol_info_blk_parent_id_idx" ON "grants_blocks_scol_info_blk" USING btree ("_parent_id");
-  CREATE INDEX "grants_blocks_scol_info_blk_path_idx" ON "grants_blocks_scol_info_blk" USING btree ("_path");
-  CREATE UNIQUE INDEX "grants_blocks_scol_info_blk_locales_locale_parent_id_unique" ON "grants_blocks_scol_info_blk_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "grants_blocks_secondarycta_cta_button_order_idx" ON "grants_blocks_secondarycta_cta_button" USING btree ("_order");
+  CREATE INDEX "grants_blocks_secondarycta_cta_button_parent_id_idx" ON "grants_blocks_secondarycta_cta_button" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "grants_blocks_secondarycta_cta_button_locales_locale_parent_id_unique" ON "grants_blocks_secondarycta_cta_button_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "grants_blocks_secondarycta_order_idx" ON "grants_blocks_secondarycta" USING btree ("_order");
+  CREATE INDEX "grants_blocks_secondarycta_parent_id_idx" ON "grants_blocks_secondarycta" USING btree ("_parent_id");
+  CREATE INDEX "grants_blocks_secondarycta_path_idx" ON "grants_blocks_secondarycta" USING btree ("_path");
+  CREATE UNIQUE INDEX "grants_blocks_secondarycta_locales_locale_parent_id_unique" ON "grants_blocks_secondarycta_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "grants_blocks_mcol_info_block_multicols_order_idx" ON "grants_blocks_mcol_info_block_multicols" USING btree ("_order");
   CREATE INDEX "grants_blocks_mcol_info_block_multicols_parent_id_idx" ON "grants_blocks_mcol_info_block_multicols" USING btree ("_parent_id");
   CREATE UNIQUE INDEX "grants_blocks_mcol_info_block_multicols_locales_locale_parent_id_unique" ON "grants_blocks_mcol_info_block_multicols_locales" USING btree ("_locale","_parent_id");
@@ -3399,13 +3403,13 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_grants_v_version_hero_buttons_order_idx" ON "_grants_v_version_hero_buttons" USING btree ("_order");
   CREATE INDEX "_grants_v_version_hero_buttons_parent_id_idx" ON "_grants_v_version_hero_buttons" USING btree ("_parent_id");
   CREATE UNIQUE INDEX "_grants_v_version_hero_buttons_locales_locale_parent_id_unique" ON "_grants_v_version_hero_buttons_locales" USING btree ("_locale","_parent_id");
-  CREATE INDEX "_grants_v_blocks_scol_info_blk_col_btns_order_idx" ON "_grants_v_blocks_scol_info_blk_col_btns" USING btree ("_order");
-  CREATE INDEX "_grants_v_blocks_scol_info_blk_col_btns_parent_id_idx" ON "_grants_v_blocks_scol_info_blk_col_btns" USING btree ("_parent_id");
-  CREATE UNIQUE INDEX "_grants_v_blocks_scol_info_blk_col_btns_locales_locale_parent_id_unique" ON "_grants_v_blocks_scol_info_blk_col_btns_locales" USING btree ("_locale","_parent_id");
-  CREATE INDEX "_grants_v_blocks_scol_info_blk_order_idx" ON "_grants_v_blocks_scol_info_blk" USING btree ("_order");
-  CREATE INDEX "_grants_v_blocks_scol_info_blk_parent_id_idx" ON "_grants_v_blocks_scol_info_blk" USING btree ("_parent_id");
-  CREATE INDEX "_grants_v_blocks_scol_info_blk_path_idx" ON "_grants_v_blocks_scol_info_blk" USING btree ("_path");
-  CREATE UNIQUE INDEX "_grants_v_blocks_scol_info_blk_locales_locale_parent_id_unique" ON "_grants_v_blocks_scol_info_blk_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "_grants_v_blocks_secondarycta_cta_button_order_idx" ON "_grants_v_blocks_secondarycta_cta_button" USING btree ("_order");
+  CREATE INDEX "_grants_v_blocks_secondarycta_cta_button_parent_id_idx" ON "_grants_v_blocks_secondarycta_cta_button" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "_grants_v_blocks_secondarycta_cta_button_locales_locale_parent_id_unique" ON "_grants_v_blocks_secondarycta_cta_button_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "_grants_v_blocks_secondarycta_order_idx" ON "_grants_v_blocks_secondarycta" USING btree ("_order");
+  CREATE INDEX "_grants_v_blocks_secondarycta_parent_id_idx" ON "_grants_v_blocks_secondarycta" USING btree ("_parent_id");
+  CREATE INDEX "_grants_v_blocks_secondarycta_path_idx" ON "_grants_v_blocks_secondarycta" USING btree ("_path");
+  CREATE UNIQUE INDEX "_grants_v_blocks_secondarycta_locales_locale_parent_id_unique" ON "_grants_v_blocks_secondarycta_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_grants_v_blocks_mcol_info_block_multicols_order_idx" ON "_grants_v_blocks_mcol_info_block_multicols" USING btree ("_order");
   CREATE INDEX "_grants_v_blocks_mcol_info_block_multicols_parent_id_idx" ON "_grants_v_blocks_mcol_info_block_multicols" USING btree ("_parent_id");
   CREATE UNIQUE INDEX "_grants_v_blocks_mcol_info_block_multicols_locales_locale_parent_id_unique" ON "_grants_v_blocks_mcol_info_block_multicols_locales" USING btree ("_locale","_parent_id");
@@ -3948,10 +3952,10 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   await db.execute(sql`
    DROP TABLE "grants_hero_buttons" CASCADE;
   DROP TABLE "grants_hero_buttons_locales" CASCADE;
-  DROP TABLE "grants_blocks_scol_info_blk_col_btns" CASCADE;
-  DROP TABLE "grants_blocks_scol_info_blk_col_btns_locales" CASCADE;
-  DROP TABLE "grants_blocks_scol_info_blk" CASCADE;
-  DROP TABLE "grants_blocks_scol_info_blk_locales" CASCADE;
+  DROP TABLE "grants_blocks_secondarycta_cta_button" CASCADE;
+  DROP TABLE "grants_blocks_secondarycta_cta_button_locales" CASCADE;
+  DROP TABLE "grants_blocks_secondarycta" CASCADE;
+  DROP TABLE "grants_blocks_secondarycta_locales" CASCADE;
   DROP TABLE "grants_blocks_mcol_info_block_multicols" CASCADE;
   DROP TABLE "grants_blocks_mcol_info_block_multicols_locales" CASCADE;
   DROP TABLE "grants_blocks_mcol_info_block" CASCADE;
@@ -4002,10 +4006,10 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TABLE "grants_rels" CASCADE;
   DROP TABLE "_grants_v_version_hero_buttons" CASCADE;
   DROP TABLE "_grants_v_version_hero_buttons_locales" CASCADE;
-  DROP TABLE "_grants_v_blocks_scol_info_blk_col_btns" CASCADE;
-  DROP TABLE "_grants_v_blocks_scol_info_blk_col_btns_locales" CASCADE;
-  DROP TABLE "_grants_v_blocks_scol_info_blk" CASCADE;
-  DROP TABLE "_grants_v_blocks_scol_info_blk_locales" CASCADE;
+  DROP TABLE "_grants_v_blocks_secondarycta_cta_button" CASCADE;
+  DROP TABLE "_grants_v_blocks_secondarycta_cta_button_locales" CASCADE;
+  DROP TABLE "_grants_v_blocks_secondarycta" CASCADE;
+  DROP TABLE "_grants_v_blocks_secondarycta_locales" CASCADE;
   DROP TABLE "_grants_v_blocks_mcol_info_block_multicols" CASCADE;
   DROP TABLE "_grants_v_blocks_mcol_info_block_multicols_locales" CASCADE;
   DROP TABLE "_grants_v_blocks_mcol_info_block" CASCADE;
@@ -4244,7 +4248,7 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TABLE "contact_info" CASCADE;
   DROP TYPE "public"."_locales";
   DROP TYPE "public"."enum_grants_hero_buttons_link_type";
-  DROP TYPE "public"."enum_grants_blocks_scol_info_blk_col_btns_link_type";
+  DROP TYPE "public"."enum_grants_blocks_secondarycta_cta_button_link_type";
   DROP TYPE "public"."enum_grants_blocks_mcol_info_block_multicols_link_type";
   DROP TYPE "public"."enum_grants_blocks_mstep_process_steps_icon";
   DROP TYPE "public"."enum_grants_blocks_comparison_blk_buttons_link_type";
@@ -4260,7 +4264,7 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TYPE "public"."enum_grants_bg_type";
   DROP TYPE "public"."enum_grants_status";
   DROP TYPE "public"."enum__grants_v_version_hero_buttons_link_type";
-  DROP TYPE "public"."enum__grants_v_blocks_scol_info_blk_col_btns_link_type";
+  DROP TYPE "public"."enum__grants_v_blocks_secondarycta_cta_button_link_type";
   DROP TYPE "public"."enum__grants_v_blocks_mcol_info_block_multicols_link_type";
   DROP TYPE "public"."enum__grants_v_blocks_mstep_process_steps_icon";
   DROP TYPE "public"."enum__grants_v_blocks_comparison_blk_buttons_link_type";

@@ -58,6 +58,25 @@ export const SecondaryCTA: Block = {
       ]
     },
     {
+      name: 'uiType',
+      label: 'CTA Block Design Type',
+      type: 'radio',
+      options: [
+        { label: 'Large Text CTA', value: 'lrg_txt_cta' },
+        { label: 'Medium Text CTA', value: 'md_txt_cta' },
+        { label: 'Minimal CTA', value: 'min_cta' },
+        { label: 'Puffy Beige CTA', value: 'puffy_beige_cta' }
+      ],
+      defaultValue: 'lrg_txt_cta',
+      admin: {
+        components: {
+          Field: {
+            path: 'src/fields/radio/RadioWithImage.tsx',
+          }
+        }
+      },
+    },
+    {
       name: 'ctaButton',
       labels: {
         singular: 'CTA Button',

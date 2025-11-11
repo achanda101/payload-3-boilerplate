@@ -1,5 +1,5 @@
 {
-  "id": "e281d254-fd1e-427c-a0fa-2cb13976a637",
+  "id": "da0bc44b-68e1-43ca-bc43-86dd0fe7c8f1",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -204,8 +204,8 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.grants_blocks_scol_info_blk_col_btns": {
-      "name": "grants_blocks_scol_info_blk_col_btns",
+    "public.grants_blocks_secondarycta_cta_button": {
+      "name": "grants_blocks_secondarycta_cta_button",
       "schema": "",
       "columns": {
         "_order": {
@@ -228,7 +228,7 @@
         },
         "link_type": {
           "name": "link_type",
-          "type": "enum_grants_blocks_scol_info_blk_col_btns_link_type",
+          "type": "enum_grants_blocks_secondarycta_cta_button_link_type",
           "typeSchema": "public",
           "primaryKey": false,
           "notNull": false,
@@ -278,8 +278,8 @@
         }
       },
       "indexes": {
-        "grants_blocks_scol_info_blk_col_btns_order_idx": {
-          "name": "grants_blocks_scol_info_blk_col_btns_order_idx",
+        "grants_blocks_secondarycta_cta_button_order_idx": {
+          "name": "grants_blocks_secondarycta_cta_button_order_idx",
           "columns": [
             {
               "expression": "_order",
@@ -293,8 +293,8 @@
           "method": "btree",
           "with": {}
         },
-        "grants_blocks_scol_info_blk_col_btns_parent_id_idx": {
-          "name": "grants_blocks_scol_info_blk_col_btns_parent_id_idx",
+        "grants_blocks_secondarycta_cta_button_parent_id_idx": {
+          "name": "grants_blocks_secondarycta_cta_button_parent_id_idx",
           "columns": [
             {
               "expression": "_parent_id",
@@ -310,10 +310,10 @@
         }
       },
       "foreignKeys": {
-        "grants_blocks_scol_info_blk_col_btns_parent_id_fk": {
-          "name": "grants_blocks_scol_info_blk_col_btns_parent_id_fk",
-          "tableFrom": "grants_blocks_scol_info_blk_col_btns",
-          "tableTo": "grants_blocks_scol_info_blk",
+        "grants_blocks_secondarycta_cta_button_parent_id_fk": {
+          "name": "grants_blocks_secondarycta_cta_button_parent_id_fk",
+          "tableFrom": "grants_blocks_secondarycta_cta_button",
+          "tableTo": "grants_blocks_secondarycta",
           "columnsFrom": [
             "_parent_id"
           ],
@@ -330,8 +330,8 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.grants_blocks_scol_info_blk_col_btns_locales": {
-      "name": "grants_blocks_scol_info_blk_col_btns_locales",
+    "public.grants_blocks_secondarycta_cta_button_locales": {
+      "name": "grants_blocks_secondarycta_cta_button_locales",
       "schema": "",
       "columns": {
         "link_label": {
@@ -361,8 +361,8 @@
         }
       },
       "indexes": {
-        "grants_blocks_scol_info_blk_col_btns_locales_locale_parent_id_unique": {
-          "name": "grants_blocks_scol_info_blk_col_btns_locales_locale_parent_id_unique",
+        "grants_blocks_secondarycta_cta_button_locales_locale_parent_id_unique": {
+          "name": "grants_blocks_secondarycta_cta_button_locales_locale_parent_id_unique",
           "columns": [
             {
               "expression": "_locale",
@@ -384,10 +384,10 @@
         }
       },
       "foreignKeys": {
-        "grants_blocks_scol_info_blk_col_btns_locales_parent_id_fk": {
-          "name": "grants_blocks_scol_info_blk_col_btns_locales_parent_id_fk",
-          "tableFrom": "grants_blocks_scol_info_blk_col_btns_locales",
-          "tableTo": "grants_blocks_scol_info_blk_col_btns",
+        "grants_blocks_secondarycta_cta_button_locales_parent_id_fk": {
+          "name": "grants_blocks_secondarycta_cta_button_locales_parent_id_fk",
+          "tableFrom": "grants_blocks_secondarycta_cta_button_locales",
+          "tableTo": "grants_blocks_secondarycta_cta_button",
           "columnsFrom": [
             "_parent_id"
           ],
@@ -404,8 +404,8 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.grants_blocks_scol_info_blk": {
-      "name": "grants_blocks_scol_info_blk",
+    "public.grants_blocks_secondarycta": {
+      "name": "grants_blocks_secondarycta",
       "schema": "",
       "columns": {
         "_order": {
@@ -432,6 +432,12 @@
           "primaryKey": true,
           "notNull": true
         },
+        "contact_email": {
+          "name": "contact_email",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
         "block_name": {
           "name": "block_name",
           "type": "varchar",
@@ -440,8 +446,8 @@
         }
       },
       "indexes": {
-        "grants_blocks_scol_info_blk_order_idx": {
-          "name": "grants_blocks_scol_info_blk_order_idx",
+        "grants_blocks_secondarycta_order_idx": {
+          "name": "grants_blocks_secondarycta_order_idx",
           "columns": [
             {
               "expression": "_order",
@@ -455,8 +461,8 @@
           "method": "btree",
           "with": {}
         },
-        "grants_blocks_scol_info_blk_parent_id_idx": {
-          "name": "grants_blocks_scol_info_blk_parent_id_idx",
+        "grants_blocks_secondarycta_parent_id_idx": {
+          "name": "grants_blocks_secondarycta_parent_id_idx",
           "columns": [
             {
               "expression": "_parent_id",
@@ -470,8 +476,8 @@
           "method": "btree",
           "with": {}
         },
-        "grants_blocks_scol_info_blk_path_idx": {
-          "name": "grants_blocks_scol_info_blk_path_idx",
+        "grants_blocks_secondarycta_path_idx": {
+          "name": "grants_blocks_secondarycta_path_idx",
           "columns": [
             {
               "expression": "_path",
@@ -487,9 +493,9 @@
         }
       },
       "foreignKeys": {
-        "grants_blocks_scol_info_blk_parent_id_fk": {
-          "name": "grants_blocks_scol_info_blk_parent_id_fk",
-          "tableFrom": "grants_blocks_scol_info_blk",
+        "grants_blocks_secondarycta_parent_id_fk": {
+          "name": "grants_blocks_secondarycta_parent_id_fk",
+          "tableFrom": "grants_blocks_secondarycta",
           "tableTo": "grants",
           "columnsFrom": [
             "_parent_id"
@@ -507,18 +513,24 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.grants_blocks_scol_info_blk_locales": {
-      "name": "grants_blocks_scol_info_blk_locales",
+    "public.grants_blocks_secondarycta_locales": {
+      "name": "grants_blocks_secondarycta_locales",
       "schema": "",
       "columns": {
-        "title": {
-          "name": "title",
+        "cta_title": {
+          "name": "cta_title",
           "type": "varchar",
           "primaryKey": false,
           "notNull": false
         },
-        "desc": {
-          "name": "desc",
+        "cta_subtitle": {
+          "name": "cta_subtitle",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "contact_label": {
+          "name": "contact_label",
           "type": "varchar",
           "primaryKey": false,
           "notNull": false
@@ -544,8 +556,8 @@
         }
       },
       "indexes": {
-        "grants_blocks_scol_info_blk_locales_locale_parent_id_unique": {
-          "name": "grants_blocks_scol_info_blk_locales_locale_parent_id_unique",
+        "grants_blocks_secondarycta_locales_locale_parent_id_unique": {
+          "name": "grants_blocks_secondarycta_locales_locale_parent_id_unique",
           "columns": [
             {
               "expression": "_locale",
@@ -567,10 +579,10 @@
         }
       },
       "foreignKeys": {
-        "grants_blocks_scol_info_blk_locales_parent_id_fk": {
-          "name": "grants_blocks_scol_info_blk_locales_parent_id_fk",
-          "tableFrom": "grants_blocks_scol_info_blk_locales",
-          "tableTo": "grants_blocks_scol_info_blk",
+        "grants_blocks_secondarycta_locales_parent_id_fk": {
+          "name": "grants_blocks_secondarycta_locales_parent_id_fk",
+          "tableFrom": "grants_blocks_secondarycta_locales",
+          "tableTo": "grants_blocks_secondarycta",
           "columnsFrom": [
             "_parent_id"
           ],
@@ -1173,7 +1185,7 @@
       "columns": {
         "bullet": {
           "name": "bullet",
-          "type": "varchar",
+          "type": "jsonb",
           "primaryKey": false,
           "notNull": false
         },
@@ -1343,7 +1355,7 @@
         },
         "tip": {
           "name": "tip",
-          "type": "varchar",
+          "type": "jsonb",
           "primaryKey": false,
           "notNull": false
         },
@@ -5609,8 +5621,8 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public._grants_v_blocks_scol_info_blk_col_btns": {
-      "name": "_grants_v_blocks_scol_info_blk_col_btns",
+    "public._grants_v_blocks_secondarycta_cta_button": {
+      "name": "_grants_v_blocks_secondarycta_cta_button",
       "schema": "",
       "columns": {
         "_order": {
@@ -5633,7 +5645,7 @@
         },
         "link_type": {
           "name": "link_type",
-          "type": "enum__grants_v_blocks_scol_info_blk_col_btns_link_type",
+          "type": "enum__grants_v_blocks_secondarycta_cta_button_link_type",
           "typeSchema": "public",
           "primaryKey": false,
           "notNull": false,
@@ -5689,8 +5701,8 @@
         }
       },
       "indexes": {
-        "_grants_v_blocks_scol_info_blk_col_btns_order_idx": {
-          "name": "_grants_v_blocks_scol_info_blk_col_btns_order_idx",
+        "_grants_v_blocks_secondarycta_cta_button_order_idx": {
+          "name": "_grants_v_blocks_secondarycta_cta_button_order_idx",
           "columns": [
             {
               "expression": "_order",
@@ -5704,8 +5716,8 @@
           "method": "btree",
           "with": {}
         },
-        "_grants_v_blocks_scol_info_blk_col_btns_parent_id_idx": {
-          "name": "_grants_v_blocks_scol_info_blk_col_btns_parent_id_idx",
+        "_grants_v_blocks_secondarycta_cta_button_parent_id_idx": {
+          "name": "_grants_v_blocks_secondarycta_cta_button_parent_id_idx",
           "columns": [
             {
               "expression": "_parent_id",
@@ -5721,10 +5733,10 @@
         }
       },
       "foreignKeys": {
-        "_grants_v_blocks_scol_info_blk_col_btns_parent_id_fk": {
-          "name": "_grants_v_blocks_scol_info_blk_col_btns_parent_id_fk",
-          "tableFrom": "_grants_v_blocks_scol_info_blk_col_btns",
-          "tableTo": "_grants_v_blocks_scol_info_blk",
+        "_grants_v_blocks_secondarycta_cta_button_parent_id_fk": {
+          "name": "_grants_v_blocks_secondarycta_cta_button_parent_id_fk",
+          "tableFrom": "_grants_v_blocks_secondarycta_cta_button",
+          "tableTo": "_grants_v_blocks_secondarycta",
           "columnsFrom": [
             "_parent_id"
           ],
@@ -5741,8 +5753,8 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public._grants_v_blocks_scol_info_blk_col_btns_locales": {
-      "name": "_grants_v_blocks_scol_info_blk_col_btns_locales",
+    "public._grants_v_blocks_secondarycta_cta_button_locales": {
+      "name": "_grants_v_blocks_secondarycta_cta_button_locales",
       "schema": "",
       "columns": {
         "link_label": {
@@ -5772,8 +5784,8 @@
         }
       },
       "indexes": {
-        "_grants_v_blocks_scol_info_blk_col_btns_locales_locale_parent_id_unique": {
-          "name": "_grants_v_blocks_scol_info_blk_col_btns_locales_locale_parent_id_unique",
+        "_grants_v_blocks_secondarycta_cta_button_locales_locale_parent_id_unique": {
+          "name": "_grants_v_blocks_secondarycta_cta_button_locales_locale_parent_id_unique",
           "columns": [
             {
               "expression": "_locale",
@@ -5795,10 +5807,10 @@
         }
       },
       "foreignKeys": {
-        "_grants_v_blocks_scol_info_blk_col_btns_locales_parent_id_fk": {
-          "name": "_grants_v_blocks_scol_info_blk_col_btns_locales_parent_id_fk",
-          "tableFrom": "_grants_v_blocks_scol_info_blk_col_btns_locales",
-          "tableTo": "_grants_v_blocks_scol_info_blk_col_btns",
+        "_grants_v_blocks_secondarycta_cta_button_locales_parent_id_fk": {
+          "name": "_grants_v_blocks_secondarycta_cta_button_locales_parent_id_fk",
+          "tableFrom": "_grants_v_blocks_secondarycta_cta_button_locales",
+          "tableTo": "_grants_v_blocks_secondarycta_cta_button",
           "columnsFrom": [
             "_parent_id"
           ],
@@ -5815,8 +5827,8 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public._grants_v_blocks_scol_info_blk": {
-      "name": "_grants_v_blocks_scol_info_blk",
+    "public._grants_v_blocks_secondarycta": {
+      "name": "_grants_v_blocks_secondarycta",
       "schema": "",
       "columns": {
         "_order": {
@@ -5843,6 +5855,12 @@
           "primaryKey": true,
           "notNull": true
         },
+        "contact_email": {
+          "name": "contact_email",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
         "_uuid": {
           "name": "_uuid",
           "type": "varchar",
@@ -5857,8 +5875,8 @@
         }
       },
       "indexes": {
-        "_grants_v_blocks_scol_info_blk_order_idx": {
-          "name": "_grants_v_blocks_scol_info_blk_order_idx",
+        "_grants_v_blocks_secondarycta_order_idx": {
+          "name": "_grants_v_blocks_secondarycta_order_idx",
           "columns": [
             {
               "expression": "_order",
@@ -5872,8 +5890,8 @@
           "method": "btree",
           "with": {}
         },
-        "_grants_v_blocks_scol_info_blk_parent_id_idx": {
-          "name": "_grants_v_blocks_scol_info_blk_parent_id_idx",
+        "_grants_v_blocks_secondarycta_parent_id_idx": {
+          "name": "_grants_v_blocks_secondarycta_parent_id_idx",
           "columns": [
             {
               "expression": "_parent_id",
@@ -5887,8 +5905,8 @@
           "method": "btree",
           "with": {}
         },
-        "_grants_v_blocks_scol_info_blk_path_idx": {
-          "name": "_grants_v_blocks_scol_info_blk_path_idx",
+        "_grants_v_blocks_secondarycta_path_idx": {
+          "name": "_grants_v_blocks_secondarycta_path_idx",
           "columns": [
             {
               "expression": "_path",
@@ -5904,9 +5922,9 @@
         }
       },
       "foreignKeys": {
-        "_grants_v_blocks_scol_info_blk_parent_id_fk": {
-          "name": "_grants_v_blocks_scol_info_blk_parent_id_fk",
-          "tableFrom": "_grants_v_blocks_scol_info_blk",
+        "_grants_v_blocks_secondarycta_parent_id_fk": {
+          "name": "_grants_v_blocks_secondarycta_parent_id_fk",
+          "tableFrom": "_grants_v_blocks_secondarycta",
           "tableTo": "_grants_v",
           "columnsFrom": [
             "_parent_id"
@@ -5924,18 +5942,24 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public._grants_v_blocks_scol_info_blk_locales": {
-      "name": "_grants_v_blocks_scol_info_blk_locales",
+    "public._grants_v_blocks_secondarycta_locales": {
+      "name": "_grants_v_blocks_secondarycta_locales",
       "schema": "",
       "columns": {
-        "title": {
-          "name": "title",
+        "cta_title": {
+          "name": "cta_title",
           "type": "varchar",
           "primaryKey": false,
           "notNull": false
         },
-        "desc": {
-          "name": "desc",
+        "cta_subtitle": {
+          "name": "cta_subtitle",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "contact_label": {
+          "name": "contact_label",
           "type": "varchar",
           "primaryKey": false,
           "notNull": false
@@ -5961,8 +5985,8 @@
         }
       },
       "indexes": {
-        "_grants_v_blocks_scol_info_blk_locales_locale_parent_id_unique": {
-          "name": "_grants_v_blocks_scol_info_blk_locales_locale_parent_id_unique",
+        "_grants_v_blocks_secondarycta_locales_locale_parent_id_unique": {
+          "name": "_grants_v_blocks_secondarycta_locales_locale_parent_id_unique",
           "columns": [
             {
               "expression": "_locale",
@@ -5984,10 +6008,10 @@
         }
       },
       "foreignKeys": {
-        "_grants_v_blocks_scol_info_blk_locales_parent_id_fk": {
-          "name": "_grants_v_blocks_scol_info_blk_locales_parent_id_fk",
-          "tableFrom": "_grants_v_blocks_scol_info_blk_locales",
-          "tableTo": "_grants_v_blocks_scol_info_blk",
+        "_grants_v_blocks_secondarycta_locales_parent_id_fk": {
+          "name": "_grants_v_blocks_secondarycta_locales_parent_id_fk",
+          "tableFrom": "_grants_v_blocks_secondarycta_locales",
+          "tableTo": "_grants_v_blocks_secondarycta",
           "columnsFrom": [
             "_parent_id"
           ],
@@ -6614,7 +6638,7 @@
       "columns": {
         "bullet": {
           "name": "bullet",
-          "type": "varchar",
+          "type": "jsonb",
           "primaryKey": false,
           "notNull": false
         },
@@ -6790,7 +6814,7 @@
         },
         "tip": {
           "name": "tip",
-          "type": "varchar",
+          "type": "jsonb",
           "primaryKey": false,
           "notNull": false
         },
@@ -20862,7 +20886,7 @@
       "columns": {
         "bullet": {
           "name": "bullet",
-          "type": "varchar",
+          "type": "jsonb",
           "primaryKey": false,
           "notNull": false
         },
@@ -21032,7 +21056,7 @@
         },
         "tip": {
           "name": "tip",
-          "type": "varchar",
+          "type": "jsonb",
           "primaryKey": false,
           "notNull": false
         },
@@ -26166,7 +26190,7 @@
       "columns": {
         "bullet": {
           "name": "bullet",
-          "type": "varchar",
+          "type": "jsonb",
           "primaryKey": false,
           "notNull": false
         },
@@ -26342,7 +26366,7 @@
         },
         "tip": {
           "name": "tip",
-          "type": "varchar",
+          "type": "jsonb",
           "primaryKey": false,
           "notNull": false
         },
@@ -31726,8 +31750,8 @@
         "document"
       ]
     },
-    "public.enum_grants_blocks_scol_info_blk_col_btns_link_type": {
-      "name": "enum_grants_blocks_scol_info_blk_col_btns_link_type",
+    "public.enum_grants_blocks_secondarycta_cta_button_link_type": {
+      "name": "enum_grants_blocks_secondarycta_cta_button_link_type",
       "schema": "public",
       "values": [
         "reference",
@@ -31883,8 +31907,8 @@
         "document"
       ]
     },
-    "public.enum__grants_v_blocks_scol_info_blk_col_btns_link_type": {
-      "name": "enum__grants_v_blocks_scol_info_blk_col_btns_link_type",
+    "public.enum__grants_v_blocks_secondarycta_cta_button_link_type": {
+      "name": "enum__grants_v_blocks_secondarycta_cta_button_link_type",
       "schema": "public",
       "values": [
         "reference",
