@@ -53,6 +53,7 @@ body {
   background-color: $color-background;
   font-weight: 500;
   font-size: $font-size-base-mob;
+  overflow-x: hidden;
 
   @media (min-width: $tablet) {
     font-size: $font-size-base;
@@ -286,6 +287,12 @@ hr {
   }
   &.rose {
     background-color: $color-rose;
+  }
+  &.lavender {
+    background-color: $color-lavender;
+  }
+  &.fire {
+    background-color: $color-fire;
   }
 }
 .site-header-content {

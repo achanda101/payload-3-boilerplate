@@ -60,7 +60,7 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
                   label: 'Description of Grant Card',
                   type: 'textarea',
                   localized: true,
-                  maxLength: 300,
+                  maxLength: 200,
                   admin: {
                     components: {
                       afterInput: [
@@ -91,8 +91,16 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
                   name: 'badgeText',
                   type: 'text',
                   localized: true,
+                  maxLength: 50,
                   admin: {
                     placeholder: 'E.g., Rapid Response Fund, Applications open until 15th June',
+                    components: {
+                      afterInput: [
+                        {
+                          path: '@/utilities/characterCounter.tsx'
+                        }
+                      ]
+                    }
                   },
                 },
                 {

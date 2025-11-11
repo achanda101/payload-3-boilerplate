@@ -129,7 +129,7 @@ export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({
       {title && (
         <h3 className="col-span-6 md:col-start-2 lg:col-start-4 mb-6 text-center">{title}</h3>
       )}
-      <div className="col-span-full relative">
+      <div className="col-span-full relative overflow-x-hidden sm:overflow-x-visible">
         <Carousel
           setApi={setApi}
           opts={{

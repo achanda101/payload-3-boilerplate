@@ -15,6 +15,7 @@ import { YellowCardDeck } from '@/components/YellowCardDeck'
 import { FeatureCard } from '@/components/FeatureCard'
 import { ListingCardDeck } from '@/components/ListingCardDeck'
 import { FaqBlock } from '@/components/FaqBlock'
+import {FeatureCardAccordion} from '@/components/FeatureCardAccordion'
 
 interface AssetCloud {
   id: string;
@@ -333,6 +334,17 @@ export const GrantPage: React.FC<GrantPageProps> = ({
                       faqs={block.faqs}
                     />
                   </div>
+                </React.Fragment>
+              )
+            }
+            if (block.blockType === 'featCrdAcc') {
+              return (
+                <React.Fragment key={index}>
+                  <FeatureCardAccordion
+                    title={block.title}
+                    blockName={block.blockName}
+                    featureCards={block.featCrds}
+                  />
                 </React.Fragment>
               )
             }

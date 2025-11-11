@@ -2,7 +2,7 @@
 @use 'mixins' as mix;
 
 .beige_wavycard {
-  background-image: url('/card_bg/beige-wavyborder-card.svg');
+  background-image: url('/card_bg/featurecard-beige.svg');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -20,5 +20,43 @@
   > div {
     position: relative;
     z-index: 1;
+  }
+}
+
+.turmeric_featurecard {
+  background-image: url('/card_bg/featurecard-bg-turmeric.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100%;
+  width: 100%;
+  position: relative;
+
+  > div {
+    position: relative;
+    z-index: 1;
+  }
+  
+  @media (max-width: vars.$mobile) {
+    background-image: url('/card_bg/featurecard-bg-turmeric-mobile.svg');
+  }
+}
+
+.forest_featurecard {
+  background-image: url('/card_bg/featurecard-bg-forest.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100%;
+  width: 100%;
+  position: relative;
+
+  > div {
+    position: relative;
+    z-index: 1;
+  }
+  
+  @media (max-width: vars.$mobile) {
+    background-image: url('/card_bg/featurecard-bg-turmeric-forest.svg');
   }
 }
