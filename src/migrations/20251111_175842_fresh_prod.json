@@ -1,5 +1,5 @@
 {
-  "id": "f3eb4a00-43f5-47f3-be50-62d7c6e79789",
+  "id": "e281d254-fd1e-427c-a0fa-2cb13976a637",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -2739,6 +2739,14 @@
           "primaryKey": true,
           "notNull": true
         },
+        "align": {
+          "name": "align",
+          "type": "enum_grants_blocks_ylw_deck_align",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'center'"
+        },
         "block_name": {
           "name": "block_name",
           "type": "varchar",
@@ -2826,7 +2834,7 @@
         },
         "desc": {
           "name": "desc",
-          "type": "varchar",
+          "type": "jsonb",
           "primaryKey": false,
           "notNull": false
         },
@@ -3249,7 +3257,7 @@
         },
         "desc": {
           "name": "desc",
-          "type": "varchar",
+          "type": "jsonb",
           "primaryKey": false,
           "notNull": false
         },
@@ -8220,6 +8228,14 @@
           "primaryKey": true,
           "notNull": true
         },
+        "align": {
+          "name": "align",
+          "type": "enum__grants_v_blocks_ylw_deck_align",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'center'"
+        },
         "_uuid": {
           "name": "_uuid",
           "type": "varchar",
@@ -8313,7 +8329,7 @@
         },
         "desc": {
           "name": "desc",
-          "type": "varchar",
+          "type": "jsonb",
           "primaryKey": false,
           "notNull": false
         },
@@ -8748,7 +8764,7 @@
         },
         "desc": {
           "name": "desc",
-          "type": "varchar",
+          "type": "jsonb",
           "primaryKey": false,
           "notNull": false
         },
@@ -22412,6 +22428,14 @@
           "primaryKey": true,
           "notNull": true
         },
+        "align": {
+          "name": "align",
+          "type": "enum_homepage_blocks_ylw_deck_align",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'center'"
+        },
         "block_name": {
           "name": "block_name",
           "type": "varchar",
@@ -22499,7 +22523,7 @@
         },
         "desc": {
           "name": "desc",
-          "type": "varchar",
+          "type": "jsonb",
           "primaryKey": false,
           "notNull": false
         },
@@ -22922,7 +22946,7 @@
         },
         "desc": {
           "name": "desc",
-          "type": "varchar",
+          "type": "jsonb",
           "primaryKey": false,
           "notNull": false
         },
@@ -27756,6 +27780,14 @@
           "primaryKey": true,
           "notNull": true
         },
+        "align": {
+          "name": "align",
+          "type": "enum__homepage_v_blocks_ylw_deck_align",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'center'"
+        },
         "_uuid": {
           "name": "_uuid",
           "type": "varchar",
@@ -27849,7 +27881,7 @@
         },
         "desc": {
           "name": "desc",
-          "type": "varchar",
+          "type": "jsonb",
           "primaryKey": false,
           "notNull": false
         },
@@ -28284,7 +28316,7 @@
         },
         "desc": {
           "name": "desc",
-          "type": "varchar",
+          "type": "jsonb",
           "primaryKey": false,
           "notNull": false
         },
@@ -31756,6 +31788,14 @@
         "center"
       ]
     },
+    "public.enum_grants_blocks_ylw_deck_align": {
+      "name": "enum_grants_blocks_ylw_deck_align",
+      "schema": "public",
+      "values": [
+        "left",
+        "center"
+      ]
+    },
     "public.enum_grants_blocks_feat_crd_link_type": {
       "name": "enum_grants_blocks_feat_crd_link_type",
       "schema": "public",
@@ -31902,6 +31942,14 @@
       "schema": "public",
       "values": [
         "top_left",
+        "center"
+      ]
+    },
+    "public.enum__grants_v_blocks_ylw_deck_align": {
+      "name": "enum__grants_v_blocks_ylw_deck_align",
+      "schema": "public",
+      "values": [
+        "left",
         "center"
       ]
     },
@@ -32268,6 +32316,14 @@
         "center"
       ]
     },
+    "public.enum_homepage_blocks_ylw_deck_align": {
+      "name": "enum_homepage_blocks_ylw_deck_align",
+      "schema": "public",
+      "values": [
+        "left",
+        "center"
+      ]
+    },
     "public.enum_homepage_blocks_feat_crd_link_type": {
       "name": "enum_homepage_blocks_feat_crd_link_type",
       "schema": "public",
@@ -32397,6 +32453,14 @@
       "schema": "public",
       "values": [
         "top_left",
+        "center"
+      ]
+    },
+    "public.enum__homepage_v_blocks_ylw_deck_align": {
+      "name": "enum__homepage_v_blocks_ylw_deck_align",
+      "schema": "public",
+      "values": [
+        "left",
         "center"
       ]
     },

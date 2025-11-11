@@ -10,6 +10,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum_grants_blocks_comparison_blk_buttons_link_type" AS ENUM('reference', 'custom', 'email', 'document');
   CREATE TYPE "public"."enum_grants_blocks_ylw_deck_cards_links_link_type" AS ENUM('reference', 'custom', 'email', 'document');
   CREATE TYPE "public"."enum_grants_blocks_ylw_deck_cards_mascot_pos" AS ENUM('top_left', 'center');
+  CREATE TYPE "public"."enum_grants_blocks_ylw_deck_align" AS ENUM('left', 'center');
   CREATE TYPE "public"."enum_grants_blocks_feat_crd_link_type" AS ENUM('reference', 'custom', 'email', 'document');
   CREATE TYPE "public"."enum_grants_blocks_feat_crd_acc_feat_crds_crd_colour" AS ENUM('forest', 'turmeric', 'sky', 'rose', 'lavender', 'fire');
   CREATE TYPE "public"."enum_grants_blocks_list_crd_dck_cards_link_type" AS ENUM('reference', 'custom', 'email', 'document');
@@ -25,6 +26,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum__grants_v_blocks_comparison_blk_buttons_link_type" AS ENUM('reference', 'custom', 'email', 'document');
   CREATE TYPE "public"."enum__grants_v_blocks_ylw_deck_cards_links_link_type" AS ENUM('reference', 'custom', 'email', 'document');
   CREATE TYPE "public"."enum__grants_v_blocks_ylw_deck_cards_mascot_pos" AS ENUM('top_left', 'center');
+  CREATE TYPE "public"."enum__grants_v_blocks_ylw_deck_align" AS ENUM('left', 'center');
   CREATE TYPE "public"."enum__grants_v_blocks_feat_crd_link_type" AS ENUM('reference', 'custom', 'email', 'document');
   CREATE TYPE "public"."enum__grants_v_blocks_feat_crd_acc_feat_crds_crd_colour" AS ENUM('forest', 'turmeric', 'sky', 'rose', 'lavender', 'fire');
   CREATE TYPE "public"."enum__grants_v_blocks_list_crd_dck_cards_link_type" AS ENUM('reference', 'custom', 'email', 'document');
@@ -58,6 +60,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum_homepage_blocks_comparison_blk_buttons_link_type" AS ENUM('reference', 'custom', 'email', 'document');
   CREATE TYPE "public"."enum_homepage_blocks_ylw_deck_cards_links_link_type" AS ENUM('reference', 'custom', 'email', 'document');
   CREATE TYPE "public"."enum_homepage_blocks_ylw_deck_cards_mascot_pos" AS ENUM('top_left', 'center');
+  CREATE TYPE "public"."enum_homepage_blocks_ylw_deck_align" AS ENUM('left', 'center');
   CREATE TYPE "public"."enum_homepage_blocks_feat_crd_link_type" AS ENUM('reference', 'custom', 'email', 'document');
   CREATE TYPE "public"."enum_homepage_blocks_feat_crd_acc_feat_crds_crd_colour" AS ENUM('forest', 'turmeric', 'sky', 'rose', 'lavender', 'fire');
   CREATE TYPE "public"."enum_homepage_blocks_list_crd_dck_cards_link_type" AS ENUM('reference', 'custom', 'email', 'document');
@@ -71,6 +74,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum__homepage_v_blocks_comparison_blk_buttons_link_type" AS ENUM('reference', 'custom', 'email', 'document');
   CREATE TYPE "public"."enum__homepage_v_blocks_ylw_deck_cards_links_link_type" AS ENUM('reference', 'custom', 'email', 'document');
   CREATE TYPE "public"."enum__homepage_v_blocks_ylw_deck_cards_mascot_pos" AS ENUM('top_left', 'center');
+  CREATE TYPE "public"."enum__homepage_v_blocks_ylw_deck_align" AS ENUM('left', 'center');
   CREATE TYPE "public"."enum__homepage_v_blocks_feat_crd_link_type" AS ENUM('reference', 'custom', 'email', 'document');
   CREATE TYPE "public"."enum__homepage_v_blocks_feat_crd_acc_feat_crds_crd_colour" AS ENUM('forest', 'turmeric', 'sky', 'rose', 'lavender', 'fire');
   CREATE TYPE "public"."enum__homepage_v_blocks_list_crd_dck_cards_link_type" AS ENUM('reference', 'custom', 'email', 'document');
@@ -344,12 +348,13 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"_parent_id" integer NOT NULL,
   	"_path" text NOT NULL,
   	"id" varchar PRIMARY KEY NOT NULL,
+  	"align" "enum_grants_blocks_ylw_deck_align" DEFAULT 'center',
   	"block_name" varchar
   );
   
   CREATE TABLE "grants_blocks_ylw_deck_locales" (
   	"title" varchar,
-  	"desc" varchar,
+  	"desc" jsonb,
   	"id" serial PRIMARY KEY NOT NULL,
   	"_locale" "_locales" NOT NULL,
   	"_parent_id" varchar NOT NULL
@@ -388,7 +393,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TABLE "grants_blocks_feat_crd_locales" (
   	"title" varchar,
   	"subtitle" varchar,
-  	"desc" varchar,
+  	"desc" jsonb,
   	"link_label" varchar,
   	"id" serial PRIMARY KEY NOT NULL,
   	"_locale" "_locales" NOT NULL,
@@ -852,13 +857,14 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"_parent_id" integer NOT NULL,
   	"_path" text NOT NULL,
   	"id" serial PRIMARY KEY NOT NULL,
+  	"align" "enum__grants_v_blocks_ylw_deck_align" DEFAULT 'center',
   	"_uuid" varchar,
   	"block_name" varchar
   );
   
   CREATE TABLE "_grants_v_blocks_ylw_deck_locales" (
   	"title" varchar,
-  	"desc" varchar,
+  	"desc" jsonb,
   	"id" serial PRIMARY KEY NOT NULL,
   	"_locale" "_locales" NOT NULL,
   	"_parent_id" integer NOT NULL
@@ -899,7 +905,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TABLE "_grants_v_blocks_feat_crd_locales" (
   	"title" varchar,
   	"subtitle" varchar,
-  	"desc" varchar,
+  	"desc" jsonb,
   	"link_label" varchar,
   	"id" serial PRIMARY KEY NOT NULL,
   	"_locale" "_locales" NOT NULL,
@@ -1077,8 +1083,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
   	"snapshot" boolean,
   	"published_locale" "enum__grants_v_published_locale",
-  	"latest" boolean,
-  	"autosave" boolean
+  	"latest" boolean
   );
   
   CREATE TABLE "_grants_v_locales" (
@@ -1224,8 +1229,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
   	"snapshot" boolean,
   	"published_locale" "enum__grantcards_v_published_locale",
-  	"latest" boolean,
-  	"autosave" boolean
+  	"latest" boolean
   );
   
   CREATE TABLE "_grantcards_v_locales" (
@@ -2080,12 +2084,13 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"_parent_id" integer NOT NULL,
   	"_path" text NOT NULL,
   	"id" varchar PRIMARY KEY NOT NULL,
+  	"align" "enum_homepage_blocks_ylw_deck_align" DEFAULT 'center',
   	"block_name" varchar
   );
   
   CREATE TABLE "homepage_blocks_ylw_deck_locales" (
   	"title" varchar,
-  	"desc" varchar,
+  	"desc" jsonb,
   	"id" serial PRIMARY KEY NOT NULL,
   	"_locale" "_locales" NOT NULL,
   	"_parent_id" varchar NOT NULL
@@ -2124,7 +2129,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TABLE "homepage_blocks_feat_crd_locales" (
   	"title" varchar,
   	"subtitle" varchar,
-  	"desc" varchar,
+  	"desc" jsonb,
   	"link_label" varchar,
   	"id" serial PRIMARY KEY NOT NULL,
   	"_locale" "_locales" NOT NULL,
@@ -2581,13 +2586,14 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"_parent_id" integer NOT NULL,
   	"_path" text NOT NULL,
   	"id" serial PRIMARY KEY NOT NULL,
+  	"align" "enum__homepage_v_blocks_ylw_deck_align" DEFAULT 'center',
   	"_uuid" varchar,
   	"block_name" varchar
   );
   
   CREATE TABLE "_homepage_v_blocks_ylw_deck_locales" (
   	"title" varchar,
-  	"desc" varchar,
+  	"desc" jsonb,
   	"id" serial PRIMARY KEY NOT NULL,
   	"_locale" "_locales" NOT NULL,
   	"_parent_id" integer NOT NULL
@@ -2628,7 +2634,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TABLE "_homepage_v_blocks_feat_crd_locales" (
   	"title" varchar,
   	"subtitle" varchar,
-  	"desc" varchar,
+  	"desc" jsonb,
   	"link_label" varchar,
   	"id" serial PRIMARY KEY NOT NULL,
   	"_locale" "_locales" NOT NULL,
@@ -2797,8 +2803,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
   	"snapshot" boolean,
   	"published_locale" "enum__homepage_v_published_locale",
-  	"latest" boolean,
-  	"autosave" boolean
+  	"latest" boolean
   );
   
   CREATE TABLE "_homepage_v_locales" (
@@ -3494,7 +3499,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_grants_v_snapshot_idx" ON "_grants_v" USING btree ("snapshot");
   CREATE INDEX "_grants_v_published_locale_idx" ON "_grants_v" USING btree ("published_locale");
   CREATE INDEX "_grants_v_latest_idx" ON "_grants_v" USING btree ("latest");
-  CREATE INDEX "_grants_v_autosave_idx" ON "_grants_v" USING btree ("autosave");
   CREATE UNIQUE INDEX "_grants_v_locales_locale_parent_id_unique" ON "_grants_v_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_grants_v_rels_order_idx" ON "_grants_v_rels" USING btree ("order");
   CREATE INDEX "_grants_v_rels_parent_idx" ON "_grants_v_rels" USING btree ("parent_id");
@@ -3541,7 +3545,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_grantcards_v_snapshot_idx" ON "_grantcards_v" USING btree ("snapshot");
   CREATE INDEX "_grantcards_v_published_locale_idx" ON "_grantcards_v" USING btree ("published_locale");
   CREATE INDEX "_grantcards_v_latest_idx" ON "_grantcards_v" USING btree ("latest");
-  CREATE INDEX "_grantcards_v_autosave_idx" ON "_grantcards_v" USING btree ("autosave");
   CREATE INDEX "_grantcards_v_version_version_title_idx" ON "_grantcards_v_locales" USING btree ("version_title","_locale");
   CREATE UNIQUE INDEX "_grantcards_v_locales_locale_parent_id_unique" ON "_grantcards_v_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_grantcards_v_rels_order_idx" ON "_grantcards_v_rels" USING btree ("order");
@@ -3909,7 +3912,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_homepage_v_snapshot_idx" ON "_homepage_v" USING btree ("snapshot");
   CREATE INDEX "_homepage_v_published_locale_idx" ON "_homepage_v" USING btree ("published_locale");
   CREATE INDEX "_homepage_v_latest_idx" ON "_homepage_v" USING btree ("latest");
-  CREATE INDEX "_homepage_v_autosave_idx" ON "_homepage_v" USING btree ("autosave");
   CREATE UNIQUE INDEX "_homepage_v_locales_locale_parent_id_unique" ON "_homepage_v_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_homepage_v_rels_order_idx" ON "_homepage_v_rels" USING btree ("order");
   CREATE INDEX "_homepage_v_rels_parent_idx" ON "_homepage_v_rels" USING btree ("parent_id");
@@ -4248,6 +4250,7 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TYPE "public"."enum_grants_blocks_comparison_blk_buttons_link_type";
   DROP TYPE "public"."enum_grants_blocks_ylw_deck_cards_links_link_type";
   DROP TYPE "public"."enum_grants_blocks_ylw_deck_cards_mascot_pos";
+  DROP TYPE "public"."enum_grants_blocks_ylw_deck_align";
   DROP TYPE "public"."enum_grants_blocks_feat_crd_link_type";
   DROP TYPE "public"."enum_grants_blocks_feat_crd_acc_feat_crds_crd_colour";
   DROP TYPE "public"."enum_grants_blocks_list_crd_dck_cards_link_type";
@@ -4263,6 +4266,7 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TYPE "public"."enum__grants_v_blocks_comparison_blk_buttons_link_type";
   DROP TYPE "public"."enum__grants_v_blocks_ylw_deck_cards_links_link_type";
   DROP TYPE "public"."enum__grants_v_blocks_ylw_deck_cards_mascot_pos";
+  DROP TYPE "public"."enum__grants_v_blocks_ylw_deck_align";
   DROP TYPE "public"."enum__grants_v_blocks_feat_crd_link_type";
   DROP TYPE "public"."enum__grants_v_blocks_feat_crd_acc_feat_crds_crd_colour";
   DROP TYPE "public"."enum__grants_v_blocks_list_crd_dck_cards_link_type";
@@ -4296,6 +4300,7 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TYPE "public"."enum_homepage_blocks_comparison_blk_buttons_link_type";
   DROP TYPE "public"."enum_homepage_blocks_ylw_deck_cards_links_link_type";
   DROP TYPE "public"."enum_homepage_blocks_ylw_deck_cards_mascot_pos";
+  DROP TYPE "public"."enum_homepage_blocks_ylw_deck_align";
   DROP TYPE "public"."enum_homepage_blocks_feat_crd_link_type";
   DROP TYPE "public"."enum_homepage_blocks_feat_crd_acc_feat_crds_crd_colour";
   DROP TYPE "public"."enum_homepage_blocks_list_crd_dck_cards_link_type";
@@ -4309,6 +4314,7 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TYPE "public"."enum__homepage_v_blocks_comparison_blk_buttons_link_type";
   DROP TYPE "public"."enum__homepage_v_blocks_ylw_deck_cards_links_link_type";
   DROP TYPE "public"."enum__homepage_v_blocks_ylw_deck_cards_mascot_pos";
+  DROP TYPE "public"."enum__homepage_v_blocks_ylw_deck_align";
   DROP TYPE "public"."enum__homepage_v_blocks_feat_crd_link_type";
   DROP TYPE "public"."enum__homepage_v_blocks_feat_crd_acc_feat_crds_crd_colour";
   DROP TYPE "public"."enum__homepage_v_blocks_list_crd_dck_cards_link_type";
