@@ -12,7 +12,7 @@ import { getServerSideURL } from '@/utilities/getURL'
 
 // BLOCKS
 import { MultiColumnInfoBlock } from '@/blocks/MultiColumnInfoBlock/config'
-import { SingleColumnInfoBlock } from '@/blocks/SingleColumnInfoBlock/config'
+import { SecondaryCTA } from '@/blocks/SecondaryCTA/config'
 import { GrantCardGridBlock } from "@/blocks/GrantCardGridBlock/config"
 import { MultiStepProcess } from "@/blocks/MultiStepProcessBlock/config"
 import { ComparisonBlock } from '@/blocks/ComparisonBlock/config'
@@ -208,7 +208,7 @@ export const Grants: CollectionConfig<'grants'> = {
       type: 'blocks',
       name: 'contentBlocks',
       blocks: [
-          SingleColumnInfoBlock,
+          SecondaryCTA,
           MultiColumnInfoBlock,
           GrantCardGridBlock,
           MultiStepProcess,

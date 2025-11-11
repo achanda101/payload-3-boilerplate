@@ -212,9 +212,13 @@ export interface Grant {
   contentBlocks?:
     | (
         | {
-            title?: string | null;
-            desc?: string | null;
-            colBtns?:
+            ctaTitle?: string | null;
+            ctaSubtitle?: string | null;
+            contact?: {
+              label?: string | null;
+              email?: string | null;
+            };
+            ctaButton?:
               | {
                   link?: {
                     type?: ('reference' | 'custom' | 'email' | 'document') | null;
@@ -245,7 +249,7 @@ export interface Grant {
               | null;
             id?: string | null;
             blockName?: string | null;
-            blockType: 'scolInfoBlk';
+            blockType: 'secondarycta';
           }
         | {
             multicols?:
@@ -319,14 +323,42 @@ export interface Grant {
                    */
                   details?:
                     | {
-                        bullet?: string | null;
+                        bullet?: {
+                          root: {
+                            type: string;
+                            children: {
+                              type: string;
+                              version: number;
+                              [k: string]: unknown;
+                            }[];
+                            direction: ('ltr' | 'rtl') | null;
+                            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                            indent: number;
+                            version: number;
+                          };
+                          [k: string]: unknown;
+                        } | null;
                         id?: string | null;
                       }[]
                     | null;
                   /**
                    * Enter any extra information that maybe useful in the step.
                    */
-                  tip?: string | null;
+                  tip?: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: string;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  } | null;
                   id?: string | null;
                 }[]
               | null;
@@ -1405,12 +1437,18 @@ export interface GrantsSelect<T extends boolean = true> {
   contentBlocks?:
     | T
     | {
-        scolInfoBlk?:
+        secondarycta?:
           | T
           | {
-              title?: T;
-              desc?: T;
-              colBtns?:
+              ctaTitle?: T;
+              ctaSubtitle?: T;
+              contact?:
+                | T
+                | {
+                    label?: T;
+                    email?: T;
+                  };
+              ctaButton?:
                 | T
                 | {
                     link?:
@@ -2390,14 +2428,42 @@ export interface Homepage {
                    */
                   details?:
                     | {
-                        bullet?: string | null;
+                        bullet?: {
+                          root: {
+                            type: string;
+                            children: {
+                              type: string;
+                              version: number;
+                              [k: string]: unknown;
+                            }[];
+                            direction: ('ltr' | 'rtl') | null;
+                            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                            indent: number;
+                            version: number;
+                          };
+                          [k: string]: unknown;
+                        } | null;
                         id?: string | null;
                       }[]
                     | null;
                   /**
                    * Enter any extra information that maybe useful in the step.
                    */
-                  tip?: string | null;
+                  tip?: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: string;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  } | null;
                   id?: string | null;
                 }[]
               | null;

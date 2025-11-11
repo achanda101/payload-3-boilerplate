@@ -1,4 +1,12 @@
 import { Block } from "payload";
+import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import {
+  BoldFeature,
+  UnderlineFeature,
+  ItalicFeature,
+  LinkFeature,
+  InlineToolbarFeature,
+} from "@payloadcms/richtext-lexical";
 
 export const MultiStepProcess: Block = {
   slug: 'mstepProcess',
@@ -85,17 +93,23 @@ export const MultiStepProcess: Block = {
               fields: [
                 {
                   name: 'bullet',
-                  type: 'text',
+                  type: 'richText',
+                  editor: lexicalEditor({
+                    features: [
+                      BoldFeature(),
+                      UnderlineFeature(),
+                      ItalicFeature(),
+                      LinkFeature({
+                        enabledCollections: [ 'grants' ],
+                      }),
+                      InlineToolbarFeature(),
+                    ],
+                  }),
                   localized: true
                 }
               ],
               admin: {
                 description: 'Enter details for the step in bullet form',
-                components: {
-                  RowLabel: {
-                    path: 'src/blocks/MultiStepProcessBlock/StepDetailsRowLabel.tsx'
-                  }
-                }
               }
             },
             {
@@ -103,7 +117,18 @@ export const MultiStepProcess: Block = {
               admin: {
                 description: 'Enter any extra information that maybe useful in the step.'
               },
-              type: 'text',
+              type: 'richText',
+              editor: lexicalEditor({
+                features: [
+                  BoldFeature(),
+                  UnderlineFeature(),
+                  ItalicFeature(),
+                  LinkFeature({
+                    enabledCollections: [ 'grants' ],
+                  }),
+                  InlineToolbarFeature(),
+                ],
+              }),
               localized: true
             }
           ]

@@ -15,7 +15,8 @@ import { YellowCardDeck } from '@/components/YellowCardDeck'
 import { FeatureCard } from '@/components/FeatureCard'
 import { ListingCardDeck } from '@/components/ListingCardDeck'
 import { FaqBlock } from '@/components/FaqBlock'
-import {FeatureCardAccordion} from '@/components/FeatureCardAccordion'
+import { FeatureCardAccordion } from '@/components/FeatureCardAccordion'
+import { SecondaryCTA } from '@/components/SecondaryCTA'
 
 interface AssetCloud {
   id: string;
@@ -183,6 +184,22 @@ export const GrantPage: React.FC<GrantPageProps> = ({
         
         <div className='frame_layout'>
           {contentBlocks && contentBlocks.length > 0 && contentBlocks.map((block, index) => {
+              if (block.blockType === 'secondarycta') {
+                return (
+                  <React.Fragment key={index}>
+                    <SecondaryCTA
+                      title={(block as any).ctaTitle || ''}
+                      subtitle={(block as any).ctaSubtitle || ''}
+                      ctaButton={(block as any).ctaButton || []}
+                    />
+                    {process.env.NODE_ENV === 'development' && (
+                      <div className="page_column_layout gap-6">
+                        <ColumnIndicators />
+                      </div>
+                    )}
+                  </React.Fragment>
+                )
+              }
               if (block.blockType === 'grantCardGridBlock') {
                 return (
                   <React.Fragment key={index}>

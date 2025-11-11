@@ -11,6 +11,7 @@ import {
   Clock,
   Lightbulb,
 } from "lucide-react";
+import { serializeLexical } from "@/components/RichText/serialize";
 
 interface MultiStepProcessProps {
   title: string;
@@ -20,9 +21,9 @@ interface MultiStepProcessProps {
     icon: string;
     stepTitle: string;
     title: string;
-    tip?: string;
+    tip?: any;
     details: {
-      bullet: string;
+      bullet: any;
     }[]
   }[]
 }
@@ -91,7 +92,13 @@ export const MultiStepProcess: React.FC<MultiStepProcessProps> = ({ title, subti
                 {currentStep.details?.map((detail, index) => (
                   <li key={index} className="flex gap-1 tight">
                     <span>•</span>
-                    <span>{detail.bullet}</span>
+                    {detail.bullet && typeof detail.bullet === 'object' ? (
+                      <span>
+                        {serializeLexical({ nodes: detail.bullet.root?.children || [] })}
+                      </span>
+                    ) : (
+                      <span>{detail.bullet}</span>  
+                    )}
                   </li>
                 ))}
               </ul>
@@ -101,7 +108,13 @@ export const MultiStepProcess: React.FC<MultiStepProcessProps> = ({ title, subti
                 <hr className="mt-4"/>
                 <div className="flex gap-3 mt-2">
                   <Lightbulb className="w-5 h-5 text-foreground/70 flex-shrink-0 mt-0.5" />
-                  <p className="text-sm text-foreground/80">{currentStep.tip}</p>
+                  {typeof currentStep.tip === 'object' ? (
+                    <div className="text-sm text-foreground/80">
+                      {serializeLexical({ nodes: currentStep.tip.root?.children || [] })}
+                    </div>
+                  ): (
+                    <p className="text-sm text-foreground/80">{currentStep.tip}</p>  
+                  )}
                 </div>
               </>
             )}

@@ -15,6 +15,7 @@ import { FeatureCardAccordion } from '@/blocks/FeatureCardAccordion/config'
 import { ListingCardDeck } from '@/blocks/ListingCardDeck/config'
 import { FaqBlock } from '@/blocks/FaqBlock/config'
 import { SecondaryCTA } from '@/blocks/SecondaryCTA/config'
+import { SingleColumnInfoBlock } from '@/blocks/SingleColumnInfoBlock/config'
 
 
 export const Homepage: GlobalConfig = {
