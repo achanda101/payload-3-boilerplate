@@ -6,6 +6,10 @@
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center;
+
+  @media (max-width: vars.$tablet) {
+    background-image: url('/card_bg/featurecard-beige-mobile.svg');
+  }
 }
 
 .turmeric_wavycard {
@@ -20,6 +24,14 @@
   > div {
     position: relative;
     z-index: 1;
+  }
+
+  @media (max-width: vars.$mobile) {
+    background-image: url('/card_bg/yellow-wavyborder-card-mob.svg');
+
+    &.colsp {
+      background-image: url('/card_bg/yellow-wavyborder-card-mob-c.svg');
+    }
   }
 }
 
@@ -57,6 +69,82 @@
   }
   
   @media (max-width: vars.$mobile) {
-    background-image: url('/card_bg/featurecard-bg-forest.svg');
+    background-image: url('/card_bg/featurecard-bg-forest-mobile.svg');
+  }
+}
+
+.sky_featurecard {
+  background-image: url('/card_bg/featurecard-bg-sky.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100%;
+  width: 100%;
+  position: relative;
+
+  > div {
+    position: relative;
+    z-index: 1;
+  }
+  
+  @media (max-width: vars.$mobile) {
+    background-image: url('/card_bg/featurecard-bg-sky-mobile.svg');
+  }
+}
+
+.rose_featurecard {
+  background-image: url('/card_bg/featurecard-bg-rose.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100%;
+  width: 100%;
+  position: relative;
+
+  > div {
+    position: relative;
+    z-index: 1;
+  }
+  
+  @media (max-width: vars.$mobile) {
+    background-image: url('/card_bg/featurecard-bg-rose-mobile.svg');
+  }
+}
+
+.fire_featurecard {
+  background-image: url('/card_bg/featurecard-bg-fire.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100%;
+  width: 100%;
+  position: relative;
+
+  > div {
+    position: relative;
+    z-index: 1;
+  }
+  
+  @media (max-width: vars.$mobile) {
+    background-image: url('/card_bg/featurecard-bg-fire-mobile.svg');
+  }
+}
+
+.lavender_featurecard {
+  background-image: url('/card_bg/featurecard-bg-lavender.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100%;
+  width: 100%;
+  position: relative;
+
+  > div {
+    position: relative;
+    z-index: 1;
+  }
+  
+  @media (max-width: vars.$mobile) {
+    background-image: url('/card_bg/featurecard-bg-lavender-mobile.svg');
   }
 }

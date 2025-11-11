@@ -281,9 +281,11 @@ export const GrantPage: React.FC<GrantPageProps> = ({
                 <React.Fragment key={index}>
                   <div className="page_column_layout gap-6">
                     <YellowCardDeck
+                      blockName={block.blockName}
                       title={block.title}
                       desc={block.desc}
                       cards={block.cards}
+                      align={block.align}
                     />
                   </div>
                 </React.Fragment>

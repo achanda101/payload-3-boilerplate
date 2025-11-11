@@ -398,7 +398,22 @@ export interface Grant {
           }
         | {
             title?: string | null;
-            desc?: string | null;
+            align?: ('left' | 'center') | null;
+            desc?: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
             /**
              * Add yellow cards to be displayed in the deck
              */
@@ -465,7 +480,21 @@ export interface Grant {
                   id?: string | null;
                 }[]
               | null;
-            desc?: string | null;
+            desc?: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
             link?: {
               type?: ('reference' | 'custom' | 'email' | 'document') | null;
               newTab?: boolean | null;
@@ -1521,6 +1550,7 @@ export interface GrantsSelect<T extends boolean = true> {
           | T
           | {
               title?: T;
+              align?: T;
               desc?: T;
               cards?:
                 | T
@@ -2439,7 +2469,22 @@ export interface Homepage {
           }
         | {
             title?: string | null;
-            desc?: string | null;
+            align?: ('left' | 'center') | null;
+            desc?: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
             /**
              * Add yellow cards to be displayed in the deck
              */
@@ -2506,7 +2551,21 @@ export interface Homepage {
                   id?: string | null;
                 }[]
               | null;
-            desc?: string | null;
+            desc?: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
             link?: {
               type?: ('reference' | 'custom' | 'email' | 'document') | null;
               newTab?: boolean | null;
@@ -3076,6 +3135,7 @@ export interface HomepageSelect<T extends boolean = true> {
           | T
           | {
               title?: T;
+              align?: T;
               desc?: T;
               cards?:
                 | T

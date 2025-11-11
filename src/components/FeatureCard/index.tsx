@@ -1,6 +1,7 @@
 import React from "react";
 import Image from 'next/image';
 import { UAFButton } from "@/components/UAFButton";
+import { serializeLexical } from "@/components/RichText/serialize";
 
 interface AssetCloud {
   id: string;
@@ -15,7 +16,7 @@ interface AssetCloud {
 interface FeatureCardProps {
   title: string | null;
   subtitle: string | null;
-  desc: string | null;
+  desc: any;
   tags: {
     id: string;
     tag: string | null;
@@ -86,8 +87,14 @@ export const FeatureCard: React.FC<FeatureCardProps> = ({
               )}
             </div>
             <div>
-              {desc && <h6 className="md:hidden lg:block mb-8">{desc}</h6>}
-              {desc && <p className="md:block lg:hidden mb-8">{desc}</p>}
+              {desc && typeof desc == 'object' ? (
+                <div className="mb-8">
+                  {serializeLexical({ nodes: desc.root?.children || [] })}
+                </div>
+              ) : (
+                <p className="md:block lg:hidden mb-8">{desc}</p>  
+              )
+              }
               {link && <UAFButton button={link} />}
             </div>
           </div>
@@ -119,7 +126,14 @@ export const FeatureCard: React.FC<FeatureCardProps> = ({
               ))}
             </div>
           )}
-          {desc && <p className="my-4">{desc}</p>}
+          {desc && typeof desc == 'object' ? (
+            <div className="my-4">
+              {serializeLexical({ nodes: desc.root?.children || [] })}
+            </div>
+            ) : (
+                <p className = "my-4">{ desc }</p>
+            )
+          }
           {link && <UAFButton button={link} />}
         </div>
       </div>

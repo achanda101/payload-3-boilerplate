@@ -1,5 +1,13 @@
 import { Block } from 'payload'
 import { link } from "@/fields/link";
+import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import {
+  BoldFeature,
+  UnderlineFeature,
+  ItalicFeature,
+  LinkFeature,
+  InlineToolbarFeature,
+} from "@payloadcms/richtext-lexical";
 
 export const FeatureCard: Block = {
   slug: 'featCrd',
@@ -71,7 +79,18 @@ export const FeatureCard: Block = {
           fields: [
             {
               name: 'desc',
-              type: 'textarea',
+              type: 'richText',
+              editor: lexicalEditor({
+                features: [
+                  BoldFeature(),
+                  UnderlineFeature(),
+                  ItalicFeature(),
+                  LinkFeature({
+                    enabledCollections: [ 'grants' ],
+                  }),
+                  InlineToolbarFeature(),
+                ],
+              }),
               localized: true,
             },
           ],

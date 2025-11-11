@@ -1,5 +1,13 @@
 import { Block } from "payload";
 import { link } from "@/fields/link";
+import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import {
+  BoldFeature,
+  UnderlineFeature,
+  ItalicFeature,
+  LinkFeature,
+  InlineToolbarFeature,
+} from "@payloadcms/richtext-lexical";
 
 export const YellowCardDeck: Block = {
   slug: 'ylwDeck',
@@ -13,9 +21,27 @@ export const YellowCardDeck: Block = {
       type: 'row',
       fields: [
         {
-          name: 'title',
-          type: 'text',
-          localized: true,
+          type: 'group',
+          fields: [
+                {
+              name: 'title',
+              type: 'text',
+              localized: true,
+            },
+            {
+              name: 'align',
+              label: 'Select alignment of title and description',
+              type: 'radio',
+              options: [
+                { label: 'Left Align', value: 'left' },
+                { label: 'Center Align', value: 'center' },
+              ],
+              defaultValue: 'center',
+              admin: {
+                layout: 'horizontal',
+              }
+            },
+          ],
           admin: {
             width: '50%'
           }
@@ -23,7 +49,18 @@ export const YellowCardDeck: Block = {
         {
           name: 'desc',
           label: 'Description',
-          type: 'text',
+          type: 'richText',
+          editor: lexicalEditor({
+            features: [
+              BoldFeature(),
+              UnderlineFeature(),
+              ItalicFeature(),
+              LinkFeature({
+                enabledCollections: [ 'grants' ],
+              }),
+              InlineToolbarFeature(),
+            ],
+          }),
           localized: true,
           admin: {
             width: '50%'
