@@ -9,6 +9,17 @@
     }
   }
 
+  &__videos {
+    display: flex;
+    flex-direction: row;
+    gap: base(0.75);
+    margin-top: base(0.25);
+
+    & p {
+      margin: 0;
+    }
+  }
+
   &__instructions {
     list-style: decimal;
     margin-bottom: base(0.5);

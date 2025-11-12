@@ -16,14 +16,14 @@ const BeforeDashboard: React.FC = () => {
       <Banner className={`${baseClass}__banner`} type="info">
         <h4>Video Tutorials</h4>
         <small>Turn on captions for better guidance.</small>
-          <div>
-            <p>
-              <Link href="https://www.youtube.com/watch?v=aDb8VjdZkvw" target='blank'>
-                How to create a Page
-              </Link>
-            </p>
-          </div>
-        </Banner>
+        <div className={`${baseClass}__videos`}>
+          <p>
+            <Link href="https://www.youtube.com/watch?v=aDb8VjdZkvw" target='blank'>
+              How to create a Page
+            </Link>
+          </p>
+        </div>
+      </Banner>
     </div>
   )
 }
