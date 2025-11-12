@@ -12,23 +12,18 @@ const BeforeDashboard: React.FC = () => {
         <p>
           <Link href="/">View Homepage</Link>
         </p>
-        <div className='flex gap-1 backdrop-brightness-50'>
-          <h3>Video Tutorials</h3>
-          <div className='flex flex-col gap-1'>
+      </Banner>
+      <Banner className={`${baseClass}__banner`} type="info">
+        <h4>Video Tutorials</h4>
+        <small>Turn on captions for better guidance.</small>
+          <div>
             <p>
               <Link href="https://www.youtube.com/watch?v=aDb8VjdZkvw" target='blank'>
                 How to create a Page
               </Link>
             </p>
-            <p>
-              <Link href="#" target='blank'>
-                How to create a Grant Page
-              </Link>
-            </p>
           </div>
-        </div>
-      </Banner>
-      
+        </Banner>
     </div>
   )
 }
