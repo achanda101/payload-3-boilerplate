@@ -1,6 +1,6 @@
 import type { Metadata } from 'next/types'
 import React, { cache } from 'react'
-import { GrantPage } from '../../components/GrantPage/GrantPage'
+import { UAFPage } from '../../components/UAFPage/UAFPage'
 
 import { getPayload } from 'payload'
 import { draftMode } from 'next/headers'
@@ -23,10 +23,10 @@ export default async function Page({ params: paramsPromise }: Args) {
   // Need to find out the document id using the collection name and slug value
   return (
     <>
-      <GrantPage
-        collection='grants'
+      <UAFPage
+        collection='pages'
         docId={page.id}
-      /> 
+      />
     </>
   )
 }
@@ -37,7 +37,7 @@ const queryPageBySlug = cache(async ({ slug }: { slug: string }) => {
   const payload = await getPayload({ config: configPromise })
 
   const result = await payload.find({
-    collection: 'grants',
+    collection: 'pages',
     draft,
     limit: 1,
     overrideAccess: draft,

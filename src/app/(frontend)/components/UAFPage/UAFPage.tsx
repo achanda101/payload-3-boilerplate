@@ -28,19 +28,19 @@ interface AssetCloud {
   focalY?: number | null;
 }
 
-interface GrantPageProps {
+interface UAFPageProps {
   collection: string;
   docId: number;
 }
 
-export const GrantPage: React.FC<GrantPageProps> = ({ 
+export const UAFPage: React.FC<UAFPageProps> = ({ 
   collection,
   docId
  }) => {
   const { selectedLanguage } = useLanguage()
   const { setHeaderTheme } = useHeaderTheme()
   const [ heroHeaderImg, setHeroHeaderImg ] = useState('wavy_top-trans')
-  const [ pageType, setPageType ] = useState<'landing' | 'individual'>('landing')
+  // const [ pageType, setPageType ] = useState<'landing' | 'individual'>('landing')
   const [ heroBlock, setHeroBlock ] = useState < {
     title?: string | null,
     subtitle?: string | null,
@@ -83,16 +83,14 @@ export const GrantPage: React.FC<GrantPageProps> = ({
     try {
       const response = await fetch(fetchPath)
       const data = await response.json()
-      const headerColour = getHeaderColour(data.pageType, data.grantCard)
-      setPageType(data.pageType || 'landing')
+      const headerColour = data.heroColour
+      // setPageType(data.pageType || 'landing')
       setHeroHeaderImg(`${data.bgType}-${headerColour}`)
       setHeaderTheme(headerColour)
       setHeroBlock({
         title: data.heroTitle,
         subtitle: data.heroSubtitle,
-        badgeText: data.grantCard?.badgeText,
-        badgeType: data.grantCard?.badgeType,
-        heroImage: data.grantCard?.mascot,
+        heroImage: data.mascot,
         heroButtons: data.heroButtons?.map((button: { id: string; link: any; }, index: number) => ({
           id: button.id,
           type: button.link.type,
@@ -122,7 +120,7 @@ export const GrantPage: React.FC<GrantPageProps> = ({
 
   return (
     <>
-      <section className={`hero-banner${pageType === 'landing' ? ' short' : ''}`}>
+      <section className="hero-banner">
         <Image
           src={`/heroes/${heroHeaderImg}.png`}
           alt="Header image"
@@ -151,21 +149,17 @@ export const GrantPage: React.FC<GrantPageProps> = ({
               alt={heroBlock.heroImage.alt || 'Hero Mascot Image'}
               width={heroBlock.heroImage.width || 800}
               height={heroBlock.heroImage.height || 600}
-              style={{ width: '100%', height: 'auto' }}
+              sizes="(max-width: 640px) 80vw, 33vw"
+              style={{ width: '100%', height: 'auto', maxWidth: 'clamp(80vw, 100%, 33vw)' }}
               className='hero-mascot'
               priority
             />
-          ) : null}
-          {heroBlock?.badgeText ? (
-            <div className={`badge ${heroBlock?.badgeType}`}>
-              <p className="tag">{heroBlock?.badgeText}</p>
-            </div>
-          ) : null}  
+          ) : null} 
           <h2 style={{ whiteSpace: 'pre-line', textTransform: 'capitalize' }}>{heroBlock?.title}</h2>
           <p style={{ whiteSpace: 'pre-line' }}>{heroBlock?.subtitle}</p>
           </div>
           <div className='hero-content full-width'>
-            <ButtonArray btnArray={heroBlock?.heroButtons || []} colStackOnMobile={pageType === 'landing' ? true : false} />
+            <ButtonArray btnArray={heroBlock?.heroButtons || []} colStackOnMobile={true} />
 
             <div className="hero-contact">
               {heroBlock?.heroContact?.label && heroBlock?.heroContact?.email && (
@@ -184,40 +178,40 @@ export const GrantPage: React.FC<GrantPageProps> = ({
         
         <div className='frame_layout'>
           {contentBlocks && contentBlocks.length > 0 && contentBlocks.map((block, index) => {
-              if (block.blockType === 'secondarycta') {
-                return (
-                  <React.Fragment key={index}>
-                    <SecondaryCTA
-                      title={(block as any).ctaTitle || ''}
-                      subtitle={(block as any).ctaSubtitle || ''}
-                      ctaButton={(block as any).ctaButton || []}
-                    />
-                    {process.env.NODE_ENV === 'development' && (
-                      <div className="page_column_layout gap-6">
-                        <ColumnIndicators />
-                      </div>
-                    )}
-                  </React.Fragment>
-                )
-              }
-              if (block.blockType === 'grantCardGridBlock') {
-                return (
-                  <React.Fragment key={index}>
+            if (block.blockType === 'secondarycta') {
+              return (
+                <React.Fragment key={index}>
+                  <SecondaryCTA
+                    title={(block as any).ctaTitle || ''}
+                    subtitle={(block as any).ctaSubtitle || ''}
+                    ctaButton={(block as any).ctaButton || []}
+                  />
+                  {process.env.NODE_ENV === 'development' && (
                     <div className="page_column_layout gap-6">
-                      <GrantCardGrid
-                        title={block.title}
-                        desc={block.desc}
-                        grantCards={(block as any) || []}
-                      />
+                      <ColumnIndicators />
                     </div>
-                    {process.env.NODE_ENV === 'development' && (
-                      <div className="page_column_layout gap-6">
-                        <ColumnIndicators />
-                      </div>
-                    )}
-                  </React.Fragment>
-                )
-              }
+                  )}
+                </React.Fragment>
+              )
+            }
+            if (block.blockType === 'grantCardGridBlock') {
+              return (
+                <React.Fragment key={index}>
+                  <div className="page_column_layout gap-6">
+                    <GrantCardGrid
+                      title={block.title}
+                      desc={block.desc}
+                      grantCards={(block as any) || []}
+                    />
+                  </div>
+                  {process.env.NODE_ENV === 'development' && (
+                    <div className="page_column_layout gap-6">
+                      <ColumnIndicators />
+                    </div>
+                  )}
+                </React.Fragment>
+              )
+            }
             if (block.blockType === 'mstepProcess') {
               return (
                 <React.Fragment key={index}>

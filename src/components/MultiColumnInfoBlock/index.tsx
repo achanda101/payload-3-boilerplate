@@ -37,7 +37,7 @@ export const MultiColumnInfo: React.FC<MultiColumnInfoProps> = ({ infoColumns })
           <div className="col-span-3 md:col-span-4 lg:col-span-3" key={index}>
             <div className="flex flex-col">
               <p className="tag">{col.title}</p>
-              <p>{col.colContent}</p>
+              <p style={{ whiteSpace: 'pre-line' }}>{col.colContent}</p>
               {col.addLink && col.link?.label && (
                 <div className="mt-2">
                   <UAFButton
