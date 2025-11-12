@@ -67,8 +67,7 @@ export const Navigation: GlobalConfig = {
           type: 'relationship',
           label: 'Terms and Conditions Document to link to',
           maxDepth: 1,
-          relationTo: ['posts'],
-          // required: true,
+          relationTo: ['pages'],
           admin: {
             width: '50%',
             style: {
@@ -84,8 +83,7 @@ export const Navigation: GlobalConfig = {
           type: 'relationship',
           label: 'Privacy Document to link to',
           maxDepth: 1,
-          relationTo: ['posts'],
-          // required: true,
+          relationTo: ['pages'],
           admin: {
             width: '50%',
             style: {

@@ -133,7 +133,7 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
       },
       label: 'Page to link to',
       maxDepth: 2,
-      relationTo: ['grants','posts'],
+      relationTo: ['grants','posts', 'pages'],
     },
     {
       name: 'url',

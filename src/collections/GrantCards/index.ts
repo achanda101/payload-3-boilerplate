@@ -60,7 +60,7 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
                   label: 'Description of Grant Card',
                   type: 'textarea',
                   localized: true,
-                  maxLength: 200,
+                  maxLength: 300,
                   admin: {
                     components: {
                       afterInput: [
@@ -275,7 +275,7 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
           label: 'Common Uses',
           type: 'textarea',
           localized: true,
-          maxLength: 200,
+          maxLength: 300,
           admin: {
             width: '30%',
             components: {

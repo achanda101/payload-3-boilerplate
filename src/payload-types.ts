@@ -69,6 +69,7 @@ export interface Config {
   collections: {
     grants: Grant;
     grantcards: Grantcard;
+    pages: Page;
     posts: Post;
     mediaCloud: MediaCloud;
     assetCloud: AssetCloud;
@@ -87,6 +88,7 @@ export interface Config {
   collectionsSelect: {
     grants: GrantsSelect<false> | GrantsSelect<true>;
     grantcards: GrantcardsSelect<false> | GrantcardsSelect<true>;
+    pages: PagesSelect<false> | PagesSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
     mediaCloud: MediaCloudSelect<false> | MediaCloudSelect<true>;
     assetCloud: AssetCloudSelect<false> | AssetCloudSelect<true>;
@@ -193,6 +195,10 @@ export interface Grant {
             | ({
                 relationTo: 'posts';
                 value: number | Post;
+              } | null)
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
               } | null);
           url?: string | null;
           email?: string | null;
@@ -236,6 +242,10 @@ export interface Grant {
                       | ({
                           relationTo: 'posts';
                           value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
                         } | null);
                     url?: string | null;
                     email?: string | null;
@@ -273,6 +283,10 @@ export interface Grant {
                       | ({
                           relationTo: 'posts';
                           value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
                         } | null);
                     url?: string | null;
                     email?: string | null;
@@ -413,6 +427,10 @@ export interface Grant {
                       | ({
                           relationTo: 'posts';
                           value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
                         } | null);
                     url?: string | null;
                     email?: string | null;
@@ -481,6 +499,10 @@ export interface Grant {
                             | ({
                                 relationTo: 'posts';
                                 value: number | Post;
+                              } | null)
+                            | ({
+                                relationTo: 'pages';
+                                value: number | Page;
                               } | null);
                           url?: string | null;
                           email?: string | null;
@@ -543,6 +565,10 @@ export interface Grant {
                 | ({
                     relationTo: 'posts';
                     value: number | Post;
+                  } | null)
+                | ({
+                    relationTo: 'pages';
+                    value: number | Page;
                   } | null);
               url?: string | null;
               email?: string | null;
@@ -641,6 +667,10 @@ export interface Grant {
                       | ({
                           relationTo: 'posts';
                           value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
                         } | null);
                     url?: string | null;
                     email?: string | null;
@@ -670,6 +700,10 @@ export interface Grant {
                       | ({
                           relationTo: 'posts';
                           value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
                         } | null);
                     url?: string | null;
                     email?: string | null;
@@ -704,6 +738,10 @@ export interface Grant {
                 | ({
                     relationTo: 'posts';
                     value: number | Post;
+                  } | null)
+                | ({
+                    relationTo: 'pages';
+                    value: number | Page;
                   } | null);
               url?: string | null;
               email?: string | null;
@@ -798,6 +836,10 @@ export interface Grantcard {
             | ({
                 relationTo: 'posts';
                 value: number | Post;
+              } | null)
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
               } | null);
           url?: string | null;
           email?: string | null;
@@ -1036,6 +1078,641 @@ export interface User {
       }[]
     | null;
   password?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages".
+ */
+export interface Page {
+  id: number;
+  title: string;
+  heroTitle?: string | null;
+  heroSubtitle?: string | null;
+  bgType?: ('wavy_top' | 'wavy_full' | 'center_blob') | null;
+  /**
+   * Select a colour for the Hero background.
+   */
+  heroColour?: ('forest' | 'turmeric' | 'sky' | 'rose' | 'lavender' | 'fire' | 'trans') | null;
+  /**
+   * Upload a mascot image for the Hero section.
+   */
+  mascot?: (number | null) | AssetCloud;
+  /**
+   * Contact Label
+   */
+  label?: string | null;
+  /**
+   * Contact Email
+   */
+  email?: string | null;
+  heroButtons?:
+    | {
+        link?: {
+          type?: ('reference' | 'custom' | 'email' | 'document') | null;
+          newTab?: boolean | null;
+          downloadLink?: boolean | null;
+          arrowLink?: boolean | null;
+          pillSolid?: boolean | null;
+          pillOutline?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'grants';
+                value: number | Grant;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null)
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null);
+          url?: string | null;
+          email?: string | null;
+          doc?: {
+            relationTo: 'documents';
+            value: number | Document;
+          } | null;
+          label?: string | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  contentBlocks?:
+    | (
+        | {
+            ctaTitle?: string | null;
+            ctaSubtitle?: string | null;
+            contact?: {
+              label?: string | null;
+              email?: string | null;
+            };
+            uiType?: ('lrg_txt_cta' | 'md_txt_cta' | 'min_cta' | 'puffy_beige_cta') | null;
+            ctaButton?:
+              | {
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email' | 'document') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'secondarycta';
+          }
+        | {
+            multicols?:
+              | {
+                  title?: string | null;
+                  colContent?: string | null;
+                  addLink?: boolean | null;
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email' | 'document') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'mcolInfoBlock';
+          }
+        | {
+            title?: string | null;
+            desc?: string | null;
+            /**
+             * Grant Cards to display - only active grants (excludes closed grants). You can reorder or remove cards as needed.
+             */
+            grantCardGrid?: (number | Grantcard)[] | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'grantCardGridBlock';
+          }
+        | {
+            title?: string | null;
+            subtitle?: string | null;
+            steps?:
+              | {
+                  stepTitle?: string | null;
+                  title?: string | null;
+                  icon?:
+                    | (
+                        | 'FileText'
+                        | 'Clock'
+                        | 'ShieldCheck'
+                        | 'Vote'
+                        | 'ScrollText'
+                        | 'Banknote'
+                        | 'Rocket'
+                        | 'FileCheck'
+                      )
+                    | null;
+                  /**
+                   * Enter details for the step in bullet form
+                   */
+                  details?:
+                    | {
+                        bullet?: {
+                          root: {
+                            type: string;
+                            children: {
+                              type: string;
+                              version: number;
+                              [k: string]: unknown;
+                            }[];
+                            direction: ('ltr' | 'rtl') | null;
+                            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                            indent: number;
+                            version: number;
+                          };
+                          [k: string]: unknown;
+                        } | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  /**
+                   * Enter any extra information that maybe useful in the step.
+                   */
+                  tip?: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: string;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  } | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'mstepProcess';
+          }
+        | {
+            title?: string | null;
+            desc?: string | null;
+            lftGrp?: {
+              title?: string | null;
+              desc?: string | null;
+              /**
+               * Points in the left column will have a checkmark
+               */
+              lftPoints?:
+                | {
+                    point?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+            };
+            rtGrp?: {
+              title?: string | null;
+              desc?: string | null;
+              /**
+               * Points in the right column will have a cross mark
+               */
+              rtPoints?:
+                | {
+                    point?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+            };
+            buttons?:
+              | {
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email' | 'document') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'comparisonBlk';
+          }
+        | {
+            title?: string | null;
+            align?: ('left' | 'center') | null;
+            desc?: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            /**
+             * Add yellow cards to be displayed in the deck
+             */
+            cards?:
+              | {
+                  title?: string | null;
+                  subtitle?: string | null;
+                  desc?: string | null;
+                  /**
+                   * Mascot image for the yellow card
+                   */
+                  mascot?: (number | null) | AssetCloud;
+                  /**
+                   * Position of the mascot image on the yellow card
+                   */
+                  mascotPos?: ('top_left' | 'center') | null;
+                  links?:
+                    | {
+                        desc?: string | null;
+                        link?: {
+                          type?: ('reference' | 'custom' | 'email' | 'document') | null;
+                          newTab?: boolean | null;
+                          downloadLink?: boolean | null;
+                          arrowLink?: boolean | null;
+                          pillSolid?: boolean | null;
+                          pillOutline?: boolean | null;
+                          reference?:
+                            | ({
+                                relationTo: 'grants';
+                                value: number | Grant;
+                              } | null)
+                            | ({
+                                relationTo: 'posts';
+                                value: number | Post;
+                              } | null)
+                            | ({
+                                relationTo: 'pages';
+                                value: number | Page;
+                              } | null);
+                          url?: string | null;
+                          email?: string | null;
+                          doc?: {
+                            relationTo: 'documents';
+                            value: number | Document;
+                          } | null;
+                          label?: string | null;
+                        };
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'ylwDeck';
+          }
+        | {
+            /**
+             * Upload an image for the Feature Card
+             */
+            image?: (number | null) | MediaCloud;
+            title?: string | null;
+            subtitle?: string | null;
+            tags?:
+              | {
+                  tag?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            desc?: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            link?: {
+              type?: ('reference' | 'custom' | 'email' | 'document') | null;
+              newTab?: boolean | null;
+              downloadLink?: boolean | null;
+              arrowLink?: boolean | null;
+              pillSolid?: boolean | null;
+              pillOutline?: boolean | null;
+              reference?:
+                | ({
+                    relationTo: 'grants';
+                    value: number | Grant;
+                  } | null)
+                | ({
+                    relationTo: 'posts';
+                    value: number | Post;
+                  } | null)
+                | ({
+                    relationTo: 'pages';
+                    value: number | Page;
+                  } | null);
+              url?: string | null;
+              email?: string | null;
+              doc?: {
+                relationTo: 'documents';
+                value: number | Document;
+              } | null;
+              label?: string | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featCrd';
+          }
+        | {
+            /**
+             * Title for the block
+             */
+            title?: string | null;
+            featCrds?:
+              | {
+                  accTitle?: string | null;
+                  accContent?: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: string;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  } | null;
+                  crdTag?: string | null;
+                  crdContent?: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: string;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  } | null;
+                  /**
+                   * Upload a mascot image for the feature card
+                   */
+                  mascot?: (number | null) | AssetCloud;
+                  /**
+                   * Select a colour for the Feature Card background.
+                   */
+                  crdColour?: ('forest' | 'turmeric' | 'sky' | 'rose' | 'lavender' | 'fire') | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featCrdAcc';
+          }
+        | {
+            title?: string | null;
+            /**
+             * Add listing cards to be displayed in the deck
+             */
+            cards?:
+              | {
+                  title?: string | null;
+                  desc?: string | null;
+                  image?: (number | null) | MediaCloud;
+                  tags?:
+                    | {
+                        tag?: string | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email' | 'document') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            buttons?:
+              | {
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email' | 'document') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'listCrdDck';
+          }
+        | {
+            title?: string | null;
+            desc?: string | null;
+            link?: {
+              type?: ('reference' | 'custom' | 'email' | 'document') | null;
+              newTab?: boolean | null;
+              downloadLink?: boolean | null;
+              arrowLink?: boolean | null;
+              pillSolid?: boolean | null;
+              pillOutline?: boolean | null;
+              reference?:
+                | ({
+                    relationTo: 'grants';
+                    value: number | Grant;
+                  } | null)
+                | ({
+                    relationTo: 'posts';
+                    value: number | Post;
+                  } | null)
+                | ({
+                    relationTo: 'pages';
+                    value: number | Page;
+                  } | null);
+              url?: string | null;
+              email?: string | null;
+              doc?: {
+                relationTo: 'documents';
+                value: number | Document;
+              } | null;
+              label?: string | null;
+            };
+            /**
+             * Add frequently asked questions to be displayed in this section
+             */
+            faqs?:
+              | {
+                  question?: string | null;
+                  /**
+                   * Provide a detailed answer to the question
+                   */
+                  answer?: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: string;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  } | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'faqBlk';
+          }
+      )[]
+    | null;
+  publishedAt?: string | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * Upload and manage documents like PDFs, Word files, text files here. Maximum file size is 50MB.
@@ -1315,6 +1992,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'grantcards';
         value: number | Grantcard;
+      } | null)
+    | ({
+        relationTo: 'pages';
+        value: number | Page;
       } | null)
     | ({
         relationTo: 'posts';
@@ -1818,6 +2499,373 @@ export interface GrantcardsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages_select".
+ */
+export interface PagesSelect<T extends boolean = true> {
+  title?: T;
+  heroTitle?: T;
+  heroSubtitle?: T;
+  bgType?: T;
+  heroColour?: T;
+  mascot?: T;
+  label?: T;
+  email?: T;
+  heroButtons?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              downloadLink?: T;
+              arrowLink?: T;
+              pillSolid?: T;
+              pillOutline?: T;
+              reference?: T;
+              url?: T;
+              email?: T;
+              doc?: T;
+              label?: T;
+            };
+        id?: T;
+      };
+  contentBlocks?:
+    | T
+    | {
+        secondarycta?:
+          | T
+          | {
+              ctaTitle?: T;
+              ctaSubtitle?: T;
+              contact?:
+                | T
+                | {
+                    label?: T;
+                    email?: T;
+                  };
+              uiType?: T;
+              ctaButton?:
+                | T
+                | {
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          doc?: T;
+                          label?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        mcolInfoBlock?:
+          | T
+          | {
+              multicols?:
+                | T
+                | {
+                    title?: T;
+                    colContent?: T;
+                    addLink?: T;
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          doc?: T;
+                          label?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        grantCardGridBlock?:
+          | T
+          | {
+              title?: T;
+              desc?: T;
+              grantCardGrid?: T;
+              id?: T;
+              blockName?: T;
+            };
+        mstepProcess?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              steps?:
+                | T
+                | {
+                    stepTitle?: T;
+                    title?: T;
+                    icon?: T;
+                    details?:
+                      | T
+                      | {
+                          bullet?: T;
+                          id?: T;
+                        };
+                    tip?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        comparisonBlk?:
+          | T
+          | {
+              title?: T;
+              desc?: T;
+              lftGrp?:
+                | T
+                | {
+                    title?: T;
+                    desc?: T;
+                    lftPoints?:
+                      | T
+                      | {
+                          point?: T;
+                          id?: T;
+                        };
+                  };
+              rtGrp?:
+                | T
+                | {
+                    title?: T;
+                    desc?: T;
+                    rtPoints?:
+                      | T
+                      | {
+                          point?: T;
+                          id?: T;
+                        };
+                  };
+              buttons?:
+                | T
+                | {
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          doc?: T;
+                          label?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        ylwDeck?:
+          | T
+          | {
+              title?: T;
+              align?: T;
+              desc?: T;
+              cards?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    desc?: T;
+                    mascot?: T;
+                    mascotPos?: T;
+                    links?:
+                      | T
+                      | {
+                          desc?: T;
+                          link?:
+                            | T
+                            | {
+                                type?: T;
+                                newTab?: T;
+                                downloadLink?: T;
+                                arrowLink?: T;
+                                pillSolid?: T;
+                                pillOutline?: T;
+                                reference?: T;
+                                url?: T;
+                                email?: T;
+                                doc?: T;
+                                label?: T;
+                              };
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        featCrd?:
+          | T
+          | {
+              image?: T;
+              title?: T;
+              subtitle?: T;
+              tags?:
+                | T
+                | {
+                    tag?: T;
+                    id?: T;
+                  };
+              desc?: T;
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    downloadLink?: T;
+                    arrowLink?: T;
+                    pillSolid?: T;
+                    pillOutline?: T;
+                    reference?: T;
+                    url?: T;
+                    email?: T;
+                    doc?: T;
+                    label?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        featCrdAcc?:
+          | T
+          | {
+              title?: T;
+              featCrds?:
+                | T
+                | {
+                    accTitle?: T;
+                    accContent?: T;
+                    crdTag?: T;
+                    crdContent?: T;
+                    mascot?: T;
+                    crdColour?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        listCrdDck?:
+          | T
+          | {
+              title?: T;
+              cards?:
+                | T
+                | {
+                    title?: T;
+                    desc?: T;
+                    image?: T;
+                    tags?:
+                      | T
+                      | {
+                          tag?: T;
+                          id?: T;
+                        };
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          doc?: T;
+                          label?: T;
+                        };
+                    id?: T;
+                  };
+              buttons?:
+                | T
+                | {
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          doc?: T;
+                          label?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        faqBlk?:
+          | T
+          | {
+              title?: T;
+              desc?: T;
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    downloadLink?: T;
+                    arrowLink?: T;
+                    pillSolid?: T;
+                    pillOutline?: T;
+                    reference?: T;
+                    url?: T;
+                    email?: T;
+                    doc?: T;
+                    label?: T;
+                  };
+              faqs?:
+                | T
+                | {
+                    question?: T;
+                    answer?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+      };
+  publishedAt?: T;
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "posts_select".
  */
 export interface PostsSelect<T extends boolean = true> {
@@ -2303,6 +3351,10 @@ export interface Homepage {
               | ({
                   relationTo: 'posts';
                   value: number | Post;
+                } | null)
+              | ({
+                  relationTo: 'pages';
+                  value: number | Page;
                 } | null);
             url?: string | null;
             email?: string | null;
@@ -2343,6 +3395,10 @@ export interface Homepage {
                       | ({
                           relationTo: 'posts';
                           value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
                         } | null);
                     url?: string | null;
                     email?: string | null;
@@ -2380,6 +3436,10 @@ export interface Homepage {
                       | ({
                           relationTo: 'posts';
                           value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
                         } | null);
                     url?: string | null;
                     email?: string | null;
@@ -2520,6 +3580,10 @@ export interface Homepage {
                       | ({
                           relationTo: 'posts';
                           value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
                         } | null);
                     url?: string | null;
                     email?: string | null;
@@ -2588,6 +3652,10 @@ export interface Homepage {
                             | ({
                                 relationTo: 'posts';
                                 value: number | Post;
+                              } | null)
+                            | ({
+                                relationTo: 'pages';
+                                value: number | Page;
                               } | null);
                           url?: string | null;
                           email?: string | null;
@@ -2650,6 +3718,10 @@ export interface Homepage {
                 | ({
                     relationTo: 'posts';
                     value: number | Post;
+                  } | null)
+                | ({
+                    relationTo: 'pages';
+                    value: number | Page;
                   } | null);
               url?: string | null;
               email?: string | null;
@@ -2748,6 +3820,10 @@ export interface Homepage {
                       | ({
                           relationTo: 'posts';
                           value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
                         } | null);
                     url?: string | null;
                     email?: string | null;
@@ -2777,6 +3853,10 @@ export interface Homepage {
                       | ({
                           relationTo: 'posts';
                           value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
                         } | null);
                     url?: string | null;
                     email?: string | null;
@@ -2811,6 +3891,10 @@ export interface Homepage {
                 | ({
                     relationTo: 'posts';
                     value: number | Post;
+                  } | null)
+                | ({
+                    relationTo: 'pages';
+                    value: number | Page;
                   } | null);
               url?: string | null;
               email?: string | null;
@@ -2973,6 +4057,10 @@ export interface Nav {
                   | ({
                       relationTo: 'posts';
                       value: number | Post;
+                    } | null)
+                  | ({
+                      relationTo: 'pages';
+                      value: number | Page;
                     } | null);
                 url?: string | null;
                 email?: string | null;
@@ -2989,12 +4077,12 @@ export interface Nav {
       }[]
     | null;
   t_and_c?: {
-    relationTo: 'posts';
-    value: number | Post;
+    relationTo: 'pages';
+    value: number | Page;
   } | null;
   privacy?: {
-    relationTo: 'posts';
-    value: number | Post;
+    relationTo: 'pages';
+    value: number | Page;
   } | null;
   updatedAt?: string | null;
   createdAt?: string | null;

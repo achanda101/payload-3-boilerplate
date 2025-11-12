@@ -14,6 +14,7 @@ import { AssetCloud } from './collections/AssetCloud'
 import { Documents } from './collections/Documents'
 import { Grants } from './collections/Grants'
 import { GrantCards } from './collections/GrantCards'
+import { Pages } from './collections/Pages'
 import { Posts } from './collections/Posts'
 import { Users } from './collections/Users'
 import { Footer } from './globals/Footer/config'
@@ -107,7 +108,7 @@ export default buildConfig({
     defaultLocale: 'en', // required
     fallback: true, // defaults to true
   },
-  collections: [ Grants, GrantCards, Posts, MediaCloud, AssetCloud, Documents, Categories, Users ],
+  collections: [ Grants, GrantCards, Pages, Posts, MediaCloud, AssetCloud, Documents, Categories, Users ],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [ Homepage, Header, Footer, Navigation, ContactInfo ],
   plugins: [
