@@ -86,7 +86,10 @@ export const GrantPage: React.FC<GrantPageProps> = ({
       const headerColour = getHeaderColour(data.pageType, data.grantCard)
       setPageType(data.pageType || 'landing')
       setHeroHeaderImg(`${data.bgType}-${headerColour}`)
-      setHeaderTheme(headerColour)
+      if (data.bgType === "center_blob")
+        setHeaderTheme("trans")
+      else
+        setHeaderTheme(headerColour)
       setHeroBlock({
         title: data.heroTitle,
         subtitle: data.heroSubtitle,
