@@ -13,10 +13,10 @@ export const MediaCloud: CollectionConfig = {
   slug: 'mediaCloud',
   labels: {
     singular: 'Image',
-    plural: 'Images'
+    plural: 'Images',
   },
   admin: {
-    group: 'Media'
+    group: 'Media',
   },
   access: {
     create: authenticated,
@@ -43,7 +43,8 @@ export const MediaCloud: CollectionConfig = {
       {
         name: 'thumbnail',
         width: 50,
-        height: 50,
+        height: undefined,
+        fit: 'cover',
         formatOptions: {
           format: 'webp',
         },
@@ -51,6 +52,8 @@ export const MediaCloud: CollectionConfig = {
       {
         name: 'small',
         width: 400,
+        height: undefined,
+        fit: 'cover',
         formatOptions: {
           format: 'webp',
         },
@@ -58,6 +61,8 @@ export const MediaCloud: CollectionConfig = {
       {
         name: 'medium',
         width: 900,
+        height: undefined,
+        fit: 'cover',
         formatOptions: {
           format: 'webp',
         },
@@ -65,6 +70,8 @@ export const MediaCloud: CollectionConfig = {
       {
         name: 'large',
         width: 1400,
+        height: undefined,
+        fit: 'cover',
         formatOptions: {
           format: 'webp',
         },
@@ -72,6 +79,8 @@ export const MediaCloud: CollectionConfig = {
       {
         name: 'xlarge',
         width: 1920,
+        height: undefined,
+        fit: 'cover',
         formatOptions: {
           format: 'webp',
         },

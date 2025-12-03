@@ -1715,7 +1715,7 @@ export interface Page {
   _status?: ('draft' | 'published') | null;
 }
 /**
- * Upload and manage documents like PDFs, Word files, text files here. Maximum file size is 50MB.
+ * Upload and manage PDF documents. Maximum file size is 50MB.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "documents".
@@ -3371,6 +3371,26 @@ export interface Homepage {
   contentBlocks?:
     | (
         | {
+            richText?: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'richContentBlock';
+          }
+        | {
             ctaTitle?: string | null;
             ctaSubtitle?: string | null;
             contact?: {
@@ -4141,6 +4161,13 @@ export interface HomepageSelect<T extends boolean = true> {
   contentBlocks?:
     | T
     | {
+        richContentBlock?:
+          | T
+          | {
+              richText?: T;
+              id?: T;
+              blockName?: T;
+            };
         secondarycta?:
           | T
           | {
@@ -4576,6 +4603,63 @@ export interface ContactInfoSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlockQuote".
+ */
+export interface BlockQuote {
+  quote_text?: string | null;
+  attrib_name?: string | null;
+  attrib_dsg?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'blckquote';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "YouTubeBlock".
+ */
+export interface YouTubeBlock {
+  videoURL: string;
+  title?: string | null;
+  desc?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'youtubeBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "VimeoBlock".
+ */
+export interface VimeoBlock {
+  videoURL: string;
+  title?: string | null;
+  desc?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'vimeoBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SoundCloud Track".
+ */
+export interface SoundCloudTrack {
+  /**
+   * Paste the FULL URL to the SoundCloud track or playlist
+   */
+  trackUrl: string;
+  /**
+   * Override the default SoundCloud track title for display purposes
+   */
+  trackTitle?: string | null;
+  /**
+   * Add context or description for this track or album
+   */
+  caption?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'soundcloud-embed';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "BannerBlock".
  */
 export interface BannerBlock {
@@ -4604,7 +4688,7 @@ export interface BannerBlock {
  * via the `definition` "CodeBlock".
  */
 export interface CodeBlock {
-  language?: ('typescript' | 'javascript' | 'css') | null;
+  language?: 'html' | null;
   code: string;
   id?: string | null;
   blockName?: string | null;

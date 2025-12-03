@@ -10,7 +10,7 @@ import React from 'react'
 import PageClient from './page.client'
 import { notFound } from 'next/navigation'
 
-export const revalidate = 600
+export const revalidate = 60
 
 type Args = {
   params: Promise<{
@@ -48,7 +48,8 @@ export default async function Page({ params: paramsPromise }: Args) {
             <div className="text-center max-w-2xl">
               <h2 className="text-2xl font-bold mb-4">No Posts Found</h2>
               <p className="text-gray-600 dark:text-gray-400 mb-6">
-                There are no posts available on this page. Try going back to the first page or create some posts.
+                There are no posts available on this page. Try going back to the first page or
+                create some posts.
               </p>
               <Link
                 href="/admin"

@@ -1,0 +1,12 @@
+@use 'variables' as vars;
+@use 'mixins' as mix;
+
+ul.list {
+  list-style-type: disc;
+  padding-left: vars.$spacing-md;
+}
+
+ol.list {
+  list-style-type: decimal;
+  padding-left: vars.$spacing-lg;
+}

@@ -13,14 +13,15 @@ export const AssetCloud: CollectionConfig = {
   slug: 'assetCloud',
   labels: {
     singular: 'Design Asset',
-    plural: 'Design Assets'
+    plural: 'Design Assets',
   },
-  admin: {  
+  admin: {
     group: {
       name: 'Media',
-      order: '2'
+      order: '2',
     },
-    description: 'Upload and manage design assets like logos, mascots, icons, brand illustrations here.',
+    description:
+      'Upload and manage design assets like logos, mascots, icons, brand illustrations here.',
   },
   access: {
     create: authenticated,
@@ -44,8 +45,9 @@ export const AssetCloud: CollectionConfig = {
     imageSizes: [
       {
         name: 'thumbnail',
-        width: 50,
-        height: 50,
+        width: 200,
+        height: undefined,
+        fit: 'cover',
         formatOptions: {
           format: 'webp',
         },
@@ -53,6 +55,8 @@ export const AssetCloud: CollectionConfig = {
       {
         name: 'small',
         width: 400,
+        height: undefined,
+        fit: 'cover',
         formatOptions: {
           format: 'webp',
         },
@@ -60,6 +64,8 @@ export const AssetCloud: CollectionConfig = {
       {
         name: 'medium',
         width: 900,
+        height: undefined,
+        fit: 'cover',
         formatOptions: {
           format: 'webp',
         },
@@ -67,6 +73,8 @@ export const AssetCloud: CollectionConfig = {
       {
         name: 'large',
         width: 1400,
+        height: undefined,
+        fit: 'cover',
         formatOptions: {
           format: 'webp',
         },
@@ -74,6 +82,8 @@ export const AssetCloud: CollectionConfig = {
       {
         name: 'xlarge',
         width: 1920,
+        height: undefined,
+        fit: 'cover',
         formatOptions: {
           format: 'webp',
         },

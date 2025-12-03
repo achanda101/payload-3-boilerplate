@@ -4,10 +4,15 @@ import {
   FixedToolbarFeature,
   HeadingFeature,
   InlineToolbarFeature,
+  OrderedListFeature,
+  UnorderedListFeature,
+  BlockquoteFeature,
   lexicalEditor,
+  UploadFeature,
 } from '@payloadcms/richtext-lexical'
 
 import { link } from '@/fields/link'
+import { Blocks } from 'lucide-react'
 
 const columnFields: Field[] = [
   {
@@ -40,9 +45,12 @@ const columnFields: Field[] = [
       features: ({ rootFeatures }) => {
         return [
           ...rootFeatures,
-          HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
+          HeadingFeature({ enabledHeadingSizes: [ 'h2', 'h3', 'h4', 'h5', 'h6' ] }),
+          OrderedListFeature(),
+          UnorderedListFeature(),
+          BlockquoteFeature(),
+          UploadFeature(),
           FixedToolbarFeature(),
-          InlineToolbarFeature(),
         ]
       },
     }),
@@ -53,6 +61,7 @@ const columnFields: Field[] = [
     type: 'checkbox',
   },
   link({
+    appearances: false,
     overrides: {
       admin: {
         condition: (_, { enableLink }) => Boolean(enableLink),

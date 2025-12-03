@@ -17,51 +17,51 @@
 }
 
 button.pill-button {
-    font-family: vars.$font-body;
-    text-transform: capitalize;
-    border-radius: vars.$radius-2xl;
-    padding-inline: vars.$spacing-xl;
-    padding-block: calc(vars.$spacing-lg/2);
-    width: fit-content;
-    text-transform: capitalize;
-    font-size: vars.$font-size-button-mob;
-    font-weight: 500;
-    @media (min-width: vars.$tablet) {
-      font-size: vars.$font-size-button;
-    }
-    transition: background-color 100ms ease-in-out;
+  font-family: vars.$font-body;
+  text-transform: capitalize;
+  border-radius: vars.$radius-2xl;
+  padding-inline: vars.$spacing-xl;
+  padding-block: calc(vars.$spacing-lg/2);
+  width: fit-content;
+  text-transform: capitalize;
+  font-size: vars.$font-size-button-mob;
+  font-weight: 500;
+  @media (min-width: vars.$tablet) {
+    font-size: vars.$font-size-button;
+  }
+  transition: background-color 100ms ease-in-out;
 
-    &.bold {
-        font-weight: 700;
-    }
+  &.bold {
+    font-weight: 700;
+  }
 
-    &.outline {
-      outline-style: solid;
-      outline-width: 1px;
-      outline-color: vars.$color-body-text;
-      background-color: transparent;
-      color: vars.$color-body-text;
+  &.outline {
+    outline-style: solid;
+    outline-width: 1px;
+    outline-color: vars.$color-body-text;
+    background-color: transparent;
+    color: vars.$color-body-text;
 
-      &:hover {
-        @media (hover: hover) {
-            cursor: pointer;
-            background-color: vars.$color-body-text;
-            color: white;
-        }
-      }
-    }
-
-    &.dark {
+    &:hover {
+      @media (hover: hover) {
+        cursor: pointer;
         background-color: vars.$color-body-text;
         color: white;
-
-        &:hover {
-            @media (hover: hover) {
-              cursor: pointer;
-              opacity: 80%;
-            }
-        }
+      }
     }
+  }
+
+  &.dark {
+    background-color: vars.$color-body-text;
+    color: white;
+
+    &:hover {
+      @media (hover: hover) {
+        cursor: pointer;
+        opacity: 80%;
+      }
+    }
+  }
 }
 
 button.download {
@@ -71,9 +71,9 @@ button.download {
   font-weight: 600;
 
   &:hover {
-      @media (hover: hover) {
-        cursor: pointer;
-      }
+    @media (hover: hover) {
+      cursor: pointer;
+    }
   }
 
   &::after {
@@ -107,9 +107,9 @@ button.arrow {
   font-weight: 600;
 
   &:hover {
-      @media (hover: hover) {
-        cursor: pointer;
-      }
+    @media (hover: hover) {
+      cursor: pointer;
+    }
   }
 
   &::after {
@@ -136,8 +136,7 @@ button.arrow.pill-button.outline:hover {
   }
 }
 
-button.underline,
-.underline {
+button.underline {
   background-color: transparent;
   color: vars.$color-body-text;
   border: none;
@@ -148,9 +147,9 @@ button.underline,
   text-underline-offset: 2px;
 
   &:hover {
-      @media (hover: hover) {
-        cursor: pointer;
-        opacity: 70%;
-      }
+    @media (hover: hover) {
+      cursor: pointer;
+      opacity: 70%;
+    }
   }
 }

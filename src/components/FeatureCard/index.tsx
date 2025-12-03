@@ -67,7 +67,7 @@ export const FeatureCard: React.FC<FeatureCardProps> = ({
                 width={image.width || 300}
                 height={image.height || 200}
                 className="object-contain w-full h-auto rounded-3xl overflow-hidden"
-                />
+              />
             </div>
           )}
           <div className="md:col-span-4 md:col-start-5 lg:col-span-6 lg:col-start-7 flex flex-col justify-between">

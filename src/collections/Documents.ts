@@ -3,19 +3,18 @@ import type { CollectionConfig } from 'payload'
 import { anyone } from '../access/anyone'
 import { authenticated } from '../access/authenticated'
 
-
 export const Documents: CollectionConfig = {
   slug: 'documents',
   labels: {
     singular: 'Document',
-    plural: 'Documents'
+    plural: 'Documents',
   },
   admin: {
     group: {
       name: 'Media',
-      order: '3'
+      order: '3',
     },
-    description: 'Upload and manage documents like PDFs, Word files, text files here. Maximum file size is 50MB.',
+    description: 'Upload and manage PDF documents. Maximum file size is 50MB.',
   },
   access: {
     create: authenticated,
@@ -36,6 +35,6 @@ export const Documents: CollectionConfig = {
   ],
   upload: {
     adminThumbnail: 'small',
-    mimeTypes: [ 'application/pdf', 'application/msword', 'text/plain' ],
-  }
+    mimeTypes: ['application/pdf'],
+  },
 }

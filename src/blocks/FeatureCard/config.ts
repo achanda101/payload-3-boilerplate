@@ -86,10 +86,13 @@ export const FeatureCard: Block = {
                   UnderlineFeature(),
                   ItalicFeature(),
                   LinkFeature({
-                    enabledCollections: [ 'grants' ],
+                    enabledCollections: [ 'grants', 'pages' ],
                   }),
                   InlineToolbarFeature(),
                 ],
+                admin: {
+                  placeholder: 'Start typing your content here ...'
+                }
               }),
               localized: true,
             },

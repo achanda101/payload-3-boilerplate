@@ -15,6 +15,7 @@ import { FeatureCardAccordion } from '@/blocks/FeatureCardAccordion/config'
 import { ListingCardDeck } from '@/blocks/ListingCardDeck/config'
 import { FaqBlock } from '@/blocks/FaqBlock/config'
 import { SecondaryCTA } from '@/blocks/SecondaryCTA/config'
+import { RichContentBlock } from "@/blocks/RichContentBlock/config";
 import { SingleColumnInfoBlock } from '@/blocks/SingleColumnInfoBlock/config'
 
 
@@ -94,17 +95,18 @@ export const Homepage: GlobalConfig = {
       name: 'contentBlocks',
       label: 'Content Blocks',
       blocks: [
-          SecondaryCTA,
-          MultiColumnInfoBlock,
-          GrantCardGridBlock,
-          MultiStepProcess,
-          ComparisonBlock,
-          YellowCardDeck,
-          FeatureCard,
-          FeatureCardAccordion,
-          ListingCardDeck,
-          FaqBlock,
-        ],
+        RichContentBlock,
+        SecondaryCTA,
+        MultiColumnInfoBlock,
+        GrantCardGridBlock,
+        MultiStepProcess,
+        ComparisonBlock,
+        YellowCardDeck,
+        FeatureCard,
+        FeatureCardAccordion,
+        ListingCardDeck,
+        FaqBlock,
+      ],
       labels: {
         singular: 'A Content Block',
         plural: 'Content Blocks'
