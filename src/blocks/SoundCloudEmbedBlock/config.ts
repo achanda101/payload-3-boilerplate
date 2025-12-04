@@ -2,7 +2,7 @@ import type { Block } from 'payload'
 
 export const SoundCloudEmbedBlock: Block = {
   slug: 'soundcloud-embed',
-  interfaceName: 'SoundCloud Track',
+  interfaceName: 'SoundCloud Embed',
   labels: {
     singular: 'SoundCloud Embed Block',
     plural: 'SoundCloud Embed Blocks',
@@ -21,8 +21,8 @@ export const SoundCloudEmbedBlock: Block = {
         if (!value) return true
 
         const validPatterns = [
-          /^https?:\/\/(www\.)?soundcloud\.com\/[\w\-]+\/[\w\-]+/,
-          /^https?:\/\/(www\.)?soundcloud\.com\/[\w\-]+\/sets\/[\w\-]+/,
+          /^https?:\/\/(www\.)?soundcloud\.com\/[\w\-]+\/[\w\-]+(\?.*)?$/,
+          /^https?:\/\/(www\.)?soundcloud\.com\/[\w\-]+\/sets\/[\w\-]+(\?.*)?$/,
         ]
 
         const isValid = validPatterns.some((pattern) => pattern.test(value))

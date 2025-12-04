@@ -15,6 +15,7 @@ import { Documents } from './collections/Documents'
 import { Grants } from './collections/Grants'
 import { GrantCards } from './collections/GrantCards'
 import { Pages } from './collections/Pages'
+import { DocTypes } from './collections/DocTypes'
 import { Posts } from './collections/Posts'
 import { Users } from './collections/Users'
 import { Footer } from './globals/Footer/config'
@@ -57,20 +58,20 @@ export default buildConfig({
           url: '/uafanp.ico',
           rel: 'icon',
           type: 'image/ico',
-          sizes: '16x16 32x32'
-        }
-      ]
+          sizes: '16x16 32x32',
+        },
+      ],
     },
     components: {
-      beforeLogin: [ '@/components/BeforeLogin' ],
-      beforeDashboard: [ '@/components/BeforeDashboard' ],
+      beforeLogin: ['@/components/BeforeLogin'],
+      beforeDashboard: ['@/components/BeforeDashboard'],
       // afterLogin: [ '@/components/AfterLogin' ],
       // beforeLogout: [ '@/components/BeforeLogout' ],
       // afterLogout: [ '@/components/AfterLogout' ],
       graphics: {
         Logo: '@/components/Logo/Logo.tsx#Logo',
         Icon: '@/components/Icon/Icon.tsx#Icon',
-      }
+      },
     },
     livePreview: {
       url: process.env.PAYLOAD_URL || 'http://localhost:3000',
@@ -100,17 +101,28 @@ export default buildConfig({
     },
   }),
   localization: {
-    locales: languageOptions.map(lang => ({
+    locales: languageOptions.map((lang) => ({
       label: lang.label,
       code: lang.value,
-      ...(lang.dir && { rtl: lang.dir === 'rtl' })
+      ...(lang.dir && { rtl: lang.dir === 'rtl' }),
     })),
     defaultLocale: 'en', // required
     fallback: true, // defaults to true
   },
-  collections: [ Grants, GrantCards, Pages, Posts, MediaCloud, AssetCloud, Documents, Categories, Users ],
+  collections: [
+    Grants,
+    GrantCards,
+    Pages,
+    DocTypes,
+    Posts,
+    MediaCloud,
+    AssetCloud,
+    Documents,
+    Categories,
+    Users,
+  ],
   cors: [getServerSideURL()].filter(Boolean),
-  globals: [ Homepage, Header, Footer, Navigation, ContactInfo ],
+  globals: [Homepage, Header, Footer, Navigation, ContactInfo],
   plugins: [
     ...plugins,
     s3Storage({
@@ -129,8 +141,8 @@ export default buildConfig({
         },
         forcePathStyle: true,
         tls: true,
-        signingEscapePath: false
-      }
+        signingEscapePath: false,
+      },
     }),
   ],
   endpoints: [
@@ -138,9 +150,9 @@ export default buildConfig({
       path: '/health',
       method: 'get',
       handler: async (req) => {
-        return new Response('OK', { status: 200 });
-      }
-    }
+        return new Response('OK', { status: 200 })
+      },
+    },
   ],
   secret: process.env.PAYLOAD_SECRET,
   sharp,

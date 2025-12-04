@@ -18,17 +18,22 @@ import { serializeLexical } from '@/components/RichText/serializeRichText'
 
 interface PageProps {
   data?: {
-    contentBlocks: [{ blockType: string }]
+    contentBlocks: any[]
   }
 }
 
 export const PageContent: React.FC<PageProps> = ({ data = { contentBlocks: [] } }) => {
   const { selectedLanguage } = useLanguage()
-  const [contentBlocks, setContentBlocks] = useState(data.contentBlocks || [])
+  const [contentBlocks, setContentBlocks] = useState<any[]>(data.contentBlocks || [])
 
   const handleLanguageChange = async (newLanguage: string) => {
     try {
       const response = await fetch(`/api/globals/homepage?locale=${newLanguage}&depth=2`)
+
+      if (!response.ok) {
+        throw new Error(`Failed to fetch Content Blocks: ${response.status} ${response.statusText}`)
+      }
+
       const responseData = await response.json()
 
       if (responseData?.contentBlocks?.length > 0) {

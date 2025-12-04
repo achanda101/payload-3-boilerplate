@@ -29,9 +29,14 @@ function SoundCloudRenderer({
   }
 
   const topMargin =
-    isPrevHeading || isPrevUpload || isPrevVideo || isPrevBlockquote || isPrevSpotify || isPrevSoundcloud
+    isPrevHeading ||
+    isPrevUpload ||
+    isPrevVideo ||
+    isPrevBlockquote ||
+    isPrevSpotify ||
+    isPrevSoundcloud
       ? 'mt-0'
-      : 'mt-[4rem]'
+      : 'mt-[2rem] md:mt-[4rem]'
 
   // Construct the SoundCloud embed iframe URL
   // The trackUrl is the SoundCloud page URL, we need to URL encode it for the embed
@@ -40,7 +45,7 @@ function SoundCloudRenderer({
 
   return (
     <div
-      className={`col-span-full md:col-span-6 md:col-start-2 lg:col-span-6 lg:col-start-4 ${topMargin} mb-[4rem] last:mb-0`}
+      className={`col-span-full md:col-span-6 md:col-start-2 lg:col-span-6 lg:col-start-4 ${topMargin} mb-[2rem] md:mb-[4rem] last:mb-0`}
     >
       <div className="flex justify-center">
         <iframe

@@ -1,5 +1,5 @@
-import type { CollectionConfig } from "payload";
-import { link } from "@/fields/link";
+import type { CollectionConfig } from 'payload'
+import { link } from '@/fields/link'
 
 import { authenticated } from '@/access/authenticated'
 import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
@@ -12,7 +12,7 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
   slug: 'grantcards',
   labels: {
     singular: 'Grant Card',
-    plural: 'Grant Cards'
+    plural: 'Grant Cards',
   },
   access: {
     create: authenticated,
@@ -23,8 +23,11 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
     update: authenticated,
   },
   admin: {
-    group: 'Content',
-    defaultColumns: [ 'title', 'cardColour', 'order', 'activePeriod', 'mascot', '_status' ],
+    group: {
+      name: 'Content',
+      order: '2',
+    },
+    defaultColumns: ['title', 'cardColour', 'order', 'activePeriod', 'mascot', '_status'],
     useAsTitle: 'title',
     livePreview: {
       url: ({ data }) => {
@@ -65,11 +68,11 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
                     components: {
                       afterInput: [
                         {
-                          path: '@/utilities/characterCounter.tsx'
-                        }
-                      ]
-                    }
-                  }
+                          path: '@/utilities/characterCounter.tsx',
+                        },
+                      ],
+                    },
+                  },
                 },
               ],
               admin: {
@@ -79,9 +82,9 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
                   paddingInline: '10px',
                   border: '1px solid #dee2e6',
                   borderRadius: '8px',
-                  marginBottom: '5px'
-                }
-              }
+                  marginBottom: '5px',
+                },
+              },
             },
             {
               type: 'group',
@@ -97,10 +100,10 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
                     components: {
                       afterInput: [
                         {
-                          path: '@/utilities/characterCounter.tsx'
-                        }
-                      ]
-                    }
+                          path: '@/utilities/characterCounter.tsx',
+                        },
+                      ],
+                    },
                   },
                 },
                 {
@@ -109,7 +112,7 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
                   options: [
                     { label: 'Information (orange)', value: 'info' },
                     { label: 'Important (red)', value: 'imp' },
-                    { label: 'Inactive (grey)', value: 'inactive' }
+                    { label: 'Inactive (grey)', value: 'inactive' },
                   ],
                   defaultValue: 'info',
                 },
@@ -121,14 +124,14 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
                   paddingInline: '10px',
                   border: '1px solid #dee2e6',
                   borderRadius: '8px',
-                  marginBottom: '5px'
-                }
-              }
+                  marginBottom: '5px',
+                },
+              },
             },
           ],
           admin: {
-            width: '50%'
-          }
+            width: '50%',
+          },
         },
         {
           type: 'group',
@@ -144,15 +147,15 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
                   options: [
                     {
                       label: 'Open all year',
-                      value: 'open_all_year'
+                      value: 'open_all_year',
                     },
                     {
                       label: 'Specify period',
-                      value: 'specific_period'
+                      value: 'specific_period',
                     },
                     {
                       label: 'Closed (Card will not be displayed)',
-                      value: 'closed'
+                      value: 'closed',
                     },
                   ],
                   defaultValue: 'open_all_year',
@@ -167,22 +170,23 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
                     {
                       name: 'endDate',
                       type: 'date',
-                    }
+                    },
                   ],
                   admin: {
-                    condition: (siblingData) => siblingData?.activePeriod === 'specific_period' || false,
-                  }
-                }
+                    condition: (siblingData) =>
+                      siblingData?.activePeriod === 'specific_period' || false,
+                  },
+                },
               ],
-              admin: { 
+              admin: {
                 style: {
                   paddingBlock: '8px',
                   paddingInline: '10px',
                   border: '1px solid #dee2e6',
                   borderRadius: '8px',
-                  marginBottom: '5px'
-                }
-              }
+                  marginBottom: '5px',
+                },
+              },
             },
             {
               type: 'group',
@@ -198,12 +202,13 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
                     { label: 'Rose Pink', value: 'rose' },
                     { label: 'Lavender', value: 'lavender' },
                     { label: 'Fire Red', value: 'fire' },
-                    { label: 'Transparent', value: 'trans'}
+                    { label: 'Transparent', value: 'trans' },
                   ],
                   defaultValue: 'forest',
-                  admin: { 
-                    description: 'Select a colour for the Grant Card background. Choose "Transparent" if it is a Special Grant.',
-                  }
+                  admin: {
+                    description:
+                      'Select a colour for the Grant Card background. Choose "Transparent" if it is a Special Grant.',
+                  },
                 },
                 {
                   name: 'mascot',
@@ -214,22 +219,22 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
                   },
                 },
               ],
-              admin: { 
+              admin: {
                 style: {
                   paddingBlock: '8px',
                   paddingInline: '10px',
                   border: '1px solid #dee2e6',
                   borderRadius: '8px',
-                  marginBottom: '5px'
-                }
-              }
-            }
+                  marginBottom: '5px',
+                },
+              },
+            },
           ],
           admin: {
-            width: '50%'
-          }
+            width: '50%',
+          },
         },
-      ]
+      ],
     },
     {
       type: 'row',
@@ -239,7 +244,7 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
           label: 'Grant Details (eg: Availability, Amount, Timeframe)',
           labels: {
             singular: 'Grant Specification',
-            plural: 'Grant Specifications'
+            plural: 'Grant Specifications',
           },
           type: 'array',
           maxRows: 3,
@@ -254,21 +259,21 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
                 components: {
                   afterInput: [
                     {
-                      path: '@/utilities/characterCounter.tsx'
-                    }
-                  ]
-                }
-              }
-            }
+                      path: '@/utilities/characterCounter.tsx',
+                    },
+                  ],
+                },
+              },
+            },
           ],
           admin: {
             width: '50%',
             components: {
               RowLabel: {
                 path: 'src/collections/GrantCards/GrantCardSpecRowLabel.tsx',
-              }
+              },
             },
-          }
+          },
         },
         {
           name: 'grantUses',
@@ -281,12 +286,12 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
             components: {
               afterInput: [
                 {
-                  path: '@/utilities/characterCounter.tsx'
-                }
-              ]
-            }
-          }
-        }
+                  path: '@/utilities/characterCounter.tsx',
+                },
+              ],
+            },
+          },
+        },
       ],
       admin: {
         style: {
@@ -294,15 +299,15 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
           paddingInline: '10px',
           border: '1px solid #dee2e6',
           borderRadius: '8px',
-          marginBottom: '5px'
-        }
-      }
+          marginBottom: '5px',
+        },
+      },
     },
     {
       name: 'cardButtons',
       labels: {
         singular: 'Card Button',
-        plural: 'Card Buttons'
+        plural: 'Card Buttons',
       },
       type: 'array',
       maxRows: 2,
@@ -315,9 +320,9 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
         components: {
           RowLabel: {
             path: 'src/collections/GrantCards/GrantCardButtonRowLabel.tsx',
-          }
+          },
         },
-      }
+      },
     },
     ...slugField(),
   ],
@@ -328,4 +333,3 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
     maxPerDoc: 50,
   },
 }
-

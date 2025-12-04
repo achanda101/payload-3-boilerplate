@@ -1,13 +1,13 @@
-import type { GlobalConfig } from "payload";
+import type { GlobalConfig } from 'payload'
 import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
 import { canUpdateUser } from '@/access/canUpdateUser'
-import { revalidateHomepage } from "./hooks/revalidateHomepage";
+import { revalidateHomepage } from './hooks/revalidateHomepage'
 import { link } from '@/fields/link'
 
 // BLOCKS
 import { MultiColumnInfoBlock } from '@/blocks/MultiColumnInfoBlock/config'
-import { GrantCardGridBlock } from "@/blocks/GrantCardGridBlock/config"
-import { MultiStepProcess } from "@/blocks/MultiStepProcessBlock/config"
+import { GrantCardGridBlock } from '@/blocks/GrantCardGridBlock/config'
+import { MultiStepProcess } from '@/blocks/MultiStepProcessBlock/config'
 import { ComparisonBlock } from '@/blocks/ComparisonBlock/config'
 import { YellowCardDeck } from '@/blocks/YellowCardDeck/config'
 import { FeatureCard } from '@/blocks/FeatureCard/config'
@@ -15,9 +15,8 @@ import { FeatureCardAccordion } from '@/blocks/FeatureCardAccordion/config'
 import { ListingCardDeck } from '@/blocks/ListingCardDeck/config'
 import { FaqBlock } from '@/blocks/FaqBlock/config'
 import { SecondaryCTA } from '@/blocks/SecondaryCTA/config'
-import { RichContentBlock } from "@/blocks/RichContentBlock/config";
+import { RichContentBlock } from '@/blocks/RichContentBlock/config'
 import { SingleColumnInfoBlock } from '@/blocks/SingleColumnInfoBlock/config'
-
 
 export const Homepage: GlobalConfig = {
   slug: 'homepage',
@@ -25,16 +24,16 @@ export const Homepage: GlobalConfig = {
   access: {
     read: authenticatedOrPublished,
     update: canUpdateUser,
-    readVersions: canUpdateUser
+    readVersions: canUpdateUser,
   },
   admin: {
     group: {
       name: 'Content',
-      order: '1'
+      order: '5',
     },
     livePreview: {
-      url: ({ data }) => `${process.env.PAYLOAD_URL}/preview/${data.globalType}`
-    }
+      url: ({ data }) => `${process.env.PAYLOAD_URL}/preview/${data.globalType}`,
+    },
   },
   fields: [
     {
@@ -69,7 +68,7 @@ export const Homepage: GlobalConfig = {
               name: 'ctaButton',
               labels: {
                 singular: 'CTA Button',
-                plural: 'CTA Buttons'
+                plural: 'CTA Buttons',
               },
               type: 'array',
               maxRows: 2,
@@ -82,13 +81,13 @@ export const Homepage: GlobalConfig = {
                 components: {
                   RowLabel: {
                     path: 'src/globals/Homepage/CtaButtonRowLabel.tsx',
-                  }
+                  },
                 },
-              }
+              },
             },
-          ]
+          ],
         },
-      ]
+      ],
     },
     {
       type: 'blocks',
@@ -109,7 +108,7 @@ export const Homepage: GlobalConfig = {
       ],
       labels: {
         singular: 'A Content Block',
-        plural: 'Content Blocks'
+        plural: 'Content Blocks',
       },
       admin: {
         initCollapsed: true,
@@ -123,6 +122,6 @@ export const Homepage: GlobalConfig = {
     },
   },
   hooks: {
-      afterChange: [revalidateHomepage],
+    afterChange: [revalidateHomepage],
   },
 }

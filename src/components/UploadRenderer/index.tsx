@@ -27,13 +27,9 @@ function UploadRenderer({ uploadFields, topMargin }: UploadRendererProps) {
     // Render PDF using PDFViewer component
     return (
       <div
-        className={`col-span-full md:col-span-6 md:col-start-2 lg:col-span-6 lg:col-start-4 ${topMargin} mb-[4rem] last:mb-0`}
+        className={`col-span-full md:col-span-6 md:col-start-2 lg:col-span-6 lg:col-start-4 ${topMargin} mb-[2rem] md:mb-[4rem] last:mb-0`}
       >
-        <PDFViewer
-          url={uploadFields.url}
-          alt={uploadFields.alt}
-          caption={uploadFields.caption}
-        />
+        <PDFViewer url={uploadFields.url} alt={uploadFields.alt} caption={uploadFields.caption} />
       </div>
     )
   }
@@ -44,8 +40,8 @@ function UploadRenderer({ uploadFields, topMargin }: UploadRendererProps) {
   const isPortrait = width / height < 1.3
 
   const containerClassName = isPortrait
-    ? `col-span-full md:col-span-6 md:col-start-2 lg:col-span-6 lg:col-start-4 ${topMargin} mb-[4rem] last:mb-0`
-    : `col-span-full md:col-span-8 md:col-start-1 lg:col-span-10 lg:col-start-2 ${topMargin} mb-[4rem] last:mb-0`
+    ? `col-span-full md:col-span-6 md:col-start-2 lg:col-span-6 lg:col-start-4 ${topMargin} mb-[2rem] md:mb-[4rem] last:mb-0`
+    : `col-span-full md:col-span-8 md:col-start-1 lg:col-span-10 lg:col-start-2 ${topMargin} mb-[2rem] md:mb-[4rem] last:mb-0`
 
   const captionClassName = isPortrait ? 'small mt-3' : 'small mt-3 md:w-2/3'
 

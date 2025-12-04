@@ -3,8 +3,12 @@ import type { CollectionConfig } from 'payload'
 import { anyone } from '../access/anyone'
 import { authenticated } from '../access/authenticated'
 
-export const Categories: CollectionConfig = {
-  slug: 'categories',
+export const DocTypes: CollectionConfig = {
+  slug: 'doctypes',
+  labels: {
+    singular: 'Resource Type',
+    plural: 'Resource Types',
+  },
   access: {
     create: authenticated,
     delete: authenticated,
@@ -12,8 +16,8 @@ export const Categories: CollectionConfig = {
     update: authenticated,
   },
   admin: {
-    hidden: true,
-    useAsTitle: 'title',
+    useAsTitle: 'type',
+    defaultColumns: ['type', 'createdAt', 'updatedAt'],
     group: {
       name: 'Content',
       order: '4',
@@ -21,14 +25,14 @@ export const Categories: CollectionConfig = {
   },
   fields: [
     {
-      name: 'title',
-      label: 'Category Type',
+      name: 'type',
+      label: 'Resource Type',
       type: 'text',
       localized: true,
       required: true,
       admin: {
         description:
-          'Enter document type e.g. Blog, Report, Annual Report, Learning Report, Video, Audio etc.',
+          'Enter resource type e.g. Blog, Report, Annual Report, Learning Report, Video, Audio etc.',
       },
     },
   ],

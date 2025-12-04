@@ -158,7 +158,7 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
             )
           }
           if (node.format & IS_CODE) {
-            text = <code key={index}>{node.text}</code>
+            text = <code key={index}>{text}</code>
           }
           if (node.format & IS_SUBSCRIPT) {
             text = <sub key={index}>{text}</sub>
@@ -252,12 +252,17 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
               )
             case 'blckquote':
               const topMarginBlockquote =
-                isPrevHeading || isPrevBlockquote || isPrevUpload || isPrevVideo || isPrevSpotify || isPrevSoundcloud
+                isPrevHeading ||
+                isPrevBlockquote ||
+                isPrevUpload ||
+                isPrevVideo ||
+                isPrevSpotify ||
+                isPrevSoundcloud
                   ? 'mt-0'
-                  : 'mt-[4rem]'
+                  : 'mt-[2rem] md:mt-[4rem]'
               return (
                 <div
-                  className={`col-span-full md:col-span-6 md:col-start-2 lg:col-span-6 lg:col-start-4 ${topMarginBlockquote} mb-[4rem] last:mb-0`}
+                  className={`col-span-full md:col-span-6 md:col-start-2 lg:col-span-6 lg:col-start-4 ${topMarginBlockquote} mb-[2rem] md:mb-[4rem] last:mb-0`}
                   key={index}
                 >
                   <BlockQuoteBlock {...block} />
@@ -323,10 +328,12 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
             case 'paragraph': {
               return (
                 <div
-                  className="col-span-full md:col-span-6 md:col-start-2 lg:col-span-6 lg:col-start-4"
+                  className="col-span-full md:col-span-6 md:col-start-2 lg:col-span-6 lg:col-start-4 overflow-hidden"
                   key={index}
                 >
-                  <p className="mb-[1rem] last:mb-0">{serializedChildren}</p>
+                  <p className="mb-[1rem] last:mb-0 break-words overflow-x-hidden">
+                    {serializedChildren}
+                  </p>
                 </div>
               )
             }
@@ -397,9 +404,14 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
               if (typeof fields === 'object' && fields !== null && 'url' in fields) {
                 const uploadFields = fields as any
                 const topMargin =
-                  isPrevHeading || isPrevUpload || isPrevVideo || isPrevBlockquote || isPrevSpotify || isPrevSoundcloud
+                  isPrevHeading ||
+                  isPrevUpload ||
+                  isPrevVideo ||
+                  isPrevBlockquote ||
+                  isPrevSpotify ||
+                  isPrevSoundcloud
                     ? 'mt-0'
-                    : 'mt-[4rem]'
+                    : 'mt-[2rem] md:mt-[4rem]'
 
                 return (
                   <UploadRenderer key={index} uploadFields={uploadFields} topMargin={topMargin} />

@@ -7,12 +7,15 @@ interface PDFViewerProps {
 }
 
 export const PDFViewer = ({ url, alt, caption }: PDFViewerProps) => {
-  // Use iframe as a simple, reliable PDF viewer fallback
+  if (!url || typeof url !== 'string') {
+    throw new Error('Invalid PDF URL provided')
+  }
+
   return (
     <>
       <div style={{ height: '500px', width: '100%', border: '1px solid #e5e7eb' }}>
         <iframe
-          src={`${url}#toolbar=1&navpanes=0&scrollbar=1`}
+          src={url}
           style={{
             width: '100%',
             height: '100%',

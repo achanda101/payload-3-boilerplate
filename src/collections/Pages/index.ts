@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload'
-import { link } from "@/fields/link"
+import { link } from '@/fields/link'
 
 import { authenticated } from '@/access/authenticated'
 import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
@@ -13,8 +13,8 @@ import { getServerSideURL } from '@/utilities/getURL'
 // BLOCKS
 import { MultiColumnInfoBlock } from '@/blocks/MultiColumnInfoBlock/config'
 import { SecondaryCTA } from '@/blocks/SecondaryCTA/config'
-import { GrantCardGridBlock } from "@/blocks/GrantCardGridBlock/config"
-import { MultiStepProcess } from "@/blocks/MultiStepProcessBlock/config"
+import { GrantCardGridBlock } from '@/blocks/GrantCardGridBlock/config'
+import { MultiStepProcess } from '@/blocks/MultiStepProcessBlock/config'
 import { ComparisonBlock } from '@/blocks/ComparisonBlock/config'
 import { YellowCardDeck } from '@/blocks/YellowCardDeck/config'
 import { FeatureCard } from '@/blocks/FeatureCard/config'
@@ -22,12 +22,11 @@ import { FeatureCardAccordion } from '@/blocks/FeatureCardAccordion/config'
 import { ListingCardDeck } from '@/blocks/ListingCardDeck/config'
 import { FaqBlock } from '@/blocks/FaqBlock/config'
 
-
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
   labels: {
     singular: 'Page',
-    plural: 'Pages'
+    plural: 'Pages',
   },
   access: {
     create: authenticated,
@@ -38,8 +37,11 @@ export const Pages: CollectionConfig<'pages'> = {
     update: authenticated,
   },
   admin: {
-    group: 'Content',
-    defaultColumns: ['title', 'mascot', 'bgType', 'heroColour', 'publishedAt' ],
+    group: {
+      name: 'Content',
+      order: '3',
+    },
+    defaultColumns: ['title', 'mascot', 'bgType', 'heroColour', 'publishedAt'],
     livePreview: {
       url: ({ data }) => {
         const path = generatePreviewPath({
@@ -65,9 +67,9 @@ export const Pages: CollectionConfig<'pages'> = {
           paddingInline: '10px',
           border: '1px solid #dee2e6',
           borderRadius: '8px',
-          marginBottom: '5px'
-        }
-      }
+          marginBottom: '5px',
+        },
+      },
     },
     {
       label: 'Hero Block',
@@ -85,7 +87,7 @@ export const Pages: CollectionConfig<'pages'> = {
               localized: true,
               admin: {
                 placeholder: 'Enter title for the Hero',
-                width: '50%'
+                width: '50%',
               },
             },
             {
@@ -94,10 +96,10 @@ export const Pages: CollectionConfig<'pages'> = {
               localized: true,
               admin: {
                 placeholder: 'Enter subtitle for the Hero',
-                width: '50%'
+                width: '50%',
               },
             },
-          ]
+          ],
         },
         {
           name: 'bgType',
@@ -106,18 +108,18 @@ export const Pages: CollectionConfig<'pages'> = {
           options: [
             { label: 'Wavy Top', value: 'wavy_top' },
             { label: 'Wavy Fullscreen', value: 'wavy_full' },
-            { label: 'Center Blob', value: 'center_blob' }
+            { label: 'Center Blob', value: 'center_blob' },
           ],
           admin: {
             components: {
               Field: {
                 path: 'src/fields/radio/RadioWithImage.tsx',
-              }
-            }
+              },
+            },
           },
         },
         {
-          type: 'row', 
+          type: 'row',
           fields: [
             {
               name: 'heroColour',
@@ -129,13 +131,13 @@ export const Pages: CollectionConfig<'pages'> = {
                 { label: 'Rose Pink', value: 'rose' },
                 { label: 'Lavender', value: 'lavender' },
                 { label: 'Fire Red', value: 'fire' },
-                { label: 'Transparent', value: 'trans'}
+                { label: 'Transparent', value: 'trans' },
               ],
               defaultValue: 'forest',
-              admin: { 
+              admin: {
                 description: 'Select a colour for the Hero background.',
                 width: '50%',
-              }
+              },
             },
             {
               name: 'mascot',
@@ -154,9 +156,9 @@ export const Pages: CollectionConfig<'pages'> = {
               paddingInline: '10px',
               border: '1px solid #dee2e6',
               borderRadius: '8px',
-              marginBottom: '5px'
-            }
-          }
+              marginBottom: '5px',
+            },
+          },
         },
         {
           type: 'row',
@@ -167,27 +169,27 @@ export const Pages: CollectionConfig<'pages'> = {
               localized: true,
               admin: {
                 description: 'Contact Label',
-                width: '50%'
-              }
+                width: '50%',
+              },
             },
             {
               name: 'email',
               type: 'email',
               admin: {
                 description: 'Contact Email',
-                width: '50%'
-              }
-            }
+                width: '50%',
+              },
+            },
           ],
           admin: {
             disableListColumn: true,
-          }
+          },
         },
         {
           name: 'heroButtons',
           labels: {
             singular: 'Hero Button',
-            plural: 'Hero Buttons'
+            plural: 'Hero Buttons',
           },
           type: 'array',
           maxRows: 2,
@@ -200,37 +202,37 @@ export const Pages: CollectionConfig<'pages'> = {
             components: {
               RowLabel: {
                 path: 'src/blocks/HeroBlock/HeroButtonRowLabel.tsx',
-              }
+              },
             },
             disableListColumn: true,
-          }
+          },
         },
-      ]
+      ],
     },
     {
       type: 'blocks',
       name: 'contentBlocks',
       blocks: [
-          SecondaryCTA,
-          MultiColumnInfoBlock,
-          GrantCardGridBlock,
-          MultiStepProcess,
-          ComparisonBlock,
-          YellowCardDeck,
-          FeatureCard,
-          FeatureCardAccordion,
-          ListingCardDeck,
-          FaqBlock,
-        ],
+        SecondaryCTA,
+        MultiColumnInfoBlock,
+        GrantCardGridBlock,
+        MultiStepProcess,
+        ComparisonBlock,
+        YellowCardDeck,
+        FeatureCard,
+        FeatureCardAccordion,
+        ListingCardDeck,
+        FaqBlock,
+      ],
       labels: {
         singular: 'A Content Block',
-        plural: 'Content Blocks'
+        plural: 'Content Blocks',
       },
       admin: {
         initCollapsed: true,
         isSortable: true,
         disableListColumn: true,
-      }
+      },
     },
     {
       name: 'publishedAt',

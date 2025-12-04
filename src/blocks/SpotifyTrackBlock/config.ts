@@ -18,8 +18,6 @@ export const SpotifyTrackBlock: Block = {
           'Paste the full Spotify track URL (e.g., https://open.spotify.com/track/TRACK_ID)',
       },
       validate: (value) => {
-        if (!value) return true
-
         // Validate Spotify URL format
         const spotifyUrlRegex = /^https:\/\/open\.spotify\.com\/track\/[a-zA-Z0-9]+(\?.*)?$/
         if (!spotifyUrlRegex.test(value)) {

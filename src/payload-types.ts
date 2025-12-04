@@ -70,6 +70,7 @@ export interface Config {
     grants: Grant;
     grantcards: Grantcard;
     pages: Page;
+    doctypes: Doctype;
     posts: Post;
     mediaCloud: MediaCloud;
     assetCloud: AssetCloud;
@@ -89,6 +90,7 @@ export interface Config {
     grants: GrantsSelect<false> | GrantsSelect<true>;
     grantcards: GrantcardsSelect<false> | GrantcardsSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
+    doctypes: DoctypesSelect<false> | DoctypesSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
     mediaCloud: MediaCloudSelect<false> | MediaCloudSelect<true>;
     assetCloud: AssetCloudSelect<false> | AssetCloudSelect<true>;
@@ -217,6 +219,26 @@ export interface Grant {
   };
   contentBlocks?:
     | (
+        | {
+            richText?: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'richContentBlock';
+          }
         | {
             ctaTitle?: string | null;
             ctaSubtitle?: string | null;
@@ -974,6 +996,9 @@ export interface Post {
  */
 export interface Category {
   id: number;
+  /**
+   * Enter document type e.g. Blog, Report, Annual Report, Learning Report, Video, Audio etc.
+   */
   title: string;
   parent?: (number | null) | Category;
   breadcrumbs?:
@@ -1738,6 +1763,19 @@ export interface Document {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "doctypes".
+ */
+export interface Doctype {
+  id: number;
+  /**
+   * Enter resource type e.g. Blog, Report, Annual Report, Learning Report, Video, Audio etc.
+   */
+  type: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1998,6 +2036,10 @@ export interface PayloadLockedDocument {
         value: number | Page;
       } | null)
     | ({
+        relationTo: 'doctypes';
+        value: number | Doctype;
+      } | null)
+    | ({
         relationTo: 'posts';
         value: number | Post;
       } | null)
@@ -2119,6 +2161,13 @@ export interface GrantsSelect<T extends boolean = true> {
   contentBlocks?:
     | T
     | {
+        richContentBlock?:
+          | T
+          | {
+              richText?: T;
+              id?: T;
+              blockName?: T;
+            };
         secondarycta?:
           | T
           | {
@@ -2863,6 +2912,15 @@ export interface PagesSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "doctypes_select".
+ */
+export interface DoctypesSelect<T extends boolean = true> {
+  type?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -4639,9 +4697,9 @@ export interface VimeoBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "SoundCloud Track".
+ * via the `definition` "SoundCloud Embed".
  */
-export interface SoundCloudTrack {
+export interface SoundCloudEmbed {
   /**
    * Paste the FULL URL to the SoundCloud track or playlist
    */

@@ -1,6 +1,7 @@
 import { Block } from 'payload'
 
-const youtubeURLRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be|youtube\.com\/embed)\/.+$/i
+const youtubeURLRegex =
+  /^(https?:\/\/)?(www\.)?(youtube\.com\/(watch\?v=|embed\/)|youtu\.be\/)[\w-]{11}(\?.*)?$/i
 
 const validateYoutubeURL = (value: string) => {
   if (!value) {

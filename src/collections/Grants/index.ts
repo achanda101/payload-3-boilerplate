@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload'
-import { link } from "@/fields/link"
+import { link } from '@/fields/link'
 
 import { authenticated } from '@/access/authenticated'
 import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
@@ -13,21 +13,21 @@ import { getServerSideURL } from '@/utilities/getURL'
 // BLOCKS
 import { MultiColumnInfoBlock } from '@/blocks/MultiColumnInfoBlock/config'
 import { SecondaryCTA } from '@/blocks/SecondaryCTA/config'
-import { GrantCardGridBlock } from "@/blocks/GrantCardGridBlock/config"
-import { MultiStepProcess } from "@/blocks/MultiStepProcessBlock/config"
+import { GrantCardGridBlock } from '@/blocks/GrantCardGridBlock/config'
+import { MultiStepProcess } from '@/blocks/MultiStepProcessBlock/config'
 import { ComparisonBlock } from '@/blocks/ComparisonBlock/config'
 import { YellowCardDeck } from '@/blocks/YellowCardDeck/config'
 import { FeatureCard } from '@/blocks/FeatureCard/config'
 import { FeatureCardAccordion } from '@/blocks/FeatureCardAccordion/config'
 import { ListingCardDeck } from '@/blocks/ListingCardDeck/config'
 import { FaqBlock } from '@/blocks/FaqBlock/config'
-
+import { RichContentBlock } from '@/blocks/RichContentBlock/config'
 
 export const Grants: CollectionConfig<'grants'> = {
   slug: 'grants',
   labels: {
     singular: 'Grant Page',
-    plural: 'Grant Pages'
+    plural: 'Grant Pages',
   },
   access: {
     create: authenticated,
@@ -38,7 +38,10 @@ export const Grants: CollectionConfig<'grants'> = {
     update: authenticated,
   },
   admin: {
-    group: 'Content',
+    group: {
+      name: 'Content',
+      order: '1',
+    },
     defaultColumns: ['title', 'pageType', 'grantCard', 'bgType'],
     livePreview: {
       url: ({ data }) => {
@@ -69,9 +72,9 @@ export const Grants: CollectionConfig<'grants'> = {
               paddingInline: '10px',
               border: '1px solid #dee2e6',
               borderRadius: '8px',
-              marginBottom: '5px'
-            }
-          }
+              marginBottom: '5px',
+            },
+          },
         },
         {
           type: 'group',
@@ -83,12 +86,12 @@ export const Grants: CollectionConfig<'grants'> = {
               type: 'radio',
               options: [
                 { label: 'Landing Page', value: 'landing' },
-                { label: 'Individual Grant', value: 'individual'}
+                { label: 'Individual Grant', value: 'individual' },
               ],
               defaultValue: 'landing',
               admin: {
                 layout: 'horizontal',
-              }
+              },
             },
             {
               name: 'grantCard',
@@ -99,8 +102,8 @@ export const Grants: CollectionConfig<'grants'> = {
               required: true,
               admin: {
                 condition: (siblingData) => siblingData?.pageType === 'individual' || false,
-              }
-            }
+              },
+            },
           ],
           admin: {
             width: '50%',
@@ -110,11 +113,11 @@ export const Grants: CollectionConfig<'grants'> = {
               paddingInline: '10px',
               border: '1px solid #dee2e6',
               borderRadius: '8px',
-              marginBottom: '5px'
-            }
-          }
+              marginBottom: '5px',
+            },
+          },
         },
-      ]
+      ],
     },
     {
       label: 'Hero Block',
@@ -132,7 +135,7 @@ export const Grants: CollectionConfig<'grants'> = {
               localized: true,
               admin: {
                 placeholder: 'Enter title for the Hero',
-                width: '50%'
+                width: '50%',
               },
             },
             {
@@ -141,10 +144,10 @@ export const Grants: CollectionConfig<'grants'> = {
               localized: true,
               admin: {
                 placeholder: 'Enter subtitle for the Hero',
-                width: '50%'
+                width: '50%',
               },
             },
-          ]
+          ],
         },
         {
           name: 'bgType',
@@ -153,21 +156,21 @@ export const Grants: CollectionConfig<'grants'> = {
           options: [
             { label: 'Wavy Top', value: 'wavy_top' },
             { label: 'Wavy Fullscreen', value: 'wavy_full' },
-            { label: 'Center Blob', value: 'center_blob' }
+            { label: 'Center Blob', value: 'center_blob' },
           ],
           admin: {
             components: {
               Field: {
                 path: 'src/fields/radio/RadioWithImage.tsx',
-              }
-            }
+              },
+            },
           },
         },
         {
           name: 'heroButtons',
           labels: {
             singular: 'Hero Button',
-            plural: 'Hero Buttons'
+            plural: 'Hero Buttons',
           },
           type: 'array',
           maxRows: 2,
@@ -180,9 +183,9 @@ export const Grants: CollectionConfig<'grants'> = {
             components: {
               RowLabel: {
                 path: 'src/blocks/HeroBlock/HeroButtonRowLabel.tsx',
-              }
+              },
             },
-          }
+          },
         },
         {
           name: 'heroContact',
@@ -196,38 +199,39 @@ export const Grants: CollectionConfig<'grants'> = {
             {
               name: 'email',
               type: 'email',
-            }
+            },
           ],
           admin: {
             disableListColumn: true,
-          }
+          },
         },
-      ]
+      ],
     },
     {
       type: 'blocks',
       name: 'contentBlocks',
       blocks: [
-          SecondaryCTA,
-          MultiColumnInfoBlock,
-          GrantCardGridBlock,
-          MultiStepProcess,
-          ComparisonBlock,
-          YellowCardDeck,
-          FeatureCard,
-          FeatureCardAccordion,
-          ListingCardDeck,
-          FaqBlock,
-        ],
+        RichContentBlock,
+        SecondaryCTA,
+        MultiColumnInfoBlock,
+        GrantCardGridBlock,
+        MultiStepProcess,
+        ComparisonBlock,
+        YellowCardDeck,
+        FeatureCard,
+        FeatureCardAccordion,
+        ListingCardDeck,
+        FaqBlock,
+      ],
       labels: {
         singular: 'A Content Block',
-        plural: 'Content Blocks'
+        plural: 'Content Blocks',
       },
       admin: {
         initCollapsed: true,
         isSortable: true,
         disableListColumn: true,
-      }
+      },
     },
     {
       name: 'publishedAt',

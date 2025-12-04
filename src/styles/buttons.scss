@@ -23,7 +23,6 @@ button.pill-button {
   padding-inline: vars.$spacing-xl;
   padding-block: calc(vars.$spacing-lg/2);
   width: fit-content;
-  text-transform: capitalize;
   font-size: vars.$font-size-button-mob;
   font-weight: 500;
   @media (min-width: vars.$tablet) {
