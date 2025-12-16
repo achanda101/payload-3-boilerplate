@@ -96,7 +96,7 @@ export const MediaCloud: CollectionConfig = {
       {
         name: 'ogImage',
         width: 200,
-        height: undefined,
+        height: 200,
         fit: 'cover',
         formatOptions: {
           format: 'jpg',
