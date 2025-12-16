@@ -3,6 +3,15 @@ import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
 import { canUpdateUser } from '@/access/canUpdateUser'
 import { revalidateHomepage } from './hooks/revalidateHomepage'
 import { link } from '@/fields/link'
+import { getServerSideURL } from '@/utilities/getURL'
+
+import {
+  MetaDescriptionField,
+  MetaImageField,
+  MetaTitleField,
+  OverviewField,
+  PreviewField,
+} from '@payloadcms/plugin-seo/fields'
 
 // BLOCKS
 import { MultiColumnInfoBlock } from '@/blocks/MultiColumnInfoBlock/config'
@@ -29,10 +38,17 @@ export const Homepage: GlobalConfig = {
   admin: {
     group: {
       name: 'Content',
-      order: '5',
+      order: '1',
     },
     livePreview: {
-      url: ({ data }) => `${process.env.PAYLOAD_URL}/preview/${data.globalType}`,
+      url: () => {
+        const params = new URLSearchParams({
+          path: '/',
+          collection: 'homepage',
+          slug: 'homepage',
+        })
+        return `${getServerSideURL()}/next/preview?${params.toString()}`
+      },
     },
   },
   fields: [
@@ -52,16 +68,32 @@ export const Homepage: GlobalConfig = {
               name: 'heroTitle',
               type: 'textarea',
               localized: true,
+              maxLength: 50,
               admin: {
                 placeholder: 'Enter the main title for the hero section',
+                components: {
+                  afterInput: [
+                    {
+                      path: '@/utilities/characterCounter.tsx',
+                    },
+                  ],
+                },
               },
             },
             {
               name: 'heroSubtitle',
               type: 'textarea',
               localized: true,
+              maxLength: 250,
               admin: {
                 placeholder: 'Enter a subtitle for the hero section',
+                components: {
+                  afterInput: [
+                    {
+                      path: '@/utilities/characterCounter.tsx',
+                    },
+                  ],
+                },
               },
             },
             {
@@ -114,6 +146,42 @@ export const Homepage: GlobalConfig = {
         initCollapsed: true,
         isSortable: true,
       },
+    },
+    {
+      type: 'group',
+      name: 'meta',
+      label: 'SEO',
+      fields: [
+        OverviewField({
+          titlePath: 'meta.title',
+          descriptionPath: 'meta.description',
+          imagePath: 'meta.image',
+        }),
+        MetaTitleField({
+          hasGenerateFn: false,
+        }),
+        MetaImageField({
+          relationTo: 'mediaCloud',
+          overrides: {
+            admin: {
+              description:
+                'Recommended file size for images is <500KB. Image must have a minimum width of 800px for optimal social media display and should be a .jpg, .png.',
+            },
+          },
+        }),
+
+        MetaDescriptionField({
+          hasGenerateFn: false,
+        }),
+        PreviewField({
+          // if the `generateUrl` function is configured
+          hasGenerateFn: true,
+
+          // field paths to match the target field for data
+          titlePath: 'meta.title',
+          descriptionPath: 'meta.description',
+        }),
+      ],
     },
   ],
   versions: {

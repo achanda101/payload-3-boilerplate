@@ -51,12 +51,16 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
               },
               {
                 label: 'Email',
-                value: 'email'
+                value: 'email',
               },
               {
                 label: 'Document Link',
-                value: 'document'
-              }
+                value: 'document',
+              },
+              {
+                label: 'Eligibility Test',
+                value: 'etest',
+              },
             ],
           },
           {
@@ -117,7 +121,7 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
                 },
                 label: 'Pill Button (Outline)',
               },
-            ]
+            ],
           },
         ],
       },
@@ -133,7 +137,17 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
       },
       label: 'Page to link to',
       maxDepth: 2,
-      relationTo: ['grants','posts', 'pages'],
+      relationTo: ['grants', 'posts', 'pages', 'blog', 'reports', 'mmedia'],
+      required: true,
+      validate: (value: unknown, { siblingData }: any) => {
+        // Only validate if this link type is selected
+        if (siblingData?.type === 'reference') {
+          if (!value) {
+            return 'Please select a page to link to'
+          }
+        }
+        return true
+      },
     },
     {
       name: 'url',
@@ -142,12 +156,12 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
         condition: (_, siblingData) => siblingData?.type === 'custom',
       },
       validate: (val) => {
-          if (!val) return 'External URL is required'
-          const isValidUrl = /^https?:\/\/.+/.test(val)
-          if (!isValidUrl) {
-            return 'Please enter a valid URL starting with http:// or https://'
-          }
-          return true
+        if (!val) return 'External URL is required'
+        const isValidUrl = /^https?:\/\/.+/.test(val)
+        if (!isValidUrl) {
+          return 'Please enter a valid URL starting with http:// or https://'
+        }
+        return true
       },
       label: 'Custom URL',
       required: true,
@@ -170,6 +184,36 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
       label: 'Document to link to',
       maxDepth: 2,
       relationTo: ['documents'],
+      required: true,
+      validate: (value: unknown, { siblingData }: any) => {
+        // Only validate if this link type is selected
+        if (siblingData?.type === 'document') {
+          if (!value) {
+            return 'Please select a document to link to'
+          }
+        }
+        return true
+      },
+    },
+    {
+      name: 'etestlink',
+      type: 'relationship',
+      admin: {
+        condition: (_, siblingData) => siblingData?.type === 'etest',
+      },
+      label: 'Eligibility Test to link to',
+      maxDepth: 2,
+      relationTo: ['etests'],
+      required: true,
+      validate: (value: unknown, { siblingData }: any) => {
+        // Only validate if this link type is selected
+        if (siblingData?.type === 'etest') {
+          if (!value) {
+            return 'Please select an eligibility test to link to'
+          }
+        }
+        return true
+      },
     },
   ]
 

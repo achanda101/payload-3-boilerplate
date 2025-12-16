@@ -1,13 +1,13 @@
 import { Block } from 'payload'
-import { link } from "@/fields/link";
-import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import { link } from '@/fields/link'
+import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import {
   BoldFeature,
   UnderlineFeature,
   ItalicFeature,
   LinkFeature,
   InlineToolbarFeature,
-} from "@payloadcms/richtext-lexical";
+} from '@payloadcms/richtext-lexical'
 
 export const FeatureCard: Block = {
   slug: 'featCrd',
@@ -68,9 +68,9 @@ export const FeatureCard: Block = {
                 components: {
                   RowLabel: {
                     path: 'src/blocks/FeatureCard/TagRowLabel.tsx',
-                  }
+                  },
                 },
-              }
+              },
             },
           ],
         },
@@ -86,13 +86,13 @@ export const FeatureCard: Block = {
                   UnderlineFeature(),
                   ItalicFeature(),
                   LinkFeature({
-                    enabledCollections: [ 'grants', 'pages' ],
+                    enabledCollections: ['grants', 'pages', 'reports', 'blog'],
                   }),
                   InlineToolbarFeature(),
                 ],
                 admin: {
-                  placeholder: 'Start typing your content here ...'
-                }
+                  placeholder: 'Start typing your content here ...',
+                },
               }),
               localized: true,
             },

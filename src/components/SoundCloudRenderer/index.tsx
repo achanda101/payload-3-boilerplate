@@ -58,7 +58,11 @@ function SoundCloudRenderer({
         />
       </div>
       {trackTitle && <p className="small mt-3">{trackTitle}</p>}
-      {caption && <p className="small mt-3">{caption}</p>}
+      {caption && (
+        <p className="small mt-3" style={{ whiteSpace: 'pre-line' }}>
+          {caption}
+        </p>
+      )}
     </div>
   )
 }

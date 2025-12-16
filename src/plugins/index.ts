@@ -6,27 +6,56 @@ import { seoPlugin } from '@payloadcms/plugin-seo'
 import { searchPlugin } from '@payloadcms/plugin-search'
 import { Plugin } from 'payload'
 import { revalidateRedirects } from '@/hooks/revalidateRedirects'
-import { GenerateTitle, GenerateURL } from '@payloadcms/plugin-seo/types'
+import { GenerateTitle, GenerateURL, GenerateDescription } from '@payloadcms/plugin-seo/types'
 import { FixedToolbarFeature, HeadingFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
 import { searchFields } from '@/search/fieldOverrides'
 import { beforeSyncWithSearch } from '@/search/beforeSync'
 
-import { Post } from '@/payload-types'
+import { Post, Page, Grant, Report, Blog, Mmedia } from '@/payload-types'
 import { getServerSideURL } from '@/utilities/getURL'
 
-const generateTitle: GenerateTitle<Post> = ({ doc }) => {
-  return doc?.title ? `${doc.title} | Urgent Action Fund: Asia & Pacific` : 'Urgent Action Fund: Asia & Pacific'
+const generateTitle: GenerateTitle<Post | Page | Grant | Blog | Report | Mmedia> = ({ doc }) => {
+  return doc?.title
+    ? `${doc.title} | Urgent Action Fund: Asia & Pacific`
+    : 'Urgent Action Fund: Asia & Pacific'
 }
 
-const generateURL: GenerateURL<Post> = ({ doc }) => {
+const generateDescription: GenerateDescription<Post | Page | Grant | Blog | Report | Mmedia> = ({ doc }) => {
+  // For Blog collection, use heroSubtitle if available
+  if ('heroSubtitle' in doc && doc.heroSubtitle) {
+    return doc.heroSubtitle
+  }
+  return ''
+}
+
+const generateURL: GenerateURL<Post | Page | Grant | Report | Blog | Mmedia> = ({
+  doc,
+  collectionSlug,
+}) => {
   const url = getServerSideURL()
 
-  return doc?.slug ? `${url}/${doc.slug}` : url
+  if (!doc?.slug) return url
+
+  // Generate URLs based on collection type
+  switch (collectionSlug) {
+    case 'grants':
+      return `${url}/grants/${doc.slug}`
+    case 'reports':
+      return `${url}/reports/${doc.slug}`
+    case 'blog':
+      return `${url}/blog/${doc.slug}`
+    case 'mmedia':
+      return `${url}/mmedia/${doc.slug}`
+    case 'posts':
+    case 'pages':
+    default:
+      return `${url}/${doc.slug}`
+  }
 }
 
 export const plugins: Plugin[] = [
   redirectsPlugin({
-    collections: ['posts'],
+    collections: ['posts', 'pages', 'reports', 'blog', 'mmedia'],
     overrides: {
       admin: {
         hidden: true,
@@ -56,6 +85,7 @@ export const plugins: Plugin[] = [
   seoPlugin({
     generateTitle,
     generateURL,
+    generateDescription,
   }),
   formBuilderPlugin({
     fields: {
@@ -92,7 +122,7 @@ export const plugins: Plugin[] = [
     },
   }),
   searchPlugin({
-    collections: ['posts'],
+    collections: ['posts', 'pages', 'reports', 'blog', 'mmedia'],
     beforeSync: beforeSyncWithSearch,
     searchOverrides: {
       admin: {

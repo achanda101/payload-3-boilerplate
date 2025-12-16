@@ -69,38 +69,69 @@ export interface Config {
   collections: {
     grants: Grant;
     grantcards: Grantcard;
+    etests: Etest;
     pages: Page;
+    blog: Blog;
+    reports: Report;
+    mmedia: Mmedia;
     doctypes: Doctype;
-    posts: Post;
     mediaCloud: MediaCloud;
     assetCloud: AssetCloud;
     documents: Document;
+    posts: Post;
     categories: Category;
     users: User;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
     search: Search;
+    'payload-kv': PayloadKv;
+    'payload-folders': FolderInterface;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
-  collectionsJoins: {};
+  collectionsJoins: {
+    doctypes: {
+      relatedBlogPosts: 'blog';
+      relatedReports: 'reports';
+      relatedMMediaPosts: 'mmedia';
+    };
+    'payload-folders': {
+      documentsAndFolders:
+        | 'payload-folders'
+        | 'grants'
+        | 'grantcards'
+        | 'pages'
+        | 'blog'
+        | 'reports'
+        | 'mmedia'
+        | 'mediaCloud'
+        | 'assetCloud'
+        | 'documents';
+    };
+  };
   collectionsSelect: {
     grants: GrantsSelect<false> | GrantsSelect<true>;
     grantcards: GrantcardsSelect<false> | GrantcardsSelect<true>;
+    etests: EtestsSelect<false> | EtestsSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
+    blog: BlogSelect<false> | BlogSelect<true>;
+    reports: ReportsSelect<false> | ReportsSelect<true>;
+    mmedia: MmediaSelect<false> | MmediaSelect<true>;
     doctypes: DoctypesSelect<false> | DoctypesSelect<true>;
-    posts: PostsSelect<false> | PostsSelect<true>;
     mediaCloud: MediaCloudSelect<false> | MediaCloudSelect<true>;
     assetCloud: AssetCloudSelect<false> | AssetCloudSelect<true>;
     documents: DocumentsSelect<false> | DocumentsSelect<true>;
+    posts: PostsSelect<false> | PostsSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
     search: SearchSelect<false> | SearchSelect<true>;
+    'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
+    'payload-folders': PayloadFoldersSelect<false> | PayloadFoldersSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -108,6 +139,52 @@ export interface Config {
   db: {
     defaultIDType: number;
   };
+  fallbackLocale:
+    | ('false' | 'none' | 'null')
+    | false
+    | null
+    | (
+        | 'en'
+        | 'ar'
+        | 'bi'
+        | 'bn-IN'
+        | 'br'
+        | 'ch'
+        | 'prs-Arab'
+        | 'km'
+        | 'hi'
+        | 'ms'
+        | 'ne'
+        | 'ps-Arab'
+        | 'pcm'
+        | 'si'
+        | 'tl'
+        | 'ta'
+        | 'th'
+        | 'vi'
+        | 'ur'
+      )
+    | (
+        | 'en'
+        | 'ar'
+        | 'bi'
+        | 'bn-IN'
+        | 'br'
+        | 'ch'
+        | 'prs-Arab'
+        | 'km'
+        | 'hi'
+        | 'ms'
+        | 'ne'
+        | 'ps-Arab'
+        | 'pcm'
+        | 'si'
+        | 'tl'
+        | 'ta'
+        | 'th'
+        | 'vi'
+        | 'ur'
+      )[];
   globals: {
     homepage: Homepage;
     header: Header;
@@ -183,7 +260,7 @@ export interface Grant {
   heroButtons?:
     | {
         link?: {
-          type?: ('reference' | 'custom' | 'email' | 'document') | null;
+          type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
           newTab?: boolean | null;
           downloadLink?: boolean | null;
           arrowLink?: boolean | null;
@@ -201,12 +278,28 @@ export interface Grant {
             | ({
                 relationTo: 'pages';
                 value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'blog';
+                value: number | Blog;
+              } | null)
+            | ({
+                relationTo: 'reports';
+                value: number | Report;
+              } | null)
+            | ({
+                relationTo: 'mmedia';
+                value: number | Mmedia;
               } | null);
           url?: string | null;
           email?: string | null;
           doc?: {
             relationTo: 'documents';
             value: number | Document;
+          } | null;
+          etestlink?: {
+            relationTo: 'etests';
+            value: number | Etest;
           } | null;
           label?: string | null;
         };
@@ -224,7 +317,7 @@ export interface Grant {
               root: {
                 type: string;
                 children: {
-                  type: string;
+                  type: any;
                   version: number;
                   [k: string]: unknown;
                 }[];
@@ -250,7 +343,7 @@ export interface Grant {
             ctaButton?:
               | {
                   link?: {
-                    type?: ('reference' | 'custom' | 'email' | 'document') | null;
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
                     newTab?: boolean | null;
                     downloadLink?: boolean | null;
                     arrowLink?: boolean | null;
@@ -268,12 +361,28 @@ export interface Grant {
                       | ({
                           relationTo: 'pages';
                           value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
                         } | null);
                     url?: string | null;
                     email?: string | null;
                     doc?: {
                       relationTo: 'documents';
                       value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
                     } | null;
                     label?: string | null;
                   };
@@ -291,7 +400,7 @@ export interface Grant {
                   colContent?: string | null;
                   addLink?: boolean | null;
                   link?: {
-                    type?: ('reference' | 'custom' | 'email' | 'document') | null;
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
                     newTab?: boolean | null;
                     downloadLink?: boolean | null;
                     arrowLink?: boolean | null;
@@ -309,12 +418,28 @@ export interface Grant {
                       | ({
                           relationTo: 'pages';
                           value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
                         } | null);
                     url?: string | null;
                     email?: string | null;
                     doc?: {
                       relationTo: 'documents';
                       value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
                     } | null;
                     label?: string | null;
                   };
@@ -364,7 +489,7 @@ export interface Grant {
                           root: {
                             type: string;
                             children: {
-                              type: string;
+                              type: any;
                               version: number;
                               [k: string]: unknown;
                             }[];
@@ -385,7 +510,7 @@ export interface Grant {
                     root: {
                       type: string;
                       children: {
-                        type: string;
+                        type: any;
                         version: number;
                         [k: string]: unknown;
                       }[];
@@ -435,7 +560,7 @@ export interface Grant {
             buttons?:
               | {
                   link?: {
-                    type?: ('reference' | 'custom' | 'email' | 'document') | null;
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
                     newTab?: boolean | null;
                     downloadLink?: boolean | null;
                     arrowLink?: boolean | null;
@@ -453,12 +578,28 @@ export interface Grant {
                       | ({
                           relationTo: 'pages';
                           value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
                         } | null);
                     url?: string | null;
                     email?: string | null;
                     doc?: {
                       relationTo: 'documents';
                       value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
                     } | null;
                     label?: string | null;
                   };
@@ -476,7 +617,7 @@ export interface Grant {
               root: {
                 type: string;
                 children: {
-                  type: string;
+                  type: any;
                   version: number;
                   [k: string]: unknown;
                 }[];
@@ -507,7 +648,7 @@ export interface Grant {
                     | {
                         desc?: string | null;
                         link?: {
-                          type?: ('reference' | 'custom' | 'email' | 'document') | null;
+                          type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
                           newTab?: boolean | null;
                           downloadLink?: boolean | null;
                           arrowLink?: boolean | null;
@@ -525,12 +666,28 @@ export interface Grant {
                             | ({
                                 relationTo: 'pages';
                                 value: number | Page;
+                              } | null)
+                            | ({
+                                relationTo: 'blog';
+                                value: number | Blog;
+                              } | null)
+                            | ({
+                                relationTo: 'reports';
+                                value: number | Report;
+                              } | null)
+                            | ({
+                                relationTo: 'mmedia';
+                                value: number | Mmedia;
                               } | null);
                           url?: string | null;
                           email?: string | null;
                           doc?: {
                             relationTo: 'documents';
                             value: number | Document;
+                          } | null;
+                          etestlink?: {
+                            relationTo: 'etests';
+                            value: number | Etest;
                           } | null;
                           label?: string | null;
                         };
@@ -561,7 +718,7 @@ export interface Grant {
               root: {
                 type: string;
                 children: {
-                  type: string;
+                  type: any;
                   version: number;
                   [k: string]: unknown;
                 }[];
@@ -573,7 +730,7 @@ export interface Grant {
               [k: string]: unknown;
             } | null;
             link?: {
-              type?: ('reference' | 'custom' | 'email' | 'document') | null;
+              type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
               newTab?: boolean | null;
               downloadLink?: boolean | null;
               arrowLink?: boolean | null;
@@ -591,12 +748,28 @@ export interface Grant {
                 | ({
                     relationTo: 'pages';
                     value: number | Page;
+                  } | null)
+                | ({
+                    relationTo: 'blog';
+                    value: number | Blog;
+                  } | null)
+                | ({
+                    relationTo: 'reports';
+                    value: number | Report;
+                  } | null)
+                | ({
+                    relationTo: 'mmedia';
+                    value: number | Mmedia;
                   } | null);
               url?: string | null;
               email?: string | null;
               doc?: {
                 relationTo: 'documents';
                 value: number | Document;
+              } | null;
+              etestlink?: {
+                relationTo: 'etests';
+                value: number | Etest;
               } | null;
               label?: string | null;
             };
@@ -616,7 +789,7 @@ export interface Grant {
                     root: {
                       type: string;
                       children: {
-                        type: string;
+                        type: any;
                         version: number;
                         [k: string]: unknown;
                       }[];
@@ -632,7 +805,7 @@ export interface Grant {
                     root: {
                       type: string;
                       children: {
-                        type: string;
+                        type: any;
                         version: number;
                         [k: string]: unknown;
                       }[];
@@ -675,7 +848,7 @@ export interface Grant {
                       }[]
                     | null;
                   link?: {
-                    type?: ('reference' | 'custom' | 'email' | 'document') | null;
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
                     newTab?: boolean | null;
                     downloadLink?: boolean | null;
                     arrowLink?: boolean | null;
@@ -693,12 +866,28 @@ export interface Grant {
                       | ({
                           relationTo: 'pages';
                           value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
                         } | null);
                     url?: string | null;
                     email?: string | null;
                     doc?: {
                       relationTo: 'documents';
                       value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
                     } | null;
                     label?: string | null;
                   };
@@ -708,7 +897,7 @@ export interface Grant {
             buttons?:
               | {
                   link?: {
-                    type?: ('reference' | 'custom' | 'email' | 'document') | null;
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
                     newTab?: boolean | null;
                     downloadLink?: boolean | null;
                     arrowLink?: boolean | null;
@@ -726,12 +915,28 @@ export interface Grant {
                       | ({
                           relationTo: 'pages';
                           value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
                         } | null);
                     url?: string | null;
                     email?: string | null;
                     doc?: {
                       relationTo: 'documents';
                       value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
                     } | null;
                     label?: string | null;
                   };
@@ -746,7 +951,7 @@ export interface Grant {
             title?: string | null;
             desc?: string | null;
             link?: {
-              type?: ('reference' | 'custom' | 'email' | 'document') | null;
+              type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
               newTab?: boolean | null;
               downloadLink?: boolean | null;
               arrowLink?: boolean | null;
@@ -764,12 +969,28 @@ export interface Grant {
                 | ({
                     relationTo: 'pages';
                     value: number | Page;
+                  } | null)
+                | ({
+                    relationTo: 'blog';
+                    value: number | Blog;
+                  } | null)
+                | ({
+                    relationTo: 'reports';
+                    value: number | Report;
+                  } | null)
+                | ({
+                    relationTo: 'mmedia';
+                    value: number | Mmedia;
                   } | null);
               url?: string | null;
               email?: string | null;
               doc?: {
                 relationTo: 'documents';
                 value: number | Document;
+              } | null;
+              etestlink?: {
+                relationTo: 'etests';
+                value: number | Etest;
               } | null;
               label?: string | null;
             };
@@ -786,7 +1007,7 @@ export interface Grant {
                     root: {
                       type: string;
                       children: {
-                        type: string;
+                        type: any;
                         version: number;
                         [k: string]: unknown;
                       }[];
@@ -806,11 +1027,21 @@ export interface Grant {
           }
       )[]
     | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Recommended file size for images is <500KB. Image must have a minimum width of 800px for optimal social media display and should be a .jpg, .png.
+     */
+    image?: (number | null) | MediaCloud;
+    description?: string | null;
+  };
   publishedAt?: string | null;
   slug?: string | null;
   slugLock?: boolean | null;
+  folder?: (number | null) | FolderInterface;
   updatedAt: string;
   createdAt: string;
+  deletedAt?: string | null;
   _status?: ('draft' | 'published') | null;
 }
 /**
@@ -826,6 +1057,7 @@ export interface Grantcard {
   activePeriod?: ('open_all_year' | 'specific_period' | 'closed') | null;
   startDate?: string | null;
   endDate?: string | null;
+  msg?: string | null;
   /**
    * Select a colour for the Grant Card background. Choose "Transparent" if it is a Special Grant.
    */
@@ -844,7 +1076,7 @@ export interface Grantcard {
   cardButtons?:
     | {
         link?: {
-          type?: ('reference' | 'custom' | 'email' | 'document') | null;
+          type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
           newTab?: boolean | null;
           downloadLink?: boolean | null;
           arrowLink?: boolean | null;
@@ -862,12 +1094,28 @@ export interface Grantcard {
             | ({
                 relationTo: 'pages';
                 value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'blog';
+                value: number | Blog;
+              } | null)
+            | ({
+                relationTo: 'reports';
+                value: number | Report;
+              } | null)
+            | ({
+                relationTo: 'mmedia';
+                value: number | Mmedia;
               } | null);
           url?: string | null;
           email?: string | null;
           doc?: {
             relationTo: 'documents';
             value: number | Document;
+          } | null;
+          etestlink?: {
+            relationTo: 'etests';
+            value: number | Etest;
           } | null;
           label?: string | null;
         };
@@ -876,8 +1124,10 @@ export interface Grantcard {
     | null;
   slug?: string | null;
   slugLock?: boolean | null;
+  folder?: (number | null) | FolderInterface;
   updatedAt: string;
   createdAt: string;
+  deletedAt?: string | null;
   _status?: ('draft' | 'published') | null;
 }
 /**
@@ -890,8 +1140,10 @@ export interface AssetCloud {
   id: number;
   alt: string;
   caption?: string | null;
+  folder?: (number | null) | FolderInterface;
   updatedAt: string;
   createdAt: string;
+  deletedAt?: string | null;
   url?: string | null;
   thumbnailURL?: string | null;
   filename?: string | null;
@@ -946,6 +1198,875 @@ export interface AssetCloud {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-folders".
+ */
+export interface FolderInterface {
+  id: number;
+  name: string;
+  folder?: (number | null) | FolderInterface;
+  documentsAndFolders?: {
+    docs?: (
+      | {
+          relationTo?: 'payload-folders';
+          value: number | FolderInterface;
+        }
+      | {
+          relationTo?: 'grants';
+          value: number | Grant;
+        }
+      | {
+          relationTo?: 'grantcards';
+          value: number | Grantcard;
+        }
+      | {
+          relationTo?: 'pages';
+          value: number | Page;
+        }
+      | {
+          relationTo?: 'blog';
+          value: number | Blog;
+        }
+      | {
+          relationTo?: 'reports';
+          value: number | Report;
+        }
+      | {
+          relationTo?: 'mmedia';
+          value: number | Mmedia;
+        }
+      | {
+          relationTo?: 'mediaCloud';
+          value: number | MediaCloud;
+        }
+      | {
+          relationTo?: 'assetCloud';
+          value: number | AssetCloud;
+        }
+      | {
+          relationTo?: 'documents';
+          value: number | Document;
+        }
+    )[];
+    hasNextPage?: boolean;
+    totalDocs?: number;
+  };
+  folderType?:
+    | ('grants' | 'grantcards' | 'pages' | 'blog' | 'reports' | 'mmedia' | 'mediaCloud' | 'assetCloud' | 'documents')[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages".
+ */
+export interface Page {
+  id: number;
+  title: string;
+  heroTitle?: string | null;
+  heroSubtitle?: string | null;
+  bgType?: ('wavy_top' | 'wavy_full' | 'center_blob') | null;
+  /**
+   * Select a colour for the Hero background.
+   */
+  heroColour?: ('forest' | 'turmeric' | 'sky' | 'rose' | 'lavender' | 'fire' | 'trans') | null;
+  /**
+   * Upload a mascot image for the Hero section.
+   */
+  mascot?: (number | null) | AssetCloud;
+  /**
+   * Contact Label
+   */
+  label?: string | null;
+  /**
+   * Contact Email
+   */
+  email?: string | null;
+  heroButtons?:
+    | {
+        link?: {
+          type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+          newTab?: boolean | null;
+          downloadLink?: boolean | null;
+          arrowLink?: boolean | null;
+          pillSolid?: boolean | null;
+          pillOutline?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'grants';
+                value: number | Grant;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null)
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'blog';
+                value: number | Blog;
+              } | null)
+            | ({
+                relationTo: 'reports';
+                value: number | Report;
+              } | null)
+            | ({
+                relationTo: 'mmedia';
+                value: number | Mmedia;
+              } | null);
+          url?: string | null;
+          email?: string | null;
+          doc?: {
+            relationTo: 'documents';
+            value: number | Document;
+          } | null;
+          etestlink?: {
+            relationTo: 'etests';
+            value: number | Etest;
+          } | null;
+          label?: string | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  contentBlocks?:
+    | (
+        | {
+            richText?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'richContentBlock';
+          }
+        | {
+            ctaTitle?: string | null;
+            ctaSubtitle?: string | null;
+            contact?: {
+              label?: string | null;
+              email?: string | null;
+            };
+            uiType?: ('lrg_txt_cta' | 'md_txt_cta' | 'min_cta' | 'puffy_beige_cta') | null;
+            ctaButton?:
+              | {
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
+                    } | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'secondarycta';
+          }
+        | {
+            multicols?:
+              | {
+                  title?: string | null;
+                  colContent?: string | null;
+                  addLink?: boolean | null;
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
+                    } | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'mcolInfoBlock';
+          }
+        | {
+            title?: string | null;
+            desc?: string | null;
+            /**
+             * Grant Cards to display - only active grants (excludes closed grants). You can reorder or remove cards as needed.
+             */
+            grantCardGrid?: (number | Grantcard)[] | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'grantCardGridBlock';
+          }
+        | {
+            title?: string | null;
+            subtitle?: string | null;
+            steps?:
+              | {
+                  stepTitle?: string | null;
+                  title?: string | null;
+                  icon?:
+                    | (
+                        | 'FileText'
+                        | 'Clock'
+                        | 'ShieldCheck'
+                        | 'Vote'
+                        | 'ScrollText'
+                        | 'Banknote'
+                        | 'Rocket'
+                        | 'FileCheck'
+                      )
+                    | null;
+                  /**
+                   * Enter details for the step in bullet form
+                   */
+                  details?:
+                    | {
+                        bullet?: {
+                          root: {
+                            type: string;
+                            children: {
+                              type: any;
+                              version: number;
+                              [k: string]: unknown;
+                            }[];
+                            direction: ('ltr' | 'rtl') | null;
+                            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                            indent: number;
+                            version: number;
+                          };
+                          [k: string]: unknown;
+                        } | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  /**
+                   * Enter any extra information that maybe useful in the step.
+                   */
+                  tip?: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: any;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  } | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'mstepProcess';
+          }
+        | {
+            title?: string | null;
+            desc?: string | null;
+            lftGrp?: {
+              title?: string | null;
+              desc?: string | null;
+              /**
+               * Points in the left column will have a checkmark
+               */
+              lftPoints?:
+                | {
+                    point?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+            };
+            rtGrp?: {
+              title?: string | null;
+              desc?: string | null;
+              /**
+               * Points in the right column will have a cross mark
+               */
+              rtPoints?:
+                | {
+                    point?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+            };
+            buttons?:
+              | {
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
+                    } | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'comparisonBlk';
+          }
+        | {
+            title?: string | null;
+            align?: ('left' | 'center') | null;
+            desc?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            /**
+             * Add yellow cards to be displayed in the deck
+             */
+            cards?:
+              | {
+                  title?: string | null;
+                  subtitle?: string | null;
+                  desc?: string | null;
+                  /**
+                   * Mascot image for the yellow card
+                   */
+                  mascot?: (number | null) | AssetCloud;
+                  /**
+                   * Position of the mascot image on the yellow card
+                   */
+                  mascotPos?: ('top_left' | 'center') | null;
+                  links?:
+                    | {
+                        desc?: string | null;
+                        link?: {
+                          type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+                          newTab?: boolean | null;
+                          downloadLink?: boolean | null;
+                          arrowLink?: boolean | null;
+                          pillSolid?: boolean | null;
+                          pillOutline?: boolean | null;
+                          reference?:
+                            | ({
+                                relationTo: 'grants';
+                                value: number | Grant;
+                              } | null)
+                            | ({
+                                relationTo: 'posts';
+                                value: number | Post;
+                              } | null)
+                            | ({
+                                relationTo: 'pages';
+                                value: number | Page;
+                              } | null)
+                            | ({
+                                relationTo: 'blog';
+                                value: number | Blog;
+                              } | null)
+                            | ({
+                                relationTo: 'reports';
+                                value: number | Report;
+                              } | null)
+                            | ({
+                                relationTo: 'mmedia';
+                                value: number | Mmedia;
+                              } | null);
+                          url?: string | null;
+                          email?: string | null;
+                          doc?: {
+                            relationTo: 'documents';
+                            value: number | Document;
+                          } | null;
+                          etestlink?: {
+                            relationTo: 'etests';
+                            value: number | Etest;
+                          } | null;
+                          label?: string | null;
+                        };
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'ylwDeck';
+          }
+        | {
+            /**
+             * Upload an image for the Feature Card
+             */
+            image?: (number | null) | MediaCloud;
+            title?: string | null;
+            subtitle?: string | null;
+            tags?:
+              | {
+                  tag?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            desc?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            link?: {
+              type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+              newTab?: boolean | null;
+              downloadLink?: boolean | null;
+              arrowLink?: boolean | null;
+              pillSolid?: boolean | null;
+              pillOutline?: boolean | null;
+              reference?:
+                | ({
+                    relationTo: 'grants';
+                    value: number | Grant;
+                  } | null)
+                | ({
+                    relationTo: 'posts';
+                    value: number | Post;
+                  } | null)
+                | ({
+                    relationTo: 'pages';
+                    value: number | Page;
+                  } | null)
+                | ({
+                    relationTo: 'blog';
+                    value: number | Blog;
+                  } | null)
+                | ({
+                    relationTo: 'reports';
+                    value: number | Report;
+                  } | null)
+                | ({
+                    relationTo: 'mmedia';
+                    value: number | Mmedia;
+                  } | null);
+              url?: string | null;
+              email?: string | null;
+              doc?: {
+                relationTo: 'documents';
+                value: number | Document;
+              } | null;
+              etestlink?: {
+                relationTo: 'etests';
+                value: number | Etest;
+              } | null;
+              label?: string | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featCrd';
+          }
+        | {
+            /**
+             * Title for the block
+             */
+            title?: string | null;
+            featCrds?:
+              | {
+                  accTitle?: string | null;
+                  accContent?: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: any;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  } | null;
+                  crdTag?: string | null;
+                  crdContent?: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: any;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  } | null;
+                  /**
+                   * Upload a mascot image for the feature card
+                   */
+                  mascot?: (number | null) | AssetCloud;
+                  /**
+                   * Select a colour for the Feature Card background.
+                   */
+                  crdColour?: ('forest' | 'turmeric' | 'sky' | 'rose' | 'lavender' | 'fire') | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featCrdAcc';
+          }
+        | {
+            title?: string | null;
+            /**
+             * Add listing cards to be displayed in the deck
+             */
+            cards?:
+              | {
+                  title?: string | null;
+                  desc?: string | null;
+                  image?: (number | null) | MediaCloud;
+                  tags?:
+                    | {
+                        tag?: string | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
+                    } | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            buttons?:
+              | {
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
+                    } | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'listCrdDck';
+          }
+        | {
+            title?: string | null;
+            desc?: string | null;
+            link?: {
+              type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+              newTab?: boolean | null;
+              downloadLink?: boolean | null;
+              arrowLink?: boolean | null;
+              pillSolid?: boolean | null;
+              pillOutline?: boolean | null;
+              reference?:
+                | ({
+                    relationTo: 'grants';
+                    value: number | Grant;
+                  } | null)
+                | ({
+                    relationTo: 'posts';
+                    value: number | Post;
+                  } | null)
+                | ({
+                    relationTo: 'pages';
+                    value: number | Page;
+                  } | null)
+                | ({
+                    relationTo: 'blog';
+                    value: number | Blog;
+                  } | null)
+                | ({
+                    relationTo: 'reports';
+                    value: number | Report;
+                  } | null)
+                | ({
+                    relationTo: 'mmedia';
+                    value: number | Mmedia;
+                  } | null);
+              url?: string | null;
+              email?: string | null;
+              doc?: {
+                relationTo: 'documents';
+                value: number | Document;
+              } | null;
+              etestlink?: {
+                relationTo: 'etests';
+                value: number | Etest;
+              } | null;
+              label?: string | null;
+            };
+            /**
+             * Add frequently asked questions to be displayed in this section
+             */
+            faqs?:
+              | {
+                  question?: string | null;
+                  /**
+                   * Provide a detailed answer to the question
+                   */
+                  answer?: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: any;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  } | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'faqBlk';
+          }
+      )[]
+    | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Recommended file size for images is <500KB. Image must have a minimum width of 800px for optimal social media display and should be a .jpg, .png.
+     */
+    image?: (number | null) | MediaCloud;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  folder?: (number | null) | FolderInterface;
+  updatedAt: string;
+  createdAt: string;
+  deletedAt?: string | null;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "posts".
  */
 export interface Post {
@@ -955,7 +2076,7 @@ export interface Post {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -973,7 +2094,15 @@ export interface Post {
     /**
      * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
      */
-    image?: (number | null) | MediaCloud;
+    image?:
+      | ({
+          relationTo: 'mediaCloud';
+          value: number | MediaCloud;
+        } | null)
+      | ({
+          relationTo: 'assetCloud';
+          value: number | AssetCloud;
+        } | null);
     description?: string | null;
   };
   publishedAt?: string | null;
@@ -1020,8 +2149,10 @@ export interface MediaCloud {
   id: number;
   alt: string;
   caption?: string | null;
+  folder?: (number | null) | FolderInterface;
   updatedAt: string;
   createdAt: string;
+  deletedAt?: string | null;
   url?: string | null;
   thumbnailURL?: string | null;
   filename?: string | null;
@@ -1072,6 +2203,14 @@ export interface MediaCloud {
       filesize?: number | null;
       filename?: string | null;
     };
+    ogImage?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
   };
 }
 /**
@@ -1106,34 +2245,24 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "pages".
+ * via the `definition` "blog".
  */
-export interface Page {
+export interface Blog {
   id: number;
   title: string;
+  pageType: 'landing' | 'individual';
+  showFilter?: boolean | null;
+  docType?: (number | Doctype)[] | null;
+  /**
+   * Upload a cover image for the Blogpost
+   */
+  image?: (number | null) | MediaCloud;
   heroTitle?: string | null;
   heroSubtitle?: string | null;
-  bgType?: ('wavy_top' | 'wavy_full' | 'center_blob') | null;
-  /**
-   * Select a colour for the Hero background.
-   */
-  heroColour?: ('forest' | 'turmeric' | 'sky' | 'rose' | 'lavender' | 'fire' | 'trans') | null;
-  /**
-   * Upload a mascot image for the Hero section.
-   */
-  mascot?: (number | null) | AssetCloud;
-  /**
-   * Contact Label
-   */
-  label?: string | null;
-  /**
-   * Contact Email
-   */
-  email?: string | null;
   heroButtons?:
     | {
         link?: {
-          type?: ('reference' | 'custom' | 'email' | 'document') | null;
+          type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
           newTab?: boolean | null;
           downloadLink?: boolean | null;
           arrowLink?: boolean | null;
@@ -1151,12 +2280,28 @@ export interface Page {
             | ({
                 relationTo: 'pages';
                 value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'blog';
+                value: number | Blog;
+              } | null)
+            | ({
+                relationTo: 'reports';
+                value: number | Report;
+              } | null)
+            | ({
+                relationTo: 'mmedia';
+                value: number | Mmedia;
               } | null);
           url?: string | null;
           email?: string | null;
           doc?: {
             relationTo: 'documents';
             value: number | Document;
+          } | null;
+          etestlink?: {
+            relationTo: 'etests';
+            value: number | Etest;
           } | null;
           label?: string | null;
         };
@@ -1165,6 +2310,26 @@ export interface Page {
     | null;
   contentBlocks?:
     | (
+        | {
+            richText?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'richContentBlock';
+          }
         | {
             ctaTitle?: string | null;
             ctaSubtitle?: string | null;
@@ -1176,7 +2341,7 @@ export interface Page {
             ctaButton?:
               | {
                   link?: {
-                    type?: ('reference' | 'custom' | 'email' | 'document') | null;
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
                     newTab?: boolean | null;
                     downloadLink?: boolean | null;
                     arrowLink?: boolean | null;
@@ -1194,12 +2359,28 @@ export interface Page {
                       | ({
                           relationTo: 'pages';
                           value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
                         } | null);
                     url?: string | null;
                     email?: string | null;
                     doc?: {
                       relationTo: 'documents';
                       value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
                     } | null;
                     label?: string | null;
                   };
@@ -1217,7 +2398,7 @@ export interface Page {
                   colContent?: string | null;
                   addLink?: boolean | null;
                   link?: {
-                    type?: ('reference' | 'custom' | 'email' | 'document') | null;
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
                     newTab?: boolean | null;
                     downloadLink?: boolean | null;
                     arrowLink?: boolean | null;
@@ -1235,12 +2416,28 @@ export interface Page {
                       | ({
                           relationTo: 'pages';
                           value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
                         } | null);
                     url?: string | null;
                     email?: string | null;
                     doc?: {
                       relationTo: 'documents';
                       value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
                     } | null;
                     label?: string | null;
                   };
@@ -1290,7 +2487,7 @@ export interface Page {
                           root: {
                             type: string;
                             children: {
-                              type: string;
+                              type: any;
                               version: number;
                               [k: string]: unknown;
                             }[];
@@ -1311,7 +2508,7 @@ export interface Page {
                     root: {
                       type: string;
                       children: {
-                        type: string;
+                        type: any;
                         version: number;
                         [k: string]: unknown;
                       }[];
@@ -1361,7 +2558,7 @@ export interface Page {
             buttons?:
               | {
                   link?: {
-                    type?: ('reference' | 'custom' | 'email' | 'document') | null;
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
                     newTab?: boolean | null;
                     downloadLink?: boolean | null;
                     arrowLink?: boolean | null;
@@ -1379,12 +2576,28 @@ export interface Page {
                       | ({
                           relationTo: 'pages';
                           value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
                         } | null);
                     url?: string | null;
                     email?: string | null;
                     doc?: {
                       relationTo: 'documents';
                       value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
                     } | null;
                     label?: string | null;
                   };
@@ -1402,7 +2615,7 @@ export interface Page {
               root: {
                 type: string;
                 children: {
-                  type: string;
+                  type: any;
                   version: number;
                   [k: string]: unknown;
                 }[];
@@ -1433,7 +2646,7 @@ export interface Page {
                     | {
                         desc?: string | null;
                         link?: {
-                          type?: ('reference' | 'custom' | 'email' | 'document') | null;
+                          type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
                           newTab?: boolean | null;
                           downloadLink?: boolean | null;
                           arrowLink?: boolean | null;
@@ -1451,12 +2664,28 @@ export interface Page {
                             | ({
                                 relationTo: 'pages';
                                 value: number | Page;
+                              } | null)
+                            | ({
+                                relationTo: 'blog';
+                                value: number | Blog;
+                              } | null)
+                            | ({
+                                relationTo: 'reports';
+                                value: number | Report;
+                              } | null)
+                            | ({
+                                relationTo: 'mmedia';
+                                value: number | Mmedia;
                               } | null);
                           url?: string | null;
                           email?: string | null;
                           doc?: {
                             relationTo: 'documents';
                             value: number | Document;
+                          } | null;
+                          etestlink?: {
+                            relationTo: 'etests';
+                            value: number | Etest;
                           } | null;
                           label?: string | null;
                         };
@@ -1487,7 +2716,7 @@ export interface Page {
               root: {
                 type: string;
                 children: {
-                  type: string;
+                  type: any;
                   version: number;
                   [k: string]: unknown;
                 }[];
@@ -1499,7 +2728,7 @@ export interface Page {
               [k: string]: unknown;
             } | null;
             link?: {
-              type?: ('reference' | 'custom' | 'email' | 'document') | null;
+              type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
               newTab?: boolean | null;
               downloadLink?: boolean | null;
               arrowLink?: boolean | null;
@@ -1517,12 +2746,28 @@ export interface Page {
                 | ({
                     relationTo: 'pages';
                     value: number | Page;
+                  } | null)
+                | ({
+                    relationTo: 'blog';
+                    value: number | Blog;
+                  } | null)
+                | ({
+                    relationTo: 'reports';
+                    value: number | Report;
+                  } | null)
+                | ({
+                    relationTo: 'mmedia';
+                    value: number | Mmedia;
                   } | null);
               url?: string | null;
               email?: string | null;
               doc?: {
                 relationTo: 'documents';
                 value: number | Document;
+              } | null;
+              etestlink?: {
+                relationTo: 'etests';
+                value: number | Etest;
               } | null;
               label?: string | null;
             };
@@ -1542,7 +2787,7 @@ export interface Page {
                     root: {
                       type: string;
                       children: {
-                        type: string;
+                        type: any;
                         version: number;
                         [k: string]: unknown;
                       }[];
@@ -1558,7 +2803,7 @@ export interface Page {
                     root: {
                       type: string;
                       children: {
-                        type: string;
+                        type: any;
                         version: number;
                         [k: string]: unknown;
                       }[];
@@ -1601,7 +2846,7 @@ export interface Page {
                       }[]
                     | null;
                   link?: {
-                    type?: ('reference' | 'custom' | 'email' | 'document') | null;
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
                     newTab?: boolean | null;
                     downloadLink?: boolean | null;
                     arrowLink?: boolean | null;
@@ -1619,12 +2864,28 @@ export interface Page {
                       | ({
                           relationTo: 'pages';
                           value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
                         } | null);
                     url?: string | null;
                     email?: string | null;
                     doc?: {
                       relationTo: 'documents';
                       value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
                     } | null;
                     label?: string | null;
                   };
@@ -1634,7 +2895,7 @@ export interface Page {
             buttons?:
               | {
                   link?: {
-                    type?: ('reference' | 'custom' | 'email' | 'document') | null;
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
                     newTab?: boolean | null;
                     downloadLink?: boolean | null;
                     arrowLink?: boolean | null;
@@ -1652,12 +2913,28 @@ export interface Page {
                       | ({
                           relationTo: 'pages';
                           value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
                         } | null);
                     url?: string | null;
                     email?: string | null;
                     doc?: {
                       relationTo: 'documents';
                       value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
                     } | null;
                     label?: string | null;
                   };
@@ -1672,7 +2949,7 @@ export interface Page {
             title?: string | null;
             desc?: string | null;
             link?: {
-              type?: ('reference' | 'custom' | 'email' | 'document') | null;
+              type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
               newTab?: boolean | null;
               downloadLink?: boolean | null;
               arrowLink?: boolean | null;
@@ -1690,12 +2967,28 @@ export interface Page {
                 | ({
                     relationTo: 'pages';
                     value: number | Page;
+                  } | null)
+                | ({
+                    relationTo: 'blog';
+                    value: number | Blog;
+                  } | null)
+                | ({
+                    relationTo: 'reports';
+                    value: number | Report;
+                  } | null)
+                | ({
+                    relationTo: 'mmedia';
+                    value: number | Mmedia;
                   } | null);
               url?: string | null;
               email?: string | null;
               doc?: {
                 relationTo: 'documents';
                 value: number | Document;
+              } | null;
+              etestlink?: {
+                relationTo: 'etests';
+                value: number | Etest;
               } | null;
               label?: string | null;
             };
@@ -1712,7 +3005,7 @@ export interface Page {
                     root: {
                       type: string;
                       children: {
-                        type: string;
+                        type: any;
                         version: number;
                         [k: string]: unknown;
                       }[];
@@ -1732,11 +3025,1672 @@ export interface Page {
           }
       )[]
     | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Recommended file size for images is <500KB. Image must have a minimum width of 800px for optimal social media display and should be a .jpg, .png.
+     */
+    image?: (number | null) | MediaCloud;
+    description?: string | null;
+  };
   publishedAt?: string | null;
   slug?: string | null;
   slugLock?: boolean | null;
+  folder?: (number | null) | FolderInterface;
   updatedAt: string;
   createdAt: string;
+  deletedAt?: string | null;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * Resource categories for Reports, Blogposts and Multimedia Posts
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "doctypes".
+ */
+export interface Doctype {
+  id: number;
+  /**
+   * Enter resource category e.g. Blog, Report, Annual Report, Learning Report, Video, Audio etc.
+   */
+  type: string;
+  /**
+   * All blog posts tagged with this resource category.
+   */
+  relatedBlogPosts?: {
+    docs?: (number | Blog)[];
+    hasNextPage?: boolean;
+    totalDocs?: number;
+  };
+  /**
+   * All reports tagged with this resource category.
+   */
+  relatedReports?: {
+    docs?: (number | Report)[];
+    hasNextPage?: boolean;
+    totalDocs?: number;
+  };
+  /**
+   * All multimedia posts tagged with this resource category.
+   */
+  relatedMMediaPosts?: {
+    docs?: (number | Mmedia)[];
+    hasNextPage?: boolean;
+    totalDocs?: number;
+  };
+  /**
+   * Number of blog posts tagged with this category
+   */
+  blogCount?: number | null;
+  /**
+   * Number of reports tagged with this category
+   */
+  reportCount?: number | null;
+  /**
+   * Number of multimedia posts tagged with this category
+   */
+  mmediaCount?: number | null;
+  updatedAt: string;
+  createdAt: string;
+  deletedAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "reports".
+ */
+export interface Report {
+  id: number;
+  title: string;
+  pageType: 'landing' | 'individual';
+  showFilter?: boolean | null;
+  docType?: (number | Doctype)[] | null;
+  pubDate?: string | null;
+  /**
+   * Upload a cover image for the Report
+   */
+  image?: (number | null) | MediaCloud;
+  heroTitle?: string | null;
+  heroSubtitle?: string | null;
+  heroButtons?:
+    | {
+        link?: {
+          type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+          newTab?: boolean | null;
+          downloadLink?: boolean | null;
+          arrowLink?: boolean | null;
+          pillSolid?: boolean | null;
+          pillOutline?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'grants';
+                value: number | Grant;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null)
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'blog';
+                value: number | Blog;
+              } | null)
+            | ({
+                relationTo: 'reports';
+                value: number | Report;
+              } | null)
+            | ({
+                relationTo: 'mmedia';
+                value: number | Mmedia;
+              } | null);
+          url?: string | null;
+          email?: string | null;
+          doc?: {
+            relationTo: 'documents';
+            value: number | Document;
+          } | null;
+          etestlink?: {
+            relationTo: 'etests';
+            value: number | Etest;
+          } | null;
+          label?: string | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  contentBlocks?:
+    | (
+        | {
+            richText?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'richContentBlock';
+          }
+        | {
+            ctaTitle?: string | null;
+            ctaSubtitle?: string | null;
+            contact?: {
+              label?: string | null;
+              email?: string | null;
+            };
+            uiType?: ('lrg_txt_cta' | 'md_txt_cta' | 'min_cta' | 'puffy_beige_cta') | null;
+            ctaButton?:
+              | {
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
+                    } | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'secondarycta';
+          }
+        | {
+            multicols?:
+              | {
+                  title?: string | null;
+                  colContent?: string | null;
+                  addLink?: boolean | null;
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
+                    } | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'mcolInfoBlock';
+          }
+        | {
+            title?: string | null;
+            desc?: string | null;
+            /**
+             * Grant Cards to display - only active grants (excludes closed grants). You can reorder or remove cards as needed.
+             */
+            grantCardGrid?: (number | Grantcard)[] | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'grantCardGridBlock';
+          }
+        | {
+            title?: string | null;
+            subtitle?: string | null;
+            steps?:
+              | {
+                  stepTitle?: string | null;
+                  title?: string | null;
+                  icon?:
+                    | (
+                        | 'FileText'
+                        | 'Clock'
+                        | 'ShieldCheck'
+                        | 'Vote'
+                        | 'ScrollText'
+                        | 'Banknote'
+                        | 'Rocket'
+                        | 'FileCheck'
+                      )
+                    | null;
+                  /**
+                   * Enter details for the step in bullet form
+                   */
+                  details?:
+                    | {
+                        bullet?: {
+                          root: {
+                            type: string;
+                            children: {
+                              type: any;
+                              version: number;
+                              [k: string]: unknown;
+                            }[];
+                            direction: ('ltr' | 'rtl') | null;
+                            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                            indent: number;
+                            version: number;
+                          };
+                          [k: string]: unknown;
+                        } | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  /**
+                   * Enter any extra information that maybe useful in the step.
+                   */
+                  tip?: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: any;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  } | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'mstepProcess';
+          }
+        | {
+            title?: string | null;
+            desc?: string | null;
+            lftGrp?: {
+              title?: string | null;
+              desc?: string | null;
+              /**
+               * Points in the left column will have a checkmark
+               */
+              lftPoints?:
+                | {
+                    point?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+            };
+            rtGrp?: {
+              title?: string | null;
+              desc?: string | null;
+              /**
+               * Points in the right column will have a cross mark
+               */
+              rtPoints?:
+                | {
+                    point?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+            };
+            buttons?:
+              | {
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
+                    } | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'comparisonBlk';
+          }
+        | {
+            title?: string | null;
+            align?: ('left' | 'center') | null;
+            desc?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            /**
+             * Add yellow cards to be displayed in the deck
+             */
+            cards?:
+              | {
+                  title?: string | null;
+                  subtitle?: string | null;
+                  desc?: string | null;
+                  /**
+                   * Mascot image for the yellow card
+                   */
+                  mascot?: (number | null) | AssetCloud;
+                  /**
+                   * Position of the mascot image on the yellow card
+                   */
+                  mascotPos?: ('top_left' | 'center') | null;
+                  links?:
+                    | {
+                        desc?: string | null;
+                        link?: {
+                          type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+                          newTab?: boolean | null;
+                          downloadLink?: boolean | null;
+                          arrowLink?: boolean | null;
+                          pillSolid?: boolean | null;
+                          pillOutline?: boolean | null;
+                          reference?:
+                            | ({
+                                relationTo: 'grants';
+                                value: number | Grant;
+                              } | null)
+                            | ({
+                                relationTo: 'posts';
+                                value: number | Post;
+                              } | null)
+                            | ({
+                                relationTo: 'pages';
+                                value: number | Page;
+                              } | null)
+                            | ({
+                                relationTo: 'blog';
+                                value: number | Blog;
+                              } | null)
+                            | ({
+                                relationTo: 'reports';
+                                value: number | Report;
+                              } | null)
+                            | ({
+                                relationTo: 'mmedia';
+                                value: number | Mmedia;
+                              } | null);
+                          url?: string | null;
+                          email?: string | null;
+                          doc?: {
+                            relationTo: 'documents';
+                            value: number | Document;
+                          } | null;
+                          etestlink?: {
+                            relationTo: 'etests';
+                            value: number | Etest;
+                          } | null;
+                          label?: string | null;
+                        };
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'ylwDeck';
+          }
+        | {
+            /**
+             * Upload an image for the Feature Card
+             */
+            image?: (number | null) | MediaCloud;
+            title?: string | null;
+            subtitle?: string | null;
+            tags?:
+              | {
+                  tag?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            desc?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            link?: {
+              type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+              newTab?: boolean | null;
+              downloadLink?: boolean | null;
+              arrowLink?: boolean | null;
+              pillSolid?: boolean | null;
+              pillOutline?: boolean | null;
+              reference?:
+                | ({
+                    relationTo: 'grants';
+                    value: number | Grant;
+                  } | null)
+                | ({
+                    relationTo: 'posts';
+                    value: number | Post;
+                  } | null)
+                | ({
+                    relationTo: 'pages';
+                    value: number | Page;
+                  } | null)
+                | ({
+                    relationTo: 'blog';
+                    value: number | Blog;
+                  } | null)
+                | ({
+                    relationTo: 'reports';
+                    value: number | Report;
+                  } | null)
+                | ({
+                    relationTo: 'mmedia';
+                    value: number | Mmedia;
+                  } | null);
+              url?: string | null;
+              email?: string | null;
+              doc?: {
+                relationTo: 'documents';
+                value: number | Document;
+              } | null;
+              etestlink?: {
+                relationTo: 'etests';
+                value: number | Etest;
+              } | null;
+              label?: string | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featCrd';
+          }
+        | {
+            /**
+             * Title for the block
+             */
+            title?: string | null;
+            featCrds?:
+              | {
+                  accTitle?: string | null;
+                  accContent?: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: any;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  } | null;
+                  crdTag?: string | null;
+                  crdContent?: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: any;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  } | null;
+                  /**
+                   * Upload a mascot image for the feature card
+                   */
+                  mascot?: (number | null) | AssetCloud;
+                  /**
+                   * Select a colour for the Feature Card background.
+                   */
+                  crdColour?: ('forest' | 'turmeric' | 'sky' | 'rose' | 'lavender' | 'fire') | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featCrdAcc';
+          }
+        | {
+            title?: string | null;
+            /**
+             * Add listing cards to be displayed in the deck
+             */
+            cards?:
+              | {
+                  title?: string | null;
+                  desc?: string | null;
+                  image?: (number | null) | MediaCloud;
+                  tags?:
+                    | {
+                        tag?: string | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
+                    } | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            buttons?:
+              | {
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
+                    } | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'listCrdDck';
+          }
+        | {
+            title?: string | null;
+            desc?: string | null;
+            link?: {
+              type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+              newTab?: boolean | null;
+              downloadLink?: boolean | null;
+              arrowLink?: boolean | null;
+              pillSolid?: boolean | null;
+              pillOutline?: boolean | null;
+              reference?:
+                | ({
+                    relationTo: 'grants';
+                    value: number | Grant;
+                  } | null)
+                | ({
+                    relationTo: 'posts';
+                    value: number | Post;
+                  } | null)
+                | ({
+                    relationTo: 'pages';
+                    value: number | Page;
+                  } | null)
+                | ({
+                    relationTo: 'blog';
+                    value: number | Blog;
+                  } | null)
+                | ({
+                    relationTo: 'reports';
+                    value: number | Report;
+                  } | null)
+                | ({
+                    relationTo: 'mmedia';
+                    value: number | Mmedia;
+                  } | null);
+              url?: string | null;
+              email?: string | null;
+              doc?: {
+                relationTo: 'documents';
+                value: number | Document;
+              } | null;
+              etestlink?: {
+                relationTo: 'etests';
+                value: number | Etest;
+              } | null;
+              label?: string | null;
+            };
+            /**
+             * Add frequently asked questions to be displayed in this section
+             */
+            faqs?:
+              | {
+                  question?: string | null;
+                  /**
+                   * Provide a detailed answer to the question
+                   */
+                  answer?: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: any;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  } | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'faqBlk';
+          }
+      )[]
+    | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Recommended file size for images is <500KB. Image must have a minimum width of 800px for optimal social media display and should be a .jpg, .png.
+     */
+    image?: (number | null) | MediaCloud;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  folder?: (number | null) | FolderInterface;
+  updatedAt: string;
+  createdAt: string;
+  deletedAt?: string | null;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "mmedia".
+ */
+export interface Mmedia {
+  id: number;
+  title: string;
+  pageType: 'landing' | 'individual';
+  showFilter?: boolean | null;
+  docType?: (number | Doctype)[] | null;
+  /**
+   * Upload a cover image for the Multimedia Post
+   */
+  image?: (number | null) | MediaCloud;
+  heroTitle?: string | null;
+  heroSubtitle?: string | null;
+  heroButtons?:
+    | {
+        link?: {
+          type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+          newTab?: boolean | null;
+          downloadLink?: boolean | null;
+          arrowLink?: boolean | null;
+          pillSolid?: boolean | null;
+          pillOutline?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'grants';
+                value: number | Grant;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null)
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'blog';
+                value: number | Blog;
+              } | null)
+            | ({
+                relationTo: 'reports';
+                value: number | Report;
+              } | null)
+            | ({
+                relationTo: 'mmedia';
+                value: number | Mmedia;
+              } | null);
+          url?: string | null;
+          email?: string | null;
+          doc?: {
+            relationTo: 'documents';
+            value: number | Document;
+          } | null;
+          etestlink?: {
+            relationTo: 'etests';
+            value: number | Etest;
+          } | null;
+          label?: string | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  contentBlocks?:
+    | (
+        | {
+            richText?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'richContentBlock';
+          }
+        | {
+            ctaTitle?: string | null;
+            ctaSubtitle?: string | null;
+            contact?: {
+              label?: string | null;
+              email?: string | null;
+            };
+            uiType?: ('lrg_txt_cta' | 'md_txt_cta' | 'min_cta' | 'puffy_beige_cta') | null;
+            ctaButton?:
+              | {
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
+                    } | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'secondarycta';
+          }
+        | {
+            multicols?:
+              | {
+                  title?: string | null;
+                  colContent?: string | null;
+                  addLink?: boolean | null;
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
+                    } | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'mcolInfoBlock';
+          }
+        | {
+            title?: string | null;
+            desc?: string | null;
+            /**
+             * Grant Cards to display - only active grants (excludes closed grants). You can reorder or remove cards as needed.
+             */
+            grantCardGrid?: (number | Grantcard)[] | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'grantCardGridBlock';
+          }
+        | {
+            title?: string | null;
+            subtitle?: string | null;
+            steps?:
+              | {
+                  stepTitle?: string | null;
+                  title?: string | null;
+                  icon?:
+                    | (
+                        | 'FileText'
+                        | 'Clock'
+                        | 'ShieldCheck'
+                        | 'Vote'
+                        | 'ScrollText'
+                        | 'Banknote'
+                        | 'Rocket'
+                        | 'FileCheck'
+                      )
+                    | null;
+                  /**
+                   * Enter details for the step in bullet form
+                   */
+                  details?:
+                    | {
+                        bullet?: {
+                          root: {
+                            type: string;
+                            children: {
+                              type: any;
+                              version: number;
+                              [k: string]: unknown;
+                            }[];
+                            direction: ('ltr' | 'rtl') | null;
+                            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                            indent: number;
+                            version: number;
+                          };
+                          [k: string]: unknown;
+                        } | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  /**
+                   * Enter any extra information that maybe useful in the step.
+                   */
+                  tip?: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: any;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  } | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'mstepProcess';
+          }
+        | {
+            title?: string | null;
+            desc?: string | null;
+            lftGrp?: {
+              title?: string | null;
+              desc?: string | null;
+              /**
+               * Points in the left column will have a checkmark
+               */
+              lftPoints?:
+                | {
+                    point?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+            };
+            rtGrp?: {
+              title?: string | null;
+              desc?: string | null;
+              /**
+               * Points in the right column will have a cross mark
+               */
+              rtPoints?:
+                | {
+                    point?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+            };
+            buttons?:
+              | {
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
+                    } | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'comparisonBlk';
+          }
+        | {
+            title?: string | null;
+            align?: ('left' | 'center') | null;
+            desc?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            /**
+             * Add yellow cards to be displayed in the deck
+             */
+            cards?:
+              | {
+                  title?: string | null;
+                  subtitle?: string | null;
+                  desc?: string | null;
+                  /**
+                   * Mascot image for the yellow card
+                   */
+                  mascot?: (number | null) | AssetCloud;
+                  /**
+                   * Position of the mascot image on the yellow card
+                   */
+                  mascotPos?: ('top_left' | 'center') | null;
+                  links?:
+                    | {
+                        desc?: string | null;
+                        link?: {
+                          type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+                          newTab?: boolean | null;
+                          downloadLink?: boolean | null;
+                          arrowLink?: boolean | null;
+                          pillSolid?: boolean | null;
+                          pillOutline?: boolean | null;
+                          reference?:
+                            | ({
+                                relationTo: 'grants';
+                                value: number | Grant;
+                              } | null)
+                            | ({
+                                relationTo: 'posts';
+                                value: number | Post;
+                              } | null)
+                            | ({
+                                relationTo: 'pages';
+                                value: number | Page;
+                              } | null)
+                            | ({
+                                relationTo: 'blog';
+                                value: number | Blog;
+                              } | null)
+                            | ({
+                                relationTo: 'reports';
+                                value: number | Report;
+                              } | null)
+                            | ({
+                                relationTo: 'mmedia';
+                                value: number | Mmedia;
+                              } | null);
+                          url?: string | null;
+                          email?: string | null;
+                          doc?: {
+                            relationTo: 'documents';
+                            value: number | Document;
+                          } | null;
+                          etestlink?: {
+                            relationTo: 'etests';
+                            value: number | Etest;
+                          } | null;
+                          label?: string | null;
+                        };
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'ylwDeck';
+          }
+        | {
+            /**
+             * Upload an image for the Feature Card
+             */
+            image?: (number | null) | MediaCloud;
+            title?: string | null;
+            subtitle?: string | null;
+            tags?:
+              | {
+                  tag?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            desc?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            link?: {
+              type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+              newTab?: boolean | null;
+              downloadLink?: boolean | null;
+              arrowLink?: boolean | null;
+              pillSolid?: boolean | null;
+              pillOutline?: boolean | null;
+              reference?:
+                | ({
+                    relationTo: 'grants';
+                    value: number | Grant;
+                  } | null)
+                | ({
+                    relationTo: 'posts';
+                    value: number | Post;
+                  } | null)
+                | ({
+                    relationTo: 'pages';
+                    value: number | Page;
+                  } | null)
+                | ({
+                    relationTo: 'blog';
+                    value: number | Blog;
+                  } | null)
+                | ({
+                    relationTo: 'reports';
+                    value: number | Report;
+                  } | null)
+                | ({
+                    relationTo: 'mmedia';
+                    value: number | Mmedia;
+                  } | null);
+              url?: string | null;
+              email?: string | null;
+              doc?: {
+                relationTo: 'documents';
+                value: number | Document;
+              } | null;
+              etestlink?: {
+                relationTo: 'etests';
+                value: number | Etest;
+              } | null;
+              label?: string | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featCrd';
+          }
+        | {
+            /**
+             * Title for the block
+             */
+            title?: string | null;
+            featCrds?:
+              | {
+                  accTitle?: string | null;
+                  accContent?: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: any;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  } | null;
+                  crdTag?: string | null;
+                  crdContent?: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: any;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  } | null;
+                  /**
+                   * Upload a mascot image for the feature card
+                   */
+                  mascot?: (number | null) | AssetCloud;
+                  /**
+                   * Select a colour for the Feature Card background.
+                   */
+                  crdColour?: ('forest' | 'turmeric' | 'sky' | 'rose' | 'lavender' | 'fire') | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featCrdAcc';
+          }
+        | {
+            title?: string | null;
+            /**
+             * Add listing cards to be displayed in the deck
+             */
+            cards?:
+              | {
+                  title?: string | null;
+                  desc?: string | null;
+                  image?: (number | null) | MediaCloud;
+                  tags?:
+                    | {
+                        tag?: string | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
+                    } | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            buttons?:
+              | {
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
+                    } | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'listCrdDck';
+          }
+        | {
+            title?: string | null;
+            desc?: string | null;
+            link?: {
+              type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+              newTab?: boolean | null;
+              downloadLink?: boolean | null;
+              arrowLink?: boolean | null;
+              pillSolid?: boolean | null;
+              pillOutline?: boolean | null;
+              reference?:
+                | ({
+                    relationTo: 'grants';
+                    value: number | Grant;
+                  } | null)
+                | ({
+                    relationTo: 'posts';
+                    value: number | Post;
+                  } | null)
+                | ({
+                    relationTo: 'pages';
+                    value: number | Page;
+                  } | null)
+                | ({
+                    relationTo: 'blog';
+                    value: number | Blog;
+                  } | null)
+                | ({
+                    relationTo: 'reports';
+                    value: number | Report;
+                  } | null)
+                | ({
+                    relationTo: 'mmedia';
+                    value: number | Mmedia;
+                  } | null);
+              url?: string | null;
+              email?: string | null;
+              doc?: {
+                relationTo: 'documents';
+                value: number | Document;
+              } | null;
+              etestlink?: {
+                relationTo: 'etests';
+                value: number | Etest;
+              } | null;
+              label?: string | null;
+            };
+            /**
+             * Add frequently asked questions to be displayed in this section
+             */
+            faqs?:
+              | {
+                  question?: string | null;
+                  /**
+                   * Provide a detailed answer to the question
+                   */
+                  answer?: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: any;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  } | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'faqBlk';
+          }
+      )[]
+    | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Recommended file size for images is <500KB. Image must have a minimum width of 800px for optimal social media display and should be a .jpg, .png.
+     */
+    image?: (number | null) | MediaCloud;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  folder?: (number | null) | FolderInterface;
+  updatedAt: string;
+  createdAt: string;
+  deletedAt?: string | null;
   _status?: ('draft' | 'published') | null;
 }
 /**
@@ -1749,8 +4703,10 @@ export interface Document {
   id: number;
   alt: string;
   caption?: string | null;
+  folder?: (number | null) | FolderInterface;
   updatedAt: string;
   createdAt: string;
+  deletedAt?: string | null;
   url?: string | null;
   thumbnailURL?: string | null;
   filename?: string | null;
@@ -1763,16 +4719,197 @@ export interface Document {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "doctypes".
+ * via the `definition` "etests".
  */
-export interface Doctype {
+export interface Etest {
   id: number;
-  /**
-   * Enter resource type e.g. Blog, Report, Annual Report, Learning Report, Video, Audio etc.
-   */
-  type: string;
+  testName: string;
+  introCard: {
+    introTitle: string;
+    introDesc?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+  };
+  critList?: {
+    criteria?:
+      | {
+          question: string;
+          reason?: string | null;
+          options?:
+            | {
+                optionText: string;
+                isEligible?: boolean | null;
+                isCustom?: boolean | null;
+                customResponse?: {
+                  root: {
+                    type: string;
+                    children: {
+                      type: any;
+                      version: number;
+                      [k: string]: unknown;
+                    }[];
+                    direction: ('ltr' | 'rtl') | null;
+                    format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                    indent: number;
+                    version: number;
+                  };
+                  [k: string]: unknown;
+                } | null;
+                id?: string | null;
+              }[]
+            | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  isECard: {
+    isETitle: string;
+    isEDesc?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    isELink?: {
+      link?: {
+        type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+        newTab?: boolean | null;
+        downloadLink?: boolean | null;
+        arrowLink?: boolean | null;
+        pillSolid?: boolean | null;
+        pillOutline?: boolean | null;
+        reference?:
+          | ({
+              relationTo: 'grants';
+              value: number | Grant;
+            } | null)
+          | ({
+              relationTo: 'posts';
+              value: number | Post;
+            } | null)
+          | ({
+              relationTo: 'pages';
+              value: number | Page;
+            } | null)
+          | ({
+              relationTo: 'blog';
+              value: number | Blog;
+            } | null)
+          | ({
+              relationTo: 'reports';
+              value: number | Report;
+            } | null)
+          | ({
+              relationTo: 'mmedia';
+              value: number | Mmedia;
+            } | null);
+        url?: string | null;
+        email?: string | null;
+        doc?: {
+          relationTo: 'documents';
+          value: number | Document;
+        } | null;
+        etestlink?: {
+          relationTo: 'etests';
+          value: number | Etest;
+        } | null;
+        label?: string | null;
+      };
+    };
+    isEMascot?: (number | null) | AssetCloud;
+  };
+  notECard: {
+    notETitle: string;
+    notEDesc?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    notELink?: {
+      link?: {
+        type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+        newTab?: boolean | null;
+        downloadLink?: boolean | null;
+        arrowLink?: boolean | null;
+        pillSolid?: boolean | null;
+        pillOutline?: boolean | null;
+        reference?:
+          | ({
+              relationTo: 'grants';
+              value: number | Grant;
+            } | null)
+          | ({
+              relationTo: 'posts';
+              value: number | Post;
+            } | null)
+          | ({
+              relationTo: 'pages';
+              value: number | Page;
+            } | null)
+          | ({
+              relationTo: 'blog';
+              value: number | Blog;
+            } | null)
+          | ({
+              relationTo: 'reports';
+              value: number | Report;
+            } | null)
+          | ({
+              relationTo: 'mmedia';
+              value: number | Mmedia;
+            } | null);
+        url?: string | null;
+        email?: string | null;
+        doc?: {
+          relationTo: 'documents';
+          value: number | Document;
+        } | null;
+        etestlink?: {
+          relationTo: 'etests';
+          value: number | Etest;
+        } | null;
+        label?: string | null;
+      };
+    };
+    notEMascot?: (number | null) | AssetCloud;
+  };
+  slug?: string | null;
+  slugLock?: boolean | null;
   updatedAt: string;
   createdAt: string;
+  deletedAt?: string | null;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1786,10 +4923,27 @@ export interface Redirect {
   from: string;
   to?: {
     type?: ('reference' | 'custom') | null;
-    reference?: {
-      relationTo: 'posts';
-      value: number | Post;
-    } | null;
+    reference?:
+      | ({
+          relationTo: 'posts';
+          value: number | Post;
+        } | null)
+      | ({
+          relationTo: 'pages';
+          value: number | Page;
+        } | null)
+      | ({
+          relationTo: 'reports';
+          value: number | Report;
+        } | null)
+      | ({
+          relationTo: 'blog';
+          value: number | Blog;
+        } | null)
+      | ({
+          relationTo: 'mmedia';
+          value: number | Mmedia;
+        } | null);
     url?: string | null;
   };
   updatedAt: string;
@@ -1837,7 +4991,7 @@ export interface Form {
               root: {
                 type: string;
                 children: {
-                  type: string;
+                  type: any;
                   version: number;
                   [k: string]: unknown;
                 }[];
@@ -1920,7 +5074,7 @@ export interface Form {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -1952,7 +5106,7 @@ export interface Form {
           root: {
             type: string;
             children: {
-              type: string;
+              type: any;
               version: number;
               [k: string]: unknown;
             }[];
@@ -1996,10 +5150,27 @@ export interface Search {
   id: number;
   title?: string | null;
   priority?: number | null;
-  doc: {
-    relationTo: 'posts';
-    value: number | Post;
-  };
+  doc:
+    | {
+        relationTo: 'posts';
+        value: number | Post;
+      }
+    | {
+        relationTo: 'pages';
+        value: number | Page;
+      }
+    | {
+        relationTo: 'reports';
+        value: number | Report;
+      }
+    | {
+        relationTo: 'blog';
+        value: number | Blog;
+      }
+    | {
+        relationTo: 'mmedia';
+        value: number | Mmedia;
+      };
   slug?: string | null;
   meta?: {
     title?: string | null;
@@ -2018,6 +5189,23 @@ export interface Search {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-kv".
+ */
+export interface PayloadKv {
+  id: number;
+  key: string;
+  data:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -2032,16 +5220,28 @@ export interface PayloadLockedDocument {
         value: number | Grantcard;
       } | null)
     | ({
+        relationTo: 'etests';
+        value: number | Etest;
+      } | null)
+    | ({
         relationTo: 'pages';
         value: number | Page;
       } | null)
     | ({
-        relationTo: 'doctypes';
-        value: number | Doctype;
+        relationTo: 'blog';
+        value: number | Blog;
       } | null)
     | ({
-        relationTo: 'posts';
-        value: number | Post;
+        relationTo: 'reports';
+        value: number | Report;
+      } | null)
+    | ({
+        relationTo: 'mmedia';
+        value: number | Mmedia;
+      } | null)
+    | ({
+        relationTo: 'doctypes';
+        value: number | Doctype;
       } | null)
     | ({
         relationTo: 'mediaCloud';
@@ -2054,6 +5254,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'documents';
         value: number | Document;
+      } | null)
+    | ({
+        relationTo: 'posts';
+        value: number | Post;
       } | null)
     | ({
         relationTo: 'categories';
@@ -2078,6 +5282,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'search';
         value: number | Search;
+      } | null)
+    | ({
+        relationTo: 'payload-folders';
+        value: number | FolderInterface;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -2148,6 +5356,7 @@ export interface GrantsSelect<T extends boolean = true> {
               url?: T;
               email?: T;
               doc?: T;
+              etestlink?: T;
               label?: T;
             };
         id?: T;
@@ -2196,6 +5405,7 @@ export interface GrantsSelect<T extends boolean = true> {
                           url?: T;
                           email?: T;
                           doc?: T;
+                          etestlink?: T;
                           label?: T;
                         };
                     id?: T;
@@ -2225,6 +5435,7 @@ export interface GrantsSelect<T extends boolean = true> {
                           url?: T;
                           email?: T;
                           doc?: T;
+                          etestlink?: T;
                           label?: T;
                         };
                     id?: T;
@@ -2309,6 +5520,7 @@ export interface GrantsSelect<T extends boolean = true> {
                           url?: T;
                           email?: T;
                           doc?: T;
+                          etestlink?: T;
                           label?: T;
                         };
                     id?: T;
@@ -2347,6 +5559,7 @@ export interface GrantsSelect<T extends boolean = true> {
                                 url?: T;
                                 email?: T;
                                 doc?: T;
+                                etestlink?: T;
                                 label?: T;
                               };
                           id?: T;
@@ -2382,6 +5595,7 @@ export interface GrantsSelect<T extends boolean = true> {
                     url?: T;
                     email?: T;
                     doc?: T;
+                    etestlink?: T;
                     label?: T;
                   };
               id?: T;
@@ -2434,6 +5648,7 @@ export interface GrantsSelect<T extends boolean = true> {
                           url?: T;
                           email?: T;
                           doc?: T;
+                          etestlink?: T;
                           label?: T;
                         };
                     id?: T;
@@ -2454,6 +5669,7 @@ export interface GrantsSelect<T extends boolean = true> {
                           url?: T;
                           email?: T;
                           doc?: T;
+                          etestlink?: T;
                           label?: T;
                         };
                     id?: T;
@@ -2479,6 +5695,7 @@ export interface GrantsSelect<T extends boolean = true> {
                     url?: T;
                     email?: T;
                     doc?: T;
+                    etestlink?: T;
                     label?: T;
                   };
               faqs?:
@@ -2492,11 +5709,20 @@ export interface GrantsSelect<T extends boolean = true> {
               blockName?: T;
             };
       };
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
   publishedAt?: T;
   slug?: T;
   slugLock?: T;
+  folder?: T;
   updatedAt?: T;
   createdAt?: T;
+  deletedAt?: T;
   _status?: T;
 }
 /**
@@ -2511,6 +5737,7 @@ export interface GrantcardsSelect<T extends boolean = true> {
   activePeriod?: T;
   startDate?: T;
   endDate?: T;
+  msg?: T;
   cardColour?: T;
   mascot?: T;
   grantSpecs?:
@@ -2536,14 +5763,110 @@ export interface GrantcardsSelect<T extends boolean = true> {
               url?: T;
               email?: T;
               doc?: T;
+              etestlink?: T;
               label?: T;
             };
         id?: T;
       };
   slug?: T;
   slugLock?: T;
+  folder?: T;
   updatedAt?: T;
   createdAt?: T;
+  deletedAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "etests_select".
+ */
+export interface EtestsSelect<T extends boolean = true> {
+  testName?: T;
+  introCard?:
+    | T
+    | {
+        introTitle?: T;
+        introDesc?: T;
+      };
+  critList?:
+    | T
+    | {
+        criteria?:
+          | T
+          | {
+              question?: T;
+              reason?: T;
+              options?:
+                | T
+                | {
+                    optionText?: T;
+                    isEligible?: T;
+                    isCustom?: T;
+                    customResponse?: T;
+                    id?: T;
+                  };
+              id?: T;
+            };
+      };
+  isECard?:
+    | T
+    | {
+        isETitle?: T;
+        isEDesc?: T;
+        isELink?:
+          | T
+          | {
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    downloadLink?: T;
+                    arrowLink?: T;
+                    pillSolid?: T;
+                    pillOutline?: T;
+                    reference?: T;
+                    url?: T;
+                    email?: T;
+                    doc?: T;
+                    etestlink?: T;
+                    label?: T;
+                  };
+            };
+        isEMascot?: T;
+      };
+  notECard?:
+    | T
+    | {
+        notETitle?: T;
+        notEDesc?: T;
+        notELink?:
+          | T
+          | {
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    downloadLink?: T;
+                    arrowLink?: T;
+                    pillSolid?: T;
+                    pillOutline?: T;
+                    reference?: T;
+                    url?: T;
+                    email?: T;
+                    doc?: T;
+                    etestlink?: T;
+                    label?: T;
+                  };
+            };
+        notEMascot?: T;
+      };
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  deletedAt?: T;
   _status?: T;
 }
 /**
@@ -2575,6 +5898,7 @@ export interface PagesSelect<T extends boolean = true> {
               url?: T;
               email?: T;
               doc?: T;
+              etestlink?: T;
               label?: T;
             };
         id?: T;
@@ -2582,6 +5906,13 @@ export interface PagesSelect<T extends boolean = true> {
   contentBlocks?:
     | T
     | {
+        richContentBlock?:
+          | T
+          | {
+              richText?: T;
+              id?: T;
+              blockName?: T;
+            };
         secondarycta?:
           | T
           | {
@@ -2610,6 +5941,7 @@ export interface PagesSelect<T extends boolean = true> {
                           url?: T;
                           email?: T;
                           doc?: T;
+                          etestlink?: T;
                           label?: T;
                         };
                     id?: T;
@@ -2639,6 +5971,7 @@ export interface PagesSelect<T extends boolean = true> {
                           url?: T;
                           email?: T;
                           doc?: T;
+                          etestlink?: T;
                           label?: T;
                         };
                     id?: T;
@@ -2723,6 +6056,7 @@ export interface PagesSelect<T extends boolean = true> {
                           url?: T;
                           email?: T;
                           doc?: T;
+                          etestlink?: T;
                           label?: T;
                         };
                     id?: T;
@@ -2761,6 +6095,7 @@ export interface PagesSelect<T extends boolean = true> {
                                 url?: T;
                                 email?: T;
                                 doc?: T;
+                                etestlink?: T;
                                 label?: T;
                               };
                           id?: T;
@@ -2796,6 +6131,7 @@ export interface PagesSelect<T extends boolean = true> {
                     url?: T;
                     email?: T;
                     doc?: T;
+                    etestlink?: T;
                     label?: T;
                   };
               id?: T;
@@ -2848,6 +6184,7 @@ export interface PagesSelect<T extends boolean = true> {
                           url?: T;
                           email?: T;
                           doc?: T;
+                          etestlink?: T;
                           label?: T;
                         };
                     id?: T;
@@ -2868,6 +6205,7 @@ export interface PagesSelect<T extends boolean = true> {
                           url?: T;
                           email?: T;
                           doc?: T;
+                          etestlink?: T;
                           label?: T;
                         };
                     id?: T;
@@ -2893,6 +6231,7 @@ export interface PagesSelect<T extends boolean = true> {
                     url?: T;
                     email?: T;
                     doc?: T;
+                    etestlink?: T;
                     label?: T;
                   };
               faqs?:
@@ -2906,31 +6245,6 @@ export interface PagesSelect<T extends boolean = true> {
               blockName?: T;
             };
       };
-  publishedAt?: T;
-  slug?: T;
-  slugLock?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  _status?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "doctypes_select".
- */
-export interface DoctypesSelect<T extends boolean = true> {
-  type?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "posts_select".
- */
-export interface PostsSelect<T extends boolean = true> {
-  title?: T;
-  content?: T;
-  relatedPosts?: T;
-  categories?: T;
   meta?:
     | T
     | {
@@ -2939,18 +6253,1203 @@ export interface PostsSelect<T extends boolean = true> {
         description?: T;
       };
   publishedAt?: T;
-  authors?: T;
-  populatedAuthors?:
-    | T
-    | {
-        id?: T;
-        name?: T;
-      };
   slug?: T;
   slugLock?: T;
+  folder?: T;
   updatedAt?: T;
   createdAt?: T;
+  deletedAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blog_select".
+ */
+export interface BlogSelect<T extends boolean = true> {
+  title?: T;
+  pageType?: T;
+  showFilter?: T;
+  docType?: T;
+  image?: T;
+  heroTitle?: T;
+  heroSubtitle?: T;
+  heroButtons?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              downloadLink?: T;
+              arrowLink?: T;
+              pillSolid?: T;
+              pillOutline?: T;
+              reference?: T;
+              url?: T;
+              email?: T;
+              doc?: T;
+              etestlink?: T;
+              label?: T;
+            };
+        id?: T;
+      };
+  contentBlocks?:
+    | T
+    | {
+        richContentBlock?:
+          | T
+          | {
+              richText?: T;
+              id?: T;
+              blockName?: T;
+            };
+        secondarycta?:
+          | T
+          | {
+              ctaTitle?: T;
+              ctaSubtitle?: T;
+              contact?:
+                | T
+                | {
+                    label?: T;
+                    email?: T;
+                  };
+              uiType?: T;
+              ctaButton?:
+                | T
+                | {
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          doc?: T;
+                          etestlink?: T;
+                          label?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        mcolInfoBlock?:
+          | T
+          | {
+              multicols?:
+                | T
+                | {
+                    title?: T;
+                    colContent?: T;
+                    addLink?: T;
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          doc?: T;
+                          etestlink?: T;
+                          label?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        grantCardGridBlock?:
+          | T
+          | {
+              title?: T;
+              desc?: T;
+              grantCardGrid?: T;
+              id?: T;
+              blockName?: T;
+            };
+        mstepProcess?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              steps?:
+                | T
+                | {
+                    stepTitle?: T;
+                    title?: T;
+                    icon?: T;
+                    details?:
+                      | T
+                      | {
+                          bullet?: T;
+                          id?: T;
+                        };
+                    tip?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        comparisonBlk?:
+          | T
+          | {
+              title?: T;
+              desc?: T;
+              lftGrp?:
+                | T
+                | {
+                    title?: T;
+                    desc?: T;
+                    lftPoints?:
+                      | T
+                      | {
+                          point?: T;
+                          id?: T;
+                        };
+                  };
+              rtGrp?:
+                | T
+                | {
+                    title?: T;
+                    desc?: T;
+                    rtPoints?:
+                      | T
+                      | {
+                          point?: T;
+                          id?: T;
+                        };
+                  };
+              buttons?:
+                | T
+                | {
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          doc?: T;
+                          etestlink?: T;
+                          label?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        ylwDeck?:
+          | T
+          | {
+              title?: T;
+              align?: T;
+              desc?: T;
+              cards?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    desc?: T;
+                    mascot?: T;
+                    mascotPos?: T;
+                    links?:
+                      | T
+                      | {
+                          desc?: T;
+                          link?:
+                            | T
+                            | {
+                                type?: T;
+                                newTab?: T;
+                                downloadLink?: T;
+                                arrowLink?: T;
+                                pillSolid?: T;
+                                pillOutline?: T;
+                                reference?: T;
+                                url?: T;
+                                email?: T;
+                                doc?: T;
+                                etestlink?: T;
+                                label?: T;
+                              };
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        featCrd?:
+          | T
+          | {
+              image?: T;
+              title?: T;
+              subtitle?: T;
+              tags?:
+                | T
+                | {
+                    tag?: T;
+                    id?: T;
+                  };
+              desc?: T;
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    downloadLink?: T;
+                    arrowLink?: T;
+                    pillSolid?: T;
+                    pillOutline?: T;
+                    reference?: T;
+                    url?: T;
+                    email?: T;
+                    doc?: T;
+                    etestlink?: T;
+                    label?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        featCrdAcc?:
+          | T
+          | {
+              title?: T;
+              featCrds?:
+                | T
+                | {
+                    accTitle?: T;
+                    accContent?: T;
+                    crdTag?: T;
+                    crdContent?: T;
+                    mascot?: T;
+                    crdColour?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        listCrdDck?:
+          | T
+          | {
+              title?: T;
+              cards?:
+                | T
+                | {
+                    title?: T;
+                    desc?: T;
+                    image?: T;
+                    tags?:
+                      | T
+                      | {
+                          tag?: T;
+                          id?: T;
+                        };
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          doc?: T;
+                          etestlink?: T;
+                          label?: T;
+                        };
+                    id?: T;
+                  };
+              buttons?:
+                | T
+                | {
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          doc?: T;
+                          etestlink?: T;
+                          label?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        faqBlk?:
+          | T
+          | {
+              title?: T;
+              desc?: T;
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    downloadLink?: T;
+                    arrowLink?: T;
+                    pillSolid?: T;
+                    pillOutline?: T;
+                    reference?: T;
+                    url?: T;
+                    email?: T;
+                    doc?: T;
+                    etestlink?: T;
+                    label?: T;
+                  };
+              faqs?:
+                | T
+                | {
+                    question?: T;
+                    answer?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+      };
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  publishedAt?: T;
+  slug?: T;
+  slugLock?: T;
+  folder?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  deletedAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "reports_select".
+ */
+export interface ReportsSelect<T extends boolean = true> {
+  title?: T;
+  pageType?: T;
+  showFilter?: T;
+  docType?: T;
+  pubDate?: T;
+  image?: T;
+  heroTitle?: T;
+  heroSubtitle?: T;
+  heroButtons?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              downloadLink?: T;
+              arrowLink?: T;
+              pillSolid?: T;
+              pillOutline?: T;
+              reference?: T;
+              url?: T;
+              email?: T;
+              doc?: T;
+              etestlink?: T;
+              label?: T;
+            };
+        id?: T;
+      };
+  contentBlocks?:
+    | T
+    | {
+        richContentBlock?:
+          | T
+          | {
+              richText?: T;
+              id?: T;
+              blockName?: T;
+            };
+        secondarycta?:
+          | T
+          | {
+              ctaTitle?: T;
+              ctaSubtitle?: T;
+              contact?:
+                | T
+                | {
+                    label?: T;
+                    email?: T;
+                  };
+              uiType?: T;
+              ctaButton?:
+                | T
+                | {
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          doc?: T;
+                          etestlink?: T;
+                          label?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        mcolInfoBlock?:
+          | T
+          | {
+              multicols?:
+                | T
+                | {
+                    title?: T;
+                    colContent?: T;
+                    addLink?: T;
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          doc?: T;
+                          etestlink?: T;
+                          label?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        grantCardGridBlock?:
+          | T
+          | {
+              title?: T;
+              desc?: T;
+              grantCardGrid?: T;
+              id?: T;
+              blockName?: T;
+            };
+        mstepProcess?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              steps?:
+                | T
+                | {
+                    stepTitle?: T;
+                    title?: T;
+                    icon?: T;
+                    details?:
+                      | T
+                      | {
+                          bullet?: T;
+                          id?: T;
+                        };
+                    tip?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        comparisonBlk?:
+          | T
+          | {
+              title?: T;
+              desc?: T;
+              lftGrp?:
+                | T
+                | {
+                    title?: T;
+                    desc?: T;
+                    lftPoints?:
+                      | T
+                      | {
+                          point?: T;
+                          id?: T;
+                        };
+                  };
+              rtGrp?:
+                | T
+                | {
+                    title?: T;
+                    desc?: T;
+                    rtPoints?:
+                      | T
+                      | {
+                          point?: T;
+                          id?: T;
+                        };
+                  };
+              buttons?:
+                | T
+                | {
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          doc?: T;
+                          etestlink?: T;
+                          label?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        ylwDeck?:
+          | T
+          | {
+              title?: T;
+              align?: T;
+              desc?: T;
+              cards?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    desc?: T;
+                    mascot?: T;
+                    mascotPos?: T;
+                    links?:
+                      | T
+                      | {
+                          desc?: T;
+                          link?:
+                            | T
+                            | {
+                                type?: T;
+                                newTab?: T;
+                                downloadLink?: T;
+                                arrowLink?: T;
+                                pillSolid?: T;
+                                pillOutline?: T;
+                                reference?: T;
+                                url?: T;
+                                email?: T;
+                                doc?: T;
+                                etestlink?: T;
+                                label?: T;
+                              };
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        featCrd?:
+          | T
+          | {
+              image?: T;
+              title?: T;
+              subtitle?: T;
+              tags?:
+                | T
+                | {
+                    tag?: T;
+                    id?: T;
+                  };
+              desc?: T;
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    downloadLink?: T;
+                    arrowLink?: T;
+                    pillSolid?: T;
+                    pillOutline?: T;
+                    reference?: T;
+                    url?: T;
+                    email?: T;
+                    doc?: T;
+                    etestlink?: T;
+                    label?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        featCrdAcc?:
+          | T
+          | {
+              title?: T;
+              featCrds?:
+                | T
+                | {
+                    accTitle?: T;
+                    accContent?: T;
+                    crdTag?: T;
+                    crdContent?: T;
+                    mascot?: T;
+                    crdColour?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        listCrdDck?:
+          | T
+          | {
+              title?: T;
+              cards?:
+                | T
+                | {
+                    title?: T;
+                    desc?: T;
+                    image?: T;
+                    tags?:
+                      | T
+                      | {
+                          tag?: T;
+                          id?: T;
+                        };
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          doc?: T;
+                          etestlink?: T;
+                          label?: T;
+                        };
+                    id?: T;
+                  };
+              buttons?:
+                | T
+                | {
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          doc?: T;
+                          etestlink?: T;
+                          label?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        faqBlk?:
+          | T
+          | {
+              title?: T;
+              desc?: T;
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    downloadLink?: T;
+                    arrowLink?: T;
+                    pillSolid?: T;
+                    pillOutline?: T;
+                    reference?: T;
+                    url?: T;
+                    email?: T;
+                    doc?: T;
+                    etestlink?: T;
+                    label?: T;
+                  };
+              faqs?:
+                | T
+                | {
+                    question?: T;
+                    answer?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+      };
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  publishedAt?: T;
+  slug?: T;
+  slugLock?: T;
+  folder?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  deletedAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "mmedia_select".
+ */
+export interface MmediaSelect<T extends boolean = true> {
+  title?: T;
+  pageType?: T;
+  showFilter?: T;
+  docType?: T;
+  image?: T;
+  heroTitle?: T;
+  heroSubtitle?: T;
+  heroButtons?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              downloadLink?: T;
+              arrowLink?: T;
+              pillSolid?: T;
+              pillOutline?: T;
+              reference?: T;
+              url?: T;
+              email?: T;
+              doc?: T;
+              etestlink?: T;
+              label?: T;
+            };
+        id?: T;
+      };
+  contentBlocks?:
+    | T
+    | {
+        richContentBlock?:
+          | T
+          | {
+              richText?: T;
+              id?: T;
+              blockName?: T;
+            };
+        secondarycta?:
+          | T
+          | {
+              ctaTitle?: T;
+              ctaSubtitle?: T;
+              contact?:
+                | T
+                | {
+                    label?: T;
+                    email?: T;
+                  };
+              uiType?: T;
+              ctaButton?:
+                | T
+                | {
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          doc?: T;
+                          etestlink?: T;
+                          label?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        mcolInfoBlock?:
+          | T
+          | {
+              multicols?:
+                | T
+                | {
+                    title?: T;
+                    colContent?: T;
+                    addLink?: T;
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          doc?: T;
+                          etestlink?: T;
+                          label?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        grantCardGridBlock?:
+          | T
+          | {
+              title?: T;
+              desc?: T;
+              grantCardGrid?: T;
+              id?: T;
+              blockName?: T;
+            };
+        mstepProcess?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              steps?:
+                | T
+                | {
+                    stepTitle?: T;
+                    title?: T;
+                    icon?: T;
+                    details?:
+                      | T
+                      | {
+                          bullet?: T;
+                          id?: T;
+                        };
+                    tip?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        comparisonBlk?:
+          | T
+          | {
+              title?: T;
+              desc?: T;
+              lftGrp?:
+                | T
+                | {
+                    title?: T;
+                    desc?: T;
+                    lftPoints?:
+                      | T
+                      | {
+                          point?: T;
+                          id?: T;
+                        };
+                  };
+              rtGrp?:
+                | T
+                | {
+                    title?: T;
+                    desc?: T;
+                    rtPoints?:
+                      | T
+                      | {
+                          point?: T;
+                          id?: T;
+                        };
+                  };
+              buttons?:
+                | T
+                | {
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          doc?: T;
+                          etestlink?: T;
+                          label?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        ylwDeck?:
+          | T
+          | {
+              title?: T;
+              align?: T;
+              desc?: T;
+              cards?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    desc?: T;
+                    mascot?: T;
+                    mascotPos?: T;
+                    links?:
+                      | T
+                      | {
+                          desc?: T;
+                          link?:
+                            | T
+                            | {
+                                type?: T;
+                                newTab?: T;
+                                downloadLink?: T;
+                                arrowLink?: T;
+                                pillSolid?: T;
+                                pillOutline?: T;
+                                reference?: T;
+                                url?: T;
+                                email?: T;
+                                doc?: T;
+                                etestlink?: T;
+                                label?: T;
+                              };
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        featCrd?:
+          | T
+          | {
+              image?: T;
+              title?: T;
+              subtitle?: T;
+              tags?:
+                | T
+                | {
+                    tag?: T;
+                    id?: T;
+                  };
+              desc?: T;
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    downloadLink?: T;
+                    arrowLink?: T;
+                    pillSolid?: T;
+                    pillOutline?: T;
+                    reference?: T;
+                    url?: T;
+                    email?: T;
+                    doc?: T;
+                    etestlink?: T;
+                    label?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        featCrdAcc?:
+          | T
+          | {
+              title?: T;
+              featCrds?:
+                | T
+                | {
+                    accTitle?: T;
+                    accContent?: T;
+                    crdTag?: T;
+                    crdContent?: T;
+                    mascot?: T;
+                    crdColour?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        listCrdDck?:
+          | T
+          | {
+              title?: T;
+              cards?:
+                | T
+                | {
+                    title?: T;
+                    desc?: T;
+                    image?: T;
+                    tags?:
+                      | T
+                      | {
+                          tag?: T;
+                          id?: T;
+                        };
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          doc?: T;
+                          etestlink?: T;
+                          label?: T;
+                        };
+                    id?: T;
+                  };
+              buttons?:
+                | T
+                | {
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          doc?: T;
+                          etestlink?: T;
+                          label?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        faqBlk?:
+          | T
+          | {
+              title?: T;
+              desc?: T;
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    downloadLink?: T;
+                    arrowLink?: T;
+                    pillSolid?: T;
+                    pillOutline?: T;
+                    reference?: T;
+                    url?: T;
+                    email?: T;
+                    doc?: T;
+                    etestlink?: T;
+                    label?: T;
+                  };
+              faqs?:
+                | T
+                | {
+                    question?: T;
+                    answer?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+      };
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  publishedAt?: T;
+  slug?: T;
+  slugLock?: T;
+  folder?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  deletedAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "doctypes_select".
+ */
+export interface DoctypesSelect<T extends boolean = true> {
+  type?: T;
+  relatedBlogPosts?: T;
+  relatedReports?: T;
+  relatedMMediaPosts?: T;
+  blogCount?: T;
+  reportCount?: T;
+  mmediaCount?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  deletedAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -2959,8 +7458,10 @@ export interface PostsSelect<T extends boolean = true> {
 export interface MediaCloudSelect<T extends boolean = true> {
   alt?: T;
   caption?: T;
+  folder?: T;
   updatedAt?: T;
   createdAt?: T;
+  deletedAt?: T;
   url?: T;
   thumbnailURL?: T;
   filename?: T;
@@ -3023,6 +7524,16 @@ export interface MediaCloudSelect<T extends boolean = true> {
               filesize?: T;
               filename?: T;
             };
+        ogImage?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
       };
 }
 /**
@@ -3032,8 +7543,10 @@ export interface MediaCloudSelect<T extends boolean = true> {
 export interface AssetCloudSelect<T extends boolean = true> {
   alt?: T;
   caption?: T;
+  folder?: T;
   updatedAt?: T;
   createdAt?: T;
+  deletedAt?: T;
   url?: T;
   thumbnailURL?: T;
   filename?: T;
@@ -3105,8 +7618,10 @@ export interface AssetCloudSelect<T extends boolean = true> {
 export interface DocumentsSelect<T extends boolean = true> {
   alt?: T;
   caption?: T;
+  folder?: T;
   updatedAt?: T;
   createdAt?: T;
+  deletedAt?: T;
   url?: T;
   thumbnailURL?: T;
   filename?: T;
@@ -3116,6 +7631,36 @@ export interface DocumentsSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "posts_select".
+ */
+export interface PostsSelect<T extends boolean = true> {
+  title?: T;
+  content?: T;
+  relatedPosts?: T;
+  categories?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  publishedAt?: T;
+  authors?: T;
+  populatedAuthors?:
+    | T
+    | {
+        id?: T;
+        name?: T;
+      };
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -3353,6 +7898,26 @@ export interface SearchSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-kv_select".
+ */
+export interface PayloadKvSelect<T extends boolean = true> {
+  key?: T;
+  data?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-folders_select".
+ */
+export interface PayloadFoldersSelect<T extends boolean = true> {
+  name?: T;
+  folder?: T;
+  documentsAndFolders?: T;
+  folderType?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents_select".
  */
 export interface PayloadLockedDocumentsSelect<T extends boolean = true> {
@@ -3395,7 +7960,7 @@ export interface Homepage {
     ctaButton?:
       | {
           link?: {
-            type?: ('reference' | 'custom' | 'email' | 'document') | null;
+            type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
             newTab?: boolean | null;
             downloadLink?: boolean | null;
             arrowLink?: boolean | null;
@@ -3413,12 +7978,28 @@ export interface Homepage {
               | ({
                   relationTo: 'pages';
                   value: number | Page;
+                } | null)
+              | ({
+                  relationTo: 'blog';
+                  value: number | Blog;
+                } | null)
+              | ({
+                  relationTo: 'reports';
+                  value: number | Report;
+                } | null)
+              | ({
+                  relationTo: 'mmedia';
+                  value: number | Mmedia;
                 } | null);
             url?: string | null;
             email?: string | null;
             doc?: {
               relationTo: 'documents';
               value: number | Document;
+            } | null;
+            etestlink?: {
+              relationTo: 'etests';
+              value: number | Etest;
             } | null;
             label?: string | null;
           };
@@ -3433,7 +8014,7 @@ export interface Homepage {
               root: {
                 type: string;
                 children: {
-                  type: string;
+                  type: any;
                   version: number;
                   [k: string]: unknown;
                 }[];
@@ -3459,7 +8040,7 @@ export interface Homepage {
             ctaButton?:
               | {
                   link?: {
-                    type?: ('reference' | 'custom' | 'email' | 'document') | null;
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
                     newTab?: boolean | null;
                     downloadLink?: boolean | null;
                     arrowLink?: boolean | null;
@@ -3477,12 +8058,28 @@ export interface Homepage {
                       | ({
                           relationTo: 'pages';
                           value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
                         } | null);
                     url?: string | null;
                     email?: string | null;
                     doc?: {
                       relationTo: 'documents';
                       value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
                     } | null;
                     label?: string | null;
                   };
@@ -3500,7 +8097,7 @@ export interface Homepage {
                   colContent?: string | null;
                   addLink?: boolean | null;
                   link?: {
-                    type?: ('reference' | 'custom' | 'email' | 'document') | null;
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
                     newTab?: boolean | null;
                     downloadLink?: boolean | null;
                     arrowLink?: boolean | null;
@@ -3518,12 +8115,28 @@ export interface Homepage {
                       | ({
                           relationTo: 'pages';
                           value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
                         } | null);
                     url?: string | null;
                     email?: string | null;
                     doc?: {
                       relationTo: 'documents';
                       value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
                     } | null;
                     label?: string | null;
                   };
@@ -3573,7 +8186,7 @@ export interface Homepage {
                           root: {
                             type: string;
                             children: {
-                              type: string;
+                              type: any;
                               version: number;
                               [k: string]: unknown;
                             }[];
@@ -3594,7 +8207,7 @@ export interface Homepage {
                     root: {
                       type: string;
                       children: {
-                        type: string;
+                        type: any;
                         version: number;
                         [k: string]: unknown;
                       }[];
@@ -3644,7 +8257,7 @@ export interface Homepage {
             buttons?:
               | {
                   link?: {
-                    type?: ('reference' | 'custom' | 'email' | 'document') | null;
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
                     newTab?: boolean | null;
                     downloadLink?: boolean | null;
                     arrowLink?: boolean | null;
@@ -3662,12 +8275,28 @@ export interface Homepage {
                       | ({
                           relationTo: 'pages';
                           value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
                         } | null);
                     url?: string | null;
                     email?: string | null;
                     doc?: {
                       relationTo: 'documents';
                       value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
                     } | null;
                     label?: string | null;
                   };
@@ -3685,7 +8314,7 @@ export interface Homepage {
               root: {
                 type: string;
                 children: {
-                  type: string;
+                  type: any;
                   version: number;
                   [k: string]: unknown;
                 }[];
@@ -3716,7 +8345,7 @@ export interface Homepage {
                     | {
                         desc?: string | null;
                         link?: {
-                          type?: ('reference' | 'custom' | 'email' | 'document') | null;
+                          type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
                           newTab?: boolean | null;
                           downloadLink?: boolean | null;
                           arrowLink?: boolean | null;
@@ -3734,12 +8363,28 @@ export interface Homepage {
                             | ({
                                 relationTo: 'pages';
                                 value: number | Page;
+                              } | null)
+                            | ({
+                                relationTo: 'blog';
+                                value: number | Blog;
+                              } | null)
+                            | ({
+                                relationTo: 'reports';
+                                value: number | Report;
+                              } | null)
+                            | ({
+                                relationTo: 'mmedia';
+                                value: number | Mmedia;
                               } | null);
                           url?: string | null;
                           email?: string | null;
                           doc?: {
                             relationTo: 'documents';
                             value: number | Document;
+                          } | null;
+                          etestlink?: {
+                            relationTo: 'etests';
+                            value: number | Etest;
                           } | null;
                           label?: string | null;
                         };
@@ -3770,7 +8415,7 @@ export interface Homepage {
               root: {
                 type: string;
                 children: {
-                  type: string;
+                  type: any;
                   version: number;
                   [k: string]: unknown;
                 }[];
@@ -3782,7 +8427,7 @@ export interface Homepage {
               [k: string]: unknown;
             } | null;
             link?: {
-              type?: ('reference' | 'custom' | 'email' | 'document') | null;
+              type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
               newTab?: boolean | null;
               downloadLink?: boolean | null;
               arrowLink?: boolean | null;
@@ -3800,12 +8445,28 @@ export interface Homepage {
                 | ({
                     relationTo: 'pages';
                     value: number | Page;
+                  } | null)
+                | ({
+                    relationTo: 'blog';
+                    value: number | Blog;
+                  } | null)
+                | ({
+                    relationTo: 'reports';
+                    value: number | Report;
+                  } | null)
+                | ({
+                    relationTo: 'mmedia';
+                    value: number | Mmedia;
                   } | null);
               url?: string | null;
               email?: string | null;
               doc?: {
                 relationTo: 'documents';
                 value: number | Document;
+              } | null;
+              etestlink?: {
+                relationTo: 'etests';
+                value: number | Etest;
               } | null;
               label?: string | null;
             };
@@ -3825,7 +8486,7 @@ export interface Homepage {
                     root: {
                       type: string;
                       children: {
-                        type: string;
+                        type: any;
                         version: number;
                         [k: string]: unknown;
                       }[];
@@ -3841,7 +8502,7 @@ export interface Homepage {
                     root: {
                       type: string;
                       children: {
-                        type: string;
+                        type: any;
                         version: number;
                         [k: string]: unknown;
                       }[];
@@ -3884,7 +8545,7 @@ export interface Homepage {
                       }[]
                     | null;
                   link?: {
-                    type?: ('reference' | 'custom' | 'email' | 'document') | null;
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
                     newTab?: boolean | null;
                     downloadLink?: boolean | null;
                     arrowLink?: boolean | null;
@@ -3902,12 +8563,28 @@ export interface Homepage {
                       | ({
                           relationTo: 'pages';
                           value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
                         } | null);
                     url?: string | null;
                     email?: string | null;
                     doc?: {
                       relationTo: 'documents';
                       value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
                     } | null;
                     label?: string | null;
                   };
@@ -3917,7 +8594,7 @@ export interface Homepage {
             buttons?:
               | {
                   link?: {
-                    type?: ('reference' | 'custom' | 'email' | 'document') | null;
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
                     newTab?: boolean | null;
                     downloadLink?: boolean | null;
                     arrowLink?: boolean | null;
@@ -3935,12 +8612,28 @@ export interface Homepage {
                       | ({
                           relationTo: 'pages';
                           value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
                         } | null);
                     url?: string | null;
                     email?: string | null;
                     doc?: {
                       relationTo: 'documents';
                       value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
                     } | null;
                     label?: string | null;
                   };
@@ -3955,7 +8648,7 @@ export interface Homepage {
             title?: string | null;
             desc?: string | null;
             link?: {
-              type?: ('reference' | 'custom' | 'email' | 'document') | null;
+              type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
               newTab?: boolean | null;
               downloadLink?: boolean | null;
               arrowLink?: boolean | null;
@@ -3973,12 +8666,28 @@ export interface Homepage {
                 | ({
                     relationTo: 'pages';
                     value: number | Page;
+                  } | null)
+                | ({
+                    relationTo: 'blog';
+                    value: number | Blog;
+                  } | null)
+                | ({
+                    relationTo: 'reports';
+                    value: number | Report;
+                  } | null)
+                | ({
+                    relationTo: 'mmedia';
+                    value: number | Mmedia;
                   } | null);
               url?: string | null;
               email?: string | null;
               doc?: {
                 relationTo: 'documents';
                 value: number | Document;
+              } | null;
+              etestlink?: {
+                relationTo: 'etests';
+                value: number | Etest;
               } | null;
               label?: string | null;
             };
@@ -3995,7 +8704,7 @@ export interface Homepage {
                     root: {
                       type: string;
                       children: {
-                        type: string;
+                        type: any;
                         version: number;
                         [k: string]: unknown;
                       }[];
@@ -4015,6 +8724,14 @@ export interface Homepage {
           }
       )[]
     | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Recommended file size for images is <500KB. Image must have a minimum width of 800px for optimal social media display and should be a .jpg, .png.
+     */
+    image?: (number | null) | MediaCloud;
+    description?: string | null;
+  };
   _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -4121,7 +8838,7 @@ export interface Nav {
         navItems?:
           | {
               link?: {
-                type?: ('reference' | 'custom' | 'email' | 'document') | null;
+                type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
                 newTab?: boolean | null;
                 downloadLink?: boolean | null;
                 arrowLink?: boolean | null;
@@ -4139,12 +8856,28 @@ export interface Nav {
                   | ({
                       relationTo: 'pages';
                       value: number | Page;
+                    } | null)
+                  | ({
+                      relationTo: 'blog';
+                      value: number | Blog;
+                    } | null)
+                  | ({
+                      relationTo: 'reports';
+                      value: number | Report;
+                    } | null)
+                  | ({
+                      relationTo: 'mmedia';
+                      value: number | Mmedia;
                     } | null);
                 url?: string | null;
                 email?: string | null;
                 doc?: {
                   relationTo: 'documents';
                   value: number | Document;
+                } | null;
+                etestlink?: {
+                  relationTo: 'etests';
+                  value: number | Etest;
                 } | null;
                 label?: string | null;
               };
@@ -4211,6 +8944,7 @@ export interface HomepageSelect<T extends boolean = true> {
                     url?: T;
                     email?: T;
                     doc?: T;
+                    etestlink?: T;
                     label?: T;
                   };
               id?: T;
@@ -4254,6 +8988,7 @@ export interface HomepageSelect<T extends boolean = true> {
                           url?: T;
                           email?: T;
                           doc?: T;
+                          etestlink?: T;
                           label?: T;
                         };
                     id?: T;
@@ -4283,6 +9018,7 @@ export interface HomepageSelect<T extends boolean = true> {
                           url?: T;
                           email?: T;
                           doc?: T;
+                          etestlink?: T;
                           label?: T;
                         };
                     id?: T;
@@ -4367,6 +9103,7 @@ export interface HomepageSelect<T extends boolean = true> {
                           url?: T;
                           email?: T;
                           doc?: T;
+                          etestlink?: T;
                           label?: T;
                         };
                     id?: T;
@@ -4405,6 +9142,7 @@ export interface HomepageSelect<T extends boolean = true> {
                                 url?: T;
                                 email?: T;
                                 doc?: T;
+                                etestlink?: T;
                                 label?: T;
                               };
                           id?: T;
@@ -4440,6 +9178,7 @@ export interface HomepageSelect<T extends boolean = true> {
                     url?: T;
                     email?: T;
                     doc?: T;
+                    etestlink?: T;
                     label?: T;
                   };
               id?: T;
@@ -4492,6 +9231,7 @@ export interface HomepageSelect<T extends boolean = true> {
                           url?: T;
                           email?: T;
                           doc?: T;
+                          etestlink?: T;
                           label?: T;
                         };
                     id?: T;
@@ -4512,6 +9252,7 @@ export interface HomepageSelect<T extends boolean = true> {
                           url?: T;
                           email?: T;
                           doc?: T;
+                          etestlink?: T;
                           label?: T;
                         };
                     id?: T;
@@ -4537,6 +9278,7 @@ export interface HomepageSelect<T extends boolean = true> {
                     url?: T;
                     email?: T;
                     doc?: T;
+                    etestlink?: T;
                     label?: T;
                   };
               faqs?:
@@ -4549,6 +9291,13 @@ export interface HomepageSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+      };
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
       };
   _status?: T;
   updatedAt?: T;
@@ -4630,6 +9379,7 @@ export interface NavSelect<T extends boolean = true> {
                     url?: T;
                     email?: T;
                     doc?: T;
+                    etestlink?: T;
                     label?: T;
                   };
               id?: T;
@@ -4726,7 +9476,7 @@ export interface BannerBlock {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];

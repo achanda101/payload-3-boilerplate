@@ -232,6 +232,12 @@ li {
     font-weight: 500;
     text-transform: lowercase;
   }
+
+  &.orange {
+    background-color: $color-turmeric;
+    padding: 3px 10px;
+    border-radius: $spacing-sm;
+  }
 }
 
 // Utility classes
@@ -333,7 +339,8 @@ hr {
   .site-header-bottomrow {
     @apply flex justify-between items-center;
   }
-  .language-selector {
+  .language-selector,
+  .resource-type-selector {
     background-color: $color-background;
     font-family: $font-body;
     padding: 0.5rem;
@@ -343,6 +350,17 @@ hr {
     @media (min-width: $tablet) {
       font-size: $font-size-button;
     }
+  }
+
+  .pill-outline {
+    padding-inline: $spacing-xl;
+    padding-block: calc($spacing-lg/2);
+    outline-style: solid;
+    outline-width: 1px;
+    outline-color: $color-body-text;
+    background-color: transparent;
+    color: $color-body-text;
+    border-radius: $radius-2xl;
   }
 
   .search-icon {

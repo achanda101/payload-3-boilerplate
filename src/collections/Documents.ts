@@ -3,6 +3,11 @@ import type { CollectionConfig } from 'payload'
 import { anyone } from '../access/anyone'
 import { authenticated } from '../access/authenticated'
 
+import path from 'path'
+import { fileURLToPath } from 'url'
+const filename = fileURLToPath(import.meta.url)
+const dirname = path.dirname(filename)
+
 export const Documents: CollectionConfig = {
   slug: 'documents',
   labels: {
@@ -14,8 +19,11 @@ export const Documents: CollectionConfig = {
       name: 'Media',
       order: '3',
     },
+    defaultColumns: ['filename', 'alt', 'folder'],
     description: 'Upload and manage PDF documents. Maximum file size is 50MB.',
   },
+  folders: true,
+  trash: true,
   access: {
     create: authenticated,
     delete: authenticated,
@@ -35,6 +43,7 @@ export const Documents: CollectionConfig = {
   ],
   upload: {
     adminThumbnail: 'small',
+    staticDir: path.resolve(dirname, '../../media'),
     mimeTypes: ['application/pdf'],
   },
 }

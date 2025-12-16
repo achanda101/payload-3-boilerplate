@@ -7,6 +7,7 @@ import { useSelectedLayoutSegments } from 'next/navigation'
 import { PayloadAdminBar } from 'payload-admin-bar'
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { RefreshCw } from 'lucide-react'
 
 import './index.scss'
 
@@ -44,17 +45,23 @@ export const AdminBar: React.FC<{
     setShow(user?.id)
   }, [])
 
+  const handleRefresh = () => {
+    if (typeof window !== 'undefined') {
+      window.location.reload()
+    }
+  }
+
   return (
     <div
-      className={cn(baseClass, 'py-2 bg-black text-white', {
+      className={cn(baseClass, 'py-2 bg-black text-white sticky top-0 z-50', {
         block: show,
         hidden: !show,
       })}
     >
-      <div className="container">
+      <div className="container flex items-center justify-between">
         <PayloadAdminBar
           {...adminBarProps}
-          className="py-2 text-white"
+          className="py-2 text-white flex-1"
           classNames={{
             controls: 'font-medium text-white',
             logo: 'text-white',
@@ -81,6 +88,16 @@ export const AdminBar: React.FC<{
             zIndex: 'unset',
           }}
         />
+        {adminBarProps?.preview && (
+          <button
+            onClick={handleRefresh}
+            className="ml-4 p-2 hover:bg-gray-800 rounded transition-colors"
+            title="Refresh preview"
+            aria-label="Refresh preview"
+          >
+            <RefreshCw className="w-4 h-4" />
+          </button>
+        )}
       </div>
     </div>
   )

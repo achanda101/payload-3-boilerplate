@@ -10,7 +10,7 @@ import { Providers } from '@/providers'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import { draftMode } from 'next/headers'
 
-import '@/styles/globals.scss';
+import '@/styles/globals.scss'
 import { getServerSideURL } from '@/utilities/getURL'
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
@@ -30,7 +30,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             }}
           />
 
-          {/* <LivePreviewListener /> */}
+          {/* {isEnabled && <LivePreviewListener />} */}
           <div>
             <Header />
             {children}

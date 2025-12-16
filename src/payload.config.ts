@@ -14,7 +14,11 @@ import { AssetCloud } from './collections/AssetCloud'
 import { Documents } from './collections/Documents'
 import { Grants } from './collections/Grants'
 import { GrantCards } from './collections/GrantCards'
+import { EligibilityTests } from './collections/EligibilityTests'
 import { Pages } from './collections/Pages'
+import { Blog } from './collections/Blog'
+import { Report } from './collections/Reports'
+import { MMedia } from './collections/MMedia'
 import { DocTypes } from './collections/DocTypes'
 import { Posts } from './collections/Posts'
 import { Users } from './collections/Users'
@@ -30,9 +34,6 @@ import { Homepage } from './globals/Homepage/config'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
-
-// TODO: use folders to organise collections (Media, Grant Cards, etc)
-// But folders is in BETA as of Sept 2025 https://payloadcms.com/docs/folders/overview
 
 export default buildConfig({
   upload: {
@@ -75,7 +76,7 @@ export default buildConfig({
     },
     livePreview: {
       url: process.env.PAYLOAD_URL || 'http://localhost:3000',
-      // collections: ['pages', 'posts'],
+      collections: ['pages', 'blog', 'reports', 'grants', 'mmedia'],
       globals: ['homepage'],
       breakpoints: [
         {
@@ -110,40 +111,54 @@ export default buildConfig({
     fallback: true, // defaults to true
   },
   collections: [
+    // Content Group (order: 1-8)
+    // TODO: Group Order not showing in Admin UI yet as of Payload v3.65.0
     Grants,
     GrantCards,
+    EligibilityTests,
     Pages,
+    Blog,
+    Report,
+    MMedia,
     DocTypes,
-    Posts,
+    // Media Group (order: 1-3)
     MediaCloud,
     AssetCloud,
     Documents,
+    // Hidden collections (no group)
+    Posts,
     Categories,
+    // User management
     Users,
   ],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Homepage, Header, Footer, Navigation, ContactInfo],
   plugins: [
     ...plugins,
-    s3Storage({
-      collections: {
-        mediaCloud: true,
-        assetCloud: true,
-        documents: true,
-      },
-      bucket: process.env.S3_BUCKET || '',
-      config: {
-        region: process.env.S3_REGION || '',
-        endpoint: process.env.S3_ENDPOINT || '',
-        credentials: {
-          accessKeyId: process.env.S3_ACCESS_KEY_ID || '',
-          secretAccessKey: process.env.S3_SECRET_ACCESS_KEY || '',
-        },
-        forcePathStyle: true,
-        tls: true,
-        signingEscapePath: false,
-      },
-    }),
+    // Use S3 storage in production, local database in development
+    ...(process.env.NODE_ENV === 'production'
+      ? [
+          s3Storage({
+            collections: {
+              mediaCloud: true,
+              assetCloud: true,
+              documents: true,
+            },
+            bucket: process.env.S3_BUCKET || '',
+            config: {
+              region: process.env.S3_REGION || '',
+              endpoint: process.env.S3_ENDPOINT || '',
+              credentials: {
+                accessKeyId: process.env.S3_ACCESS_KEY_ID || '',
+                secretAccessKey: process.env.S3_SECRET_ACCESS_KEY || '',
+              },
+              forcePathStyle: true,
+              tls: true,
+              signingEscapePath: false,
+            },
+          }),
+        ]
+      : []),
   ],
   endpoints: [
     {

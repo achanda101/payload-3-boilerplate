@@ -1,18 +1,18 @@
-import { Block } from "payload";
-import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import { Block } from 'payload'
+import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import {
   BoldFeature,
   UnderlineFeature,
   ItalicFeature,
   LinkFeature,
   InlineToolbarFeature,
-} from "@payloadcms/richtext-lexical";
+} from '@payloadcms/richtext-lexical'
 
 export const MultiStepProcess: Block = {
   slug: 'mstepProcess',
   labels: {
     singular: 'Multi-step Process Block',
-    plural: 'Multi-step Process Blocks'
+    plural: 'Multi-step Process Blocks',
   },
   imageURL: '/block_icons/multistep-process-block-icon.png',
   fields: [
@@ -24,8 +24,8 @@ export const MultiStepProcess: Block = {
           type: 'text',
           localized: true,
           admin: {
-            width: '50%'
-          }
+            width: '50%',
+          },
         },
         {
           name: 'subtitle',
@@ -33,10 +33,10 @@ export const MultiStepProcess: Block = {
           type: 'text',
           localized: true,
           admin: {
-            width: '50%'
-          }
+            width: '50%',
+          },
         },
-      ]
+      ],
     },
     {
       name: 'steps',
@@ -52,7 +52,7 @@ export const MultiStepProcess: Block = {
           label: 'Content',
           type: 'group',
           admin: {
-            description: 'Fill in the details for the step'
+            description: 'Fill in the details for the step',
           },
           fields: [
             {
@@ -63,8 +63,8 @@ export const MultiStepProcess: Block = {
                   type: 'text',
                   localized: true,
                   admin: {
-                    width: '50%'
-                  }
+                    width: '50%',
+                  },
                 },
                 {
                   name: 'icon',
@@ -81,10 +81,10 @@ export const MultiStepProcess: Block = {
                   ],
                   defaultValue: 'FileText',
                   admin: {
-                    width: '50%'
-                  }
+                    width: '50%',
+                  },
                 },
-              ]
+              ],
             },
             {
               name: 'details',
@@ -100,25 +100,25 @@ export const MultiStepProcess: Block = {
                       UnderlineFeature(),
                       ItalicFeature(),
                       LinkFeature({
-                        enabledCollections: [ 'grants', 'pages' ],
+                        enabledCollections: ['grants', 'pages', 'reports', 'blog'],
                       }),
                       InlineToolbarFeature(),
                     ],
                     admin: {
-                      placeholder: 'Start typing your content here ...'
-                    }
+                      placeholder: 'Start typing your content here ...',
+                    },
                   }),
-                  localized: true
-                }
+                  localized: true,
+                },
               ],
               admin: {
                 description: 'Enter details for the step in bullet form',
-              }
+              },
             },
             {
               name: 'tip',
               admin: {
-                description: 'Enter any extra information that maybe useful in the step.'
+                description: 'Enter any extra information that maybe useful in the step.',
               },
               type: 'richText',
               editor: lexicalEditor({
@@ -127,26 +127,26 @@ export const MultiStepProcess: Block = {
                   UnderlineFeature(),
                   ItalicFeature(),
                   LinkFeature({
-                    enabledCollections: [ 'grants', 'pages' ],
+                    enabledCollections: ['grants', 'pages', 'reports', 'blog'],
                   }),
                   InlineToolbarFeature(),
                 ],
                 admin: {
-                  placeholder: 'Start typing your content here ...'
-                }
+                  placeholder: 'Start typing your content here ...',
+                },
               }),
-              localized: true
-            }
-          ]
+              localized: true,
+            },
+          ],
         },
       ],
       admin: {
         components: {
           RowLabel: {
-            path: 'src/blocks/MultiStepProcessBlock/StepTitlesRowLabel.tsx'
-          }
-        }
-      }
-    }
-  ]
+            path: 'src/blocks/MultiStepProcessBlock/StepTitlesRowLabel.tsx',
+          },
+        },
+      },
+    },
+  ],
 }

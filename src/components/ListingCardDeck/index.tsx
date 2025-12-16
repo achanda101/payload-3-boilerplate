@@ -1,129 +1,121 @@
-import React, { useState, useEffect } from "react";
-import { ChevronDown, ChevronUp, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  type CarouselApi,
-} from "@/components/ui/carousel";
-import WheelGestures from "embla-carousel-wheel-gestures";
+import React, { useState, useEffect } from 'react'
+import { ChevronDown, ChevronUp, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from '@/components/ui/carousel'
+import WheelGestures from 'embla-carousel-wheel-gestures'
 import Image from 'next/image'
-import { ButtonArray } from '@/components/ButtonArray';
-import { UAFButton } from "@/components/UAFButton";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
-
+import { ButtonArray } from '@/components/ButtonArray'
+import { UAFButton } from '@/components/UAFButton'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
 
 interface ListingCardDeckProps {
-  title: string | null;
+  title: string | null
   cards: {
-    id: string;
-    title: string | null;
-    desc: string | null;
+    id: string
+    title: string | null
+    desc: string | null
     image?: {
-      id: string;
-      alt: string | null;
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      focalX?: number | null;
-      focalY?: number | null;
-    };
+      id: string
+      alt: string | null
+      url?: string | null
+      width?: number | null
+      height?: number | null
+      focalX?: number | null
+      focalY?: number | null
+    }
     tags?: {
-      id: string;
-      tag: string | null;
-    }[];
+      id: string
+      tag: string | null
+    }[]
     link: {
-      type: string;
-      newTab?: boolean | null;
-      downloadLink?: boolean | null;
-      arrowLink?: boolean | null;
-      pillSolid?: boolean | null;
-      pillOutline?: boolean | null;
-      url?: string | null;
-      email?: string | null;
-      label: string | null;
+      type: string
+      newTab?: boolean | null
+      downloadLink?: boolean | null
+      arrowLink?: boolean | null
+      pillSolid?: boolean | null
+      pillOutline?: boolean | null
+      url?: string | null
+      email?: string | null
+      label: string | null
       doc?: {
-        relationTo: string;
+        relationTo: string
         value: {
-          url?: string;
+          url?: string
         }
-      } | null;
+      } | null
       reference?: {
-        relationTo?: string;
+        relationTo?: string
         value: {
-          slug?: string;
-        };
-      };
-    };
-  }[];
+          slug?: string
+        }
+      }
+    }
+  }[]
   buttons: {
-    id: string;
+    id: string
     link: {
-      type: string;
-      newTab?: boolean | null;
-      downloadLink?: boolean | null;
-      arrowLink?: boolean | null;
-      pillSolid?: boolean | null;
-      pillOutline?: boolean | null;
-      url?: string | null;
-      email?: string | null;
-      label: string | null;
+      type: string
+      newTab?: boolean | null
+      downloadLink?: boolean | null
+      arrowLink?: boolean | null
+      pillSolid?: boolean | null
+      pillOutline?: boolean | null
+      url?: string | null
+      email?: string | null
+      label: string | null
       doc?: {
-        relationTo: string;
+        relationTo: string
         value: {
-          url?: string;
+          url?: string
         }
-      } | null;
+      } | null
       reference?: {
-        relationTo?: string;
+        relationTo?: string
         value: {
-          slug?: string;
-        };
-      };
-    };
-  }[];
+          slug?: string
+        }
+      }
+    }
+  }[]
 }
 
-export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({
-  title, cards, buttons
-}) => {
-  const [api, setApi] = useState<CarouselApi>();
-  const [canScrollPrev, setCanScrollPrev] = useState(false);
-  const [ canScrollNext, setCanScrollNext ] = useState(false);
+export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({ title, cards, buttons }) => {
+  const [api, setApi] = useState<CarouselApi>()
+  const [canScrollPrev, setCanScrollPrev] = useState(false)
+  const [canScrollNext, setCanScrollNext] = useState(false)
 
-  const isDesktop = useMediaQuery('(min-width: 1024px)');
-  const isTablet = useMediaQuery('(min-width: 768px) and (max-width: 1023px)');
-  let currentCardWidth = 0;
+  const isDesktop = useMediaQuery('(min-width: 1024px)')
+  const isTablet = useMediaQuery('(min-width: 768px) and (max-width: 1023px)')
+  let currentCardWidth = 0
 
   // Calculate width based on the number of cards and available space
   if (isDesktop) {
-    const desiredCardWidth = Math.max(100 / cards.length, 18);
-    currentCardWidth = Math.min(desiredCardWidth, 28);
+    const desiredCardWidth = Math.max(100 / cards.length, 18)
+    currentCardWidth = Math.min(desiredCardWidth, 28)
   } else if (isTablet) {
-    const desiredCardWidth = Math.max(100 / cards.length, 40);
-    currentCardWidth = Math.min(desiredCardWidth, 48);
+    const desiredCardWidth = Math.max(100 / cards.length, 40)
+    currentCardWidth = Math.min(desiredCardWidth, 48)
   } else {
-    currentCardWidth = 80; //80vw for mobile
+    currentCardWidth = 80 //80vw for mobile
   }
 
   useEffect(() => {
-      if (!api) return;
-  
-      const updateScrollButtons = () => {
-        setCanScrollPrev(api.canScrollPrev());
-        setCanScrollNext(api.canScrollNext());
-      };
-  
-      updateScrollButtons();
-      api.on("select", updateScrollButtons);
-      api.on("reInit", updateScrollButtons);
-  
-      return () => {
-        api.off("select", updateScrollButtons);
-        api.off("reInit", updateScrollButtons);
-      };
-  }, [ api ]);
-  
+    if (!api) return
+
+    const updateScrollButtons = () => {
+      setCanScrollPrev(api.canScrollPrev())
+      setCanScrollNext(api.canScrollNext())
+    }
+
+    updateScrollButtons()
+    api.on('select', updateScrollButtons)
+    api.on('reInit', updateScrollButtons)
+
+    return () => {
+      api.off('select', updateScrollButtons)
+      api.off('reInit', updateScrollButtons)
+    }
+  }, [api])
+
   return (
     <>
       {title && (
@@ -133,7 +125,7 @@ export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({
         <Carousel
           setApi={setApi}
           opts={{
-            align: "start",
+            align: 'start',
             loop: false,
             dragFree: true,
           }}
@@ -142,13 +134,10 @@ export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({
         >
           <CarouselContent className="-ml-0">
             {cards.map((card) => (
-              <CarouselItem
-                key={card.id}
-                className="pl-0 mx-auto basis-auto"
-              >
+              <CarouselItem key={card.id} className="pl-0 mx-auto basis-auto">
                 <div
-                      className={`px-[1rem] md:px-[2rem] py-0 h-full flex flex-col`}
-                      style={{ width: `${currentCardWidth}vw` }}
+                  className={`px-[1rem] md:px-[3rem] py-0 h-full flex flex-col`}
+                  style={{ width: `${currentCardWidth}vw` }}
                 >
                   {card.image?.url && (
                     <div className="w-full relative mb-4 h-80 overflow-hidden rounded-2xl">
@@ -169,9 +158,7 @@ export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({
                     <div className="flex flex-wrap gap-1 items-center">
                       {card.tags.map((tag, index) => (
                         <React.Fragment key={tag.id || index}>
-                          <span className="tag">
-                            {tag.tag}
-                          </span>
+                          <span className="tag">{tag.tag}</span>
                           {index < card.tags!.length - 1 && <span className="mx-0.5">•</span>}
                         </React.Fragment>
                       ))}
@@ -179,7 +166,7 @@ export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({
                   )}
                   {card.desc && <p className="mb-4">{card.desc}</p>}
                   {card.link && <UAFButton button={card.link} />}
-                </div>  
+                </div>
               </CarouselItem>
             ))}
           </CarouselContent>
@@ -192,7 +179,7 @@ export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({
               <ChevronLeft className="w-6 h-6" />
             </button>
           )}
-          
+
           {canScrollNext && (
             <button
               onClick={() => api?.scrollNext()}
@@ -203,12 +190,12 @@ export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({
             </button>
           )}
         </Carousel>
-        {buttons &&
+        {buttons && (
           <div className="pt-[1rem] md:pt-[3rem]">
             <ButtonArray btnArray={buttons} colStackOnMobile={true} />
           </div>
-        }
+        )}
       </div>
     </>
-  );
+  )
 }

@@ -1,37 +1,37 @@
-import { Block } from "payload";
-import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import { Block } from 'payload'
+import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import {
   BoldFeature,
   UnderlineFeature,
   ItalicFeature,
   LinkFeature,
   InlineToolbarFeature,
-} from "@payloadcms/richtext-lexical";
+} from '@payloadcms/richtext-lexical'
 
 export const FeatureCardAccordion: Block = {
-  slug: "featCrdAcc",
+  slug: 'featCrdAcc',
   labels: {
-    singular: "Feature Card Accordion",
-    plural: "Feature Card Accordions",
+    singular: 'Feature Card Accordion',
+    plural: 'Feature Card Accordions',
   },
-  imageURL: "/block_icons/feature-card-accordion-block-icon.png",
+  imageURL: '/block_icons/feature-card-accordion-block-icon.png',
   fields: [
     {
-      name: "title",
-      type: "text",
+      name: 'title',
+      type: 'text',
       localized: true,
       admin: {
-        description: "Title for the block",
+        description: 'Title for the block',
       },
     },
     {
-      name: "featCrds",
-      label: "Feature Card Accordion Items",
+      name: 'featCrds',
+      label: 'Feature Card Accordion Items',
       labels: {
-        singular: "Feature Card Accordion Item",
-        plural: "Feature Card Accordion Items",
+        singular: 'Feature Card Accordion Item',
+        plural: 'Feature Card Accordion Items',
       },
-      type: "array",
+      type: 'array',
       fields: [
         {
           type: 'tabs',
@@ -40,20 +40,20 @@ export const FeatureCardAccordion: Block = {
               label: 'Accordion (Left Column)',
               fields: [
                 {
-                  type: "row",
+                  type: 'row',
                   fields: [
                     {
-                      name: "accTitle",
-                      label: "Accordion Item Title",
-                      type: "text",
+                      name: 'accTitle',
+                      label: 'Accordion Item Title',
+                      type: 'text',
                       localized: true,
                       admin: {
-                        width: "30%",
+                        width: '30%',
                       },
                     },
                     {
-                      name: "accContent",
-                      label: "Accordion Item Content",
+                      name: 'accContent',
+                      label: 'Accordion Item Content',
                       type: 'richText',
                       editor: lexicalEditor({
                         features: [
@@ -61,20 +61,20 @@ export const FeatureCardAccordion: Block = {
                           UnderlineFeature(),
                           ItalicFeature(),
                           LinkFeature({
-                            enabledCollections: [ 'grants', 'pages' ],
+                            enabledCollections: ['grants', 'pages', 'reports', 'blog'],
                           }),
                           InlineToolbarFeature(),
                         ],
                         admin: {
-                          placeholder: 'Start typing your content here ...'
-                        }
+                          placeholder: 'Start typing your content here ...',
+                        },
                       }),
                       localized: true,
                       admin: {
-                        width: "70%",
+                        width: '70%',
                       },
                     },
-                  ]
+                  ],
                 },
               ],
             },
@@ -82,28 +82,28 @@ export const FeatureCardAccordion: Block = {
               label: 'Feature Card (Right Column)',
               fields: [
                 {
-                  type: "row",
+                  type: 'row',
                   fields: [
                     {
-                      name: "crdTag",
-                      label: "Feature Card Tag",
-                      type: "text",
+                      name: 'crdTag',
+                      label: 'Feature Card Tag',
+                      type: 'text',
                       localized: true,
                       maxLength: 20,
                       admin: {
-                        width: "30%",
+                        width: '30%',
                         components: {
                           afterInput: [
                             {
-                              path: '@/utilities/characterCounter.tsx'
-                            }
-                          ]
-                        }
+                              path: '@/utilities/characterCounter.tsx',
+                            },
+                          ],
+                        },
                       },
                     },
                     {
-                      name: "crdContent",
-                      label: "Feature Card Content",
+                      name: 'crdContent',
+                      label: 'Feature Card Content',
                       type: 'richText',
                       editor: lexicalEditor({
                         features: [
@@ -111,31 +111,31 @@ export const FeatureCardAccordion: Block = {
                           UnderlineFeature(),
                           ItalicFeature(),
                           LinkFeature({
-                            enabledCollections: [ 'grants', 'pages' ],
+                            enabledCollections: ['grants', 'pages', 'reports', 'blog'],
                           }),
                           InlineToolbarFeature(),
                         ],
                         admin: {
-                          placeholder: 'Start typing your content here ...'
-                        }
+                          placeholder: 'Start typing your content here ...',
+                        },
                       }),
                       localized: true,
                       admin: {
-                        width: "70%",
+                        width: '70%',
                       },
                     },
-                  ]
+                  ],
                 },
                 {
-                  type: "row",
+                  type: 'row',
                   fields: [
                     {
-                      name: "mascot",
-                      type: "upload",
-                      relationTo: "assetCloud",
+                      name: 'mascot',
+                      type: 'upload',
+                      relationTo: 'assetCloud',
                       admin: {
-                        description: "Upload a mascot image for the feature card",
-                        width: "60%",
+                        description: 'Upload a mascot image for the feature card',
+                        width: '60%',
                       },
                     },
                     {
@@ -151,13 +151,13 @@ export const FeatureCardAccordion: Block = {
                         { label: 'Fire Red', value: 'fire' },
                       ],
                       defaultValue: 'forest',
-                      admin: { 
+                      admin: {
                         description: 'Select a colour for the Feature Card background.',
-                        width: "40%",
-                      }
+                        width: '40%',
+                      },
                     },
-                  ]
-                }
+                  ],
+                },
               ],
             },
           ],
@@ -167,9 +167,9 @@ export const FeatureCardAccordion: Block = {
         components: {
           RowLabel: {
             path: 'src/blocks/FeatureCardAccordion/FeatCardAccRowLabel.tsx',
-          }
+          },
         },
       },
-    }
+    },
   ],
 }

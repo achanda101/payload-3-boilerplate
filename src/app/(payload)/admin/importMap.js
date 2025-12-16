@@ -1,3 +1,4 @@
+import { default as default_7baef2a5f372f8eb3e6c3c9a98bc5194 } from '@/utilities/characterCounter.tsx'
 import { default as default_7823a8020c9c4eca50f1f6d1d7bc4a6d } from 'src/fields/radio/RadioWithImage.tsx'
 import { default as default_9099c018665609f4fc43aaebf9fc76b1 } from 'src/blocks/HeroBlock/HeroButtonRowLabel.tsx'
 import { RscEntryLexicalCell as RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
@@ -24,22 +25,29 @@ import { default as default_00fabe4924f35a63ef8ae43361e4f50d } from 'src/blocks/
 import { default as default_1a9ffe2ecb6c21575f372ee551bb072c } from 'src/blocks/YellowCardDeck/LinkRowLabel.tsx'
 import { default as default_c3b1d2cac4d8e3a4a8069107bce3fe04 } from 'src/blocks/YellowCardDeck/CardRowLabel.tsx'
 import { default as default_e37006a7cf11c12e8542664bcd713ed6 } from 'src/blocks/FeatureCard/TagRowLabel.tsx'
-import { default as default_7baef2a5f372f8eb3e6c3c9a98bc5194 } from '@/utilities/characterCounter.tsx'
 import { default as default_66b392e1d7c4962ea938ba1b54a604fa } from 'src/blocks/FeatureCardAccordion/FeatCardAccRowLabel.tsx'
 import { default as default_5af37ed1fa40c1f3964f3a2be1d5514b } from 'src/blocks/ListingCardDeck/TagRowLabel.tsx'
 import { default as default_0e824bbae1e3a2ad0be49040bd886a72 } from 'src/blocks/ListingCardDeck/CardRowLabel.tsx'
 import { default as default_d2c224faee96d42b95d01b57439e2ee9 } from 'src/blocks/ListingCardDeck/ButtonRowLabel.tsx'
 import { default as default_357e18d3de9014934eab7d609c6a42a0 } from 'src/blocks/FaqBlock/FaqRowLabel.tsx'
-import { SlugComponent as SlugComponent_92cc057d0a2abb4f6cf0307edf59f986 } from '@/fields/slug/SlugComponent'
-import { default as default_fade8116570b03adfdc99c640cfd1f1c } from 'src/collections/GrantCards/GrantCardSpecRowLabel.tsx'
-import { default as default_1ca90977107cbb5e33eef51b3d659f98 } from 'src/collections/GrantCards/GrantCardButtonRowLabel.tsx'
 import { OverviewComponent as OverviewComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { MetaTitleComponent as MetaTitleComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
-import { MetaImageComponent as MetaImageComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { MetaDescriptionComponent as MetaDescriptionComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { PreviewComponent as PreviewComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
+import { SlugComponent as SlugComponent_92cc057d0a2abb4f6cf0307edf59f986 } from '@/fields/slug/SlugComponent'
+import { FolderTableCell as FolderTableCell_ab83ff7e88da8d3530831f296ec4756a } from '@payloadcms/ui/rsc'
+import { FolderField as FolderField_ab83ff7e88da8d3530831f296ec4756a } from '@payloadcms/ui/rsc'
+import { default as default_d53673b0f0592349e1f76e20f0e35a8a } from 'src/collections/AssetCloudCell'
+import { default as default_fade8116570b03adfdc99c640cfd1f1c } from 'src/collections/GrantCards/GrantCardSpecRowLabel.tsx'
+import { default as default_1ca90977107cbb5e33eef51b3d659f98 } from 'src/collections/GrantCards/GrantCardButtonRowLabel.tsx'
+import { default as default_e6f635e33cdcc4d4d11b58dc87fdbc28 } from 'src/collections/EligibilityTests/OptionsRowLabel.tsx'
+import { default as default_5c27a4360ad720e85354b3b24721e696 } from 'src/collections/EligibilityTests/CriteriaRowLabel.tsx'
+import { default as default_53602952b3aad17a0cfc4bbf43cc4181 } from 'src/collections/MediaCloudCell'
+import { MetaImageComponent as MetaImageComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
+import { default as default_6e5325882d4f1cdba6ec4e761f75cd71 } from 'src/collections/Users/AvatarCell'
 import { LinkToDoc as LinkToDoc_aead06e4cbf6b2620c5c51c9ab283634 } from '@payloadcms/plugin-search/client'
 import { ReindexButton as ReindexButton_aead06e4cbf6b2620c5c51c9ab283634 } from '@payloadcms/plugin-search/client'
+import { FolderTypeField as FolderTypeField_3817bf644402e67bfe6577f60ef982de } from '@payloadcms/ui'
 import { default as default_9702e426ff612febae1976764fe56710 } from 'src/globals/Footer/SmItemRowLabel.tsx'
 import { default as default_dde45096079356e8a763d3b11b727b2d } from 'src/globals/Navigation/NavItemRowLabel.tsx'
 import { default as default_760c331c4141744d569a29c3060f6950 } from 'src/globals/Navigation/MenuItemRowLabel.tsx'
@@ -49,9 +57,9 @@ import { Icon as Icon_c3a8555f846701084023abb33922dc25 } from '@/components/Icon
 import { Logo as Logo_566629f80931517f5befb54103e89cc5 } from '@/components/Logo/Logo.tsx'
 import { default as default_1a7510af427896d367a49dbf838d2de6 } from '@/components/BeforeDashboard'
 import { default as default_8a7ab0eb7ab5c511aba12e68480bfe5e } from '@/components/BeforeLogin'
-import { S3ClientUploadHandler as S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24 } from '@payloadcms/storage-s3/client'
 
 export const importMap = {
+  "@/utilities/characterCounter.tsx#default": default_7baef2a5f372f8eb3e6c3c9a98bc5194,
   "src/fields/radio/RadioWithImage.tsx#default": default_7823a8020c9c4eca50f1f6d1d7bc4a6d,
   "src/blocks/HeroBlock/HeroButtonRowLabel.tsx#default": default_9099c018665609f4fc43aaebf9fc76b1,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalCell": RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e,
@@ -78,22 +86,29 @@ export const importMap = {
   "src/blocks/YellowCardDeck/LinkRowLabel.tsx#default": default_1a9ffe2ecb6c21575f372ee551bb072c,
   "src/blocks/YellowCardDeck/CardRowLabel.tsx#default": default_c3b1d2cac4d8e3a4a8069107bce3fe04,
   "src/blocks/FeatureCard/TagRowLabel.tsx#default": default_e37006a7cf11c12e8542664bcd713ed6,
-  "@/utilities/characterCounter.tsx#default": default_7baef2a5f372f8eb3e6c3c9a98bc5194,
   "src/blocks/FeatureCardAccordion/FeatCardAccRowLabel.tsx#default": default_66b392e1d7c4962ea938ba1b54a604fa,
   "src/blocks/ListingCardDeck/TagRowLabel.tsx#default": default_5af37ed1fa40c1f3964f3a2be1d5514b,
   "src/blocks/ListingCardDeck/CardRowLabel.tsx#default": default_0e824bbae1e3a2ad0be49040bd886a72,
   "src/blocks/ListingCardDeck/ButtonRowLabel.tsx#default": default_d2c224faee96d42b95d01b57439e2ee9,
   "src/blocks/FaqBlock/FaqRowLabel.tsx#default": default_357e18d3de9014934eab7d609c6a42a0,
-  "@/fields/slug/SlugComponent#SlugComponent": SlugComponent_92cc057d0a2abb4f6cf0307edf59f986,
-  "src/collections/GrantCards/GrantCardSpecRowLabel.tsx#default": default_fade8116570b03adfdc99c640cfd1f1c,
-  "src/collections/GrantCards/GrantCardButtonRowLabel.tsx#default": default_1ca90977107cbb5e33eef51b3d659f98,
   "@payloadcms/plugin-seo/client#OverviewComponent": OverviewComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "@payloadcms/plugin-seo/client#MetaTitleComponent": MetaTitleComponent_a8a977ebc872c5d5ea7ee689724c0860,
-  "@payloadcms/plugin-seo/client#MetaImageComponent": MetaImageComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "@payloadcms/plugin-seo/client#MetaDescriptionComponent": MetaDescriptionComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "@payloadcms/plugin-seo/client#PreviewComponent": PreviewComponent_a8a977ebc872c5d5ea7ee689724c0860,
+  "@/fields/slug/SlugComponent#SlugComponent": SlugComponent_92cc057d0a2abb4f6cf0307edf59f986,
+  "@payloadcms/ui/rsc#FolderTableCell": FolderTableCell_ab83ff7e88da8d3530831f296ec4756a,
+  "@payloadcms/ui/rsc#FolderField": FolderField_ab83ff7e88da8d3530831f296ec4756a,
+  "src/collections/AssetCloudCell#default": default_d53673b0f0592349e1f76e20f0e35a8a,
+  "src/collections/GrantCards/GrantCardSpecRowLabel.tsx#default": default_fade8116570b03adfdc99c640cfd1f1c,
+  "src/collections/GrantCards/GrantCardButtonRowLabel.tsx#default": default_1ca90977107cbb5e33eef51b3d659f98,
+  "src/collections/EligibilityTests/OptionsRowLabel.tsx#default": default_e6f635e33cdcc4d4d11b58dc87fdbc28,
+  "src/collections/EligibilityTests/CriteriaRowLabel.tsx#default": default_5c27a4360ad720e85354b3b24721e696,
+  "src/collections/MediaCloudCell#default": default_53602952b3aad17a0cfc4bbf43cc4181,
+  "@payloadcms/plugin-seo/client#MetaImageComponent": MetaImageComponent_a8a977ebc872c5d5ea7ee689724c0860,
+  "src/collections/Users/AvatarCell#default": default_6e5325882d4f1cdba6ec4e761f75cd71,
   "@payloadcms/plugin-search/client#LinkToDoc": LinkToDoc_aead06e4cbf6b2620c5c51c9ab283634,
   "@payloadcms/plugin-search/client#ReindexButton": ReindexButton_aead06e4cbf6b2620c5c51c9ab283634,
+  "@payloadcms/ui#FolderTypeField": FolderTypeField_3817bf644402e67bfe6577f60ef982de,
   "src/globals/Footer/SmItemRowLabel.tsx#default": default_9702e426ff612febae1976764fe56710,
   "src/globals/Navigation/NavItemRowLabel.tsx#default": default_dde45096079356e8a763d3b11b727b2d,
   "src/globals/Navigation/MenuItemRowLabel.tsx#default": default_760c331c4141744d569a29c3060f6950,
@@ -102,6 +117,5 @@ export const importMap = {
   "@/components/Icon/Icon.tsx#Icon": Icon_c3a8555f846701084023abb33922dc25,
   "@/components/Logo/Logo.tsx#Logo": Logo_566629f80931517f5befb54103e89cc5,
   "@/components/BeforeDashboard#default": default_1a7510af427896d367a49dbf838d2de6,
-  "@/components/BeforeLogin#default": default_8a7ab0eb7ab5c511aba12e68480bfe5e,
-  "@payloadcms/storage-s3/client#S3ClientUploadHandler": S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24
+  "@/components/BeforeLogin#default": default_8a7ab0eb7ab5c511aba12e68480bfe5e
 }

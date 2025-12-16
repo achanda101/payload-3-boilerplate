@@ -8,6 +8,7 @@ node_modules
 
 # Payload default media upload directory
 public/media/
+/media
 
 # Builder.io vscode settings
 builder.config.json

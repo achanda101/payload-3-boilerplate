@@ -14,10 +14,6 @@ export const Categories: CollectionConfig = {
   admin: {
     hidden: true,
     useAsTitle: 'title',
-    group: {
-      name: 'Content',
-      order: '4',
-    },
   },
   fields: [
     {

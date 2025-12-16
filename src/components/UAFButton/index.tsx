@@ -1,43 +1,121 @@
-import React, { useState } from "react";
-import Link from "next/link";
+import React, { useState } from 'react'
+import Link from 'next/link'
+import { ETestRender } from '@/components/ETestRender'
+import { getValidUrl } from '@/utilities/getValidUrl'
+
+interface AssetCloud {
+  id: string
+  alt: string
+  url?: string | null
+  width?: number | null
+  height?: number | null
+  focalX?: number | null
+  focalY?: number | null
+}
+
+interface ETestLink {
+  type: string
+  url?: string | null
+  newTab?: boolean | null
+  reference?: {
+    relationTo?: string
+    value: {
+      slug?: string
+    }
+  }
+  downloadLink?: boolean | null
+  arrowLink?: boolean | null
+  pillSolid?: boolean | null
+  pillOutline?: boolean | null
+  label: string | null
+  etestlink?: {
+    relationTo?: string
+    value: {
+      introCard?: object | null
+      critList?: object | null
+      isECard?: object | null
+      notECard?: object | null
+    }
+  }
+}
 
 interface ButtonProps {
   button: {
-    type: string;
-    newTab?: boolean | null;
-    downloadLink?: boolean | null;
-    arrowLink?: boolean | null;
-    pillSolid?: boolean | null;
-    pillOutline?: boolean | null;
-    url?: string | null;
-    label: string | null;
-    email?: string | null;
+    type: string
+    newTab?: boolean | null
+    downloadLink?: boolean | null
+    arrowLink?: boolean | null
+    pillSolid?: boolean | null
+    pillOutline?: boolean | null
+    url?: string | null
+    label: string | null
+    email?: string | null
     doc?: {
-      relationTo: string;
+      relationTo: string
       value: {
-        url?: string;
+        url?: string
       }
-    } | null;
+    } | null
     reference?: {
-      relationTo?: string;
+      relationTo?: string
       value: {
-        slug?: string;
-      };
-    }
-  };
+        slug?: string
+      }
+    } | null
+    etestlink?: {
+      relationTo?: string
+      value: {
+        introCard?: {
+          introTitle?: string | null
+          introDesc?: Record<string, any> | null
+        }
+        critList?: {
+          criteria?:
+            | {
+                question?: string | null
+                reason?: string | null
+                options?:
+                  | {
+                      optionText?: string | null
+                      isEligible?: boolean | null
+                      isCustom?: boolean | null
+                      customResponse?: Record<string, any> | null
+                    }[]
+                  | null
+              }[]
+            | null
+        } | null
+        isECard?: {
+          isETitle?: string | null
+          isEDesc?: Record<string, any> | null
+          isELink?: ETestLink | null
+          isEMascot?: AssetCloud | null
+        } | null
+        notECard?: {
+          notETitle?: string | null
+          notEDesc?: Record<string, any> | null
+          notELink?: ETestLink | null
+          notEMascot?: AssetCloud | null
+        } | null
+      }
+    } | null
+  }
 }
 
 export const UAFButton: React.FC<ButtonProps> = ({ button }) => {
+  const [isETestOpen, setIsETestOpen] = useState(false)
+
+  const handleEtestClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    setIsETestOpen(true)
+  }
+
+  const closeModal = () => {
+    setIsETestOpen(false)
+  }
+
   const getHref = () => {
-    if (button.type === 'reference') {
-      return `/${button.reference?.relationTo}/${button.reference?.value?.slug}` || '#'
-    } else if (button.type === 'email') {
-      return `mailto:${button.email}` || '#'
-    } else if (button.type === 'document') {
-      return `${button.doc?.value?.url}` || '#'
-    } else {
-      return button.url || '#'
-    }
+    return getValidUrl(button as any)
   }
 
   const getBtnClassName = () => {
@@ -66,8 +144,7 @@ export const UAFButton: React.FC<ButtonProps> = ({ button }) => {
     // Handle pill buttons without download or arrow link
     else if (button.pillSolid) {
       classes.push('pill-button', 'dark')
-    }
-    else if (button.pillOutline) {
+    } else if (button.pillOutline) {
       classes.push('pill-button', 'outline')
     }
 
@@ -79,14 +156,21 @@ export const UAFButton: React.FC<ButtonProps> = ({ button }) => {
     return classes.join(' ')
   }
 
-  return (
-      <Link
-        href={getHref()}
-        target={button?.newTab ? '_blank' : '_self'}
-      >
-        <button className={getBtnClassName()}>
+  // Check if link type is 'etest'
+  if (button.type === 'etest') {
+    return (
+      <>
+        <button onClick={handleEtestClick} className={getBtnClassName()}>
           {button.label}
         </button>
-      </Link>
+        {isETestOpen && <ETestRender etestData={button.etestlink as any} onClose={closeModal} />}
+      </>
     )
+  }
+
+  return (
+    <Link href={getHref()} target={button?.newTab ? '_blank' : '_self'}>
+      <button className={getBtnClassName()}>{button.label}</button>
+    </Link>
+  )
 }

@@ -1,19 +1,19 @@
-import { Block } from "payload";
-import { link } from "@/fields/link";
-import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import { Block } from 'payload'
+import { link } from '@/fields/link'
+import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import {
   BoldFeature,
   UnderlineFeature,
   ItalicFeature,
   LinkFeature,
   InlineToolbarFeature,
-} from "@payloadcms/richtext-lexical";
+} from '@payloadcms/richtext-lexical'
 
 export const YellowCardDeck: Block = {
   slug: 'ylwDeck',
   labels: {
     singular: 'Yellow Card Deck',
-    plural: 'Yellow Card Decks'
+    plural: 'Yellow Card Decks',
   },
   imageURL: '/block_icons/yellowcarddeck-block-icon.png',
   fields: [
@@ -23,7 +23,7 @@ export const YellowCardDeck: Block = {
         {
           type: 'group',
           fields: [
-                {
+            {
               name: 'title',
               type: 'text',
               localized: true,
@@ -39,12 +39,12 @@ export const YellowCardDeck: Block = {
               defaultValue: 'center',
               admin: {
                 layout: 'horizontal',
-              }
+              },
             },
           ],
           admin: {
-            width: '50%'
-          }
+            width: '50%',
+          },
         },
         {
           name: 'desc',
@@ -56,27 +56,27 @@ export const YellowCardDeck: Block = {
               UnderlineFeature(),
               ItalicFeature(),
               LinkFeature({
-                enabledCollections: [ 'grants', 'pages' ],
+                enabledCollections: ['grants', 'pages', 'reports', 'blog'],
               }),
               InlineToolbarFeature(),
             ],
             admin: {
-              placeholder: 'Start typing your content here ...'
-            }
+              placeholder: 'Start typing your content here ...',
+            },
           }),
           localized: true,
           admin: {
-            width: '50%'
-          }
+            width: '50%',
+          },
         },
-      ]
+      ],
     },
     {
       name: 'cards',
       label: 'Yellow Cards',
       labels: {
         singular: 'Yellow Card',
-        plural: 'Yellow Cards'
+        plural: 'Yellow Cards',
       },
       type: 'array',
       minRows: 1,
@@ -105,7 +105,7 @@ export const YellowCardDeck: Block = {
                 },
               ],
               admin: {
-                width: '50%'
+                width: '50%',
               },
             },
             {
@@ -131,21 +131,21 @@ export const YellowCardDeck: Block = {
                   admin: {
                     description: 'Position of the mascot image on the yellow card',
                     layout: 'horizontal',
-                  }
-                }
+                  },
+                },
               ],
               admin: {
-                width: '50%'
+                width: '50%',
               },
-            }, 
-          ]
+            },
+          ],
         },
         {
           name: 'links',
           label: 'Links on the Card',
           labels: {
             singular: 'Link',
-            plural: 'Links'
+            plural: 'Links',
           },
           type: 'array',
           minRows: 1,
@@ -157,8 +157,8 @@ export const YellowCardDeck: Block = {
               localized: true,
               admin: {
                 width: '30%',
-                placeholder: '(optional)'
-              }
+                placeholder: '(optional)',
+              },
             },
             link({
               appearances: false,
@@ -168,19 +168,19 @@ export const YellowCardDeck: Block = {
             components: {
               RowLabel: {
                 path: 'src/blocks/YellowCardDeck/LinkRowLabel.tsx',
-              }
+              },
             },
-          }
-        }    
+          },
+        },
       ],
       admin: {
         description: 'Add yellow cards to be displayed in the deck',
         components: {
           RowLabel: {
             path: 'src/blocks/YellowCardDeck/CardRowLabel.tsx',
-          }
+          },
         },
-      } 
-    }
-  ]
+      },
+    },
+  ],
 }

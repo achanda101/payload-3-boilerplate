@@ -5,6 +5,7 @@ import { GrantPage } from '../../components/GrantPage/GrantPage'
 import { getPayload } from 'payload'
 import { draftMode } from 'next/headers'
 import configPromise from '@payload-config'
+import { generateMeta } from '@/utilities/generateMeta'
 
 type Args = {
   params: Promise<{
@@ -14,6 +15,7 @@ type Args = {
 
 export default async function Page({ params: paramsPromise }: Args) {
   const { slug = '' } = await paramsPromise
+  const { isEnabled: isDraftMode } = await draftMode()
   const page = await queryPageBySlug({ slug })
 
   if (!page) {
@@ -26,9 +28,17 @@ export default async function Page({ params: paramsPromise }: Args) {
       <GrantPage
         collection='grants'
         docId={page.id}
-      /> 
+        isDraft={isDraftMode}
+      />
     </>
   )
+}
+
+export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
+  const { slug = '' } = await paramsPromise
+  const page = await queryPageBySlug({ slug })
+
+  return generateMeta({ doc: page })
 }
 
 const queryPageBySlug = cache(async ({ slug }: { slug: string }) => {

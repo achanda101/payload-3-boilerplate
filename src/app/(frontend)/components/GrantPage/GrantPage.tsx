@@ -29,12 +29,39 @@ interface AssetCloud {
   focalY?: number | null
 }
 
+interface ETestLink {
+  type: string
+  url?: string | null
+  newTab?: boolean | null
+  reference?: {
+    relationTo?: string
+    value: {
+      slug?: string
+    }
+  }
+  downloadLink?: boolean | null
+  arrowLink?: boolean | null
+  pillSolid?: boolean | null
+  pillOutline?: boolean | null
+  label: string | null
+  etestlink?: {
+    relationTo?: string
+    value: {
+      introCard?: object | null
+      critList?: object | null
+      isECard?: object | null
+      notECard?: object | null
+    }
+  }
+}
+
 interface GrantPageProps {
   collection: string
   docId: number
+  isDraft?: boolean
 }
 
-export const GrantPage: React.FC<GrantPageProps> = ({ collection, docId }) => {
+export const GrantPage: React.FC<GrantPageProps> = ({ collection, docId, isDraft = false }) => {
   const { selectedLanguage } = useLanguage()
   const { setHeaderTheme } = useHeaderTheme()
   const [heroHeaderImg, setHeroHeaderImg] = useState('wavy_top-trans')
@@ -63,6 +90,43 @@ export const GrantPage: React.FC<GrantPageProps> = ({ collection, docId }) => {
             slug?: string
           }
         }
+        etestlink?: {
+          relationTo?: string
+          value: {
+            introCard?: {
+              introTitle?: string | null
+              introDesc?: Record<string, any> | null
+            }
+            critList?: {
+              criteria?:
+                | {
+                    question?: string | null
+                    reason?: string | null
+                    options?:
+                      | {
+                          optionText?: string | null
+                          isEligible?: boolean | null
+                          isCustom?: boolean | null
+                          customResponse?: Record<string, any> | null
+                        }[]
+                      | null
+                  }[]
+                | null
+            } | null
+            isECard?: {
+              isETitle?: string | null
+              isEDesc?: Record<string, any> | null
+              isELink?: ETestLink | null
+              isEMascot?: AssetCloud | null
+            } | null
+            notECard?: {
+              notETitle?: string | null
+              notEDesc?: Record<string, any> | null
+              notELink?: ETestLink | null
+              notEMascot?: AssetCloud | null
+            } | null
+          }
+        }
       }
     }[]
     heroContact?: {
@@ -79,7 +143,8 @@ export const GrantPage: React.FC<GrantPageProps> = ({ collection, docId }) => {
 
   const handleLanguageChange = useCallback(
     async (newLanguage: string) => {
-      const fetchPath = `/api/${collection}/${docId}?locale=${newLanguage}&depth=2`
+      const draftParam = isDraft ? '&draft=true' : ''
+      const fetchPath = `/api/${collection}/${docId}?locale=${newLanguage}&depth=2${draftParam}&trash=false`
 
       try {
         const response = await fetch(fetchPath)
@@ -106,6 +171,7 @@ export const GrantPage: React.FC<GrantPageProps> = ({ collection, docId }) => {
               newTab: button.link.newTab,
               email: button.link.email,
               reference: button.link.reference,
+              etest: button.link.etestlink,
             }),
           ),
           heroContact: data.heroContact,
@@ -117,7 +183,7 @@ export const GrantPage: React.FC<GrantPageProps> = ({ collection, docId }) => {
         console.error('Failed to fetch Hero and Content Blocks data on Page:', error)
       }
     },
-    [collection, docId, setHeaderTheme],
+    [collection, docId, isDraft, setHeaderTheme],
   )
 
   useEffect(() => {
@@ -204,7 +270,7 @@ export const GrantPage: React.FC<GrantPageProps> = ({ collection, docId }) => {
                       subtitle={(block as any).ctaSubtitle || ''}
                       ctaButton={(block as any).ctaButton || []}
                     />
-                    {process.env.NODE_ENV === 'development' && (
+                    {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
                       <div className="page_column_layout gap-6">
                         <ColumnIndicators />
                       </div>
@@ -222,7 +288,7 @@ export const GrantPage: React.FC<GrantPageProps> = ({ collection, docId }) => {
                         grantCards={(block as any) || []}
                       />
                     </div>
-                    {process.env.NODE_ENV === 'development' && (
+                    {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
                       <div className="page_column_layout gap-6">
                         <ColumnIndicators />
                       </div>
@@ -240,7 +306,7 @@ export const GrantPage: React.FC<GrantPageProps> = ({ collection, docId }) => {
                         steps={block.steps}
                       />
                     </div>
-                    {process.env.NODE_ENV === 'development' && (
+                    {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
                       <div className="page_column_layout gap-6">
                         <ColumnIndicators />
                       </div>
@@ -255,7 +321,7 @@ export const GrantPage: React.FC<GrantPageProps> = ({ collection, docId }) => {
                       <MultiColumnInfo infoColumns={block.multicols} />
                     </div>
 
-                    {process.env.NODE_ENV === 'development' && (
+                    {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
                       <div className="page_column_layout gap-6">
                         <ColumnIndicators />
                       </div>
@@ -274,7 +340,7 @@ export const GrantPage: React.FC<GrantPageProps> = ({ collection, docId }) => {
                       />
                     </div>
 
-                    {process.env.NODE_ENV === 'development' && (
+                    {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
                       <div className="page_column_layout gap-6">
                         <ColumnIndicators />
                       </div>
@@ -295,7 +361,7 @@ export const GrantPage: React.FC<GrantPageProps> = ({ collection, docId }) => {
                       />
                     </div>
 
-                    {process.env.NODE_ENV === 'development' && (
+                    {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
                       <div className="page_column_layout gap-6">
                         <ColumnIndicators />
                       </div>
@@ -330,7 +396,7 @@ export const GrantPage: React.FC<GrantPageProps> = ({ collection, docId }) => {
                       link={block.link}
                     />
 
-                    {process.env.NODE_ENV === 'development' && (
+                    {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
                       <div className="page_column_layout gap-6">
                         <ColumnIndicators />
                       </div>

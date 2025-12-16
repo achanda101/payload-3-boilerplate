@@ -6,6 +6,13 @@ import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
 
 import { revalidateGrant } from './hooks/revalidateGrant'
 import { slugField } from '@/fields/slug'
+import {
+  MetaDescriptionField,
+  MetaImageField,
+  MetaTitleField,
+  OverviewField,
+  PreviewField,
+} from '@payloadcms/plugin-seo/fields'
 
 import { generatePreviewPath } from '@/utilities/generatePreviewPath'
 import { getServerSideURL } from '@/utilities/getURL'
@@ -40,14 +47,15 @@ export const Grants: CollectionConfig<'grants'> = {
   admin: {
     group: {
       name: 'Content',
-      order: '1',
+      order: '2',
     },
-    defaultColumns: ['title', 'pageType', 'grantCard', 'bgType'],
+    defaultColumns: ['title', 'pageType', 'grantCard', 'bgType', '_status', 'folder'],
     livePreview: {
-      url: ({ data }) => {
+      url: ({ data, locale }) => {
         const path = generatePreviewPath({
           slug: typeof data?.slug === 'string' ? data.slug : '',
           collection: 'grants',
+          locale: locale?.code,
         })
 
         return `${getServerSideURL()}${path}`
@@ -55,6 +63,8 @@ export const Grants: CollectionConfig<'grants'> = {
     },
     useAsTitle: 'title',
   },
+  folders: true,
+  trash: true,
   fields: [
     {
       type: 'row',
@@ -133,25 +143,41 @@ export const Grants: CollectionConfig<'grants'> = {
               name: 'heroTitle',
               type: 'textarea',
               localized: true,
+              maxLength: 60,
               admin: {
                 placeholder: 'Enter title for the Hero',
                 width: '50%',
+                components: {
+                  afterInput: [
+                    {
+                      path: '@/utilities/characterCounter.tsx',
+                    },
+                  ],
+                },
               },
             },
             {
               name: 'heroSubtitle',
               type: 'textarea',
               localized: true,
+              maxLength: 250,
               admin: {
                 placeholder: 'Enter subtitle for the Hero',
                 width: '50%',
+                components: {
+                  afterInput: [
+                    {
+                      path: '@/utilities/characterCounter.tsx',
+                    },
+                  ],
+                },
               },
             },
           ],
         },
         {
           name: 'bgType',
-          label: 'Hero Background Design Type',
+          label: 'Hero Background Design',
           type: 'radio',
           options: [
             { label: 'Wavy Top', value: 'wavy_top' },
@@ -232,6 +258,42 @@ export const Grants: CollectionConfig<'grants'> = {
         isSortable: true,
         disableListColumn: true,
       },
+    },
+    {
+      type: 'group',
+      name: 'meta',
+      label: 'SEO',
+      fields: [
+        OverviewField({
+          titlePath: 'meta.title',
+          descriptionPath: 'meta.description',
+          imagePath: 'meta.image',
+        }),
+        MetaTitleField({
+          hasGenerateFn: true,
+        }),
+        MetaImageField({
+          relationTo: 'mediaCloud',
+          overrides: {
+            admin: {
+              description:
+                'Recommended file size for images is <500KB. Image must have a minimum width of 800px for optimal social media display and should be a .jpg, .png.',
+            },
+          },
+        }),
+
+        MetaDescriptionField({
+          hasGenerateFn: true,
+        }),
+        PreviewField({
+          // if the `generateUrl` function is configured
+          hasGenerateFn: true,
+
+          // field paths to match the target field for data
+          titlePath: 'meta.title',
+          descriptionPath: 'meta.description',
+        }),
+      ],
     },
     {
       name: 'publishedAt',

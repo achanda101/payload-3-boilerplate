@@ -12,8 +12,9 @@ export async function GET(req: Request): Promise<Response> {
   const token = req.headers.get('cookie')?.split(`${payloadToken}=`)[1]?.split(';')[0]
   const { searchParams } = new URL(req.url)
   const path = searchParams.get('path')
-  const collection = searchParams.get('collection') as CollectionSlug
+  const collection = searchParams.get('collection') as CollectionSlug | 'homepage'
   const slug = searchParams.get('slug')
+  const locale = searchParams.get('locale')
 
   const previewSecret = searchParams.get('previewSecret')
 
@@ -25,11 +26,11 @@ export async function GET(req: Request): Promise<Response> {
     }
 
     if (!collection) {
-      return new Response('No path provided', { status: 404 })
+      return new Response('No collection provided', { status: 404 })
     }
 
     if (!slug) {
-      return new Response('No path provided', { status: 404 })
+      return new Response('No slug provided', { status: 404 })
     }
 
     if (!token) {
@@ -58,26 +59,42 @@ export async function GET(req: Request): Promise<Response> {
 
     // Verify the given slug exists
     try {
-      const docs = await payload.find({
-        collection,
-        draft: true,
-        limit: 1,
-        // pagination: false reduces overhead if you don't need totalDocs
-        pagination: false,
-        depth: 0,
-        select: {},
-        where: {
-          slug: {
-            equals: slug,
-          },
-        },
-      })
+      // Handle homepage global separately
+      if (collection === 'homepage') {
+        const homepage = await payload.findGlobal({
+          slug: 'homepage',
+          draft: true,
+          depth: 0,
+          ...(locale && { locale: locale as any }),
+        })
 
-      if (!docs.docs.length) {
-        return new Response('Document not found', { status: 404 })
+        if (!homepage) {
+          return new Response('Homepage not found', { status: 404 })
+        }
+      } else {
+        // Handle regular collections
+        const docs = await payload.find({
+          collection: collection as CollectionSlug,
+          draft: true,
+          limit: 1,
+          // pagination: false reduces overhead if you don't need totalDocs
+          pagination: false,
+          depth: 0,
+          select: {},
+          ...(locale && { locale: locale as any }),
+          where: {
+            slug: {
+              equals: slug,
+            },
+          },
+        })
+
+        if (!docs.docs.length) {
+          return new Response('Document not found', { status: 404 })
+        }
       }
     } catch (error) {
-      payload.logger.error('Error verifying token for live preview:', error)
+      payload.logger.error('Error verifying document for live preview:', error)
     }
 
     draft.enable()

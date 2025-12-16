@@ -6,6 +6,13 @@ import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
 
 import { revalidatePage } from './hooks/revalidatePage'
 import { slugField } from '@/fields/slug'
+import {
+  MetaDescriptionField,
+  MetaImageField,
+  MetaTitleField,
+  OverviewField,
+  PreviewField,
+} from '@payloadcms/plugin-seo/fields'
 
 import { generatePreviewPath } from '@/utilities/generatePreviewPath'
 import { getServerSideURL } from '@/utilities/getURL'
@@ -21,6 +28,7 @@ import { FeatureCard } from '@/blocks/FeatureCard/config'
 import { FeatureCardAccordion } from '@/blocks/FeatureCardAccordion/config'
 import { ListingCardDeck } from '@/blocks/ListingCardDeck/config'
 import { FaqBlock } from '@/blocks/FaqBlock/config'
+import { RichContentBlock } from '@/blocks/RichContentBlock/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -39,21 +47,23 @@ export const Pages: CollectionConfig<'pages'> = {
   admin: {
     group: {
       name: 'Content',
-      order: '3',
+      order: '5',
     },
-    defaultColumns: ['title', 'mascot', 'bgType', 'heroColour', 'publishedAt'],
+    defaultColumns: ['title', 'mascot', 'bgType', 'heroColour', '_status', 'folder'],
     livePreview: {
-      url: ({ data }) => {
+      url: ({ data, locale }) => {
         const path = generatePreviewPath({
           slug: typeof data?.slug === 'string' ? data.slug : '',
           collection: 'pages',
+          locale: locale?.code,
         })
-
         return `${getServerSideURL()}${path}`
       },
     },
     useAsTitle: 'title',
   },
+  folders: true,
+  trash: true,
   fields: [
     {
       name: 'title',
@@ -85,18 +95,34 @@ export const Pages: CollectionConfig<'pages'> = {
               name: 'heroTitle',
               type: 'textarea',
               localized: true,
+              maxLength: 60,
               admin: {
                 placeholder: 'Enter title for the Hero',
                 width: '50%',
+                components: {
+                  afterInput: [
+                    {
+                      path: '@/utilities/characterCounter.tsx',
+                    },
+                  ],
+                },
               },
             },
             {
               name: 'heroSubtitle',
               type: 'textarea',
               localized: true,
+              maxLength: 250,
               admin: {
                 placeholder: 'Enter subtitle for the Hero',
                 width: '50%',
+                components: {
+                  afterInput: [
+                    {
+                      path: '@/utilities/characterCounter.tsx',
+                    },
+                  ],
+                },
               },
             },
           ],
@@ -146,6 +172,9 @@ export const Pages: CollectionConfig<'pages'> = {
               admin: {
                 description: 'Upload a mascot image for the Hero section.',
                 width: '50%',
+                components: {
+                  Cell: 'src/collections/AssetCloudCell',
+                },
               },
             },
           ],
@@ -213,6 +242,7 @@ export const Pages: CollectionConfig<'pages'> = {
       type: 'blocks',
       name: 'contentBlocks',
       blocks: [
+        RichContentBlock,
         SecondaryCTA,
         MultiColumnInfoBlock,
         GrantCardGridBlock,
@@ -233,6 +263,42 @@ export const Pages: CollectionConfig<'pages'> = {
         isSortable: true,
         disableListColumn: true,
       },
+    },
+    {
+      type: 'group',
+      name: 'meta',
+      label: 'SEO',
+      fields: [
+        OverviewField({
+          titlePath: 'meta.title',
+          descriptionPath: 'meta.description',
+          imagePath: 'meta.image',
+        }),
+        MetaTitleField({
+          hasGenerateFn: true,
+        }),
+        MetaImageField({
+          relationTo: 'mediaCloud',
+          overrides: {
+            admin: {
+              description:
+                'Recommended file size for images is <500KB. Image must have a minimum width of 800px for optimal social media display and should be a .jpg, .png.',
+            },
+          },
+        }),
+
+        MetaDescriptionField({
+          hasGenerateFn: true,
+        }),
+        PreviewField({
+          // if the `generateUrl` function is configured
+          hasGenerateFn: true,
+
+          // field paths to match the target field for data
+          titlePath: 'meta.title',
+          descriptionPath: 'meta.description',
+        }),
+      ],
     },
     {
       name: 'publishedAt',

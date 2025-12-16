@@ -17,18 +17,18 @@ import { ColumnIndicators } from '../ColumnIndicators'
 import { serializeLexical } from '@/components/RichText/serializeRichText'
 
 interface PageProps {
-  data?: {
-    contentBlocks: any[]
-  }
+  data?: any
+  isDraft?: boolean
 }
 
-export const PageContent: React.FC<PageProps> = ({ data = { contentBlocks: [] } }) => {
+export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false }) => {
   const { selectedLanguage } = useLanguage()
-  const [contentBlocks, setContentBlocks] = useState<any[]>(data.contentBlocks || [])
+  const [contentBlocks, setContentBlocks] = useState<any[]>(data?.contentBlocks || [])
 
   const handleLanguageChange = async (newLanguage: string) => {
     try {
-      const response = await fetch(`/api/globals/homepage?locale=${newLanguage}&depth=2`)
+      const draftParam = isDraft ? '&draft=true' : ''
+      const response = await fetch(`/api/globals/homepage?locale=${newLanguage}&depth=2${draftParam}`)
 
       if (!response.ok) {
         throw new Error(`Failed to fetch Content Blocks: ${response.status} ${response.statusText}`)
@@ -46,7 +46,7 @@ export const PageContent: React.FC<PageProps> = ({ data = { contentBlocks: [] } 
 
   useEffect(() => {
     handleLanguageChange(selectedLanguage)
-  }, [selectedLanguage])
+  }, [selectedLanguage, isDraft])
 
   return (
     <div className="frame_layout">
@@ -61,7 +61,7 @@ export const PageContent: React.FC<PageProps> = ({ data = { contentBlocks: [] } 
                   subtitle={(block as any).ctaSubtitle || ''}
                   ctaButton={(block as any).ctaButton || []}
                 />
-                {process.env.NODE_ENV === 'development' && (
+                {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
                   <div className="page_column_layout gap-6">
                     <ColumnIndicators />
                   </div>
@@ -75,7 +75,7 @@ export const PageContent: React.FC<PageProps> = ({ data = { contentBlocks: [] } 
                 <div className="page_column_layout gap-6">
                   <GrantCardGrid title={block.title} desc={block.desc} grantCards={block as any} />
                 </div>
-                {process.env.NODE_ENV === 'development' && (
+                {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
                   <div className="page_column_layout gap-6">
                     <ColumnIndicators />
                   </div>
@@ -95,7 +95,7 @@ export const PageContent: React.FC<PageProps> = ({ data = { contentBlocks: [] } 
                   link={block.link}
                 />
 
-                {process.env.NODE_ENV === 'development' && (
+                {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
                   <div className="page_column_layout gap-6">
                     <ColumnIndicators />
                   </div>
@@ -126,7 +126,7 @@ export const PageContent: React.FC<PageProps> = ({ data = { contentBlocks: [] } 
                     steps={block.steps}
                   />
                 </div>
-                {process.env.NODE_ENV === 'development' && (
+                {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
                   <div className="page_column_layout gap-6">
                     <ColumnIndicators />
                   </div>
@@ -141,7 +141,7 @@ export const PageContent: React.FC<PageProps> = ({ data = { contentBlocks: [] } 
                   <MultiColumnInfo infoColumns={block.multicols} />
                 </div>
 
-                {process.env.NODE_ENV === 'development' && (
+                {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
                   <div className="page_column_layout gap-6">
                     <ColumnIndicators />
                   </div>
@@ -156,7 +156,7 @@ export const PageContent: React.FC<PageProps> = ({ data = { contentBlocks: [] } 
                   <SingleColumnInfo title={block.title} desc={block.desc} buttons={block.colBtns} />
                 </div>
 
-                {process.env.NODE_ENV === 'development' && (
+                {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
                   <div className="page_column_layout gap-6">
                     <ColumnIndicators />
                   </div>
@@ -177,7 +177,7 @@ export const PageContent: React.FC<PageProps> = ({ data = { contentBlocks: [] } 
                   />
                 </div>
 
-                {process.env.NODE_ENV === 'development' && (
+                {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
                   <div className="page_column_layout gap-6">
                     <ColumnIndicators />
                   </div>

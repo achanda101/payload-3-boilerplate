@@ -25,21 +25,24 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
   admin: {
     group: {
       name: 'Content',
-      order: '2',
+      order: '3',
     },
-    defaultColumns: ['title', 'cardColour', 'order', 'activePeriod', 'mascot', '_status'],
+    defaultColumns: ['title', 'cardColour', 'order', 'activePeriod', 'mascot', '_status', 'folder'],
     useAsTitle: 'title',
     livePreview: {
-      url: ({ data }) => {
+      url: ({ data, locale }) => {
         const path = generatePreviewPath({
           slug: typeof data?.slug === 'string' ? data.slug : '',
           collection: 'grantcards',
+          locale: locale?.code,
         })
 
         return `${getServerSideURL()}${path}`
       },
     },
   },
+  folders: true,
+  trash: true,
   fields: [
     {
       type: 'row',
@@ -177,6 +180,25 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
                       siblingData?.activePeriod === 'specific_period' || false,
                   },
                 },
+                {
+                  type: 'text',
+                  name: 'msg',
+                  label: 'Message',
+                  localized: true,
+                  maxLength: 50,
+                  admin: {
+                    placeholder: 'Brief explanation about availability of the grant',
+                    condition: (siblingData) =>
+                      siblingData?.activePeriod === 'specific_period' || false,
+                    components: {
+                      afterInput: [
+                        {
+                          path: '@/utilities/characterCounter.tsx',
+                        },
+                      ],
+                    },
+                  },
+                },
               ],
               admin: {
                 style: {
@@ -216,6 +238,9 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
                   relationTo: 'assetCloud',
                   admin: {
                     description: 'Upload a mascot image for the Grant Card',
+                    components: {
+                      Cell: 'src/collections/AssetCloudCell',
+                    },
                   },
                 },
               ],

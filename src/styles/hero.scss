@@ -9,6 +9,12 @@
 
   &.short {
     height: 70vh;
+    // height: fit-content;
+  }
+
+  &.fit-cover-image {
+    margin-block: auto;
+    height: 70vh;
   }
 }
 
@@ -23,7 +29,7 @@
   & > *:last-child {
     margin-top: 2rem;
   }
-  
+
   .hero-content {
     @include mix.flex-center;
     @include mix.flex-column;
@@ -43,6 +49,13 @@
         width: 100%;
       }
     }
+
+    &.hero-cover-image {
+      width: 82%;
+      margin: 0 auto;
+      margin-top: 1.5rem;
+      border-radius: 10px;
+    }
   }
 
   .hero-buttons,
@@ -56,9 +69,8 @@
   }
 
   .hero-mascot {
+    margin-top: 2rem;
     max-width: 15rem;
-    height: auto;
+    // width: auto;
   }
-
 }
-

@@ -10,10 +10,10 @@ const BeforeDashboard: React.FC = () => {
     <div className={baseClass}>
       <Banner className={`${baseClass}__banner`} type="success">
         <p>
-          <Link href="/">View Homepage</Link>
+          <Link href="/">View Website in Draft Mode</Link>
         </p>
       </Banner>
-      <Banner className={`${baseClass}__banner`} type="info">
+      {/* <Banner className={`${baseClass}__banner`} type="info">
         <h4>Video Tutorials</h4>
         <small>Turn on captions for better guidance.</small>
         <div className={`${baseClass}__videos`}>
@@ -23,7 +23,7 @@ const BeforeDashboard: React.FC = () => {
             </Link>
           </p>
         </div>
-      </Banner>
+      </Banner> */}
     </div>
   )
 }

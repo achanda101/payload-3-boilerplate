@@ -283,6 +283,10 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
                               if (navItem.link.type === 'reference') {
                                 const ref = navItem.link.reference
                                 if (ref?.relationTo && ref?.value?.slug) {
+                                  // Pages collection should not have a prefix
+                                  if (ref.relationTo === 'pages') {
+                                    return `/${ref.value.slug}`
+                                  }
                                   return `/${ref.relationTo}/${ref.value.slug}`
                                 }
                                 return '#'

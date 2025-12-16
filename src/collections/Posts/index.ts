@@ -33,7 +33,7 @@ export const Posts: CollectionConfig<'posts'> = {
   slug: 'posts',
   labels: {
     singular: 'Blogpost',
-    plural: 'Blogposts'
+    plural: 'Blogposts',
   },
   access: {
     create: authenticated,
@@ -55,13 +55,13 @@ export const Posts: CollectionConfig<'posts'> = {
   },
   admin: {
     hidden: true,
-    group: 'Content',
     defaultColumns: ['title', 'authors', 'updatedAt'],
     livePreview: {
-      url: ({ data }) => {
+      url: ({ data, locale }) => {
         const path = generatePreviewPath({
           slug: typeof data?.slug === 'string' ? data.slug : '',
           collection: 'posts',
+          locale: locale?.code,
         })
 
         return `${getServerSideURL()}${path}`
@@ -154,6 +154,10 @@ export const Posts: CollectionConfig<'posts'> = {
             }),
             MetaImageField({
               relationTo: 'mediaCloud',
+              // MetaImageField types don't support array but overrides do
+              overrides: {
+                relationTo: ['mediaCloud', 'assetCloud'],
+              },
             }),
 
             MetaDescriptionField({}),

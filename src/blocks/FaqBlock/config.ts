@@ -1,19 +1,19 @@
-import { Block } from "payload";
-import { link } from "@/fields/link";
-import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import { Block } from 'payload'
+import { link } from '@/fields/link'
+import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import {
   BoldFeature,
   UnderlineFeature,
   ItalicFeature,
   LinkFeature,
   InlineToolbarFeature,
-} from "@payloadcms/richtext-lexical";
+} from '@payloadcms/richtext-lexical'
 
 export const FaqBlock: Block = {
   slug: 'faqBlk',
   labels: {
     singular: 'FAQ Block',
-    plural: 'FAQ Blocks'
+    plural: 'FAQ Blocks',
   },
   imageURL: '/block_icons/faq-block-icon.png',
   fields: [
@@ -25,8 +25,8 @@ export const FaqBlock: Block = {
           type: 'text',
           localized: true,
           admin: {
-            width: '50%'
-          }
+            width: '50%',
+          },
         },
         {
           name: 'desc',
@@ -34,13 +34,13 @@ export const FaqBlock: Block = {
           type: 'text',
           localized: true,
           admin: {
-            width: '50%'
-          }
+            width: '50%',
+          },
         },
-      ]
+      ],
     },
     link({
-        appearances: false,
+      appearances: false,
     }),
     {
       name: 'faqs',
@@ -55,8 +55,8 @@ export const FaqBlock: Block = {
               type: 'text',
               localized: true,
               admin: {
-                width: '50%'
-              }
+                width: '50%',
+              },
             },
             {
               name: 'answer',
@@ -67,31 +67,31 @@ export const FaqBlock: Block = {
                   UnderlineFeature(),
                   ItalicFeature(),
                   LinkFeature({
-                    enabledCollections: [ 'grants', 'pages' ],
+                    enabledCollections: ['grants', 'pages', 'reports', 'blog'],
                   }),
                   InlineToolbarFeature(),
                 ],
                 admin: {
-                  placeholder: 'Start typing your content here ...'
-                }
+                  placeholder: 'Start typing your content here ...',
+                },
               }),
               localized: true,
               admin: {
                 description: 'Provide a detailed answer to the question',
-                width: '50%'
-              }
-            }
-          ]
-        }
+                width: '50%',
+              },
+            },
+          ],
+        },
       ],
       admin: {
         description: 'Add frequently asked questions to be displayed in this section',
         components: {
           RowLabel: {
             path: 'src/blocks/FaqBlock/FaqRowLabel.tsx',
-          }
+          },
         },
-      }
+      },
     },
-  ]
-};
+  ],
+}

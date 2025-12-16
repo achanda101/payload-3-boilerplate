@@ -126,7 +126,13 @@ export const NavMenuClient: React.FC<NavMenuClientProps> = ({ data }) => {
             const getHref = () => {
               if (!navItem.link) return '#'
               if (navItem.link.type === 'reference') {
-                return `/${navItem.link.reference?.relationTo}/${navItem.link.reference?.value?.slug}` || '#'
+                const relationTo = navItem.link.reference?.relationTo
+                const slug = navItem.link.reference?.value?.slug
+                // Pages collection should not have a prefix
+                if (relationTo === 'pages') {
+                  return `/${slug}` || '#'
+                }
+                return `/${relationTo}/${slug}` || '#'
               } else {
                 return navItem.link.url || '#'
               }

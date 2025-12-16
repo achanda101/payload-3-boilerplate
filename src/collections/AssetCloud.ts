@@ -23,6 +23,8 @@ export const AssetCloud: CollectionConfig = {
     description:
       'Upload and manage design assets like logos, mascots, icons, brand illustrations here.',
   },
+  folders: true,
+  trash: true,
   access: {
     create: authenticated,
     delete: authenticated,
@@ -41,6 +43,7 @@ export const AssetCloud: CollectionConfig = {
     },
   ],
   upload: {
+    staticDir: path.resolve(dirname, '../../media'),
     adminThumbnail: 'small',
     imageSizes: [
       {

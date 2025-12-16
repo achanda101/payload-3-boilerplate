@@ -16,8 +16,14 @@ export const MediaCloud: CollectionConfig = {
     plural: 'Images',
   },
   admin: {
-    group: 'Media',
+    group: {
+      name: 'Media',
+      order: '1',
+    },
+    defaultColumns: ['filename', 'alt', 'folder'],
   },
+  folders: true,
+  trash: true,
   access: {
     create: authenticated,
     delete: authenticated,
@@ -37,7 +43,7 @@ export const MediaCloud: CollectionConfig = {
   ],
   upload: {
     // Upload to the public/media directory in Next.js making them publicly accessible even outside of Payload
-    // staticDir: path.resolve(dirname, '../../public/media'),
+    staticDir: path.resolve(dirname, '../../media'),
     adminThumbnail: 'small',
     imageSizes: [
       {
@@ -51,7 +57,7 @@ export const MediaCloud: CollectionConfig = {
       },
       {
         name: 'small',
-        width: 400,
+        width: 300,
         height: undefined,
         fit: 'cover',
         formatOptions: {
@@ -83,6 +89,15 @@ export const MediaCloud: CollectionConfig = {
         fit: 'cover',
         formatOptions: {
           format: 'webp',
+        },
+      },
+      {
+        name: 'ogImage',
+        width: 200,
+        height: undefined,
+        fit: 'cover',
+        formatOptions: {
+          format: 'jpg',
         },
       },
     ],

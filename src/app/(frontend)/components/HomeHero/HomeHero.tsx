@@ -8,49 +8,26 @@ import { useHeaderTheme } from '@/providers/HeaderTheme'
 import { ButtonArray } from '@/components/ButtonArray'
 
 interface HeroProps {
-  data?: {
-    heroSection?: {
-      heroTitle?: string | null,
-      heroSubtitle?: string | null,
-      ctaButton?: {
-        id: string
-        link: {
-          type: string;
-          newTab?: boolean | null;
-          downloadLink?: boolean | null;
-          arrowLink?: boolean | null;
-          pillSolid?: boolean | null;
-          pillOutline?: boolean | null;
-          url?: string | null;
-          label: string | null;
-          email?: string | null;
-          reference?: {
-            relationTo?: string;
-            value: {
-              slug?: string;
-            };
-          }
-        }
-      }[],
-   }
-  }
+  data?: any
+  isDraft?: boolean
 }
 
-export const HomeHero: React.FC<HeroProps> = ({ data = {} }) => {
+export const HomeHero: React.FC<HeroProps> = ({ data = {}, isDraft = false }) => {
   const { selectedLanguage } = useLanguage()
   const { setHeaderTheme } = useHeaderTheme()
-  const [ heroData, setHeroData ] = useState<NonNullable<HeroProps[ 'data' ]>[ 'heroSection' ]>({})
-  
-  
+  const [ heroData, setHeroData ] = useState<any>(data?.heroSection || {})
+
+
   const handleLanguageChange = async (newLanguage: string) => {
     try {
-      const response = await fetch(`/api/globals/homepage?locale=${newLanguage}&depth=1`)
+      const draftParam = isDraft ? '&draft=true' : ''
+      const response = await fetch(`/api/globals/homepage?locale=${newLanguage}&depth=1${draftParam}`)
       const data = await response.json()
       setHeroData({
         ...data?.heroSection,
         ctaButton: data?.heroSection?.ctaButton ?? []
       })
-      
+
     } catch (error) {
       console.error('Failed to fetch Hero Section data:', error)
     }
@@ -61,7 +38,7 @@ export const HomeHero: React.FC<HeroProps> = ({ data = {} }) => {
     setHeaderTheme('blank')
     // Any side effects based on selectedLanguage can be handled here
     handleLanguageChange(selectedLanguage)
-  }, [ selectedLanguage, setHeaderTheme ])
+  }, [ selectedLanguage, setHeaderTheme, isDraft ])
 
   return (
     <section className="hero-banner">

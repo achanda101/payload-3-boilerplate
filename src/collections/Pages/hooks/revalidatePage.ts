@@ -10,7 +10,7 @@ export const revalidatePage: CollectionAfterChangeHook<Page> = ({
   req: { payload },
 }) => {
   if (doc._status === 'published') {
-    const path = `/pages/${doc.slug}`
+    const path = `/${doc.slug}`
 
     payload.logger.info(`Revalidating page at path: ${path}`)
 
@@ -19,7 +19,7 @@ export const revalidatePage: CollectionAfterChangeHook<Page> = ({
 
   // If the post was previously published, we need to revalidate the old path
   if (previousDoc._status === 'published' && doc._status !== 'published') {
-    const oldPath = `/pages/${previousDoc.slug}`
+    const oldPath = `/${previousDoc.slug}`
 
     payload.logger.info(`Revalidating old page at path: ${oldPath}`)
 

@@ -3,7 +3,6 @@ import type { CollectionConfig } from 'payload'
 import { authenticated } from '@/access/authenticated'
 import { canUpdateUser } from '@/access/canUpdateUser'
 import { canUnlockUser } from '@/access/canUnlockUser'
-import { upload } from 'node_modules/payload/dist/fields/validations'
 
 export const Users: CollectionConfig = {
   slug: 'users',
@@ -13,17 +12,17 @@ export const Users: CollectionConfig = {
     delete: canUpdateUser,
     read: authenticated,
     update: canUpdateUser,
-    unlock: canUnlockUser
+    unlock: canUnlockUser,
   },
   admin: {
-    defaultColumns: ['name', 'email', 'role'],
+    defaultColumns: ['name', 'avatar', 'email', 'role'],
     useAsTitle: 'name',
     group: 'Admin',
   },
   auth: {
     // property controls how deeply "populated"
     // relationship docs are that are stored in the req.user
-    depth: 1
+    depth: 1,
   },
   fields: [
     {
@@ -36,6 +35,9 @@ export const Users: CollectionConfig = {
       relationTo: 'mediaCloud',
       admin: {
         description: 'Upload a profile picture',
+        components: {
+          Cell: 'src/collections/Users/AvatarCell',
+        },
       },
     },
     {
