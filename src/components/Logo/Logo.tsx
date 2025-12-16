@@ -9,15 +9,18 @@ interface Props {
 }
 
 export const Logo = () => {
+  // Fallback to root path if NEXT_PUBLIC_SERVER_URL is not defined
+  const homeUrl = process.env.NEXT_PUBLIC_SERVER_URL || '/'
+
   return (
-    <Link href={`${process.env.NEXT_PUBLIC_SERVER_URL}`}>
-    <Image
-      alt="UAF A&P Logo"
-      width={305}
-      height={70}
-      src="/uafanp-logo.png"
+    <Link href={homeUrl}>
+      <Image
+        alt="UAF A&P Logo"
+        width={305}
+        height={70}
+        src="/uafanp-logo.png"
       />
-      </Link>
+    </Link>
   )
 }
 

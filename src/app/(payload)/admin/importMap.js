@@ -30,6 +30,8 @@ import { default as default_5af37ed1fa40c1f3964f3a2be1d5514b } from 'src/blocks/
 import { default as default_0e824bbae1e3a2ad0be49040bd886a72 } from 'src/blocks/ListingCardDeck/CardRowLabel.tsx'
 import { default as default_d2c224faee96d42b95d01b57439e2ee9 } from 'src/blocks/ListingCardDeck/ButtonRowLabel.tsx'
 import { default as default_357e18d3de9014934eab7d609c6a42a0 } from 'src/blocks/FaqBlock/FaqRowLabel.tsx'
+import { default as default_5fbe4d4c68bc702e9a152d6b79b7819f } from 'src/blocks/PinkPuffyCallOut/calloutLabel.tsx'
+import { default as default_e117b4e6a79196937b8fadc00a39e148 } from 'src/blocks/PinkPuffyCallOut/linkLabel.tsx'
 import { OverviewComponent as OverviewComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { MetaTitleComponent as MetaTitleComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { MetaDescriptionComponent as MetaDescriptionComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
@@ -91,6 +93,8 @@ export const importMap = {
   "src/blocks/ListingCardDeck/CardRowLabel.tsx#default": default_0e824bbae1e3a2ad0be49040bd886a72,
   "src/blocks/ListingCardDeck/ButtonRowLabel.tsx#default": default_d2c224faee96d42b95d01b57439e2ee9,
   "src/blocks/FaqBlock/FaqRowLabel.tsx#default": default_357e18d3de9014934eab7d609c6a42a0,
+  "src/blocks/PinkPuffyCallOut/calloutLabel.tsx#default": default_5fbe4d4c68bc702e9a152d6b79b7819f,
+  "src/blocks/PinkPuffyCallOut/linkLabel.tsx#default": default_e117b4e6a79196937b8fadc00a39e148,
   "@payloadcms/plugin-seo/client#OverviewComponent": OverviewComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "@payloadcms/plugin-seo/client#MetaTitleComponent": MetaTitleComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "@payloadcms/plugin-seo/client#MetaDescriptionComponent": MetaDescriptionComponent_a8a977ebc872c5d5ea7ee689724c0860,

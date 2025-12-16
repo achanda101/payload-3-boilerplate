@@ -1025,6 +1025,108 @@ export interface Grant {
             blockName?: string | null;
             blockType: 'faqBlk';
           }
+        | {
+            /**
+             * Main title for the callout section
+             */
+            title: string;
+            /**
+             * Subtitle text below the main title
+             */
+            subtitle?: string | null;
+            /**
+             * Alignment for the title and subtitle
+             */
+            align?: ('center' | 'left') | null;
+            /**
+             * Top row items (maximum 3 items)
+             */
+            topRow?:
+              | {
+                  /**
+                   * Title for this top row item
+                   */
+                  title: string;
+                  /**
+                   * Subtitle for this top row item
+                   */
+                  subtitle?: string | null;
+                  /**
+                   * Description text for this top row item
+                   */
+                  description?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            /**
+             * Bottom row items (maximum 3 items)
+             */
+            botRow?:
+              | {
+                  /**
+                   * Title for this bottom row item
+                   */
+                  title: string;
+                  /**
+                   * Description text for this bottom row item
+                   */
+                  description?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            links?:
+              | {
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
+                    } | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'pinkPuffy';
+          }
       )[]
     | null;
   meta?: {
@@ -2046,6 +2148,108 @@ export interface Page {
             blockName?: string | null;
             blockType: 'faqBlk';
           }
+        | {
+            /**
+             * Main title for the callout section
+             */
+            title: string;
+            /**
+             * Subtitle text below the main title
+             */
+            subtitle?: string | null;
+            /**
+             * Alignment for the title and subtitle
+             */
+            align?: ('center' | 'left') | null;
+            /**
+             * Top row items (maximum 3 items)
+             */
+            topRow?:
+              | {
+                  /**
+                   * Title for this top row item
+                   */
+                  title: string;
+                  /**
+                   * Subtitle for this top row item
+                   */
+                  subtitle?: string | null;
+                  /**
+                   * Description text for this top row item
+                   */
+                  description?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            /**
+             * Bottom row items (maximum 3 items)
+             */
+            botRow?:
+              | {
+                  /**
+                   * Title for this bottom row item
+                   */
+                  title: string;
+                  /**
+                   * Description text for this bottom row item
+                   */
+                  description?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            links?:
+              | {
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
+                    } | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'pinkPuffy';
+          }
       )[]
     | null;
   meta?: {
@@ -3023,6 +3227,108 @@ export interface Blog {
             blockName?: string | null;
             blockType: 'faqBlk';
           }
+        | {
+            /**
+             * Main title for the callout section
+             */
+            title: string;
+            /**
+             * Subtitle text below the main title
+             */
+            subtitle?: string | null;
+            /**
+             * Alignment for the title and subtitle
+             */
+            align?: ('center' | 'left') | null;
+            /**
+             * Top row items (maximum 3 items)
+             */
+            topRow?:
+              | {
+                  /**
+                   * Title for this top row item
+                   */
+                  title: string;
+                  /**
+                   * Subtitle for this top row item
+                   */
+                  subtitle?: string | null;
+                  /**
+                   * Description text for this top row item
+                   */
+                  description?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            /**
+             * Bottom row items (maximum 3 items)
+             */
+            botRow?:
+              | {
+                  /**
+                   * Title for this bottom row item
+                   */
+                  title: string;
+                  /**
+                   * Description text for this bottom row item
+                   */
+                  description?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            links?:
+              | {
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
+                    } | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'pinkPuffy';
+          }
       )[]
     | null;
   meta?: {
@@ -3875,6 +4181,108 @@ export interface Report {
             blockName?: string | null;
             blockType: 'faqBlk';
           }
+        | {
+            /**
+             * Main title for the callout section
+             */
+            title: string;
+            /**
+             * Subtitle text below the main title
+             */
+            subtitle?: string | null;
+            /**
+             * Alignment for the title and subtitle
+             */
+            align?: ('center' | 'left') | null;
+            /**
+             * Top row items (maximum 3 items)
+             */
+            topRow?:
+              | {
+                  /**
+                   * Title for this top row item
+                   */
+                  title: string;
+                  /**
+                   * Subtitle for this top row item
+                   */
+                  subtitle?: string | null;
+                  /**
+                   * Description text for this top row item
+                   */
+                  description?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            /**
+             * Bottom row items (maximum 3 items)
+             */
+            botRow?:
+              | {
+                  /**
+                   * Title for this bottom row item
+                   */
+                  title: string;
+                  /**
+                   * Description text for this bottom row item
+                   */
+                  description?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            links?:
+              | {
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
+                    } | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'pinkPuffy';
+          }
       )[]
     | null;
   meta?: {
@@ -4673,6 +5081,108 @@ export interface Mmedia {
             id?: string | null;
             blockName?: string | null;
             blockType: 'faqBlk';
+          }
+        | {
+            /**
+             * Main title for the callout section
+             */
+            title: string;
+            /**
+             * Subtitle text below the main title
+             */
+            subtitle?: string | null;
+            /**
+             * Alignment for the title and subtitle
+             */
+            align?: ('center' | 'left') | null;
+            /**
+             * Top row items (maximum 3 items)
+             */
+            topRow?:
+              | {
+                  /**
+                   * Title for this top row item
+                   */
+                  title: string;
+                  /**
+                   * Subtitle for this top row item
+                   */
+                  subtitle?: string | null;
+                  /**
+                   * Description text for this top row item
+                   */
+                  description?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            /**
+             * Bottom row items (maximum 3 items)
+             */
+            botRow?:
+              | {
+                  /**
+                   * Title for this bottom row item
+                   */
+                  title: string;
+                  /**
+                   * Description text for this bottom row item
+                   */
+                  description?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            links?:
+              | {
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
+                    } | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'pinkPuffy';
           }
       )[]
     | null;
@@ -5708,6 +6218,51 @@ export interface GrantsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        pinkPuffy?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              align?: T;
+              topRow?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              botRow?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              links?:
+                | T
+                | {
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          doc?: T;
+                          etestlink?: T;
+                          label?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -6244,6 +6799,51 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        pinkPuffy?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              align?: T;
+              topRow?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              botRow?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              links?:
+                | T
+                | {
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          doc?: T;
+                          etestlink?: T;
+                          label?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -6630,6 +7230,51 @@ export interface BlogSelect<T extends boolean = true> {
                 | {
                     question?: T;
                     answer?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        pinkPuffy?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              align?: T;
+              topRow?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              botRow?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              links?:
+                | T
+                | {
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          doc?: T;
+                          etestlink?: T;
+                          label?: T;
+                        };
                     id?: T;
                   };
               id?: T;
@@ -7027,6 +7672,51 @@ export interface ReportsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        pinkPuffy?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              align?: T;
+              topRow?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              botRow?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              links?:
+                | T
+                | {
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          doc?: T;
+                          etestlink?: T;
+                          label?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -7413,6 +8103,51 @@ export interface MmediaSelect<T extends boolean = true> {
                 | {
                     question?: T;
                     answer?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        pinkPuffy?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              align?: T;
+              topRow?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              botRow?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              links?:
+                | T
+                | {
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          doc?: T;
+                          etestlink?: T;
+                          label?: T;
+                        };
                     id?: T;
                   };
               id?: T;

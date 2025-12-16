@@ -29,6 +29,7 @@ import { FeatureCardAccordion } from '@/blocks/FeatureCardAccordion/config'
 import { ListingCardDeck } from '@/blocks/ListingCardDeck/config'
 import { FaqBlock } from '@/blocks/FaqBlock/config'
 import { RichContentBlock } from '@/blocks/RichContentBlock/config'
+import { PinkPuffyCallOut } from '@/blocks/PinkPuffyCallOut/config'
 
 export const MMedia: CollectionConfig<'mmedia'> = {
   slug: 'mmedia',
@@ -236,6 +237,7 @@ export const MMedia: CollectionConfig<'mmedia'> = {
         FeatureCardAccordion,
         ListingCardDeck,
         FaqBlock,
+        PinkPuffyCallOut,
       ],
       labels: {
         singular: 'A Content Block',

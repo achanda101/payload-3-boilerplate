@@ -29,6 +29,7 @@ import { FeatureCardAccordion } from '@/blocks/FeatureCardAccordion/config'
 import { ListingCardDeck } from '@/blocks/ListingCardDeck/config'
 import { FaqBlock } from '@/blocks/FaqBlock/config'
 import { RichContentBlock } from '@/blocks/RichContentBlock/config'
+import { PinkPuffyCallOut } from '@/blocks/PinkPuffyCallOut/config'
 
 export const Report: CollectionConfig<'reports'> = {
   slug: 'reports',
@@ -248,6 +249,7 @@ export const Report: CollectionConfig<'reports'> = {
         FeatureCardAccordion,
         ListingCardDeck,
         FaqBlock,
+        PinkPuffyCallOut,
       ],
       labels: {
         singular: 'A Content Block',
