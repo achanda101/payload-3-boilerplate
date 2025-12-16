@@ -57,6 +57,7 @@ import { Icon as Icon_c3a8555f846701084023abb33922dc25 } from '@/components/Icon
 import { Logo as Logo_566629f80931517f5befb54103e89cc5 } from '@/components/Logo/Logo.tsx'
 import { default as default_1a7510af427896d367a49dbf838d2de6 } from '@/components/BeforeDashboard'
 import { default as default_8a7ab0eb7ab5c511aba12e68480bfe5e } from '@/components/BeforeLogin'
+import { S3ClientUploadHandler as S3ClientUploadHandler_s3storage } from '@payloadcms/storage-s3/client'
 
 export const importMap = {
   "@/utilities/characterCounter.tsx#default": default_7baef2a5f372f8eb3e6c3c9a98bc5194,
@@ -117,5 +118,6 @@ export const importMap = {
   "@/components/Icon/Icon.tsx#Icon": Icon_c3a8555f846701084023abb33922dc25,
   "@/components/Logo/Logo.tsx#Logo": Logo_566629f80931517f5befb54103e89cc5,
   "@/components/BeforeDashboard#default": default_1a7510af427896d367a49dbf838d2de6,
-  "@/components/BeforeLogin#default": default_8a7ab0eb7ab5c511aba12e68480bfe5e
+  "@/components/BeforeLogin#default": default_8a7ab0eb7ab5c511aba12e68480bfe5e,
+  "@payloadcms/storage-s3/client#S3ClientUploadHandler": S3ClientUploadHandler_s3storage
 }

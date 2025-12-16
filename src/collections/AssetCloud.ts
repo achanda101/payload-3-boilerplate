@@ -43,7 +43,10 @@ export const AssetCloud: CollectionConfig = {
     },
   ],
   upload: {
-    staticDir: path.resolve(dirname, '../../media'),
+    // Upload to the public/media directory in development, use S3 in production
+    ...(process.env.NODE_ENV !== 'production' && {
+      staticDir: path.resolve(dirname, '../../media'),
+    }),
     adminThumbnail: 'small',
     imageSizes: [
       {
