@@ -1,0 +1,37 @@
+# Dependencies
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Environment files - NEVER include in Docker images
+.env
+.env.*
+!.env.example
+
+# Git
+.git
+.gitignore
+
+# Development files
+.vscode
+.idea
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build artifacts (will be created in container)
+dist
+.next
+build
+
+# Documentation
+README.md
+CHANGELOG.md
+
+# Tests
+*.test.js
+*.test.ts
+__tests__
+coverage

@@ -10,6 +10,12 @@ export const PostHero: React.FC<{
 }> = ({ post }) => {
   const { categories, meta: { image: metaImage } = {}, populatedAuthors, publishedAt, title } = post
 
+  // Handle polymorphic relationship for metaImage
+  const imageResource =
+    metaImage && typeof metaImage === 'object' && 'value' in metaImage
+      ? metaImage.value
+      : metaImage
+
   return (
     <div className="relative -mt-[10.4rem] flex items-end">
       <div className="container z-10 relative lg:grid lg:grid-cols-[1fr_48rem_1fr] text-white pb-8">
@@ -78,8 +84,8 @@ export const PostHero: React.FC<{
         </div>
       </div>
       <div className="min-h-[80vh] select-none">
-        {metaImage && typeof metaImage !== 'string' && (
-          <Media fill imgClassName="-z-10 object-cover" resource={metaImage} />
+        {imageResource && (
+          <Media fill imgClassName="-z-10 object-cover" resource={imageResource} />
         )}
         <div className="absolute pointer-events-none left-0 bottom-0 w-full h-1/2 bg-gradient-to-t from-black to-transparent" />
       </div>
