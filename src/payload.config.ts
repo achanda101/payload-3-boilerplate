@@ -135,30 +135,25 @@ export default buildConfig({
   globals: [Homepage, Header, Footer, Navigation, ContactInfo],
   plugins: [
     ...plugins,
-    // Use S3 storage in production, local database in development
-    ...(process.env.NODE_ENV === 'production'
-      ? [
-          s3Storage({
-            collections: {
-              mediaCloud: true,
-              assetCloud: true,
-              documents: true,
-            },
-            bucket: process.env.S3_BUCKET || '',
-            config: {
-              region: process.env.S3_REGION || '',
-              endpoint: process.env.S3_ENDPOINT || '',
-              credentials: {
-                accessKeyId: process.env.S3_ACCESS_KEY_ID || '',
-                secretAccessKey: process.env.S3_SECRET_ACCESS_KEY || '',
-              },
-              forcePathStyle: true,
-              tls: true,
-              signingEscapePath: false,
-            },
-          }),
-        ]
-      : []),
+    s3Storage({
+      collections: {
+        mediaCloud: true,
+        assetCloud: true,
+        documents: true,
+      },
+      bucket: process.env.S3_BUCKET || '',
+      config: {
+        region: process.env.S3_REGION || '',
+        endpoint: process.env.S3_ENDPOINT || '',
+        credentials: {
+          accessKeyId: process.env.S3_ACCESS_KEY_ID || '',
+          secretAccessKey: process.env.S3_SECRET_ACCESS_KEY || '',
+        },
+        forcePathStyle: true,
+        tls: true,
+        signingEscapePath: false,
+      },
+    }),
   ],
   endpoints: [
     {
