@@ -42,9 +42,9 @@ export const Documents: CollectionConfig = {
     },
   ],
   upload: {
-    // Upload to the public/media directory in development, use S3 in production
-    ...(process.env.NODE_ENV !== 'production' && {
-      staticDir: path.resolve(dirname, '../../media'),
+    // Upload to local directory when S3 is disabled
+    ...(process.env.S3_ENABLED === 'false' && {
+      staticDir: path.resolve(dirname, '../../media/documents'),
     }),
     adminThumbnail: 'small',
     mimeTypes: ['application/pdf'],

@@ -136,6 +136,7 @@ export default buildConfig({
   plugins: [
     ...plugins,
     s3Storage({
+      enabled: process.env.S3_ENABLED !== 'false', // Disable S3 in local development
       collections: {
         mediaCloud: true,
         assetCloud: true,
