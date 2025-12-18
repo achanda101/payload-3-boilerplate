@@ -17,6 +17,8 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum_grants_blocks_list_crd_dck_cards_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum_grants_blocks_list_crd_dck_buttons_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum_grants_blocks_faq_blk_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
+  CREATE TYPE "public"."enum_grants_blocks_pink_puffy_links_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
+  CREATE TYPE "public"."enum_grants_blocks_pink_puffy_align" AS ENUM('center', 'left');
   CREATE TYPE "public"."enum_grants_page_type" AS ENUM('landing', 'individual');
   CREATE TYPE "public"."enum_grants_bg_type" AS ENUM('wavy_top', 'wavy_full', 'center_blob');
   CREATE TYPE "public"."enum_grants_status" AS ENUM('draft', 'published');
@@ -34,6 +36,8 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum__grants_v_blocks_list_crd_dck_cards_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum__grants_v_blocks_list_crd_dck_buttons_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum__grants_v_blocks_faq_blk_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
+  CREATE TYPE "public"."enum__grants_v_blocks_pink_puffy_links_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
+  CREATE TYPE "public"."enum__grants_v_blocks_pink_puffy_align" AS ENUM('center', 'left');
   CREATE TYPE "public"."enum__grants_v_version_page_type" AS ENUM('landing', 'individual');
   CREATE TYPE "public"."enum__grants_v_version_bg_type" AS ENUM('wavy_top', 'wavy_full', 'center_blob');
   CREATE TYPE "public"."enum__grants_v_version_status" AS ENUM('draft', 'published');
@@ -70,6 +74,8 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum_pages_blocks_list_crd_dck_cards_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum_pages_blocks_list_crd_dck_buttons_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum_pages_blocks_faq_blk_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
+  CREATE TYPE "public"."enum_pages_blocks_pink_puffy_links_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
+  CREATE TYPE "public"."enum_pages_blocks_pink_puffy_align" AS ENUM('center', 'left');
   CREATE TYPE "public"."enum_pages_bg_type" AS ENUM('wavy_top', 'wavy_full', 'center_blob');
   CREATE TYPE "public"."enum_pages_hero_colour" AS ENUM('forest', 'turmeric', 'sky', 'rose', 'lavender', 'fire', 'trans');
   CREATE TYPE "public"."enum_pages_status" AS ENUM('draft', 'published');
@@ -87,6 +93,8 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum__pages_v_blocks_list_crd_dck_cards_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum__pages_v_blocks_list_crd_dck_buttons_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum__pages_v_blocks_faq_blk_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
+  CREATE TYPE "public"."enum__pages_v_blocks_pink_puffy_links_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
+  CREATE TYPE "public"."enum__pages_v_blocks_pink_puffy_align" AS ENUM('center', 'left');
   CREATE TYPE "public"."enum__pages_v_version_bg_type" AS ENUM('wavy_top', 'wavy_full', 'center_blob');
   CREATE TYPE "public"."enum__pages_v_version_hero_colour" AS ENUM('forest', 'turmeric', 'sky', 'rose', 'lavender', 'fire', 'trans');
   CREATE TYPE "public"."enum__pages_v_version_status" AS ENUM('draft', 'published');
@@ -105,6 +113,8 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum_blog_blocks_list_crd_dck_cards_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum_blog_blocks_list_crd_dck_buttons_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum_blog_blocks_faq_blk_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
+  CREATE TYPE "public"."enum_blog_blocks_pink_puffy_links_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
+  CREATE TYPE "public"."enum_blog_blocks_pink_puffy_align" AS ENUM('center', 'left');
   CREATE TYPE "public"."enum_blog_page_type" AS ENUM('landing', 'individual');
   CREATE TYPE "public"."enum_blog_status" AS ENUM('draft', 'published');
   CREATE TYPE "public"."enum__blog_v_version_hero_buttons_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
@@ -121,6 +131,8 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum__blog_v_blocks_list_crd_dck_cards_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum__blog_v_blocks_list_crd_dck_buttons_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum__blog_v_blocks_faq_blk_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
+  CREATE TYPE "public"."enum__blog_v_blocks_pink_puffy_links_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
+  CREATE TYPE "public"."enum__blog_v_blocks_pink_puffy_align" AS ENUM('center', 'left');
   CREATE TYPE "public"."enum__blog_v_version_page_type" AS ENUM('landing', 'individual');
   CREATE TYPE "public"."enum__blog_v_version_status" AS ENUM('draft', 'published');
   CREATE TYPE "public"."enum__blog_v_published_locale" AS ENUM('en', 'ar', 'bi', 'bn-IN', 'br', 'ch', 'prs-Arab', 'km', 'hi', 'ms', 'ne', 'ps-Arab', 'pcm', 'si', 'tl', 'ta', 'th', 'vi', 'ur');
@@ -138,6 +150,8 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum_reports_blocks_list_crd_dck_cards_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum_reports_blocks_list_crd_dck_buttons_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum_reports_blocks_faq_blk_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
+  CREATE TYPE "public"."enum_reports_blocks_pink_puffy_links_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
+  CREATE TYPE "public"."enum_reports_blocks_pink_puffy_align" AS ENUM('center', 'left');
   CREATE TYPE "public"."enum_reports_page_type" AS ENUM('landing', 'individual');
   CREATE TYPE "public"."enum_reports_status" AS ENUM('draft', 'published');
   CREATE TYPE "public"."enum__reports_v_version_hero_buttons_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
@@ -154,6 +168,8 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum__reports_v_blocks_list_crd_dck_cards_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum__reports_v_blocks_list_crd_dck_buttons_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum__reports_v_blocks_faq_blk_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
+  CREATE TYPE "public"."enum__reports_v_blocks_pink_puffy_links_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
+  CREATE TYPE "public"."enum__reports_v_blocks_pink_puffy_align" AS ENUM('center', 'left');
   CREATE TYPE "public"."enum__reports_v_version_page_type" AS ENUM('landing', 'individual');
   CREATE TYPE "public"."enum__reports_v_version_status" AS ENUM('draft', 'published');
   CREATE TYPE "public"."enum__reports_v_published_locale" AS ENUM('en', 'ar', 'bi', 'bn-IN', 'br', 'ch', 'prs-Arab', 'km', 'hi', 'ms', 'ne', 'ps-Arab', 'pcm', 'si', 'tl', 'ta', 'th', 'vi', 'ur');
@@ -171,6 +187,8 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum_mmedia_blocks_list_crd_dck_cards_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum_mmedia_blocks_list_crd_dck_buttons_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum_mmedia_blocks_faq_blk_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
+  CREATE TYPE "public"."enum_mmedia_blocks_pink_puffy_links_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
+  CREATE TYPE "public"."enum_mmedia_blocks_pink_puffy_align" AS ENUM('center', 'left');
   CREATE TYPE "public"."enum_mmedia_page_type" AS ENUM('landing', 'individual');
   CREATE TYPE "public"."enum_mmedia_status" AS ENUM('draft', 'published');
   CREATE TYPE "public"."enum__mmedia_v_version_hero_buttons_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
@@ -187,12 +205,11 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum__mmedia_v_blocks_list_crd_dck_cards_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum__mmedia_v_blocks_list_crd_dck_buttons_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum__mmedia_v_blocks_faq_blk_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
+  CREATE TYPE "public"."enum__mmedia_v_blocks_pink_puffy_links_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
+  CREATE TYPE "public"."enum__mmedia_v_blocks_pink_puffy_align" AS ENUM('center', 'left');
   CREATE TYPE "public"."enum__mmedia_v_version_page_type" AS ENUM('landing', 'individual');
   CREATE TYPE "public"."enum__mmedia_v_version_status" AS ENUM('draft', 'published');
   CREATE TYPE "public"."enum__mmedia_v_published_locale" AS ENUM('en', 'ar', 'bi', 'bn-IN', 'br', 'ch', 'prs-Arab', 'km', 'hi', 'ms', 'ne', 'ps-Arab', 'pcm', 'si', 'tl', 'ta', 'th', 'vi', 'ur');
-  CREATE TYPE "public"."enum_posts_status" AS ENUM('draft', 'published');
-  CREATE TYPE "public"."enum__posts_v_version_status" AS ENUM('draft', 'published');
-  CREATE TYPE "public"."enum__posts_v_published_locale" AS ENUM('en', 'ar', 'bi', 'bn-IN', 'br', 'ch', 'prs-Arab', 'km', 'hi', 'ms', 'ne', 'ps-Arab', 'pcm', 'si', 'tl', 'ta', 'th', 'vi', 'ur');
   CREATE TYPE "public"."enum_users_role" AS ENUM('admin', 'editor', 'writer');
   CREATE TYPE "public"."enum_redirects_to_type" AS ENUM('reference', 'custom');
   CREATE TYPE "public"."enum_forms_confirmation_type" AS ENUM('message', 'redirect');
@@ -709,6 +726,73 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"_parent_id" varchar NOT NULL
   );
   
+  CREATE TABLE "grants_blocks_pink_puffy_top_row" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" varchar NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL
+  );
+  
+  CREATE TABLE "grants_blocks_pink_puffy_top_row_locales" (
+  	"title" varchar,
+  	"subtitle" varchar,
+  	"description" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" varchar NOT NULL
+  );
+  
+  CREATE TABLE "grants_blocks_pink_puffy_bot_row" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" varchar NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL
+  );
+  
+  CREATE TABLE "grants_blocks_pink_puffy_bot_row_locales" (
+  	"title" varchar,
+  	"description" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" varchar NOT NULL
+  );
+  
+  CREATE TABLE "grants_blocks_pink_puffy_links" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" varchar NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL,
+  	"link_type" "enum_grants_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
+  	"link_new_tab" boolean,
+  	"link_download_link" boolean,
+  	"link_arrow_link" boolean,
+  	"link_pill_solid" boolean,
+  	"link_pill_outline" boolean,
+  	"link_url" varchar,
+  	"link_email" varchar
+  );
+  
+  CREATE TABLE "grants_blocks_pink_puffy_links_locales" (
+  	"link_label" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" varchar NOT NULL
+  );
+  
+  CREATE TABLE "grants_blocks_pink_puffy" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"_path" text NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL,
+  	"align" "enum_grants_blocks_pink_puffy_align" DEFAULT 'center',
+  	"block_name" varchar
+  );
+  
+  CREATE TABLE "grants_blocks_pink_puffy_locales" (
+  	"title" varchar,
+  	"subtitle" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" varchar NOT NULL
+  );
+  
   CREATE TABLE "grants" (
   	"id" serial PRIMARY KEY NOT NULL,
   	"title" varchar,
@@ -744,7 +828,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"parent_id" integer NOT NULL,
   	"path" varchar NOT NULL,
   	"grants_id" integer,
-  	"posts_id" integer,
   	"pages_id" integer,
   	"blog_id" integer,
   	"reports_id" integer,
@@ -1258,6 +1341,77 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"_parent_id" integer NOT NULL
   );
   
+  CREATE TABLE "_grants_v_blocks_pink_puffy_top_row" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_uuid" varchar
+  );
+  
+  CREATE TABLE "_grants_v_blocks_pink_puffy_top_row_locales" (
+  	"title" varchar,
+  	"subtitle" varchar,
+  	"description" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" integer NOT NULL
+  );
+  
+  CREATE TABLE "_grants_v_blocks_pink_puffy_bot_row" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_uuid" varchar
+  );
+  
+  CREATE TABLE "_grants_v_blocks_pink_puffy_bot_row_locales" (
+  	"title" varchar,
+  	"description" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" integer NOT NULL
+  );
+  
+  CREATE TABLE "_grants_v_blocks_pink_puffy_links" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"link_type" "enum__grants_v_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
+  	"link_new_tab" boolean,
+  	"link_download_link" boolean,
+  	"link_arrow_link" boolean,
+  	"link_pill_solid" boolean,
+  	"link_pill_outline" boolean,
+  	"link_url" varchar,
+  	"link_email" varchar,
+  	"_uuid" varchar
+  );
+  
+  CREATE TABLE "_grants_v_blocks_pink_puffy_links_locales" (
+  	"link_label" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" integer NOT NULL
+  );
+  
+  CREATE TABLE "_grants_v_blocks_pink_puffy" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"_path" text NOT NULL,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"align" "enum__grants_v_blocks_pink_puffy_align" DEFAULT 'center',
+  	"_uuid" varchar,
+  	"block_name" varchar
+  );
+  
+  CREATE TABLE "_grants_v_blocks_pink_puffy_locales" (
+  	"title" varchar,
+  	"subtitle" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" integer NOT NULL
+  );
+  
   CREATE TABLE "_grants_v" (
   	"id" serial PRIMARY KEY NOT NULL,
   	"parent_id" integer,
@@ -1299,7 +1453,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"parent_id" integer NOT NULL,
   	"path" varchar NOT NULL,
   	"grants_id" integer,
-  	"posts_id" integer,
   	"pages_id" integer,
   	"blog_id" integer,
   	"reports_id" integer,
@@ -1377,7 +1530,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"parent_id" integer NOT NULL,
   	"path" varchar NOT NULL,
   	"grants_id" integer,
-  	"posts_id" integer,
   	"pages_id" integer,
   	"blog_id" integer,
   	"reports_id" integer,
@@ -1462,7 +1614,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"parent_id" integer NOT NULL,
   	"path" varchar NOT NULL,
   	"grants_id" integer,
-  	"posts_id" integer,
   	"pages_id" integer,
   	"blog_id" integer,
   	"reports_id" integer,
@@ -1550,7 +1701,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"parent_id" integer NOT NULL,
   	"path" varchar NOT NULL,
   	"grants_id" integer,
-  	"posts_id" integer,
   	"pages_id" integer,
   	"blog_id" integer,
   	"reports_id" integer,
@@ -1646,7 +1796,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"parent_id" integer NOT NULL,
   	"path" varchar NOT NULL,
   	"grants_id" integer,
-  	"posts_id" integer,
   	"pages_id" integer,
   	"blog_id" integer,
   	"reports_id" integer,
@@ -2132,6 +2281,73 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"_parent_id" varchar NOT NULL
   );
   
+  CREATE TABLE "pages_blocks_pink_puffy_top_row" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" varchar NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL
+  );
+  
+  CREATE TABLE "pages_blocks_pink_puffy_top_row_locales" (
+  	"title" varchar,
+  	"subtitle" varchar,
+  	"description" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" varchar NOT NULL
+  );
+  
+  CREATE TABLE "pages_blocks_pink_puffy_bot_row" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" varchar NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL
+  );
+  
+  CREATE TABLE "pages_blocks_pink_puffy_bot_row_locales" (
+  	"title" varchar,
+  	"description" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" varchar NOT NULL
+  );
+  
+  CREATE TABLE "pages_blocks_pink_puffy_links" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" varchar NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL,
+  	"link_type" "enum_pages_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
+  	"link_new_tab" boolean,
+  	"link_download_link" boolean,
+  	"link_arrow_link" boolean,
+  	"link_pill_solid" boolean,
+  	"link_pill_outline" boolean,
+  	"link_url" varchar,
+  	"link_email" varchar
+  );
+  
+  CREATE TABLE "pages_blocks_pink_puffy_links_locales" (
+  	"link_label" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" varchar NOT NULL
+  );
+  
+  CREATE TABLE "pages_blocks_pink_puffy" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"_path" text NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL,
+  	"align" "enum_pages_blocks_pink_puffy_align" DEFAULT 'center',
+  	"block_name" varchar
+  );
+  
+  CREATE TABLE "pages_blocks_pink_puffy_locales" (
+  	"title" varchar,
+  	"subtitle" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" varchar NOT NULL
+  );
+  
   CREATE TABLE "pages" (
   	"id" serial PRIMARY KEY NOT NULL,
   	"title" varchar,
@@ -2167,7 +2383,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"parent_id" integer NOT NULL,
   	"path" varchar NOT NULL,
   	"grants_id" integer,
-  	"posts_id" integer,
   	"pages_id" integer,
   	"blog_id" integer,
   	"reports_id" integer,
@@ -2681,6 +2896,77 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"_parent_id" integer NOT NULL
   );
   
+  CREATE TABLE "_pages_v_blocks_pink_puffy_top_row" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_uuid" varchar
+  );
+  
+  CREATE TABLE "_pages_v_blocks_pink_puffy_top_row_locales" (
+  	"title" varchar,
+  	"subtitle" varchar,
+  	"description" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" integer NOT NULL
+  );
+  
+  CREATE TABLE "_pages_v_blocks_pink_puffy_bot_row" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_uuid" varchar
+  );
+  
+  CREATE TABLE "_pages_v_blocks_pink_puffy_bot_row_locales" (
+  	"title" varchar,
+  	"description" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" integer NOT NULL
+  );
+  
+  CREATE TABLE "_pages_v_blocks_pink_puffy_links" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"link_type" "enum__pages_v_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
+  	"link_new_tab" boolean,
+  	"link_download_link" boolean,
+  	"link_arrow_link" boolean,
+  	"link_pill_solid" boolean,
+  	"link_pill_outline" boolean,
+  	"link_url" varchar,
+  	"link_email" varchar,
+  	"_uuid" varchar
+  );
+  
+  CREATE TABLE "_pages_v_blocks_pink_puffy_links_locales" (
+  	"link_label" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" integer NOT NULL
+  );
+  
+  CREATE TABLE "_pages_v_blocks_pink_puffy" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"_path" text NOT NULL,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"align" "enum__pages_v_blocks_pink_puffy_align" DEFAULT 'center',
+  	"_uuid" varchar,
+  	"block_name" varchar
+  );
+  
+  CREATE TABLE "_pages_v_blocks_pink_puffy_locales" (
+  	"title" varchar,
+  	"subtitle" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" integer NOT NULL
+  );
+  
   CREATE TABLE "_pages_v" (
   	"id" serial PRIMARY KEY NOT NULL,
   	"parent_id" integer,
@@ -2722,7 +3008,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"parent_id" integer NOT NULL,
   	"path" varchar NOT NULL,
   	"grants_id" integer,
-  	"posts_id" integer,
   	"pages_id" integer,
   	"blog_id" integer,
   	"reports_id" integer,
@@ -3209,6 +3494,73 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"_parent_id" varchar NOT NULL
   );
   
+  CREATE TABLE "blog_blocks_pink_puffy_top_row" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" varchar NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL
+  );
+  
+  CREATE TABLE "blog_blocks_pink_puffy_top_row_locales" (
+  	"title" varchar,
+  	"subtitle" varchar,
+  	"description" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" varchar NOT NULL
+  );
+  
+  CREATE TABLE "blog_blocks_pink_puffy_bot_row" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" varchar NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL
+  );
+  
+  CREATE TABLE "blog_blocks_pink_puffy_bot_row_locales" (
+  	"title" varchar,
+  	"description" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" varchar NOT NULL
+  );
+  
+  CREATE TABLE "blog_blocks_pink_puffy_links" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" varchar NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL,
+  	"link_type" "enum_blog_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
+  	"link_new_tab" boolean,
+  	"link_download_link" boolean,
+  	"link_arrow_link" boolean,
+  	"link_pill_solid" boolean,
+  	"link_pill_outline" boolean,
+  	"link_url" varchar,
+  	"link_email" varchar
+  );
+  
+  CREATE TABLE "blog_blocks_pink_puffy_links_locales" (
+  	"link_label" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" varchar NOT NULL
+  );
+  
+  CREATE TABLE "blog_blocks_pink_puffy" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"_path" text NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL,
+  	"align" "enum_blog_blocks_pink_puffy_align" DEFAULT 'center',
+  	"block_name" varchar
+  );
+  
+  CREATE TABLE "blog_blocks_pink_puffy_locales" (
+  	"title" varchar,
+  	"subtitle" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" varchar NOT NULL
+  );
+  
   CREATE TABLE "blog" (
   	"id" serial PRIMARY KEY NOT NULL,
   	"title" varchar,
@@ -3243,7 +3595,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"path" varchar NOT NULL,
   	"doctypes_id" integer,
   	"grants_id" integer,
-  	"posts_id" integer,
   	"pages_id" integer,
   	"blog_id" integer,
   	"reports_id" integer,
@@ -3757,6 +4108,77 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"_parent_id" integer NOT NULL
   );
   
+  CREATE TABLE "_blog_v_blocks_pink_puffy_top_row" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_uuid" varchar
+  );
+  
+  CREATE TABLE "_blog_v_blocks_pink_puffy_top_row_locales" (
+  	"title" varchar,
+  	"subtitle" varchar,
+  	"description" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" integer NOT NULL
+  );
+  
+  CREATE TABLE "_blog_v_blocks_pink_puffy_bot_row" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_uuid" varchar
+  );
+  
+  CREATE TABLE "_blog_v_blocks_pink_puffy_bot_row_locales" (
+  	"title" varchar,
+  	"description" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" integer NOT NULL
+  );
+  
+  CREATE TABLE "_blog_v_blocks_pink_puffy_links" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"link_type" "enum__blog_v_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
+  	"link_new_tab" boolean,
+  	"link_download_link" boolean,
+  	"link_arrow_link" boolean,
+  	"link_pill_solid" boolean,
+  	"link_pill_outline" boolean,
+  	"link_url" varchar,
+  	"link_email" varchar,
+  	"_uuid" varchar
+  );
+  
+  CREATE TABLE "_blog_v_blocks_pink_puffy_links_locales" (
+  	"link_label" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" integer NOT NULL
+  );
+  
+  CREATE TABLE "_blog_v_blocks_pink_puffy" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"_path" text NOT NULL,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"align" "enum__blog_v_blocks_pink_puffy_align" DEFAULT 'center',
+  	"_uuid" varchar,
+  	"block_name" varchar
+  );
+  
+  CREATE TABLE "_blog_v_blocks_pink_puffy_locales" (
+  	"title" varchar,
+  	"subtitle" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" integer NOT NULL
+  );
+  
   CREATE TABLE "_blog_v" (
   	"id" serial PRIMARY KEY NOT NULL,
   	"parent_id" integer,
@@ -3797,7 +4219,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"path" varchar NOT NULL,
   	"doctypes_id" integer,
   	"grants_id" integer,
-  	"posts_id" integer,
   	"pages_id" integer,
   	"blog_id" integer,
   	"reports_id" integer,
@@ -4284,6 +4705,73 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"_parent_id" varchar NOT NULL
   );
   
+  CREATE TABLE "reports_blocks_pink_puffy_top_row" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" varchar NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL
+  );
+  
+  CREATE TABLE "reports_blocks_pink_puffy_top_row_locales" (
+  	"title" varchar,
+  	"subtitle" varchar,
+  	"description" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" varchar NOT NULL
+  );
+  
+  CREATE TABLE "reports_blocks_pink_puffy_bot_row" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" varchar NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL
+  );
+  
+  CREATE TABLE "reports_blocks_pink_puffy_bot_row_locales" (
+  	"title" varchar,
+  	"description" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" varchar NOT NULL
+  );
+  
+  CREATE TABLE "reports_blocks_pink_puffy_links" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" varchar NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL,
+  	"link_type" "enum_reports_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
+  	"link_new_tab" boolean,
+  	"link_download_link" boolean,
+  	"link_arrow_link" boolean,
+  	"link_pill_solid" boolean,
+  	"link_pill_outline" boolean,
+  	"link_url" varchar,
+  	"link_email" varchar
+  );
+  
+  CREATE TABLE "reports_blocks_pink_puffy_links_locales" (
+  	"link_label" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" varchar NOT NULL
+  );
+  
+  CREATE TABLE "reports_blocks_pink_puffy" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"_path" text NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL,
+  	"align" "enum_reports_blocks_pink_puffy_align" DEFAULT 'center',
+  	"block_name" varchar
+  );
+  
+  CREATE TABLE "reports_blocks_pink_puffy_locales" (
+  	"title" varchar,
+  	"subtitle" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" varchar NOT NULL
+  );
+  
   CREATE TABLE "reports" (
   	"id" serial PRIMARY KEY NOT NULL,
   	"title" varchar,
@@ -4319,7 +4807,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"path" varchar NOT NULL,
   	"doctypes_id" integer,
   	"grants_id" integer,
-  	"posts_id" integer,
   	"pages_id" integer,
   	"blog_id" integer,
   	"reports_id" integer,
@@ -4833,6 +5320,77 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"_parent_id" integer NOT NULL
   );
   
+  CREATE TABLE "_reports_v_blocks_pink_puffy_top_row" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_uuid" varchar
+  );
+  
+  CREATE TABLE "_reports_v_blocks_pink_puffy_top_row_locales" (
+  	"title" varchar,
+  	"subtitle" varchar,
+  	"description" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" integer NOT NULL
+  );
+  
+  CREATE TABLE "_reports_v_blocks_pink_puffy_bot_row" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_uuid" varchar
+  );
+  
+  CREATE TABLE "_reports_v_blocks_pink_puffy_bot_row_locales" (
+  	"title" varchar,
+  	"description" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" integer NOT NULL
+  );
+  
+  CREATE TABLE "_reports_v_blocks_pink_puffy_links" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"link_type" "enum__reports_v_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
+  	"link_new_tab" boolean,
+  	"link_download_link" boolean,
+  	"link_arrow_link" boolean,
+  	"link_pill_solid" boolean,
+  	"link_pill_outline" boolean,
+  	"link_url" varchar,
+  	"link_email" varchar,
+  	"_uuid" varchar
+  );
+  
+  CREATE TABLE "_reports_v_blocks_pink_puffy_links_locales" (
+  	"link_label" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" integer NOT NULL
+  );
+  
+  CREATE TABLE "_reports_v_blocks_pink_puffy" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"_path" text NOT NULL,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"align" "enum__reports_v_blocks_pink_puffy_align" DEFAULT 'center',
+  	"_uuid" varchar,
+  	"block_name" varchar
+  );
+  
+  CREATE TABLE "_reports_v_blocks_pink_puffy_locales" (
+  	"title" varchar,
+  	"subtitle" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" integer NOT NULL
+  );
+  
   CREATE TABLE "_reports_v" (
   	"id" serial PRIMARY KEY NOT NULL,
   	"parent_id" integer,
@@ -4874,7 +5432,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"path" varchar NOT NULL,
   	"doctypes_id" integer,
   	"grants_id" integer,
-  	"posts_id" integer,
   	"pages_id" integer,
   	"blog_id" integer,
   	"reports_id" integer,
@@ -5361,6 +5918,73 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"_parent_id" varchar NOT NULL
   );
   
+  CREATE TABLE "mmedia_blocks_pink_puffy_top_row" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" varchar NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL
+  );
+  
+  CREATE TABLE "mmedia_blocks_pink_puffy_top_row_locales" (
+  	"title" varchar,
+  	"subtitle" varchar,
+  	"description" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" varchar NOT NULL
+  );
+  
+  CREATE TABLE "mmedia_blocks_pink_puffy_bot_row" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" varchar NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL
+  );
+  
+  CREATE TABLE "mmedia_blocks_pink_puffy_bot_row_locales" (
+  	"title" varchar,
+  	"description" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" varchar NOT NULL
+  );
+  
+  CREATE TABLE "mmedia_blocks_pink_puffy_links" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" varchar NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL,
+  	"link_type" "enum_mmedia_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
+  	"link_new_tab" boolean,
+  	"link_download_link" boolean,
+  	"link_arrow_link" boolean,
+  	"link_pill_solid" boolean,
+  	"link_pill_outline" boolean,
+  	"link_url" varchar,
+  	"link_email" varchar
+  );
+  
+  CREATE TABLE "mmedia_blocks_pink_puffy_links_locales" (
+  	"link_label" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" varchar NOT NULL
+  );
+  
+  CREATE TABLE "mmedia_blocks_pink_puffy" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"_path" text NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL,
+  	"align" "enum_mmedia_blocks_pink_puffy_align" DEFAULT 'center',
+  	"block_name" varchar
+  );
+  
+  CREATE TABLE "mmedia_blocks_pink_puffy_locales" (
+  	"title" varchar,
+  	"subtitle" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" varchar NOT NULL
+  );
+  
   CREATE TABLE "mmedia" (
   	"id" serial PRIMARY KEY NOT NULL,
   	"title" varchar,
@@ -5395,7 +6019,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"path" varchar NOT NULL,
   	"doctypes_id" integer,
   	"grants_id" integer,
-  	"posts_id" integer,
   	"pages_id" integer,
   	"blog_id" integer,
   	"reports_id" integer,
@@ -5909,6 +6532,77 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"_parent_id" integer NOT NULL
   );
   
+  CREATE TABLE "_mmedia_v_blocks_pink_puffy_top_row" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_uuid" varchar
+  );
+  
+  CREATE TABLE "_mmedia_v_blocks_pink_puffy_top_row_locales" (
+  	"title" varchar,
+  	"subtitle" varchar,
+  	"description" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" integer NOT NULL
+  );
+  
+  CREATE TABLE "_mmedia_v_blocks_pink_puffy_bot_row" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_uuid" varchar
+  );
+  
+  CREATE TABLE "_mmedia_v_blocks_pink_puffy_bot_row_locales" (
+  	"title" varchar,
+  	"description" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" integer NOT NULL
+  );
+  
+  CREATE TABLE "_mmedia_v_blocks_pink_puffy_links" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"link_type" "enum__mmedia_v_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
+  	"link_new_tab" boolean,
+  	"link_download_link" boolean,
+  	"link_arrow_link" boolean,
+  	"link_pill_solid" boolean,
+  	"link_pill_outline" boolean,
+  	"link_url" varchar,
+  	"link_email" varchar,
+  	"_uuid" varchar
+  );
+  
+  CREATE TABLE "_mmedia_v_blocks_pink_puffy_links_locales" (
+  	"link_label" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" integer NOT NULL
+  );
+  
+  CREATE TABLE "_mmedia_v_blocks_pink_puffy" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"_path" text NOT NULL,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"align" "enum__mmedia_v_blocks_pink_puffy_align" DEFAULT 'center',
+  	"_uuid" varchar,
+  	"block_name" varchar
+  );
+  
+  CREATE TABLE "_mmedia_v_blocks_pink_puffy_locales" (
+  	"title" varchar,
+  	"subtitle" varchar,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" integer NOT NULL
+  );
+  
   CREATE TABLE "_mmedia_v" (
   	"id" serial PRIMARY KEY NOT NULL,
   	"parent_id" integer,
@@ -5949,7 +6643,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"path" varchar NOT NULL,
   	"doctypes_id" integer,
   	"grants_id" integer,
-  	"posts_id" integer,
   	"pages_id" integer,
   	"blog_id" integer,
   	"reports_id" integer,
@@ -6099,118 +6792,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"focal_y" numeric
   );
   
-  CREATE TABLE "posts_populated_authors" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"name" varchar
-  );
-  
-  CREATE TABLE "posts" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"published_at" timestamp(3) with time zone,
-  	"slug" varchar,
-  	"slug_lock" boolean DEFAULT true,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"_status" "enum_posts_status" DEFAULT 'draft'
-  );
-  
-  CREATE TABLE "posts_locales" (
-  	"title" varchar,
-  	"content" jsonb,
-  	"meta_title" varchar,
-  	"meta_description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
-  CREATE TABLE "posts_rels" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"order" integer,
-  	"parent_id" integer NOT NULL,
-  	"path" varchar NOT NULL,
-  	"locale" "_locales",
-  	"posts_id" integer,
-  	"categories_id" integer,
-  	"media_cloud_id" integer,
-  	"asset_cloud_id" integer,
-  	"users_id" integer
-  );
-  
-  CREATE TABLE "_posts_v_version_populated_authors" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"name" varchar
-  );
-  
-  CREATE TABLE "_posts_v" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"parent_id" integer,
-  	"version_published_at" timestamp(3) with time zone,
-  	"version_slug" varchar,
-  	"version_slug_lock" boolean DEFAULT true,
-  	"version_updated_at" timestamp(3) with time zone,
-  	"version_created_at" timestamp(3) with time zone,
-  	"version__status" "enum__posts_v_version_status" DEFAULT 'draft',
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"snapshot" boolean,
-  	"published_locale" "enum__posts_v_published_locale",
-  	"latest" boolean,
-  	"autosave" boolean
-  );
-  
-  CREATE TABLE "_posts_v_locales" (
-  	"version_title" varchar,
-  	"version_content" jsonb,
-  	"version_meta_title" varchar,
-  	"version_meta_description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
-  CREATE TABLE "_posts_v_rels" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"order" integer,
-  	"parent_id" integer NOT NULL,
-  	"path" varchar NOT NULL,
-  	"locale" "_locales",
-  	"posts_id" integer,
-  	"categories_id" integer,
-  	"media_cloud_id" integer,
-  	"asset_cloud_id" integer,
-  	"users_id" integer
-  );
-  
-  CREATE TABLE "categories_breadcrumbs" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"doc_id" integer,
-  	"url" varchar,
-  	"label" varchar
-  );
-  
-  CREATE TABLE "categories" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"parent_id" integer,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
-  );
-  
-  CREATE TABLE "categories_locales" (
-  	"title" varchar NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
   CREATE TABLE "users_sessions" (
   	"_order" integer NOT NULL,
   	"_parent_id" integer NOT NULL,
@@ -6249,7 +6830,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"order" integer,
   	"parent_id" integer NOT NULL,
   	"path" varchar NOT NULL,
-  	"posts_id" integer,
   	"pages_id" integer,
   	"reports_id" integer,
   	"blog_id" integer,
@@ -6517,7 +7097,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"order" integer,
   	"parent_id" integer NOT NULL,
   	"path" varchar NOT NULL,
-  	"posts_id" integer,
   	"pages_id" integer,
   	"reports_id" integer,
   	"blog_id" integer,
@@ -6568,8 +7147,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"media_cloud_id" integer,
   	"asset_cloud_id" integer,
   	"documents_id" integer,
-  	"posts_id" integer,
-  	"categories_id" integer,
   	"users_id" integer,
   	"redirects_id" integer,
   	"forms_id" integer,
@@ -7103,7 +7680,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"parent_id" integer NOT NULL,
   	"path" varchar NOT NULL,
   	"grants_id" integer,
-  	"posts_id" integer,
   	"pages_id" integer,
   	"blog_id" integer,
   	"reports_id" integer,
@@ -7646,7 +8222,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"parent_id" integer NOT NULL,
   	"path" varchar NOT NULL,
   	"grants_id" integer,
-  	"posts_id" integer,
   	"pages_id" integer,
   	"blog_id" integer,
   	"reports_id" integer,
@@ -7747,7 +8322,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"parent_id" integer NOT NULL,
   	"path" varchar NOT NULL,
   	"grants_id" integer,
-  	"posts_id" integer,
   	"pages_id" integer,
   	"blog_id" integer,
   	"reports_id" integer,
@@ -7834,13 +8408,20 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "grants_blocks_faq_blk_faqs_locales" ADD CONSTRAINT "grants_blocks_faq_blk_faqs_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants_blocks_faq_blk_faqs"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "grants_blocks_faq_blk" ADD CONSTRAINT "grants_blocks_faq_blk_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "grants_blocks_faq_blk_locales" ADD CONSTRAINT "grants_blocks_faq_blk_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants_blocks_faq_blk"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "grants_blocks_pink_puffy_top_row" ADD CONSTRAINT "grants_blocks_pink_puffy_top_row_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "grants_blocks_pink_puffy_top_row_locales" ADD CONSTRAINT "grants_blocks_pink_puffy_top_row_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants_blocks_pink_puffy_top_row"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "grants_blocks_pink_puffy_bot_row" ADD CONSTRAINT "grants_blocks_pink_puffy_bot_row_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "grants_blocks_pink_puffy_bot_row_locales" ADD CONSTRAINT "grants_blocks_pink_puffy_bot_row_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants_blocks_pink_puffy_bot_row"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "grants_blocks_pink_puffy_links" ADD CONSTRAINT "grants_blocks_pink_puffy_links_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "grants_blocks_pink_puffy_links_locales" ADD CONSTRAINT "grants_blocks_pink_puffy_links_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants_blocks_pink_puffy_links"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "grants_blocks_pink_puffy" ADD CONSTRAINT "grants_blocks_pink_puffy_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "grants_blocks_pink_puffy_locales" ADD CONSTRAINT "grants_blocks_pink_puffy_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "grants" ADD CONSTRAINT "grants_grant_card_id_grantcards_id_fk" FOREIGN KEY ("grant_card_id") REFERENCES "public"."grantcards"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "grants" ADD CONSTRAINT "grants_folder_id_payload_folders_id_fk" FOREIGN KEY ("folder_id") REFERENCES "public"."payload_folders"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "grants_locales" ADD CONSTRAINT "grants_locales_meta_image_id_media_cloud_id_fk" FOREIGN KEY ("meta_image_id") REFERENCES "public"."media_cloud"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "grants_locales" ADD CONSTRAINT "grants_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "grants_rels" ADD CONSTRAINT "grants_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."grants"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "grants_rels" ADD CONSTRAINT "grants_rels_grants_fk" FOREIGN KEY ("grants_id") REFERENCES "public"."grants"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "grants_rels" ADD CONSTRAINT "grants_rels_posts_fk" FOREIGN KEY ("posts_id") REFERENCES "public"."posts"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "grants_rels" ADD CONSTRAINT "grants_rels_pages_fk" FOREIGN KEY ("pages_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "grants_rels" ADD CONSTRAINT "grants_rels_blog_fk" FOREIGN KEY ("blog_id") REFERENCES "public"."blog"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "grants_rels" ADD CONSTRAINT "grants_rels_reports_fk" FOREIGN KEY ("reports_id") REFERENCES "public"."reports"("id") ON DELETE cascade ON UPDATE no action;
@@ -7905,6 +8486,14 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "_grants_v_blocks_faq_blk_faqs_locales" ADD CONSTRAINT "_grants_v_blocks_faq_blk_faqs_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v_blocks_faq_blk_faqs"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_grants_v_blocks_faq_blk" ADD CONSTRAINT "_grants_v_blocks_faq_blk_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_grants_v_blocks_faq_blk_locales" ADD CONSTRAINT "_grants_v_blocks_faq_blk_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v_blocks_faq_blk"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_grants_v_blocks_pink_puffy_top_row" ADD CONSTRAINT "_grants_v_blocks_pink_puffy_top_row_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_grants_v_blocks_pink_puffy_top_row_locales" ADD CONSTRAINT "_grants_v_blocks_pink_puffy_top_row_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v_blocks_pink_puffy_top_row"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_grants_v_blocks_pink_puffy_bot_row" ADD CONSTRAINT "_grants_v_blocks_pink_puffy_bot_row_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_grants_v_blocks_pink_puffy_bot_row_locales" ADD CONSTRAINT "_grants_v_blocks_pink_puffy_bot_row_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v_blocks_pink_puffy_bot_row"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_grants_v_blocks_pink_puffy_links" ADD CONSTRAINT "_grants_v_blocks_pink_puffy_links_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_grants_v_blocks_pink_puffy_links_locales" ADD CONSTRAINT "_grants_v_blocks_pink_puffy_links_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v_blocks_pink_puffy_links"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_grants_v_blocks_pink_puffy" ADD CONSTRAINT "_grants_v_blocks_pink_puffy_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_grants_v_blocks_pink_puffy_locales" ADD CONSTRAINT "_grants_v_blocks_pink_puffy_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_grants_v" ADD CONSTRAINT "_grants_v_parent_id_grants_id_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."grants"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "_grants_v" ADD CONSTRAINT "_grants_v_version_grant_card_id_grantcards_id_fk" FOREIGN KEY ("version_grant_card_id") REFERENCES "public"."grantcards"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "_grants_v" ADD CONSTRAINT "_grants_v_version_folder_id_payload_folders_id_fk" FOREIGN KEY ("version_folder_id") REFERENCES "public"."payload_folders"("id") ON DELETE set null ON UPDATE no action;
@@ -7912,7 +8501,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "_grants_v_locales" ADD CONSTRAINT "_grants_v_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_grants_v_rels" ADD CONSTRAINT "_grants_v_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."_grants_v"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_grants_v_rels" ADD CONSTRAINT "_grants_v_rels_grants_fk" FOREIGN KEY ("grants_id") REFERENCES "public"."grants"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "_grants_v_rels" ADD CONSTRAINT "_grants_v_rels_posts_fk" FOREIGN KEY ("posts_id") REFERENCES "public"."posts"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_grants_v_rels" ADD CONSTRAINT "_grants_v_rels_pages_fk" FOREIGN KEY ("pages_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_grants_v_rels" ADD CONSTRAINT "_grants_v_rels_blog_fk" FOREIGN KEY ("blog_id") REFERENCES "public"."blog"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_grants_v_rels" ADD CONSTRAINT "_grants_v_rels_reports_fk" FOREIGN KEY ("reports_id") REFERENCES "public"."reports"("id") ON DELETE cascade ON UPDATE no action;
@@ -7929,7 +8517,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "grantcards_locales" ADD CONSTRAINT "grantcards_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grantcards"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "grantcards_rels" ADD CONSTRAINT "grantcards_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."grantcards"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "grantcards_rels" ADD CONSTRAINT "grantcards_rels_grants_fk" FOREIGN KEY ("grants_id") REFERENCES "public"."grants"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "grantcards_rels" ADD CONSTRAINT "grantcards_rels_posts_fk" FOREIGN KEY ("posts_id") REFERENCES "public"."posts"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "grantcards_rels" ADD CONSTRAINT "grantcards_rels_pages_fk" FOREIGN KEY ("pages_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "grantcards_rels" ADD CONSTRAINT "grantcards_rels_blog_fk" FOREIGN KEY ("blog_id") REFERENCES "public"."blog"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "grantcards_rels" ADD CONSTRAINT "grantcards_rels_reports_fk" FOREIGN KEY ("reports_id") REFERENCES "public"."reports"("id") ON DELETE cascade ON UPDATE no action;
@@ -7946,7 +8533,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "_grantcards_v_locales" ADD CONSTRAINT "_grantcards_v_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grantcards_v"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_grantcards_v_rels" ADD CONSTRAINT "_grantcards_v_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."_grantcards_v"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_grantcards_v_rels" ADD CONSTRAINT "_grantcards_v_rels_grants_fk" FOREIGN KEY ("grants_id") REFERENCES "public"."grants"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "_grantcards_v_rels" ADD CONSTRAINT "_grantcards_v_rels_posts_fk" FOREIGN KEY ("posts_id") REFERENCES "public"."posts"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_grantcards_v_rels" ADD CONSTRAINT "_grantcards_v_rels_pages_fk" FOREIGN KEY ("pages_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_grantcards_v_rels" ADD CONSTRAINT "_grantcards_v_rels_blog_fk" FOREIGN KEY ("blog_id") REFERENCES "public"."blog"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_grantcards_v_rels" ADD CONSTRAINT "_grantcards_v_rels_reports_fk" FOREIGN KEY ("reports_id") REFERENCES "public"."reports"("id") ON DELETE cascade ON UPDATE no action;
@@ -7962,7 +8548,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "etests_locales" ADD CONSTRAINT "etests_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."etests"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "etests_rels" ADD CONSTRAINT "etests_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."etests"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "etests_rels" ADD CONSTRAINT "etests_rels_grants_fk" FOREIGN KEY ("grants_id") REFERENCES "public"."grants"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "etests_rels" ADD CONSTRAINT "etests_rels_posts_fk" FOREIGN KEY ("posts_id") REFERENCES "public"."posts"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "etests_rels" ADD CONSTRAINT "etests_rels_pages_fk" FOREIGN KEY ("pages_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "etests_rels" ADD CONSTRAINT "etests_rels_blog_fk" FOREIGN KEY ("blog_id") REFERENCES "public"."blog"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "etests_rels" ADD CONSTRAINT "etests_rels_reports_fk" FOREIGN KEY ("reports_id") REFERENCES "public"."reports"("id") ON DELETE cascade ON UPDATE no action;
@@ -7979,7 +8564,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "_etests_v_locales" ADD CONSTRAINT "_etests_v_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_etests_v"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_etests_v_rels" ADD CONSTRAINT "_etests_v_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."_etests_v"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_etests_v_rels" ADD CONSTRAINT "_etests_v_rels_grants_fk" FOREIGN KEY ("grants_id") REFERENCES "public"."grants"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "_etests_v_rels" ADD CONSTRAINT "_etests_v_rels_posts_fk" FOREIGN KEY ("posts_id") REFERENCES "public"."posts"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_etests_v_rels" ADD CONSTRAINT "_etests_v_rels_pages_fk" FOREIGN KEY ("pages_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_etests_v_rels" ADD CONSTRAINT "_etests_v_rels_blog_fk" FOREIGN KEY ("blog_id") REFERENCES "public"."blog"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_etests_v_rels" ADD CONSTRAINT "_etests_v_rels_reports_fk" FOREIGN KEY ("reports_id") REFERENCES "public"."reports"("id") ON DELETE cascade ON UPDATE no action;
@@ -8043,13 +8627,20 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "pages_blocks_faq_blk_faqs_locales" ADD CONSTRAINT "pages_blocks_faq_blk_faqs_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages_blocks_faq_blk_faqs"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "pages_blocks_faq_blk" ADD CONSTRAINT "pages_blocks_faq_blk_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "pages_blocks_faq_blk_locales" ADD CONSTRAINT "pages_blocks_faq_blk_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages_blocks_faq_blk"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "pages_blocks_pink_puffy_top_row" ADD CONSTRAINT "pages_blocks_pink_puffy_top_row_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "pages_blocks_pink_puffy_top_row_locales" ADD CONSTRAINT "pages_blocks_pink_puffy_top_row_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages_blocks_pink_puffy_top_row"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "pages_blocks_pink_puffy_bot_row" ADD CONSTRAINT "pages_blocks_pink_puffy_bot_row_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "pages_blocks_pink_puffy_bot_row_locales" ADD CONSTRAINT "pages_blocks_pink_puffy_bot_row_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages_blocks_pink_puffy_bot_row"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "pages_blocks_pink_puffy_links" ADD CONSTRAINT "pages_blocks_pink_puffy_links_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "pages_blocks_pink_puffy_links_locales" ADD CONSTRAINT "pages_blocks_pink_puffy_links_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages_blocks_pink_puffy_links"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "pages_blocks_pink_puffy" ADD CONSTRAINT "pages_blocks_pink_puffy_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "pages_blocks_pink_puffy_locales" ADD CONSTRAINT "pages_blocks_pink_puffy_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "pages" ADD CONSTRAINT "pages_mascot_id_asset_cloud_id_fk" FOREIGN KEY ("mascot_id") REFERENCES "public"."asset_cloud"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "pages" ADD CONSTRAINT "pages_folder_id_payload_folders_id_fk" FOREIGN KEY ("folder_id") REFERENCES "public"."payload_folders"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "pages_locales" ADD CONSTRAINT "pages_locales_meta_image_id_media_cloud_id_fk" FOREIGN KEY ("meta_image_id") REFERENCES "public"."media_cloud"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "pages_locales" ADD CONSTRAINT "pages_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "pages_rels" ADD CONSTRAINT "pages_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "pages_rels" ADD CONSTRAINT "pages_rels_grants_fk" FOREIGN KEY ("grants_id") REFERENCES "public"."grants"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "pages_rels" ADD CONSTRAINT "pages_rels_posts_fk" FOREIGN KEY ("posts_id") REFERENCES "public"."posts"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "pages_rels" ADD CONSTRAINT "pages_rels_pages_fk" FOREIGN KEY ("pages_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "pages_rels" ADD CONSTRAINT "pages_rels_blog_fk" FOREIGN KEY ("blog_id") REFERENCES "public"."blog"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "pages_rels" ADD CONSTRAINT "pages_rels_reports_fk" FOREIGN KEY ("reports_id") REFERENCES "public"."reports"("id") ON DELETE cascade ON UPDATE no action;
@@ -8114,6 +8705,14 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "_pages_v_blocks_faq_blk_faqs_locales" ADD CONSTRAINT "_pages_v_blocks_faq_blk_faqs_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_pages_v_blocks_faq_blk_faqs"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_pages_v_blocks_faq_blk" ADD CONSTRAINT "_pages_v_blocks_faq_blk_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_pages_v"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_pages_v_blocks_faq_blk_locales" ADD CONSTRAINT "_pages_v_blocks_faq_blk_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_pages_v_blocks_faq_blk"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_pages_v_blocks_pink_puffy_top_row" ADD CONSTRAINT "_pages_v_blocks_pink_puffy_top_row_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_pages_v_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_pages_v_blocks_pink_puffy_top_row_locales" ADD CONSTRAINT "_pages_v_blocks_pink_puffy_top_row_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_pages_v_blocks_pink_puffy_top_row"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_pages_v_blocks_pink_puffy_bot_row" ADD CONSTRAINT "_pages_v_blocks_pink_puffy_bot_row_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_pages_v_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_pages_v_blocks_pink_puffy_bot_row_locales" ADD CONSTRAINT "_pages_v_blocks_pink_puffy_bot_row_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_pages_v_blocks_pink_puffy_bot_row"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_pages_v_blocks_pink_puffy_links" ADD CONSTRAINT "_pages_v_blocks_pink_puffy_links_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_pages_v_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_pages_v_blocks_pink_puffy_links_locales" ADD CONSTRAINT "_pages_v_blocks_pink_puffy_links_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_pages_v_blocks_pink_puffy_links"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_pages_v_blocks_pink_puffy" ADD CONSTRAINT "_pages_v_blocks_pink_puffy_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_pages_v"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_pages_v_blocks_pink_puffy_locales" ADD CONSTRAINT "_pages_v_blocks_pink_puffy_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_pages_v_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_pages_v" ADD CONSTRAINT "_pages_v_parent_id_pages_id_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."pages"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "_pages_v" ADD CONSTRAINT "_pages_v_version_mascot_id_asset_cloud_id_fk" FOREIGN KEY ("version_mascot_id") REFERENCES "public"."asset_cloud"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "_pages_v" ADD CONSTRAINT "_pages_v_version_folder_id_payload_folders_id_fk" FOREIGN KEY ("version_folder_id") REFERENCES "public"."payload_folders"("id") ON DELETE set null ON UPDATE no action;
@@ -8121,7 +8720,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "_pages_v_locales" ADD CONSTRAINT "_pages_v_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_pages_v"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_pages_v_rels" ADD CONSTRAINT "_pages_v_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."_pages_v"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_pages_v_rels" ADD CONSTRAINT "_pages_v_rels_grants_fk" FOREIGN KEY ("grants_id") REFERENCES "public"."grants"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "_pages_v_rels" ADD CONSTRAINT "_pages_v_rels_posts_fk" FOREIGN KEY ("posts_id") REFERENCES "public"."posts"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_pages_v_rels" ADD CONSTRAINT "_pages_v_rels_pages_fk" FOREIGN KEY ("pages_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_pages_v_rels" ADD CONSTRAINT "_pages_v_rels_blog_fk" FOREIGN KEY ("blog_id") REFERENCES "public"."blog"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_pages_v_rels" ADD CONSTRAINT "_pages_v_rels_reports_fk" FOREIGN KEY ("reports_id") REFERENCES "public"."reports"("id") ON DELETE cascade ON UPDATE no action;
@@ -8186,6 +8784,14 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "blog_blocks_faq_blk_faqs_locales" ADD CONSTRAINT "blog_blocks_faq_blk_faqs_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."blog_blocks_faq_blk_faqs"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "blog_blocks_faq_blk" ADD CONSTRAINT "blog_blocks_faq_blk_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."blog"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "blog_blocks_faq_blk_locales" ADD CONSTRAINT "blog_blocks_faq_blk_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."blog_blocks_faq_blk"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "blog_blocks_pink_puffy_top_row" ADD CONSTRAINT "blog_blocks_pink_puffy_top_row_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."blog_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "blog_blocks_pink_puffy_top_row_locales" ADD CONSTRAINT "blog_blocks_pink_puffy_top_row_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."blog_blocks_pink_puffy_top_row"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "blog_blocks_pink_puffy_bot_row" ADD CONSTRAINT "blog_blocks_pink_puffy_bot_row_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."blog_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "blog_blocks_pink_puffy_bot_row_locales" ADD CONSTRAINT "blog_blocks_pink_puffy_bot_row_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."blog_blocks_pink_puffy_bot_row"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "blog_blocks_pink_puffy_links" ADD CONSTRAINT "blog_blocks_pink_puffy_links_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."blog_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "blog_blocks_pink_puffy_links_locales" ADD CONSTRAINT "blog_blocks_pink_puffy_links_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."blog_blocks_pink_puffy_links"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "blog_blocks_pink_puffy" ADD CONSTRAINT "blog_blocks_pink_puffy_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."blog"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "blog_blocks_pink_puffy_locales" ADD CONSTRAINT "blog_blocks_pink_puffy_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."blog_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "blog" ADD CONSTRAINT "blog_image_id_media_cloud_id_fk" FOREIGN KEY ("image_id") REFERENCES "public"."media_cloud"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "blog" ADD CONSTRAINT "blog_folder_id_payload_folders_id_fk" FOREIGN KEY ("folder_id") REFERENCES "public"."payload_folders"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "blog_locales" ADD CONSTRAINT "blog_locales_meta_image_id_media_cloud_id_fk" FOREIGN KEY ("meta_image_id") REFERENCES "public"."media_cloud"("id") ON DELETE set null ON UPDATE no action;
@@ -8193,7 +8799,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "blog_rels" ADD CONSTRAINT "blog_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."blog"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "blog_rels" ADD CONSTRAINT "blog_rels_doctypes_fk" FOREIGN KEY ("doctypes_id") REFERENCES "public"."doctypes"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "blog_rels" ADD CONSTRAINT "blog_rels_grants_fk" FOREIGN KEY ("grants_id") REFERENCES "public"."grants"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "blog_rels" ADD CONSTRAINT "blog_rels_posts_fk" FOREIGN KEY ("posts_id") REFERENCES "public"."posts"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "blog_rels" ADD CONSTRAINT "blog_rels_pages_fk" FOREIGN KEY ("pages_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "blog_rels" ADD CONSTRAINT "blog_rels_blog_fk" FOREIGN KEY ("blog_id") REFERENCES "public"."blog"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "blog_rels" ADD CONSTRAINT "blog_rels_reports_fk" FOREIGN KEY ("reports_id") REFERENCES "public"."reports"("id") ON DELETE cascade ON UPDATE no action;
@@ -8258,6 +8863,14 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "_blog_v_blocks_faq_blk_faqs_locales" ADD CONSTRAINT "_blog_v_blocks_faq_blk_faqs_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_blog_v_blocks_faq_blk_faqs"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_blog_v_blocks_faq_blk" ADD CONSTRAINT "_blog_v_blocks_faq_blk_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_blog_v"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_blog_v_blocks_faq_blk_locales" ADD CONSTRAINT "_blog_v_blocks_faq_blk_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_blog_v_blocks_faq_blk"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_blog_v_blocks_pink_puffy_top_row" ADD CONSTRAINT "_blog_v_blocks_pink_puffy_top_row_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_blog_v_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_blog_v_blocks_pink_puffy_top_row_locales" ADD CONSTRAINT "_blog_v_blocks_pink_puffy_top_row_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_blog_v_blocks_pink_puffy_top_row"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_blog_v_blocks_pink_puffy_bot_row" ADD CONSTRAINT "_blog_v_blocks_pink_puffy_bot_row_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_blog_v_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_blog_v_blocks_pink_puffy_bot_row_locales" ADD CONSTRAINT "_blog_v_blocks_pink_puffy_bot_row_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_blog_v_blocks_pink_puffy_bot_row"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_blog_v_blocks_pink_puffy_links" ADD CONSTRAINT "_blog_v_blocks_pink_puffy_links_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_blog_v_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_blog_v_blocks_pink_puffy_links_locales" ADD CONSTRAINT "_blog_v_blocks_pink_puffy_links_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_blog_v_blocks_pink_puffy_links"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_blog_v_blocks_pink_puffy" ADD CONSTRAINT "_blog_v_blocks_pink_puffy_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_blog_v"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_blog_v_blocks_pink_puffy_locales" ADD CONSTRAINT "_blog_v_blocks_pink_puffy_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_blog_v_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_blog_v" ADD CONSTRAINT "_blog_v_parent_id_blog_id_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."blog"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "_blog_v" ADD CONSTRAINT "_blog_v_version_image_id_media_cloud_id_fk" FOREIGN KEY ("version_image_id") REFERENCES "public"."media_cloud"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "_blog_v" ADD CONSTRAINT "_blog_v_version_folder_id_payload_folders_id_fk" FOREIGN KEY ("version_folder_id") REFERENCES "public"."payload_folders"("id") ON DELETE set null ON UPDATE no action;
@@ -8266,7 +8879,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "_blog_v_rels" ADD CONSTRAINT "_blog_v_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."_blog_v"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_blog_v_rels" ADD CONSTRAINT "_blog_v_rels_doctypes_fk" FOREIGN KEY ("doctypes_id") REFERENCES "public"."doctypes"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_blog_v_rels" ADD CONSTRAINT "_blog_v_rels_grants_fk" FOREIGN KEY ("grants_id") REFERENCES "public"."grants"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "_blog_v_rels" ADD CONSTRAINT "_blog_v_rels_posts_fk" FOREIGN KEY ("posts_id") REFERENCES "public"."posts"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_blog_v_rels" ADD CONSTRAINT "_blog_v_rels_pages_fk" FOREIGN KEY ("pages_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_blog_v_rels" ADD CONSTRAINT "_blog_v_rels_blog_fk" FOREIGN KEY ("blog_id") REFERENCES "public"."blog"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_blog_v_rels" ADD CONSTRAINT "_blog_v_rels_reports_fk" FOREIGN KEY ("reports_id") REFERENCES "public"."reports"("id") ON DELETE cascade ON UPDATE no action;
@@ -8331,6 +8943,14 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "reports_blocks_faq_blk_faqs_locales" ADD CONSTRAINT "reports_blocks_faq_blk_faqs_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."reports_blocks_faq_blk_faqs"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "reports_blocks_faq_blk" ADD CONSTRAINT "reports_blocks_faq_blk_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."reports"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "reports_blocks_faq_blk_locales" ADD CONSTRAINT "reports_blocks_faq_blk_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."reports_blocks_faq_blk"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "reports_blocks_pink_puffy_top_row" ADD CONSTRAINT "reports_blocks_pink_puffy_top_row_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."reports_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "reports_blocks_pink_puffy_top_row_locales" ADD CONSTRAINT "reports_blocks_pink_puffy_top_row_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."reports_blocks_pink_puffy_top_row"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "reports_blocks_pink_puffy_bot_row" ADD CONSTRAINT "reports_blocks_pink_puffy_bot_row_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."reports_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "reports_blocks_pink_puffy_bot_row_locales" ADD CONSTRAINT "reports_blocks_pink_puffy_bot_row_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."reports_blocks_pink_puffy_bot_row"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "reports_blocks_pink_puffy_links" ADD CONSTRAINT "reports_blocks_pink_puffy_links_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."reports_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "reports_blocks_pink_puffy_links_locales" ADD CONSTRAINT "reports_blocks_pink_puffy_links_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."reports_blocks_pink_puffy_links"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "reports_blocks_pink_puffy" ADD CONSTRAINT "reports_blocks_pink_puffy_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."reports"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "reports_blocks_pink_puffy_locales" ADD CONSTRAINT "reports_blocks_pink_puffy_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."reports_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "reports" ADD CONSTRAINT "reports_image_id_media_cloud_id_fk" FOREIGN KEY ("image_id") REFERENCES "public"."media_cloud"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "reports" ADD CONSTRAINT "reports_folder_id_payload_folders_id_fk" FOREIGN KEY ("folder_id") REFERENCES "public"."payload_folders"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "reports_locales" ADD CONSTRAINT "reports_locales_meta_image_id_media_cloud_id_fk" FOREIGN KEY ("meta_image_id") REFERENCES "public"."media_cloud"("id") ON DELETE set null ON UPDATE no action;
@@ -8338,7 +8958,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "reports_rels" ADD CONSTRAINT "reports_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."reports"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "reports_rels" ADD CONSTRAINT "reports_rels_doctypes_fk" FOREIGN KEY ("doctypes_id") REFERENCES "public"."doctypes"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "reports_rels" ADD CONSTRAINT "reports_rels_grants_fk" FOREIGN KEY ("grants_id") REFERENCES "public"."grants"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "reports_rels" ADD CONSTRAINT "reports_rels_posts_fk" FOREIGN KEY ("posts_id") REFERENCES "public"."posts"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "reports_rels" ADD CONSTRAINT "reports_rels_pages_fk" FOREIGN KEY ("pages_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "reports_rels" ADD CONSTRAINT "reports_rels_blog_fk" FOREIGN KEY ("blog_id") REFERENCES "public"."blog"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "reports_rels" ADD CONSTRAINT "reports_rels_reports_fk" FOREIGN KEY ("reports_id") REFERENCES "public"."reports"("id") ON DELETE cascade ON UPDATE no action;
@@ -8403,6 +9022,14 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "_reports_v_blocks_faq_blk_faqs_locales" ADD CONSTRAINT "_reports_v_blocks_faq_blk_faqs_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_reports_v_blocks_faq_blk_faqs"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_reports_v_blocks_faq_blk" ADD CONSTRAINT "_reports_v_blocks_faq_blk_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_reports_v"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_reports_v_blocks_faq_blk_locales" ADD CONSTRAINT "_reports_v_blocks_faq_blk_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_reports_v_blocks_faq_blk"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_reports_v_blocks_pink_puffy_top_row" ADD CONSTRAINT "_reports_v_blocks_pink_puffy_top_row_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_reports_v_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_reports_v_blocks_pink_puffy_top_row_locales" ADD CONSTRAINT "_reports_v_blocks_pink_puffy_top_row_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_reports_v_blocks_pink_puffy_top_row"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_reports_v_blocks_pink_puffy_bot_row" ADD CONSTRAINT "_reports_v_blocks_pink_puffy_bot_row_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_reports_v_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_reports_v_blocks_pink_puffy_bot_row_locales" ADD CONSTRAINT "_reports_v_blocks_pink_puffy_bot_row_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_reports_v_blocks_pink_puffy_bot_row"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_reports_v_blocks_pink_puffy_links" ADD CONSTRAINT "_reports_v_blocks_pink_puffy_links_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_reports_v_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_reports_v_blocks_pink_puffy_links_locales" ADD CONSTRAINT "_reports_v_blocks_pink_puffy_links_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_reports_v_blocks_pink_puffy_links"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_reports_v_blocks_pink_puffy" ADD CONSTRAINT "_reports_v_blocks_pink_puffy_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_reports_v"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_reports_v_blocks_pink_puffy_locales" ADD CONSTRAINT "_reports_v_blocks_pink_puffy_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_reports_v_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_reports_v" ADD CONSTRAINT "_reports_v_parent_id_reports_id_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."reports"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "_reports_v" ADD CONSTRAINT "_reports_v_version_image_id_media_cloud_id_fk" FOREIGN KEY ("version_image_id") REFERENCES "public"."media_cloud"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "_reports_v" ADD CONSTRAINT "_reports_v_version_folder_id_payload_folders_id_fk" FOREIGN KEY ("version_folder_id") REFERENCES "public"."payload_folders"("id") ON DELETE set null ON UPDATE no action;
@@ -8411,7 +9038,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "_reports_v_rels" ADD CONSTRAINT "_reports_v_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."_reports_v"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_reports_v_rels" ADD CONSTRAINT "_reports_v_rels_doctypes_fk" FOREIGN KEY ("doctypes_id") REFERENCES "public"."doctypes"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_reports_v_rels" ADD CONSTRAINT "_reports_v_rels_grants_fk" FOREIGN KEY ("grants_id") REFERENCES "public"."grants"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "_reports_v_rels" ADD CONSTRAINT "_reports_v_rels_posts_fk" FOREIGN KEY ("posts_id") REFERENCES "public"."posts"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_reports_v_rels" ADD CONSTRAINT "_reports_v_rels_pages_fk" FOREIGN KEY ("pages_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_reports_v_rels" ADD CONSTRAINT "_reports_v_rels_blog_fk" FOREIGN KEY ("blog_id") REFERENCES "public"."blog"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_reports_v_rels" ADD CONSTRAINT "_reports_v_rels_reports_fk" FOREIGN KEY ("reports_id") REFERENCES "public"."reports"("id") ON DELETE cascade ON UPDATE no action;
@@ -8476,6 +9102,14 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "mmedia_blocks_faq_blk_faqs_locales" ADD CONSTRAINT "mmedia_blocks_faq_blk_faqs_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."mmedia_blocks_faq_blk_faqs"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "mmedia_blocks_faq_blk" ADD CONSTRAINT "mmedia_blocks_faq_blk_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."mmedia"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "mmedia_blocks_faq_blk_locales" ADD CONSTRAINT "mmedia_blocks_faq_blk_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."mmedia_blocks_faq_blk"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "mmedia_blocks_pink_puffy_top_row" ADD CONSTRAINT "mmedia_blocks_pink_puffy_top_row_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."mmedia_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "mmedia_blocks_pink_puffy_top_row_locales" ADD CONSTRAINT "mmedia_blocks_pink_puffy_top_row_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."mmedia_blocks_pink_puffy_top_row"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "mmedia_blocks_pink_puffy_bot_row" ADD CONSTRAINT "mmedia_blocks_pink_puffy_bot_row_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."mmedia_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "mmedia_blocks_pink_puffy_bot_row_locales" ADD CONSTRAINT "mmedia_blocks_pink_puffy_bot_row_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."mmedia_blocks_pink_puffy_bot_row"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "mmedia_blocks_pink_puffy_links" ADD CONSTRAINT "mmedia_blocks_pink_puffy_links_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."mmedia_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "mmedia_blocks_pink_puffy_links_locales" ADD CONSTRAINT "mmedia_blocks_pink_puffy_links_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."mmedia_blocks_pink_puffy_links"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "mmedia_blocks_pink_puffy" ADD CONSTRAINT "mmedia_blocks_pink_puffy_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."mmedia"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "mmedia_blocks_pink_puffy_locales" ADD CONSTRAINT "mmedia_blocks_pink_puffy_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."mmedia_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "mmedia" ADD CONSTRAINT "mmedia_image_id_media_cloud_id_fk" FOREIGN KEY ("image_id") REFERENCES "public"."media_cloud"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "mmedia" ADD CONSTRAINT "mmedia_folder_id_payload_folders_id_fk" FOREIGN KEY ("folder_id") REFERENCES "public"."payload_folders"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "mmedia_locales" ADD CONSTRAINT "mmedia_locales_meta_image_id_media_cloud_id_fk" FOREIGN KEY ("meta_image_id") REFERENCES "public"."media_cloud"("id") ON DELETE set null ON UPDATE no action;
@@ -8483,7 +9117,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "mmedia_rels" ADD CONSTRAINT "mmedia_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."mmedia"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "mmedia_rels" ADD CONSTRAINT "mmedia_rels_doctypes_fk" FOREIGN KEY ("doctypes_id") REFERENCES "public"."doctypes"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "mmedia_rels" ADD CONSTRAINT "mmedia_rels_grants_fk" FOREIGN KEY ("grants_id") REFERENCES "public"."grants"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "mmedia_rels" ADD CONSTRAINT "mmedia_rels_posts_fk" FOREIGN KEY ("posts_id") REFERENCES "public"."posts"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "mmedia_rels" ADD CONSTRAINT "mmedia_rels_pages_fk" FOREIGN KEY ("pages_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "mmedia_rels" ADD CONSTRAINT "mmedia_rels_blog_fk" FOREIGN KEY ("blog_id") REFERENCES "public"."blog"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "mmedia_rels" ADD CONSTRAINT "mmedia_rels_reports_fk" FOREIGN KEY ("reports_id") REFERENCES "public"."reports"("id") ON DELETE cascade ON UPDATE no action;
@@ -8548,6 +9181,14 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "_mmedia_v_blocks_faq_blk_faqs_locales" ADD CONSTRAINT "_mmedia_v_blocks_faq_blk_faqs_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_mmedia_v_blocks_faq_blk_faqs"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_mmedia_v_blocks_faq_blk" ADD CONSTRAINT "_mmedia_v_blocks_faq_blk_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_mmedia_v"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_mmedia_v_blocks_faq_blk_locales" ADD CONSTRAINT "_mmedia_v_blocks_faq_blk_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_mmedia_v_blocks_faq_blk"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_mmedia_v_blocks_pink_puffy_top_row" ADD CONSTRAINT "_mmedia_v_blocks_pink_puffy_top_row_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_mmedia_v_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_mmedia_v_blocks_pink_puffy_top_row_locales" ADD CONSTRAINT "_mmedia_v_blocks_pink_puffy_top_row_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_mmedia_v_blocks_pink_puffy_top_row"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_mmedia_v_blocks_pink_puffy_bot_row" ADD CONSTRAINT "_mmedia_v_blocks_pink_puffy_bot_row_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_mmedia_v_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_mmedia_v_blocks_pink_puffy_bot_row_locales" ADD CONSTRAINT "_mmedia_v_blocks_pink_puffy_bot_row_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_mmedia_v_blocks_pink_puffy_bot_row"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_mmedia_v_blocks_pink_puffy_links" ADD CONSTRAINT "_mmedia_v_blocks_pink_puffy_links_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_mmedia_v_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_mmedia_v_blocks_pink_puffy_links_locales" ADD CONSTRAINT "_mmedia_v_blocks_pink_puffy_links_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_mmedia_v_blocks_pink_puffy_links"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_mmedia_v_blocks_pink_puffy" ADD CONSTRAINT "_mmedia_v_blocks_pink_puffy_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_mmedia_v"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "_mmedia_v_blocks_pink_puffy_locales" ADD CONSTRAINT "_mmedia_v_blocks_pink_puffy_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_mmedia_v_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_mmedia_v" ADD CONSTRAINT "_mmedia_v_parent_id_mmedia_id_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."mmedia"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "_mmedia_v" ADD CONSTRAINT "_mmedia_v_version_image_id_media_cloud_id_fk" FOREIGN KEY ("version_image_id") REFERENCES "public"."media_cloud"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "_mmedia_v" ADD CONSTRAINT "_mmedia_v_version_folder_id_payload_folders_id_fk" FOREIGN KEY ("version_folder_id") REFERENCES "public"."payload_folders"("id") ON DELETE set null ON UPDATE no action;
@@ -8556,7 +9197,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "_mmedia_v_rels" ADD CONSTRAINT "_mmedia_v_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."_mmedia_v"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_mmedia_v_rels" ADD CONSTRAINT "_mmedia_v_rels_doctypes_fk" FOREIGN KEY ("doctypes_id") REFERENCES "public"."doctypes"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_mmedia_v_rels" ADD CONSTRAINT "_mmedia_v_rels_grants_fk" FOREIGN KEY ("grants_id") REFERENCES "public"."grants"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "_mmedia_v_rels" ADD CONSTRAINT "_mmedia_v_rels_posts_fk" FOREIGN KEY ("posts_id") REFERENCES "public"."posts"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_mmedia_v_rels" ADD CONSTRAINT "_mmedia_v_rels_pages_fk" FOREIGN KEY ("pages_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_mmedia_v_rels" ADD CONSTRAINT "_mmedia_v_rels_blog_fk" FOREIGN KEY ("blog_id") REFERENCES "public"."blog"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_mmedia_v_rels" ADD CONSTRAINT "_mmedia_v_rels_reports_fk" FOREIGN KEY ("reports_id") REFERENCES "public"."reports"("id") ON DELETE cascade ON UPDATE no action;
@@ -8568,31 +9208,9 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "media_cloud" ADD CONSTRAINT "media_cloud_folder_id_payload_folders_id_fk" FOREIGN KEY ("folder_id") REFERENCES "public"."payload_folders"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "asset_cloud" ADD CONSTRAINT "asset_cloud_folder_id_payload_folders_id_fk" FOREIGN KEY ("folder_id") REFERENCES "public"."payload_folders"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "documents" ADD CONSTRAINT "documents_folder_id_payload_folders_id_fk" FOREIGN KEY ("folder_id") REFERENCES "public"."payload_folders"("id") ON DELETE set null ON UPDATE no action;
-  ALTER TABLE "posts_populated_authors" ADD CONSTRAINT "posts_populated_authors_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."posts"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "posts_locales" ADD CONSTRAINT "posts_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."posts"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "posts_rels" ADD CONSTRAINT "posts_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."posts"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "posts_rels" ADD CONSTRAINT "posts_rels_posts_fk" FOREIGN KEY ("posts_id") REFERENCES "public"."posts"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "posts_rels" ADD CONSTRAINT "posts_rels_categories_fk" FOREIGN KEY ("categories_id") REFERENCES "public"."categories"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "posts_rels" ADD CONSTRAINT "posts_rels_media_cloud_fk" FOREIGN KEY ("media_cloud_id") REFERENCES "public"."media_cloud"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "posts_rels" ADD CONSTRAINT "posts_rels_asset_cloud_fk" FOREIGN KEY ("asset_cloud_id") REFERENCES "public"."asset_cloud"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "posts_rels" ADD CONSTRAINT "posts_rels_users_fk" FOREIGN KEY ("users_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "_posts_v_version_populated_authors" ADD CONSTRAINT "_posts_v_version_populated_authors_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_posts_v"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "_posts_v" ADD CONSTRAINT "_posts_v_parent_id_posts_id_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."posts"("id") ON DELETE set null ON UPDATE no action;
-  ALTER TABLE "_posts_v_locales" ADD CONSTRAINT "_posts_v_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_posts_v"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "_posts_v_rels" ADD CONSTRAINT "_posts_v_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."_posts_v"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "_posts_v_rels" ADD CONSTRAINT "_posts_v_rels_posts_fk" FOREIGN KEY ("posts_id") REFERENCES "public"."posts"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "_posts_v_rels" ADD CONSTRAINT "_posts_v_rels_categories_fk" FOREIGN KEY ("categories_id") REFERENCES "public"."categories"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "_posts_v_rels" ADD CONSTRAINT "_posts_v_rels_media_cloud_fk" FOREIGN KEY ("media_cloud_id") REFERENCES "public"."media_cloud"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "_posts_v_rels" ADD CONSTRAINT "_posts_v_rels_asset_cloud_fk" FOREIGN KEY ("asset_cloud_id") REFERENCES "public"."asset_cloud"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "_posts_v_rels" ADD CONSTRAINT "_posts_v_rels_users_fk" FOREIGN KEY ("users_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "categories_breadcrumbs" ADD CONSTRAINT "categories_breadcrumbs_doc_id_categories_id_fk" FOREIGN KEY ("doc_id") REFERENCES "public"."categories"("id") ON DELETE set null ON UPDATE no action;
-  ALTER TABLE "categories_breadcrumbs" ADD CONSTRAINT "categories_breadcrumbs_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."categories"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "categories" ADD CONSTRAINT "categories_parent_id_categories_id_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."categories"("id") ON DELETE set null ON UPDATE no action;
-  ALTER TABLE "categories_locales" ADD CONSTRAINT "categories_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."categories"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "users_sessions" ADD CONSTRAINT "users_sessions_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "users" ADD CONSTRAINT "users_avatar_id_media_cloud_id_fk" FOREIGN KEY ("avatar_id") REFERENCES "public"."media_cloud"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "redirects_rels" ADD CONSTRAINT "redirects_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."redirects"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "redirects_rels" ADD CONSTRAINT "redirects_rels_posts_fk" FOREIGN KEY ("posts_id") REFERENCES "public"."posts"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "redirects_rels" ADD CONSTRAINT "redirects_rels_pages_fk" FOREIGN KEY ("pages_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "redirects_rels" ADD CONSTRAINT "redirects_rels_reports_fk" FOREIGN KEY ("reports_id") REFERENCES "public"."reports"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "redirects_rels" ADD CONSTRAINT "redirects_rels_blog_fk" FOREIGN KEY ("blog_id") REFERENCES "public"."blog"("id") ON DELETE cascade ON UPDATE no action;
@@ -8626,7 +9244,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "search" ADD CONSTRAINT "search_meta_image_id_media_cloud_id_fk" FOREIGN KEY ("meta_image_id") REFERENCES "public"."media_cloud"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "search_locales" ADD CONSTRAINT "search_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."search"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "search_rels" ADD CONSTRAINT "search_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."search"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "search_rels" ADD CONSTRAINT "search_rels_posts_fk" FOREIGN KEY ("posts_id") REFERENCES "public"."posts"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "search_rels" ADD CONSTRAINT "search_rels_pages_fk" FOREIGN KEY ("pages_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "search_rels" ADD CONSTRAINT "search_rels_reports_fk" FOREIGN KEY ("reports_id") REFERENCES "public"."reports"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "search_rels" ADD CONSTRAINT "search_rels_blog_fk" FOREIGN KEY ("blog_id") REFERENCES "public"."blog"("id") ON DELETE cascade ON UPDATE no action;
@@ -8645,8 +9262,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_media_cloud_fk" FOREIGN KEY ("media_cloud_id") REFERENCES "public"."media_cloud"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_asset_cloud_fk" FOREIGN KEY ("asset_cloud_id") REFERENCES "public"."asset_cloud"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_documents_fk" FOREIGN KEY ("documents_id") REFERENCES "public"."documents"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_posts_fk" FOREIGN KEY ("posts_id") REFERENCES "public"."posts"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_categories_fk" FOREIGN KEY ("categories_id") REFERENCES "public"."categories"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_users_fk" FOREIGN KEY ("users_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_redirects_fk" FOREIGN KEY ("redirects_id") REFERENCES "public"."redirects"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_forms_fk" FOREIGN KEY ("forms_id") REFERENCES "public"."forms"("id") ON DELETE cascade ON UPDATE no action;
@@ -8716,7 +9331,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "homepage_locales" ADD CONSTRAINT "homepage_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."homepage"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "homepage_rels" ADD CONSTRAINT "homepage_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."homepage"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "homepage_rels" ADD CONSTRAINT "homepage_rels_grants_fk" FOREIGN KEY ("grants_id") REFERENCES "public"."grants"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "homepage_rels" ADD CONSTRAINT "homepage_rels_posts_fk" FOREIGN KEY ("posts_id") REFERENCES "public"."posts"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "homepage_rels" ADD CONSTRAINT "homepage_rels_pages_fk" FOREIGN KEY ("pages_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "homepage_rels" ADD CONSTRAINT "homepage_rels_blog_fk" FOREIGN KEY ("blog_id") REFERENCES "public"."blog"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "homepage_rels" ADD CONSTRAINT "homepage_rels_reports_fk" FOREIGN KEY ("reports_id") REFERENCES "public"."reports"("id") ON DELETE cascade ON UPDATE no action;
@@ -8785,7 +9399,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "_homepage_v_locales" ADD CONSTRAINT "_homepage_v_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_homepage_v"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_homepage_v_rels" ADD CONSTRAINT "_homepage_v_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."_homepage_v"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_homepage_v_rels" ADD CONSTRAINT "_homepage_v_rels_grants_fk" FOREIGN KEY ("grants_id") REFERENCES "public"."grants"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "_homepage_v_rels" ADD CONSTRAINT "_homepage_v_rels_posts_fk" FOREIGN KEY ("posts_id") REFERENCES "public"."posts"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_homepage_v_rels" ADD CONSTRAINT "_homepage_v_rels_pages_fk" FOREIGN KEY ("pages_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_homepage_v_rels" ADD CONSTRAINT "_homepage_v_rels_blog_fk" FOREIGN KEY ("blog_id") REFERENCES "public"."blog"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_homepage_v_rels" ADD CONSTRAINT "_homepage_v_rels_reports_fk" FOREIGN KEY ("reports_id") REFERENCES "public"."reports"("id") ON DELETE cascade ON UPDATE no action;
@@ -8804,7 +9417,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "nav_menu_items_locales" ADD CONSTRAINT "nav_menu_items_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."nav_menu_items"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "nav_rels" ADD CONSTRAINT "nav_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."nav"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "nav_rels" ADD CONSTRAINT "nav_rels_grants_fk" FOREIGN KEY ("grants_id") REFERENCES "public"."grants"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "nav_rels" ADD CONSTRAINT "nav_rels_posts_fk" FOREIGN KEY ("posts_id") REFERENCES "public"."posts"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "nav_rels" ADD CONSTRAINT "nav_rels_pages_fk" FOREIGN KEY ("pages_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "nav_rels" ADD CONSTRAINT "nav_rels_blog_fk" FOREIGN KEY ("blog_id") REFERENCES "public"."blog"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "nav_rels" ADD CONSTRAINT "nav_rels_reports_fk" FOREIGN KEY ("reports_id") REFERENCES "public"."reports"("id") ON DELETE cascade ON UPDATE no action;
@@ -8908,6 +9520,19 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "grants_blocks_faq_blk_parent_id_idx" ON "grants_blocks_faq_blk" USING btree ("_parent_id");
   CREATE INDEX "grants_blocks_faq_blk_path_idx" ON "grants_blocks_faq_blk" USING btree ("_path");
   CREATE UNIQUE INDEX "grants_blocks_faq_blk_locales_locale_parent_id_unique" ON "grants_blocks_faq_blk_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "grants_blocks_pink_puffy_top_row_order_idx" ON "grants_blocks_pink_puffy_top_row" USING btree ("_order");
+  CREATE INDEX "grants_blocks_pink_puffy_top_row_parent_id_idx" ON "grants_blocks_pink_puffy_top_row" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "grants_blocks_pink_puffy_top_row_locales_locale_parent_id_un" ON "grants_blocks_pink_puffy_top_row_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "grants_blocks_pink_puffy_bot_row_order_idx" ON "grants_blocks_pink_puffy_bot_row" USING btree ("_order");
+  CREATE INDEX "grants_blocks_pink_puffy_bot_row_parent_id_idx" ON "grants_blocks_pink_puffy_bot_row" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "grants_blocks_pink_puffy_bot_row_locales_locale_parent_id_un" ON "grants_blocks_pink_puffy_bot_row_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "grants_blocks_pink_puffy_links_order_idx" ON "grants_blocks_pink_puffy_links" USING btree ("_order");
+  CREATE INDEX "grants_blocks_pink_puffy_links_parent_id_idx" ON "grants_blocks_pink_puffy_links" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "grants_blocks_pink_puffy_links_locales_locale_parent_id_uniq" ON "grants_blocks_pink_puffy_links_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "grants_blocks_pink_puffy_order_idx" ON "grants_blocks_pink_puffy" USING btree ("_order");
+  CREATE INDEX "grants_blocks_pink_puffy_parent_id_idx" ON "grants_blocks_pink_puffy" USING btree ("_parent_id");
+  CREATE INDEX "grants_blocks_pink_puffy_path_idx" ON "grants_blocks_pink_puffy" USING btree ("_path");
+  CREATE UNIQUE INDEX "grants_blocks_pink_puffy_locales_locale_parent_id_unique" ON "grants_blocks_pink_puffy_locales" USING btree ("_locale","_parent_id");
   CREATE UNIQUE INDEX "grants_title_idx" ON "grants" USING btree ("title");
   CREATE INDEX "grants_grant_card_idx" ON "grants" USING btree ("grant_card_id");
   CREATE INDEX "grants_slug_idx" ON "grants" USING btree ("slug");
@@ -8922,7 +9547,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "grants_rels_parent_idx" ON "grants_rels" USING btree ("parent_id");
   CREATE INDEX "grants_rels_path_idx" ON "grants_rels" USING btree ("path");
   CREATE INDEX "grants_rels_grants_id_idx" ON "grants_rels" USING btree ("grants_id");
-  CREATE INDEX "grants_rels_posts_id_idx" ON "grants_rels" USING btree ("posts_id");
   CREATE INDEX "grants_rels_pages_id_idx" ON "grants_rels" USING btree ("pages_id");
   CREATE INDEX "grants_rels_blog_id_idx" ON "grants_rels" USING btree ("blog_id");
   CREATE INDEX "grants_rels_reports_id_idx" ON "grants_rels" USING btree ("reports_id");
@@ -9025,6 +9649,19 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_grants_v_blocks_faq_blk_parent_id_idx" ON "_grants_v_blocks_faq_blk" USING btree ("_parent_id");
   CREATE INDEX "_grants_v_blocks_faq_blk_path_idx" ON "_grants_v_blocks_faq_blk" USING btree ("_path");
   CREATE UNIQUE INDEX "_grants_v_blocks_faq_blk_locales_locale_parent_id_unique" ON "_grants_v_blocks_faq_blk_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "_grants_v_blocks_pink_puffy_top_row_order_idx" ON "_grants_v_blocks_pink_puffy_top_row" USING btree ("_order");
+  CREATE INDEX "_grants_v_blocks_pink_puffy_top_row_parent_id_idx" ON "_grants_v_blocks_pink_puffy_top_row" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "_grants_v_blocks_pink_puffy_top_row_locales_locale_parent_id" ON "_grants_v_blocks_pink_puffy_top_row_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "_grants_v_blocks_pink_puffy_bot_row_order_idx" ON "_grants_v_blocks_pink_puffy_bot_row" USING btree ("_order");
+  CREATE INDEX "_grants_v_blocks_pink_puffy_bot_row_parent_id_idx" ON "_grants_v_blocks_pink_puffy_bot_row" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "_grants_v_blocks_pink_puffy_bot_row_locales_locale_parent_id" ON "_grants_v_blocks_pink_puffy_bot_row_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "_grants_v_blocks_pink_puffy_links_order_idx" ON "_grants_v_blocks_pink_puffy_links" USING btree ("_order");
+  CREATE INDEX "_grants_v_blocks_pink_puffy_links_parent_id_idx" ON "_grants_v_blocks_pink_puffy_links" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "_grants_v_blocks_pink_puffy_links_locales_locale_parent_id_u" ON "_grants_v_blocks_pink_puffy_links_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "_grants_v_blocks_pink_puffy_order_idx" ON "_grants_v_blocks_pink_puffy" USING btree ("_order");
+  CREATE INDEX "_grants_v_blocks_pink_puffy_parent_id_idx" ON "_grants_v_blocks_pink_puffy" USING btree ("_parent_id");
+  CREATE INDEX "_grants_v_blocks_pink_puffy_path_idx" ON "_grants_v_blocks_pink_puffy" USING btree ("_path");
+  CREATE UNIQUE INDEX "_grants_v_blocks_pink_puffy_locales_locale_parent_id_unique" ON "_grants_v_blocks_pink_puffy_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_grants_v_parent_idx" ON "_grants_v" USING btree ("parent_id");
   CREATE INDEX "_grants_v_version_version_title_idx" ON "_grants_v" USING btree ("version_title");
   CREATE INDEX "_grants_v_version_version_grant_card_idx" ON "_grants_v" USING btree ("version_grant_card_id");
@@ -9045,7 +9682,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_grants_v_rels_parent_idx" ON "_grants_v_rels" USING btree ("parent_id");
   CREATE INDEX "_grants_v_rels_path_idx" ON "_grants_v_rels" USING btree ("path");
   CREATE INDEX "_grants_v_rels_grants_id_idx" ON "_grants_v_rels" USING btree ("grants_id");
-  CREATE INDEX "_grants_v_rels_posts_id_idx" ON "_grants_v_rels" USING btree ("posts_id");
   CREATE INDEX "_grants_v_rels_pages_id_idx" ON "_grants_v_rels" USING btree ("pages_id");
   CREATE INDEX "_grants_v_rels_blog_id_idx" ON "_grants_v_rels" USING btree ("blog_id");
   CREATE INDEX "_grants_v_rels_reports_id_idx" ON "_grants_v_rels" USING btree ("reports_id");
@@ -9073,7 +9709,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "grantcards_rels_parent_idx" ON "grantcards_rels" USING btree ("parent_id");
   CREATE INDEX "grantcards_rels_path_idx" ON "grantcards_rels" USING btree ("path");
   CREATE INDEX "grantcards_rels_grants_id_idx" ON "grantcards_rels" USING btree ("grants_id");
-  CREATE INDEX "grantcards_rels_posts_id_idx" ON "grantcards_rels" USING btree ("posts_id");
   CREATE INDEX "grantcards_rels_pages_id_idx" ON "grantcards_rels" USING btree ("pages_id");
   CREATE INDEX "grantcards_rels_blog_id_idx" ON "grantcards_rels" USING btree ("blog_id");
   CREATE INDEX "grantcards_rels_reports_id_idx" ON "grantcards_rels" USING btree ("reports_id");
@@ -9106,7 +9741,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_grantcards_v_rels_parent_idx" ON "_grantcards_v_rels" USING btree ("parent_id");
   CREATE INDEX "_grantcards_v_rels_path_idx" ON "_grantcards_v_rels" USING btree ("path");
   CREATE INDEX "_grantcards_v_rels_grants_id_idx" ON "_grantcards_v_rels" USING btree ("grants_id");
-  CREATE INDEX "_grantcards_v_rels_posts_id_idx" ON "_grantcards_v_rels" USING btree ("posts_id");
   CREATE INDEX "_grantcards_v_rels_pages_id_idx" ON "_grantcards_v_rels" USING btree ("pages_id");
   CREATE INDEX "_grantcards_v_rels_blog_id_idx" ON "_grantcards_v_rels" USING btree ("blog_id");
   CREATE INDEX "_grantcards_v_rels_reports_id_idx" ON "_grantcards_v_rels" USING btree ("reports_id");
@@ -9132,7 +9766,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "etests_rels_parent_idx" ON "etests_rels" USING btree ("parent_id");
   CREATE INDEX "etests_rels_path_idx" ON "etests_rels" USING btree ("path");
   CREATE INDEX "etests_rels_grants_id_idx" ON "etests_rels" USING btree ("grants_id");
-  CREATE INDEX "etests_rels_posts_id_idx" ON "etests_rels" USING btree ("posts_id");
   CREATE INDEX "etests_rels_pages_id_idx" ON "etests_rels" USING btree ("pages_id");
   CREATE INDEX "etests_rels_blog_id_idx" ON "etests_rels" USING btree ("blog_id");
   CREATE INDEX "etests_rels_reports_id_idx" ON "etests_rels" USING btree ("reports_id");
@@ -9164,7 +9797,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_etests_v_rels_parent_idx" ON "_etests_v_rels" USING btree ("parent_id");
   CREATE INDEX "_etests_v_rels_path_idx" ON "_etests_v_rels" USING btree ("path");
   CREATE INDEX "_etests_v_rels_grants_id_idx" ON "_etests_v_rels" USING btree ("grants_id");
-  CREATE INDEX "_etests_v_rels_posts_id_idx" ON "_etests_v_rels" USING btree ("posts_id");
   CREATE INDEX "_etests_v_rels_pages_id_idx" ON "_etests_v_rels" USING btree ("pages_id");
   CREATE INDEX "_etests_v_rels_blog_id_idx" ON "_etests_v_rels" USING btree ("blog_id");
   CREATE INDEX "_etests_v_rels_reports_id_idx" ON "_etests_v_rels" USING btree ("reports_id");
@@ -9266,6 +9898,19 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "pages_blocks_faq_blk_parent_id_idx" ON "pages_blocks_faq_blk" USING btree ("_parent_id");
   CREATE INDEX "pages_blocks_faq_blk_path_idx" ON "pages_blocks_faq_blk" USING btree ("_path");
   CREATE UNIQUE INDEX "pages_blocks_faq_blk_locales_locale_parent_id_unique" ON "pages_blocks_faq_blk_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "pages_blocks_pink_puffy_top_row_order_idx" ON "pages_blocks_pink_puffy_top_row" USING btree ("_order");
+  CREATE INDEX "pages_blocks_pink_puffy_top_row_parent_id_idx" ON "pages_blocks_pink_puffy_top_row" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "pages_blocks_pink_puffy_top_row_locales_locale_parent_id_uni" ON "pages_blocks_pink_puffy_top_row_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "pages_blocks_pink_puffy_bot_row_order_idx" ON "pages_blocks_pink_puffy_bot_row" USING btree ("_order");
+  CREATE INDEX "pages_blocks_pink_puffy_bot_row_parent_id_idx" ON "pages_blocks_pink_puffy_bot_row" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "pages_blocks_pink_puffy_bot_row_locales_locale_parent_id_uni" ON "pages_blocks_pink_puffy_bot_row_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "pages_blocks_pink_puffy_links_order_idx" ON "pages_blocks_pink_puffy_links" USING btree ("_order");
+  CREATE INDEX "pages_blocks_pink_puffy_links_parent_id_idx" ON "pages_blocks_pink_puffy_links" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "pages_blocks_pink_puffy_links_locales_locale_parent_id_uniqu" ON "pages_blocks_pink_puffy_links_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "pages_blocks_pink_puffy_order_idx" ON "pages_blocks_pink_puffy" USING btree ("_order");
+  CREATE INDEX "pages_blocks_pink_puffy_parent_id_idx" ON "pages_blocks_pink_puffy" USING btree ("_parent_id");
+  CREATE INDEX "pages_blocks_pink_puffy_path_idx" ON "pages_blocks_pink_puffy" USING btree ("_path");
+  CREATE UNIQUE INDEX "pages_blocks_pink_puffy_locales_locale_parent_id_unique" ON "pages_blocks_pink_puffy_locales" USING btree ("_locale","_parent_id");
   CREATE UNIQUE INDEX "pages_title_idx" ON "pages" USING btree ("title");
   CREATE INDEX "pages_mascot_idx" ON "pages" USING btree ("mascot_id");
   CREATE INDEX "pages_slug_idx" ON "pages" USING btree ("slug");
@@ -9280,7 +9925,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "pages_rels_parent_idx" ON "pages_rels" USING btree ("parent_id");
   CREATE INDEX "pages_rels_path_idx" ON "pages_rels" USING btree ("path");
   CREATE INDEX "pages_rels_grants_id_idx" ON "pages_rels" USING btree ("grants_id");
-  CREATE INDEX "pages_rels_posts_id_idx" ON "pages_rels" USING btree ("posts_id");
   CREATE INDEX "pages_rels_pages_id_idx" ON "pages_rels" USING btree ("pages_id");
   CREATE INDEX "pages_rels_blog_id_idx" ON "pages_rels" USING btree ("blog_id");
   CREATE INDEX "pages_rels_reports_id_idx" ON "pages_rels" USING btree ("reports_id");
@@ -9383,6 +10027,19 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_pages_v_blocks_faq_blk_parent_id_idx" ON "_pages_v_blocks_faq_blk" USING btree ("_parent_id");
   CREATE INDEX "_pages_v_blocks_faq_blk_path_idx" ON "_pages_v_blocks_faq_blk" USING btree ("_path");
   CREATE UNIQUE INDEX "_pages_v_blocks_faq_blk_locales_locale_parent_id_unique" ON "_pages_v_blocks_faq_blk_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "_pages_v_blocks_pink_puffy_top_row_order_idx" ON "_pages_v_blocks_pink_puffy_top_row" USING btree ("_order");
+  CREATE INDEX "_pages_v_blocks_pink_puffy_top_row_parent_id_idx" ON "_pages_v_blocks_pink_puffy_top_row" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "_pages_v_blocks_pink_puffy_top_row_locales_locale_parent_id_" ON "_pages_v_blocks_pink_puffy_top_row_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "_pages_v_blocks_pink_puffy_bot_row_order_idx" ON "_pages_v_blocks_pink_puffy_bot_row" USING btree ("_order");
+  CREATE INDEX "_pages_v_blocks_pink_puffy_bot_row_parent_id_idx" ON "_pages_v_blocks_pink_puffy_bot_row" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "_pages_v_blocks_pink_puffy_bot_row_locales_locale_parent_id_" ON "_pages_v_blocks_pink_puffy_bot_row_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "_pages_v_blocks_pink_puffy_links_order_idx" ON "_pages_v_blocks_pink_puffy_links" USING btree ("_order");
+  CREATE INDEX "_pages_v_blocks_pink_puffy_links_parent_id_idx" ON "_pages_v_blocks_pink_puffy_links" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "_pages_v_blocks_pink_puffy_links_locales_locale_parent_id_un" ON "_pages_v_blocks_pink_puffy_links_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "_pages_v_blocks_pink_puffy_order_idx" ON "_pages_v_blocks_pink_puffy" USING btree ("_order");
+  CREATE INDEX "_pages_v_blocks_pink_puffy_parent_id_idx" ON "_pages_v_blocks_pink_puffy" USING btree ("_parent_id");
+  CREATE INDEX "_pages_v_blocks_pink_puffy_path_idx" ON "_pages_v_blocks_pink_puffy" USING btree ("_path");
+  CREATE UNIQUE INDEX "_pages_v_blocks_pink_puffy_locales_locale_parent_id_unique" ON "_pages_v_blocks_pink_puffy_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_pages_v_parent_idx" ON "_pages_v" USING btree ("parent_id");
   CREATE INDEX "_pages_v_version_version_title_idx" ON "_pages_v" USING btree ("version_title");
   CREATE INDEX "_pages_v_version_version_mascot_idx" ON "_pages_v" USING btree ("version_mascot_id");
@@ -9403,7 +10060,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_pages_v_rels_parent_idx" ON "_pages_v_rels" USING btree ("parent_id");
   CREATE INDEX "_pages_v_rels_path_idx" ON "_pages_v_rels" USING btree ("path");
   CREATE INDEX "_pages_v_rels_grants_id_idx" ON "_pages_v_rels" USING btree ("grants_id");
-  CREATE INDEX "_pages_v_rels_posts_id_idx" ON "_pages_v_rels" USING btree ("posts_id");
   CREATE INDEX "_pages_v_rels_pages_id_idx" ON "_pages_v_rels" USING btree ("pages_id");
   CREATE INDEX "_pages_v_rels_blog_id_idx" ON "_pages_v_rels" USING btree ("blog_id");
   CREATE INDEX "_pages_v_rels_reports_id_idx" ON "_pages_v_rels" USING btree ("reports_id");
@@ -9506,6 +10162,19 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "blog_blocks_faq_blk_parent_id_idx" ON "blog_blocks_faq_blk" USING btree ("_parent_id");
   CREATE INDEX "blog_blocks_faq_blk_path_idx" ON "blog_blocks_faq_blk" USING btree ("_path");
   CREATE UNIQUE INDEX "blog_blocks_faq_blk_locales_locale_parent_id_unique" ON "blog_blocks_faq_blk_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "blog_blocks_pink_puffy_top_row_order_idx" ON "blog_blocks_pink_puffy_top_row" USING btree ("_order");
+  CREATE INDEX "blog_blocks_pink_puffy_top_row_parent_id_idx" ON "blog_blocks_pink_puffy_top_row" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "blog_blocks_pink_puffy_top_row_locales_locale_parent_id_uniq" ON "blog_blocks_pink_puffy_top_row_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "blog_blocks_pink_puffy_bot_row_order_idx" ON "blog_blocks_pink_puffy_bot_row" USING btree ("_order");
+  CREATE INDEX "blog_blocks_pink_puffy_bot_row_parent_id_idx" ON "blog_blocks_pink_puffy_bot_row" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "blog_blocks_pink_puffy_bot_row_locales_locale_parent_id_uniq" ON "blog_blocks_pink_puffy_bot_row_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "blog_blocks_pink_puffy_links_order_idx" ON "blog_blocks_pink_puffy_links" USING btree ("_order");
+  CREATE INDEX "blog_blocks_pink_puffy_links_parent_id_idx" ON "blog_blocks_pink_puffy_links" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "blog_blocks_pink_puffy_links_locales_locale_parent_id_unique" ON "blog_blocks_pink_puffy_links_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "blog_blocks_pink_puffy_order_idx" ON "blog_blocks_pink_puffy" USING btree ("_order");
+  CREATE INDEX "blog_blocks_pink_puffy_parent_id_idx" ON "blog_blocks_pink_puffy" USING btree ("_parent_id");
+  CREATE INDEX "blog_blocks_pink_puffy_path_idx" ON "blog_blocks_pink_puffy" USING btree ("_path");
+  CREATE UNIQUE INDEX "blog_blocks_pink_puffy_locales_locale_parent_id_unique" ON "blog_blocks_pink_puffy_locales" USING btree ("_locale","_parent_id");
   CREATE UNIQUE INDEX "blog_title_idx" ON "blog" USING btree ("title");
   CREATE INDEX "blog_image_idx" ON "blog" USING btree ("image_id");
   CREATE INDEX "blog_slug_idx" ON "blog" USING btree ("slug");
@@ -9521,7 +10190,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "blog_rels_path_idx" ON "blog_rels" USING btree ("path");
   CREATE INDEX "blog_rels_doctypes_id_idx" ON "blog_rels" USING btree ("doctypes_id");
   CREATE INDEX "blog_rels_grants_id_idx" ON "blog_rels" USING btree ("grants_id");
-  CREATE INDEX "blog_rels_posts_id_idx" ON "blog_rels" USING btree ("posts_id");
   CREATE INDEX "blog_rels_pages_id_idx" ON "blog_rels" USING btree ("pages_id");
   CREATE INDEX "blog_rels_blog_id_idx" ON "blog_rels" USING btree ("blog_id");
   CREATE INDEX "blog_rels_reports_id_idx" ON "blog_rels" USING btree ("reports_id");
@@ -9624,6 +10292,19 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_blog_v_blocks_faq_blk_parent_id_idx" ON "_blog_v_blocks_faq_blk" USING btree ("_parent_id");
   CREATE INDEX "_blog_v_blocks_faq_blk_path_idx" ON "_blog_v_blocks_faq_blk" USING btree ("_path");
   CREATE UNIQUE INDEX "_blog_v_blocks_faq_blk_locales_locale_parent_id_unique" ON "_blog_v_blocks_faq_blk_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "_blog_v_blocks_pink_puffy_top_row_order_idx" ON "_blog_v_blocks_pink_puffy_top_row" USING btree ("_order");
+  CREATE INDEX "_blog_v_blocks_pink_puffy_top_row_parent_id_idx" ON "_blog_v_blocks_pink_puffy_top_row" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "_blog_v_blocks_pink_puffy_top_row_locales_locale_parent_id_u" ON "_blog_v_blocks_pink_puffy_top_row_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "_blog_v_blocks_pink_puffy_bot_row_order_idx" ON "_blog_v_blocks_pink_puffy_bot_row" USING btree ("_order");
+  CREATE INDEX "_blog_v_blocks_pink_puffy_bot_row_parent_id_idx" ON "_blog_v_blocks_pink_puffy_bot_row" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "_blog_v_blocks_pink_puffy_bot_row_locales_locale_parent_id_u" ON "_blog_v_blocks_pink_puffy_bot_row_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "_blog_v_blocks_pink_puffy_links_order_idx" ON "_blog_v_blocks_pink_puffy_links" USING btree ("_order");
+  CREATE INDEX "_blog_v_blocks_pink_puffy_links_parent_id_idx" ON "_blog_v_blocks_pink_puffy_links" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "_blog_v_blocks_pink_puffy_links_locales_locale_parent_id_uni" ON "_blog_v_blocks_pink_puffy_links_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "_blog_v_blocks_pink_puffy_order_idx" ON "_blog_v_blocks_pink_puffy" USING btree ("_order");
+  CREATE INDEX "_blog_v_blocks_pink_puffy_parent_id_idx" ON "_blog_v_blocks_pink_puffy" USING btree ("_parent_id");
+  CREATE INDEX "_blog_v_blocks_pink_puffy_path_idx" ON "_blog_v_blocks_pink_puffy" USING btree ("_path");
+  CREATE UNIQUE INDEX "_blog_v_blocks_pink_puffy_locales_locale_parent_id_unique" ON "_blog_v_blocks_pink_puffy_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_blog_v_parent_idx" ON "_blog_v" USING btree ("parent_id");
   CREATE INDEX "_blog_v_version_version_title_idx" ON "_blog_v" USING btree ("version_title");
   CREATE INDEX "_blog_v_version_version_image_idx" ON "_blog_v" USING btree ("version_image_id");
@@ -9645,7 +10326,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_blog_v_rels_path_idx" ON "_blog_v_rels" USING btree ("path");
   CREATE INDEX "_blog_v_rels_doctypes_id_idx" ON "_blog_v_rels" USING btree ("doctypes_id");
   CREATE INDEX "_blog_v_rels_grants_id_idx" ON "_blog_v_rels" USING btree ("grants_id");
-  CREATE INDEX "_blog_v_rels_posts_id_idx" ON "_blog_v_rels" USING btree ("posts_id");
   CREATE INDEX "_blog_v_rels_pages_id_idx" ON "_blog_v_rels" USING btree ("pages_id");
   CREATE INDEX "_blog_v_rels_blog_id_idx" ON "_blog_v_rels" USING btree ("blog_id");
   CREATE INDEX "_blog_v_rels_reports_id_idx" ON "_blog_v_rels" USING btree ("reports_id");
@@ -9748,6 +10428,19 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "reports_blocks_faq_blk_parent_id_idx" ON "reports_blocks_faq_blk" USING btree ("_parent_id");
   CREATE INDEX "reports_blocks_faq_blk_path_idx" ON "reports_blocks_faq_blk" USING btree ("_path");
   CREATE UNIQUE INDEX "reports_blocks_faq_blk_locales_locale_parent_id_unique" ON "reports_blocks_faq_blk_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "reports_blocks_pink_puffy_top_row_order_idx" ON "reports_blocks_pink_puffy_top_row" USING btree ("_order");
+  CREATE INDEX "reports_blocks_pink_puffy_top_row_parent_id_idx" ON "reports_blocks_pink_puffy_top_row" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "reports_blocks_pink_puffy_top_row_locales_locale_parent_id_u" ON "reports_blocks_pink_puffy_top_row_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "reports_blocks_pink_puffy_bot_row_order_idx" ON "reports_blocks_pink_puffy_bot_row" USING btree ("_order");
+  CREATE INDEX "reports_blocks_pink_puffy_bot_row_parent_id_idx" ON "reports_blocks_pink_puffy_bot_row" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "reports_blocks_pink_puffy_bot_row_locales_locale_parent_id_u" ON "reports_blocks_pink_puffy_bot_row_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "reports_blocks_pink_puffy_links_order_idx" ON "reports_blocks_pink_puffy_links" USING btree ("_order");
+  CREATE INDEX "reports_blocks_pink_puffy_links_parent_id_idx" ON "reports_blocks_pink_puffy_links" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "reports_blocks_pink_puffy_links_locales_locale_parent_id_uni" ON "reports_blocks_pink_puffy_links_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "reports_blocks_pink_puffy_order_idx" ON "reports_blocks_pink_puffy" USING btree ("_order");
+  CREATE INDEX "reports_blocks_pink_puffy_parent_id_idx" ON "reports_blocks_pink_puffy" USING btree ("_parent_id");
+  CREATE INDEX "reports_blocks_pink_puffy_path_idx" ON "reports_blocks_pink_puffy" USING btree ("_path");
+  CREATE UNIQUE INDEX "reports_blocks_pink_puffy_locales_locale_parent_id_unique" ON "reports_blocks_pink_puffy_locales" USING btree ("_locale","_parent_id");
   CREATE UNIQUE INDEX "reports_title_idx" ON "reports" USING btree ("title");
   CREATE INDEX "reports_image_idx" ON "reports" USING btree ("image_id");
   CREATE INDEX "reports_slug_idx" ON "reports" USING btree ("slug");
@@ -9763,7 +10456,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "reports_rels_path_idx" ON "reports_rels" USING btree ("path");
   CREATE INDEX "reports_rels_doctypes_id_idx" ON "reports_rels" USING btree ("doctypes_id");
   CREATE INDEX "reports_rels_grants_id_idx" ON "reports_rels" USING btree ("grants_id");
-  CREATE INDEX "reports_rels_posts_id_idx" ON "reports_rels" USING btree ("posts_id");
   CREATE INDEX "reports_rels_pages_id_idx" ON "reports_rels" USING btree ("pages_id");
   CREATE INDEX "reports_rels_blog_id_idx" ON "reports_rels" USING btree ("blog_id");
   CREATE INDEX "reports_rels_reports_id_idx" ON "reports_rels" USING btree ("reports_id");
@@ -9866,6 +10558,19 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_reports_v_blocks_faq_blk_parent_id_idx" ON "_reports_v_blocks_faq_blk" USING btree ("_parent_id");
   CREATE INDEX "_reports_v_blocks_faq_blk_path_idx" ON "_reports_v_blocks_faq_blk" USING btree ("_path");
   CREATE UNIQUE INDEX "_reports_v_blocks_faq_blk_locales_locale_parent_id_unique" ON "_reports_v_blocks_faq_blk_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "_reports_v_blocks_pink_puffy_top_row_order_idx" ON "_reports_v_blocks_pink_puffy_top_row" USING btree ("_order");
+  CREATE INDEX "_reports_v_blocks_pink_puffy_top_row_parent_id_idx" ON "_reports_v_blocks_pink_puffy_top_row" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "_reports_v_blocks_pink_puffy_top_row_locales_locale_parent_i" ON "_reports_v_blocks_pink_puffy_top_row_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "_reports_v_blocks_pink_puffy_bot_row_order_idx" ON "_reports_v_blocks_pink_puffy_bot_row" USING btree ("_order");
+  CREATE INDEX "_reports_v_blocks_pink_puffy_bot_row_parent_id_idx" ON "_reports_v_blocks_pink_puffy_bot_row" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "_reports_v_blocks_pink_puffy_bot_row_locales_locale_parent_i" ON "_reports_v_blocks_pink_puffy_bot_row_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "_reports_v_blocks_pink_puffy_links_order_idx" ON "_reports_v_blocks_pink_puffy_links" USING btree ("_order");
+  CREATE INDEX "_reports_v_blocks_pink_puffy_links_parent_id_idx" ON "_reports_v_blocks_pink_puffy_links" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "_reports_v_blocks_pink_puffy_links_locales_locale_parent_id_" ON "_reports_v_blocks_pink_puffy_links_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "_reports_v_blocks_pink_puffy_order_idx" ON "_reports_v_blocks_pink_puffy" USING btree ("_order");
+  CREATE INDEX "_reports_v_blocks_pink_puffy_parent_id_idx" ON "_reports_v_blocks_pink_puffy" USING btree ("_parent_id");
+  CREATE INDEX "_reports_v_blocks_pink_puffy_path_idx" ON "_reports_v_blocks_pink_puffy" USING btree ("_path");
+  CREATE UNIQUE INDEX "_reports_v_blocks_pink_puffy_locales_locale_parent_id_unique" ON "_reports_v_blocks_pink_puffy_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_reports_v_parent_idx" ON "_reports_v" USING btree ("parent_id");
   CREATE INDEX "_reports_v_version_version_title_idx" ON "_reports_v" USING btree ("version_title");
   CREATE INDEX "_reports_v_version_version_image_idx" ON "_reports_v" USING btree ("version_image_id");
@@ -9887,7 +10592,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_reports_v_rels_path_idx" ON "_reports_v_rels" USING btree ("path");
   CREATE INDEX "_reports_v_rels_doctypes_id_idx" ON "_reports_v_rels" USING btree ("doctypes_id");
   CREATE INDEX "_reports_v_rels_grants_id_idx" ON "_reports_v_rels" USING btree ("grants_id");
-  CREATE INDEX "_reports_v_rels_posts_id_idx" ON "_reports_v_rels" USING btree ("posts_id");
   CREATE INDEX "_reports_v_rels_pages_id_idx" ON "_reports_v_rels" USING btree ("pages_id");
   CREATE INDEX "_reports_v_rels_blog_id_idx" ON "_reports_v_rels" USING btree ("blog_id");
   CREATE INDEX "_reports_v_rels_reports_id_idx" ON "_reports_v_rels" USING btree ("reports_id");
@@ -9990,6 +10694,19 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "mmedia_blocks_faq_blk_parent_id_idx" ON "mmedia_blocks_faq_blk" USING btree ("_parent_id");
   CREATE INDEX "mmedia_blocks_faq_blk_path_idx" ON "mmedia_blocks_faq_blk" USING btree ("_path");
   CREATE UNIQUE INDEX "mmedia_blocks_faq_blk_locales_locale_parent_id_unique" ON "mmedia_blocks_faq_blk_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "mmedia_blocks_pink_puffy_top_row_order_idx" ON "mmedia_blocks_pink_puffy_top_row" USING btree ("_order");
+  CREATE INDEX "mmedia_blocks_pink_puffy_top_row_parent_id_idx" ON "mmedia_blocks_pink_puffy_top_row" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "mmedia_blocks_pink_puffy_top_row_locales_locale_parent_id_un" ON "mmedia_blocks_pink_puffy_top_row_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "mmedia_blocks_pink_puffy_bot_row_order_idx" ON "mmedia_blocks_pink_puffy_bot_row" USING btree ("_order");
+  CREATE INDEX "mmedia_blocks_pink_puffy_bot_row_parent_id_idx" ON "mmedia_blocks_pink_puffy_bot_row" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "mmedia_blocks_pink_puffy_bot_row_locales_locale_parent_id_un" ON "mmedia_blocks_pink_puffy_bot_row_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "mmedia_blocks_pink_puffy_links_order_idx" ON "mmedia_blocks_pink_puffy_links" USING btree ("_order");
+  CREATE INDEX "mmedia_blocks_pink_puffy_links_parent_id_idx" ON "mmedia_blocks_pink_puffy_links" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "mmedia_blocks_pink_puffy_links_locales_locale_parent_id_uniq" ON "mmedia_blocks_pink_puffy_links_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "mmedia_blocks_pink_puffy_order_idx" ON "mmedia_blocks_pink_puffy" USING btree ("_order");
+  CREATE INDEX "mmedia_blocks_pink_puffy_parent_id_idx" ON "mmedia_blocks_pink_puffy" USING btree ("_parent_id");
+  CREATE INDEX "mmedia_blocks_pink_puffy_path_idx" ON "mmedia_blocks_pink_puffy" USING btree ("_path");
+  CREATE UNIQUE INDEX "mmedia_blocks_pink_puffy_locales_locale_parent_id_unique" ON "mmedia_blocks_pink_puffy_locales" USING btree ("_locale","_parent_id");
   CREATE UNIQUE INDEX "mmedia_title_idx" ON "mmedia" USING btree ("title");
   CREATE INDEX "mmedia_image_idx" ON "mmedia" USING btree ("image_id");
   CREATE INDEX "mmedia_slug_idx" ON "mmedia" USING btree ("slug");
@@ -10005,7 +10722,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "mmedia_rels_path_idx" ON "mmedia_rels" USING btree ("path");
   CREATE INDEX "mmedia_rels_doctypes_id_idx" ON "mmedia_rels" USING btree ("doctypes_id");
   CREATE INDEX "mmedia_rels_grants_id_idx" ON "mmedia_rels" USING btree ("grants_id");
-  CREATE INDEX "mmedia_rels_posts_id_idx" ON "mmedia_rels" USING btree ("posts_id");
   CREATE INDEX "mmedia_rels_pages_id_idx" ON "mmedia_rels" USING btree ("pages_id");
   CREATE INDEX "mmedia_rels_blog_id_idx" ON "mmedia_rels" USING btree ("blog_id");
   CREATE INDEX "mmedia_rels_reports_id_idx" ON "mmedia_rels" USING btree ("reports_id");
@@ -10108,6 +10824,19 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_mmedia_v_blocks_faq_blk_parent_id_idx" ON "_mmedia_v_blocks_faq_blk" USING btree ("_parent_id");
   CREATE INDEX "_mmedia_v_blocks_faq_blk_path_idx" ON "_mmedia_v_blocks_faq_blk" USING btree ("_path");
   CREATE UNIQUE INDEX "_mmedia_v_blocks_faq_blk_locales_locale_parent_id_unique" ON "_mmedia_v_blocks_faq_blk_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "_mmedia_v_blocks_pink_puffy_top_row_order_idx" ON "_mmedia_v_blocks_pink_puffy_top_row" USING btree ("_order");
+  CREATE INDEX "_mmedia_v_blocks_pink_puffy_top_row_parent_id_idx" ON "_mmedia_v_blocks_pink_puffy_top_row" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "_mmedia_v_blocks_pink_puffy_top_row_locales_locale_parent_id" ON "_mmedia_v_blocks_pink_puffy_top_row_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "_mmedia_v_blocks_pink_puffy_bot_row_order_idx" ON "_mmedia_v_blocks_pink_puffy_bot_row" USING btree ("_order");
+  CREATE INDEX "_mmedia_v_blocks_pink_puffy_bot_row_parent_id_idx" ON "_mmedia_v_blocks_pink_puffy_bot_row" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "_mmedia_v_blocks_pink_puffy_bot_row_locales_locale_parent_id" ON "_mmedia_v_blocks_pink_puffy_bot_row_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "_mmedia_v_blocks_pink_puffy_links_order_idx" ON "_mmedia_v_blocks_pink_puffy_links" USING btree ("_order");
+  CREATE INDEX "_mmedia_v_blocks_pink_puffy_links_parent_id_idx" ON "_mmedia_v_blocks_pink_puffy_links" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "_mmedia_v_blocks_pink_puffy_links_locales_locale_parent_id_u" ON "_mmedia_v_blocks_pink_puffy_links_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "_mmedia_v_blocks_pink_puffy_order_idx" ON "_mmedia_v_blocks_pink_puffy" USING btree ("_order");
+  CREATE INDEX "_mmedia_v_blocks_pink_puffy_parent_id_idx" ON "_mmedia_v_blocks_pink_puffy" USING btree ("_parent_id");
+  CREATE INDEX "_mmedia_v_blocks_pink_puffy_path_idx" ON "_mmedia_v_blocks_pink_puffy" USING btree ("_path");
+  CREATE UNIQUE INDEX "_mmedia_v_blocks_pink_puffy_locales_locale_parent_id_unique" ON "_mmedia_v_blocks_pink_puffy_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_mmedia_v_parent_idx" ON "_mmedia_v" USING btree ("parent_id");
   CREATE INDEX "_mmedia_v_version_version_title_idx" ON "_mmedia_v" USING btree ("version_title");
   CREATE INDEX "_mmedia_v_version_version_image_idx" ON "_mmedia_v" USING btree ("version_image_id");
@@ -10129,7 +10858,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_mmedia_v_rels_path_idx" ON "_mmedia_v_rels" USING btree ("path");
   CREATE INDEX "_mmedia_v_rels_doctypes_id_idx" ON "_mmedia_v_rels" USING btree ("doctypes_id");
   CREATE INDEX "_mmedia_v_rels_grants_id_idx" ON "_mmedia_v_rels" USING btree ("grants_id");
-  CREATE INDEX "_mmedia_v_rels_posts_id_idx" ON "_mmedia_v_rels" USING btree ("posts_id");
   CREATE INDEX "_mmedia_v_rels_pages_id_idx" ON "_mmedia_v_rels" USING btree ("pages_id");
   CREATE INDEX "_mmedia_v_rels_blog_id_idx" ON "_mmedia_v_rels" USING btree ("blog_id");
   CREATE INDEX "_mmedia_v_rels_reports_id_idx" ON "_mmedia_v_rels" USING btree ("reports_id");
@@ -10167,53 +10895,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "documents_created_at_idx" ON "documents" USING btree ("created_at");
   CREATE INDEX "documents_deleted_at_idx" ON "documents" USING btree ("deleted_at");
   CREATE UNIQUE INDEX "documents_filename_idx" ON "documents" USING btree ("filename");
-  CREATE INDEX "posts_populated_authors_order_idx" ON "posts_populated_authors" USING btree ("_order");
-  CREATE INDEX "posts_populated_authors_parent_id_idx" ON "posts_populated_authors" USING btree ("_parent_id");
-  CREATE INDEX "posts_slug_idx" ON "posts" USING btree ("slug");
-  CREATE INDEX "posts_updated_at_idx" ON "posts" USING btree ("updated_at");
-  CREATE INDEX "posts_created_at_idx" ON "posts" USING btree ("created_at");
-  CREATE INDEX "posts__status_idx" ON "posts" USING btree ("_status");
-  CREATE UNIQUE INDEX "posts_locales_locale_parent_id_unique" ON "posts_locales" USING btree ("_locale","_parent_id");
-  CREATE INDEX "posts_rels_order_idx" ON "posts_rels" USING btree ("order");
-  CREATE INDEX "posts_rels_parent_idx" ON "posts_rels" USING btree ("parent_id");
-  CREATE INDEX "posts_rels_path_idx" ON "posts_rels" USING btree ("path");
-  CREATE INDEX "posts_rels_locale_idx" ON "posts_rels" USING btree ("locale");
-  CREATE INDEX "posts_rels_posts_id_idx" ON "posts_rels" USING btree ("posts_id","locale");
-  CREATE INDEX "posts_rels_categories_id_idx" ON "posts_rels" USING btree ("categories_id","locale");
-  CREATE INDEX "posts_rels_media_cloud_id_idx" ON "posts_rels" USING btree ("media_cloud_id","locale");
-  CREATE INDEX "posts_rels_asset_cloud_id_idx" ON "posts_rels" USING btree ("asset_cloud_id","locale");
-  CREATE INDEX "posts_rels_users_id_idx" ON "posts_rels" USING btree ("users_id","locale");
-  CREATE INDEX "_posts_v_version_populated_authors_order_idx" ON "_posts_v_version_populated_authors" USING btree ("_order");
-  CREATE INDEX "_posts_v_version_populated_authors_parent_id_idx" ON "_posts_v_version_populated_authors" USING btree ("_parent_id");
-  CREATE INDEX "_posts_v_parent_idx" ON "_posts_v" USING btree ("parent_id");
-  CREATE INDEX "_posts_v_version_version_slug_idx" ON "_posts_v" USING btree ("version_slug");
-  CREATE INDEX "_posts_v_version_version_updated_at_idx" ON "_posts_v" USING btree ("version_updated_at");
-  CREATE INDEX "_posts_v_version_version_created_at_idx" ON "_posts_v" USING btree ("version_created_at");
-  CREATE INDEX "_posts_v_version_version__status_idx" ON "_posts_v" USING btree ("version__status");
-  CREATE INDEX "_posts_v_created_at_idx" ON "_posts_v" USING btree ("created_at");
-  CREATE INDEX "_posts_v_updated_at_idx" ON "_posts_v" USING btree ("updated_at");
-  CREATE INDEX "_posts_v_snapshot_idx" ON "_posts_v" USING btree ("snapshot");
-  CREATE INDEX "_posts_v_published_locale_idx" ON "_posts_v" USING btree ("published_locale");
-  CREATE INDEX "_posts_v_latest_idx" ON "_posts_v" USING btree ("latest");
-  CREATE INDEX "_posts_v_autosave_idx" ON "_posts_v" USING btree ("autosave");
-  CREATE UNIQUE INDEX "_posts_v_locales_locale_parent_id_unique" ON "_posts_v_locales" USING btree ("_locale","_parent_id");
-  CREATE INDEX "_posts_v_rels_order_idx" ON "_posts_v_rels" USING btree ("order");
-  CREATE INDEX "_posts_v_rels_parent_idx" ON "_posts_v_rels" USING btree ("parent_id");
-  CREATE INDEX "_posts_v_rels_path_idx" ON "_posts_v_rels" USING btree ("path");
-  CREATE INDEX "_posts_v_rels_locale_idx" ON "_posts_v_rels" USING btree ("locale");
-  CREATE INDEX "_posts_v_rels_posts_id_idx" ON "_posts_v_rels" USING btree ("posts_id","locale");
-  CREATE INDEX "_posts_v_rels_categories_id_idx" ON "_posts_v_rels" USING btree ("categories_id","locale");
-  CREATE INDEX "_posts_v_rels_media_cloud_id_idx" ON "_posts_v_rels" USING btree ("media_cloud_id","locale");
-  CREATE INDEX "_posts_v_rels_asset_cloud_id_idx" ON "_posts_v_rels" USING btree ("asset_cloud_id","locale");
-  CREATE INDEX "_posts_v_rels_users_id_idx" ON "_posts_v_rels" USING btree ("users_id","locale");
-  CREATE INDEX "categories_breadcrumbs_order_idx" ON "categories_breadcrumbs" USING btree ("_order");
-  CREATE INDEX "categories_breadcrumbs_parent_id_idx" ON "categories_breadcrumbs" USING btree ("_parent_id");
-  CREATE INDEX "categories_breadcrumbs_locale_idx" ON "categories_breadcrumbs" USING btree ("_locale");
-  CREATE INDEX "categories_breadcrumbs_doc_idx" ON "categories_breadcrumbs" USING btree ("doc_id");
-  CREATE INDEX "categories_parent_idx" ON "categories" USING btree ("parent_id");
-  CREATE INDEX "categories_updated_at_idx" ON "categories" USING btree ("updated_at");
-  CREATE INDEX "categories_created_at_idx" ON "categories" USING btree ("created_at");
-  CREATE UNIQUE INDEX "categories_locales_locale_parent_id_unique" ON "categories_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "users_sessions_order_idx" ON "users_sessions" USING btree ("_order");
   CREATE INDEX "users_sessions_parent_id_idx" ON "users_sessions" USING btree ("_parent_id");
   CREATE INDEX "users_avatar_idx" ON "users" USING btree ("avatar_id");
@@ -10226,7 +10907,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "redirects_rels_order_idx" ON "redirects_rels" USING btree ("order");
   CREATE INDEX "redirects_rels_parent_idx" ON "redirects_rels" USING btree ("parent_id");
   CREATE INDEX "redirects_rels_path_idx" ON "redirects_rels" USING btree ("path");
-  CREATE INDEX "redirects_rels_posts_id_idx" ON "redirects_rels" USING btree ("posts_id");
   CREATE INDEX "redirects_rels_pages_id_idx" ON "redirects_rels" USING btree ("pages_id");
   CREATE INDEX "redirects_rels_reports_id_idx" ON "redirects_rels" USING btree ("reports_id");
   CREATE INDEX "redirects_rels_blog_id_idx" ON "redirects_rels" USING btree ("blog_id");
@@ -10291,7 +10971,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "search_rels_order_idx" ON "search_rels" USING btree ("order");
   CREATE INDEX "search_rels_parent_idx" ON "search_rels" USING btree ("parent_id");
   CREATE INDEX "search_rels_path_idx" ON "search_rels" USING btree ("path");
-  CREATE INDEX "search_rels_posts_id_idx" ON "search_rels" USING btree ("posts_id");
   CREATE INDEX "search_rels_pages_id_idx" ON "search_rels" USING btree ("pages_id");
   CREATE INDEX "search_rels_reports_id_idx" ON "search_rels" USING btree ("reports_id");
   CREATE INDEX "search_rels_blog_id_idx" ON "search_rels" USING btree ("blog_id");
@@ -10320,8 +10999,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "payload_locked_documents_rels_media_cloud_id_idx" ON "payload_locked_documents_rels" USING btree ("media_cloud_id");
   CREATE INDEX "payload_locked_documents_rels_asset_cloud_id_idx" ON "payload_locked_documents_rels" USING btree ("asset_cloud_id");
   CREATE INDEX "payload_locked_documents_rels_documents_id_idx" ON "payload_locked_documents_rels" USING btree ("documents_id");
-  CREATE INDEX "payload_locked_documents_rels_posts_id_idx" ON "payload_locked_documents_rels" USING btree ("posts_id");
-  CREATE INDEX "payload_locked_documents_rels_categories_id_idx" ON "payload_locked_documents_rels" USING btree ("categories_id");
   CREATE INDEX "payload_locked_documents_rels_users_id_idx" ON "payload_locked_documents_rels" USING btree ("users_id");
   CREATE INDEX "payload_locked_documents_rels_redirects_id_idx" ON "payload_locked_documents_rels" USING btree ("redirects_id");
   CREATE INDEX "payload_locked_documents_rels_forms_id_idx" ON "payload_locked_documents_rels" USING btree ("forms_id");
@@ -10439,7 +11116,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "homepage_rels_parent_idx" ON "homepage_rels" USING btree ("parent_id");
   CREATE INDEX "homepage_rels_path_idx" ON "homepage_rels" USING btree ("path");
   CREATE INDEX "homepage_rels_grants_id_idx" ON "homepage_rels" USING btree ("grants_id");
-  CREATE INDEX "homepage_rels_posts_id_idx" ON "homepage_rels" USING btree ("posts_id");
   CREATE INDEX "homepage_rels_pages_id_idx" ON "homepage_rels" USING btree ("pages_id");
   CREATE INDEX "homepage_rels_blog_id_idx" ON "homepage_rels" USING btree ("blog_id");
   CREATE INDEX "homepage_rels_reports_id_idx" ON "homepage_rels" USING btree ("reports_id");
@@ -10554,7 +11230,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_homepage_v_rels_parent_idx" ON "_homepage_v_rels" USING btree ("parent_id");
   CREATE INDEX "_homepage_v_rels_path_idx" ON "_homepage_v_rels" USING btree ("path");
   CREATE INDEX "_homepage_v_rels_grants_id_idx" ON "_homepage_v_rels" USING btree ("grants_id");
-  CREATE INDEX "_homepage_v_rels_posts_id_idx" ON "_homepage_v_rels" USING btree ("posts_id");
   CREATE INDEX "_homepage_v_rels_pages_id_idx" ON "_homepage_v_rels" USING btree ("pages_id");
   CREATE INDEX "_homepage_v_rels_blog_id_idx" ON "_homepage_v_rels" USING btree ("blog_id");
   CREATE INDEX "_homepage_v_rels_reports_id_idx" ON "_homepage_v_rels" USING btree ("reports_id");
@@ -10579,7 +11254,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "nav_rels_parent_idx" ON "nav_rels" USING btree ("parent_id");
   CREATE INDEX "nav_rels_path_idx" ON "nav_rels" USING btree ("path");
   CREATE INDEX "nav_rels_grants_id_idx" ON "nav_rels" USING btree ("grants_id");
-  CREATE INDEX "nav_rels_posts_id_idx" ON "nav_rels" USING btree ("posts_id");
   CREATE INDEX "nav_rels_pages_id_idx" ON "nav_rels" USING btree ("pages_id");
   CREATE INDEX "nav_rels_blog_id_idx" ON "nav_rels" USING btree ("blog_id");
   CREATE INDEX "nav_rels_reports_id_idx" ON "nav_rels" USING btree ("reports_id");
@@ -10646,6 +11320,14 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TABLE "grants_blocks_faq_blk_faqs_locales" CASCADE;
   DROP TABLE "grants_blocks_faq_blk" CASCADE;
   DROP TABLE "grants_blocks_faq_blk_locales" CASCADE;
+  DROP TABLE "grants_blocks_pink_puffy_top_row" CASCADE;
+  DROP TABLE "grants_blocks_pink_puffy_top_row_locales" CASCADE;
+  DROP TABLE "grants_blocks_pink_puffy_bot_row" CASCADE;
+  DROP TABLE "grants_blocks_pink_puffy_bot_row_locales" CASCADE;
+  DROP TABLE "grants_blocks_pink_puffy_links" CASCADE;
+  DROP TABLE "grants_blocks_pink_puffy_links_locales" CASCADE;
+  DROP TABLE "grants_blocks_pink_puffy" CASCADE;
+  DROP TABLE "grants_blocks_pink_puffy_locales" CASCADE;
   DROP TABLE "grants" CASCADE;
   DROP TABLE "grants_locales" CASCADE;
   DROP TABLE "grants_rels" CASCADE;
@@ -10702,6 +11384,14 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TABLE "_grants_v_blocks_faq_blk_faqs_locales" CASCADE;
   DROP TABLE "_grants_v_blocks_faq_blk" CASCADE;
   DROP TABLE "_grants_v_blocks_faq_blk_locales" CASCADE;
+  DROP TABLE "_grants_v_blocks_pink_puffy_top_row" CASCADE;
+  DROP TABLE "_grants_v_blocks_pink_puffy_top_row_locales" CASCADE;
+  DROP TABLE "_grants_v_blocks_pink_puffy_bot_row" CASCADE;
+  DROP TABLE "_grants_v_blocks_pink_puffy_bot_row_locales" CASCADE;
+  DROP TABLE "_grants_v_blocks_pink_puffy_links" CASCADE;
+  DROP TABLE "_grants_v_blocks_pink_puffy_links_locales" CASCADE;
+  DROP TABLE "_grants_v_blocks_pink_puffy" CASCADE;
+  DROP TABLE "_grants_v_blocks_pink_puffy_locales" CASCADE;
   DROP TABLE "_grants_v" CASCADE;
   DROP TABLE "_grants_v_locales" CASCADE;
   DROP TABLE "_grants_v_rels" CASCADE;
@@ -10786,6 +11476,14 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TABLE "pages_blocks_faq_blk_faqs_locales" CASCADE;
   DROP TABLE "pages_blocks_faq_blk" CASCADE;
   DROP TABLE "pages_blocks_faq_blk_locales" CASCADE;
+  DROP TABLE "pages_blocks_pink_puffy_top_row" CASCADE;
+  DROP TABLE "pages_blocks_pink_puffy_top_row_locales" CASCADE;
+  DROP TABLE "pages_blocks_pink_puffy_bot_row" CASCADE;
+  DROP TABLE "pages_blocks_pink_puffy_bot_row_locales" CASCADE;
+  DROP TABLE "pages_blocks_pink_puffy_links" CASCADE;
+  DROP TABLE "pages_blocks_pink_puffy_links_locales" CASCADE;
+  DROP TABLE "pages_blocks_pink_puffy" CASCADE;
+  DROP TABLE "pages_blocks_pink_puffy_locales" CASCADE;
   DROP TABLE "pages" CASCADE;
   DROP TABLE "pages_locales" CASCADE;
   DROP TABLE "pages_rels" CASCADE;
@@ -10842,6 +11540,14 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TABLE "_pages_v_blocks_faq_blk_faqs_locales" CASCADE;
   DROP TABLE "_pages_v_blocks_faq_blk" CASCADE;
   DROP TABLE "_pages_v_blocks_faq_blk_locales" CASCADE;
+  DROP TABLE "_pages_v_blocks_pink_puffy_top_row" CASCADE;
+  DROP TABLE "_pages_v_blocks_pink_puffy_top_row_locales" CASCADE;
+  DROP TABLE "_pages_v_blocks_pink_puffy_bot_row" CASCADE;
+  DROP TABLE "_pages_v_blocks_pink_puffy_bot_row_locales" CASCADE;
+  DROP TABLE "_pages_v_blocks_pink_puffy_links" CASCADE;
+  DROP TABLE "_pages_v_blocks_pink_puffy_links_locales" CASCADE;
+  DROP TABLE "_pages_v_blocks_pink_puffy" CASCADE;
+  DROP TABLE "_pages_v_blocks_pink_puffy_locales" CASCADE;
   DROP TABLE "_pages_v" CASCADE;
   DROP TABLE "_pages_v_locales" CASCADE;
   DROP TABLE "_pages_v_rels" CASCADE;
@@ -10898,6 +11604,14 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TABLE "blog_blocks_faq_blk_faqs_locales" CASCADE;
   DROP TABLE "blog_blocks_faq_blk" CASCADE;
   DROP TABLE "blog_blocks_faq_blk_locales" CASCADE;
+  DROP TABLE "blog_blocks_pink_puffy_top_row" CASCADE;
+  DROP TABLE "blog_blocks_pink_puffy_top_row_locales" CASCADE;
+  DROP TABLE "blog_blocks_pink_puffy_bot_row" CASCADE;
+  DROP TABLE "blog_blocks_pink_puffy_bot_row_locales" CASCADE;
+  DROP TABLE "blog_blocks_pink_puffy_links" CASCADE;
+  DROP TABLE "blog_blocks_pink_puffy_links_locales" CASCADE;
+  DROP TABLE "blog_blocks_pink_puffy" CASCADE;
+  DROP TABLE "blog_blocks_pink_puffy_locales" CASCADE;
   DROP TABLE "blog" CASCADE;
   DROP TABLE "blog_locales" CASCADE;
   DROP TABLE "blog_rels" CASCADE;
@@ -10954,6 +11668,14 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TABLE "_blog_v_blocks_faq_blk_faqs_locales" CASCADE;
   DROP TABLE "_blog_v_blocks_faq_blk" CASCADE;
   DROP TABLE "_blog_v_blocks_faq_blk_locales" CASCADE;
+  DROP TABLE "_blog_v_blocks_pink_puffy_top_row" CASCADE;
+  DROP TABLE "_blog_v_blocks_pink_puffy_top_row_locales" CASCADE;
+  DROP TABLE "_blog_v_blocks_pink_puffy_bot_row" CASCADE;
+  DROP TABLE "_blog_v_blocks_pink_puffy_bot_row_locales" CASCADE;
+  DROP TABLE "_blog_v_blocks_pink_puffy_links" CASCADE;
+  DROP TABLE "_blog_v_blocks_pink_puffy_links_locales" CASCADE;
+  DROP TABLE "_blog_v_blocks_pink_puffy" CASCADE;
+  DROP TABLE "_blog_v_blocks_pink_puffy_locales" CASCADE;
   DROP TABLE "_blog_v" CASCADE;
   DROP TABLE "_blog_v_locales" CASCADE;
   DROP TABLE "_blog_v_rels" CASCADE;
@@ -11010,6 +11732,14 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TABLE "reports_blocks_faq_blk_faqs_locales" CASCADE;
   DROP TABLE "reports_blocks_faq_blk" CASCADE;
   DROP TABLE "reports_blocks_faq_blk_locales" CASCADE;
+  DROP TABLE "reports_blocks_pink_puffy_top_row" CASCADE;
+  DROP TABLE "reports_blocks_pink_puffy_top_row_locales" CASCADE;
+  DROP TABLE "reports_blocks_pink_puffy_bot_row" CASCADE;
+  DROP TABLE "reports_blocks_pink_puffy_bot_row_locales" CASCADE;
+  DROP TABLE "reports_blocks_pink_puffy_links" CASCADE;
+  DROP TABLE "reports_blocks_pink_puffy_links_locales" CASCADE;
+  DROP TABLE "reports_blocks_pink_puffy" CASCADE;
+  DROP TABLE "reports_blocks_pink_puffy_locales" CASCADE;
   DROP TABLE "reports" CASCADE;
   DROP TABLE "reports_locales" CASCADE;
   DROP TABLE "reports_rels" CASCADE;
@@ -11066,6 +11796,14 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TABLE "_reports_v_blocks_faq_blk_faqs_locales" CASCADE;
   DROP TABLE "_reports_v_blocks_faq_blk" CASCADE;
   DROP TABLE "_reports_v_blocks_faq_blk_locales" CASCADE;
+  DROP TABLE "_reports_v_blocks_pink_puffy_top_row" CASCADE;
+  DROP TABLE "_reports_v_blocks_pink_puffy_top_row_locales" CASCADE;
+  DROP TABLE "_reports_v_blocks_pink_puffy_bot_row" CASCADE;
+  DROP TABLE "_reports_v_blocks_pink_puffy_bot_row_locales" CASCADE;
+  DROP TABLE "_reports_v_blocks_pink_puffy_links" CASCADE;
+  DROP TABLE "_reports_v_blocks_pink_puffy_links_locales" CASCADE;
+  DROP TABLE "_reports_v_blocks_pink_puffy" CASCADE;
+  DROP TABLE "_reports_v_blocks_pink_puffy_locales" CASCADE;
   DROP TABLE "_reports_v" CASCADE;
   DROP TABLE "_reports_v_locales" CASCADE;
   DROP TABLE "_reports_v_rels" CASCADE;
@@ -11122,6 +11860,14 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TABLE "mmedia_blocks_faq_blk_faqs_locales" CASCADE;
   DROP TABLE "mmedia_blocks_faq_blk" CASCADE;
   DROP TABLE "mmedia_blocks_faq_blk_locales" CASCADE;
+  DROP TABLE "mmedia_blocks_pink_puffy_top_row" CASCADE;
+  DROP TABLE "mmedia_blocks_pink_puffy_top_row_locales" CASCADE;
+  DROP TABLE "mmedia_blocks_pink_puffy_bot_row" CASCADE;
+  DROP TABLE "mmedia_blocks_pink_puffy_bot_row_locales" CASCADE;
+  DROP TABLE "mmedia_blocks_pink_puffy_links" CASCADE;
+  DROP TABLE "mmedia_blocks_pink_puffy_links_locales" CASCADE;
+  DROP TABLE "mmedia_blocks_pink_puffy" CASCADE;
+  DROP TABLE "mmedia_blocks_pink_puffy_locales" CASCADE;
   DROP TABLE "mmedia" CASCADE;
   DROP TABLE "mmedia_locales" CASCADE;
   DROP TABLE "mmedia_rels" CASCADE;
@@ -11178,6 +11924,14 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TABLE "_mmedia_v_blocks_faq_blk_faqs_locales" CASCADE;
   DROP TABLE "_mmedia_v_blocks_faq_blk" CASCADE;
   DROP TABLE "_mmedia_v_blocks_faq_blk_locales" CASCADE;
+  DROP TABLE "_mmedia_v_blocks_pink_puffy_top_row" CASCADE;
+  DROP TABLE "_mmedia_v_blocks_pink_puffy_top_row_locales" CASCADE;
+  DROP TABLE "_mmedia_v_blocks_pink_puffy_bot_row" CASCADE;
+  DROP TABLE "_mmedia_v_blocks_pink_puffy_bot_row_locales" CASCADE;
+  DROP TABLE "_mmedia_v_blocks_pink_puffy_links" CASCADE;
+  DROP TABLE "_mmedia_v_blocks_pink_puffy_links_locales" CASCADE;
+  DROP TABLE "_mmedia_v_blocks_pink_puffy" CASCADE;
+  DROP TABLE "_mmedia_v_blocks_pink_puffy_locales" CASCADE;
   DROP TABLE "_mmedia_v" CASCADE;
   DROP TABLE "_mmedia_v_locales" CASCADE;
   DROP TABLE "_mmedia_v_rels" CASCADE;
@@ -11186,17 +11940,6 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TABLE "media_cloud" CASCADE;
   DROP TABLE "asset_cloud" CASCADE;
   DROP TABLE "documents" CASCADE;
-  DROP TABLE "posts_populated_authors" CASCADE;
-  DROP TABLE "posts" CASCADE;
-  DROP TABLE "posts_locales" CASCADE;
-  DROP TABLE "posts_rels" CASCADE;
-  DROP TABLE "_posts_v_version_populated_authors" CASCADE;
-  DROP TABLE "_posts_v" CASCADE;
-  DROP TABLE "_posts_v_locales" CASCADE;
-  DROP TABLE "_posts_v_rels" CASCADE;
-  DROP TABLE "categories_breadcrumbs" CASCADE;
-  DROP TABLE "categories" CASCADE;
-  DROP TABLE "categories_locales" CASCADE;
   DROP TABLE "users_sessions" CASCADE;
   DROP TABLE "users" CASCADE;
   DROP TABLE "redirects" CASCADE;
@@ -11380,6 +12123,8 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TYPE "public"."enum_grants_blocks_list_crd_dck_cards_link_type";
   DROP TYPE "public"."enum_grants_blocks_list_crd_dck_buttons_link_type";
   DROP TYPE "public"."enum_grants_blocks_faq_blk_link_type";
+  DROP TYPE "public"."enum_grants_blocks_pink_puffy_links_link_type";
+  DROP TYPE "public"."enum_grants_blocks_pink_puffy_align";
   DROP TYPE "public"."enum_grants_page_type";
   DROP TYPE "public"."enum_grants_bg_type";
   DROP TYPE "public"."enum_grants_status";
@@ -11397,6 +12142,8 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TYPE "public"."enum__grants_v_blocks_list_crd_dck_cards_link_type";
   DROP TYPE "public"."enum__grants_v_blocks_list_crd_dck_buttons_link_type";
   DROP TYPE "public"."enum__grants_v_blocks_faq_blk_link_type";
+  DROP TYPE "public"."enum__grants_v_blocks_pink_puffy_links_link_type";
+  DROP TYPE "public"."enum__grants_v_blocks_pink_puffy_align";
   DROP TYPE "public"."enum__grants_v_version_page_type";
   DROP TYPE "public"."enum__grants_v_version_bg_type";
   DROP TYPE "public"."enum__grants_v_version_status";
@@ -11433,6 +12180,8 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TYPE "public"."enum_pages_blocks_list_crd_dck_cards_link_type";
   DROP TYPE "public"."enum_pages_blocks_list_crd_dck_buttons_link_type";
   DROP TYPE "public"."enum_pages_blocks_faq_blk_link_type";
+  DROP TYPE "public"."enum_pages_blocks_pink_puffy_links_link_type";
+  DROP TYPE "public"."enum_pages_blocks_pink_puffy_align";
   DROP TYPE "public"."enum_pages_bg_type";
   DROP TYPE "public"."enum_pages_hero_colour";
   DROP TYPE "public"."enum_pages_status";
@@ -11450,6 +12199,8 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TYPE "public"."enum__pages_v_blocks_list_crd_dck_cards_link_type";
   DROP TYPE "public"."enum__pages_v_blocks_list_crd_dck_buttons_link_type";
   DROP TYPE "public"."enum__pages_v_blocks_faq_blk_link_type";
+  DROP TYPE "public"."enum__pages_v_blocks_pink_puffy_links_link_type";
+  DROP TYPE "public"."enum__pages_v_blocks_pink_puffy_align";
   DROP TYPE "public"."enum__pages_v_version_bg_type";
   DROP TYPE "public"."enum__pages_v_version_hero_colour";
   DROP TYPE "public"."enum__pages_v_version_status";
@@ -11468,6 +12219,8 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TYPE "public"."enum_blog_blocks_list_crd_dck_cards_link_type";
   DROP TYPE "public"."enum_blog_blocks_list_crd_dck_buttons_link_type";
   DROP TYPE "public"."enum_blog_blocks_faq_blk_link_type";
+  DROP TYPE "public"."enum_blog_blocks_pink_puffy_links_link_type";
+  DROP TYPE "public"."enum_blog_blocks_pink_puffy_align";
   DROP TYPE "public"."enum_blog_page_type";
   DROP TYPE "public"."enum_blog_status";
   DROP TYPE "public"."enum__blog_v_version_hero_buttons_link_type";
@@ -11484,6 +12237,8 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TYPE "public"."enum__blog_v_blocks_list_crd_dck_cards_link_type";
   DROP TYPE "public"."enum__blog_v_blocks_list_crd_dck_buttons_link_type";
   DROP TYPE "public"."enum__blog_v_blocks_faq_blk_link_type";
+  DROP TYPE "public"."enum__blog_v_blocks_pink_puffy_links_link_type";
+  DROP TYPE "public"."enum__blog_v_blocks_pink_puffy_align";
   DROP TYPE "public"."enum__blog_v_version_page_type";
   DROP TYPE "public"."enum__blog_v_version_status";
   DROP TYPE "public"."enum__blog_v_published_locale";
@@ -11501,6 +12256,8 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TYPE "public"."enum_reports_blocks_list_crd_dck_cards_link_type";
   DROP TYPE "public"."enum_reports_blocks_list_crd_dck_buttons_link_type";
   DROP TYPE "public"."enum_reports_blocks_faq_blk_link_type";
+  DROP TYPE "public"."enum_reports_blocks_pink_puffy_links_link_type";
+  DROP TYPE "public"."enum_reports_blocks_pink_puffy_align";
   DROP TYPE "public"."enum_reports_page_type";
   DROP TYPE "public"."enum_reports_status";
   DROP TYPE "public"."enum__reports_v_version_hero_buttons_link_type";
@@ -11517,6 +12274,8 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TYPE "public"."enum__reports_v_blocks_list_crd_dck_cards_link_type";
   DROP TYPE "public"."enum__reports_v_blocks_list_crd_dck_buttons_link_type";
   DROP TYPE "public"."enum__reports_v_blocks_faq_blk_link_type";
+  DROP TYPE "public"."enum__reports_v_blocks_pink_puffy_links_link_type";
+  DROP TYPE "public"."enum__reports_v_blocks_pink_puffy_align";
   DROP TYPE "public"."enum__reports_v_version_page_type";
   DROP TYPE "public"."enum__reports_v_version_status";
   DROP TYPE "public"."enum__reports_v_published_locale";
@@ -11534,6 +12293,8 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TYPE "public"."enum_mmedia_blocks_list_crd_dck_cards_link_type";
   DROP TYPE "public"."enum_mmedia_blocks_list_crd_dck_buttons_link_type";
   DROP TYPE "public"."enum_mmedia_blocks_faq_blk_link_type";
+  DROP TYPE "public"."enum_mmedia_blocks_pink_puffy_links_link_type";
+  DROP TYPE "public"."enum_mmedia_blocks_pink_puffy_align";
   DROP TYPE "public"."enum_mmedia_page_type";
   DROP TYPE "public"."enum_mmedia_status";
   DROP TYPE "public"."enum__mmedia_v_version_hero_buttons_link_type";
@@ -11550,12 +12311,11 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TYPE "public"."enum__mmedia_v_blocks_list_crd_dck_cards_link_type";
   DROP TYPE "public"."enum__mmedia_v_blocks_list_crd_dck_buttons_link_type";
   DROP TYPE "public"."enum__mmedia_v_blocks_faq_blk_link_type";
+  DROP TYPE "public"."enum__mmedia_v_blocks_pink_puffy_links_link_type";
+  DROP TYPE "public"."enum__mmedia_v_blocks_pink_puffy_align";
   DROP TYPE "public"."enum__mmedia_v_version_page_type";
   DROP TYPE "public"."enum__mmedia_v_version_status";
   DROP TYPE "public"."enum__mmedia_v_published_locale";
-  DROP TYPE "public"."enum_posts_status";
-  DROP TYPE "public"."enum__posts_v_version_status";
-  DROP TYPE "public"."enum__posts_v_published_locale";
   DROP TYPE "public"."enum_users_role";
   DROP TYPE "public"."enum_redirects_to_type";
   DROP TYPE "public"."enum_forms_confirmation_type";
