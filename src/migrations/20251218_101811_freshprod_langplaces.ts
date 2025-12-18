@@ -2,7 +2,7 @@ import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-postgres'
 
 export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   await db.execute(sql`
-   CREATE TYPE "public"."_locales" AS ENUM('en', 'ar', 'bi', 'bn-IN', 'br', 'ch', 'prs-Arab', 'km', 'hi', 'ms', 'ne', 'ps-Arab', 'pcm', 'si', 'tl', 'ta', 'th', 'vi', 'ur');
+   CREATE TYPE "public"."_locales" AS ENUM('en', 'ar', 'bi', 'bn-IN', 'br', 'ch', 'prs-Arab', 'km', 'hi', 'ms', 'ne', 'ps-Arab', 'pcm', 'si', 'tl', 'ta', 'th', 'vi', 'ur', 'lpl1', 'lpl2', 'lpl3', 'lpl4', 'lpl5', 'lpl6', 'lpl7', 'lpl8', 'lpl9', 'lpl10', 'lpl11', 'lpl12', 'lpl13', 'lpl14', 'lpl15', 'lpl16');
   CREATE TYPE "public"."enum_grants_hero_buttons_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum_grants_blocks_secondarycta_cta_button_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum_grants_blocks_secondarycta_ui_type" AS ENUM('lrg_txt_cta', 'md_txt_cta', 'min_cta', 'puffy_beige_cta');
@@ -41,7 +41,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum__grants_v_version_page_type" AS ENUM('landing', 'individual');
   CREATE TYPE "public"."enum__grants_v_version_bg_type" AS ENUM('wavy_top', 'wavy_full', 'center_blob');
   CREATE TYPE "public"."enum__grants_v_version_status" AS ENUM('draft', 'published');
-  CREATE TYPE "public"."enum__grants_v_published_locale" AS ENUM('en', 'ar', 'bi', 'bn-IN', 'br', 'ch', 'prs-Arab', 'km', 'hi', 'ms', 'ne', 'ps-Arab', 'pcm', 'si', 'tl', 'ta', 'th', 'vi', 'ur');
+  CREATE TYPE "public"."enum__grants_v_published_locale" AS ENUM('en', 'ar', 'bi', 'bn-IN', 'br', 'ch', 'prs-Arab', 'km', 'hi', 'ms', 'ne', 'ps-Arab', 'pcm', 'si', 'tl', 'ta', 'th', 'vi', 'ur', 'lpl1', 'lpl2', 'lpl3', 'lpl4', 'lpl5', 'lpl6', 'lpl7', 'lpl8', 'lpl9', 'lpl10', 'lpl11', 'lpl12', 'lpl13', 'lpl14', 'lpl15', 'lpl16');
   CREATE TYPE "public"."enum_grantcards_card_buttons_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum_grantcards_badge_type" AS ENUM('info', 'imp', 'inactive');
   CREATE TYPE "public"."enum_grantcards_active_period" AS ENUM('open_all_year', 'specific_period', 'closed');
@@ -52,14 +52,14 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum__grantcards_v_version_active_period" AS ENUM('open_all_year', 'specific_period', 'closed');
   CREATE TYPE "public"."enum__grantcards_v_version_card_colour" AS ENUM('forest', 'turmeric', 'sky', 'rose', 'lavender', 'fire', 'trans');
   CREATE TYPE "public"."enum__grantcards_v_version_status" AS ENUM('draft', 'published');
-  CREATE TYPE "public"."enum__grantcards_v_published_locale" AS ENUM('en', 'ar', 'bi', 'bn-IN', 'br', 'ch', 'prs-Arab', 'km', 'hi', 'ms', 'ne', 'ps-Arab', 'pcm', 'si', 'tl', 'ta', 'th', 'vi', 'ur');
+  CREATE TYPE "public"."enum__grantcards_v_published_locale" AS ENUM('en', 'ar', 'bi', 'bn-IN', 'br', 'ch', 'prs-Arab', 'km', 'hi', 'ms', 'ne', 'ps-Arab', 'pcm', 'si', 'tl', 'ta', 'th', 'vi', 'ur', 'lpl1', 'lpl2', 'lpl3', 'lpl4', 'lpl5', 'lpl6', 'lpl7', 'lpl8', 'lpl9', 'lpl10', 'lpl11', 'lpl12', 'lpl13', 'lpl14', 'lpl15', 'lpl16');
   CREATE TYPE "public"."enum_etests_is_e_card_is_e_link_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum_etests_not_e_card_not_e_link_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum_etests_status" AS ENUM('draft', 'published');
   CREATE TYPE "public"."enum__etests_v_version_is_e_card_is_e_link_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum__etests_v_version_not_e_card_not_e_link_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum__etests_v_version_status" AS ENUM('draft', 'published');
-  CREATE TYPE "public"."enum__etests_v_published_locale" AS ENUM('en', 'ar', 'bi', 'bn-IN', 'br', 'ch', 'prs-Arab', 'km', 'hi', 'ms', 'ne', 'ps-Arab', 'pcm', 'si', 'tl', 'ta', 'th', 'vi', 'ur');
+  CREATE TYPE "public"."enum__etests_v_published_locale" AS ENUM('en', 'ar', 'bi', 'bn-IN', 'br', 'ch', 'prs-Arab', 'km', 'hi', 'ms', 'ne', 'ps-Arab', 'pcm', 'si', 'tl', 'ta', 'th', 'vi', 'ur', 'lpl1', 'lpl2', 'lpl3', 'lpl4', 'lpl5', 'lpl6', 'lpl7', 'lpl8', 'lpl9', 'lpl10', 'lpl11', 'lpl12', 'lpl13', 'lpl14', 'lpl15', 'lpl16');
   CREATE TYPE "public"."enum_pages_hero_buttons_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum_pages_blocks_secondarycta_cta_button_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum_pages_blocks_secondarycta_ui_type" AS ENUM('lrg_txt_cta', 'md_txt_cta', 'min_cta', 'puffy_beige_cta');
@@ -98,7 +98,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum__pages_v_version_bg_type" AS ENUM('wavy_top', 'wavy_full', 'center_blob');
   CREATE TYPE "public"."enum__pages_v_version_hero_colour" AS ENUM('forest', 'turmeric', 'sky', 'rose', 'lavender', 'fire', 'trans');
   CREATE TYPE "public"."enum__pages_v_version_status" AS ENUM('draft', 'published');
-  CREATE TYPE "public"."enum__pages_v_published_locale" AS ENUM('en', 'ar', 'bi', 'bn-IN', 'br', 'ch', 'prs-Arab', 'km', 'hi', 'ms', 'ne', 'ps-Arab', 'pcm', 'si', 'tl', 'ta', 'th', 'vi', 'ur');
+  CREATE TYPE "public"."enum__pages_v_published_locale" AS ENUM('en', 'ar', 'bi', 'bn-IN', 'br', 'ch', 'prs-Arab', 'km', 'hi', 'ms', 'ne', 'ps-Arab', 'pcm', 'si', 'tl', 'ta', 'th', 'vi', 'ur', 'lpl1', 'lpl2', 'lpl3', 'lpl4', 'lpl5', 'lpl6', 'lpl7', 'lpl8', 'lpl9', 'lpl10', 'lpl11', 'lpl12', 'lpl13', 'lpl14', 'lpl15', 'lpl16');
   CREATE TYPE "public"."enum_blog_hero_buttons_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum_blog_blocks_secondarycta_cta_button_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum_blog_blocks_secondarycta_ui_type" AS ENUM('lrg_txt_cta', 'md_txt_cta', 'min_cta', 'puffy_beige_cta');
@@ -135,7 +135,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum__blog_v_blocks_pink_puffy_align" AS ENUM('center', 'left');
   CREATE TYPE "public"."enum__blog_v_version_page_type" AS ENUM('landing', 'individual');
   CREATE TYPE "public"."enum__blog_v_version_status" AS ENUM('draft', 'published');
-  CREATE TYPE "public"."enum__blog_v_published_locale" AS ENUM('en', 'ar', 'bi', 'bn-IN', 'br', 'ch', 'prs-Arab', 'km', 'hi', 'ms', 'ne', 'ps-Arab', 'pcm', 'si', 'tl', 'ta', 'th', 'vi', 'ur');
+  CREATE TYPE "public"."enum__blog_v_published_locale" AS ENUM('en', 'ar', 'bi', 'bn-IN', 'br', 'ch', 'prs-Arab', 'km', 'hi', 'ms', 'ne', 'ps-Arab', 'pcm', 'si', 'tl', 'ta', 'th', 'vi', 'ur', 'lpl1', 'lpl2', 'lpl3', 'lpl4', 'lpl5', 'lpl6', 'lpl7', 'lpl8', 'lpl9', 'lpl10', 'lpl11', 'lpl12', 'lpl13', 'lpl14', 'lpl15', 'lpl16');
   CREATE TYPE "public"."enum_reports_hero_buttons_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum_reports_blocks_secondarycta_cta_button_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum_reports_blocks_secondarycta_ui_type" AS ENUM('lrg_txt_cta', 'md_txt_cta', 'min_cta', 'puffy_beige_cta');
@@ -172,7 +172,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum__reports_v_blocks_pink_puffy_align" AS ENUM('center', 'left');
   CREATE TYPE "public"."enum__reports_v_version_page_type" AS ENUM('landing', 'individual');
   CREATE TYPE "public"."enum__reports_v_version_status" AS ENUM('draft', 'published');
-  CREATE TYPE "public"."enum__reports_v_published_locale" AS ENUM('en', 'ar', 'bi', 'bn-IN', 'br', 'ch', 'prs-Arab', 'km', 'hi', 'ms', 'ne', 'ps-Arab', 'pcm', 'si', 'tl', 'ta', 'th', 'vi', 'ur');
+  CREATE TYPE "public"."enum__reports_v_published_locale" AS ENUM('en', 'ar', 'bi', 'bn-IN', 'br', 'ch', 'prs-Arab', 'km', 'hi', 'ms', 'ne', 'ps-Arab', 'pcm', 'si', 'tl', 'ta', 'th', 'vi', 'ur', 'lpl1', 'lpl2', 'lpl3', 'lpl4', 'lpl5', 'lpl6', 'lpl7', 'lpl8', 'lpl9', 'lpl10', 'lpl11', 'lpl12', 'lpl13', 'lpl14', 'lpl15', 'lpl16');
   CREATE TYPE "public"."enum_mmedia_hero_buttons_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum_mmedia_blocks_secondarycta_cta_button_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum_mmedia_blocks_secondarycta_ui_type" AS ENUM('lrg_txt_cta', 'md_txt_cta', 'min_cta', 'puffy_beige_cta');
@@ -209,7 +209,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum__mmedia_v_blocks_pink_puffy_align" AS ENUM('center', 'left');
   CREATE TYPE "public"."enum__mmedia_v_version_page_type" AS ENUM('landing', 'individual');
   CREATE TYPE "public"."enum__mmedia_v_version_status" AS ENUM('draft', 'published');
-  CREATE TYPE "public"."enum__mmedia_v_published_locale" AS ENUM('en', 'ar', 'bi', 'bn-IN', 'br', 'ch', 'prs-Arab', 'km', 'hi', 'ms', 'ne', 'ps-Arab', 'pcm', 'si', 'tl', 'ta', 'th', 'vi', 'ur');
+  CREATE TYPE "public"."enum__mmedia_v_published_locale" AS ENUM('en', 'ar', 'bi', 'bn-IN', 'br', 'ch', 'prs-Arab', 'km', 'hi', 'ms', 'ne', 'ps-Arab', 'pcm', 'si', 'tl', 'ta', 'th', 'vi', 'ur', 'lpl1', 'lpl2', 'lpl3', 'lpl4', 'lpl5', 'lpl6', 'lpl7', 'lpl8', 'lpl9', 'lpl10', 'lpl11', 'lpl12', 'lpl13', 'lpl14', 'lpl15', 'lpl16');
   CREATE TYPE "public"."enum_users_role" AS ENUM('admin', 'editor', 'writer');
   CREATE TYPE "public"."enum_redirects_to_type" AS ENUM('reference', 'custom');
   CREATE TYPE "public"."enum_forms_confirmation_type" AS ENUM('message', 'redirect');
@@ -244,8 +244,8 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum__homepage_v_blocks_list_crd_dck_buttons_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum__homepage_v_blocks_faq_blk_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum__homepage_v_version_status" AS ENUM('draft', 'published');
-  CREATE TYPE "public"."enum__homepage_v_published_locale" AS ENUM('en', 'ar', 'bi', 'bn-IN', 'br', 'ch', 'prs-Arab', 'km', 'hi', 'ms', 'ne', 'ps-Arab', 'pcm', 'si', 'tl', 'ta', 'th', 'vi', 'ur');
-  CREATE TYPE "public"."enum_header_languages" AS ENUM('en', 'ar', 'bi', 'bn-IN', 'br', 'ch', 'prs-Arab', 'km', 'hi', 'ms', 'ne', 'ps-Arab', 'pcm', 'si', 'tl', 'ta', 'th', 'vi', 'ur');
+  CREATE TYPE "public"."enum__homepage_v_published_locale" AS ENUM('en', 'ar', 'bi', 'bn-IN', 'br', 'ch', 'prs-Arab', 'km', 'hi', 'ms', 'ne', 'ps-Arab', 'pcm', 'si', 'tl', 'ta', 'th', 'vi', 'ur', 'lpl1', 'lpl2', 'lpl3', 'lpl4', 'lpl5', 'lpl6', 'lpl7', 'lpl8', 'lpl9', 'lpl10', 'lpl11', 'lpl12', 'lpl13', 'lpl14', 'lpl15', 'lpl16');
+  CREATE TYPE "public"."enum_header_languages" AS ENUM('en', 'ar', 'bi', 'bn-IN', 'br', 'ch', 'prs-Arab', 'km', 'hi', 'ms', 'ne', 'ps-Arab', 'pcm', 'si', 'tl', 'ta', 'th', 'vi', 'ur', 'lpl1', 'lpl2', 'lpl3', 'lpl4', 'lpl5', 'lpl6', 'lpl7', 'lpl8', 'lpl9', 'lpl10', 'lpl11', 'lpl12', 'lpl13', 'lpl14', 'lpl15', 'lpl16');
   CREATE TYPE "public"."enum_footer_sm_links_group_sm_links_sm_type" AS ENUM('fb', 'insta', 'threads', 'mast', 'wa', 'linkedin', 'scloud', 'med', 'sstack', 'spotify');
   CREATE TYPE "public"."enum_nav_menu_items_nav_items_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum_contact_info_emails_email_type" AS ENUM('info', 'grants', 'whistle', 'wsc', 'general');
