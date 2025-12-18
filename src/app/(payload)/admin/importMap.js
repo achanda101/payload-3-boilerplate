@@ -45,7 +45,6 @@ import { default as default_1ca90977107cbb5e33eef51b3d659f98 } from 'src/collect
 import { default as default_e6f635e33cdcc4d4d11b58dc87fdbc28 } from 'src/collections/EligibilityTests/OptionsRowLabel.tsx'
 import { default as default_5c27a4360ad720e85354b3b24721e696 } from 'src/collections/EligibilityTests/CriteriaRowLabel.tsx'
 import { default as default_53602952b3aad17a0cfc4bbf43cc4181 } from 'src/collections/MediaCloudCell'
-import { MetaImageComponent as MetaImageComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { default as default_6e5325882d4f1cdba6ec4e761f75cd71 } from 'src/collections/Users/AvatarCell'
 import { LinkToDoc as LinkToDoc_aead06e4cbf6b2620c5c51c9ab283634 } from '@payloadcms/plugin-search/client'
 import { ReindexButton as ReindexButton_aead06e4cbf6b2620c5c51c9ab283634 } from '@payloadcms/plugin-search/client'
@@ -109,7 +108,6 @@ export const importMap = {
   "src/collections/EligibilityTests/OptionsRowLabel.tsx#default": default_e6f635e33cdcc4d4d11b58dc87fdbc28,
   "src/collections/EligibilityTests/CriteriaRowLabel.tsx#default": default_5c27a4360ad720e85354b3b24721e696,
   "src/collections/MediaCloudCell#default": default_53602952b3aad17a0cfc4bbf43cc4181,
-  "@payloadcms/plugin-seo/client#MetaImageComponent": MetaImageComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "src/collections/Users/AvatarCell#default": default_6e5325882d4f1cdba6ec4e761f75cd71,
   "@payloadcms/plugin-search/client#LinkToDoc": LinkToDoc_aead06e4cbf6b2620c5c51c9ab283634,
   "@payloadcms/plugin-search/client#ReindexButton": ReindexButton_aead06e4cbf6b2620c5c51c9ab283634,
