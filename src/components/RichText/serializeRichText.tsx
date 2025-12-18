@@ -1,4 +1,3 @@
-import { BannerBlock } from '@/blocks/Banner/Component'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { BlockQuoteBlock } from '@/blocks/BlockQuote/Component'
 import { CodeBlock, CodeBlockProps } from '@/blocks/Code/Component'
@@ -41,13 +40,6 @@ interface MediaBlockProps {
   media: any
   id?: string
   blockType?: 'mediaBlock'
-}
-
-interface BannerBlockProps {
-  style: 'info' | 'warning' | 'error' | 'success'
-  content: any
-  id?: string
-  blockType?: 'banner'
 }
 
 interface BlockQuoteProps {
@@ -99,7 +91,6 @@ export type NodeTypes =
   | SerializedBlockNode<
       | CTABlockProps
       | MediaBlockProps
-      | BannerBlockProps
       | CodeBlockProps
       | BlockQuoteProps
       | YouTubeBlockProps
@@ -216,8 +207,6 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
                   disableInnerContainer={true}
                 />
               )
-            case 'banner':
-              return <BannerBlock className="col-start-2 mb-4" key={index} {...block} />
             case 'code':
               return <CodeBlock className="col-start-2" key={index} {...block} />
             case 'youtubeBlock':
