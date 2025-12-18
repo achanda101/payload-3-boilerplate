@@ -4,7 +4,6 @@ import React, { Fragment } from 'react'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
-import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { YouTubeBlock } from '@/blocks/YouTubeBlock/config'
 import { VimeoBlock } from '@/blocks/VimeoBlock/config'
 import { Code } from '@/blocks/Code/config'
@@ -15,7 +14,6 @@ const blockComponents = {
   content: ContentBlock,
   cta: CallToActionBlock,
   formBlock: FormBlock,
-  mediaBlock: MediaBlock,
   youtubeBlock: YouTubeBlock,
   vimeoBlock: VimeoBlock,
   codeBlock: Code,

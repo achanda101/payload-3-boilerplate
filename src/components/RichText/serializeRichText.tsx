@@ -1,7 +1,6 @@
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { BlockQuoteBlock } from '@/blocks/BlockQuote/Component'
 import { CodeBlock, CodeBlockProps } from '@/blocks/Code/Component'
-import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import VideoPlayer from '@/components/VideoPlayer'
 import UploadRenderer from '@/components/UploadRenderer'
 import SpotifyTrackRenderer from '@/components/SpotifyTrackRenderer'
@@ -34,12 +33,6 @@ interface CTABlockProps {
     }
   }>
   blockType?: 'cta'
-}
-
-interface MediaBlockProps {
-  media: any
-  id?: string
-  blockType?: 'mediaBlock'
 }
 
 interface BlockQuoteProps {
@@ -90,7 +83,6 @@ export type NodeTypes =
   | DefaultNodeTypes
   | SerializedBlockNode<
       | CTABlockProps
-      | MediaBlockProps
       | CodeBlockProps
       | BlockQuoteProps
       | YouTubeBlockProps
@@ -195,18 +187,6 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
           switch (blockType) {
             case 'cta':
               return <CallToActionBlock key={index} {...block} />
-            case 'mediaBlock':
-              return (
-                <MediaBlock
-                  className="col-start-1 col-span-3"
-                  imgClassName="m-0"
-                  key={index}
-                  {...block}
-                  captionClassName="mx-auto max-w-[48rem]"
-                  enableGutter={false}
-                  disableInnerContainer={true}
-                />
-              )
             case 'code':
               return <CodeBlock className="col-start-2" key={index} {...block} />
             case 'youtubeBlock':

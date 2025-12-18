@@ -1,6 +1,5 @@
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { CodeBlock, CodeBlockProps } from '@/blocks/Code/Component'
-import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import React, { Fragment, JSX } from 'react'
 import { CMSLink } from '@/components/Link'
 import { DefaultNodeTypes, SerializedBlockNode } from '@payloadcms/richtext-lexical'
@@ -30,15 +29,9 @@ interface CTABlockProps {
   blockType?: 'cta'
 }
 
-interface MediaBlockProps {
-  media: any
-  id?: string
-  blockType?: 'mediaBlock'
-}
-
 export type NodeTypes =
   | DefaultNodeTypes
-  | SerializedBlockNode<CTABlockProps | MediaBlockProps | CodeBlockProps>
+  | SerializedBlockNode<CTABlockProps | CodeBlockProps>
 
 type Props = {
   nodes: NodeTypes[]
@@ -121,18 +114,6 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
           switch (blockType) {
             case 'cta':
               return <CallToActionBlock key={index} {...block} />
-            case 'mediaBlock':
-              return (
-                <MediaBlock
-                  className="col-start-1 col-span-3"
-                  imgClassName="m-0"
-                  key={index}
-                  {...block}
-                  captionClassName="mx-auto max-w-[48rem]"
-                  enableGutter={false}
-                  disableInnerContainer={true}
-                />
-              )
             case 'code':
               return <CodeBlock className="col-start-2" key={index} {...block} />
             default:

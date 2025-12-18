@@ -92,5 +92,11 @@
     "display": "اردو",
     "value": "ur",
     "dir": "rtl"
+  },
+  {
+    "label": "LangPlaceholder1",
+    "display": "LangPlaceholder1",
+    "value": "lpl1",
+    "dir": "rtl"
   }
 ]
