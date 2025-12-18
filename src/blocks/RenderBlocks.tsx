@@ -1,7 +1,6 @@
 import { cn } from 'src/utilities/cn'
 import React, { Fragment } from 'react'
 
-import { ArchiveBlock } from '@/blocks/ArchiveBlock/Component'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
@@ -13,7 +12,6 @@ import { SpotifyTrackBlock } from '@/blocks/SpotifyTrackBlock/config'
 import { SoundCloudEmbedBlock } from '@/blocks/SoundCloudEmbedBlock/config'
 
 const blockComponents = {
-  archive: ArchiveBlock,
   content: ContentBlock,
   cta: CallToActionBlock,
   formBlock: FormBlock,

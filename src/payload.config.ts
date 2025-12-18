@@ -7,8 +7,6 @@ import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 
-import { Categories } from './collections/Categories'
-// import { Media } from './collections/Media'
 import { MediaCloud } from './collections/MediaCloud'
 import { AssetCloud } from './collections/AssetCloud'
 import { Documents } from './collections/Documents'
@@ -20,7 +18,6 @@ import { Blog } from './collections/Blog'
 import { Report } from './collections/Reports'
 import { MMedia } from './collections/MMedia'
 import { DocTypes } from './collections/DocTypes'
-import { Posts } from './collections/Posts'
 import { Users } from './collections/Users'
 import { Footer } from './globals/Footer/config'
 import { Header } from './globals/Header/config'
@@ -44,6 +41,14 @@ export default buildConfig({
   admin: {
     user: Users.slug,
     theme: 'light',
+    autoLogin:
+      process.env.NODE_ENV === 'development'
+        ? {
+            email: 'test@example.com',
+            password: 'test',
+            prefillOnly: true,
+          }
+        : false,
     importMap: {
       baseDir: path.resolve(dirname),
     },
@@ -125,9 +130,6 @@ export default buildConfig({
     MediaCloud,
     AssetCloud,
     Documents,
-    // Hidden collections (no group)
-    Posts,
-    Categories,
     // User management
     Users,
   ],
@@ -160,13 +162,13 @@ export default buildConfig({
     {
       path: '/health',
       method: 'get',
-      handler: async (req) => {
+      handler: async () => {
         return new Response('OK', { status: 200 })
       },
     },
   ],
   secret: process.env.PAYLOAD_SECRET,
-  sharp,
+  sharp: sharp as any,
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },

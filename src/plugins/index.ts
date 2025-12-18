@@ -11,16 +11,16 @@ import { FixedToolbarFeature, HeadingFeature, lexicalEditor } from '@payloadcms/
 import { searchFields } from '@/search/fieldOverrides'
 import { beforeSyncWithSearch } from '@/search/beforeSync'
 
-import { Post, Page, Grant, Report, Blog, Mmedia } from '@/payload-types'
+import { Page, Grant, Report, Blog, Mmedia } from '@/payload-types'
 import { getServerSideURL } from '@/utilities/getURL'
 
-const generateTitle: GenerateTitle<Post | Page | Grant | Blog | Report | Mmedia> = ({ doc }) => {
+const generateTitle: GenerateTitle<Page | Grant | Blog | Report | Mmedia> = ({ doc }) => {
   return doc?.title
     ? `${doc.title} | Urgent Action Fund: Asia & Pacific`
     : 'Urgent Action Fund: Asia & Pacific'
 }
 
-const generateDescription: GenerateDescription<Post | Page | Grant | Blog | Report | Mmedia> = ({ doc }) => {
+const generateDescription: GenerateDescription<Page | Grant | Blog | Report | Mmedia> = ({ doc }) => {
   // For Blog collection, use heroSubtitle if available
   if ('heroSubtitle' in doc && doc.heroSubtitle) {
     return doc.heroSubtitle
@@ -28,7 +28,7 @@ const generateDescription: GenerateDescription<Post | Page | Grant | Blog | Repo
   return ''
 }
 
-const generateURL: GenerateURL<Post | Page | Grant | Report | Blog | Mmedia> = ({
+const generateURL: GenerateURL<Page | Grant | Report | Blog | Mmedia> = ({
   doc,
   collectionSlug,
 }) => {
@@ -46,7 +46,6 @@ const generateURL: GenerateURL<Post | Page | Grant | Report | Blog | Mmedia> = (
       return `${url}/blog/${doc.slug}`
     case 'mmedia':
       return `${url}/mmedia/${doc.slug}`
-    case 'posts':
     case 'pages':
     default:
       return `${url}/${doc.slug}`
@@ -55,7 +54,7 @@ const generateURL: GenerateURL<Post | Page | Grant | Report | Blog | Mmedia> = (
 
 export const plugins: Plugin[] = [
   redirectsPlugin({
-    collections: ['posts', 'pages', 'reports', 'blog', 'mmedia'],
+    collections: ['pages', 'reports', 'blog', 'mmedia'],
     overrides: {
       admin: {
         hidden: true,
@@ -78,9 +77,6 @@ export const plugins: Plugin[] = [
         afterChange: [revalidateRedirects],
       },
     },
-  }),
-  nestedDocsPlugin({
-    collections: ['categories'],
   }),
   seoPlugin({
     generateTitle,
@@ -122,7 +118,7 @@ export const plugins: Plugin[] = [
     },
   }),
   searchPlugin({
-    collections: ['posts', 'pages', 'reports', 'blog', 'mmedia'],
+    collections: ['pages', 'reports', 'blog', 'mmedia'],
     beforeSync: beforeSyncWithSearch,
     searchOverrides: {
       admin: {

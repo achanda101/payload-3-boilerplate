@@ -3,7 +3,7 @@ import { cn } from 'src/utilities/cn'
 import Link from 'next/link'
 import React from 'react'
 
-import type { Post } from '@/payload-types'
+import type { Page, Grant, Blog, Report, Mmedia } from '@/payload-types'
 
 type CMSLinkType = {
   appearance?: 'inline' | ButtonProps['variant']
@@ -12,8 +12,8 @@ type CMSLinkType = {
   label?: string | null
   newTab?: boolean | null
   reference?: {
-    relationTo: 'posts'
-    value: Post | string | number
+    relationTo: 'pages' | 'grants' | 'blog' | 'reports' | 'mmedia'
+    value: Page | Grant | Blog | Report | Mmedia | string | number
   } | null
   size?: ButtonProps['size'] | null
   type?: 'custom' | 'reference' | null

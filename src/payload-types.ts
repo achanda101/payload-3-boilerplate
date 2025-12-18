@@ -78,8 +78,6 @@ export interface Config {
     mediaCloud: MediaCloud;
     assetCloud: AssetCloud;
     documents: Document;
-    posts: Post;
-    categories: Category;
     users: User;
     redirects: Redirect;
     forms: Form;
@@ -123,8 +121,6 @@ export interface Config {
     mediaCloud: MediaCloudSelect<false> | MediaCloudSelect<true>;
     assetCloud: AssetCloudSelect<false> | AssetCloudSelect<true>;
     documents: DocumentsSelect<false> | DocumentsSelect<true>;
-    posts: PostsSelect<false> | PostsSelect<true>;
-    categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
@@ -272,10 +268,6 @@ export interface Grant {
                 value: number | Grant;
               } | null)
             | ({
-                relationTo: 'posts';
-                value: number | Post;
-              } | null)
-            | ({
                 relationTo: 'pages';
                 value: number | Page;
               } | null)
@@ -355,10 +347,6 @@ export interface Grant {
                           value: number | Grant;
                         } | null)
                       | ({
-                          relationTo: 'posts';
-                          value: number | Post;
-                        } | null)
-                      | ({
                           relationTo: 'pages';
                           value: number | Page;
                         } | null)
@@ -410,10 +398,6 @@ export interface Grant {
                       | ({
                           relationTo: 'grants';
                           value: number | Grant;
-                        } | null)
-                      | ({
-                          relationTo: 'posts';
-                          value: number | Post;
                         } | null)
                       | ({
                           relationTo: 'pages';
@@ -572,10 +556,6 @@ export interface Grant {
                           value: number | Grant;
                         } | null)
                       | ({
-                          relationTo: 'posts';
-                          value: number | Post;
-                        } | null)
-                      | ({
                           relationTo: 'pages';
                           value: number | Page;
                         } | null)
@@ -660,10 +640,6 @@ export interface Grant {
                                 value: number | Grant;
                               } | null)
                             | ({
-                                relationTo: 'posts';
-                                value: number | Post;
-                              } | null)
-                            | ({
                                 relationTo: 'pages';
                                 value: number | Page;
                               } | null)
@@ -740,10 +716,6 @@ export interface Grant {
                 | ({
                     relationTo: 'grants';
                     value: number | Grant;
-                  } | null)
-                | ({
-                    relationTo: 'posts';
-                    value: number | Post;
                   } | null)
                 | ({
                     relationTo: 'pages';
@@ -860,10 +832,6 @@ export interface Grant {
                           value: number | Grant;
                         } | null)
                       | ({
-                          relationTo: 'posts';
-                          value: number | Post;
-                        } | null)
-                      | ({
                           relationTo: 'pages';
                           value: number | Page;
                         } | null)
@@ -907,10 +875,6 @@ export interface Grant {
                       | ({
                           relationTo: 'grants';
                           value: number | Grant;
-                        } | null)
-                      | ({
-                          relationTo: 'posts';
-                          value: number | Post;
                         } | null)
                       | ({
                           relationTo: 'pages';
@@ -961,10 +925,6 @@ export interface Grant {
                 | ({
                     relationTo: 'grants';
                     value: number | Grant;
-                  } | null)
-                | ({
-                    relationTo: 'posts';
-                    value: number | Post;
                   } | null)
                 | ({
                     relationTo: 'pages';
@@ -1089,10 +1049,6 @@ export interface Grant {
                           value: number | Grant;
                         } | null)
                       | ({
-                          relationTo: 'posts';
-                          value: number | Post;
-                        } | null)
-                      | ({
                           relationTo: 'pages';
                           value: number | Page;
                         } | null)
@@ -1188,10 +1144,6 @@ export interface Grantcard {
             | ({
                 relationTo: 'grants';
                 value: number | Grant;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: number | Post;
               } | null)
             | ({
                 relationTo: 'pages';
@@ -1399,10 +1351,6 @@ export interface Page {
                 value: number | Grant;
               } | null)
             | ({
-                relationTo: 'posts';
-                value: number | Post;
-              } | null)
-            | ({
                 relationTo: 'pages';
                 value: number | Page;
               } | null)
@@ -1478,10 +1426,6 @@ export interface Page {
                           value: number | Grant;
                         } | null)
                       | ({
-                          relationTo: 'posts';
-                          value: number | Post;
-                        } | null)
-                      | ({
                           relationTo: 'pages';
                           value: number | Page;
                         } | null)
@@ -1533,10 +1477,6 @@ export interface Page {
                       | ({
                           relationTo: 'grants';
                           value: number | Grant;
-                        } | null)
-                      | ({
-                          relationTo: 'posts';
-                          value: number | Post;
                         } | null)
                       | ({
                           relationTo: 'pages';
@@ -1695,10 +1635,6 @@ export interface Page {
                           value: number | Grant;
                         } | null)
                       | ({
-                          relationTo: 'posts';
-                          value: number | Post;
-                        } | null)
-                      | ({
                           relationTo: 'pages';
                           value: number | Page;
                         } | null)
@@ -1783,10 +1719,6 @@ export interface Page {
                                 value: number | Grant;
                               } | null)
                             | ({
-                                relationTo: 'posts';
-                                value: number | Post;
-                              } | null)
-                            | ({
                                 relationTo: 'pages';
                                 value: number | Page;
                               } | null)
@@ -1863,10 +1795,6 @@ export interface Page {
                 | ({
                     relationTo: 'grants';
                     value: number | Grant;
-                  } | null)
-                | ({
-                    relationTo: 'posts';
-                    value: number | Post;
                   } | null)
                 | ({
                     relationTo: 'pages';
@@ -1983,10 +1911,6 @@ export interface Page {
                           value: number | Grant;
                         } | null)
                       | ({
-                          relationTo: 'posts';
-                          value: number | Post;
-                        } | null)
-                      | ({
                           relationTo: 'pages';
                           value: number | Page;
                         } | null)
@@ -2030,10 +1954,6 @@ export interface Page {
                       | ({
                           relationTo: 'grants';
                           value: number | Grant;
-                        } | null)
-                      | ({
-                          relationTo: 'posts';
-                          value: number | Post;
                         } | null)
                       | ({
                           relationTo: 'pages';
@@ -2084,10 +2004,6 @@ export interface Page {
                 | ({
                     relationTo: 'grants';
                     value: number | Grant;
-                  } | null)
-                | ({
-                    relationTo: 'posts';
-                    value: number | Post;
                   } | null)
                 | ({
                     relationTo: 'pages';
@@ -2210,10 +2126,6 @@ export interface Page {
                       | ({
                           relationTo: 'grants';
                           value: number | Grant;
-                        } | null)
-                      | ({
-                          relationTo: 'posts';
-                          value: number | Post;
                         } | null)
                       | ({
                           relationTo: 'pages';
@@ -2271,184 +2183,6 @@ export interface Page {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "posts".
- */
-export interface Post {
-  id: number;
-  title: string;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  relatedPosts?: (number | Post)[] | null;
-  categories?: (number | Category)[] | null;
-  meta?: {
-    title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?:
-      | ({
-          relationTo: 'mediaCloud';
-          value: number | MediaCloud;
-        } | null)
-      | ({
-          relationTo: 'assetCloud';
-          value: number | AssetCloud;
-        } | null);
-    description?: string | null;
-  };
-  publishedAt?: string | null;
-  authors?: (number | User)[] | null;
-  populatedAuthors?:
-    | {
-        id?: string | null;
-        name?: string | null;
-      }[]
-    | null;
-  slug?: string | null;
-  slugLock?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "categories".
- */
-export interface Category {
-  id: number;
-  /**
-   * Enter document type e.g. Blog, Report, Annual Report, Learning Report, Video, Audio etc.
-   */
-  title: string;
-  parent?: (number | null) | Category;
-  breadcrumbs?:
-    | {
-        doc?: (number | null) | Category;
-        url?: string | null;
-        label?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "mediaCloud".
- */
-export interface MediaCloud {
-  id: number;
-  alt: string;
-  caption?: string | null;
-  folder?: (number | null) | FolderInterface;
-  updatedAt: string;
-  createdAt: string;
-  deletedAt?: string | null;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
-  sizes?: {
-    thumbnail?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    small?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    medium?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    large?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    xlarge?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    ogImage?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-  };
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users".
- */
-export interface User {
-  id: number;
-  name?: string | null;
-  /**
-   * Upload a profile picture
-   */
-  avatar?: (number | null) | MediaCloud;
-  role?: ('admin' | 'editor' | 'writer') | null;
-  updatedAt: string;
-  createdAt: string;
-  email: string;
-  resetPasswordToken?: string | null;
-  resetPasswordExpiration?: string | null;
-  salt?: string | null;
-  hash?: string | null;
-  loginAttempts?: number | null;
-  lockUntil?: string | null;
-  sessions?:
-    | {
-        id: string;
-        createdAt?: string | null;
-        expiresAt: string;
-      }[]
-    | null;
-  password?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "blog".
  */
 export interface Blog {
@@ -2476,10 +2210,6 @@ export interface Blog {
             | ({
                 relationTo: 'grants';
                 value: number | Grant;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: number | Post;
               } | null)
             | ({
                 relationTo: 'pages';
@@ -2557,10 +2287,6 @@ export interface Blog {
                           value: number | Grant;
                         } | null)
                       | ({
-                          relationTo: 'posts';
-                          value: number | Post;
-                        } | null)
-                      | ({
                           relationTo: 'pages';
                           value: number | Page;
                         } | null)
@@ -2612,10 +2338,6 @@ export interface Blog {
                       | ({
                           relationTo: 'grants';
                           value: number | Grant;
-                        } | null)
-                      | ({
-                          relationTo: 'posts';
-                          value: number | Post;
                         } | null)
                       | ({
                           relationTo: 'pages';
@@ -2774,10 +2496,6 @@ export interface Blog {
                           value: number | Grant;
                         } | null)
                       | ({
-                          relationTo: 'posts';
-                          value: number | Post;
-                        } | null)
-                      | ({
                           relationTo: 'pages';
                           value: number | Page;
                         } | null)
@@ -2862,10 +2580,6 @@ export interface Blog {
                                 value: number | Grant;
                               } | null)
                             | ({
-                                relationTo: 'posts';
-                                value: number | Post;
-                              } | null)
-                            | ({
                                 relationTo: 'pages';
                                 value: number | Page;
                               } | null)
@@ -2942,10 +2656,6 @@ export interface Blog {
                 | ({
                     relationTo: 'grants';
                     value: number | Grant;
-                  } | null)
-                | ({
-                    relationTo: 'posts';
-                    value: number | Post;
                   } | null)
                 | ({
                     relationTo: 'pages';
@@ -3062,10 +2772,6 @@ export interface Blog {
                           value: number | Grant;
                         } | null)
                       | ({
-                          relationTo: 'posts';
-                          value: number | Post;
-                        } | null)
-                      | ({
                           relationTo: 'pages';
                           value: number | Page;
                         } | null)
@@ -3109,10 +2815,6 @@ export interface Blog {
                       | ({
                           relationTo: 'grants';
                           value: number | Grant;
-                        } | null)
-                      | ({
-                          relationTo: 'posts';
-                          value: number | Post;
                         } | null)
                       | ({
                           relationTo: 'pages';
@@ -3163,10 +2865,6 @@ export interface Blog {
                 | ({
                     relationTo: 'grants';
                     value: number | Grant;
-                  } | null)
-                | ({
-                    relationTo: 'posts';
-                    value: number | Post;
                   } | null)
                 | ({
                     relationTo: 'pages';
@@ -3289,10 +2987,6 @@ export interface Blog {
                       | ({
                           relationTo: 'grants';
                           value: number | Grant;
-                        } | null)
-                      | ({
-                          relationTo: 'posts';
-                          value: number | Post;
                         } | null)
                       | ({
                           relationTo: 'pages';
@@ -3432,10 +3126,6 @@ export interface Report {
                 value: number | Grant;
               } | null)
             | ({
-                relationTo: 'posts';
-                value: number | Post;
-              } | null)
-            | ({
                 relationTo: 'pages';
                 value: number | Page;
               } | null)
@@ -3511,10 +3201,6 @@ export interface Report {
                           value: number | Grant;
                         } | null)
                       | ({
-                          relationTo: 'posts';
-                          value: number | Post;
-                        } | null)
-                      | ({
                           relationTo: 'pages';
                           value: number | Page;
                         } | null)
@@ -3566,10 +3252,6 @@ export interface Report {
                       | ({
                           relationTo: 'grants';
                           value: number | Grant;
-                        } | null)
-                      | ({
-                          relationTo: 'posts';
-                          value: number | Post;
                         } | null)
                       | ({
                           relationTo: 'pages';
@@ -3728,10 +3410,6 @@ export interface Report {
                           value: number | Grant;
                         } | null)
                       | ({
-                          relationTo: 'posts';
-                          value: number | Post;
-                        } | null)
-                      | ({
                           relationTo: 'pages';
                           value: number | Page;
                         } | null)
@@ -3816,10 +3494,6 @@ export interface Report {
                                 value: number | Grant;
                               } | null)
                             | ({
-                                relationTo: 'posts';
-                                value: number | Post;
-                              } | null)
-                            | ({
                                 relationTo: 'pages';
                                 value: number | Page;
                               } | null)
@@ -3896,10 +3570,6 @@ export interface Report {
                 | ({
                     relationTo: 'grants';
                     value: number | Grant;
-                  } | null)
-                | ({
-                    relationTo: 'posts';
-                    value: number | Post;
                   } | null)
                 | ({
                     relationTo: 'pages';
@@ -4016,10 +3686,6 @@ export interface Report {
                           value: number | Grant;
                         } | null)
                       | ({
-                          relationTo: 'posts';
-                          value: number | Post;
-                        } | null)
-                      | ({
                           relationTo: 'pages';
                           value: number | Page;
                         } | null)
@@ -4063,10 +3729,6 @@ export interface Report {
                       | ({
                           relationTo: 'grants';
                           value: number | Grant;
-                        } | null)
-                      | ({
-                          relationTo: 'posts';
-                          value: number | Post;
                         } | null)
                       | ({
                           relationTo: 'pages';
@@ -4117,10 +3779,6 @@ export interface Report {
                 | ({
                     relationTo: 'grants';
                     value: number | Grant;
-                  } | null)
-                | ({
-                    relationTo: 'posts';
-                    value: number | Post;
                   } | null)
                 | ({
                     relationTo: 'pages';
@@ -4243,10 +3901,6 @@ export interface Report {
                       | ({
                           relationTo: 'grants';
                           value: number | Grant;
-                        } | null)
-                      | ({
-                          relationTo: 'posts';
-                          value: number | Post;
                         } | null)
                       | ({
                           relationTo: 'pages';
@@ -4304,6 +3958,78 @@ export interface Report {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "mediaCloud".
+ */
+export interface MediaCloud {
+  id: number;
+  alt: string;
+  caption?: string | null;
+  folder?: (number | null) | FolderInterface;
+  updatedAt: string;
+  createdAt: string;
+  deletedAt?: string | null;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+  sizes?: {
+    thumbnail?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    small?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    medium?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    large?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    xlarge?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    ogImage?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "mmedia".
  */
 export interface Mmedia {
@@ -4331,10 +4057,6 @@ export interface Mmedia {
             | ({
                 relationTo: 'grants';
                 value: number | Grant;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: number | Post;
               } | null)
             | ({
                 relationTo: 'pages';
@@ -4412,10 +4134,6 @@ export interface Mmedia {
                           value: number | Grant;
                         } | null)
                       | ({
-                          relationTo: 'posts';
-                          value: number | Post;
-                        } | null)
-                      | ({
                           relationTo: 'pages';
                           value: number | Page;
                         } | null)
@@ -4467,10 +4185,6 @@ export interface Mmedia {
                       | ({
                           relationTo: 'grants';
                           value: number | Grant;
-                        } | null)
-                      | ({
-                          relationTo: 'posts';
-                          value: number | Post;
                         } | null)
                       | ({
                           relationTo: 'pages';
@@ -4629,10 +4343,6 @@ export interface Mmedia {
                           value: number | Grant;
                         } | null)
                       | ({
-                          relationTo: 'posts';
-                          value: number | Post;
-                        } | null)
-                      | ({
                           relationTo: 'pages';
                           value: number | Page;
                         } | null)
@@ -4717,10 +4427,6 @@ export interface Mmedia {
                                 value: number | Grant;
                               } | null)
                             | ({
-                                relationTo: 'posts';
-                                value: number | Post;
-                              } | null)
-                            | ({
                                 relationTo: 'pages';
                                 value: number | Page;
                               } | null)
@@ -4797,10 +4503,6 @@ export interface Mmedia {
                 | ({
                     relationTo: 'grants';
                     value: number | Grant;
-                  } | null)
-                | ({
-                    relationTo: 'posts';
-                    value: number | Post;
                   } | null)
                 | ({
                     relationTo: 'pages';
@@ -4917,10 +4619,6 @@ export interface Mmedia {
                           value: number | Grant;
                         } | null)
                       | ({
-                          relationTo: 'posts';
-                          value: number | Post;
-                        } | null)
-                      | ({
                           relationTo: 'pages';
                           value: number | Page;
                         } | null)
@@ -4964,10 +4662,6 @@ export interface Mmedia {
                       | ({
                           relationTo: 'grants';
                           value: number | Grant;
-                        } | null)
-                      | ({
-                          relationTo: 'posts';
-                          value: number | Post;
                         } | null)
                       | ({
                           relationTo: 'pages';
@@ -5018,10 +4712,6 @@ export interface Mmedia {
                 | ({
                     relationTo: 'grants';
                     value: number | Grant;
-                  } | null)
-                | ({
-                    relationTo: 'posts';
-                    value: number | Post;
                   } | null)
                 | ({
                     relationTo: 'pages';
@@ -5144,10 +4834,6 @@ export interface Mmedia {
                       | ({
                           relationTo: 'grants';
                           value: number | Grant;
-                        } | null)
-                      | ({
-                          relationTo: 'posts';
-                          value: number | Post;
                         } | null)
                       | ({
                           relationTo: 'pages';
@@ -5315,10 +5001,6 @@ export interface Etest {
               value: number | Grant;
             } | null)
           | ({
-              relationTo: 'posts';
-              value: number | Post;
-            } | null)
-          | ({
               relationTo: 'pages';
               value: number | Page;
             } | null)
@@ -5380,10 +5062,6 @@ export interface Etest {
               value: number | Grant;
             } | null)
           | ({
-              relationTo: 'posts';
-              value: number | Post;
-            } | null)
-          | ({
               relationTo: 'pages';
               value: number | Page;
             } | null)
@@ -5423,6 +5101,36 @@ export interface Etest {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users".
+ */
+export interface User {
+  id: number;
+  name?: string | null;
+  /**
+   * Upload a profile picture
+   */
+  avatar?: (number | null) | MediaCloud;
+  role?: ('admin' | 'editor' | 'writer') | null;
+  updatedAt: string;
+  createdAt: string;
+  email: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  sessions?:
+    | {
+        id: string;
+        createdAt?: string | null;
+        expiresAt: string;
+      }[]
+    | null;
+  password?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -5434,10 +5142,6 @@ export interface Redirect {
   to?: {
     type?: ('reference' | 'custom') | null;
     reference?:
-      | ({
-          relationTo: 'posts';
-          value: number | Post;
-        } | null)
       | ({
           relationTo: 'pages';
           value: number | Page;
@@ -5662,10 +5366,6 @@ export interface Search {
   priority?: number | null;
   doc:
     | {
-        relationTo: 'posts';
-        value: number | Post;
-      }
-    | {
         relationTo: 'pages';
         value: number | Page;
       }
@@ -5764,14 +5464,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'documents';
         value: number | Document;
-      } | null)
-    | ({
-        relationTo: 'posts';
-        value: number | Post;
-      } | null)
-    | ({
-        relationTo: 'categories';
-        value: number | Category;
       } | null)
     | ({
         relationTo: 'users';
@@ -8369,54 +8061,6 @@ export interface DocumentsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "posts_select".
- */
-export interface PostsSelect<T extends boolean = true> {
-  title?: T;
-  content?: T;
-  relatedPosts?: T;
-  categories?: T;
-  meta?:
-    | T
-    | {
-        title?: T;
-        image?: T;
-        description?: T;
-      };
-  publishedAt?: T;
-  authors?: T;
-  populatedAuthors?:
-    | T
-    | {
-        id?: T;
-        name?: T;
-      };
-  slug?: T;
-  slugLock?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  _status?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "categories_select".
- */
-export interface CategoriesSelect<T extends boolean = true> {
-  title?: T;
-  parent?: T;
-  breadcrumbs?:
-    | T
-    | {
-        doc?: T;
-        url?: T;
-        label?: T;
-        id?: T;
-      };
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
@@ -8707,10 +8351,6 @@ export interface Homepage {
                   value: number | Grant;
                 } | null)
               | ({
-                  relationTo: 'posts';
-                  value: number | Post;
-                } | null)
-              | ({
                   relationTo: 'pages';
                   value: number | Page;
                 } | null)
@@ -8787,10 +8427,6 @@ export interface Homepage {
                           value: number | Grant;
                         } | null)
                       | ({
-                          relationTo: 'posts';
-                          value: number | Post;
-                        } | null)
-                      | ({
                           relationTo: 'pages';
                           value: number | Page;
                         } | null)
@@ -8842,10 +8478,6 @@ export interface Homepage {
                       | ({
                           relationTo: 'grants';
                           value: number | Grant;
-                        } | null)
-                      | ({
-                          relationTo: 'posts';
-                          value: number | Post;
                         } | null)
                       | ({
                           relationTo: 'pages';
@@ -9004,10 +8636,6 @@ export interface Homepage {
                           value: number | Grant;
                         } | null)
                       | ({
-                          relationTo: 'posts';
-                          value: number | Post;
-                        } | null)
-                      | ({
                           relationTo: 'pages';
                           value: number | Page;
                         } | null)
@@ -9092,10 +8720,6 @@ export interface Homepage {
                                 value: number | Grant;
                               } | null)
                             | ({
-                                relationTo: 'posts';
-                                value: number | Post;
-                              } | null)
-                            | ({
                                 relationTo: 'pages';
                                 value: number | Page;
                               } | null)
@@ -9172,10 +8796,6 @@ export interface Homepage {
                 | ({
                     relationTo: 'grants';
                     value: number | Grant;
-                  } | null)
-                | ({
-                    relationTo: 'posts';
-                    value: number | Post;
                   } | null)
                 | ({
                     relationTo: 'pages';
@@ -9292,10 +8912,6 @@ export interface Homepage {
                           value: number | Grant;
                         } | null)
                       | ({
-                          relationTo: 'posts';
-                          value: number | Post;
-                        } | null)
-                      | ({
                           relationTo: 'pages';
                           value: number | Page;
                         } | null)
@@ -9339,10 +8955,6 @@ export interface Homepage {
                       | ({
                           relationTo: 'grants';
                           value: number | Grant;
-                        } | null)
-                      | ({
-                          relationTo: 'posts';
-                          value: number | Post;
                         } | null)
                       | ({
                           relationTo: 'pages';
@@ -9393,10 +9005,6 @@ export interface Homepage {
                 | ({
                     relationTo: 'grants';
                     value: number | Grant;
-                  } | null)
-                | ({
-                    relationTo: 'posts';
-                    value: number | Post;
                   } | null)
                 | ({
                     relationTo: 'pages';
@@ -9583,10 +9191,6 @@ export interface Nav {
                   | ({
                       relationTo: 'grants';
                       value: number | Grant;
-                    } | null)
-                  | ({
-                      relationTo: 'posts';
-                      value: number | Post;
                     } | null)
                   | ({
                       relationTo: 'pages';
@@ -10200,52 +9804,6 @@ export interface SoundCloudEmbed {
   id?: string | null;
   blockName?: string | null;
   blockType: 'soundcloud-embed';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "BannerBlock".
- */
-export interface BannerBlock {
-  style: 'info' | 'warning' | 'error' | 'success';
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'banner';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CodeBlock".
- */
-export interface CodeBlock {
-  language?: 'html' | null;
-  code: string;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'code';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "MediaBlock".
- */
-export interface MediaBlock {
-  media: number | MediaCloud;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'mediaBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

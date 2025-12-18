@@ -137,7 +137,7 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
       },
       label: 'Page to link to',
       maxDepth: 2,
-      relationTo: ['grants', 'posts', 'pages', 'blog', 'reports', 'mmedia'],
+      relationTo: ['grants', 'pages', 'blog', 'reports', 'mmedia'],
       required: true,
       validate: (value: unknown, { siblingData }: any) => {
         // Only validate if this link type is selected
