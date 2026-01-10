@@ -44,8 +44,8 @@ export default buildConfig({
     autoLogin:
       process.env.NODE_ENV === 'development'
         ? {
-            email: 'demo@uafanp.org',
-            password: 'demoadmin123',
+            email: process.env.DEMO_EMAIL,
+            password: process.env.DEMO_PASSWORD,
             prefillOnly: true,
           }
         : false,
@@ -71,12 +71,12 @@ export default buildConfig({
     components: {
       beforeLogin: ['@/components/BeforeLogin'],
       beforeDashboard: ['@/components/BeforeDashboard'],
-      // afterLogin: [ '@/components/AfterLogin' ],
-      // beforeLogout: [ '@/components/BeforeLogout' ],
-      // afterLogout: [ '@/components/AfterLogout' ],
       graphics: {
         Logo: '@/components/Logo/Logo.tsx#Logo',
         Icon: '@/components/Icon/Icon.tsx#Icon',
+      },
+      logout: {
+        Button: '@/components/LogoutButton/Logout.tsx#Logout',
       },
     },
     livePreview: {
