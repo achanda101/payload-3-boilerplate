@@ -13,6 +13,8 @@ import { beforeSyncWithSearch } from '@/search/beforeSync'
 
 import { Page, Grant, Report, Blog, Mmedia } from '@/payload-types'
 import { getServerSideURL } from '@/utilities/getURL'
+// TODO: Enable mcpPlugin when ready; need to specify content structure of all the collections and globals used
+// import {mcpPlugin } from '@payloadcms/plugin-mcp'
 
 const generateTitle: GenerateTitle<Page | Grant | Blog | Report | Mmedia> = ({ doc }) => {
   return doc?.title
@@ -20,7 +22,9 @@ const generateTitle: GenerateTitle<Page | Grant | Blog | Report | Mmedia> = ({ d
     : 'Urgent Action Fund: Asia & Pacific'
 }
 
-const generateDescription: GenerateDescription<Page | Grant | Blog | Report | Mmedia> = ({ doc }) => {
+const generateDescription: GenerateDescription<Page | Grant | Blog | Report | Mmedia> = ({
+  doc,
+}) => {
   // For Blog collection, use heroSubtitle if available
   if ('heroSubtitle' in doc && doc.heroSubtitle) {
     return doc.heroSubtitle
@@ -54,7 +58,7 @@ const generateURL: GenerateURL<Page | Grant | Report | Blog | Mmedia> = ({
 
 export const plugins: Plugin[] = [
   redirectsPlugin({
-    collections: ['pages', 'reports', 'blog', 'mmedia'],
+    collections: ['pages', 'reports', 'blog', 'mmedia', 'grants'],
     overrides: {
       admin: {
         hidden: true,
@@ -118,7 +122,7 @@ export const plugins: Plugin[] = [
     },
   }),
   searchPlugin({
-    collections: ['pages', 'reports', 'blog', 'mmedia'],
+    collections: ['pages', 'reports', 'blog', 'mmedia', 'grants'],
     beforeSync: beforeSyncWithSearch,
     searchOverrides: {
       admin: {

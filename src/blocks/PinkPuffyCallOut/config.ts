@@ -54,6 +54,10 @@ export const PinkPuffyCallOut: Block = {
     },
     {
       name: 'topRow',
+      labels: {
+        singular: 'Top Row Item',
+        plural: 'Top Row Items',
+      },
       type: 'array',
       maxRows: 3,
       fields: [
@@ -101,6 +105,7 @@ export const PinkPuffyCallOut: Block = {
     },
     {
       name: 'botRow',
+      label: 'Bottom Row',
       type: 'array',
       maxRows: 3,
       fields: [

@@ -5205,6 +5205,10 @@ export interface Redirect {
       | ({
           relationTo: 'mmedia';
           value: number | Mmedia;
+        } | null)
+      | ({
+          relationTo: 'grants';
+          value: number | Grant;
         } | null);
     url?: string | null;
   };
@@ -5428,6 +5432,10 @@ export interface Search {
     | {
         relationTo: 'mmedia';
         value: number | Mmedia;
+      }
+    | {
+        relationTo: 'grants';
+        value: number | Grant;
       };
   slug?: string | null;
   meta?: {
