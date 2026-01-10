@@ -31,6 +31,7 @@ import { FaqBlock } from '@/blocks/FaqBlock/config'
 import { RichContentBlock } from '@/blocks/RichContentBlock/config'
 import { PinkPuffyCallOut } from '@/blocks/PinkPuffyCallOut/config'
 import { BeigePuffyCallOut } from '@/blocks/BeigePuffyCallOut/config'
+import { FundingMap } from '@/blocks/FundingMap/config'
 
 export const Blog: CollectionConfig<'blog'> = {
   slug: 'blog',
@@ -240,6 +241,7 @@ export const Blog: CollectionConfig<'blog'> = {
         FaqBlock,
         PinkPuffyCallOut,
         BeigePuffyCallOut,
+        FundingMap,
       ],
       labels: {
         singular: 'A Content Block',

@@ -1168,6 +1168,62 @@ export interface Grant {
             blockName?: string | null;
             blockType: 'beigePuffy';
           }
+        | {
+            title: string;
+            subtitle?: string | null;
+            /**
+             * Label for the region selector dropdown
+             */
+            selectorLabel?: string | null;
+            /**
+             * Funding regions with their statistics
+             */
+            items?:
+              | {
+                  regionName:
+                    | 'uaf-asia-pacific'
+                    | 'afghan'
+                    | 'aus'
+                    | 'bangla'
+                    | 'cambodia'
+                    | 'china'
+                    | 'india'
+                    | 'indonesia'
+                    | 'korea'
+                    | 'laos'
+                    | 'malaysia'
+                    | 'mongolia'
+                    | 'myanmar'
+                    | 'nepal'
+                    | 'pak'
+                    | 'papua'
+                    | 'philippines'
+                    | 'srilanka'
+                    | 'thailand'
+                    | 'vietnam';
+                  /**
+                   * Maximum of 3 statistical items for this region
+                   */
+                  subitems?:
+                    | {
+                        /**
+                         * Statistical number or value
+                         */
+                        statnumber: string;
+                        /**
+                         * Description for this statistic
+                         */
+                        description: string;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'fundingMap';
+          }
       )[]
     | null;
   meta?: {
@@ -2284,6 +2340,62 @@ export interface Page {
             blockName?: string | null;
             blockType: 'beigePuffy';
           }
+        | {
+            title: string;
+            subtitle?: string | null;
+            /**
+             * Label for the region selector dropdown
+             */
+            selectorLabel?: string | null;
+            /**
+             * Funding regions with their statistics
+             */
+            items?:
+              | {
+                  regionName:
+                    | 'uaf-asia-pacific'
+                    | 'afghan'
+                    | 'aus'
+                    | 'bangla'
+                    | 'cambodia'
+                    | 'china'
+                    | 'india'
+                    | 'indonesia'
+                    | 'korea'
+                    | 'laos'
+                    | 'malaysia'
+                    | 'mongolia'
+                    | 'myanmar'
+                    | 'nepal'
+                    | 'pak'
+                    | 'papua'
+                    | 'philippines'
+                    | 'srilanka'
+                    | 'thailand'
+                    | 'vietnam';
+                  /**
+                   * Maximum of 3 statistical items for this region
+                   */
+                  subitems?:
+                    | {
+                        /**
+                         * Statistical number or value
+                         */
+                        statnumber: string;
+                        /**
+                         * Description for this statistic
+                         */
+                        description: string;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'fundingMap';
+          }
       )[]
     | null;
   meta?: {
@@ -3181,6 +3293,62 @@ export interface Blog {
             id?: string | null;
             blockName?: string | null;
             blockType: 'beigePuffy';
+          }
+        | {
+            title: string;
+            subtitle?: string | null;
+            /**
+             * Label for the region selector dropdown
+             */
+            selectorLabel?: string | null;
+            /**
+             * Funding regions with their statistics
+             */
+            items?:
+              | {
+                  regionName:
+                    | 'uaf-asia-pacific'
+                    | 'afghan'
+                    | 'aus'
+                    | 'bangla'
+                    | 'cambodia'
+                    | 'china'
+                    | 'india'
+                    | 'indonesia'
+                    | 'korea'
+                    | 'laos'
+                    | 'malaysia'
+                    | 'mongolia'
+                    | 'myanmar'
+                    | 'nepal'
+                    | 'pak'
+                    | 'papua'
+                    | 'philippines'
+                    | 'srilanka'
+                    | 'thailand'
+                    | 'vietnam';
+                  /**
+                   * Maximum of 3 statistical items for this region
+                   */
+                  subitems?:
+                    | {
+                        /**
+                         * Statistical number or value
+                         */
+                        statnumber: string;
+                        /**
+                         * Description for this statistic
+                         */
+                        description: string;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'fundingMap';
           }
       )[]
     | null;
@@ -4132,6 +4300,62 @@ export interface Report {
             id?: string | null;
             blockName?: string | null;
             blockType: 'beigePuffy';
+          }
+        | {
+            title: string;
+            subtitle?: string | null;
+            /**
+             * Label for the region selector dropdown
+             */
+            selectorLabel?: string | null;
+            /**
+             * Funding regions with their statistics
+             */
+            items?:
+              | {
+                  regionName:
+                    | 'uaf-asia-pacific'
+                    | 'afghan'
+                    | 'aus'
+                    | 'bangla'
+                    | 'cambodia'
+                    | 'china'
+                    | 'india'
+                    | 'indonesia'
+                    | 'korea'
+                    | 'laos'
+                    | 'malaysia'
+                    | 'mongolia'
+                    | 'myanmar'
+                    | 'nepal'
+                    | 'pak'
+                    | 'papua'
+                    | 'philippines'
+                    | 'srilanka'
+                    | 'thailand'
+                    | 'vietnam';
+                  /**
+                   * Maximum of 3 statistical items for this region
+                   */
+                  subitems?:
+                    | {
+                        /**
+                         * Statistical number or value
+                         */
+                        statnumber: string;
+                        /**
+                         * Description for this statistic
+                         */
+                        description: string;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'fundingMap';
           }
       )[]
     | null;
@@ -5102,6 +5326,62 @@ export interface Mmedia {
             id?: string | null;
             blockName?: string | null;
             blockType: 'beigePuffy';
+          }
+        | {
+            title: string;
+            subtitle?: string | null;
+            /**
+             * Label for the region selector dropdown
+             */
+            selectorLabel?: string | null;
+            /**
+             * Funding regions with their statistics
+             */
+            items?:
+              | {
+                  regionName:
+                    | 'uaf-asia-pacific'
+                    | 'afghan'
+                    | 'aus'
+                    | 'bangla'
+                    | 'cambodia'
+                    | 'china'
+                    | 'india'
+                    | 'indonesia'
+                    | 'korea'
+                    | 'laos'
+                    | 'malaysia'
+                    | 'mongolia'
+                    | 'myanmar'
+                    | 'nepal'
+                    | 'pak'
+                    | 'papua'
+                    | 'philippines'
+                    | 'srilanka'
+                    | 'thailand'
+                    | 'vietnam';
+                  /**
+                   * Maximum of 3 statistical items for this region
+                   */
+                  subitems?:
+                    | {
+                        /**
+                         * Statistical number or value
+                         */
+                        statnumber: string;
+                        /**
+                         * Description for this statistic
+                         */
+                        description: string;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'fundingMap';
           }
       )[]
     | null;
@@ -6213,6 +6493,28 @@ export interface GrantsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        fundingMap?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              selectorLabel?: T;
+              items?:
+                | T
+                | {
+                    regionName?: T;
+                    subitems?:
+                      | T
+                      | {
+                          statnumber?: T;
+                          description?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -6811,6 +7113,28 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        fundingMap?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              selectorLabel?: T;
+              items?:
+                | T
+                | {
+                    regionName?: T;
+                    subitems?:
+                      | T
+                      | {
+                          statnumber?: T;
+                          description?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -7259,6 +7583,28 @@ export interface BlogSelect<T extends boolean = true> {
                     title?: T;
                     subtitle?: T;
                     description?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        fundingMap?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              selectorLabel?: T;
+              items?:
+                | T
+                | {
+                    regionName?: T;
+                    subitems?:
+                      | T
+                      | {
+                          statnumber?: T;
+                          description?: T;
+                          id?: T;
+                        };
                     id?: T;
                   };
               id?: T;
@@ -7718,6 +8064,28 @@ export interface ReportsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        fundingMap?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              selectorLabel?: T;
+              items?:
+                | T
+                | {
+                    regionName?: T;
+                    subitems?:
+                      | T
+                      | {
+                          statnumber?: T;
+                          description?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -8166,6 +8534,28 @@ export interface MmediaSelect<T extends boolean = true> {
                     title?: T;
                     subtitle?: T;
                     description?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        fundingMap?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              selectorLabel?: T;
+              items?:
+                | T
+                | {
+                    regionName?: T;
+                    subitems?:
+                      | T
+                      | {
+                          statnumber?: T;
+                          description?: T;
+                          id?: T;
+                        };
                     id?: T;
                   };
               id?: T;

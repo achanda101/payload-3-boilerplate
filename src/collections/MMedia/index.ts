@@ -31,6 +31,7 @@ import { FaqBlock } from '@/blocks/FaqBlock/config'
 import { RichContentBlock } from '@/blocks/RichContentBlock/config'
 import { PinkPuffyCallOut } from '@/blocks/PinkPuffyCallOut/config'
 import { BeigePuffyCallOut } from '@/blocks/BeigePuffyCallOut/config'
+import { FundingMap } from '@/blocks/FundingMap/config'
 
 export const MMedia: CollectionConfig<'mmedia'> = {
   slug: 'mmedia',
@@ -240,6 +241,7 @@ export const MMedia: CollectionConfig<'mmedia'> = {
         FaqBlock,
         PinkPuffyCallOut,
         BeigePuffyCallOut,
+        FundingMap,
       ],
       labels: {
         singular: 'A Content Block',

@@ -19,6 +19,7 @@ import { FeatureCardAccordion } from '@/components/FeatureCardAccordion'
 import { SecondaryCTA } from '@/components/SecondaryCTA'
 import { PinkPuffyCallOut } from '@/components/PinkPuffyCallOut'
 import { BeigePuffyCallOut } from '@/components/BeigePuffyCallOut'
+import { FundingMap } from '@/components/FundingMap'
 import { serializeLexical } from '@/components/RichText/serializeRichText'
 
 interface AssetCloud {
@@ -408,6 +409,23 @@ export const UAFPage: React.FC<UAFPageProps> = ({ collection, docId, isDraft = f
                       title={block.title}
                       subtitle={block.subtitle}
                       align={block.align}
+                      items={block.items}
+                    />
+                    {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                      <div className="page_column_layout gap-6">
+                        <ColumnIndicators />
+                      </div>
+                    )}
+                  </React.Fragment>
+                )
+              }
+              if (block.blockType === 'fundingMap') {
+                return (
+                  <React.Fragment key={index}>
+                    <FundingMap
+                      title={block.title}
+                      subtitle={block.subtitle}
+                      selectorLabel={block.selectorLabel}
                       items={block.items}
                     />
                     {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
