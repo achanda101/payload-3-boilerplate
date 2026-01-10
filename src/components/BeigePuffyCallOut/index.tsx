@@ -35,7 +35,7 @@ export const BeigePuffyCallOut: React.FC<BeigePuffyCallOutProps> = ({
       >
         {(title || subtitle) && (
           <div className={`container mx-auto px-4 ${alignmentClass}`}>
-            {title && <h3>{title}</h3>}
+            {title && <h4>{title}</h4>}
             {subtitle && <p>{subtitle}</p>}
           </div>
         )}

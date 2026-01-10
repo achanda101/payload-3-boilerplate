@@ -74,7 +74,7 @@ export const PinkPuffyCallOut: React.FC<PinkPuffyCallOutProps> = ({
       >
         {(title || subtitle) && (
           <div className={`container mx-auto px-4 mb-8 md:mb-12 ${alignmentClass}`}>
-            {title && <h3>{title}</h3>}
+            {title && <h4>{title}</h4>}
             {subtitle && <p>{subtitle}</p>}
           </div>
         )}
