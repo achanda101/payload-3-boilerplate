@@ -1,0 +1,47 @@
+@use 'variables' as vars;
+@use 'mixins' as mix;
+
+.pinkpuffy_callout {
+  background-image: url('/callout_bg/pinkpuffy-1line-desk.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100%;
+  width: 100%;
+  position: relative;
+
+  > div {
+    position: relative;
+    z-index: 1;
+  }
+
+  &.two_line {
+    background-image: url('/callout_bg/pinkpuffy-2line-desk.svg');
+    @media (max-width: vars.$desktop) {
+      background-image: url('/callout_bg/pinkpuffy-mobile.svg');
+    }
+  }
+
+  @media (max-width: vars.$desktop) {
+    background-image: url('/callout_bg/pinkpuffy-mobile.svg');
+  }
+}
+
+.beigepuffy_callout {
+  background-image: url('/callout_bg/beigepuffy-desk-lrg.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100%;
+  width: 100%;
+  position: relative;
+
+  > div {
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (max-width: vars.$desktop) {
+    background-image: url('/callout_bg/beigepuffy-mobile.svg');
+  }
+}

@@ -1,0 +1,15 @@
+@use '@/styles/variables' as vars;
+
+.pinkpuffy_callout {
+  .stat-item {
+    padding: 1rem;
+
+    @media (min-width: vars.$tablet) {
+      padding: 1.5rem;
+    }
+  }
+
+  .container {
+    max-width: 1200px;
+  }
+}
