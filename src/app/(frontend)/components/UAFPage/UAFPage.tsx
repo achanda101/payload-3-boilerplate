@@ -18,6 +18,7 @@ import { FaqBlock } from '@/components/FaqBlock'
 import { FeatureCardAccordion } from '@/components/FeatureCardAccordion'
 import { SecondaryCTA } from '@/components/SecondaryCTA'
 import { PinkPuffyCallOut } from '@/components/PinkPuffyCallOut'
+import { BeigePuffyCallOut } from '@/components/BeigePuffyCallOut'
 import { serializeLexical } from '@/components/RichText/serializeRichText'
 
 interface AssetCloud {
@@ -94,19 +95,17 @@ export const UAFPage: React.FC<UAFPageProps> = ({ collection, docId, isDraft = f
           title: data.heroTitle,
           subtitle: data.heroSubtitle,
           heroImage: data.mascot,
-          heroButtons: data.heroButtons?.map(
-            (button: { id: string; link: any }, index: number) => ({
-              id: button.id,
-              type: button.link.type,
-              link: button.link,
-              pillSolid: button.link.pillSolid,
-              url: button.link.url,
-              label: button.link.label,
-              newTab: button.link.newTab,
-              email: button.link.email,
-              reference: button.link.reference,
-            }),
-          ),
+          heroButtons: data.heroButtons?.map((button: { id: string; link: any }) => ({
+            id: button.id,
+            type: button.link.type,
+            link: button.link,
+            pillSolid: button.link.pillSolid,
+            url: button.link.url,
+            label: button.link.label,
+            newTab: button.link.newTab,
+            email: button.link.email,
+            reference: button.link.reference,
+          })),
           heroContact: data.heroContact,
         })
         if (data?.contentBlocks?.length > 0) {
@@ -393,6 +392,23 @@ export const UAFPage: React.FC<UAFPageProps> = ({ collection, docId, isDraft = f
                       topRow={block.topRow}
                       botRow={block.botRow}
                       links={block.links}
+                    />
+                    {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                      <div className="page_column_layout gap-6">
+                        <ColumnIndicators />
+                      </div>
+                    )}
+                  </React.Fragment>
+                )
+              }
+              if (block.blockType === 'beigePuffy') {
+                return (
+                  <React.Fragment key={index}>
+                    <BeigePuffyCallOut
+                      title={block.title}
+                      subtitle={block.subtitle}
+                      align={block.align}
+                      items={block.items}
                     />
                     {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
                       <div className="page_column_layout gap-6">

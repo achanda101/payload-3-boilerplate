@@ -30,6 +30,7 @@ import { ListingCardDeck } from '@/blocks/ListingCardDeck/config'
 import { FaqBlock } from '@/blocks/FaqBlock/config'
 import { RichContentBlock } from '@/blocks/RichContentBlock/config'
 import { PinkPuffyCallOut } from '@/blocks/PinkPuffyCallOut/config'
+import { BeigePuffyCallOut } from '@/blocks/BeigePuffyCallOut/config'
 
 export const Report: CollectionConfig<'reports'> = {
   slug: 'reports',
@@ -250,6 +251,7 @@ export const Report: CollectionConfig<'reports'> = {
         ListingCardDeck,
         FaqBlock,
         PinkPuffyCallOut,
+        BeigePuffyCallOut,
       ],
       labels: {
         singular: 'A Content Block',

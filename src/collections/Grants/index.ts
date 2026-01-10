@@ -30,6 +30,7 @@ import { ListingCardDeck } from '@/blocks/ListingCardDeck/config'
 import { FaqBlock } from '@/blocks/FaqBlock/config'
 import { RichContentBlock } from '@/blocks/RichContentBlock/config'
 import { PinkPuffyCallOut } from '@/blocks/PinkPuffyCallOut/config'
+import { BeigePuffyCallOut } from '@/blocks/BeigePuffyCallOut/config'
 
 export const Grants: CollectionConfig<'grants'> = {
   slug: 'grants',
@@ -250,6 +251,7 @@ export const Grants: CollectionConfig<'grants'> = {
         ListingCardDeck,
         FaqBlock,
         PinkPuffyCallOut,
+        BeigePuffyCallOut,
       ],
       labels: {
         singular: 'A Content Block',

@@ -1,5 +1,6 @@
 import * as migration_20251218_101811_freshprod_langplaces from './20251218_101811_freshprod_langplaces';
 import * as migration_20260110_040335_pluginupdatesforgrants from './20260110_040335_pluginupdatesforgrants';
+import * as migration_20260110_104512_beigepuffycallouts from './20260110_104512_beigepuffycallouts';
 
 export const migrations = [
   {
@@ -10,6 +11,11 @@ export const migrations = [
   {
     up: migration_20260110_040335_pluginupdatesforgrants.up,
     down: migration_20260110_040335_pluginupdatesforgrants.down,
-    name: '20260110_040335_pluginupdatesforgrants'
+    name: '20260110_040335_pluginupdatesforgrants',
+  },
+  {
+    up: migration_20260110_104512_beigepuffycallouts.up,
+    down: migration_20260110_104512_beigepuffycallouts.down,
+    name: '20260110_104512_beigepuffycallouts'
   },
 ];

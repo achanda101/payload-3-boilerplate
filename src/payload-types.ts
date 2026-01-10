@@ -1131,6 +1131,43 @@ export interface Grant {
             blockName?: string | null;
             blockType: 'pinkPuffy';
           }
+        | {
+            /**
+             * Main title for the callout section
+             */
+            title: string;
+            /**
+             * Subtitle text below the main title
+             */
+            subtitle?: string | null;
+            /**
+             * Alignment for the title and subtitle
+             */
+            align?: ('center' | 'left') | null;
+            /**
+             * Content items (minimum 1, maximum 4 items)
+             */
+            items?:
+              | {
+                  /**
+                   * Title for this item
+                   */
+                  title: string;
+                  /**
+                   * Subtitle for this item
+                   */
+                  subtitle?: string | null;
+                  /**
+                   * Description text for this item
+                   */
+                  description?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'beigePuffy';
+          }
       )[]
     | null;
   meta?: {
@@ -2210,6 +2247,43 @@ export interface Page {
             blockName?: string | null;
             blockType: 'pinkPuffy';
           }
+        | {
+            /**
+             * Main title for the callout section
+             */
+            title: string;
+            /**
+             * Subtitle text below the main title
+             */
+            subtitle?: string | null;
+            /**
+             * Alignment for the title and subtitle
+             */
+            align?: ('center' | 'left') | null;
+            /**
+             * Content items (minimum 1, maximum 4 items)
+             */
+            items?:
+              | {
+                  /**
+                   * Title for this item
+                   */
+                  title: string;
+                  /**
+                   * Subtitle for this item
+                   */
+                  subtitle?: string | null;
+                  /**
+                   * Description text for this item
+                   */
+                  description?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'beigePuffy';
+          }
       )[]
     | null;
   meta?: {
@@ -3070,6 +3144,43 @@ export interface Blog {
             id?: string | null;
             blockName?: string | null;
             blockType: 'pinkPuffy';
+          }
+        | {
+            /**
+             * Main title for the callout section
+             */
+            title: string;
+            /**
+             * Subtitle text below the main title
+             */
+            subtitle?: string | null;
+            /**
+             * Alignment for the title and subtitle
+             */
+            align?: ('center' | 'left') | null;
+            /**
+             * Content items (minimum 1, maximum 4 items)
+             */
+            items?:
+              | {
+                  /**
+                   * Title for this item
+                   */
+                  title: string;
+                  /**
+                   * Subtitle for this item
+                   */
+                  subtitle?: string | null;
+                  /**
+                   * Description text for this item
+                   */
+                  description?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'beigePuffy';
           }
       )[]
     | null;
@@ -3984,6 +4095,43 @@ export interface Report {
             id?: string | null;
             blockName?: string | null;
             blockType: 'pinkPuffy';
+          }
+        | {
+            /**
+             * Main title for the callout section
+             */
+            title: string;
+            /**
+             * Subtitle text below the main title
+             */
+            subtitle?: string | null;
+            /**
+             * Alignment for the title and subtitle
+             */
+            align?: ('center' | 'left') | null;
+            /**
+             * Content items (minimum 1, maximum 4 items)
+             */
+            items?:
+              | {
+                  /**
+                   * Title for this item
+                   */
+                  title: string;
+                  /**
+                   * Subtitle for this item
+                   */
+                  subtitle?: string | null;
+                  /**
+                   * Description text for this item
+                   */
+                  description?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'beigePuffy';
           }
       )[]
     | null;
@@ -4917,6 +5065,43 @@ export interface Mmedia {
             id?: string | null;
             blockName?: string | null;
             blockType: 'pinkPuffy';
+          }
+        | {
+            /**
+             * Main title for the callout section
+             */
+            title: string;
+            /**
+             * Subtitle text below the main title
+             */
+            subtitle?: string | null;
+            /**
+             * Alignment for the title and subtitle
+             */
+            align?: ('center' | 'left') | null;
+            /**
+             * Content items (minimum 1, maximum 4 items)
+             */
+            items?:
+              | {
+                  /**
+                   * Title for this item
+                   */
+                  title: string;
+                  /**
+                   * Subtitle for this item
+                   */
+                  subtitle?: string | null;
+                  /**
+                   * Description text for this item
+                   */
+                  description?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'beigePuffy';
           }
       )[]
     | null;
@@ -6011,6 +6196,23 @@ export interface GrantsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        beigePuffy?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              align?: T;
+              items?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -6592,6 +6794,23 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        beigePuffy?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              align?: T;
+              items?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -7023,6 +7242,23 @@ export interface BlogSelect<T extends boolean = true> {
                           etestlink?: T;
                           label?: T;
                         };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        beigePuffy?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              align?: T;
+              items?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    description?: T;
                     id?: T;
                   };
               id?: T;
@@ -7465,6 +7701,23 @@ export interface ReportsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        beigePuffy?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              align?: T;
+              items?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -7896,6 +8149,23 @@ export interface MmediaSelect<T extends boolean = true> {
                           etestlink?: T;
                           label?: T;
                         };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        beigePuffy?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              align?: T;
+              items?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    description?: T;
                     id?: T;
                   };
               id?: T;
