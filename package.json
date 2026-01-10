@@ -18,18 +18,20 @@
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
   },
   "dependencies": {
-    "@payloadcms/db-postgres": "3.68.5",
-    "@payloadcms/live-preview-react": "3.68.5",
-    "@payloadcms/next": "3.68.5",
-    "@payloadcms/payload-cloud": "3.68.5",
-    "@payloadcms/plugin-form-builder": "3.68.5",
-    "@payloadcms/plugin-nested-docs": "3.68.5",
-    "@payloadcms/plugin-redirects": "3.68.5",
-    "@payloadcms/plugin-search": "3.68.5",
-    "@payloadcms/plugin-seo": "3.68.5",
-    "@payloadcms/richtext-lexical": "3.68.5",
-    "@payloadcms/storage-s3": "3.68.5",
-    "@payloadcms/ui": "3.68.5",
+    "@payloadcms/db-postgres": "3.70.0",
+    "@payloadcms/live-preview-react": "3.70.0",
+    "@payloadcms/next": "3.70.0",
+    "@payloadcms/payload-cloud": "3.70.0",
+    "@payloadcms/plugin-form-builder": "3.70.0",
+    "@payloadcms/plugin-mcp": "^3.70.0",
+    "@payloadcms/plugin-nested-docs": "3.70.0",
+    "@payloadcms/plugin-redirects": "3.70.0",
+    "@payloadcms/plugin-search": "3.70.0",
+    "@payloadcms/plugin-seo": "3.70.0",
+    "@payloadcms/richtext-lexical": "3.70.0",
+    "@payloadcms/storage-s3": "3.70.0",
+    "@payloadcms/ui": "3.70.0",
+    "@modelcontextprotocol/sdk": "1.25.2",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-checkbox": "^1.1.2",
     "@radix-ui/react-collapsible": "^1.1.12",
@@ -47,14 +49,14 @@
     "graphql": "^16.9.0",
     "js-cookie": "^3.0.5",
     "jsonwebtoken": "9.0.2",
-    "lucide-react": "^0.378.0",
+    "lucide-react": "^0.469.0",
     "next": "^15.4.10",
-    "payload": "3.68.5",
+    "payload": "3.70.0",
     "payload-admin-bar": "^1.0.6",
     "prism-react-renderer": "^2.4.0",
     "react": "19.2.1",
     "react-dom": "19.2.1",
-    "react-hook-form": "7.45.4",
+    "react-hook-form": "^7.54.2",
     "react-player": "^3.4.0",
     "sharp": "^0.33.5",
     "tailwind-merge": "^2.5.5",
@@ -71,6 +73,8 @@
     "@types/node": "22.5.4",
     "@types/react": "npm:types-react@rc",
     "@types/react-dom": "npm:types-react-dom@rc",
+    "@typescript-eslint/eslint-plugin": "^8.52.0",
+    "@typescript-eslint/parser": "^8.52.0",
     "autoprefixer": "^10.4.20",
     "copyfiles": "^2.4.1",
     "eslint": "8.57.1",
@@ -87,7 +91,8 @@
     "overrides": {
       "@types/react": "npm:types-react@rc",
       "@types/react-dom": "npm:types-react-dom@rc",
-      "@payloadcms/plugin-cloud-storage": "3.68.5"
+      "@payloadcms/plugin-cloud-storage": "3.70.0",
+      "@modelcontextprotocol/sdk": "1.25.2"
     },
     "onlyBuiltDependencies": [
       "esbuild",
@@ -97,6 +102,7 @@
   },
   "overrides": {
     "@types/react": "npm:types-react@rc",
-    "@types/react-dom": "npm:types-react-dom@rc"
+    "@types/react-dom": "npm:types-react-dom@rc",
+    "@modelcontextprotocol/sdk": "1.25.2"
   }
 }
