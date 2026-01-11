@@ -139,6 +139,7 @@ export const FundingMap: React.FC<FundingMapProps> = ({
               src={`/fundingmap_countries/${selectedRegion}.png`}
               alt={getRegionLabel(selectedRegion)}
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 66vw, 58vw"
               className="object-contain"
             />
           </div>
