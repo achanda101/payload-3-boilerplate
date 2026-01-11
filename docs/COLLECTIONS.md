@@ -10,7 +10,7 @@ Collections are organized into three main groups in the admin panel:
 
 1. **Content** - Main content types (pages, blogs, grants, reports)
 2. **Media** - Files and assets (images, documents, media)
-3. **Hidden** - Supporting collections (posts, categories)
+3. **Supporting** - Document types and user management
 
 ## Content Collections
 
@@ -173,8 +173,7 @@ Blog posts and articles with rich content.
   - Hero title
   - Hero content
   - Featured image
-- **Content** - Rich text editor (Lexical)
-- **Categories** - Multiple category references
+- **Content Blocks** - Flexible block-based layout
 - **Author** - User reference
 - **Published Date**
 - **SEO Fields**
@@ -183,7 +182,6 @@ Blog posts and articles with rich content.
 - ✅ Live preview
 - ✅ Draft/Published status
 - ✅ Multi-language support
-- ✅ Category filtering
 - ✅ Author attribution
 - ✅ Folder organization
 - ✅ Trash (soft delete)
@@ -401,59 +399,6 @@ Document library with categorization.
 ---
 
 ## Supporting Collections
-
-### Posts
-
-**File:** `src/collections/Posts/index.ts`
-**Slug:** `posts`
-**Admin Path:** `/admin/collections/posts`
-
-General content posts (alternative to Blog).
-
-#### Purpose
-- News items
-- Updates
-- Announcements
-- Generic posts
-
-#### Key Fields
-- Similar to Blog collection
-- Simplified structure
-- Focus on quick updates
-
-#### Features
-- ✅ Draft/Published status
-- ✅ Category support
-- ✅ Author attribution
-
----
-
-### Categories
-
-**File:** `src/collections/Categories.ts`
-**Slug:** `categories`
-**Admin Path:** `/admin/collections/categories`
-
-Content categorization system.
-
-#### Purpose
-- Organize blog posts
-- Filter content
-- Navigation structure
-- Tag-like functionality
-
-#### Key Fields
-- **Name** - Category name (required, unique)
-- **Slug** - URL identifier
-- **Description** - Category description
-- **Parent Category** - For nested categories
-
-#### Usage
-- Referenced by Blog, Posts, Reports
-- Used in navigation
-- Filter options
-
----
 
 ### DocTypes
 
@@ -680,8 +625,8 @@ Collections with automatic revalidation (ISR - Incremental Static Regeneration):
 - **Pages** - `revalidatePage` (src/collections/Pages/hooks/revalidatePage.ts)
 - **Grants** - `revalidateGrant` (src/collections/Grants/hooks/revalidateGrant.ts)
 - **Blog** - `revalidateBlog` (src/collections/Blog/hooks/revalidateBlog.ts)
+- **Reports** - `revalidateReport` (src/collections/Reports/hooks/revalidateReport.ts)
 - **MMedia** - `revalidateMMedia` (src/collections/MMedia/hooks/revalidateMMedia.ts)
-- **Posts** - `revalidatePost` (src/collections/Posts/hooks/revalidatePost.ts)
 - **EligibilityTests** - `revalidateTest` (src/collections/EligibilityTests/hooks/revalidateTest.ts)
 
 ### How Revalidation Works
@@ -723,9 +668,9 @@ Rules:
    - Follow naming conventions
    - Makes content searchable
 
-3. **Categories and Tags**
-   - Categorize blog posts
-   - Use consistent categories
+3. **Content Organization**
+   - Use document types for classification
+   - Organize content logically
    - Helps with navigation and filtering
 
 ### Media Management
@@ -771,7 +716,7 @@ Rules:
 
 ```
 Pages
-├─ References: Categories, MediaCloud
+├─ References: MediaCloud
 └─ Used by: Navigation, Homepage
 
 Grants
@@ -779,11 +724,11 @@ Grants
 └─ Used by: GrantCardGridBlock, Navigation
 
 Blog
-├─ References: Categories, Users (authors), MediaCloud
+├─ References: Users (authors), MediaCloud
 └─ Used by: Blog listing pages
 
 Reports
-├─ References: Documents, MediaCloud
+├─ References: Documents, DocTypes, MediaCloud
 └─ Used by: Report archives
 
 MMedia
@@ -792,7 +737,7 @@ MMedia
 
 Documents
 ├─ References: DocTypes, AssetCloud
-└─ Used by: Document library
+└─ Used by: Document library, Reports
 
 GrantCards
 └─ Referenced by: Grants, GrantCardGridBlock
@@ -800,14 +745,11 @@ GrantCards
 EligibilityTests
 └─ Referenced by: Grants
 
-Categories
-└─ Referenced by: Blog, Posts
-
 DocTypes
-└─ Referenced by: Documents
+└─ Referenced by: Documents, Reports
 
 Users
-└─ Referenced by: Blog (authors), Posts (authors)
+└─ Referenced by: Blog (authors)
 ```
 
 ## Related Documentation
