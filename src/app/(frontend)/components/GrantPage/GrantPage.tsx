@@ -271,6 +271,7 @@ export const GrantPage: React.FC<GrantPageProps> = ({ collection, docId, isDraft
                     <SecondaryCTA
                       title={(block as any).ctaTitle || ''}
                       subtitle={(block as any).ctaSubtitle || ''}
+                      uiType={(block as any).uiType}
                       ctaButton={(block as any).ctaButton || []}
                     />
                     {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (

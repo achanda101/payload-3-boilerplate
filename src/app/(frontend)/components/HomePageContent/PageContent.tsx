@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { useLanguage } from '@/providers/LanguageContext'
 import { SecondaryCTA } from '@/components/SecondaryCTA'
 import { GrantCardGrid } from '@/components/GrantCardGrid'
@@ -25,7 +25,7 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false })
   const { selectedLanguage } = useLanguage()
   const [contentBlocks, setContentBlocks] = useState<any[]>(data?.contentBlocks || [])
 
-  const handleLanguageChange = async (newLanguage: string) => {
+  const handleLanguageChange = useCallback(async (newLanguage: string) => {
     try {
       const draftParam = isDraft ? '&draft=true' : ''
       const response = await fetch(
@@ -44,11 +44,11 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false })
     } catch (error) {
       console.error('Failed to fetch Content Blocks data:', error)
     }
-  }
+  }, [isDraft])
 
   useEffect(() => {
     handleLanguageChange(selectedLanguage)
-  }, [selectedLanguage, isDraft])
+  }, [selectedLanguage, handleLanguageChange])
 
   return (
     <div className="frame_layout">
@@ -61,6 +61,7 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false })
                 <SecondaryCTA
                   title={(block as any).ctaTitle || ''}
                   subtitle={(block as any).ctaSubtitle || ''}
+                  uiType={(block as any).uiType}
                   ctaButton={(block as any).ctaButton || []}
                 />
                 {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (

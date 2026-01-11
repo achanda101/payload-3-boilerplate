@@ -5,6 +5,7 @@ import { ButtonArray } from '@/components/ButtonArray'
 interface SecondaryCTAProps {
   title: string
   subtitle: string
+  uiType?: 'lrg_txt_cta' | 'md_txt_cta' | 'min_cta' | 'puffy_beige_cta'
   ctaButton: {
     id: string
     link: {
@@ -27,12 +28,46 @@ interface SecondaryCTAProps {
   }[]
 }
 
-export const SecondaryCTA: React.FC<SecondaryCTAProps> = ({ title, subtitle, ctaButton }) => {
+export const SecondaryCTA: React.FC<SecondaryCTAProps> = ({
+  title,
+  subtitle,
+  uiType = 'lrg_txt_cta',
+  ctaButton
+}) => {
+  const renderTitle = () => {
+    const style = { whiteSpace: 'pre-line' as const }
+
+    switch (uiType) {
+      case 'md_txt_cta':
+        return <h4 style={style}>{title}</h4>
+      case 'min_cta':
+        return <h5 style={style}>{title}</h5>
+      case 'puffy_beige_cta':
+      case 'lrg_txt_cta':
+      default:
+        return <h3 style={style}>{title}</h3>
+    }
+  }
+
+  const renderSubtitle = () => {
+    const style = { whiteSpace: 'pre-line' as const }
+
+    switch (uiType) {
+      case 'md_txt_cta':
+        return <h5 style={style}>{subtitle}</h5>
+      case 'min_cta':
+      case 'puffy_beige_cta':
+      case 'lrg_txt_cta':
+      default:
+        return <p style={style}>{subtitle}</p>
+    }
+  }
+
   return (
-    <div className="secondaryCTA">
+    <div className="secondaryCTA" data-ui-type={uiType}>
       <div className="seccondaryCTA_titles">
-        <h3 style={{ whiteSpace: 'pre-line' }}>{title}</h3>
-        <p style={{ whiteSpace: 'pre-line' }}>{subtitle}</p>
+        {renderTitle()}
+        {renderSubtitle()}
       </div>
       <ButtonArray btnArray={ctaButton} colStackOnMobile={true} />
     </div>

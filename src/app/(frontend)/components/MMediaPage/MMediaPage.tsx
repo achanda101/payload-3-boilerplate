@@ -420,6 +420,7 @@ export const MMediaPage: React.FC<MMediaPageProps> = ({ collection, docId, isDra
                     <SecondaryCTA
                       title={(block as any).ctaTitle || ''}
                       subtitle={(block as any).ctaSubtitle || ''}
+                      uiType={(block as any).uiType}
                       ctaButton={(block as any).ctaButton || []}
                     />
                     {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (

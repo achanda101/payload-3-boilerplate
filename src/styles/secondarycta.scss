@@ -14,7 +14,7 @@
       width: 45%;
     }
   }
-  
+
   & > *:last-child {
     margin-top: 2rem;
   }
@@ -26,6 +26,30 @@
       flex-direction: row;
       @include mix.flex-center;
       gap: 1.5rem;
+    }
+  }
+
+  // Minimal CTA with borders
+  &[data-ui-type="min_cta"] {
+    border-top: 1px solid vars.$color-body-text;
+    border-bottom: 1px solid vars.$color-body-text;
+    padding-block: 3rem;
+  }
+
+  // Puffy Beige CTA with background
+  &[data-ui-type="puffy_beige_cta"] {
+    background-image: url('/card_bg/beige-bg-cta.svg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100%;
+    width: 100%;
+    position: relative;
+    padding: 3rem 2rem;
+
+    > div {
+      position: relative;
+      z-index: 1;
     }
   }
 }
