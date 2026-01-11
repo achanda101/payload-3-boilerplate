@@ -1,7 +1,7 @@
 import type { Metadata } from 'next/types'
 import React from 'react'
 import { HomeHero } from './components/HomeHero/HomeHero'
-import { PageContent } from './components/PageContent/PageContent'
+import { PageContent } from './components/HomePageContent/PageContent'
 import { ColumnIndicators } from './components/ColumnIndicators'
 import { draftMode } from 'next/headers'
 import { getPayload } from 'payload'

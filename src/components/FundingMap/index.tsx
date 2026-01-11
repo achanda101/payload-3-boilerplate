@@ -134,7 +134,7 @@ export const FundingMap: React.FC<FundingMapProps> = ({
       {/* Map Image Section - 7 columns on desktop, full width on mobile/tablet */}
       <div className="col-span-full md:col-span-8 lg:col-span-7 lg:col-start-6">
         {selectedRegion && (
-          <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px]">
+          <div className="relative w-full h-[250px] md:h-[500px] lg:h-[600px]">
             <Image
               src={`/fundingmap_countries/${selectedRegion}.png`}
               alt={getRegionLabel(selectedRegion)}

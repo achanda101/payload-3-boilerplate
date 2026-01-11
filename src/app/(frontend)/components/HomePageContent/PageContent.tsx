@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { useLanguage } from '@/providers/LanguageContext'
-import { SecondaryCTA } from './components/SecondaryCTA'
+import { SecondaryCTA } from '@/components/SecondaryCTA'
 import { GrantCardGrid } from '@/components/GrantCardGrid'
 import { FeatureCard } from '@/components/FeatureCard'
 import { ListingCardDeck } from '@/components/ListingCardDeck'
@@ -28,7 +28,9 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false })
   const handleLanguageChange = async (newLanguage: string) => {
     try {
       const draftParam = isDraft ? '&draft=true' : ''
-      const response = await fetch(`/api/globals/homepage?locale=${newLanguage}&depth=2${draftParam}`)
+      const response = await fetch(
+        `/api/globals/homepage?locale=${newLanguage}&depth=2${draftParam}`,
+      )
 
       if (!response.ok) {
         throw new Error(`Failed to fetch Content Blocks: ${response.status} ${response.statusText}`)
