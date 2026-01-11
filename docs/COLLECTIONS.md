@@ -42,18 +42,23 @@ General-purpose pages with flexible block-based layouts.
 - **SEO Fields** - Meta title, description, image
 
 #### Available Blocks
-- Multi-column Info Block
-- Secondary CTA
-- Grant Card Grid
-- Multi-step Process
-- Comparison Block
-- Yellow Card Deck
-- Feature Card
-- Feature Card Accordion
-- Listing Card Deck
-- FAQ Block
-- Rich Content Block
-- Pink Puffy Callout
+
+All 14 content blocks are available in Pages (see [BLOCKS.md](./BLOCKS.md) for detailed documentation):
+
+- ✅ Rich Content Block
+- ✅ Secondary CTA
+- ✅ Multi-Column Info Block
+- ✅ Grant Card Grid Block
+- ✅ Multi-Step Process Block
+- ✅ Comparison Block
+- ✅ Yellow Card Deck
+- ✅ Feature Card
+- ✅ Feature Card Accordion
+- ✅ Listing Card Deck
+- ✅ FAQ Block
+- ✅ Pink Puffy CallOut
+- ✅ Beige Puffy CallOut
+- ✅ Funding Map
 
 #### Features
 - ✅ Live preview
@@ -105,7 +110,8 @@ Specialized pages for grant programs and opportunities.
 - Custom background options
 
 #### Available Blocks
-Same as Pages collection (see above)
+
+All 14 content blocks (same as Pages collection - see [BLOCKS.md](./BLOCKS.md) for details)
 
 #### Features
 - ✅ Live preview
@@ -506,6 +512,100 @@ User management and authentication.
 
 ---
 
+## Content Blocks
+
+Content blocks are reusable components that can be added to pages, grants, blog posts, reports, and multimedia content. For comprehensive block documentation, see **[BLOCKS.md](./BLOCKS.md)**.
+
+### Block-Enabled Collections
+
+The following collections support content blocks:
+
+- **Pages** - 14 blocks available
+- **Grants** - 14 blocks available
+- **Blog** - 14 blocks available
+- **Reports** - 14 blocks available
+- **MMedia** - 14 blocks available
+
+### Available Blocks
+
+All five collections have access to the same 14 content blocks:
+
+| Block | Purpose | Category |
+|-------|---------|----------|
+| **Rich Content Block** | Full-featured text editor with embedded media | Content |
+| **Secondary CTA** | Call-to-action with 4 design variants | CTA |
+| **Multi-Column Info Block** | Multi-column information display | Content |
+| **Grant Card Grid Block** | Grid of grant opportunity cards | Card/Grid |
+| **Multi-Step Process Block** | Step-by-step process display | Interactive |
+| **Comparison Block** | Side-by-side comparisons | Interactive |
+| **Yellow Card Deck** | Highlighted information cards | Card/Grid |
+| **Feature Card** | Large feature showcase | Card/Grid |
+| **Feature Card Accordion** | Collapsible feature cards | Interactive |
+| **Listing Card Deck** | Resource/link listings | Card/Grid |
+| **FAQ Block** | Accordion-style Q&A | Interactive |
+| **Pink Puffy CallOut** | Eye-catching pink callout | Callout |
+| **Beige Puffy CallOut** | Warm beige callout | Callout |
+| **Funding Map** | Interactive regional statistics | Data Viz |
+
+### Embedded Blocks (within Rich Content Block)
+
+These blocks can only be used within the Rich Content Block:
+
+- **BlockQuote** - Styled quotations
+- **YouTube Block** - YouTube video embeds
+- **Vimeo Block** - Vimeo video embeds
+- **Spotify Track Block** - Spotify embeds
+- **SoundCloud Embed Block** - SoundCloud audio embeds
+
+### Unused Blocks
+
+The following blocks exist but are **not currently enabled**:
+
+- 🚫 **CallToAction** - Replaced by Secondary CTA
+- 🚫 **Code Block** - Code syntax highlighting
+- 🚫 **Content Block** - Replaced by Rich Content Block
+- 🚫 **Form Block** - Form builder
+- 🚫 **Hero Block** - Hero sections (configured at collection level)
+- 🚫 **Single Column Info Block** - Single-column display
+
+### Common Block Use Cases
+
+**For landing pages:**
+- Rich Content Block for text
+- Secondary CTA for conversions
+- Feature Cards for highlights
+- Funding Map for impact data
+
+**For grant pages:**
+- Multi-Step Process for application steps
+- FAQ Block for common questions
+- Grant Card Grid for related grants
+- Comparison Block for eligibility
+
+**For blog posts:**
+- Rich Content Block with embedded media
+- Feature Cards for story highlights
+- Pink/Beige Puffy CallOuts for emphasis
+
+**For reports:**
+- Rich Content Block for report content
+- Funding Map for geographic data
+- Yellow Card Deck for key findings
+- Multi-Column Info Block for data
+
+### Block Documentation
+
+For detailed information about each block including:
+- Field configuration
+- Design variants
+- Usage examples
+- Best practices
+- Development guidelines
+
+See the comprehensive **[BLOCKS.md](./BLOCKS.md)** documentation.
+
+---
+
 ## Common Features
 
 All collections support these common features:
@@ -712,6 +812,7 @@ Users
 
 ## Related Documentation
 
+- [Blocks Guide](./BLOCKS.md) - Comprehensive block documentation
 - [Project Overview](./PROJECT_OVERVIEW.md) - Overall project structure
 - [URL Validation](./URL_VALIDATION.md) - Link validation system
 - [Deployment](./DEPLOYMENT.md) - Deployment guide
