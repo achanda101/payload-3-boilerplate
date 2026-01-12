@@ -1225,6 +1225,7 @@ export interface Grant {
             blockType: 'fundingMap';
           }
         | {
+            addAllResources?: boolean | null;
             /**
              * Select the Resource Feature Cards to display. You can reorder or remove cards as needed.
              */
@@ -2421,6 +2422,7 @@ export interface Page {
             blockType: 'fundingMap';
           }
         | {
+            addAllResources?: boolean | null;
             /**
              * Select the Resource Feature Cards to display. You can reorder or remove cards as needed.
              */
@@ -3399,6 +3401,7 @@ export interface Blog {
             blockType: 'fundingMap';
           }
         | {
+            addAllResources?: boolean | null;
             /**
              * Select the Resource Feature Cards to display. You can reorder or remove cards as needed.
              */
@@ -4430,6 +4433,7 @@ export interface Report {
             blockType: 'fundingMap';
           }
         | {
+            addAllResources?: boolean | null;
             /**
              * Select the Resource Feature Cards to display. You can reorder or remove cards as needed.
              */
@@ -5480,6 +5484,7 @@ export interface Mmedia {
             blockType: 'fundingMap';
           }
         | {
+            addAllResources?: boolean | null;
             /**
              * Select the Resource Feature Cards to display. You can reorder or remove cards as needed.
              */
@@ -6638,6 +6643,7 @@ export interface GrantsSelect<T extends boolean = true> {
         resourceFeatCard?:
           | T
           | {
+              addAllResources?: T;
               featCardList?: T;
               id?: T;
               blockName?: T;
@@ -7265,6 +7271,7 @@ export interface PagesSelect<T extends boolean = true> {
         resourceFeatCard?:
           | T
           | {
+              addAllResources?: T;
               featCardList?: T;
               id?: T;
               blockName?: T;
@@ -7747,6 +7754,7 @@ export interface BlogSelect<T extends boolean = true> {
         resourceFeatCard?:
           | T
           | {
+              addAllResources?: T;
               featCardList?: T;
               id?: T;
               blockName?: T;
@@ -8230,6 +8238,7 @@ export interface ReportsSelect<T extends boolean = true> {
         resourceFeatCard?:
           | T
           | {
+              addAllResources?: T;
               featCardList?: T;
               id?: T;
               blockName?: T;
@@ -8712,6 +8721,7 @@ export interface MmediaSelect<T extends boolean = true> {
         resourceFeatCard?:
           | T
           | {
+              addAllResources?: T;
               featCardList?: T;
               id?: T;
               blockName?: T;
@@ -10128,6 +10138,7 @@ export interface Homepage {
             blockType: 'fundingMap';
           }
         | {
+            addAllResources?: boolean | null;
             /**
              * Select the Resource Feature Cards to display. You can reorder or remove cards as needed.
              */
@@ -10819,6 +10830,7 @@ export interface HomepageSelect<T extends boolean = true> {
         resourceFeatCard?:
           | T
           | {
+              addAllResources?: T;
               featCardList?: T;
               id?: T;
               blockName?: T;
