@@ -3,6 +3,7 @@ import * as migration_20260110_040335_pluginupdatesforgrants from './20260110_04
 import * as migration_20260110_104512_beigepuffycallouts from './20260110_104512_beigepuffycallouts';
 import * as migration_20260110_173653_fundingmapblock from './20260110_173653_fundingmapblock';
 import * as migration_20260112_084900_resourcefeaturecard from './20260112_084900_resourcefeaturecard';
+import * as migration_20260112_144134_resourcefeaturecardhomepage from './20260112_144134_resourcefeaturecardhomepage';
 
 export const migrations = [
   {
@@ -28,6 +29,11 @@ export const migrations = [
   {
     up: migration_20260112_084900_resourcefeaturecard.up,
     down: migration_20260112_084900_resourcefeaturecard.down,
-    name: '20260112_084900_resourcefeaturecard'
+    name: '20260112_084900_resourcefeaturecard',
+  },
+  {
+    up: migration_20260112_144134_resourcefeaturecardhomepage.up,
+    down: migration_20260112_144134_resourcefeaturecardhomepage.down,
+    name: '20260112_144134_resourcefeaturecardhomepage'
   },
 ];
