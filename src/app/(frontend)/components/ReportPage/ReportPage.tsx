@@ -22,6 +22,7 @@ import { PinkPuffyCallOut } from '@/components/PinkPuffyCallOut'
 import { BeigePuffyCallOut } from '@/components/BeigePuffyCallOut'
 import { FundingMap } from '@/components/FundingMap'
 import { ResourceFeatureCard } from '@/components/ResourceFeatureCard'
+import { ResourceGallery } from '@/components/ResourceGallery'
 import { serializeLexical } from '@/components/RichText/serializeRichText'
 import { ResourceCard } from '@/components/ResourceCard'
 
@@ -134,6 +135,7 @@ export const ReportPage: React.FC<ReportPageProps> = ({ collection, docId, isDra
   >([])
 
   // Calculate if cover image should be full width based on aspect ratio
+  // Returns Tailwind classes for responsive width
   const getCoverImageWidth = (): string => {
     if (
       heroBlock?.coverImage &&
@@ -142,9 +144,17 @@ export const ReportPage: React.FC<ReportPageProps> = ({ collection, docId, isDra
       heroBlock.coverImage.height
     ) {
       const aspectRatio = heroBlock.coverImage.width / heroBlock.coverImage.height
-      return aspectRatio >= 1.25 ? '100%' : '40%'
+      const isLandscape = aspectRatio >= 1.25
+
+      if (isLandscape) {
+        // Landscape: full width on all screens
+        return 'w-full'
+      } else {
+        // Portrait: full width on mobile, 75% on tablet, 40% on desktop
+        return 'w-full md:w-3/4 lg:w-[40%]'
+      }
     }
-    return '100%' // default
+    return 'w-full' // default
   }
 
   // Calculate hero banner height based on cover image presence and dimensions
@@ -155,13 +165,16 @@ export const ReportPage: React.FC<ReportPageProps> = ({ collection, docId, isDra
       heroBlock.coverImage.width &&
       heroBlock.coverImage.height
     ) {
-      // Get the width percentage
-      const widthPercent = getCoverImageWidth()
-      const widthValue = widthPercent === '100%' ? 1 : 0.4
+      // Determine if image is landscape
+      const aspectRatio = heroBlock.coverImage.width / heroBlock.coverImage.height
+      const isLandscape = aspectRatio >= 1.25
+
+      // Use desktop width value for calculation (40% for portrait, 100% for landscape)
+      const widthValue = isLandscape ? 1 : 0.4
 
       // Calculate proportional height: (imageHeight / imageWidth) * widthValue * 100vw + offset
-      const aspectRatio = heroBlock.coverImage.height / heroBlock.coverImage.width
-      const imageHeightVw = aspectRatio * widthValue * 100
+      const imageAspectRatio = heroBlock.coverImage.height / heroBlock.coverImage.width
+      const imageHeightVw = imageAspectRatio * widthValue * 100
 
       // Add 75vh if heroButtons exist, otherwise add 60vh
       const offset = heroBlock?.heroButtons && heroBlock.heroButtons.length > 0 ? '75vh' : '60vh'
@@ -291,9 +304,9 @@ export const ReportPage: React.FC<ReportPageProps> = ({ collection, docId, isDra
               </div>
             )}
 
-            <h2 style={{ whiteSpace: 'pre-line', textTransform: 'capitalize' }}>
+            <h4 style={{ whiteSpace: 'pre-line', textTransform: 'capitalize' }}>
               {heroBlock?.title}
-            </h2>
+            </h4>
             <p style={{ whiteSpace: 'pre-line' }}>{heroBlock?.subtitle}</p>
           </div>
 
@@ -330,10 +343,7 @@ export const ReportPage: React.FC<ReportPageProps> = ({ collection, docId, isDra
           typeof heroBlock.coverImage === 'object' &&
           heroBlock.coverImage.url ? (
             <div className="w-full px-[1.25rem] lg:px-[5rem]">
-              <div
-                className="hero-content hero-cover-image"
-                style={{ width: getCoverImageWidth(), height: 'auto' }}
-              >
+              <div className={`hero-content hero-cover-image h-auto ${getCoverImageWidth()}`}>
                 <Image
                   src={heroBlock.coverImage.url}
                   alt={heroBlock.coverImage.alt || 'Resource Cover Image'}
@@ -667,6 +677,18 @@ export const ReportPage: React.FC<ReportPageProps> = ({ collection, docId, isDra
                 return (
                   <React.Fragment key={index}>
                     <ResourceFeatureCard featCardList={block.featCardList} />
+                    {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                      <div className="page_column_layout gap-6">
+                        <ColumnIndicators />
+                      </div>
+                    )}
+                  </React.Fragment>
+                )
+              }
+              if (block.blockType === 'resourceGallery') {
+                return (
+                  <React.Fragment key={index}>
+                    <ResourceGallery galleryList={block.galleryList} />
                     {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
                       <div className="page_column_layout gap-6">
                         <ColumnIndicators />

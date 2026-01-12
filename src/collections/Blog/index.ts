@@ -33,6 +33,7 @@ import { PinkPuffyCallOut } from '@/blocks/PinkPuffyCallOut/config'
 import { BeigePuffyCallOut } from '@/blocks/BeigePuffyCallOut/config'
 import { FundingMap } from '@/blocks/FundingMap/config'
 import { ResourceFeatureCard } from '@/blocks/ResourceFeatureCard/config'
+import { ResourceGallery } from '@/blocks/ResourceGallery/config'
 
 export const Blog: CollectionConfig<'blog'> = {
   slug: 'blog',
@@ -244,6 +245,7 @@ export const Blog: CollectionConfig<'blog'> = {
         BeigePuffyCallOut,
         FundingMap,
         ResourceFeatureCard,
+        ResourceGallery,
       ],
       labels: {
         singular: 'A Content Block',

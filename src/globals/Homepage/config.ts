@@ -29,6 +29,7 @@ import { PinkPuffyCallOut } from '@/blocks/PinkPuffyCallOut/config'
 import { BeigePuffyCallOut } from '@/blocks/BeigePuffyCallOut/config'
 import { FundingMap } from '@/blocks/FundingMap/config'
 import { ResourceFeatureCard } from '@/blocks/ResourceFeatureCard/config'
+import { ResourceGallery } from '@/blocks/ResourceGallery/config'
 
 export const Homepage: GlobalConfig = {
   slug: 'homepage',
@@ -144,6 +145,7 @@ export const Homepage: GlobalConfig = {
         BeigePuffyCallOut,
         FundingMap,
         ResourceFeatureCard,
+        ResourceGallery,
       ],
       labels: {
         singular: 'A Content Block',

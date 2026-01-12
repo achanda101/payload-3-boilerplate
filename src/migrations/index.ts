@@ -5,6 +5,7 @@ import * as migration_20260110_173653_fundingmapblock from './20260110_173653_fu
 import * as migration_20260112_084900_resourcefeaturecard from './20260112_084900_resourcefeaturecard';
 import * as migration_20260112_144134_resourcefeaturecardhomepage from './20260112_144134_resourcefeaturecardhomepage';
 import * as migration_20260112_152930_resourcefeaturecardallpages from './20260112_152930_resourcefeaturecardallpages';
+import * as migration_20260112_162938_resourcegallery from './20260112_162938_resourcegallery';
 
 export const migrations = [
   {
@@ -40,6 +41,11 @@ export const migrations = [
   {
     up: migration_20260112_152930_resourcefeaturecardallpages.up,
     down: migration_20260112_152930_resourcefeaturecardallpages.down,
-    name: '20260112_152930_resourcefeaturecardallpages'
+    name: '20260112_152930_resourcefeaturecardallpages',
+  },
+  {
+    up: migration_20260112_162938_resourcegallery.up,
+    down: migration_20260112_162938_resourcegallery.down,
+    name: '20260112_162938_resourcegallery'
   },
 ];

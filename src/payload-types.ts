@@ -2446,6 +2446,30 @@ export interface Page {
             blockName?: string | null;
             blockType: 'resourceFeatCard';
           }
+        | {
+            /**
+             * Select the resources to display in the gallery. You can reorder or remove items as needed.
+             */
+            galleryList?:
+              | (
+                  | {
+                      relationTo: 'blog';
+                      value: number | Blog;
+                    }
+                  | {
+                      relationTo: 'reports';
+                      value: number | Report;
+                    }
+                  | {
+                      relationTo: 'mmedia';
+                      value: number | Mmedia;
+                    }
+                )[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'resourceGallery';
+          }
       )[]
     | null;
   meta?: {
@@ -3424,6 +3448,30 @@ export interface Blog {
             id?: string | null;
             blockName?: string | null;
             blockType: 'resourceFeatCard';
+          }
+        | {
+            /**
+             * Select the resources to display in the gallery. You can reorder or remove items as needed.
+             */
+            galleryList?:
+              | (
+                  | {
+                      relationTo: 'blog';
+                      value: number | Blog;
+                    }
+                  | {
+                      relationTo: 'reports';
+                      value: number | Report;
+                    }
+                  | {
+                      relationTo: 'mmedia';
+                      value: number | Mmedia;
+                    }
+                )[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'resourceGallery';
           }
       )[]
     | null;
@@ -4456,6 +4504,30 @@ export interface Report {
             id?: string | null;
             blockName?: string | null;
             blockType: 'resourceFeatCard';
+          }
+        | {
+            /**
+             * Select the resources to display in the gallery. You can reorder or remove items as needed.
+             */
+            galleryList?:
+              | (
+                  | {
+                      relationTo: 'blog';
+                      value: number | Blog;
+                    }
+                  | {
+                      relationTo: 'reports';
+                      value: number | Report;
+                    }
+                  | {
+                      relationTo: 'mmedia';
+                      value: number | Mmedia;
+                    }
+                )[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'resourceGallery';
           }
       )[]
     | null;
@@ -5507,6 +5579,30 @@ export interface Mmedia {
             id?: string | null;
             blockName?: string | null;
             blockType: 'resourceFeatCard';
+          }
+        | {
+            /**
+             * Select the resources to display in the gallery. You can reorder or remove items as needed.
+             */
+            galleryList?:
+              | (
+                  | {
+                      relationTo: 'blog';
+                      value: number | Blog;
+                    }
+                  | {
+                      relationTo: 'reports';
+                      value: number | Report;
+                    }
+                  | {
+                      relationTo: 'mmedia';
+                      value: number | Mmedia;
+                    }
+                )[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'resourceGallery';
           }
       )[]
     | null;
@@ -7276,6 +7372,13 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        resourceGallery?:
+          | T
+          | {
+              galleryList?: T;
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -7756,6 +7859,13 @@ export interface BlogSelect<T extends boolean = true> {
           | {
               addAllResources?: T;
               featCardList?: T;
+              id?: T;
+              blockName?: T;
+            };
+        resourceGallery?:
+          | T
+          | {
+              galleryList?: T;
               id?: T;
               blockName?: T;
             };
@@ -8243,6 +8353,13 @@ export interface ReportsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        resourceGallery?:
+          | T
+          | {
+              galleryList?: T;
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -8723,6 +8840,13 @@ export interface MmediaSelect<T extends boolean = true> {
           | {
               addAllResources?: T;
               featCardList?: T;
+              id?: T;
+              blockName?: T;
+            };
+        resourceGallery?:
+          | T
+          | {
+              galleryList?: T;
               id?: T;
               blockName?: T;
             };
@@ -10162,6 +10286,30 @@ export interface Homepage {
             blockName?: string | null;
             blockType: 'resourceFeatCard';
           }
+        | {
+            /**
+             * Select the resources to display in the gallery. You can reorder or remove items as needed.
+             */
+            galleryList?:
+              | (
+                  | {
+                      relationTo: 'blog';
+                      value: number | Blog;
+                    }
+                  | {
+                      relationTo: 'reports';
+                      value: number | Report;
+                    }
+                  | {
+                      relationTo: 'mmedia';
+                      value: number | Mmedia;
+                    }
+                )[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'resourceGallery';
+          }
       )[]
     | null;
   meta?: {
@@ -10832,6 +10980,13 @@ export interface HomepageSelect<T extends boolean = true> {
           | {
               addAllResources?: T;
               featCardList?: T;
+              id?: T;
+              blockName?: T;
+            };
+        resourceGallery?:
+          | T
+          | {
+              galleryList?: T;
               id?: T;
               blockName?: T;
             };

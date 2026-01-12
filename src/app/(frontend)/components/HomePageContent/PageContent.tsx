@@ -17,6 +17,7 @@ import { PinkPuffyCallOut } from '@/components/PinkPuffyCallOut'
 import { BeigePuffyCallOut } from '@/components/BeigePuffyCallOut'
 import { FundingMap } from '@/components/FundingMap'
 import { ResourceFeatureCard } from '@/components/ResourceFeatureCard'
+import { ResourceGallery } from '@/components/ResourceGallery'
 
 import { ColumnIndicators } from '../ColumnIndicators'
 import { serializeLexical } from '@/components/RichText/serializeRichText'
@@ -310,6 +311,18 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false })
             return (
               <React.Fragment key={index}>
                 <ResourceFeatureCard featCardList={block.featCardList} />
+                {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                  <div className="page_column_layout gap-6">
+                    <ColumnIndicators />
+                  </div>
+                )}
+              </React.Fragment>
+            )
+          }
+          if (block.blockType === 'resourceGallery') {
+            return (
+              <React.Fragment key={index}>
+                <ResourceGallery galleryList={block.galleryList} />
                 {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
                   <div className="page_column_layout gap-6">
                     <ColumnIndicators />
