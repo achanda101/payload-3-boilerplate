@@ -10127,6 +10127,30 @@ export interface Homepage {
             blockName?: string | null;
             blockType: 'fundingMap';
           }
+        | {
+            /**
+             * Select the Resource Feature Cards to display. You can reorder or remove cards as needed.
+             */
+            featCardList?:
+              | (
+                  | {
+                      relationTo: 'blog';
+                      value: number | Blog;
+                    }
+                  | {
+                      relationTo: 'reports';
+                      value: number | Report;
+                    }
+                  | {
+                      relationTo: 'mmedia';
+                      value: number | Mmedia;
+                    }
+                )[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'resourceFeatCard';
+          }
       )[]
     | null;
   meta?: {
@@ -10789,6 +10813,13 @@ export interface HomepageSelect<T extends boolean = true> {
                         };
                     id?: T;
                   };
+              id?: T;
+              blockName?: T;
+            };
+        resourceFeatCard?:
+          | T
+          | {
+              featCardList?: T;
               id?: T;
               blockName?: T;
             };

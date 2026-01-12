@@ -380,28 +380,28 @@ export const ResourceFeatureCard: React.FC<ResourceFeatureCardProps> = ({ featCa
       </div>
 
       {/* Navigation Controls - Bottom row */}
-      <div className="col-span-full flex items-center justify-between lg:justify-center gap-4 mt-4">
+      <div className="col-span-full grid grid-cols-3 items-center gap-4 mt-4 lg:flex lg:justify-center">
         {/* Mobile/Tablet Previous Link */}
-        {canScrollPrev ? (
-          <button
-            onClick={() => api?.scrollPrev()}
-            className="lg:hidden flex items-center gap-1 text-sm font-medium hover:opacity-70 transition-opacity"
-            aria-label="Previous slide"
-          >
-            <ChevronLeft className="w-4 h-4" />
-            <span>Previous</span>
-          </button>
-        ) : (
-          <div className="lg:hidden w-[80px]" />
-        )}
+        <div className="lg:hidden flex justify-start">
+          {canScrollPrev && (
+            <button
+              onClick={() => api?.scrollPrev()}
+              className="flex items-center gap-1 text-sm font-medium hover:opacity-70 transition-opacity"
+              aria-label="Previous slide"
+            >
+              <ChevronLeft className="w-4 h-4" />
+              <span>Prev</span>
+            </button>
+          )}
+        </div>
 
         {/* Navigation Dots */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 justify-center">
           {Array.from({ length: count }).map((_, index) => {
-            // For more than 4 items, show: 1, 2, 3, ..., last
+            // For more than 4 items, use smart display logic
             if (count > 4) {
-              // Show first 3 items
-              if (index < 3) {
+              // Always show first item
+              if (index === 0) {
                 return (
                   <button
                     key={index}
@@ -417,15 +417,110 @@ export const ResourceFeatureCard: React.FC<ResourceFeatureCardProps> = ({ featCa
                   </button>
                 )
               }
-              // Show ellipsis after third item
-              if (index === 3) {
+
+              // If current is in first 3 positions (0, 1, 2), show: 1 2 3 ... last
+              if (current <= 2) {
+                if (index === 1 || index === 2) {
+                  return (
+                    <button
+                      key={index}
+                      onClick={() => api?.scrollTo(index)}
+                      className={`w-6 h-6 rounded-full transition-all flex items-center justify-center text-xs font-medium ${
+                        index === current
+                          ? 'bg-black text-white border-[1px] border-black'
+                          : 'bg-transparent text-black border border-black hover:bg-black hover:text-white'
+                      }`}
+                      aria-label={`Go to slide ${index + 1}`}
+                    >
+                      {index + 1}
+                    </button>
+                  )
+                }
+                if (index === 3) {
+                  return (
+                    <span key="ellipsis-1" className="text-gray-400 px-1">
+                      ...
+                    </span>
+                  )
+                }
+                if (index === count - 1) {
+                  return (
+                    <button
+                      key={index}
+                      onClick={() => api?.scrollTo(index)}
+                      className={`w-6 h-6 rounded-full transition-all flex items-center justify-center text-xs font-medium ${
+                        index === current
+                          ? 'bg-black text-white border-[1px] border-black'
+                          : 'bg-transparent text-black border border-black hover:bg-black hover:text-white'
+                      }`}
+                      aria-label={`Go to slide ${index + 1}`}
+                    >
+                      {index + 1}
+                    </button>
+                  )
+                }
+                return null
+              }
+
+              // If current is in last 2 positions, show: 1 ... (last-1) last
+              if (current >= count - 2) {
+                if (index === 1) {
+                  return (
+                    <span key="ellipsis-1" className="text-gray-400 px-1">
+                      ...
+                    </span>
+                  )
+                }
+                if (index === count - 2 || index === count - 1) {
+                  return (
+                    <button
+                      key={index}
+                      onClick={() => api?.scrollTo(index)}
+                      className={`w-6 h-6 rounded-full transition-all flex items-center justify-center text-xs font-medium ${
+                        index === current
+                          ? 'bg-black text-white border-[1px] border-black'
+                          : 'bg-transparent text-black border border-black hover:bg-black hover:text-white'
+                      }`}
+                      aria-label={`Go to slide ${index + 1}`}
+                    >
+                      {index + 1}
+                    </button>
+                  )
+                }
+                return null
+              }
+
+              // Current is in the middle, show: 1 ... current ... last
+              if (index === 1) {
                 return (
-                  <span key="ellipsis" className="text-gray-400 px-1">
+                  <span key="ellipsis-1" className="text-gray-400 px-1">
                     ...
                   </span>
                 )
               }
-              // Show last item
+              if (index === current) {
+                return (
+                  <button
+                    key={index}
+                    onClick={() => api?.scrollTo(index)}
+                    className={`w-6 h-6 rounded-full transition-all flex items-center justify-center text-xs font-medium ${
+                      index === current
+                        ? 'bg-black text-white border-[1px] border-black'
+                        : 'bg-transparent text-black border border-black hover:bg-black hover:text-white'
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  >
+                    {index + 1}
+                  </button>
+                )
+              }
+              if (index === current + 1) {
+                return (
+                  <span key="ellipsis-2" className="text-gray-400 px-1">
+                    ...
+                  </span>
+                )
+              }
               if (index === count - 1) {
                 return (
                   <button
@@ -442,7 +537,6 @@ export const ResourceFeatureCard: React.FC<ResourceFeatureCardProps> = ({ featCa
                   </button>
                 )
               }
-              // Don't render items between 3 and last
               return null
             }
 
@@ -465,18 +559,18 @@ export const ResourceFeatureCard: React.FC<ResourceFeatureCardProps> = ({ featCa
         </div>
 
         {/* Mobile/Tablet Next Link */}
-        {canScrollNext ? (
-          <button
-            onClick={() => api?.scrollNext()}
-            className="lg:hidden flex items-center gap-1 text-sm font-medium hover:opacity-70 transition-opacity"
-            aria-label="Next slide"
-          >
-            <span>Next</span>
-            <ChevronRight className="w-4 h-4" />
-          </button>
-        ) : (
-          <div className="lg:hidden w-[80px]" />
-        )}
+        <div className="lg:hidden flex justify-end">
+          {canScrollNext && (
+            <button
+              onClick={() => api?.scrollNext()}
+              className="flex items-center gap-1 text-sm font-medium hover:opacity-70 transition-opacity"
+              aria-label="Next slide"
+            >
+              <span>Next</span>
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          )}
+        </div>
       </div>
     </div>
   )
