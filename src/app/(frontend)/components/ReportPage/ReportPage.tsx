@@ -21,6 +21,7 @@ import { SecondaryCTA } from '@/components/SecondaryCTA'
 import { PinkPuffyCallOut } from '@/components/PinkPuffyCallOut'
 import { BeigePuffyCallOut } from '@/components/BeigePuffyCallOut'
 import { FundingMap } from '@/components/FundingMap'
+import { ResourceFeatureCard } from '@/components/ResourceFeatureCard'
 import { serializeLexical } from '@/components/RichText/serializeRichText'
 import { ResourceCard } from '@/components/ResourceCard'
 
@@ -654,6 +655,18 @@ export const ReportPage: React.FC<ReportPageProps> = ({ collection, docId, isDra
                       selectorLabel={block.selectorLabel}
                       items={block.items}
                     />
+                    {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                      <div className="page_column_layout gap-6">
+                        <ColumnIndicators />
+                      </div>
+                    )}
+                  </React.Fragment>
+                )
+              }
+              if (block.blockType === 'resourceFeatCard') {
+                return (
+                  <React.Fragment key={index}>
+                    <ResourceFeatureCard featCardList={block.featCardList} />
                     {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
                       <div className="page_column_layout gap-6">
                         <ColumnIndicators />

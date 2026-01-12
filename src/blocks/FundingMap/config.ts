@@ -17,7 +17,7 @@ export const FundingMap: Block = {
           required: true,
           localized: true,
           admin: {
-            width: '25%',
+            width: '50%',
           },
         },
         {
@@ -28,16 +28,15 @@ export const FundingMap: Block = {
             width: '50%',
           },
         },
-        {
-          name: 'selectorLabel',
-          type: 'text',
-          localized: true,
-          admin: {
-            width: '25%',
-            description: 'Label for the region selector dropdown',
-          },
-        },
       ],
+    },
+    {
+      name: 'selectorLabel',
+      type: 'text',
+      localized: true,
+      admin: {
+        description: 'Label for the region selector dropdown',
+      },
     },
     {
       name: 'items',

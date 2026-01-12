@@ -51,7 +51,7 @@ export const FundingMap: React.FC<FundingMapProps> = ({
       case 'indonesia':
         return 'Indonesia'
       case 'korea':
-        return 'Korea'
+        return 'South Korea'
       case 'laos':
         return 'Laos'
       case 'malaysia':

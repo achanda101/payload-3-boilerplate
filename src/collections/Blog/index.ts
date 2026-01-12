@@ -32,6 +32,7 @@ import { RichContentBlock } from '@/blocks/RichContentBlock/config'
 import { PinkPuffyCallOut } from '@/blocks/PinkPuffyCallOut/config'
 import { BeigePuffyCallOut } from '@/blocks/BeigePuffyCallOut/config'
 import { FundingMap } from '@/blocks/FundingMap/config'
+import { ResourceFeatureCard } from '@/blocks/ResourceFeatureCard/config'
 
 export const Blog: CollectionConfig<'blog'> = {
   slug: 'blog',
@@ -242,6 +243,7 @@ export const Blog: CollectionConfig<'blog'> = {
         PinkPuffyCallOut,
         BeigePuffyCallOut,
         FundingMap,
+        ResourceFeatureCard,
       ],
       labels: {
         singular: 'A Content Block',

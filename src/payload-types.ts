@@ -1224,6 +1224,30 @@ export interface Grant {
             blockName?: string | null;
             blockType: 'fundingMap';
           }
+        | {
+            /**
+             * Select the Resource Feature Cards to display. You can reorder or remove cards as needed.
+             */
+            featCardList?:
+              | (
+                  | {
+                      relationTo: 'blog';
+                      value: number | Blog;
+                    }
+                  | {
+                      relationTo: 'reports';
+                      value: number | Report;
+                    }
+                  | {
+                      relationTo: 'mmedia';
+                      value: number | Mmedia;
+                    }
+                )[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'resourceFeatCard';
+          }
       )[]
     | null;
   meta?: {
@@ -2396,6 +2420,30 @@ export interface Page {
             blockName?: string | null;
             blockType: 'fundingMap';
           }
+        | {
+            /**
+             * Select the Resource Feature Cards to display. You can reorder or remove cards as needed.
+             */
+            featCardList?:
+              | (
+                  | {
+                      relationTo: 'blog';
+                      value: number | Blog;
+                    }
+                  | {
+                      relationTo: 'reports';
+                      value: number | Report;
+                    }
+                  | {
+                      relationTo: 'mmedia';
+                      value: number | Mmedia;
+                    }
+                )[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'resourceFeatCard';
+          }
       )[]
     | null;
   meta?: {
@@ -3349,6 +3397,30 @@ export interface Blog {
             id?: string | null;
             blockName?: string | null;
             blockType: 'fundingMap';
+          }
+        | {
+            /**
+             * Select the Resource Feature Cards to display. You can reorder or remove cards as needed.
+             */
+            featCardList?:
+              | (
+                  | {
+                      relationTo: 'blog';
+                      value: number | Blog;
+                    }
+                  | {
+                      relationTo: 'reports';
+                      value: number | Report;
+                    }
+                  | {
+                      relationTo: 'mmedia';
+                      value: number | Mmedia;
+                    }
+                )[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'resourceFeatCard';
           }
       )[]
     | null;
@@ -4356,6 +4428,30 @@ export interface Report {
             id?: string | null;
             blockName?: string | null;
             blockType: 'fundingMap';
+          }
+        | {
+            /**
+             * Select the Resource Feature Cards to display. You can reorder or remove cards as needed.
+             */
+            featCardList?:
+              | (
+                  | {
+                      relationTo: 'blog';
+                      value: number | Blog;
+                    }
+                  | {
+                      relationTo: 'reports';
+                      value: number | Report;
+                    }
+                  | {
+                      relationTo: 'mmedia';
+                      value: number | Mmedia;
+                    }
+                )[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'resourceFeatCard';
           }
       )[]
     | null;
@@ -5382,6 +5478,30 @@ export interface Mmedia {
             id?: string | null;
             blockName?: string | null;
             blockType: 'fundingMap';
+          }
+        | {
+            /**
+             * Select the Resource Feature Cards to display. You can reorder or remove cards as needed.
+             */
+            featCardList?:
+              | (
+                  | {
+                      relationTo: 'blog';
+                      value: number | Blog;
+                    }
+                  | {
+                      relationTo: 'reports';
+                      value: number | Report;
+                    }
+                  | {
+                      relationTo: 'mmedia';
+                      value: number | Mmedia;
+                    }
+                )[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'resourceFeatCard';
           }
       )[]
     | null;
@@ -6515,6 +6635,13 @@ export interface GrantsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        resourceFeatCard?:
+          | T
+          | {
+              featCardList?: T;
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -7135,6 +7262,13 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        resourceFeatCard?:
+          | T
+          | {
+              featCardList?: T;
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -7607,6 +7741,13 @@ export interface BlogSelect<T extends boolean = true> {
                         };
                     id?: T;
                   };
+              id?: T;
+              blockName?: T;
+            };
+        resourceFeatCard?:
+          | T
+          | {
+              featCardList?: T;
               id?: T;
               blockName?: T;
             };
@@ -8086,6 +8227,13 @@ export interface ReportsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        resourceFeatCard?:
+          | T
+          | {
+              featCardList?: T;
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -8558,6 +8706,13 @@ export interface MmediaSelect<T extends boolean = true> {
                         };
                     id?: T;
                   };
+              id?: T;
+              blockName?: T;
+            };
+        resourceFeatCard?:
+          | T
+          | {
+              featCardList?: T;
               id?: T;
               blockName?: T;
             };
@@ -9781,6 +9936,197 @@ export interface Homepage {
             blockName?: string | null;
             blockType: 'faqBlk';
           }
+        | {
+            /**
+             * Main title for the callout section
+             */
+            title: string;
+            /**
+             * Subtitle text below the main title
+             */
+            subtitle?: string | null;
+            /**
+             * Alignment for the title and subtitle
+             */
+            align?: ('center' | 'left') | null;
+            /**
+             * Top row items (maximum 3 items)
+             */
+            topRow?:
+              | {
+                  /**
+                   * Title for this top row item
+                   */
+                  title: string;
+                  /**
+                   * Subtitle for this top row item
+                   */
+                  subtitle?: string | null;
+                  /**
+                   * Description text for this top row item
+                   */
+                  description?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            /**
+             * Bottom row items (maximum 3 items)
+             */
+            botRow?:
+              | {
+                  /**
+                   * Title for this bottom row item
+                   */
+                  title: string;
+                  /**
+                   * Description text for this bottom row item
+                   */
+                  description?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            links?:
+              | {
+                  link?: {
+                    type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+                    newTab?: boolean | null;
+                    downloadLink?: boolean | null;
+                    arrowLink?: boolean | null;
+                    pillSolid?: boolean | null;
+                    pillOutline?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'grants';
+                          value: number | Grant;
+                        } | null)
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'blog';
+                          value: number | Blog;
+                        } | null)
+                      | ({
+                          relationTo: 'reports';
+                          value: number | Report;
+                        } | null)
+                      | ({
+                          relationTo: 'mmedia';
+                          value: number | Mmedia;
+                        } | null);
+                    url?: string | null;
+                    email?: string | null;
+                    doc?: {
+                      relationTo: 'documents';
+                      value: number | Document;
+                    } | null;
+                    etestlink?: {
+                      relationTo: 'etests';
+                      value: number | Etest;
+                    } | null;
+                    label?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'pinkPuffy';
+          }
+        | {
+            /**
+             * Main title for the callout section
+             */
+            title: string;
+            /**
+             * Subtitle text below the main title
+             */
+            subtitle?: string | null;
+            /**
+             * Alignment for the title and subtitle
+             */
+            align?: ('center' | 'left') | null;
+            /**
+             * Content items (minimum 1, maximum 4 items)
+             */
+            items?:
+              | {
+                  /**
+                   * Title for this item
+                   */
+                  title: string;
+                  /**
+                   * Subtitle for this item
+                   */
+                  subtitle?: string | null;
+                  /**
+                   * Description text for this item
+                   */
+                  description?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'beigePuffy';
+          }
+        | {
+            title: string;
+            subtitle?: string | null;
+            /**
+             * Label for the region selector dropdown
+             */
+            selectorLabel?: string | null;
+            /**
+             * Funding regions with their statistics
+             */
+            items?:
+              | {
+                  regionName:
+                    | 'uaf-asia-pacific'
+                    | 'afghan'
+                    | 'aus'
+                    | 'bangla'
+                    | 'cambodia'
+                    | 'china'
+                    | 'india'
+                    | 'indonesia'
+                    | 'korea'
+                    | 'laos'
+                    | 'malaysia'
+                    | 'mongolia'
+                    | 'myanmar'
+                    | 'nepal'
+                    | 'pak'
+                    | 'papua'
+                    | 'philippines'
+                    | 'srilanka'
+                    | 'thailand'
+                    | 'vietnam';
+                  /**
+                   * Maximum of 3 statistical items for this region
+                   */
+                  subitems?:
+                    | {
+                        /**
+                         * Statistical number or value
+                         */
+                        statnumber: string;
+                        /**
+                         * Description for this statistic
+                         */
+                        description: string;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'fundingMap';
+          }
       )[]
     | null;
   meta?: {
@@ -10357,6 +10703,90 @@ export interface HomepageSelect<T extends boolean = true> {
                 | {
                     question?: T;
                     answer?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        pinkPuffy?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              align?: T;
+              topRow?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              botRow?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              links?:
+                | T
+                | {
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          downloadLink?: T;
+                          arrowLink?: T;
+                          pillSolid?: T;
+                          pillOutline?: T;
+                          reference?: T;
+                          url?: T;
+                          email?: T;
+                          doc?: T;
+                          etestlink?: T;
+                          label?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        beigePuffy?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              align?: T;
+              items?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        fundingMap?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              selectorLabel?: T;
+              items?:
+                | T
+                | {
+                    regionName?: T;
+                    subitems?:
+                      | T
+                      | {
+                          statnumber?: T;
+                          description?: T;
+                          id?: T;
+                        };
                     id?: T;
                   };
               id?: T;

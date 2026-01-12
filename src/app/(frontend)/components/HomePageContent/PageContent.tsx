@@ -13,6 +13,10 @@ import { ComparisonBlock } from '@/components/ComparisonBlock'
 import { YellowCardDeck } from '@/components/YellowCardDeck'
 import { FaqBlock } from '@/components/FaqBlock'
 import { FeatureCardAccordion } from '@/components/FeatureCardAccordion'
+import { PinkPuffyCallOut } from '@/components/PinkPuffyCallOut'
+import { BeigePuffyCallOut } from '@/components/BeigePuffyCallOut'
+import { FundingMap } from '@/components/FundingMap'
+
 import { ColumnIndicators } from '../ColumnIndicators'
 import { serializeLexical } from '@/components/RichText/serializeRichText'
 
@@ -25,26 +29,31 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false })
   const { selectedLanguage } = useLanguage()
   const [contentBlocks, setContentBlocks] = useState<any[]>(data?.contentBlocks || [])
 
-  const handleLanguageChange = useCallback(async (newLanguage: string) => {
-    try {
-      const draftParam = isDraft ? '&draft=true' : ''
-      const response = await fetch(
-        `/api/globals/homepage?locale=${newLanguage}&depth=2${draftParam}`,
-      )
+  const handleLanguageChange = useCallback(
+    async (newLanguage: string) => {
+      try {
+        const draftParam = isDraft ? '&draft=true' : ''
+        const response = await fetch(
+          `/api/globals/homepage?locale=${newLanguage}&depth=2${draftParam}`,
+        )
 
-      if (!response.ok) {
-        throw new Error(`Failed to fetch Content Blocks: ${response.status} ${response.statusText}`)
+        if (!response.ok) {
+          throw new Error(
+            `Failed to fetch Content Blocks: ${response.status} ${response.statusText}`,
+          )
+        }
+
+        const responseData = await response.json()
+
+        if (responseData?.contentBlocks?.length > 0) {
+          setContentBlocks(responseData.contentBlocks)
+        }
+      } catch (error) {
+        console.error('Failed to fetch Content Blocks data:', error)
       }
-
-      const responseData = await response.json()
-
-      if (responseData?.contentBlocks?.length > 0) {
-        setContentBlocks(responseData.contentBlocks)
-      }
-    } catch (error) {
-      console.error('Failed to fetch Content Blocks data:', error)
-    }
-  }, [isDraft])
+    },
+    [isDraft],
+  )
 
   useEffect(() => {
     handleLanguageChange(selectedLanguage)
@@ -243,7 +252,59 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false })
               </React.Fragment>
             )
           }
-
+          if (block.blockType === 'pinkPuffy') {
+            return (
+              <React.Fragment key={index}>
+                <PinkPuffyCallOut
+                  title={block.title}
+                  subtitle={block.subtitle}
+                  align={block.align}
+                  topRow={block.topRow}
+                  botRow={block.botRow}
+                  links={block.links}
+                />
+                {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                  <div className="page_column_layout gap-6">
+                    <ColumnIndicators />
+                  </div>
+                )}
+              </React.Fragment>
+            )
+          }
+          if (block.blockType === 'beigePuffy') {
+            return (
+              <React.Fragment key={index}>
+                <BeigePuffyCallOut
+                  title={block.title}
+                  subtitle={block.subtitle}
+                  align={block.align}
+                  items={block.items}
+                />
+                {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                  <div className="page_column_layout gap-6">
+                    <ColumnIndicators />
+                  </div>
+                )}
+              </React.Fragment>
+            )
+          }
+          if (block.blockType === 'fundingMap') {
+            return (
+              <React.Fragment key={index}>
+                <FundingMap
+                  title={block.title}
+                  subtitle={block.subtitle}
+                  selectorLabel={block.selectorLabel}
+                  items={block.items}
+                />
+                {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                  <div className="page_column_layout gap-6">
+                    <ColumnIndicators />
+                  </div>
+                )}
+              </React.Fragment>
+            )
+          }
           return null
         })}
     </div>

@@ -25,7 +25,9 @@ import { ListingCardDeck } from '@/blocks/ListingCardDeck/config'
 import { FaqBlock } from '@/blocks/FaqBlock/config'
 import { SecondaryCTA } from '@/blocks/SecondaryCTA/config'
 import { RichContentBlock } from '@/blocks/RichContentBlock/config'
-import { SingleColumnInfoBlock } from '@/blocks/SingleColumnInfoBlock/config'
+import { PinkPuffyCallOut } from '@/blocks/PinkPuffyCallOut/config'
+import { BeigePuffyCallOut } from '@/blocks/BeigePuffyCallOut/config'
+import { FundingMap } from '@/blocks/FundingMap/config'
 
 export const Homepage: GlobalConfig = {
   slug: 'homepage',
@@ -137,6 +139,9 @@ export const Homepage: GlobalConfig = {
         FeatureCardAccordion,
         ListingCardDeck,
         FaqBlock,
+        PinkPuffyCallOut,
+        BeigePuffyCallOut,
+        FundingMap,
       ],
       labels: {
         singular: 'A Content Block',
