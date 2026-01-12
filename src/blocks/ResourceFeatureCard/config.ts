@@ -62,10 +62,10 @@ export const ResourceFeatureCard: Block = {
     {
       name: 'addAllResources',
       type: 'checkbox',
-      label: 'Add All Resources?', // Default label
+      label: 'Add All Resources?', // Default label (will be overridden by custom Field component)
       admin: {
         components: {
-          Label: '@/blocks/ResourceFeatureCard/AddAllResourcesLabel',
+          Field: '@/blocks/ResourceFeatureCard/AddAllResourcesField',
         },
       },
       hooks: {

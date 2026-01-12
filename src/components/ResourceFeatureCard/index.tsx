@@ -146,7 +146,7 @@ const CarouselResourceCard: React.FC<{
           {/* Subtitle/Description */}
           {heroSubtitle && (
             <div className="mb-4 lg:mb-6">
-              <p>{heroSubtitle}</p>
+              <p className="text-color-light">{heroSubtitle}</p>
             </div>
           )}
         </div>
@@ -234,7 +234,7 @@ const SingleResourceCard: React.FC<{
           {/* Subtitle/Description */}
           {heroSubtitle && (
             <div className="mb-4 lg:mb-6">
-              <p>{heroSubtitle}</p>
+              <p className="text-color-light">{heroSubtitle}</p>
             </div>
           )}
         </div>
@@ -418,9 +418,9 @@ export const ResourceFeatureCard: React.FC<ResourceFeatureCardProps> = ({ featCa
                 )
               }
 
-              // If current is in first 3 positions (0, 1, 2), show: 1 2 3 ... last
-              if (current <= 2) {
-                if (index === 1 || index === 2) {
+              // If current is in first 2 positions (0, 1), show: 1 2 ... last
+              if (current <= 1) {
+                if (index === 1) {
                   return (
                     <button
                       key={index}
@@ -436,7 +436,7 @@ export const ResourceFeatureCard: React.FC<ResourceFeatureCardProps> = ({ featCa
                     </button>
                   )
                 }
-                if (index === 3) {
+                if (index === 2) {
                   return (
                     <span key="ellipsis-1" className="text-gray-400 px-1">
                       ...

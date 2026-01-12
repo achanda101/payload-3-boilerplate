@@ -136,7 +136,7 @@ const GalleryCard: React.FC<{
       {/* Subtitle/Description */}
       {heroSubtitle && (
         <div className="mb-4">
-          <p>{heroSubtitle}</p>
+          <p className="text-color-light">{heroSubtitle}</p>
         </div>
       )}
 

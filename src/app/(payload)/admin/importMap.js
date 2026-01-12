@@ -35,7 +35,7 @@ import { default as default_e117b4e6a79196937b8fadc00a39e148 } from 'src/blocks/
 import { default as default_2f24f9e931b8b7caf8af8a7d8b2d1313 } from 'src/blocks/BeigePuffyCallOut/itemLabel.tsx'
 import { default as default_6a8719e2d5063c12ffdbb9d4923f7ff4 } from 'src/blocks/FundingMap/subitemLabel.tsx'
 import { default as default_7b313deb816297f34afe721897b6bef6 } from 'src/blocks/FundingMap/itemLabel.tsx'
-import { default as default_0326a6b8973da32d2b7cdfb305775354 } from '@/blocks/ResourceFeatureCard/AddAllResourcesLabel'
+import { default as default_021f573a6d0c322b4d262272400b64e3 } from '@/blocks/ResourceFeatureCard/AddAllResourcesField'
 import { OverviewComponent as OverviewComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { MetaTitleComponent as MetaTitleComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { MetaDescriptionComponent as MetaDescriptionComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
@@ -104,7 +104,7 @@ export const importMap = {
   "src/blocks/BeigePuffyCallOut/itemLabel.tsx#default": default_2f24f9e931b8b7caf8af8a7d8b2d1313,
   "src/blocks/FundingMap/subitemLabel.tsx#default": default_6a8719e2d5063c12ffdbb9d4923f7ff4,
   "src/blocks/FundingMap/itemLabel.tsx#default": default_7b313deb816297f34afe721897b6bef6,
-  "@/blocks/ResourceFeatureCard/AddAllResourcesLabel#default": default_0326a6b8973da32d2b7cdfb305775354,
+  "@/blocks/ResourceFeatureCard/AddAllResourcesField#default": default_021f573a6d0c322b4d262272400b64e3,
   "@payloadcms/plugin-seo/client#OverviewComponent": OverviewComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "@payloadcms/plugin-seo/client#MetaTitleComponent": MetaTitleComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "@payloadcms/plugin-seo/client#MetaDescriptionComponent": MetaDescriptionComponent_a8a977ebc872c5d5ea7ee689724c0860,
