@@ -144,44 +144,19 @@ export const MMediaPage: React.FC<MMediaPageProps> = ({ collection, docId, isDra
       heroBlock.coverImage.height
     ) {
       const aspectRatio = heroBlock.coverImage.width / heroBlock.coverImage.height
-      const isLandscape = aspectRatio >= 1.25
 
-      if (isLandscape) {
+      if (aspectRatio >= 1.25) {
         // Landscape: full width on all screens
         return 'w-full'
+      } else if (aspectRatio > 1.0) {
+        // Medium/Square-ish: full width on mobile, 60% on desktop
+        return 'w-full md:w-4/5 lg:w-[60%]'
       } else {
         // Portrait: full width on mobile, 75% on tablet, 40% on desktop
         return 'w-full md:w-3/4 lg:w-[40%]'
       }
     }
     return 'w-full' // default
-  }
-
-  // Calculate hero banner height based on cover image presence and dimensions
-  const getHeroBannerHeight = (): string => {
-    if (
-      heroBlock?.coverImage &&
-      typeof heroBlock.coverImage === 'object' &&
-      heroBlock.coverImage.width &&
-      heroBlock.coverImage.height
-    ) {
-      // Determine if image is landscape
-      const aspectRatio = heroBlock.coverImage.width / heroBlock.coverImage.height
-      const isLandscape = aspectRatio >= 1.25
-
-      // Use desktop width value for calculation (40% for portrait, 100% for landscape)
-      const widthValue = isLandscape ? 1 : 0.4
-
-      // Calculate proportional height: (imageHeight / imageWidth) * widthValue * 100vw + offset
-      const imageAspectRatio = heroBlock.coverImage.height / heroBlock.coverImage.width
-      const imageHeightVw = imageAspectRatio * widthValue * 100
-
-      // Add 75vh if heroButtons exist, otherwise add 60vh
-      const offset = heroBlock?.heroButtons && heroBlock.heroButtons.length > 0 ? '75vh' : '60vh'
-
-      return `calc(${imageHeightVw}vw + ${offset})`
-    }
-    return '70vh' // default when no cover image
   }
 
   const handleLanguageChange = useCallback(
@@ -265,7 +240,7 @@ export const MMediaPage: React.FC<MMediaPageProps> = ({ collection, docId, isDra
 
   return (
     <>
-      <section className="hero-banner fit-cover-image" style={{ height: getHeroBannerHeight() }}>
+      <section className="hero-banner fit-cover-image" style={{ height: 'auto' }}>
         <Image
           src={`/heroes/${heroHeaderImg}.png`}
           alt="Header image"
@@ -286,7 +261,7 @@ export const MMediaPage: React.FC<MMediaPageProps> = ({ collection, docId, isDra
           className="mobile-image"
           priority
         />
-        <div className="hero-container">
+        <div className="hero-container" style={{ position: 'relative', left: 'auto', transform: 'none' }}>
           <div className="hero-content">
             {(heroBlock?.resourceType || heroBlock?.publishDate) && pageType !== 'landing' && (
               <div className="tag">
