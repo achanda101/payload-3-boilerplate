@@ -39,6 +39,7 @@ export const MediaCloud: CollectionConfig = {
     {
       name: 'caption',
       type: 'text',
+      localized: true,
     },
   ],
   upload: {

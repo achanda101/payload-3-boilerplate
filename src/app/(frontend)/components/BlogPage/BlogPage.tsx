@@ -104,6 +104,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ collection, docId, isDraft =
     title?: string | null
     subtitle?: string | null
     coverImage?: MediaCloud | null
+    coverImageCaption?: string | null
     resourceType?: string[] | null
     showFilter?: boolean | null
     heroButtons?: {
@@ -169,12 +170,14 @@ export const BlogPage: React.FC<BlogPageProps> = ({ collection, docId, isDraft =
         const response = await fetch(fetchPath)
         const data = await response.json()
         const headerColour = 'trans'
+        console.log('Blog data:', data)
         setPageType(data.pageType || 'landing')
         setHeaderTheme(headerColour)
         setHeroBlock({
           title: data.heroTitle,
           subtitle: data.heroSubtitle,
           coverImage: data.image,
+          coverImageCaption: data.image?.caption || data.imageCaption,
           resourceType: data.docType,
           showFilter: data.showFilter,
           heroButtons: data.heroButtons?.map((button: { id: string; link: any }) => ({
@@ -344,6 +347,11 @@ export const BlogPage: React.FC<BlogPageProps> = ({ collection, docId, isDraft =
                   className="rounded-3xl overflow-hidden"
                   priority
                 />
+                {heroBlock.coverImageCaption && (
+                  <p className="text-color-light text-sm mt-0 text-center w-2/3 mx-auto">
+                    {heroBlock.coverImageCaption}
+                  </p>
+                )}
               </div>
             </div>
           ) : null}

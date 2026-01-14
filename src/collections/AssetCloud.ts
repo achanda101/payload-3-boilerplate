@@ -40,6 +40,7 @@ export const AssetCloud: CollectionConfig = {
     {
       name: 'caption',
       type: 'text',
+      localized: true,
     },
   ],
   upload: {

@@ -39,6 +39,7 @@ export const Documents: CollectionConfig = {
     {
       name: 'caption',
       type: 'text',
+      localized: true,
     },
   ],
   upload: {
