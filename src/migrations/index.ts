@@ -8,6 +8,7 @@ import * as migration_20260112_152930_resourcefeaturecardallpages from './202601
 import * as migration_20260112_162938_resourcegallery from './20260112_162938_resourcegallery';
 import * as migration_20260114_083632_localizecaptions from './20260114_083632_localizecaptions';
 import * as migration_20260114_104835_populateresourcefeatcardandgallery from './20260114_104835_populateresourcefeatcardandgallery';
+import * as migration_20260114_122158_titledescresourcecards from './20260114_122158_titledescresourcecards';
 
 export const migrations = [
   {
@@ -58,6 +59,11 @@ export const migrations = [
   {
     up: migration_20260114_104835_populateresourcefeatcardandgallery.up,
     down: migration_20260114_104835_populateresourcefeatcardandgallery.down,
-    name: '20260114_104835_populateresourcefeatcardandgallery'
+    name: '20260114_104835_populateresourcefeatcardandgallery',
+  },
+  {
+    up: migration_20260114_122158_titledescresourcecards.up,
+    down: migration_20260114_122158_titledescresourcecards.down,
+    name: '20260114_122158_titledescresourcecards'
   },
 ];
