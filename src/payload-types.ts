@@ -1227,6 +1227,10 @@ export interface Grant {
         | {
             addAllResources?: boolean | null;
             /**
+             * Select a resource type to show all resources tagged with that type from this collection (e.g., if you're on a Blog page and select "Annual Report", only blog posts tagged as Annual Report will appear)
+             */
+            filterByDocType?: (number | null) | Doctype;
+            /**
              * Select the Resource Feature Cards to display. You can reorder or remove cards as needed.
              */
             featCardList?:
@@ -2424,6 +2428,10 @@ export interface Page {
         | {
             addAllResources?: boolean | null;
             /**
+             * Select a resource type to show all resources tagged with that type from this collection (e.g., if you're on a Blog page and select "Annual Report", only blog posts tagged as Annual Report will appear)
+             */
+            filterByDocType?: (number | null) | Doctype;
+            /**
              * Select the Resource Feature Cards to display. You can reorder or remove cards as needed.
              */
             featCardList?:
@@ -2447,6 +2455,14 @@ export interface Page {
             blockType: 'resourceFeatCard';
           }
         | {
+            /**
+             * Automatically include all resources from this collection.
+             */
+            addAllResources?: boolean | null;
+            /**
+             * Select a resource type to show all resources tagged with that type from this collection (e.g., if you're on a Blog page and select "Annual Report", only blog posts tagged as Annual Report will appear)
+             */
+            filterByDocType?: (number | null) | Doctype;
             /**
              * Select the resources to display in the gallery. You can reorder or remove items as needed.
              */
@@ -3427,6 +3443,10 @@ export interface Blog {
         | {
             addAllResources?: boolean | null;
             /**
+             * Select a resource type to show all resources tagged with that type from this collection (e.g., if you're on a Blog page and select "Annual Report", only blog posts tagged as Annual Report will appear)
+             */
+            filterByDocType?: (number | null) | Doctype;
+            /**
              * Select the Resource Feature Cards to display. You can reorder or remove cards as needed.
              */
             featCardList?:
@@ -3450,6 +3470,14 @@ export interface Blog {
             blockType: 'resourceFeatCard';
           }
         | {
+            /**
+             * Automatically include all resources from this collection.
+             */
+            addAllResources?: boolean | null;
+            /**
+             * Select a resource type to show all resources tagged with that type from this collection (e.g., if you're on a Blog page and select "Annual Report", only blog posts tagged as Annual Report will appear)
+             */
+            filterByDocType?: (number | null) | Doctype;
             /**
              * Select the resources to display in the gallery. You can reorder or remove items as needed.
              */
@@ -4483,6 +4511,10 @@ export interface Report {
         | {
             addAllResources?: boolean | null;
             /**
+             * Select a resource type to show all resources tagged with that type from this collection (e.g., if you're on a Blog page and select "Annual Report", only blog posts tagged as Annual Report will appear)
+             */
+            filterByDocType?: (number | null) | Doctype;
+            /**
              * Select the Resource Feature Cards to display. You can reorder or remove cards as needed.
              */
             featCardList?:
@@ -4506,6 +4538,14 @@ export interface Report {
             blockType: 'resourceFeatCard';
           }
         | {
+            /**
+             * Automatically include all resources from this collection.
+             */
+            addAllResources?: boolean | null;
+            /**
+             * Select a resource type to show all resources tagged with that type from this collection (e.g., if you're on a Blog page and select "Annual Report", only blog posts tagged as Annual Report will appear)
+             */
+            filterByDocType?: (number | null) | Doctype;
             /**
              * Select the resources to display in the gallery. You can reorder or remove items as needed.
              */
@@ -5558,6 +5598,10 @@ export interface Mmedia {
         | {
             addAllResources?: boolean | null;
             /**
+             * Select a resource type to show all resources tagged with that type from this collection (e.g., if you're on a Blog page and select "Annual Report", only blog posts tagged as Annual Report will appear)
+             */
+            filterByDocType?: (number | null) | Doctype;
+            /**
              * Select the Resource Feature Cards to display. You can reorder or remove cards as needed.
              */
             featCardList?:
@@ -5581,6 +5625,14 @@ export interface Mmedia {
             blockType: 'resourceFeatCard';
           }
         | {
+            /**
+             * Automatically include all resources from this collection.
+             */
+            addAllResources?: boolean | null;
+            /**
+             * Select a resource type to show all resources tagged with that type from this collection (e.g., if you're on a Blog page and select "Annual Report", only blog posts tagged as Annual Report will appear)
+             */
+            filterByDocType?: (number | null) | Doctype;
             /**
              * Select the resources to display in the gallery. You can reorder or remove items as needed.
              */
@@ -6740,6 +6792,7 @@ export interface GrantsSelect<T extends boolean = true> {
           | T
           | {
               addAllResources?: T;
+              filterByDocType?: T;
               featCardList?: T;
               id?: T;
               blockName?: T;
@@ -7368,6 +7421,7 @@ export interface PagesSelect<T extends boolean = true> {
           | T
           | {
               addAllResources?: T;
+              filterByDocType?: T;
               featCardList?: T;
               id?: T;
               blockName?: T;
@@ -7375,6 +7429,8 @@ export interface PagesSelect<T extends boolean = true> {
         resourceGallery?:
           | T
           | {
+              addAllResources?: T;
+              filterByDocType?: T;
               galleryList?: T;
               id?: T;
               blockName?: T;
@@ -7858,6 +7914,7 @@ export interface BlogSelect<T extends boolean = true> {
           | T
           | {
               addAllResources?: T;
+              filterByDocType?: T;
               featCardList?: T;
               id?: T;
               blockName?: T;
@@ -7865,6 +7922,8 @@ export interface BlogSelect<T extends boolean = true> {
         resourceGallery?:
           | T
           | {
+              addAllResources?: T;
+              filterByDocType?: T;
               galleryList?: T;
               id?: T;
               blockName?: T;
@@ -8349,6 +8408,7 @@ export interface ReportsSelect<T extends boolean = true> {
           | T
           | {
               addAllResources?: T;
+              filterByDocType?: T;
               featCardList?: T;
               id?: T;
               blockName?: T;
@@ -8356,6 +8416,8 @@ export interface ReportsSelect<T extends boolean = true> {
         resourceGallery?:
           | T
           | {
+              addAllResources?: T;
+              filterByDocType?: T;
               galleryList?: T;
               id?: T;
               blockName?: T;
@@ -8839,6 +8901,7 @@ export interface MmediaSelect<T extends boolean = true> {
           | T
           | {
               addAllResources?: T;
+              filterByDocType?: T;
               featCardList?: T;
               id?: T;
               blockName?: T;
@@ -8846,6 +8909,8 @@ export interface MmediaSelect<T extends boolean = true> {
         resourceGallery?:
           | T
           | {
+              addAllResources?: T;
+              filterByDocType?: T;
               galleryList?: T;
               id?: T;
               blockName?: T;
@@ -10264,6 +10329,10 @@ export interface Homepage {
         | {
             addAllResources?: boolean | null;
             /**
+             * Select a resource type to show all resources tagged with that type from this collection (e.g., if you're on a Blog page and select "Annual Report", only blog posts tagged as Annual Report will appear)
+             */
+            filterByDocType?: (number | null) | Doctype;
+            /**
              * Select the Resource Feature Cards to display. You can reorder or remove cards as needed.
              */
             featCardList?:
@@ -10287,6 +10356,14 @@ export interface Homepage {
             blockType: 'resourceFeatCard';
           }
         | {
+            /**
+             * Automatically include all resources from this collection.
+             */
+            addAllResources?: boolean | null;
+            /**
+             * Select a resource type to show all resources tagged with that type from this collection (e.g., if you're on a Blog page and select "Annual Report", only blog posts tagged as Annual Report will appear)
+             */
+            filterByDocType?: (number | null) | Doctype;
             /**
              * Select the resources to display in the gallery. You can reorder or remove items as needed.
              */
@@ -10979,6 +11056,7 @@ export interface HomepageSelect<T extends boolean = true> {
           | T
           | {
               addAllResources?: T;
+              filterByDocType?: T;
               featCardList?: T;
               id?: T;
               blockName?: T;
@@ -10986,6 +11064,8 @@ export interface HomepageSelect<T extends boolean = true> {
         resourceGallery?:
           | T
           | {
+              addAllResources?: T;
+              filterByDocType?: T;
               galleryList?: T;
               id?: T;
               blockName?: T;

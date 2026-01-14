@@ -291,9 +291,9 @@ export const BlogPage: React.FC<BlogPageProps> = ({ collection, docId, isDraft =
                   </React.Fragment>
                 ))}
                 {heroBlock?.publishDate &&
-                  new Date(heroBlock.publishDate).toLocaleDateString('en-US', {
-                    month: 'short',
+                  new Date(heroBlock.publishDate).toLocaleDateString('en-GB', {
                     day: '2-digit',
+                    month: 'short',
                     year: 'numeric',
                   })}
               </div>
@@ -392,9 +392,9 @@ export const BlogPage: React.FC<BlogPageProps> = ({ collection, docId, isDraft =
 
               // Add publication date as the last tag
               if (blogpost.publishedAt) {
-                const formattedDate = new Date(blogpost.publishedAt).toLocaleDateString('en-US', {
-                  month: 'short',
+                const formattedDate = new Date(blogpost.publishedAt).toLocaleDateString('en-GB', {
                   day: '2-digit',
+                  month: 'short',
                   year: 'numeric',
                 })
                 tags.push({

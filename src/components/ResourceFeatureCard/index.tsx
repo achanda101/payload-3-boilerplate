@@ -27,29 +27,16 @@ interface ResourceFeatureCardProps {
     | null
 }
 
-// Helper function to format date as "MMM DD YYYY"
+// Helper function to format date as "MMM d, YYYY"
 const formatDate = (dateString?: string | null): string | null => {
   if (!dateString) return null
   try {
     const date = new Date(dateString)
-    const months = [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec',
-    ]
-    const month = months[date.getMonth()]
-    const day = date.getDate()
-    const year = date.getFullYear()
-    return `${month} ${day} ${year}`
+    return date.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+    })
   } catch {
     return null
   }
@@ -131,7 +118,7 @@ const CarouselResourceCard: React.FC<{
           {(resourceType || publicationDate) && (
             <div className="flex items-center gap-2 mb-2 lg:mb-4">
               {resourceType && <p className="tag">{resourceType}</p>}
-              {resourceType && publicationDate && <span>•</span>}
+              {resourceType && publicationDate && <span className="text-black">•</span>}
               {publicationDate && <p className="tag">{publicationDate}</p>}
             </div>
           )}
@@ -219,7 +206,7 @@ const SingleResourceCard: React.FC<{
           {(resourceType || publicationDate) && (
             <div className="flex items-center gap-2 mb-2 lg:mb-4">
               {resourceType && <p className="tag">{resourceType}</p>}
-              {resourceType && publicationDate && <span>•</span>}
+              {resourceType && publicationDate && <span className="text-black">•</span>}
               {publicationDate && <p className="tag">{publicationDate}</p>}
             </div>
           )}

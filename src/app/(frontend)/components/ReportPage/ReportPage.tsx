@@ -291,7 +291,8 @@ export const ReportPage: React.FC<ReportPageProps> = ({ collection, docId, isDra
                   </React.Fragment>
                 ))}
                 {heroBlock?.publishDate &&
-                  new Date(heroBlock.publishDate).toLocaleDateString('en-US', {
+                  new Date(heroBlock.publishDate).toLocaleDateString('en-GB', {
+                    day: '2-digit',
                     month: 'short',
                     year: 'numeric',
                   })}
@@ -392,7 +393,8 @@ export const ReportPage: React.FC<ReportPageProps> = ({ collection, docId, isDra
 
               // Add publication date as the last tag
               if (report.pubDate) {
-                const formattedDate = new Date(report.pubDate).toLocaleDateString('en-US', {
+                const formattedDate = new Date(report.pubDate).toLocaleDateString('en-GB', {
+                  day: '2-digit',
                   month: 'short',
                   year: 'numeric',
                 })

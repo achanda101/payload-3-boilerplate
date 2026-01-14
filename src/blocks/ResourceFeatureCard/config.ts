@@ -1,8 +1,8 @@
 import { Block, FieldHook } from 'payload'
 
 const populateAllResources: FieldHook = async ({ data, req, siblingData, operation }) => {
-  // Only populate on read operations and when addAllResources is true
-  if (operation === 'read' && siblingData?.addAllResources === true) {
+  // Only populate on read operations
+  if (operation === 'read') {
     // Get the current document's collection
     const collectionSlug = req?.routeParams?.collection
 
@@ -10,41 +10,90 @@ const populateAllResources: FieldHook = async ({ data, req, siblingData, operati
       return siblingData.featCardList || []
     }
 
-    try {
-      // Determine the publish date field based on collection
-      const publishDateField = collectionSlug === 'blog' ? 'publishedAt' : 'pubDate'
+    // Handle addAllResources checkbox
+    if (siblingData?.addAllResources === true) {
+      try {
+        // Determine the publish date field based on collection
+        const publishDateField = collectionSlug === 'blog' ? 'publishedAt' : 'pubDate'
 
-      // Fetch all documents from the same collection with pageType='individual'
-      // Sorted by publish date in reverse chronological order (newest first)
-      const result = await req.payload.find({
-        collection: collectionSlug as any,
-        where: {
-          and: [
-            {
-              pageType: {
-                equals: 'individual',
+        // Fetch all documents from the same collection with pageType='individual'
+        const result = await req.payload.find({
+          collection: collectionSlug as any,
+          where: {
+            and: [
+              {
+                pageType: {
+                  equals: 'individual',
+                },
               },
-            },
-            {
-              id: {
-                not_equals: data?.id || '',
+              {
+                id: {
+                  not_equals: data?.id || '',
+                },
               },
-            },
-          ],
-        },
-        sort: `-${publishDateField}`, // Negative sign for descending order
-        depth: 1,
-        limit: 100, // Reasonable limit
-      })
+            ],
+          },
+          sort: `-${publishDateField}`,
+          depth: 1,
+          limit: 100,
+        })
 
-      // Transform to relationship format
-      return result.docs.map((doc) => ({
-        relationTo: collectionSlug,
-        value: doc.id,
-      }))
-    } catch (error) {
-      console.error('Error fetching all resources:', error)
-      return siblingData.featCardList || []
+        return result.docs.map((doc) => ({
+          relationTo: collectionSlug,
+          value: doc.id,
+        }))
+      } catch (error) {
+        console.error('Error fetching all resources:', error)
+        return siblingData.featCardList || []
+      }
+    }
+
+    // Handle filterByDocType selection
+    if (siblingData?.filterByDocType) {
+      try {
+        const docTypeId =
+          typeof siblingData.filterByDocType === 'object'
+            ? siblingData.filterByDocType.id
+            : siblingData.filterByDocType
+
+        // Determine the publish date field based on collection
+        const publishDateField = collectionSlug === 'blog' ? 'publishedAt' : 'pubDate'
+
+        // Fetch documents filtered by doc type
+        const result = await req.payload.find({
+          collection: collectionSlug as any,
+          where: {
+            and: [
+              {
+                pageType: {
+                  equals: 'individual',
+                },
+              },
+              {
+                id: {
+                  not_equals: data?.id || '',
+                },
+              },
+              {
+                docType: {
+                  contains: docTypeId,
+                },
+              },
+            ],
+          },
+          sort: `-${publishDateField}`,
+          depth: 1,
+          limit: 100,
+        })
+
+        return result.docs.map((doc) => ({
+          relationTo: collectionSlug,
+          value: doc.id,
+        }))
+      } catch (error) {
+        console.error('Error fetching resources by doc type:', error)
+        return siblingData.featCardList || []
+      }
     }
   }
 
@@ -71,8 +120,33 @@ export const ResourceFeatureCard: Block = {
       hooks: {
         afterChange: [
           ({ value, previousValue, siblingData }) => {
-            // When checkbox is checked, clear the featCardList
+            // When checkbox is checked, clear the featCardList and filterByDocType
             if (value === true && previousValue !== true) {
+              siblingData.featCardList = []
+              siblingData.filterByDocType = null
+            }
+            return value
+          },
+        ],
+      },
+    },
+    {
+      name: 'filterByDocType',
+      type: 'relationship',
+      relationTo: 'doctypes',
+      label: 'Filter by Resource Type',
+      admin: {
+        description: 'Select a resource type to show all resources tagged with that type from this collection (e.g., if you\'re on a Blog page and select "Annual Report", only blog posts tagged as Annual Report will appear)',
+        condition: (_data, siblingData) => {
+          // Hide this field when addAllResources is checked
+          return !siblingData?.addAllResources
+        },
+      },
+      hooks: {
+        afterChange: [
+          ({ value, previousValue, siblingData }) => {
+            // When doc type is selected, clear the featCardList
+            if (value && previousValue !== value) {
               siblingData.featCardList = []
             }
             return value
@@ -122,8 +196,8 @@ export const ResourceFeatureCard: Block = {
         description:
           'Select the Resource Feature Cards to display. You can reorder or remove cards as needed.',
         condition: (_data, siblingData) => {
-          // Hide this field when addAllResources is checked
-          return !siblingData?.addAllResources
+          // Hide this field when addAllResources is checked or filterByDocType is selected
+          return !siblingData?.addAllResources && !siblingData?.filterByDocType
         },
       },
     },

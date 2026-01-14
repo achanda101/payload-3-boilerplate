@@ -91,6 +91,7 @@ export const Report: CollectionConfig<'reports'> = {
             },
           },
         },
+
         {
           type: 'group',
           fields: [
@@ -134,8 +135,8 @@ export const Report: CollectionConfig<'reports'> = {
               required: true,
               admin: {
                 date: {
-                  pickerAppearance: 'monthOnly',
-                  displayFormat: 'MMMM yyyy',
+                  pickerAppearance: 'default',
+                  displayFormat: 'DD MMMM yyyy',
                 },
                 condition: (siblingData) => siblingData?.pageType === 'individual' || false,
               },

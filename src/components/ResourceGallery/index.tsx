@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import type { Blog, Report, Mmedia, MediaCloud, Doctype } from '@/payload-types'
@@ -24,29 +24,16 @@ interface ResourceGalleryProps {
     | null
 }
 
-// Helper function to format date as "MMM DD YYYY"
+// Helper function to format date as "MMM d, YYYY"
 const formatDate = (dateString?: string | null): string | null => {
   if (!dateString) return null
   try {
     const date = new Date(dateString)
-    const months = [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec',
-    ]
-    const month = months[date.getMonth()]
-    const day = date.getDate()
-    const year = date.getFullYear()
-    return `${month} ${day}, ${year}`
+    return date.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+    })
   } catch {
     return null
   }
@@ -122,6 +109,7 @@ const GalleryCard: React.FC<{
       {(resourceType || publicationDate) && (
         <div className="flex items-center gap-2 mb-2">
           {resourceType && <p className="tag uppercase">{resourceType}</p>}
+          {resourceType && publicationDate && <span className="text-black">•</span>}
           {publicationDate && <p className="tag">{publicationDate}</p>}
         </div>
       )}
@@ -165,6 +153,8 @@ const GalleryCard: React.FC<{
 }
 
 export const ResourceGallery: React.FC<ResourceGalleryProps> = ({ galleryList }) => {
+  const [displayCount, setDisplayCount] = useState(6)
+
   // Only render if we have at least one item
   if (!galleryList || galleryList.length === 0) return null
 
@@ -173,16 +163,31 @@ export const ResourceGallery: React.FC<ResourceGalleryProps> = ({ galleryList })
 
   if (populatedItems.length === 0) return null
 
+  // Get items to display based on current count
+  const itemsToDisplay = populatedItems.slice(0, displayCount)
+
   return (
     <div className="page_column_layout gap-6">
       <div className="col-span-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-12">
-        {populatedItems.map((galleryItem, index) => {
+        {itemsToDisplay.map((galleryItem, index) => {
           const item = galleryItem.value as Blog | Report | Mmedia
           const relationTo = galleryItem.relationTo
 
           return <GalleryCard key={index} item={item} relationTo={relationTo} />
         })}
       </div>
+
+      {/* Load More button */}
+      {displayCount < populatedItems.length && (
+        <div className="col-span-full flex justify-center mt-12">
+          <button
+            onClick={() => setDisplayCount((prev) => prev + 6)}
+            className="px-6 py-3 rounded-full border-[1px] border-black bg-transparent text-black font-medium hover:bg-black hover:text-white transition-colors"
+          >
+            Load More
+          </button>
+        </div>
+      )}
     </div>
   )
 }

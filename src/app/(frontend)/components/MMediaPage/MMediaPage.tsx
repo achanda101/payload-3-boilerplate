@@ -291,9 +291,9 @@ export const MMediaPage: React.FC<MMediaPageProps> = ({ collection, docId, isDra
                   </React.Fragment>
                 ))}
                 {heroBlock?.publishDate &&
-                  new Date(heroBlock.publishDate).toLocaleDateString('en-US', {
-                    month: 'short',
+                  new Date(heroBlock.publishDate).toLocaleDateString('en-GB', {
                     day: '2-digit',
+                    month: 'short',
                     year: 'numeric',
                   })}
               </div>
@@ -392,9 +392,9 @@ export const MMediaPage: React.FC<MMediaPageProps> = ({ collection, docId, isDra
 
               // Add publication date as the last tag
               if (mmediapost.publishedAt) {
-                const formattedDate = new Date(mmediapost.publishedAt).toLocaleDateString('en-US', {
-                  month: 'short',
+                const formattedDate = new Date(mmediapost.publishedAt).toLocaleDateString('en-GB', {
                   day: '2-digit',
+                  month: 'short',
                   year: 'numeric',
                 })
                 tags.push({
