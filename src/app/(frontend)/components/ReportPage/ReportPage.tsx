@@ -56,7 +56,7 @@ async function getAllResourceTypesFromCollection(
     const draftParam = isDraft ? '&draft=true' : ''
 
     const response = await fetch(
-      `/api/${collection}?limit=1000&locale=${locale}&depth=2&where[pageType][equals]=individual${draftParam}`,
+      `/api/${collection}?limit=1000&locale=${locale}&depth=2&where[pageType][equals]=individual&sort=-pubDate${draftParam}`,
     )
     const data = await response.json()
 
@@ -98,6 +98,7 @@ export const ReportPage: React.FC<ReportPageProps> = ({ collection, docId, isDra
   const [resourceTypes, setResourceTypes] = useState<DocType[]>([])
   const [allReports, setAllReports] = useState<any[]>([])
   const [selectedResourceType, setSelectedResourceType] = useState<string>('')
+  const [displayCount, setDisplayCount] = useState(6)
 
   const [heroBlock, setHeroBlock] = useState<{
     title?: string | null
@@ -219,24 +220,36 @@ export const ReportPage: React.FC<ReportPageProps> = ({ collection, docId, isDra
     fetchResourceTypes()
   }, [collection, selectedLanguage, heroBlock?.showFilter, isDraft])
 
+  // Reset display count when filter changes
+  useEffect(() => {
+    setDisplayCount(6)
+  }, [selectedResourceType])
+
   // Filter reports based on selected resource type
-  const filteredReports = selectedResourceType
-    ? allReports.filter((report) => {
-        if (report.docType && Array.isArray(report.docType)) {
-          return report.docType.some((type: any) => {
-            // Handle both object format (with depth) and string format (IDs only)
-            if (typeof type === 'object' && type.id) {
-              // Convert both to strings for comparison to handle type mismatch
-              return String(type.id) === String(selectedResourceType)
-            } else if (typeof type === 'string') {
-              return type === selectedResourceType
-            }
-            return false
-          })
-        }
-        return false
-      })
-    : allReports
+  const filteredReports = (
+    selectedResourceType
+      ? allReports.filter((report) => {
+          if (report.docType && Array.isArray(report.docType)) {
+            return report.docType.some((type: any) => {
+              // Handle both object format (with depth) and string format (IDs only)
+              if (typeof type === 'object' && type.id) {
+                // Convert both to strings for comparison to handle type mismatch
+                return String(type.id) === String(selectedResourceType)
+              } else if (typeof type === 'string') {
+                return type === selectedResourceType
+              }
+              return false
+            })
+          }
+          return false
+        })
+      : allReports
+  ).sort((a, b) => {
+    // Sort by pubDate in reverse chronological order (newest first)
+    const dateA = a.pubDate ? new Date(a.pubDate).getTime() : 0
+    const dateB = b.pubDate ? new Date(b.pubDate).getTime() : 0
+    return dateB - dateA
+  })
 
   return (
     <>
@@ -261,7 +274,10 @@ export const ReportPage: React.FC<ReportPageProps> = ({ collection, docId, isDra
           className="mobile-image"
           priority
         />
-        <div className="hero-container" style={{ position: 'relative', left: 'auto', transform: 'none' }}>
+        <div
+          className="hero-container"
+          style={{ position: 'relative', left: 'auto', transform: 'none' }}
+        >
           <div className="hero-content">
             {(heroBlock?.resourceType || heroBlock?.publishDate) && pageType !== 'landing' && (
               <div className="tag">
@@ -343,7 +359,7 @@ export const ReportPage: React.FC<ReportPageProps> = ({ collection, docId, isDra
               gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 320px), 1fr))',
             }}
           >
-            {filteredReports.map((report: any) => {
+            {filteredReports.slice(0, displayCount).map((report: any) => {
               // Construct the link object for the ResourceCard
               const reportLink = {
                 type: 'reference',
@@ -391,6 +407,16 @@ export const ReportPage: React.FC<ReportPageProps> = ({ collection, docId, isDra
               )
             })}
           </div>
+          {displayCount < filteredReports.length && (
+            <div className="flex justify-center mt-12">
+              <button
+                onClick={() => setDisplayCount((prev) => prev + 6)}
+                className="px-6 py-3 rounded-full border-[1px] border-black bg-transparent text-black font-medium hover:bg-black hover:text-white transition-colors"
+              >
+                Load More
+              </button>
+            </div>
+          )}
         </div>
       )}
 

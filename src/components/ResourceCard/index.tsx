@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { UAFButton } from '@/components/UAFButton'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 
@@ -76,18 +77,20 @@ export const ResourceCard: React.FC<ResourceCardProps> = ({
       key={id}
     >
       {image?.url && (
-        <div className="w-full relative mb-4 h-80 overflow-hidden rounded-2xl">
-          <Image
-            src={image.url}
-            alt={image.alt || 'Listing Card Image'}
-            fill
-            sizes="(max-width: 768px) 80vw, (max-width: 1023px) 48vw, 28vw"
-            className="object-cover"
-            style={{
-              objectPosition: `${image.focalX ?? 50}% ${image.focalY ?? 50}%`,
-            }}
-          />
-        </div>
+        <Link href={link?.reference?.value?.slug ? `/${link.reference.relationTo}/${link.reference.value.slug}` : '#'}>
+          <div className="w-full relative mb-4 h-80 overflow-hidden rounded-2xl">
+            <Image
+              src={image.url}
+              alt={image.alt || 'Listing Card Image'}
+              fill
+              sizes="(max-width: 768px) 80vw, (max-width: 1023px) 48vw, 28vw"
+              className="object-cover"
+              style={{
+                objectPosition: `${image.focalX ?? 50}% ${image.focalY ?? 50}%`,
+              }}
+            />
+          </div>
+        </Link>
       )}
       {title && <h5 className="mb-2">{title}</h5>}
       {tags && (
@@ -100,7 +103,7 @@ export const ResourceCard: React.FC<ResourceCardProps> = ({
           ))}
         </div>
       )}
-      {desc && <p className="mb-4">{desc}</p>}
+      {desc && <p className="mb-4 text-color-light">{desc}</p>}
       {link && <UAFButton button={link} />}
     </div>
   )
