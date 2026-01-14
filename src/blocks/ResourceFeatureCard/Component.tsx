@@ -9,7 +9,17 @@ type ResourceFeatureCardBlockProps = Extract<
 >
 
 export const ResourceFeatureCardBlock: React.FC<ResourceFeatureCardBlockProps> = ({
+  title,
+  align,
+  desc,
   featCardList,
 }) => {
-  return <ResourceFeatureCardComponent featCardList={featCardList} />
+  return (
+    <ResourceFeatureCardComponent
+      title={title}
+      align={align}
+      desc={desc}
+      featCardList={featCardList}
+    />
+  )
 }

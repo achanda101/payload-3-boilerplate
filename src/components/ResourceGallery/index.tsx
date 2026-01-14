@@ -3,9 +3,13 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { serializeLexical } from '@/components/RichText/serialize'
 import type { Blog, Report, Mmedia, MediaCloud, Doctype } from '@/payload-types'
 
 interface ResourceGalleryProps {
+  title?: string | null
+  align?: 'left' | 'center' | null
+  desc?: any
   galleryList?:
     | (
         | {
@@ -63,7 +67,8 @@ const GalleryCard: React.FC<{
   const heroSubtitle = item.heroSubtitle
 
   // Get the cover image
-  const image = 'image' in item && typeof item.image === 'object' ? (item.image as MediaCloud) : null
+  const image =
+    'image' in item && typeof item.image === 'object' ? (item.image as MediaCloud) : null
 
   // Get resource type (first docType if available)
   let resourceType: string | null = null
@@ -152,7 +157,12 @@ const GalleryCard: React.FC<{
   )
 }
 
-export const ResourceGallery: React.FC<ResourceGalleryProps> = ({ galleryList }) => {
+export const ResourceGallery: React.FC<ResourceGalleryProps> = ({
+  title,
+  align,
+  desc,
+  galleryList,
+}) => {
   const [displayCount, setDisplayCount] = useState(6)
 
   // Only render if we have at least one item
@@ -166,8 +176,23 @@ export const ResourceGallery: React.FC<ResourceGalleryProps> = ({ galleryList })
   // Get items to display based on current count
   const itemsToDisplay = populatedItems.slice(0, displayCount)
 
+  // Determine alignment class
+  const textAlignClass = align === 'left' ? 'text-left' : 'text-center'
+
   return (
     <div className="page_column_layout gap-6">
+      {/* Header Section - Title and Description */}
+      {(title || desc) && (
+        <div className={`col-span-full ${textAlignClass}`}>
+          {title && <h3>{title}</h3>}
+          {desc && typeof desc === 'object' ? (
+            <div className="mt-1">{serializeLexical({ nodes: desc.root?.children || [] })}</div>
+          ) : (
+            <p className="mt-1">{desc}</p>
+          )}
+        </div>
+      )}
+
       <div className="col-span-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-12">
         {itemsToDisplay.map((galleryItem, index) => {
           const item = galleryItem.value as Blog | Report | Mmedia

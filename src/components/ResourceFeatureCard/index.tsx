@@ -6,9 +6,13 @@ import Link from 'next/link'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from './ResourceCarousel'
 import WheelGestures from 'embla-carousel-wheel-gestures'
+import { serializeLexical } from '@/components/RichText/serialize'
 import type { Blog, Report, Mmedia, MediaCloud, Doctype } from '@/payload-types'
 
 interface ResourceFeatureCardProps {
+  title?: string | null
+  align?: 'left' | 'center' | null
+  desc?: any
   featCardList?:
     | (
         | {
@@ -271,7 +275,12 @@ const SingleResourceCard: React.FC<{
   )
 }
 
-export const ResourceFeatureCard: React.FC<ResourceFeatureCardProps> = ({ featCardList }) => {
+export const ResourceFeatureCard: React.FC<ResourceFeatureCardProps> = ({
+  title,
+  align,
+  desc,
+  featCardList,
+}) => {
   const [api, setApi] = useState<CarouselApi>()
   const [canScrollPrev, setCanScrollPrev] = useState(false)
   const [canScrollNext, setCanScrollNext] = useState(false)
@@ -307,18 +316,47 @@ export const ResourceFeatureCard: React.FC<ResourceFeatureCardProps> = ({ featCa
 
   if (populatedItems.length === 0) return null
 
+  // Determine alignment class
+  const textAlignClass = align === 'left' ? 'text-left' : 'text-center'
+
   // If there's only one item, render the single card layout
   if (populatedItems.length === 1) {
     const firstItem = populatedItems[0]
     const item = firstItem.value as Blog | Report | Mmedia
     const relationTo = firstItem.relationTo
 
-    return <SingleResourceCard item={item} relationTo={relationTo} />
+    return (
+      <div className="page_column_layout gap-6">
+        {/* Header Section - Title and Description */}
+        {(title || desc) && (
+          <div className={`col-span-full ${textAlignClass}`}>
+            {title && <h3>{title}</h3>}
+            {desc && typeof desc === 'object' ? (
+              <div className="mt-1">{serializeLexical({ nodes: desc.root?.children || [] })}</div>
+            ) : (
+              <p className="mt-1">{desc}</p>
+            )}
+          </div>
+        )}
+        <SingleResourceCard item={item} relationTo={relationTo} />
+      </div>
+    )
   }
 
   // Multiple items - render carousel
   return (
     <div className="page_column_layout gap-6">
+      {/* Header Section - Title and Description */}
+      {(title || desc) && (
+        <div className={`col-span-full ${textAlignClass}`}>
+          {title && <h3>{title}</h3>}
+          {desc && typeof desc === 'object' ? (
+            <div className="mt-1">{serializeLexical({ nodes: desc.root?.children || [] })}</div>
+          ) : (
+            <p className="mt-1">{desc}</p>
+          )}
+        </div>
+      )}
       <div className="col-span-full relative">
         <Carousel
           setApi={setApi}
@@ -365,7 +403,6 @@ export const ResourceFeatureCard: React.FC<ResourceFeatureCardProps> = ({ featCa
           )}
         </Carousel>
       </div>
-
       {/* Navigation Controls - Bottom row */}
       <div className="col-span-full grid grid-cols-3 items-center gap-4 mt-4 lg:flex lg:justify-center">
         {/* Mobile/Tablet Previous Link */}

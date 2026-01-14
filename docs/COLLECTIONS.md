@@ -174,7 +174,6 @@ Blog posts and articles with rich content.
   - Hero content
   - Featured image
 - **Content Blocks** - Flexible block-based layout
-- **Author** - User reference
 - **Published Date**
 - **SEO Fields**
 
@@ -182,7 +181,6 @@ Blog posts and articles with rich content.
 - ✅ Live preview
 - ✅ Draft/Published status
 - ✅ Multi-language support
-- ✅ Author attribution
 - ✅ Folder organization
 - ✅ Trash (soft delete)
 
@@ -388,7 +386,6 @@ Document library with categorization.
 - **File** - Document file upload
 - **Description** - Document summary
 - **Publication Date**
-- **Author/Source**
 
 #### Features
 - ✅ S3 storage integration
@@ -436,7 +433,6 @@ User management and authentication.
 #### Purpose
 - Admin users
 - Content editors
-- Authors
 - Authentication
 
 #### Key Fields
@@ -446,7 +442,6 @@ User management and authentication.
 - **Role** - User permissions
   - Admin
   - Editor
-  - Author
 - **Avatar** - Profile image
 
 #### Features
@@ -724,7 +719,7 @@ Grants
 └─ Used by: GrantCardGridBlock, Navigation
 
 Blog
-├─ References: Users (authors), MediaCloud
+├─ References: Users, MediaCloud
 └─ Used by: Blog listing pages
 
 Reports
@@ -749,7 +744,7 @@ DocTypes
 └─ Referenced by: Documents, Reports
 
 Users
-└─ Referenced by: Blog (authors)
+└─ Referenced by: Blog
 ```
 
 ## Related Documentation

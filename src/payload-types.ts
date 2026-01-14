@@ -1225,13 +1225,30 @@ export interface Grant {
             blockType: 'fundingMap';
           }
         | {
+            title?: string | null;
+            align?: ('left' | 'center') | null;
+            desc?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
             addAllResources?: boolean | null;
             /**
              * Select a resource type to show all resources tagged with that type from this collection (e.g., if you're on a Blog page and select "Annual Report", only blog posts tagged as Annual Report will appear)
              */
             filterByDocType?: (number | null) | Doctype;
             /**
-             * Select the Resource Feature Cards to display. You can reorder or remove cards as needed.
+             * Select the Resource Cards to display. You can reorder or remove cards as needed.
              */
             featCardList?:
               | (
@@ -2426,13 +2443,30 @@ export interface Page {
             blockType: 'fundingMap';
           }
         | {
+            title?: string | null;
+            align?: ('left' | 'center') | null;
+            desc?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
             addAllResources?: boolean | null;
             /**
              * Select a resource type to show all resources tagged with that type from this collection (e.g., if you're on a Blog page and select "Annual Report", only blog posts tagged as Annual Report will appear)
              */
             filterByDocType?: (number | null) | Doctype;
             /**
-             * Select the Resource Feature Cards to display. You can reorder or remove cards as needed.
+             * Select the Resource Cards to display. You can reorder or remove cards as needed.
              */
             featCardList?:
               | (
@@ -2455,6 +2489,23 @@ export interface Page {
             blockType: 'resourceFeatCard';
           }
         | {
+            title?: string | null;
+            align?: ('left' | 'center') | null;
+            desc?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
             /**
              * Automatically include all resources from this collection.
              */
@@ -3441,13 +3492,30 @@ export interface Blog {
             blockType: 'fundingMap';
           }
         | {
+            title?: string | null;
+            align?: ('left' | 'center') | null;
+            desc?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
             addAllResources?: boolean | null;
             /**
              * Select a resource type to show all resources tagged with that type from this collection (e.g., if you're on a Blog page and select "Annual Report", only blog posts tagged as Annual Report will appear)
              */
             filterByDocType?: (number | null) | Doctype;
             /**
-             * Select the Resource Feature Cards to display. You can reorder or remove cards as needed.
+             * Select the Resource Cards to display. You can reorder or remove cards as needed.
              */
             featCardList?:
               | (
@@ -3470,6 +3538,23 @@ export interface Blog {
             blockType: 'resourceFeatCard';
           }
         | {
+            title?: string | null;
+            align?: ('left' | 'center') | null;
+            desc?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
             /**
              * Automatically include all resources from this collection.
              */
@@ -4509,13 +4594,30 @@ export interface Report {
             blockType: 'fundingMap';
           }
         | {
+            title?: string | null;
+            align?: ('left' | 'center') | null;
+            desc?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
             addAllResources?: boolean | null;
             /**
              * Select a resource type to show all resources tagged with that type from this collection (e.g., if you're on a Blog page and select "Annual Report", only blog posts tagged as Annual Report will appear)
              */
             filterByDocType?: (number | null) | Doctype;
             /**
-             * Select the Resource Feature Cards to display. You can reorder or remove cards as needed.
+             * Select the Resource Cards to display. You can reorder or remove cards as needed.
              */
             featCardList?:
               | (
@@ -4538,6 +4640,23 @@ export interface Report {
             blockType: 'resourceFeatCard';
           }
         | {
+            title?: string | null;
+            align?: ('left' | 'center') | null;
+            desc?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
             /**
              * Automatically include all resources from this collection.
              */
@@ -5596,13 +5715,30 @@ export interface Mmedia {
             blockType: 'fundingMap';
           }
         | {
+            title?: string | null;
+            align?: ('left' | 'center') | null;
+            desc?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
             addAllResources?: boolean | null;
             /**
              * Select a resource type to show all resources tagged with that type from this collection (e.g., if you're on a Blog page and select "Annual Report", only blog posts tagged as Annual Report will appear)
              */
             filterByDocType?: (number | null) | Doctype;
             /**
-             * Select the Resource Feature Cards to display. You can reorder or remove cards as needed.
+             * Select the Resource Cards to display. You can reorder or remove cards as needed.
              */
             featCardList?:
               | (
@@ -5625,6 +5761,23 @@ export interface Mmedia {
             blockType: 'resourceFeatCard';
           }
         | {
+            title?: string | null;
+            align?: ('left' | 'center') | null;
+            desc?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
             /**
              * Automatically include all resources from this collection.
              */
@@ -6791,6 +6944,9 @@ export interface GrantsSelect<T extends boolean = true> {
         resourceFeatCard?:
           | T
           | {
+              title?: T;
+              align?: T;
+              desc?: T;
               addAllResources?: T;
               filterByDocType?: T;
               featCardList?: T;
@@ -7420,6 +7576,9 @@ export interface PagesSelect<T extends boolean = true> {
         resourceFeatCard?:
           | T
           | {
+              title?: T;
+              align?: T;
+              desc?: T;
               addAllResources?: T;
               filterByDocType?: T;
               featCardList?: T;
@@ -7429,6 +7588,9 @@ export interface PagesSelect<T extends boolean = true> {
         resourceGallery?:
           | T
           | {
+              title?: T;
+              align?: T;
+              desc?: T;
               addAllResources?: T;
               filterByDocType?: T;
               galleryList?: T;
@@ -7913,6 +8075,9 @@ export interface BlogSelect<T extends boolean = true> {
         resourceFeatCard?:
           | T
           | {
+              title?: T;
+              align?: T;
+              desc?: T;
               addAllResources?: T;
               filterByDocType?: T;
               featCardList?: T;
@@ -7922,6 +8087,9 @@ export interface BlogSelect<T extends boolean = true> {
         resourceGallery?:
           | T
           | {
+              title?: T;
+              align?: T;
+              desc?: T;
               addAllResources?: T;
               filterByDocType?: T;
               galleryList?: T;
@@ -8407,6 +8575,9 @@ export interface ReportsSelect<T extends boolean = true> {
         resourceFeatCard?:
           | T
           | {
+              title?: T;
+              align?: T;
+              desc?: T;
               addAllResources?: T;
               filterByDocType?: T;
               featCardList?: T;
@@ -8416,6 +8587,9 @@ export interface ReportsSelect<T extends boolean = true> {
         resourceGallery?:
           | T
           | {
+              title?: T;
+              align?: T;
+              desc?: T;
               addAllResources?: T;
               filterByDocType?: T;
               galleryList?: T;
@@ -8900,6 +9074,9 @@ export interface MmediaSelect<T extends boolean = true> {
         resourceFeatCard?:
           | T
           | {
+              title?: T;
+              align?: T;
+              desc?: T;
               addAllResources?: T;
               filterByDocType?: T;
               featCardList?: T;
@@ -8909,6 +9086,9 @@ export interface MmediaSelect<T extends boolean = true> {
         resourceGallery?:
           | T
           | {
+              title?: T;
+              align?: T;
+              desc?: T;
               addAllResources?: T;
               filterByDocType?: T;
               galleryList?: T;
@@ -10327,13 +10507,30 @@ export interface Homepage {
             blockType: 'fundingMap';
           }
         | {
+            title?: string | null;
+            align?: ('left' | 'center') | null;
+            desc?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
             addAllResources?: boolean | null;
             /**
              * Select a resource type to show all resources tagged with that type from this collection (e.g., if you're on a Blog page and select "Annual Report", only blog posts tagged as Annual Report will appear)
              */
             filterByDocType?: (number | null) | Doctype;
             /**
-             * Select the Resource Feature Cards to display. You can reorder or remove cards as needed.
+             * Select the Resource Cards to display. You can reorder or remove cards as needed.
              */
             featCardList?:
               | (
@@ -10356,6 +10553,23 @@ export interface Homepage {
             blockType: 'resourceFeatCard';
           }
         | {
+            title?: string | null;
+            align?: ('left' | 'center') | null;
+            desc?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
             /**
              * Automatically include all resources from this collection.
              */
@@ -11055,6 +11269,9 @@ export interface HomepageSelect<T extends boolean = true> {
         resourceFeatCard?:
           | T
           | {
+              title?: T;
+              align?: T;
+              desc?: T;
               addAllResources?: T;
               filterByDocType?: T;
               featCardList?: T;
@@ -11064,6 +11281,9 @@ export interface HomepageSelect<T extends boolean = true> {
         resourceGallery?:
           | T
           | {
+              title?: T;
+              align?: T;
+              desc?: T;
               addAllResources?: T;
               filterByDocType?: T;
               galleryList?: T;

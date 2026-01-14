@@ -1,4 +1,12 @@
 import { Block, FieldHook } from 'payload'
+import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import {
+  BoldFeature,
+  UnderlineFeature,
+  ItalicFeature,
+  LinkFeature,
+  InlineToolbarFeature,
+} from '@payloadcms/richtext-lexical'
 
 const populateAllResources: FieldHook = async ({ data, req, siblingData, operation }) => {
   // Only populate on read operations
@@ -109,6 +117,63 @@ export const ResourceGallery: Block = {
   imageURL: '/block_icons/resource-gallery-block-icon.png',
   fields: [
     {
+      type: 'row',
+      fields: [
+        {
+          type: 'group',
+          fields: [
+            {
+              name: 'title',
+              type: 'text',
+              localized: true,
+            },
+            {
+              name: 'align',
+              label: 'Select alignment of title and description',
+              type: 'radio',
+              options: [
+                { label: 'Left Align', value: 'left' },
+                { label: 'Center Align', value: 'center' },
+              ],
+              defaultValue: 'center',
+              admin: {
+                layout: 'horizontal',
+              },
+            },
+          ],
+          admin: {
+            width: '50%',
+          },
+        },
+        {
+          name: 'desc',
+          label: 'Description',
+          type: 'richText',
+          editor: lexicalEditor({
+            features: [
+              BoldFeature(),
+              UnderlineFeature(),
+              ItalicFeature(),
+              LinkFeature({
+                enabledCollections: ['grants', 'pages', 'reports', 'blog'],
+              }),
+              InlineToolbarFeature(),
+            ],
+            admin: {
+              placeholder: 'Start typing your content here ...',
+            },
+          }),
+          localized: true,
+          admin: {
+            width: '50%',
+          },
+        },
+      ],
+      admin: {
+        style: { backgroundColor: '#f9f9f9', marginBottom: '5px', border: '1px #ccc' },
+      },
+    },
+    {
       name: 'addAllResources',
       type: 'checkbox',
       label: 'Add All Resources?',
@@ -134,7 +199,8 @@ export const ResourceGallery: Block = {
       relationTo: 'doctypes',
       label: 'Filter by Resource Type',
       admin: {
-        description: 'Select a resource type to show all resources tagged with that type from this collection (e.g., if you\'re on a Blog page and select "Annual Report", only blog posts tagged as Annual Report will appear)',
+        description:
+          'Select a resource type to show all resources tagged with that type from this collection (e.g., if you\'re on a Blog page and select "Annual Report", only blog posts tagged as Annual Report will appear)',
         condition: (_data, siblingData) => {
           // Hide this field when addAllResources is checked
           return !siblingData?.addAllResources
@@ -154,6 +220,7 @@ export const ResourceGallery: Block = {
     },
     {
       name: 'galleryList',
+      label: 'Resource Card List',
       type: 'relationship',
       relationTo: ['blog', 'reports', 'mmedia'],
       hasMany: true,
@@ -191,6 +258,7 @@ export const ResourceGallery: Block = {
         afterRead: [populateAllResources],
       },
       admin: {
+        placeholder: 'Select a resource',
         description:
           'Select the resources to display in the gallery. You can reorder or remove items as needed.',
         condition: (_data, siblingData) => {

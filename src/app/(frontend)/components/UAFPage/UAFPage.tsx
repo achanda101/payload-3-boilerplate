@@ -442,7 +442,12 @@ export const UAFPage: React.FC<UAFPageProps> = ({ collection, docId, isDraft = f
               if (block.blockType === 'resourceFeatCard') {
                 return (
                   <React.Fragment key={index}>
-                    <ResourceFeatureCard featCardList={block.featCardList} />
+                    <ResourceFeatureCard
+                      title={block.title}
+                      align={block.align}
+                      desc={block.desc}
+                      featCardList={block.featCardList}
+                    />
                     {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
                       <div className="page_column_layout gap-6">
                         <ColumnIndicators />
@@ -454,7 +459,12 @@ export const UAFPage: React.FC<UAFPageProps> = ({ collection, docId, isDraft = f
               if (block.blockType === 'resourceGallery') {
                 return (
                   <React.Fragment key={index}>
-                    <ResourceGallery galleryList={block.galleryList} />
+                    <ResourceGallery
+                      title={block.title}
+                      align={block.align}
+                      desc={block.desc}
+                      galleryList={block.galleryList}
+                    />
                     {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
                       <div className="page_column_layout gap-6">
                         <ColumnIndicators />
