@@ -36,6 +36,7 @@ import { ResourceFeatureCard } from '@/blocks/ResourceFeatureCard/config'
 import { ResourceGallery } from '@/blocks/ResourceGallery/config'
 import { PillarCard } from '@/blocks/PillarCard/config'
 import { TestimonialCardDeck } from '@/blocks/TestimonialCardDeck/config'
+import { MinimalCardGallery } from '@/blocks/MinimalCardGallery/config'
 
 export const Blog: CollectionConfig<'blog'> = {
   slug: 'blog',
@@ -250,6 +251,7 @@ export const Blog: CollectionConfig<'blog'> = {
         ResourceGallery,
         PillarCard,
         TestimonialCardDeck,
+        MinimalCardGallery,
       ],
       labels: {
         singular: 'A Content Block',

@@ -1371,6 +1371,30 @@ export interface Grant {
             blockName?: string | null;
             blockType: 'testimonialDeck';
           }
+        | {
+            header?: {
+              title?: string | null;
+              subtitle?: string | null;
+              align?: ('left' | 'center') | null;
+            };
+            cards?:
+              | {
+                  /**
+                   * Mascot image (displayed at 60px height)
+                   */
+                  mascot?: (number | null) | AssetCloud;
+                  title: string;
+                  /**
+                   * Max 200 characters
+                   */
+                  description?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'minCardGallery';
+          }
       )[]
     | null;
   meta?: {
@@ -2690,6 +2714,30 @@ export interface Page {
             blockName?: string | null;
             blockType: 'testimonialDeck';
           }
+        | {
+            header?: {
+              title?: string | null;
+              subtitle?: string | null;
+              align?: ('left' | 'center') | null;
+            };
+            cards?:
+              | {
+                  /**
+                   * Mascot image (displayed at 60px height)
+                   */
+                  mascot?: (number | null) | AssetCloud;
+                  title: string;
+                  /**
+                   * Max 200 characters
+                   */
+                  description?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'minCardGallery';
+          }
       )[]
     | null;
   meta?: {
@@ -3790,6 +3838,30 @@ export interface Blog {
             id?: string | null;
             blockName?: string | null;
             blockType: 'testimonialDeck';
+          }
+        | {
+            header?: {
+              title?: string | null;
+              subtitle?: string | null;
+              align?: ('left' | 'center') | null;
+            };
+            cards?:
+              | {
+                  /**
+                   * Mascot image (displayed at 60px height)
+                   */
+                  mascot?: (number | null) | AssetCloud;
+                  title: string;
+                  /**
+                   * Max 200 characters
+                   */
+                  description?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'minCardGallery';
           }
       )[]
     | null;
@@ -4944,6 +5016,30 @@ export interface Report {
             id?: string | null;
             blockName?: string | null;
             blockType: 'testimonialDeck';
+          }
+        | {
+            header?: {
+              title?: string | null;
+              subtitle?: string | null;
+              align?: ('left' | 'center') | null;
+            };
+            cards?:
+              | {
+                  /**
+                   * Mascot image (displayed at 60px height)
+                   */
+                  mascot?: (number | null) | AssetCloud;
+                  title: string;
+                  /**
+                   * Max 200 characters
+                   */
+                  description?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'minCardGallery';
           }
       )[]
     | null;
@@ -6117,6 +6213,30 @@ export interface Mmedia {
             id?: string | null;
             blockName?: string | null;
             blockType: 'testimonialDeck';
+          }
+        | {
+            header?: {
+              title?: string | null;
+              subtitle?: string | null;
+              align?: ('left' | 'center') | null;
+            };
+            cards?:
+              | {
+                  /**
+                   * Mascot image (displayed at 60px height)
+                   */
+                  mascot?: (number | null) | AssetCloud;
+                  title: string;
+                  /**
+                   * Max 200 characters
+                   */
+                  description?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'minCardGallery';
           }
       )[]
     | null;
@@ -7305,6 +7425,27 @@ export interface GrantsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        minCardGallery?:
+          | T
+          | {
+              header?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    align?: T;
+                  };
+              cards?:
+                | T
+                | {
+                    mascot?: T;
+                    title?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -7980,6 +8121,27 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        minCardGallery?:
+          | T
+          | {
+              header?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    align?: T;
+                  };
+              cards?:
+                | T
+                | {
+                    mascot?: T;
+                    title?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -8505,6 +8667,27 @@ export interface BlogSelect<T extends boolean = true> {
                     quote_text?: T;
                     attrib_name?: T;
                     attrib_dsg?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        minCardGallery?:
+          | T
+          | {
+              header?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    align?: T;
+                  };
+              cards?:
+                | T
+                | {
+                    mascot?: T;
+                    title?: T;
+                    description?: T;
                     id?: T;
                   };
               id?: T;
@@ -9041,6 +9224,27 @@ export interface ReportsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        minCardGallery?:
+          | T
+          | {
+              header?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    align?: T;
+                  };
+              cards?:
+                | T
+                | {
+                    mascot?: T;
+                    title?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -9566,6 +9770,27 @@ export interface MmediaSelect<T extends boolean = true> {
                     quote_text?: T;
                     attrib_name?: T;
                     attrib_dsg?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        minCardGallery?:
+          | T
+          | {
+              header?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    align?: T;
+                  };
+              cards?:
+                | T
+                | {
+                    mascot?: T;
+                    title?: T;
+                    description?: T;
                     id?: T;
                   };
               id?: T;
@@ -11129,6 +11354,30 @@ export interface Homepage {
             blockName?: string | null;
             blockType: 'testimonialDeck';
           }
+        | {
+            header?: {
+              title?: string | null;
+              subtitle?: string | null;
+              align?: ('left' | 'center') | null;
+            };
+            cards?:
+              | {
+                  /**
+                   * Mascot image (displayed at 60px height)
+                   */
+                  mascot?: (number | null) | AssetCloud;
+                  title: string;
+                  /**
+                   * Max 200 characters
+                   */
+                  description?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'minCardGallery';
+          }
       )[]
     | null;
   meta?: {
@@ -11844,6 +12093,27 @@ export interface HomepageSelect<T extends boolean = true> {
                     quote_text?: T;
                     attrib_name?: T;
                     attrib_dsg?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        minCardGallery?:
+          | T
+          | {
+              header?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    align?: T;
+                  };
+              cards?:
+                | T
+                | {
+                    mascot?: T;
+                    title?: T;
+                    description?: T;
                     id?: T;
                   };
               id?: T;

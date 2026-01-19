@@ -24,6 +24,7 @@ import { ResourceFeatureCard } from '@/components/ResourceFeatureCard'
 import { PillarCard } from '@/components/PillarCard'
 import { ResourceGallery } from '@/components/ResourceGallery'
 import { TestimonialCardDeck } from '@/components/TestimonialCardDeck'
+import { MinimalCardGallery } from '@/components/MinimalCardGallery'
 import { serializeLexical } from '@/components/RichText/serializeRichText'
 
 interface AssetCloud {
@@ -499,6 +500,23 @@ export const UAFPage: React.FC<UAFPageProps> = ({ collection, docId, isDraft = f
                   <React.Fragment key={index}>
                     <div className="page_column_layout gap-6">
                       <TestimonialCardDeck title={block.title} cards={block.cards} />
+                    </div>
+                    {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                      <div className="page_column_layout gap-6">
+                        <ColumnIndicators />
+                      </div>
+                    )}
+                  </React.Fragment>
+                )
+              }
+              if (block.blockType === 'minCardGallery') {
+                return (
+                  <React.Fragment key={index}>
+                    <div className="page_column_layout gap-6">
+                      <MinimalCardGallery
+                        header={block.header}
+                        cards={block.cards}
+                      />
                     </div>
                     {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
                       <div className="page_column_layout gap-6">
