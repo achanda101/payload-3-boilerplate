@@ -40,15 +40,15 @@ export const TestimonialCardDeck: React.FC<TestimonialCardDeckProps> = ({ title,
     })
   }
 
-  // Calculate card width: 4 columns on desktop/tablet, full span on mobile
-  // Desktop: 12 columns total → 4 columns = 33.33%
-  // Tablet: 8 columns total → 4 columns = 50%
-  // Mobile: 6 columns total → full span = 100%
-  let currentCardWidth = 100 // mobile default (full span)
+  // Calculate card width based on grid layout
+  // Desktop: 12 columns total → card spans 4 columns = 33.33%
+  // Tablet: 8 columns total → card spans 4 columns = 50%
+  // Mobile: 6 columns total → card spans 6 columns = 85% (accounting for side gaps)
+  let currentCardWidth = 85 // mobile: 6/6 columns with side gaps
   if (isDesktop) {
-    currentCardWidth = 33.33 // 4 out of 12 columns
+    currentCardWidth = 33.33 // desktop: 4/12 columns
   } else if (isTablet) {
-    currentCardWidth = 50 // 4 out of 8 columns
+    currentCardWidth = 50 // tablet: 4/8 columns
   }
 
   useEffect(() => {
