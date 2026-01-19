@@ -326,20 +326,22 @@ export const ResourceFeatureCard: React.FC<ResourceFeatureCardProps> = ({
     const relationTo = firstItem.relationTo
 
     return (
-      <div className="page_column_layout gap-6">
-        {/* Header Section - Title and Description */}
-        {(title || desc) && (
-          <div className={`col-span-full ${textAlignClass}`}>
-            {title && <h3>{title}</h3>}
-            {desc && typeof desc === 'object' ? (
-              <div className="mt-1">{serializeLexical({ nodes: desc.root?.children || [] })}</div>
-            ) : (
-              <p className="mt-1">{desc}</p>
-            )}
-          </div>
-        )}
+      <>
+        <div className="page_column_layout gap-6">
+          {/* Header Section - Title and Description */}
+          {(title || desc) && (
+            <div className={`col-span-full ${textAlignClass}`}>
+              {title && <h3>{title}</h3>}
+              {desc && typeof desc === 'object' ? (
+                <div className="mt-1">{serializeLexical({ nodes: desc.root?.children || [] })}</div>
+              ) : (
+                <p className="mt-1">{desc}</p>
+              )}
+            </div>
+          )}
+        </div>
         <SingleResourceCard item={item} relationTo={relationTo} />
-      </div>
+      </>
     )
   }
 

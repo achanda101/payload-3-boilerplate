@@ -10,6 +10,7 @@ import * as migration_20260114_083632_localizecaptions from './20260114_083632_l
 import * as migration_20260114_104835_populateresourcefeatcardandgallery from './20260114_104835_populateresourcefeatcardandgallery';
 import * as migration_20260114_122158_titledescresourcecards from './20260114_122158_titledescresourcecards';
 import * as migration_20260119_081859_pillarcards from './20260119_081859_pillarcards';
+import * as migration_20260119_083252_pillarcards2 from './20260119_083252_pillarcards2';
 
 export const migrations = [
   {
@@ -70,6 +71,11 @@ export const migrations = [
   {
     up: migration_20260119_081859_pillarcards.up,
     down: migration_20260119_081859_pillarcards.down,
-    name: '20260119_081859_pillarcards'
+    name: '20260119_081859_pillarcards',
+  },
+  {
+    up: migration_20260119_083252_pillarcards2.up,
+    down: migration_20260119_083252_pillarcards2.down,
+    name: '20260119_083252_pillarcards2'
   },
 ];

@@ -21,6 +21,7 @@ import { PinkPuffyCallOut } from '@/components/PinkPuffyCallOut'
 import { BeigePuffyCallOut } from '@/components/BeigePuffyCallOut'
 import { FundingMap } from '@/components/FundingMap'
 import { ResourceFeatureCard } from '@/components/ResourceFeatureCard'
+import { PillarCard } from '@/components/PillarCard'
 import { ResourceGallery } from '@/components/ResourceGallery'
 import { serializeLexical } from '@/components/RichText/serializeRichText'
 
@@ -465,6 +466,25 @@ export const UAFPage: React.FC<UAFPageProps> = ({ collection, docId, isDraft = f
                       desc={block.desc}
                       galleryList={block.galleryList}
                     />
+                    {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                      <div className="page_column_layout gap-6">
+                        <ColumnIndicators />
+                      </div>
+                    )}
+                  </React.Fragment>
+                )
+              }
+              if (block.blockType === 'pillarCard') {
+                return (
+                  <React.Fragment key={index}>
+                    <div className="page_column_layout gap-6">
+                      <PillarCard
+                        title={block.title}
+                        subtitle={block.subtitle}
+                        align={block.align}
+                        cards={block.cards}
+                      />
+                    </div>
                     {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
                       <div className="page_column_layout gap-6">
                         <ColumnIndicators />
