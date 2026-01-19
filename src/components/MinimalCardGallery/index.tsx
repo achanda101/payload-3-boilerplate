@@ -50,7 +50,7 @@ export const MinimalCardGallery: React.FC<MinimalCardGalleryProps> = ({ header, 
                       (card.mascot.width || 60) * (60 / (card.mascot.height || 60)),
                     )}
                     height={60}
-                    className="object-contain h-[60px] w-auto"
+                    className="object-contain max-h-[60px] w-auto h-auto"
                   />
                 </div>
               )}
