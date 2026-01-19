@@ -4842,6 +4842,41 @@ export interface Report {
             blockName?: string | null;
             blockType: 'resourceGallery';
           }
+        | {
+            title?: string | null;
+            align?: ('left' | 'center') | null;
+            subtitle?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            /**
+             * Add 2-4 pillar cards
+             */
+            cards?:
+              | {
+                  title: string;
+                  /**
+                   * Mascot image for this pillar card
+                   */
+                  mascot?: (number | null) | AssetCloud;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'pillarCard';
+          }
       )[]
     | null;
   meta?: {
@@ -5962,6 +5997,41 @@ export interface Mmedia {
             id?: string | null;
             blockName?: string | null;
             blockType: 'resourceGallery';
+          }
+        | {
+            title?: string | null;
+            align?: ('left' | 'center') | null;
+            subtitle?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            /**
+             * Add 2-4 pillar cards
+             */
+            cards?:
+              | {
+                  title: string;
+                  /**
+                   * Mascot image for this pillar card
+                   */
+                  mascot?: (number | null) | AssetCloud;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'pillarCard';
           }
       )[]
     | null;
@@ -8810,6 +8880,22 @@ export interface ReportsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        pillarCard?:
+          | T
+          | {
+              title?: T;
+              align?: T;
+              subtitle?: T;
+              cards?:
+                | T
+                | {
+                    title?: T;
+                    mascot?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -9306,6 +9392,22 @@ export interface MmediaSelect<T extends boolean = true> {
               addAllResources?: T;
               filterByDocType?: T;
               galleryList?: T;
+              id?: T;
+              blockName?: T;
+            };
+        pillarCard?:
+          | T
+          | {
+              title?: T;
+              align?: T;
+              subtitle?: T;
+              cards?:
+                | T
+                | {
+                    title?: T;
+                    mascot?: T;
+                    id?: T;
+                  };
               id?: T;
               blockName?: T;
             };

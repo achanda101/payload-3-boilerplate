@@ -23,6 +23,7 @@ import { BeigePuffyCallOut } from '@/components/BeigePuffyCallOut'
 import { FundingMap } from '@/components/FundingMap'
 import { ResourceFeatureCard } from '@/components/ResourceFeatureCard'
 import { ResourceGallery } from '@/components/ResourceGallery'
+import { PillarCard } from '@/components/PillarCard'
 import { serializeLexical } from '@/components/RichText/serializeRichText'
 import { ResourceCard } from '@/components/ResourceCard'
 
@@ -709,6 +710,25 @@ export const BlogPage: React.FC<BlogPageProps> = ({ collection, docId, isDraft =
                       desc={block.desc}
                       galleryList={block.galleryList}
                     />
+                    {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                      <div className="page_column_layout gap-6">
+                        <ColumnIndicators />
+                      </div>
+                    )}
+                  </React.Fragment>
+                )
+              }
+              if (block.blockType === 'pillarCard') {
+                return (
+                  <React.Fragment key={index}>
+                    <div className="page_column_layout gap-6">
+                      <PillarCard
+                        title={block.title}
+                        subtitle={block.subtitle}
+                        align={block.align}
+                        cards={block.cards}
+                      />
+                    </div>
                     {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
                       <div className="page_column_layout gap-6">
                         <ColumnIndicators />
