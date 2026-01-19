@@ -33,6 +33,8 @@ import { PinkPuffyCallOut } from '@/blocks/PinkPuffyCallOut/config'
 import { BeigePuffyCallOut } from '@/blocks/BeigePuffyCallOut/config'
 import { FundingMap } from '@/blocks/FundingMap/config'
 import { ResourceFeatureCard } from '@/blocks/ResourceFeatureCard/config'
+import { ResourceGallery } from '@/blocks/ResourceGallery/config'
+import { PillarCard } from '@/blocks/PillarCard/config'
 
 export const Grants: CollectionConfig<'grants'> = {
   slug: 'grants',
@@ -256,6 +258,8 @@ export const Grants: CollectionConfig<'grants'> = {
         BeigePuffyCallOut,
         FundingMap,
         ResourceFeatureCard,
+        ResourceGallery,
+        PillarCard,
       ],
       labels: {
         singular: 'A Content Block',

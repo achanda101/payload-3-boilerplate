@@ -1270,6 +1270,90 @@ export interface Grant {
             blockName?: string | null;
             blockType: 'resourceFeatCard';
           }
+        | {
+            title?: string | null;
+            align?: ('left' | 'center') | null;
+            desc?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            /**
+             * Automatically include all resources from this collection.
+             */
+            addAllResources?: boolean | null;
+            /**
+             * Select a resource type to show all resources tagged with that type from this collection (e.g., if you're on a Blog page and select "Annual Report", only blog posts tagged as Annual Report will appear)
+             */
+            filterByDocType?: (number | null) | Doctype;
+            /**
+             * Select the resources to display in the gallery. You can reorder or remove items as needed.
+             */
+            galleryList?:
+              | (
+                  | {
+                      relationTo: 'blog';
+                      value: number | Blog;
+                    }
+                  | {
+                      relationTo: 'reports';
+                      value: number | Report;
+                    }
+                  | {
+                      relationTo: 'mmedia';
+                      value: number | Mmedia;
+                    }
+                )[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'resourceGallery';
+          }
+        | {
+            title?: string | null;
+            align?: ('left' | 'center') | null;
+            subtitle?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            /**
+             * Add 2-4 pillar cards
+             */
+            cards?:
+              | {
+                  title: string;
+                  /**
+                   * Mascot image for this pillar card
+                   */
+                  mascot?: (number | null) | AssetCloud;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'pillarCard';
+          }
       )[]
     | null;
   meta?: {
@@ -3620,6 +3704,41 @@ export interface Blog {
             id?: string | null;
             blockName?: string | null;
             blockType: 'resourceGallery';
+          }
+        | {
+            title?: string | null;
+            align?: ('left' | 'center') | null;
+            subtitle?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            /**
+             * Add 2-4 pillar cards
+             */
+            cards?:
+              | {
+                  title: string;
+                  /**
+                   * Mascot image for this pillar card
+                   */
+                  mascot?: (number | null) | AssetCloud;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'pillarCard';
           }
       )[]
     | null;
@@ -6988,6 +7107,34 @@ export interface GrantsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        resourceGallery?:
+          | T
+          | {
+              title?: T;
+              align?: T;
+              desc?: T;
+              addAllResources?: T;
+              filterByDocType?: T;
+              galleryList?: T;
+              id?: T;
+              blockName?: T;
+            };
+        pillarCard?:
+          | T
+          | {
+              title?: T;
+              align?: T;
+              subtitle?: T;
+              cards?:
+                | T
+                | {
+                    title?: T;
+                    mascot?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -8144,6 +8291,22 @@ export interface BlogSelect<T extends boolean = true> {
               addAllResources?: T;
               filterByDocType?: T;
               galleryList?: T;
+              id?: T;
+              blockName?: T;
+            };
+        pillarCard?:
+          | T
+          | {
+              title?: T;
+              align?: T;
+              subtitle?: T;
+              cards?:
+                | T
+                | {
+                    title?: T;
+                    mascot?: T;
+                    id?: T;
+                  };
               id?: T;
               blockName?: T;
             };

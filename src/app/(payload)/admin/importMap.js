@@ -36,6 +36,7 @@ import { default as default_2f24f9e931b8b7caf8af8a7d8b2d1313 } from 'src/blocks/
 import { default as default_6a8719e2d5063c12ffdbb9d4923f7ff4 } from 'src/blocks/FundingMap/subitemLabel.tsx'
 import { default as default_7b313deb816297f34afe721897b6bef6 } from 'src/blocks/FundingMap/itemLabel.tsx'
 import { default as default_021f573a6d0c322b4d262272400b64e3 } from '@/blocks/ResourceFeatureCard/AddAllResourcesField'
+import { default as default_1f0d5831ab203ec92792a85e1ec7e7b1 } from 'src/blocks/PillarCard/CardRowLabel.tsx'
 import { OverviewComponent as OverviewComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { MetaTitleComponent as MetaTitleComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { MetaDescriptionComponent as MetaDescriptionComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
@@ -48,7 +49,6 @@ import { default as default_fade8116570b03adfdc99c640cfd1f1c } from 'src/collect
 import { default as default_1ca90977107cbb5e33eef51b3d659f98 } from 'src/collections/GrantCards/GrantCardButtonRowLabel.tsx'
 import { default as default_e6f635e33cdcc4d4d11b58dc87fdbc28 } from 'src/collections/EligibilityTests/OptionsRowLabel.tsx'
 import { default as default_5c27a4360ad720e85354b3b24721e696 } from 'src/collections/EligibilityTests/CriteriaRowLabel.tsx'
-import { default as default_1f0d5831ab203ec92792a85e1ec7e7b1 } from 'src/blocks/PillarCard/CardRowLabel.tsx'
 import { default as default_53602952b3aad17a0cfc4bbf43cc4181 } from 'src/collections/MediaCloudCell'
 import { default as default_6e5325882d4f1cdba6ec4e761f75cd71 } from 'src/collections/Users/AvatarCell'
 import { LinkToDoc as LinkToDoc_aead06e4cbf6b2620c5c51c9ab283634 } from '@payloadcms/plugin-search/client'
@@ -106,6 +106,7 @@ export const importMap = {
   "src/blocks/FundingMap/subitemLabel.tsx#default": default_6a8719e2d5063c12ffdbb9d4923f7ff4,
   "src/blocks/FundingMap/itemLabel.tsx#default": default_7b313deb816297f34afe721897b6bef6,
   "@/blocks/ResourceFeatureCard/AddAllResourcesField#default": default_021f573a6d0c322b4d262272400b64e3,
+  "src/blocks/PillarCard/CardRowLabel.tsx#default": default_1f0d5831ab203ec92792a85e1ec7e7b1,
   "@payloadcms/plugin-seo/client#OverviewComponent": OverviewComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "@payloadcms/plugin-seo/client#MetaTitleComponent": MetaTitleComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "@payloadcms/plugin-seo/client#MetaDescriptionComponent": MetaDescriptionComponent_a8a977ebc872c5d5ea7ee689724c0860,
@@ -118,7 +119,6 @@ export const importMap = {
   "src/collections/GrantCards/GrantCardButtonRowLabel.tsx#default": default_1ca90977107cbb5e33eef51b3d659f98,
   "src/collections/EligibilityTests/OptionsRowLabel.tsx#default": default_e6f635e33cdcc4d4d11b58dc87fdbc28,
   "src/collections/EligibilityTests/CriteriaRowLabel.tsx#default": default_5c27a4360ad720e85354b3b24721e696,
-  "src/blocks/PillarCard/CardRowLabel.tsx#default": default_1f0d5831ab203ec92792a85e1ec7e7b1,
   "src/collections/MediaCloudCell#default": default_53602952b3aad17a0cfc4bbf43cc4181,
   "src/collections/Users/AvatarCell#default": default_6e5325882d4f1cdba6ec4e761f75cd71,
   "@payloadcms/plugin-search/client#LinkToDoc": LinkToDoc_aead06e4cbf6b2620c5c51c9ab283634,
