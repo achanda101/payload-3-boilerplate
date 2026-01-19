@@ -37,6 +37,7 @@ import { ResourceGallery } from '@/blocks/ResourceGallery/config'
 import { PillarCard } from '@/blocks/PillarCard/config'
 import { TestimonialCardDeck } from '@/blocks/TestimonialCardDeck/config'
 import { MinimalCardGallery } from '@/blocks/MinimalCardGallery/config'
+import { IDCardGallery } from '@/blocks/IDCardGallery/config'
 
 export const MMedia: CollectionConfig<'mmedia'> = {
   slug: 'mmedia',
@@ -252,6 +253,7 @@ export const MMedia: CollectionConfig<'mmedia'> = {
         PillarCard,
         TestimonialCardDeck,
         MinimalCardGallery,
+        IDCardGallery,
       ],
       labels: {
         singular: 'A Content Block',

@@ -39,6 +39,7 @@ import { default as default_021f573a6d0c322b4d262272400b64e3 } from '@/blocks/Re
 import { default as default_1f0d5831ab203ec92792a85e1ec7e7b1 } from 'src/blocks/PillarCard/CardRowLabel.tsx'
 import { default as default_839c0a88edd3e9bf3d7dc80ff4184732 } from 'src/blocks/TestimonialCardDeck/CardRowLabel.tsx'
 import { default as default_6c6eda6916f93f4d13975881219946b5 } from 'src/blocks/MinimalCardGallery/CardRowLabel.tsx'
+import { default as default_04f62d488cd7b5273f2e036f0763c737 } from 'src/blocks/IDCardGallery/CardRowLabel.tsx'
 import { OverviewComponent as OverviewComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { MetaTitleComponent as MetaTitleComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { MetaDescriptionComponent as MetaDescriptionComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
@@ -111,6 +112,7 @@ export const importMap = {
   "src/blocks/PillarCard/CardRowLabel.tsx#default": default_1f0d5831ab203ec92792a85e1ec7e7b1,
   "src/blocks/TestimonialCardDeck/CardRowLabel.tsx#default": default_839c0a88edd3e9bf3d7dc80ff4184732,
   "src/blocks/MinimalCardGallery/CardRowLabel.tsx#default": default_6c6eda6916f93f4d13975881219946b5,
+  "src/blocks/IDCardGallery/CardRowLabel.tsx#default": default_04f62d488cd7b5273f2e036f0763c737,
   "@payloadcms/plugin-seo/client#OverviewComponent": OverviewComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "@payloadcms/plugin-seo/client#MetaTitleComponent": MetaTitleComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "@payloadcms/plugin-seo/client#MetaDescriptionComponent": MetaDescriptionComponent_a8a977ebc872c5d5ea7ee689724c0860,

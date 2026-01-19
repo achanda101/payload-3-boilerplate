@@ -21,6 +21,7 @@ import { ResourceGallery } from '@/components/ResourceGallery'
 import { PillarCard } from '@/components/PillarCard'
 import { TestimonialCardDeck } from '@/components/TestimonialCardDeck'
 import { MinimalCardGallery } from '@/components/MinimalCardGallery'
+import { IDCardGallery } from '@/components/IDCardGallery'
 
 import { ColumnIndicators } from '../ColumnIndicators'
 import { serializeLexical } from '@/components/RichText/serializeRichText'
@@ -381,10 +382,21 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false })
             return (
               <React.Fragment key={index}>
                 <div className="page_column_layout gap-6">
-                  <MinimalCardGallery
-                    header={block.header}
-                    cards={block.cards}
-                  />
+                  <MinimalCardGallery header={block.header} cards={block.cards} />
+                </div>
+                {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                  <div className="page_column_layout gap-6">
+                    <ColumnIndicators />
+                  </div>
+                )}
+              </React.Fragment>
+            )
+          }
+          if (block.blockType === 'idCardGallery') {
+            return (
+              <React.Fragment key={index}>
+                <div className="page_column_layout gap-6">
+                  <IDCardGallery header={block.header} cards={block.cards} />
                 </div>
                 {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
                   <div className="page_column_layout gap-6">

@@ -28,6 +28,7 @@ import { serializeLexical } from '@/components/RichText/serializeRichText'
 import { ResourceCard } from '@/components/ResourceCard'
 import { TestimonialCardDeck } from '@/components/TestimonialCardDeck'
 import { MinimalCardGallery } from '@/components/MinimalCardGallery'
+import { IDCardGallery } from '@/components/IDCardGallery'
 
 interface MediaCloud {
   id: string
@@ -758,10 +759,21 @@ export const ReportPage: React.FC<ReportPageProps> = ({ collection, docId, isDra
                 return (
                   <React.Fragment key={index}>
                     <div className="page_column_layout gap-6">
-                      <MinimalCardGallery
-                        header={block.header}
-                        cards={block.cards}
-                      />
+                      <MinimalCardGallery header={block.header} cards={block.cards} />
+                    </div>
+                    {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                      <div className="page_column_layout gap-6">
+                        <ColumnIndicators />
+                      </div>
+                    )}
+                  </React.Fragment>
+                )
+              }
+              if (block.blockType === 'idCardGallery') {
+                return (
+                  <React.Fragment key={index}>
+                    <div className="page_column_layout gap-6">
+                      <IDCardGallery header={block.header} cards={block.cards} />
                     </div>
                     {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
                       <div className="page_column_layout gap-6">

@@ -108,7 +108,7 @@ export const TestimonialCardDeck: React.FC<TestimonialCardDeckProps> = ({ title,
       {/* Block Title */}
       {title && <h3 className="col-span-full">{title}</h3>}
 
-      <div className="col-span-full relative">
+      <div className="col-span-full relative overflow-hidden">
         {/* Carousel for all screen sizes */}
         <Carousel
           setApi={setApi}

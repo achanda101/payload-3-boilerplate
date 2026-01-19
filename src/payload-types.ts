@@ -1395,6 +1395,31 @@ export interface Grant {
             blockName?: string | null;
             blockType: 'minCardGallery';
           }
+        | {
+            header?: {
+              title?: string | null;
+              subtitle?: string | null;
+              description?: string | null;
+            };
+            cards?:
+              | {
+                  /**
+                   * Mascot image (displayed at max 120px height)
+                   */
+                  mascot?: (number | null) | AssetCloud;
+                  pronouns?: string | null;
+                  fullname: string;
+                  /**
+                   * Max 200 characters
+                   */
+                  designation?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'idCardGallery';
+          }
       )[]
     | null;
   meta?: {
@@ -2738,6 +2763,31 @@ export interface Page {
             blockName?: string | null;
             blockType: 'minCardGallery';
           }
+        | {
+            header?: {
+              title?: string | null;
+              subtitle?: string | null;
+              description?: string | null;
+            };
+            cards?:
+              | {
+                  /**
+                   * Mascot image (displayed at max 120px height)
+                   */
+                  mascot?: (number | null) | AssetCloud;
+                  pronouns?: string | null;
+                  fullname: string;
+                  /**
+                   * Max 200 characters
+                   */
+                  designation?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'idCardGallery';
+          }
       )[]
     | null;
   meta?: {
@@ -3862,6 +3912,31 @@ export interface Blog {
             id?: string | null;
             blockName?: string | null;
             blockType: 'minCardGallery';
+          }
+        | {
+            header?: {
+              title?: string | null;
+              subtitle?: string | null;
+              description?: string | null;
+            };
+            cards?:
+              | {
+                  /**
+                   * Mascot image (displayed at max 120px height)
+                   */
+                  mascot?: (number | null) | AssetCloud;
+                  pronouns?: string | null;
+                  fullname: string;
+                  /**
+                   * Max 200 characters
+                   */
+                  designation?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'idCardGallery';
           }
       )[]
     | null;
@@ -5040,6 +5115,31 @@ export interface Report {
             id?: string | null;
             blockName?: string | null;
             blockType: 'minCardGallery';
+          }
+        | {
+            header?: {
+              title?: string | null;
+              subtitle?: string | null;
+              description?: string | null;
+            };
+            cards?:
+              | {
+                  /**
+                   * Mascot image (displayed at max 120px height)
+                   */
+                  mascot?: (number | null) | AssetCloud;
+                  pronouns?: string | null;
+                  fullname: string;
+                  /**
+                   * Max 200 characters
+                   */
+                  designation?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'idCardGallery';
           }
       )[]
     | null;
@@ -6237,6 +6337,31 @@ export interface Mmedia {
             id?: string | null;
             blockName?: string | null;
             blockType: 'minCardGallery';
+          }
+        | {
+            header?: {
+              title?: string | null;
+              subtitle?: string | null;
+              description?: string | null;
+            };
+            cards?:
+              | {
+                  /**
+                   * Mascot image (displayed at max 120px height)
+                   */
+                  mascot?: (number | null) | AssetCloud;
+                  pronouns?: string | null;
+                  fullname: string;
+                  /**
+                   * Max 200 characters
+                   */
+                  designation?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'idCardGallery';
           }
       )[]
     | null;
@@ -7446,6 +7571,28 @@ export interface GrantsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        idCardGallery?:
+          | T
+          | {
+              header?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    description?: T;
+                  };
+              cards?:
+                | T
+                | {
+                    mascot?: T;
+                    pronouns?: T;
+                    fullname?: T;
+                    designation?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -8142,6 +8289,28 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        idCardGallery?:
+          | T
+          | {
+              header?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    description?: T;
+                  };
+              cards?:
+                | T
+                | {
+                    mascot?: T;
+                    pronouns?: T;
+                    fullname?: T;
+                    designation?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -8688,6 +8857,28 @@ export interface BlogSelect<T extends boolean = true> {
                     mascot?: T;
                     title?: T;
                     description?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        idCardGallery?:
+          | T
+          | {
+              header?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    description?: T;
+                  };
+              cards?:
+                | T
+                | {
+                    mascot?: T;
+                    pronouns?: T;
+                    fullname?: T;
+                    designation?: T;
                     id?: T;
                   };
               id?: T;
@@ -9245,6 +9436,28 @@ export interface ReportsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        idCardGallery?:
+          | T
+          | {
+              header?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    description?: T;
+                  };
+              cards?:
+                | T
+                | {
+                    mascot?: T;
+                    pronouns?: T;
+                    fullname?: T;
+                    designation?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -9791,6 +10004,28 @@ export interface MmediaSelect<T extends boolean = true> {
                     mascot?: T;
                     title?: T;
                     description?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        idCardGallery?:
+          | T
+          | {
+              header?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    description?: T;
+                  };
+              cards?:
+                | T
+                | {
+                    mascot?: T;
+                    pronouns?: T;
+                    fullname?: T;
+                    designation?: T;
                     id?: T;
                   };
               id?: T;
@@ -11378,6 +11613,31 @@ export interface Homepage {
             blockName?: string | null;
             blockType: 'minCardGallery';
           }
+        | {
+            header?: {
+              title?: string | null;
+              subtitle?: string | null;
+              description?: string | null;
+            };
+            cards?:
+              | {
+                  /**
+                   * Mascot image (displayed at max 120px height)
+                   */
+                  mascot?: (number | null) | AssetCloud;
+                  pronouns?: string | null;
+                  fullname: string;
+                  /**
+                   * Max 200 characters
+                   */
+                  designation?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'idCardGallery';
+          }
       )[]
     | null;
   meta?: {
@@ -12114,6 +12374,28 @@ export interface HomepageSelect<T extends boolean = true> {
                     mascot?: T;
                     title?: T;
                     description?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        idCardGallery?:
+          | T
+          | {
+              header?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    description?: T;
+                  };
+              cards?:
+                | T
+                | {
+                    mascot?: T;
+                    pronouns?: T;
+                    fullname?: T;
+                    designation?: T;
                     id?: T;
                   };
               id?: T;

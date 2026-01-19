@@ -37,9 +37,9 @@ export const MinimalCardGallery: React.FC<MinimalCardGalleryProps> = ({ header, 
 
       {/* Cards Grid */}
       {cards && cards.length > 0 && (
-        <div className="col-span-full grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+        <div className="col-span-full grid grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
           {cards.map((card) => (
-            <div key={card.id} className="border-t border-black pt-4">
+            <div key={card.id} className="border-t border-black pt-6 mt-10">
               {/* Mascot Image - fixed 60px height */}
               {card.mascot?.url && (
                 <div className="mb-3">
