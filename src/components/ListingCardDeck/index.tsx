@@ -136,7 +136,7 @@ export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({ title, cards, 
             {cards.map((card) => (
               <CarouselItem key={card.id} className="pl-0 mx-auto basis-auto">
                 <div
-                  className={`px-[1rem] md:px-[3rem] py-0 h-full flex flex-col`}
+                  className={`px-[1rem] py-0 h-full flex flex-col`}
                   style={{ width: `${currentCardWidth}vw` }}
                 >
                   {card.image?.url && (
