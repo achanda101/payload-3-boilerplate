@@ -48,7 +48,7 @@
     position: relative;
     z-index: 1;
   }
-  
+
   @media (max-width: vars.$mobile) {
     background-image: url('/card_bg/featurecard-bg-turmeric-mobile.svg');
   }
@@ -67,7 +67,7 @@
     position: relative;
     z-index: 1;
   }
-  
+
   @media (max-width: vars.$mobile) {
     background-image: url('/card_bg/featurecard-bg-forest-mobile.svg');
   }
@@ -86,7 +86,7 @@
     position: relative;
     z-index: 1;
   }
-  
+
   @media (max-width: vars.$mobile) {
     background-image: url('/card_bg/featurecard-bg-sky-mobile.svg');
   }
@@ -105,7 +105,7 @@
     position: relative;
     z-index: 1;
   }
-  
+
   @media (max-width: vars.$mobile) {
     background-image: url('/card_bg/featurecard-bg-rose-mobile.svg');
   }
@@ -124,7 +124,7 @@
     position: relative;
     z-index: 1;
   }
-  
+
   @media (max-width: vars.$mobile) {
     background-image: url('/card_bg/featurecard-bg-fire-mobile.svg');
   }
@@ -143,8 +143,27 @@
     position: relative;
     z-index: 1;
   }
-  
+
   @media (max-width: vars.$mobile) {
     background-image: url('/card_bg/featurecard-bg-lavender-mobile.svg');
+  }
+}
+
+.pillarCard {
+  background-image: url('/card_bg/pillarcard_bg.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100%;
+  width: 100%;
+  position: relative;
+
+  > div {
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (max-width: vars.$mobile) {
+    background-image: url('/card_bg/pillarcard_bg_mob.svg');
   }
 }

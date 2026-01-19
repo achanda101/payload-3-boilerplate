@@ -9,6 +9,7 @@ import * as migration_20260112_162938_resourcegallery from './20260112_162938_re
 import * as migration_20260114_083632_localizecaptions from './20260114_083632_localizecaptions';
 import * as migration_20260114_104835_populateresourcefeatcardandgallery from './20260114_104835_populateresourcefeatcardandgallery';
 import * as migration_20260114_122158_titledescresourcecards from './20260114_122158_titledescresourcecards';
+import * as migration_20260119_081859_pillarcards from './20260119_081859_pillarcards';
 
 export const migrations = [
   {
@@ -64,6 +65,11 @@ export const migrations = [
   {
     up: migration_20260114_122158_titledescresourcecards.up,
     down: migration_20260114_122158_titledescresourcecards.down,
-    name: '20260114_122158_titledescresourcecards'
+    name: '20260114_122158_titledescresourcecards',
+  },
+  {
+    up: migration_20260119_081859_pillarcards.up,
+    down: migration_20260119_081859_pillarcards.down,
+    name: '20260119_081859_pillarcards'
   },
 ];
