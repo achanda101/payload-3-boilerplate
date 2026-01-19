@@ -1354,6 +1354,23 @@ export interface Grant {
             blockName?: string | null;
             blockType: 'pillarCard';
           }
+        | {
+            title?: string | null;
+            /**
+             * Add at least 3 testimonial cards
+             */
+            cards?:
+              | {
+                  quote_text: string;
+                  attrib_name?: string | null;
+                  attrib_dsg?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'testimonialDeck';
+          }
       )[]
     | null;
   meta?: {
@@ -2656,6 +2673,23 @@ export interface Page {
             blockName?: string | null;
             blockType: 'pillarCard';
           }
+        | {
+            title?: string | null;
+            /**
+             * Add at least 3 testimonial cards
+             */
+            cards?:
+              | {
+                  quote_text: string;
+                  attrib_name?: string | null;
+                  attrib_dsg?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'testimonialDeck';
+          }
       )[]
     | null;
   meta?: {
@@ -3739,6 +3773,23 @@ export interface Blog {
             id?: string | null;
             blockName?: string | null;
             blockType: 'pillarCard';
+          }
+        | {
+            title?: string | null;
+            /**
+             * Add at least 3 testimonial cards
+             */
+            cards?:
+              | {
+                  quote_text: string;
+                  attrib_name?: string | null;
+                  attrib_dsg?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'testimonialDeck';
           }
       )[]
     | null;
@@ -4876,6 +4927,23 @@ export interface Report {
             id?: string | null;
             blockName?: string | null;
             blockType: 'pillarCard';
+          }
+        | {
+            title?: string | null;
+            /**
+             * Add at least 3 testimonial cards
+             */
+            cards?:
+              | {
+                  quote_text: string;
+                  attrib_name?: string | null;
+                  attrib_dsg?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'testimonialDeck';
           }
       )[]
     | null;
@@ -6032,6 +6100,23 @@ export interface Mmedia {
             id?: string | null;
             blockName?: string | null;
             blockType: 'pillarCard';
+          }
+        | {
+            title?: string | null;
+            /**
+             * Add at least 3 testimonial cards
+             */
+            cards?:
+              | {
+                  quote_text: string;
+                  attrib_name?: string | null;
+                  attrib_dsg?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'testimonialDeck';
           }
       )[]
     | null;
@@ -7205,6 +7290,21 @@ export interface GrantsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        testimonialDeck?:
+          | T
+          | {
+              title?: T;
+              cards?:
+                | T
+                | {
+                    quote_text?: T;
+                    attrib_name?: T;
+                    attrib_dsg?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -7865,6 +7965,21 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        testimonialDeck?:
+          | T
+          | {
+              title?: T;
+              cards?:
+                | T
+                | {
+                    quote_text?: T;
+                    attrib_name?: T;
+                    attrib_dsg?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -8375,6 +8490,21 @@ export interface BlogSelect<T extends boolean = true> {
                 | {
                     title?: T;
                     mascot?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        testimonialDeck?:
+          | T
+          | {
+              title?: T;
+              cards?:
+                | T
+                | {
+                    quote_text?: T;
+                    attrib_name?: T;
+                    attrib_dsg?: T;
                     id?: T;
                   };
               id?: T;
@@ -8896,6 +9026,21 @@ export interface ReportsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        testimonialDeck?:
+          | T
+          | {
+              title?: T;
+              cards?:
+                | T
+                | {
+                    quote_text?: T;
+                    attrib_name?: T;
+                    attrib_dsg?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -9406,6 +9551,21 @@ export interface MmediaSelect<T extends boolean = true> {
                 | {
                     title?: T;
                     mascot?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        testimonialDeck?:
+          | T
+          | {
+              title?: T;
+              cards?:
+                | T
+                | {
+                    quote_text?: T;
+                    attrib_name?: T;
+                    attrib_dsg?: T;
                     id?: T;
                   };
               id?: T;
@@ -10952,6 +11112,23 @@ export interface Homepage {
             blockName?: string | null;
             blockType: 'pillarCard';
           }
+        | {
+            title?: string | null;
+            /**
+             * Add at least 3 testimonial cards
+             */
+            cards?:
+              | {
+                  quote_text: string;
+                  attrib_name?: string | null;
+                  attrib_dsg?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'testimonialDeck';
+          }
       )[]
     | null;
   meta?: {
@@ -11652,6 +11829,21 @@ export interface HomepageSelect<T extends boolean = true> {
                 | {
                     title?: T;
                     mascot?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        testimonialDeck?:
+          | T
+          | {
+              title?: T;
+              cards?:
+                | T
+                | {
+                    quote_text?: T;
+                    attrib_name?: T;
+                    attrib_dsg?: T;
                     id?: T;
                   };
               id?: T;

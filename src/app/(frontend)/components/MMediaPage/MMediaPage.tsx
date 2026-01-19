@@ -26,6 +26,7 @@ import { ResourceGallery } from '@/components/ResourceGallery'
 import { PillarCard } from '@/components/PillarCard'
 import { serializeLexical } from '@/components/RichText/serializeRichText'
 import { ResourceCard } from '@/components/ResourceCard'
+import { TestimonialCardDeck } from '@/components/TestimonialCardDeck'
 
 interface MediaCloud {
   id: string
@@ -728,6 +729,20 @@ export const MMediaPage: React.FC<MMediaPageProps> = ({ collection, docId, isDra
                         align={block.align}
                         cards={block.cards}
                       />
+                    </div>
+                    {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                      <div className="page_column_layout gap-6">
+                        <ColumnIndicators />
+                      </div>
+                    )}
+                  </React.Fragment>
+                )
+              }
+              if (block.blockType === 'testimonialDeck') {
+                return (
+                  <React.Fragment key={index}>
+                    <div className="page_column_layout gap-6">
+                      <TestimonialCardDeck title={block.title} cards={block.cards} />
                     </div>
                     {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
                       <div className="page_column_layout gap-6">

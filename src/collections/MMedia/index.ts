@@ -35,6 +35,7 @@ import { FundingMap } from '@/blocks/FundingMap/config'
 import { ResourceFeatureCard } from '@/blocks/ResourceFeatureCard/config'
 import { ResourceGallery } from '@/blocks/ResourceGallery/config'
 import { PillarCard } from '@/blocks/PillarCard/config'
+import { TestimonialCardDeck } from '@/blocks/TestimonialCardDeck/config'
 
 export const MMedia: CollectionConfig<'mmedia'> = {
   slug: 'mmedia',
@@ -248,6 +249,7 @@ export const MMedia: CollectionConfig<'mmedia'> = {
         ResourceFeatureCard,
         ResourceGallery,
         PillarCard,
+        TestimonialCardDeck,
       ],
       labels: {
         singular: 'A Content Block',

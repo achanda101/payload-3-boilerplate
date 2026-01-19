@@ -35,6 +35,7 @@ import { FundingMap } from '@/blocks/FundingMap/config'
 import { ResourceFeatureCard } from '@/blocks/ResourceFeatureCard/config'
 import { ResourceGallery } from '@/blocks/ResourceGallery/config'
 import { PillarCard } from '@/blocks/PillarCard/config'
+import { TestimonialCardDeck } from '@/blocks/TestimonialCardDeck/config'
 
 export const Report: CollectionConfig<'reports'> = {
   slug: 'reports',
@@ -261,6 +262,7 @@ export const Report: CollectionConfig<'reports'> = {
         ResourceFeatureCard,
         ResourceGallery,
         PillarCard,
+        TestimonialCardDeck,
       ],
       labels: {
         singular: 'A Content Block',

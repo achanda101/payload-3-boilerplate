@@ -11,6 +11,7 @@ import * as migration_20260114_104835_populateresourcefeatcardandgallery from '.
 import * as migration_20260114_122158_titledescresourcecards from './20260114_122158_titledescresourcecards';
 import * as migration_20260119_081859_pillarcards from './20260119_081859_pillarcards';
 import * as migration_20260119_083252_pillarcards2 from './20260119_083252_pillarcards2';
+import * as migration_20260119_113457_testimonials from './20260119_113457_testimonials';
 
 export const migrations = [
   {
@@ -76,6 +77,11 @@ export const migrations = [
   {
     up: migration_20260119_083252_pillarcards2.up,
     down: migration_20260119_083252_pillarcards2.down,
-    name: '20260119_083252_pillarcards2'
+    name: '20260119_083252_pillarcards2',
+  },
+  {
+    up: migration_20260119_113457_testimonials.up,
+    down: migration_20260119_113457_testimonials.down,
+    name: '20260119_113457_testimonials'
   },
 ];
