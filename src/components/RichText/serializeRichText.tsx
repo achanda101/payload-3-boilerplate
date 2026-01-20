@@ -6,6 +6,7 @@ import UploadRenderer from '@/components/UploadRenderer'
 import SpotifyTrackRenderer from '@/components/SpotifyTrackRenderer'
 import SoundCloudRenderer from '@/components/SoundCloudRenderer'
 import { FancyList } from '@/components/FancyList'
+import { Badge } from '@/components/Badge'
 import React, { Fragment, JSX } from 'react'
 import { CMSLink } from '@/components/Link'
 import { DefaultNodeTypes, SerializedBlockNode } from '@payloadcms/richtext-lexical'
@@ -97,6 +98,13 @@ interface FancyListBlockProps {
   blockType?: 'fancyListBlock'
 }
 
+interface BadgeBlockProps {
+  id?: string
+  badgeText: string
+  badgeType?: 'info' | 'imp' | 'inactive'
+  blockType?: 'badgeBlock'
+}
+
 export type NodeTypes =
   | DefaultNodeTypes
   | SerializedBlockNode<
@@ -108,6 +116,7 @@ export type NodeTypes =
       | SpotifyTrackProps
       | SoundCloudEmbedProps
       | FancyListBlockProps
+      | BadgeBlockProps
     >
 
 type Props = {
@@ -138,6 +147,8 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
           prevNode?.type === 'block' && prevNode?.fields?.blockType === 'soundcloud-embed'
         const isPrevFancyList =
           prevNode?.type === 'block' && prevNode?.fields?.blockType === 'fancyListBlock'
+        const isPrevBadge =
+          prevNode?.type === 'block' && prevNode?.fields?.blockType === 'badgeBlock'
 
         if (node.type === 'text') {
           let text = <React.Fragment key={index}>{node.text}</React.Fragment>
@@ -308,6 +319,26 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
                   key={index}
                 >
                   <FancyList {...block} />
+                </div>
+              )
+            case 'badgeBlock':
+              const topMarginBadge =
+                isPrevHeading ||
+                isPrevBlockquote ||
+                isPrevUpload ||
+                isPrevVideo ||
+                isPrevSpotify ||
+                isPrevSoundcloud ||
+                isPrevFancyList ||
+                isPrevBadge
+                  ? 'mt-0'
+                  : 'mt-[2rem] md:mt-[4rem]'
+              return (
+                <div
+                  className={`col-span-full md:col-span-6 md:col-start-2 lg:col-span-6 lg:col-start-4 ${topMarginBadge} mb-[2rem] md:mb-[4rem] last:mb-0`}
+                  key={index}
+                >
+                  <Badge {...block} />
                 </div>
               )
             default:

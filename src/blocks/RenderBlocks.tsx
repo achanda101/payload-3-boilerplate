@@ -10,6 +10,7 @@ import { Code } from '@/blocks/Code/config'
 import { SpotifyTrackBlock } from '@/blocks/SpotifyTrackBlock/config'
 import { SoundCloudEmbedBlock } from '@/blocks/SoundCloudEmbedBlock/config'
 import { FancyList } from '@/components/FancyList'
+import { Badge } from '@/components/Badge'
 
 const blockComponents = {
   content: ContentBlock,
@@ -21,6 +22,7 @@ const blockComponents = {
   spotifyTrack: SpotifyTrackBlock,
   soundcloudEmbed: SoundCloudEmbedBlock,
   fancyListBlock: FancyList,
+  badgeBlock: Badge,
 }
 
 // Generic block type that can be used until Page collection is added

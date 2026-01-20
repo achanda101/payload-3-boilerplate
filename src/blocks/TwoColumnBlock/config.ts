@@ -15,6 +15,7 @@ import { SpotifyTrackBlock } from '@/blocks/SpotifyTrackBlock/config'
 import { SoundCloudEmbedBlock } from '@/blocks/SoundCloudEmbedBlock/config'
 import { BlockQuote } from '@/blocks/BlockQuote/config'
 import { FancyListBlock } from '@/blocks/FancyListBlock/config'
+import { BadgeBlock } from '@/blocks/BadgeBlock/config'
 
 const lexicalFeatures = ({ rootFeatures }: { rootFeatures: any }) => {
   return [
@@ -33,6 +34,7 @@ const lexicalFeatures = ({ rootFeatures }: { rootFeatures: any }) => {
         SpotifyTrackBlock,
         SoundCloudEmbedBlock,
         FancyListBlock,
+        BadgeBlock,
       ],
     }),
   ]
