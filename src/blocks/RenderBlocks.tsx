@@ -9,6 +9,7 @@ import { VimeoBlock } from '@/blocks/VimeoBlock/config'
 import { Code } from '@/blocks/Code/config'
 import { SpotifyTrackBlock } from '@/blocks/SpotifyTrackBlock/config'
 import { SoundCloudEmbedBlock } from '@/blocks/SoundCloudEmbedBlock/config'
+import { FancyList } from '@/components/FancyList'
 
 const blockComponents = {
   content: ContentBlock,
@@ -18,7 +19,8 @@ const blockComponents = {
   vimeoBlock: VimeoBlock,
   codeBlock: Code,
   spotifyTrack: SpotifyTrackBlock,
-  soundcloudEmbed: SoundCloudEmbedBlock
+  soundcloudEmbed: SoundCloudEmbedBlock,
+  fancyListBlock: FancyList,
 }
 
 // Generic block type that can be used until Page collection is added

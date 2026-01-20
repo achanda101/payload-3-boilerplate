@@ -5,6 +5,7 @@ import VideoPlayer from '@/components/VideoPlayer'
 import UploadRenderer from '@/components/UploadRenderer'
 import SpotifyTrackRenderer from '@/components/SpotifyTrackRenderer'
 import SoundCloudRenderer from '@/components/SoundCloudRenderer'
+import { FancyList } from '@/components/FancyList'
 import React, { Fragment, JSX } from 'react'
 import { CMSLink } from '@/components/Link'
 import { DefaultNodeTypes, SerializedBlockNode } from '@payloadcms/richtext-lexical'
@@ -79,6 +80,23 @@ interface SoundCloudEmbedProps {
   blockType?: 'soundcloud-embed'
 }
 
+interface FancyListBlockProps {
+  id?: string
+  items?: {
+    id?: string
+    mascot?: {
+      id: string
+      alt: string | null
+      url?: string | null
+      width?: number | null
+      height?: number | null
+    }
+    title: string
+    description?: string
+  }[]
+  blockType?: 'fancyListBlock'
+}
+
 export type NodeTypes =
   | DefaultNodeTypes
   | SerializedBlockNode<
@@ -89,6 +107,7 @@ export type NodeTypes =
       | VimeoBlockProps
       | SpotifyTrackProps
       | SoundCloudEmbedProps
+      | FancyListBlockProps
     >
 
 type Props = {
@@ -117,6 +136,8 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
           prevNode?.type === 'block' && prevNode?.fields?.blockType === 'spotifyTrack'
         const isPrevSoundcloud =
           prevNode?.type === 'block' && prevNode?.fields?.blockType === 'soundcloud-embed'
+        const isPrevFancyList =
+          prevNode?.type === 'block' && prevNode?.fields?.blockType === 'fancyListBlock'
 
         if (node.type === 'text') {
           let text = <React.Fragment key={index}>{node.text}</React.Fragment>
@@ -226,7 +247,8 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
                 isPrevUpload ||
                 isPrevVideo ||
                 isPrevSpotify ||
-                isPrevSoundcloud
+                isPrevSoundcloud ||
+                isPrevFancyList
                   ? 'mt-0'
                   : 'mt-[2rem] md:mt-[4rem]'
               return (
@@ -270,6 +292,24 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
                   isPrevSoundcloud={isPrevSoundcloud}
                 />
               )
+            case 'fancyListBlock':
+              const topMarginFancyList =
+                isPrevHeading ||
+                isPrevBlockquote ||
+                isPrevUpload ||
+                isPrevVideo ||
+                isPrevSpotify ||
+                isPrevSoundcloud
+                  ? 'mt-0'
+                  : 'mt-[2rem] md:mt-[4rem]'
+              return (
+                <div
+                  className={`col-span-full md:col-span-6 md:col-start-2 lg:col-span-6 lg:col-start-4 ${topMarginFancyList} mb-[2rem] md:mb-[4rem] last:mb-0`}
+                  key={index}
+                >
+                  <FancyList {...block} />
+                </div>
+              )
             default:
               return null
           }
@@ -300,7 +340,7 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
                   className="col-span-full md:col-span-6 md:col-start-2 lg:col-span-6 lg:col-start-4 overflow-hidden"
                   key={index}
                 >
-                  <p className="mb-[1rem] last:mb-0 break-words overflow-x-hidden">
+                  <p className="text-lg mb-[1rem] last:mb-0 break-words overflow-x-hidden">
                     {serializedChildren}
                   </p>
                 </div>
@@ -378,7 +418,8 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
                   isPrevVideo ||
                   isPrevBlockquote ||
                   isPrevSpotify ||
-                  isPrevSoundcloud
+                  isPrevSoundcloud ||
+                  isPrevFancyList
                     ? 'mt-0'
                     : 'mt-[2rem] md:mt-[4rem]'
 
