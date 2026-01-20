@@ -508,6 +508,10 @@ hr {
 }
 .div-h {
   grid-area: grid-h;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  column-gap: 2rem;
 }
 
 .footer-waveborder {
