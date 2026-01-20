@@ -27,6 +27,7 @@ import { serializeLexical } from '@/components/RichText/serializeRichText'
 import { TestimonialCardDeck } from '@/components/TestimonialCardDeck'
 import { MinimalCardGallery } from '@/components/MinimalCardGallery'
 import { IDCardGallery } from '@/components/IDCardGallery'
+import { TwoColumnBlock } from '@/components/TwoColumnBlock'
 
 interface AssetCloud {
   id: string
@@ -607,6 +608,23 @@ export const GrantPage: React.FC<GrantPageProps> = ({ collection, docId, isDraft
                     <div className="page_column_layout gap-6">
                       <IDCardGallery header={block.header} cards={block.cards} />
                     </div>
+                    {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                      <div className="page_column_layout gap-6">
+                        <ColumnIndicators />
+                      </div>
+                    )}
+                  </React.Fragment>
+                )
+              }
+              if (block.blockType === 'twoColumnBlock') {
+                return (
+                  <React.Fragment key={index}>
+                    <TwoColumnBlock
+                      title={block.title}
+                      subtitle={block.subtitle}
+                      leftColumn={block.leftColumn}
+                      rightColumn={block.rightColumn}
+                    />
                     {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
                       <div className="page_column_layout gap-6">
                         <ColumnIndicators />

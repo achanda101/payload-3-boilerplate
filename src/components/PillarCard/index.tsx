@@ -75,6 +75,7 @@ export const PillarCard: React.FC<PillarCardProps> = ({
                     width={card.mascot.width || 150}
                     height={card.mascot.height || 200}
                     className="object-contain max-h-[200px] md:max-h-[250px]"
+                    style={{ width: 'auto' }}
                   />
                 </div>
               )}

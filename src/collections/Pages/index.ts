@@ -38,6 +38,7 @@ import { PillarCard } from '@/blocks/PillarCard/config'
 import { TestimonialCardDeck } from '@/blocks/TestimonialCardDeck/config'
 import { MinimalCardGallery } from '@/blocks/MinimalCardGallery/config'
 import { IDCardGallery } from '@/blocks/IDCardGallery/config'
+import { TwoColumnBlock } from '@/blocks/TwoColumnBlock/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -271,6 +272,7 @@ export const Pages: CollectionConfig<'pages'> = {
         TestimonialCardDeck,
         MinimalCardGallery,
         IDCardGallery,
+        TwoColumnBlock,
       ],
       labels: {
         singular: 'A Content Block',

@@ -14,6 +14,7 @@ import * as migration_20260119_083252_pillarcards2 from './20260119_083252_pilla
 import * as migration_20260119_113457_testimonials from './20260119_113457_testimonials';
 import * as migration_20260119_131855_minimalcardgallery from './20260119_131855_minimalcardgallery';
 import * as migration_20260119_140242_add_id_card_gallery_block from './20260119_140242_add_id_card_gallery_block';
+import * as migration_20260120_064214_twocolumnblock from './20260120_064214_twocolumnblock';
 
 export const migrations = [
   {
@@ -94,6 +95,11 @@ export const migrations = [
   {
     up: migration_20260119_140242_add_id_card_gallery_block.up,
     down: migration_20260119_140242_add_id_card_gallery_block.down,
-    name: '20260119_140242_add_id_card_gallery_block'
+    name: '20260119_140242_add_id_card_gallery_block',
+  },
+  {
+    up: migration_20260120_064214_twocolumnblock.up,
+    down: migration_20260120_064214_twocolumnblock.down,
+    name: '20260120_064214_twocolumnblock'
   },
 ];

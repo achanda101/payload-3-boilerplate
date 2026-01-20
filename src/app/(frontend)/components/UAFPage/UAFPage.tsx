@@ -26,6 +26,7 @@ import { ResourceGallery } from '@/components/ResourceGallery'
 import { TestimonialCardDeck } from '@/components/TestimonialCardDeck'
 import { MinimalCardGallery } from '@/components/MinimalCardGallery'
 import { IDCardGallery } from '@/components/IDCardGallery'
+import { TwoColumnBlock } from '@/components/TwoColumnBlock'
 import { serializeLexical } from '@/components/RichText/serializeRichText'
 
 interface AssetCloud {
@@ -530,6 +531,23 @@ export const UAFPage: React.FC<UAFPageProps> = ({ collection, docId, isDraft = f
                     <div className="page_column_layout gap-6">
                       <IDCardGallery header={block.header} cards={block.cards} />
                     </div>
+                    {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                      <div className="page_column_layout gap-6">
+                        <ColumnIndicators />
+                      </div>
+                    )}
+                  </React.Fragment>
+                )
+              }
+              if (block.blockType === 'twoColumnBlock') {
+                return (
+                  <React.Fragment key={index}>
+                    <TwoColumnBlock
+                      title={block.title}
+                      subtitle={block.subtitle}
+                      leftColumn={block.leftColumn}
+                      rightColumn={block.rightColumn}
+                    />
                     {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
                       <div className="page_column_layout gap-6">
                         <ColumnIndicators />

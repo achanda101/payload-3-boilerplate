@@ -150,7 +150,7 @@ export const PillarCard: React.FC<PillarCardProps> = ({
 
       {/* Subtitle (Lexical rich text) */}
       {subtitle && typeof subtitle === 'object' ? (
-        <div className={`col-span-full ${alignClass} -mt-6`}>
+        <div className={`col-span-full ${alignClass} -mt-6 prose dark:prose-invert`}>
           {serializeLexical({ nodes: subtitle.root?.children || [] })}
         </div>
       ) : subtitle ? (
