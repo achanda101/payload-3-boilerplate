@@ -11,7 +11,7 @@ export const Badge: React.FC<BadgeProps> = ({ badgeText, badgeType = 'info' }) =
   if (!badgeText) return null
 
   return (
-    <div className="flex">
+    <div className="flex justify-center md:justify-start mt-3">
       <div className={`badge ${badgeType}`}>
         <p className="tag m-0">{badgeText}</p>
       </div>

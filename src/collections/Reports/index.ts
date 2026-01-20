@@ -39,6 +39,7 @@ import { TestimonialCardDeck } from '@/blocks/TestimonialCardDeck/config'
 import { MinimalCardGallery } from '@/blocks/MinimalCardGallery/config'
 import { IDCardGallery } from '@/blocks/IDCardGallery/config'
 import { TwoColumnBlock } from '@/blocks/TwoColumnBlock/config'
+import { ThreeColumnTableBlock } from '@/blocks/ThreeColumnTableBlock/config'
 
 export const Report: CollectionConfig<'reports'> = {
   slug: 'reports',
@@ -269,6 +270,7 @@ export const Report: CollectionConfig<'reports'> = {
         MinimalCardGallery,
         IDCardGallery,
         TwoColumnBlock,
+        ThreeColumnTableBlock,
       ],
       labels: {
         singular: 'A Content Block',

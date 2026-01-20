@@ -15,6 +15,7 @@ import * as migration_20260119_113457_testimonials from './20260119_113457_testi
 import * as migration_20260119_131855_minimalcardgallery from './20260119_131855_minimalcardgallery';
 import * as migration_20260119_140242_add_id_card_gallery_block from './20260119_140242_add_id_card_gallery_block';
 import * as migration_20260120_064214_twocolumnblock from './20260120_064214_twocolumnblock';
+import * as migration_20260120_211136_threecolumntable from './20260120_211136_threecolumntable';
 
 export const migrations = [
   {
@@ -100,6 +101,11 @@ export const migrations = [
   {
     up: migration_20260120_064214_twocolumnblock.up,
     down: migration_20260120_064214_twocolumnblock.down,
-    name: '20260120_064214_twocolumnblock'
+    name: '20260120_064214_twocolumnblock',
+  },
+  {
+    up: migration_20260120_211136_threecolumntable.up,
+    down: migration_20260120_211136_threecolumntable.down,
+    name: '20260120_211136_threecolumntable'
   },
 ];

@@ -11,6 +11,9 @@ import { SpotifyTrackBlock } from '@/blocks/SpotifyTrackBlock/config'
 import { SoundCloudEmbedBlock } from '@/blocks/SoundCloudEmbedBlock/config'
 import { FancyList } from '@/components/FancyList'
 import { Badge } from '@/components/Badge'
+import { PillButtons } from '@/components/PillButtons'
+import { Tags } from '@/components/Tags'
+import { ThreeColumnTable } from '@/components/ThreeColumnTable'
 
 const blockComponents = {
   content: ContentBlock,
@@ -23,6 +26,9 @@ const blockComponents = {
   soundcloudEmbed: SoundCloudEmbedBlock,
   fancyListBlock: FancyList,
   badgeBlock: Badge,
+  pillButtonsBlock: PillButtons,
+  tagsBlock: Tags,
+  threeColumnTableBlock: ThreeColumnTable,
 }
 
 // Generic block type that can be used until Page collection is added

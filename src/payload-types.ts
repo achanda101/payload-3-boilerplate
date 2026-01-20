@@ -1457,6 +1457,39 @@ export interface Grant {
             blockName?: string | null;
             blockType: 'twoColumnBlock';
           }
+        | {
+            title?: string | null;
+            subtitle?: string | null;
+            columnWidths?: ('f-t-t' | 't-f-t' | 't-t-f' | 'vt-t-f') | null;
+            rows?:
+              | {
+                  columns?:
+                    | {
+                        content?: {
+                          root: {
+                            type: string;
+                            children: {
+                              type: any;
+                              version: number;
+                              [k: string]: unknown;
+                            }[];
+                            direction: ('ltr' | 'rtl') | null;
+                            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                            indent: number;
+                            version: number;
+                          };
+                          [k: string]: unknown;
+                        } | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'threeColumnTableBlock';
+          }
       )[]
     | null;
   meta?: {
@@ -2862,6 +2895,39 @@ export interface Page {
             blockName?: string | null;
             blockType: 'twoColumnBlock';
           }
+        | {
+            title?: string | null;
+            subtitle?: string | null;
+            columnWidths?: ('f-t-t' | 't-f-t' | 't-t-f' | 'vt-t-f') | null;
+            rows?:
+              | {
+                  columns?:
+                    | {
+                        content?: {
+                          root: {
+                            type: string;
+                            children: {
+                              type: any;
+                              version: number;
+                              [k: string]: unknown;
+                            }[];
+                            direction: ('ltr' | 'rtl') | null;
+                            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                            indent: number;
+                            version: number;
+                          };
+                          [k: string]: unknown;
+                        } | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'threeColumnTableBlock';
+          }
       )[]
     | null;
   meta?: {
@@ -4048,6 +4114,39 @@ export interface Blog {
             id?: string | null;
             blockName?: string | null;
             blockType: 'twoColumnBlock';
+          }
+        | {
+            title?: string | null;
+            subtitle?: string | null;
+            columnWidths?: ('f-t-t' | 't-f-t' | 't-t-f' | 'vt-t-f') | null;
+            rows?:
+              | {
+                  columns?:
+                    | {
+                        content?: {
+                          root: {
+                            type: string;
+                            children: {
+                              type: any;
+                              version: number;
+                              [k: string]: unknown;
+                            }[];
+                            direction: ('ltr' | 'rtl') | null;
+                            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                            indent: number;
+                            version: number;
+                          };
+                          [k: string]: unknown;
+                        } | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'threeColumnTableBlock';
           }
       )[]
     | null;
@@ -5288,6 +5387,39 @@ export interface Report {
             id?: string | null;
             blockName?: string | null;
             blockType: 'twoColumnBlock';
+          }
+        | {
+            title?: string | null;
+            subtitle?: string | null;
+            columnWidths?: ('f-t-t' | 't-f-t' | 't-t-f' | 'vt-t-f') | null;
+            rows?:
+              | {
+                  columns?:
+                    | {
+                        content?: {
+                          root: {
+                            type: string;
+                            children: {
+                              type: any;
+                              version: number;
+                              [k: string]: unknown;
+                            }[];
+                            direction: ('ltr' | 'rtl') | null;
+                            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                            indent: number;
+                            version: number;
+                          };
+                          [k: string]: unknown;
+                        } | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'threeColumnTableBlock';
           }
       )[]
     | null;
@@ -6548,6 +6680,39 @@ export interface Mmedia {
             blockName?: string | null;
             blockType: 'twoColumnBlock';
           }
+        | {
+            title?: string | null;
+            subtitle?: string | null;
+            columnWidths?: ('f-t-t' | 't-f-t' | 't-t-f' | 'vt-t-f') | null;
+            rows?:
+              | {
+                  columns?:
+                    | {
+                        content?: {
+                          root: {
+                            type: string;
+                            children: {
+                              type: any;
+                              version: number;
+                              [k: string]: unknown;
+                            }[];
+                            direction: ('ltr' | 'rtl') | null;
+                            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                            indent: number;
+                            version: number;
+                          };
+                          [k: string]: unknown;
+                        } | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'threeColumnTableBlock';
+          }
       )[]
     | null;
   meta?: {
@@ -7788,6 +7953,26 @@ export interface GrantsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        threeColumnTableBlock?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              columnWidths?: T;
+              rows?:
+                | T
+                | {
+                    columns?:
+                      | T
+                      | {
+                          content?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -8516,6 +8701,26 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        threeColumnTableBlock?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              columnWidths?: T;
+              rows?:
+                | T
+                | {
+                    columns?:
+                      | T
+                      | {
+                          content?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -9096,6 +9301,26 @@ export interface BlogSelect<T extends boolean = true> {
               subtitle?: T;
               leftColumn?: T;
               rightColumn?: T;
+              id?: T;
+              blockName?: T;
+            };
+        threeColumnTableBlock?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              columnWidths?: T;
+              rows?:
+                | T
+                | {
+                    columns?:
+                      | T
+                      | {
+                          content?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
               id?: T;
               blockName?: T;
             };
@@ -9683,6 +9908,26 @@ export interface ReportsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        threeColumnTableBlock?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              columnWidths?: T;
+              rows?:
+                | T
+                | {
+                    columns?:
+                      | T
+                      | {
+                          content?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -10263,6 +10508,26 @@ export interface MmediaSelect<T extends boolean = true> {
               subtitle?: T;
               leftColumn?: T;
               rightColumn?: T;
+              id?: T;
+              blockName?: T;
+            };
+        threeColumnTableBlock?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              columnWidths?: T;
+              rows?:
+                | T
+                | {
+                    columns?:
+                      | T
+                      | {
+                          content?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
               id?: T;
               blockName?: T;
             };
@@ -11910,6 +12175,39 @@ export interface Homepage {
             blockName?: string | null;
             blockType: 'twoColumnBlock';
           }
+        | {
+            title?: string | null;
+            subtitle?: string | null;
+            columnWidths?: ('f-t-t' | 't-f-t' | 't-t-f' | 'vt-t-f') | null;
+            rows?:
+              | {
+                  columns?:
+                    | {
+                        content?: {
+                          root: {
+                            type: string;
+                            children: {
+                              type: any;
+                              version: number;
+                              [k: string]: unknown;
+                            }[];
+                            direction: ('ltr' | 'rtl') | null;
+                            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                            indent: number;
+                            version: number;
+                          };
+                          [k: string]: unknown;
+                        } | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'threeColumnTableBlock';
+          }
       )[]
     | null;
   meta?: {
@@ -12680,6 +12978,26 @@ export interface HomepageSelect<T extends boolean = true> {
               subtitle?: T;
               leftColumn?: T;
               rightColumn?: T;
+              id?: T;
+              blockName?: T;
+            };
+        threeColumnTableBlock?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              columnWidths?: T;
+              rows?:
+                | T
+                | {
+                    columns?:
+                      | T
+                      | {
+                          content?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
               id?: T;
               blockName?: T;
             };

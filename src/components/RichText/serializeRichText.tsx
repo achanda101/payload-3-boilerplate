@@ -7,6 +7,8 @@ import SpotifyTrackRenderer from '@/components/SpotifyTrackRenderer'
 import SoundCloudRenderer from '@/components/SoundCloudRenderer'
 import { FancyList } from '@/components/FancyList'
 import { Badge } from '@/components/Badge'
+import { PillButtons } from '@/components/PillButtons'
+import { Tags } from '@/components/Tags'
 import React, { Fragment, JSX } from 'react'
 import { CMSLink } from '@/components/Link'
 import { DefaultNodeTypes, SerializedBlockNode } from '@payloadcms/richtext-lexical'
@@ -105,6 +107,37 @@ interface BadgeBlockProps {
   blockType?: 'badgeBlock'
 }
 
+interface PillButtonsBlockProps {
+  id?: string
+  buttons?: {
+    id: string
+    link: {
+      type: string
+      newTab?: boolean | null
+      downloadLink?: boolean | null
+      arrowLink?: boolean | null
+      pillSolid?: boolean | null
+      pillOutline?: boolean | null
+      url?: string | null
+      label: string | null
+      email?: string | null
+      doc?: any
+      reference?: any
+      etestlink?: any
+    }
+  }[]
+  blockType?: 'pillButtonsBlock'
+}
+
+interface TagsBlockProps {
+  id?: string
+  tags?: {
+    id: string
+    tag: string
+  }[]
+  blockType?: 'tagsBlock'
+}
+
 export type NodeTypes =
   | DefaultNodeTypes
   | SerializedBlockNode<
@@ -117,6 +150,8 @@ export type NodeTypes =
       | SoundCloudEmbedProps
       | FancyListBlockProps
       | BadgeBlockProps
+      | PillButtonsBlockProps
+      | TagsBlockProps
     >
 
 type Props = {
@@ -149,6 +184,10 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
           prevNode?.type === 'block' && prevNode?.fields?.blockType === 'fancyListBlock'
         const isPrevBadge =
           prevNode?.type === 'block' && prevNode?.fields?.blockType === 'badgeBlock'
+        const isPrevPillButtons =
+          prevNode?.type === 'block' && prevNode?.fields?.blockType === 'pillButtonsBlock'
+        const isPrevTags =
+          prevNode?.type === 'block' && prevNode?.fields?.blockType === 'tagsBlock'
 
         if (node.type === 'text') {
           let text = <React.Fragment key={index}>{node.text}</React.Fragment>
@@ -322,7 +361,16 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
                 </div>
               )
             case 'badgeBlock':
-              const topMarginBadge =
+              return (
+                <div
+                  className={`col-span-full md:col-span-6 md:col-start-2 lg:col-span-6 lg:col-start-4`}
+                  key={index}
+                >
+                  <Badge {...block} />
+                </div>
+              )
+            case 'pillButtonsBlock':
+              const topMarginPillButtons =
                 isPrevHeading ||
                 isPrevBlockquote ||
                 isPrevUpload ||
@@ -330,15 +378,38 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
                 isPrevSpotify ||
                 isPrevSoundcloud ||
                 isPrevFancyList ||
-                isPrevBadge
+                isPrevBadge ||
+                isPrevPillButtons
                   ? 'mt-0'
                   : 'mt-[2rem] md:mt-[4rem]'
               return (
                 <div
-                  className={`col-span-full md:col-span-6 md:col-start-2 lg:col-span-6 lg:col-start-4 ${topMarginBadge} mb-[2rem] md:mb-[4rem] last:mb-0`}
+                  className={`col-span-full md:col-span-6 md:col-start-2 lg:col-span-6 lg:col-start-4 ${topMarginPillButtons} mb-[2rem] md:mb-[4rem] last:mb-0`}
                   key={index}
                 >
-                  <Badge {...block} />
+                  <PillButtons {...block} />
+                </div>
+              )
+            case 'tagsBlock':
+              const topMarginTags =
+                isPrevHeading ||
+                isPrevBlockquote ||
+                isPrevUpload ||
+                isPrevVideo ||
+                isPrevSpotify ||
+                isPrevSoundcloud ||
+                isPrevFancyList ||
+                isPrevBadge ||
+                isPrevPillButtons ||
+                isPrevTags
+                  ? 'mt-0'
+                  : 'mt-[2rem] md:mt-[4rem]'
+              return (
+                <div
+                  className={`col-span-full md:col-span-6 md:col-start-2 lg:col-span-6 lg:col-start-4 ${topMarginTags}`}
+                  key={index}
+                >
+                  <Tags {...block} />
                 </div>
               )
             default:

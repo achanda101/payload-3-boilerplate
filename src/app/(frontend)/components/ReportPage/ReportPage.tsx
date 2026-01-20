@@ -30,6 +30,7 @@ import { TestimonialCardDeck } from '@/components/TestimonialCardDeck'
 import { MinimalCardGallery } from '@/components/MinimalCardGallery'
 import { IDCardGallery } from '@/components/IDCardGallery'
 import { TwoColumnBlock } from '@/components/TwoColumnBlock'
+import { ThreeColumnTable } from '@/components/ThreeColumnTable'
 
 interface MediaCloud {
   id: string
@@ -793,6 +794,25 @@ export const ReportPage: React.FC<ReportPageProps> = ({ collection, docId, isDra
                       leftColumn={block.leftColumn}
                       rightColumn={block.rightColumn}
                     />
+                    {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                      <div className="page_column_layout gap-6">
+                        <ColumnIndicators />
+                      </div>
+                    )}
+                  </React.Fragment>
+                )
+              }
+              if (block.blockType === 'threeColumnTableBlock') {
+                return (
+                  <React.Fragment key={index}>
+                    <div className="page_column_layout gap-6">
+                      <ThreeColumnTable
+                        title={block.title}
+                        subtitle={block.subtitle}
+                        rows={block.rows}
+                        columnWidths={block.columnWidths}
+                      />
+                    </div>
                     {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
                       <div className="page_column_layout gap-6">
                         <ColumnIndicators />
