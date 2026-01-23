@@ -6,6 +6,7 @@ import { ColumnIndicators } from './components/ColumnIndicators'
 import { draftMode } from 'next/headers'
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
+import { generateMeta } from '@/utilities/generateMeta'
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 60
@@ -47,10 +48,13 @@ export default async function Page() {
   )
 }
 
-export function generateMetadata(): Metadata {
-  return {
-    title: `Urgent Action Fund: Asia & Pacific`,
-    description:
-      'We are a feminist fund that boldly resources and powers women, trans, and non-binary human rights defenders in their critical defence of people and planet.',
-  }
+export async function generateMetadata(): Promise<Metadata> {
+  const payload = await getPayload({ config: configPromise })
+
+  const homepage = await payload.findGlobal({
+    slug: 'homepage',
+    depth: 1,
+  })
+
+  return generateMeta({ doc: homepage })
 }

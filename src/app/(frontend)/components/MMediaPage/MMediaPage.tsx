@@ -176,7 +176,6 @@ export const MMediaPage: React.FC<MMediaPageProps> = ({ collection, docId, isDra
         const response = await fetch(fetchPath)
         const data = await response.json()
         const headerColour = 'trans'
-        console.log('Multimedia data:', data)
         setPageType(data.pageType || 'landing')
         setHeaderTheme(headerColour)
         setHeroBlock({

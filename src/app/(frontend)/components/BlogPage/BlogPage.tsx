@@ -176,7 +176,6 @@ export const BlogPage: React.FC<BlogPageProps> = ({ collection, docId, isDraft =
         const response = await fetch(fetchPath)
         const data = await response.json()
         const headerColour = 'trans'
-        console.log('Blog data:', data)
         setPageType(data.pageType || 'landing')
         setHeaderTheme(headerColour)
         setHeroBlock({

@@ -6,13 +6,6 @@ import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
 
 import { revalidateGrant } from './hooks/revalidateGrant'
 import { slugField } from '@/fields/slug'
-import {
-  MetaDescriptionField,
-  MetaImageField,
-  MetaTitleField,
-  OverviewField,
-  PreviewField,
-} from '@payloadcms/plugin-seo/fields'
 
 import { generatePreviewPath } from '@/utilities/generatePreviewPath'
 import { getServerSideURL } from '@/utilities/getURL'
@@ -38,8 +31,8 @@ import { PillarCard } from '@/blocks/PillarCard/config'
 import { TestimonialCardDeck } from '@/blocks/TestimonialCardDeck/config'
 import { MinimalCardGallery } from '@/blocks/MinimalCardGallery/config'
 import { IDCardGallery } from '@/blocks/IDCardGallery/config'
-import { TwoColumnBlock } from '@/blocks/TwoColumnBlock/config'
-import { ThreeColumnTableBlock } from '@/blocks/ThreeColumnTableBlock/config'
+// import { TwoColumnBlock } from '@/blocks/TwoColumnBlock/config'
+// import { ThreeColumnTableBlock } from '@/blocks/ThreeColumnTableBlock/config'
 
 export const Grants: CollectionConfig<'grants'> = {
   slug: 'grants',
@@ -268,8 +261,8 @@ export const Grants: CollectionConfig<'grants'> = {
         TestimonialCardDeck,
         MinimalCardGallery,
         IDCardGallery,
-        TwoColumnBlock,
-        ThreeColumnTableBlock,
+        // TwoColumnBlock,
+        // ThreeColumnTableBlock,
       ],
       labels: {
         singular: 'A Content Block',
@@ -280,42 +273,6 @@ export const Grants: CollectionConfig<'grants'> = {
         isSortable: true,
         disableListColumn: true,
       },
-    },
-    {
-      type: 'group',
-      name: 'meta',
-      label: 'SEO',
-      fields: [
-        OverviewField({
-          titlePath: 'meta.title',
-          descriptionPath: 'meta.description',
-          imagePath: 'meta.image',
-        }),
-        MetaTitleField({
-          hasGenerateFn: true,
-        }),
-        MetaImageField({
-          relationTo: 'mediaCloud',
-          overrides: {
-            admin: {
-              description:
-                'Recommended file size for images is <500KB. Image must have a minimum width of 800px for optimal social media display and should be a .jpg, .png.',
-            },
-          },
-        }),
-
-        MetaDescriptionField({
-          hasGenerateFn: true,
-        }),
-        PreviewField({
-          // if the `generateUrl` function is configured
-          hasGenerateFn: true,
-
-          // field paths to match the target field for data
-          titlePath: 'meta.title',
-          descriptionPath: 'meta.description',
-        }),
-      ],
     },
     {
       name: 'publishedAt',
@@ -337,6 +294,71 @@ export const Grants: CollectionConfig<'grants'> = {
       },
     },
     ...slugField(),
+    // Manual SEO fields (Grants removed from seoPlugin as they don't have a cover image for auto-generation)
+    {
+      name: 'meta',
+      type: 'group',
+      label: 'SEO',
+      fields: [
+        {
+          name: 'title',
+          type: 'text',
+          label: 'Meta Title',
+          admin: {
+            components: {
+              Field: 'src/components/SeoFields/MetaTitleField.tsx#MetaTitleField',
+            },
+          },
+        },
+        {
+          name: 'description',
+          type: 'textarea',
+          label: 'Meta Description',
+          admin: {
+            components: {
+              Field: 'src/components/SeoFields/MetaDescriptionField.tsx#MetaDescriptionField',
+            },
+          },
+        },
+        {
+          name: 'image',
+          type: 'upload',
+          relationTo: 'assetCloud',
+          label: 'Meta Image',
+          filterOptions: {
+            mimeType: {
+              in: ['image/png', 'image/jpeg', 'image/gif'],
+            },
+          },
+          admin: {
+            description:
+              'Image for social sharing. Only PNG, JPG, and GIF formats are supported. Select from Assets.',
+          },
+        },
+        {
+          name: 'preview',
+          type: 'ui',
+          admin: {
+            components: {
+              Field: {
+                path: 'src/components/SeoPreview/index.tsx#SeoPreviewComponent',
+                clientProps: {
+                  titlePath: 'meta.title',
+                  descriptionPath: 'meta.description',
+                  imagePath: 'meta.image',
+                  hasGenerateURLFn: false,
+                  uploadsCollection: 'assetCloud',
+                },
+              },
+            },
+          },
+          label: 'Preview',
+        },
+      ],
+      admin: {
+        position: 'sidebar',
+      },
+    },
   ],
   versions: {
     drafts: {

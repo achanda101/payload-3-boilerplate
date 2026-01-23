@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useLanguage } from '@/providers/LanguageContext'
@@ -15,30 +15,35 @@ interface HeroProps {
 export const HomeHero: React.FC<HeroProps> = ({ data = {}, isDraft = false }) => {
   const { selectedLanguage } = useLanguage()
   const { setHeaderTheme } = useHeaderTheme()
-  const [ heroData, setHeroData ] = useState<any>(data?.heroSection || {})
+  const [heroTitle, setHeroTitle] = useState<any>(data?.heroTitle || {})
+  const [heroSubtitle, setHeroSubtitle] = useState<any>(data?.heroSubtitle || {})
+  const [ctaButton, setCtaButton] = useState<any>(data?.ctaButton || {})
 
+  const handleLanguageChange = useCallback(
+    async (newLanguage: string) => {
+      try {
+        const draftParam = isDraft ? '&draft=true' : ''
+        const response = await fetch(
+          `/api/globals/homepage?locale=${newLanguage}&depth=1${draftParam}`,
+        )
+        const data = await response.json()
 
-  const handleLanguageChange = async (newLanguage: string) => {
-    try {
-      const draftParam = isDraft ? '&draft=true' : ''
-      const response = await fetch(`/api/globals/homepage?locale=${newLanguage}&depth=1${draftParam}`)
-      const data = await response.json()
-      setHeroData({
-        ...data?.heroSection,
-        ctaButton: data?.heroSection?.ctaButton ?? []
-      })
-
-    } catch (error) {
-      console.error('Failed to fetch Hero Section data:', error)
-    }
-  }
+        setHeroTitle(data?.heroTitle || {})
+        setHeroSubtitle(data?.heroSubtitle || {})
+        setCtaButton(data?.ctaButton || {})
+      } catch (error) {
+        console.error('Failed to fetch Hero Section data:', error)
+      }
+    },
+    [isDraft],
+  )
 
   useEffect(() => {
     // Set the header colour to transparent
     setHeaderTheme('blank')
     // Any side effects based on selectedLanguage can be handled here
     handleLanguageChange(selectedLanguage)
-  }, [ selectedLanguage, setHeaderTheme, isDraft ])
+  }, [selectedLanguage, setHeaderTheme, handleLanguageChange])
 
   return (
     <section className="hero-banner">
@@ -64,12 +69,11 @@ export const HomeHero: React.FC<HeroProps> = ({ data = {}, isDraft = false }) =>
       />
       <div className="hero-container">
         <div className="hero-content">
-          <h2 style={{ whiteSpace: 'pre-line' }}>{heroData?.heroTitle}</h2>
-          <p style={{ whiteSpace: 'pre-line' }}>{heroData?.heroSubtitle}</p>
-          <ButtonArray btnArray={heroData?.ctaButton || []} colStackOnMobile={true} />
+          <h2 style={{ whiteSpace: 'pre-line' }}>{heroTitle}</h2>
+          <p style={{ whiteSpace: 'pre-line' }}>{heroSubtitle}</p>
+          <ButtonArray btnArray={ctaButton || []} colStackOnMobile={true} />
         </div>
       </div>
-      
     </section>
   )
 }

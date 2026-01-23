@@ -176,7 +176,6 @@ export const ReportPage: React.FC<ReportPageProps> = ({ collection, docId, isDra
         const response = await fetch(fetchPath)
         const data = await response.json()
         const headerColour = 'trans'
-        console.log('Report data:', data)
         setPageType(data.pageType || 'landing')
         setHeaderTheme(headerColour)
         setHeroBlock({

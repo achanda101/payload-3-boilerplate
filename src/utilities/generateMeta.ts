@@ -12,6 +12,7 @@ interface DocWithMeta {
     description?: string | null
     image?: any
   }
+  seoImage?: any // For Grants and Pages which have a dedicated SEO image field
   slug?: string | string[] | null
 }
 
@@ -21,29 +22,32 @@ export const generateMeta = async (args: {
   const { doc } = args || {}
 
   const meta = (doc as DocWithMeta | null)?.meta
+  const seoImage = (doc as DocWithMeta | null)?.seoImage
 
   let ogImageUrl: string | null = null
 
-  if (typeof meta?.image === 'object' && meta.image !== null) {
-    // Check for sizes.ogImage first (JPG format for Open Graph)
-    if (meta.image.sizes?.ogImage?.url) {
-      ogImageUrl = meta.image.sizes.ogImage.url
-    }
-    // Fall back to the main url if ogImage doesn't exist
-    else if ('url' in meta.image && meta.image.url) {
-      const imageUrl = meta.image.url
-      // Check if the URL is WebP format
-      if (imageUrl.toLowerCase().endsWith('.webp')) {
-        // Use default icon for WebP images
-        ogImageUrl = '/uafanp-icon2.png'
-      } else {
-        ogImageUrl = imageUrl
+  // Helper function to extract image URL
+  const getImageUrl = (image: any): string | null => {
+    if (typeof image === 'object' && image !== null) {
+      // Check for sizes.ogImage first (JPG format for Open Graph)
+      if (image.sizes?.ogImage?.url) {
+        return image.sizes.ogImage.url
+      }
+      // Fall back to the main url if ogImage doesn't exist
+      if ('url' in image && image.url) {
+        const imageUrl = image.url
+        // Check if the URL is WebP format
+        if (imageUrl.toLowerCase().endsWith('.webp')) {
+          return null // Skip WebP, will fall back to default
+        }
+        return imageUrl
       }
     }
-  } else {
-    // If no meta.image exists, use default icon
-    ogImageUrl = '/uafanp-icon2.png'
+    return null
   }
+
+  // Priority: meta.image > seoImage > default
+  ogImageUrl = getImageUrl(meta?.image) || getImageUrl(seoImage) || '/uafanp-icon2.png'
 
   const ogImage = ogImageUrl ? `${getServerSideURL()}${ogImageUrl}` : null
 

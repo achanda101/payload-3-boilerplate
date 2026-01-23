@@ -5,14 +5,6 @@ import { revalidateHomepage } from './hooks/revalidateHomepage'
 import { link } from '@/fields/link'
 import { getServerSideURL } from '@/utilities/getURL'
 
-import {
-  MetaDescriptionField,
-  MetaImageField,
-  MetaTitleField,
-  OverviewField,
-  PreviewField,
-} from '@payloadcms/plugin-seo/fields'
-
 // BLOCKS
 import { MultiColumnInfoBlock } from '@/blocks/MultiColumnInfoBlock/config'
 import { GrantCardGridBlock } from '@/blocks/GrantCardGridBlock/config'
@@ -34,8 +26,8 @@ import { PillarCard } from '@/blocks/PillarCard/config'
 import { TestimonialCardDeck } from '@/blocks/TestimonialCardDeck/config'
 import { MinimalCardGallery } from '@/blocks/MinimalCardGallery/config'
 import { IDCardGallery } from '@/blocks/IDCardGallery/config'
-import { TwoColumnBlock } from '@/blocks/TwoColumnBlock/config'
-import { ThreeColumnTableBlock } from '@/blocks/ThreeColumnTableBlock/config'
+// import { TwoColumnBlock } from '@/blocks/TwoColumnBlock/config'
+// import { ThreeColumnTableBlock } from '@/blocks/ThreeColumnTableBlock/config'
 
 export const Homepage: GlobalConfig = {
   slug: 'homepage',
@@ -70,9 +62,7 @@ export const Homepage: GlobalConfig = {
       },
       fields: [
         {
-          name: 'heroSection',
-          label: '',
-          type: 'group',
+          type: 'row',
           fields: [
             {
               name: 'heroTitle',
@@ -81,6 +71,7 @@ export const Homepage: GlobalConfig = {
               maxLength: 50,
               admin: {
                 placeholder: 'Enter the main title for the hero section',
+                width: '50%',
                 components: {
                   afterInput: [
                     {
@@ -97,6 +88,7 @@ export const Homepage: GlobalConfig = {
               maxLength: 250,
               admin: {
                 placeholder: 'Enter a subtitle for the hero section',
+                width: '50%',
                 components: {
                   afterInput: [
                     {
@@ -106,28 +98,28 @@ export const Homepage: GlobalConfig = {
                 },
               },
             },
-            {
-              name: 'ctaButton',
-              labels: {
-                singular: 'CTA Button',
-                plural: 'CTA Buttons',
-              },
-              type: 'array',
-              maxRows: 2,
-              fields: [
-                link({
-                  appearances: false,
-                }),
-              ],
-              admin: {
-                components: {
-                  RowLabel: {
-                    path: 'src/globals/Homepage/CtaButtonRowLabel.tsx',
-                  },
-                },
+          ],
+        },
+        {
+          name: 'ctaButton',
+          labels: {
+            singular: 'CTA Button',
+            plural: 'CTA Buttons',
+          },
+          type: 'array',
+          maxRows: 2,
+          fields: [
+            link({
+              appearances: false,
+            }),
+          ],
+          admin: {
+            components: {
+              RowLabel: {
+                path: 'src/globals/Homepage/CtaButtonRowLabel.tsx',
               },
             },
-          ],
+          },
         },
       ],
     },
@@ -156,8 +148,8 @@ export const Homepage: GlobalConfig = {
         TestimonialCardDeck,
         MinimalCardGallery,
         IDCardGallery,
-        TwoColumnBlock,
-        ThreeColumnTableBlock,
+        // TwoColumnBlock,
+        // ThreeColumnTableBlock,
       ],
       labels: {
         singular: 'A Content Block',
@@ -168,41 +160,65 @@ export const Homepage: GlobalConfig = {
         isSortable: true,
       },
     },
+    // Manual SEO fields (seoPlugin has a bug with globals causing circular reference error)
     {
-      type: 'group',
       name: 'meta',
+      type: 'group',
       label: 'SEO',
       fields: [
-        OverviewField({
-          titlePath: 'meta.title',
-          descriptionPath: 'meta.description',
-          imagePath: 'meta.image',
-        }),
-        MetaTitleField({
-          hasGenerateFn: false,
-        }),
-        MetaImageField({
+        {
+          name: 'title',
+          type: 'text',
+          label: 'Meta Title',
+          admin: {
+            description: 'Title for search engines and social sharing. Recommended: 50-60 characters.',
+          },
+        },
+        {
+          name: 'description',
+          type: 'textarea',
+          label: 'Meta Description',
+          admin: {
+            description: 'Description for search engines and social sharing. Recommended: 120-160 characters.',
+          },
+        },
+        {
+          name: 'image',
+          type: 'upload',
           relationTo: 'mediaCloud',
-          overrides: {
-            admin: {
-              description:
-                'Recommended file size for images is <500KB. Image must have a minimum width of 800px for optimal social media display and should be a .jpg, .png.',
+          label: 'Meta Image',
+          filterOptions: {
+            mimeType: {
+              in: ['image/png', 'image/jpeg', 'image/gif'],
             },
           },
-        }),
-
-        MetaDescriptionField({
-          hasGenerateFn: false,
-        }),
-        PreviewField({
-          // if the `generateUrl` function is configured
-          hasGenerateFn: true,
-
-          // field paths to match the target field for data
-          titlePath: 'meta.title',
-          descriptionPath: 'meta.description',
-        }),
+          admin: {
+            description:
+              'Image for social sharing. Only PNG, JPG, and GIF formats are supported for meta images.',
+          },
+        },
+        {
+          name: 'preview',
+          type: 'ui',
+          admin: {
+            components: {
+              Field: {
+                path: 'src/components/SeoPreview/index.tsx#SeoPreviewComponent',
+                clientProps: {
+                  titlePath: 'meta.title',
+                  descriptionPath: 'meta.description',
+                  imagePath: 'meta.image',
+                  hasGenerateURLFn: false,
+                },
+              },
+            },
+          },
+          label: 'Preview',
+        },
       ],
+      admin: {
+        description: 'SEO settings for the homepage.',
+      },
     },
   ],
   versions: {

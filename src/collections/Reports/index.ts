@@ -6,13 +6,6 @@ import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
 
 import { revalidateReport } from './hooks/revalidateReport'
 import { slugField } from '@/fields/slug'
-import {
-  MetaDescriptionField,
-  MetaImageField,
-  MetaTitleField,
-  OverviewField,
-  PreviewField,
-} from '@payloadcms/plugin-seo/fields'
 
 import { generatePreviewPath } from '@/utilities/generatePreviewPath'
 import { getServerSideURL } from '@/utilities/getURL'
@@ -38,8 +31,8 @@ import { PillarCard } from '@/blocks/PillarCard/config'
 import { TestimonialCardDeck } from '@/blocks/TestimonialCardDeck/config'
 import { MinimalCardGallery } from '@/blocks/MinimalCardGallery/config'
 import { IDCardGallery } from '@/blocks/IDCardGallery/config'
-import { TwoColumnBlock } from '@/blocks/TwoColumnBlock/config'
-import { ThreeColumnTableBlock } from '@/blocks/ThreeColumnTableBlock/config'
+// import { TwoColumnBlock } from '@/blocks/TwoColumnBlock/config'
+// import { ThreeColumnTableBlock } from '@/blocks/ThreeColumnTableBlock/config'
 
 export const Report: CollectionConfig<'reports'> = {
   slug: 'reports',
@@ -269,8 +262,8 @@ export const Report: CollectionConfig<'reports'> = {
         TestimonialCardDeck,
         MinimalCardGallery,
         IDCardGallery,
-        TwoColumnBlock,
-        ThreeColumnTableBlock,
+        // TwoColumnBlock,
+        // ThreeColumnTableBlock,
       ],
       labels: {
         singular: 'A Content Block',
@@ -281,42 +274,6 @@ export const Report: CollectionConfig<'reports'> = {
         isSortable: true,
         disableListColumn: true,
       },
-    },
-    {
-      type: 'group',
-      name: 'meta',
-      label: 'SEO',
-      fields: [
-        OverviewField({
-          titlePath: 'meta.title',
-          descriptionPath: 'meta.description',
-          imagePath: 'meta.image',
-        }),
-        MetaTitleField({
-          hasGenerateFn: true,
-        }),
-        MetaImageField({
-          relationTo: 'mediaCloud',
-          overrides: {
-            admin: {
-              description:
-                'Recommended file size for images is <500KB. Image must have a minimum width of 800px for optimal social media display and should be a .jpg, .png.',
-            },
-          },
-        }),
-
-        MetaDescriptionField({
-          hasGenerateFn: true,
-        }),
-        PreviewField({
-          // if the `generateUrl` function is configured
-          hasGenerateFn: true,
-
-          // field paths to match the target field for data
-          titlePath: 'meta.title',
-          descriptionPath: 'meta.description',
-        }),
-      ],
     },
     {
       name: 'publishedAt',

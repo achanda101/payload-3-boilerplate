@@ -16,6 +16,7 @@ import * as migration_20260119_131855_minimalcardgallery from './20260119_131855
 import * as migration_20260119_140242_add_id_card_gallery_block from './20260119_140242_add_id_card_gallery_block';
 import * as migration_20260120_064214_twocolumnblock from './20260120_064214_twocolumnblock';
 import * as migration_20260120_211136_threecolumntable from './20260120_211136_threecolumntable';
+import * as migration_20260123_143908_seoforall from './20260123_143908_seoforall';
 
 export const migrations = [
   {
@@ -106,6 +107,11 @@ export const migrations = [
   {
     up: migration_20260120_211136_threecolumntable.up,
     down: migration_20260120_211136_threecolumntable.down,
-    name: '20260120_211136_threecolumntable'
+    name: '20260120_211136_threecolumntable',
+  },
+  {
+    up: migration_20260123_143908_seoforall.up,
+    down: migration_20260123_143908_seoforall.down,
+    name: '20260123_143908_seoforall'
   },
 ];

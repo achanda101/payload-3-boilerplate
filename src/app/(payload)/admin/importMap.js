@@ -41,14 +41,10 @@ import { default as default_1f0d5831ab203ec92792a85e1ec7e7b1 } from 'src/blocks/
 import { default as default_839c0a88edd3e9bf3d7dc80ff4184732 } from 'src/blocks/TestimonialCardDeck/CardRowLabel.tsx'
 import { default as default_6c6eda6916f93f4d13975881219946b5 } from 'src/blocks/MinimalCardGallery/CardRowLabel.tsx'
 import { default as default_04f62d488cd7b5273f2e036f0763c737 } from 'src/blocks/IDCardGallery/CardRowLabel.tsx'
-import { default as default_f90b0e4bd24771fcf78c78a14498d080 } from 'src/blocks/TagsBlock/TagRowLabel.tsx'
-import { default as default_d4a172df56326c316f917752b0d37b9b } from 'src/blocks/ThreeColumnTableBlock/ColumnRowLabel.tsx'
-import { default as default_cfc47b75c55f8641410c772c6528bb99 } from 'src/blocks/ThreeColumnTableBlock/RowRowLabel.tsx'
-import { OverviewComponent as OverviewComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
-import { MetaTitleComponent as MetaTitleComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
-import { MetaDescriptionComponent as MetaDescriptionComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
-import { PreviewComponent as PreviewComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { SlugComponent as SlugComponent_92cc057d0a2abb4f6cf0307edf59f986 } from '@/fields/slug/SlugComponent'
+import { MetaTitleField as MetaTitleField_d3379f1bd72083fb3a9d5a258cd4552d } from 'src/components/SeoFields/MetaTitleField.tsx'
+import { MetaDescriptionField as MetaDescriptionField_c5da501ee9d8b764f2d1dbc358f7bcb0 } from 'src/components/SeoFields/MetaDescriptionField.tsx'
+import { SeoPreviewComponent as SeoPreviewComponent_b97c76eed381aee96189da8b569d859b } from 'src/components/SeoPreview/index.tsx'
 import { FolderTableCell as FolderTableCell_ab83ff7e88da8d3530831f296ec4756a } from '@payloadcms/ui/rsc'
 import { FolderField as FolderField_ab83ff7e88da8d3530831f296ec4756a } from '@payloadcms/ui/rsc'
 import { default as default_d53673b0f0592349e1f76e20f0e35a8a } from 'src/collections/AssetCloudCell'
@@ -57,6 +53,10 @@ import { default as default_1ca90977107cbb5e33eef51b3d659f98 } from 'src/collect
 import { default as default_e6f635e33cdcc4d4d11b58dc87fdbc28 } from 'src/collections/EligibilityTests/OptionsRowLabel.tsx'
 import { default as default_5c27a4360ad720e85354b3b24721e696 } from 'src/collections/EligibilityTests/CriteriaRowLabel.tsx'
 import { default as default_53602952b3aad17a0cfc4bbf43cc4181 } from 'src/collections/MediaCloudCell'
+import { OverviewComponent as OverviewComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
+import { MetaTitleComponent as MetaTitleComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
+import { MetaDescriptionComponent as MetaDescriptionComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
+import { MetaImageComponent as MetaImageComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { default as default_6e5325882d4f1cdba6ec4e761f75cd71 } from 'src/collections/Users/AvatarCell'
 import { LinkToDoc as LinkToDoc_aead06e4cbf6b2620c5c51c9ab283634 } from '@payloadcms/plugin-search/client'
 import { ReindexButton as ReindexButton_aead06e4cbf6b2620c5c51c9ab283634 } from '@payloadcms/plugin-search/client'
@@ -118,14 +118,10 @@ export const importMap = {
   "src/blocks/TestimonialCardDeck/CardRowLabel.tsx#default": default_839c0a88edd3e9bf3d7dc80ff4184732,
   "src/blocks/MinimalCardGallery/CardRowLabel.tsx#default": default_6c6eda6916f93f4d13975881219946b5,
   "src/blocks/IDCardGallery/CardRowLabel.tsx#default": default_04f62d488cd7b5273f2e036f0763c737,
-  "src/blocks/TagsBlock/TagRowLabel.tsx#default": default_f90b0e4bd24771fcf78c78a14498d080,
-  "src/blocks/ThreeColumnTableBlock/ColumnRowLabel.tsx#default": default_d4a172df56326c316f917752b0d37b9b,
-  "src/blocks/ThreeColumnTableBlock/RowRowLabel.tsx#default": default_cfc47b75c55f8641410c772c6528bb99,
-  "@payloadcms/plugin-seo/client#OverviewComponent": OverviewComponent_a8a977ebc872c5d5ea7ee689724c0860,
-  "@payloadcms/plugin-seo/client#MetaTitleComponent": MetaTitleComponent_a8a977ebc872c5d5ea7ee689724c0860,
-  "@payloadcms/plugin-seo/client#MetaDescriptionComponent": MetaDescriptionComponent_a8a977ebc872c5d5ea7ee689724c0860,
-  "@payloadcms/plugin-seo/client#PreviewComponent": PreviewComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "@/fields/slug/SlugComponent#SlugComponent": SlugComponent_92cc057d0a2abb4f6cf0307edf59f986,
+  "src/components/SeoFields/MetaTitleField.tsx#MetaTitleField": MetaTitleField_d3379f1bd72083fb3a9d5a258cd4552d,
+  "src/components/SeoFields/MetaDescriptionField.tsx#MetaDescriptionField": MetaDescriptionField_c5da501ee9d8b764f2d1dbc358f7bcb0,
+  "src/components/SeoPreview/index.tsx#SeoPreviewComponent": SeoPreviewComponent_b97c76eed381aee96189da8b569d859b,
   "@payloadcms/ui/rsc#FolderTableCell": FolderTableCell_ab83ff7e88da8d3530831f296ec4756a,
   "@payloadcms/ui/rsc#FolderField": FolderField_ab83ff7e88da8d3530831f296ec4756a,
   "src/collections/AssetCloudCell#default": default_d53673b0f0592349e1f76e20f0e35a8a,
@@ -134,6 +130,10 @@ export const importMap = {
   "src/collections/EligibilityTests/OptionsRowLabel.tsx#default": default_e6f635e33cdcc4d4d11b58dc87fdbc28,
   "src/collections/EligibilityTests/CriteriaRowLabel.tsx#default": default_5c27a4360ad720e85354b3b24721e696,
   "src/collections/MediaCloudCell#default": default_53602952b3aad17a0cfc4bbf43cc4181,
+  "@payloadcms/plugin-seo/client#OverviewComponent": OverviewComponent_a8a977ebc872c5d5ea7ee689724c0860,
+  "@payloadcms/plugin-seo/client#MetaTitleComponent": MetaTitleComponent_a8a977ebc872c5d5ea7ee689724c0860,
+  "@payloadcms/plugin-seo/client#MetaDescriptionComponent": MetaDescriptionComponent_a8a977ebc872c5d5ea7ee689724c0860,
+  "@payloadcms/plugin-seo/client#MetaImageComponent": MetaImageComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "src/collections/Users/AvatarCell#default": default_6e5325882d4f1cdba6ec4e761f75cd71,
   "@payloadcms/plugin-search/client#LinkToDoc": LinkToDoc_aead06e4cbf6b2620c5c51c9ab283634,
   "@payloadcms/plugin-search/client#ReindexButton": ReindexButton_aead06e4cbf6b2620c5c51c9ab283634,

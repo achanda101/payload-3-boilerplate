@@ -28,6 +28,7 @@ import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
 import languageOptions from './globals/Header/languageOptions.json'
 import { Homepage } from './globals/Homepage/config'
+import { seoPlugin } from '@payloadcms/plugin-seo'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -155,6 +156,92 @@ export default buildConfig({
         forcePathStyle: true,
         tls: true,
         signingEscapePath: false,
+      },
+    }),
+    seoPlugin({
+      // Note: 'pages' and 'grants' removed - they have manual seoImage field instead
+      // Note: 'homepage' removed due to seoPlugin bug with globals causing circular reference error
+      collections: ['blog', 'reports', 'mmedia'],
+      globals: [],
+      uploadsCollection: 'mediaCloud',
+      fields: ({ defaultFields }) => [
+        ...defaultFields.filter((field) => field.name !== 'preview'),
+        {
+          name: 'preview',
+          type: 'ui',
+          admin: {
+            components: {
+              Field: {
+                path: 'src/components/SeoPreview/index.tsx#SeoPreviewComponent',
+                clientProps: {
+                  titlePath: 'meta.title',
+                  descriptionPath: 'meta.description',
+                  imagePath: 'meta.image',
+                  hasGenerateURLFn: true,
+                  uploadsCollection: 'mediaCloud',
+                },
+              },
+            },
+          },
+          label: 'Preview',
+        },
+      ],
+      generateTitle: ({ doc }) => {
+        if (!doc) return 'Urgent Action Fund Asia & Pacific'
+
+        let title = 'Urgent Action Fund Asia & Pacific'
+
+        if ('heroTitle' in doc && doc.heroTitle) {
+          title = `${doc.heroTitle} | Urgent Action Fund Asia & Pacific`
+        }
+
+        return title
+      },
+      generateURL: ({ doc, collectionSlug }) => {
+        const url = getServerSideURL()
+
+        if (!doc?.slug) return url
+
+        // Generate URLs based on collection type
+        switch (collectionSlug) {
+          case 'grants':
+            return `${url}/grants/${doc.slug}`
+          case 'reports':
+            return `${url}/reports/${doc.slug}`
+          case 'blog':
+            return `${url}/blog/${doc.slug}`
+          case 'mmedia':
+            return `${url}/mmedia/${doc.slug}`
+          case 'pages':
+          default:
+            return `${url}/${doc.slug}`
+        }
+      },
+      generateDescription: ({ doc }) => {
+        if (!doc) return 'Urgent Action Fund Asia & Pacific'
+
+        let description = 'Urgent Action Fund Asia & Pacific'
+
+        if ('heroSubtitle' in doc && doc.heroSubtitle) {
+          description = doc.heroSubtitle
+        }
+
+        return description
+      },
+      generateImage: ({ doc }) => {
+        if (!doc) return undefined as unknown as number
+
+        // Check common image field names used across collections
+        const imageFields = ['image', 'coverImage', 'heroImage', 'featuredImage']
+
+        for (const field of imageFields) {
+          if (field in doc && doc[field]) {
+            const image = doc[field]
+            return image
+          }
+        }
+        // No image found
+        return null
       },
     }),
   ],

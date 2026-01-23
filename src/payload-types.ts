@@ -1420,89 +1420,19 @@ export interface Grant {
             blockName?: string | null;
             blockType: 'idCardGallery';
           }
-        | {
-            title?: string | null;
-            subtitle?: string | null;
-            leftColumn?: {
-              root: {
-                type: string;
-                children: {
-                  type: any;
-                  version: number;
-                  [k: string]: unknown;
-                }[];
-                direction: ('ltr' | 'rtl') | null;
-                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                indent: number;
-                version: number;
-              };
-              [k: string]: unknown;
-            } | null;
-            rightColumn?: {
-              root: {
-                type: string;
-                children: {
-                  type: any;
-                  version: number;
-                  [k: string]: unknown;
-                }[];
-                direction: ('ltr' | 'rtl') | null;
-                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                indent: number;
-                version: number;
-              };
-              [k: string]: unknown;
-            } | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'twoColumnBlock';
-          }
-        | {
-            title?: string | null;
-            subtitle?: string | null;
-            columnWidths?: ('f-t-t' | 't-f-t' | 't-t-f' | 'vt-t-f') | null;
-            rows?:
-              | {
-                  columns?:
-                    | {
-                        content?: {
-                          root: {
-                            type: string;
-                            children: {
-                              type: any;
-                              version: number;
-                              [k: string]: unknown;
-                            }[];
-                            direction: ('ltr' | 'rtl') | null;
-                            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                            indent: number;
-                            version: number;
-                          };
-                          [k: string]: unknown;
-                        } | null;
-                        id?: string | null;
-                      }[]
-                    | null;
-                  id?: string | null;
-                }[]
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'threeColumnTableBlock';
-          }
       )[]
     | null;
-  meta?: {
-    title?: string | null;
-    /**
-     * Recommended file size for images is <500KB. Image must have a minimum width of 800px for optimal social media display and should be a .jpg, .png.
-     */
-    image?: (number | null) | MediaCloud;
-    description?: string | null;
-  };
   publishedAt?: string | null;
   slug?: string | null;
   slugLock?: boolean | null;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    /**
+     * Image for social sharing. Only PNG, JPG, and GIF formats are supported. Select from Assets.
+     */
+    image?: (number | null) | AssetCloud;
+  };
   folder?: (number | null) | FolderInterface;
   updatedAt: string;
   createdAt: string;
@@ -2858,89 +2788,19 @@ export interface Page {
             blockName?: string | null;
             blockType: 'idCardGallery';
           }
-        | {
-            title?: string | null;
-            subtitle?: string | null;
-            leftColumn?: {
-              root: {
-                type: string;
-                children: {
-                  type: any;
-                  version: number;
-                  [k: string]: unknown;
-                }[];
-                direction: ('ltr' | 'rtl') | null;
-                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                indent: number;
-                version: number;
-              };
-              [k: string]: unknown;
-            } | null;
-            rightColumn?: {
-              root: {
-                type: string;
-                children: {
-                  type: any;
-                  version: number;
-                  [k: string]: unknown;
-                }[];
-                direction: ('ltr' | 'rtl') | null;
-                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                indent: number;
-                version: number;
-              };
-              [k: string]: unknown;
-            } | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'twoColumnBlock';
-          }
-        | {
-            title?: string | null;
-            subtitle?: string | null;
-            columnWidths?: ('f-t-t' | 't-f-t' | 't-t-f' | 'vt-t-f') | null;
-            rows?:
-              | {
-                  columns?:
-                    | {
-                        content?: {
-                          root: {
-                            type: string;
-                            children: {
-                              type: any;
-                              version: number;
-                              [k: string]: unknown;
-                            }[];
-                            direction: ('ltr' | 'rtl') | null;
-                            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                            indent: number;
-                            version: number;
-                          };
-                          [k: string]: unknown;
-                        } | null;
-                        id?: string | null;
-                      }[]
-                    | null;
-                  id?: string | null;
-                }[]
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'threeColumnTableBlock';
-          }
       )[]
     | null;
-  meta?: {
-    title?: string | null;
-    /**
-     * Recommended file size for images is <500KB. Image must have a minimum width of 800px for optimal social media display and should be a .jpg, .png.
-     */
-    image?: (number | null) | MediaCloud;
-    description?: string | null;
-  };
   publishedAt?: string | null;
   slug?: string | null;
   slugLock?: boolean | null;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    /**
+     * Image for social sharing. Only PNG, JPG, and GIF formats are supported. Select from Assets.
+     */
+    image?: (number | null) | AssetCloud;
+  };
   folder?: (number | null) | FolderInterface;
   updatedAt: string;
   createdAt: string;
@@ -4078,89 +3938,19 @@ export interface Blog {
             blockName?: string | null;
             blockType: 'idCardGallery';
           }
-        | {
-            title?: string | null;
-            subtitle?: string | null;
-            leftColumn?: {
-              root: {
-                type: string;
-                children: {
-                  type: any;
-                  version: number;
-                  [k: string]: unknown;
-                }[];
-                direction: ('ltr' | 'rtl') | null;
-                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                indent: number;
-                version: number;
-              };
-              [k: string]: unknown;
-            } | null;
-            rightColumn?: {
-              root: {
-                type: string;
-                children: {
-                  type: any;
-                  version: number;
-                  [k: string]: unknown;
-                }[];
-                direction: ('ltr' | 'rtl') | null;
-                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                indent: number;
-                version: number;
-              };
-              [k: string]: unknown;
-            } | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'twoColumnBlock';
-          }
-        | {
-            title?: string | null;
-            subtitle?: string | null;
-            columnWidths?: ('f-t-t' | 't-f-t' | 't-t-f' | 'vt-t-f') | null;
-            rows?:
-              | {
-                  columns?:
-                    | {
-                        content?: {
-                          root: {
-                            type: string;
-                            children: {
-                              type: any;
-                              version: number;
-                              [k: string]: unknown;
-                            }[];
-                            direction: ('ltr' | 'rtl') | null;
-                            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                            indent: number;
-                            version: number;
-                          };
-                          [k: string]: unknown;
-                        } | null;
-                        id?: string | null;
-                      }[]
-                    | null;
-                  id?: string | null;
-                }[]
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'threeColumnTableBlock';
-          }
       )[]
     | null;
-  meta?: {
-    title?: string | null;
-    /**
-     * Recommended file size for images is <500KB. Image must have a minimum width of 800px for optimal social media display and should be a .jpg, .png.
-     */
-    image?: (number | null) | MediaCloud;
-    description?: string | null;
-  };
   publishedAt?: string | null;
   slug?: string | null;
   slugLock?: boolean | null;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | MediaCloud;
+  };
   folder?: (number | null) | FolderInterface;
   updatedAt: string;
   createdAt: string;
@@ -5351,89 +5141,19 @@ export interface Report {
             blockName?: string | null;
             blockType: 'idCardGallery';
           }
-        | {
-            title?: string | null;
-            subtitle?: string | null;
-            leftColumn?: {
-              root: {
-                type: string;
-                children: {
-                  type: any;
-                  version: number;
-                  [k: string]: unknown;
-                }[];
-                direction: ('ltr' | 'rtl') | null;
-                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                indent: number;
-                version: number;
-              };
-              [k: string]: unknown;
-            } | null;
-            rightColumn?: {
-              root: {
-                type: string;
-                children: {
-                  type: any;
-                  version: number;
-                  [k: string]: unknown;
-                }[];
-                direction: ('ltr' | 'rtl') | null;
-                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                indent: number;
-                version: number;
-              };
-              [k: string]: unknown;
-            } | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'twoColumnBlock';
-          }
-        | {
-            title?: string | null;
-            subtitle?: string | null;
-            columnWidths?: ('f-t-t' | 't-f-t' | 't-t-f' | 'vt-t-f') | null;
-            rows?:
-              | {
-                  columns?:
-                    | {
-                        content?: {
-                          root: {
-                            type: string;
-                            children: {
-                              type: any;
-                              version: number;
-                              [k: string]: unknown;
-                            }[];
-                            direction: ('ltr' | 'rtl') | null;
-                            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                            indent: number;
-                            version: number;
-                          };
-                          [k: string]: unknown;
-                        } | null;
-                        id?: string | null;
-                      }[]
-                    | null;
-                  id?: string | null;
-                }[]
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'threeColumnTableBlock';
-          }
       )[]
     | null;
-  meta?: {
-    title?: string | null;
-    /**
-     * Recommended file size for images is <500KB. Image must have a minimum width of 800px for optimal social media display and should be a .jpg, .png.
-     */
-    image?: (number | null) | MediaCloud;
-    description?: string | null;
-  };
   publishedAt?: string | null;
   slug?: string | null;
   slugLock?: boolean | null;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | MediaCloud;
+  };
   folder?: (number | null) | FolderInterface;
   updatedAt: string;
   createdAt: string;
@@ -6643,89 +6363,19 @@ export interface Mmedia {
             blockName?: string | null;
             blockType: 'idCardGallery';
           }
-        | {
-            title?: string | null;
-            subtitle?: string | null;
-            leftColumn?: {
-              root: {
-                type: string;
-                children: {
-                  type: any;
-                  version: number;
-                  [k: string]: unknown;
-                }[];
-                direction: ('ltr' | 'rtl') | null;
-                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                indent: number;
-                version: number;
-              };
-              [k: string]: unknown;
-            } | null;
-            rightColumn?: {
-              root: {
-                type: string;
-                children: {
-                  type: any;
-                  version: number;
-                  [k: string]: unknown;
-                }[];
-                direction: ('ltr' | 'rtl') | null;
-                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                indent: number;
-                version: number;
-              };
-              [k: string]: unknown;
-            } | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'twoColumnBlock';
-          }
-        | {
-            title?: string | null;
-            subtitle?: string | null;
-            columnWidths?: ('f-t-t' | 't-f-t' | 't-t-f' | 'vt-t-f') | null;
-            rows?:
-              | {
-                  columns?:
-                    | {
-                        content?: {
-                          root: {
-                            type: string;
-                            children: {
-                              type: any;
-                              version: number;
-                              [k: string]: unknown;
-                            }[];
-                            direction: ('ltr' | 'rtl') | null;
-                            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                            indent: number;
-                            version: number;
-                          };
-                          [k: string]: unknown;
-                        } | null;
-                        id?: string | null;
-                      }[]
-                    | null;
-                  id?: string | null;
-                }[]
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'threeColumnTableBlock';
-          }
       )[]
     | null;
-  meta?: {
-    title?: string | null;
-    /**
-     * Recommended file size for images is <500KB. Image must have a minimum width of 800px for optimal social media display and should be a .jpg, .png.
-     */
-    image?: (number | null) | MediaCloud;
-    description?: string | null;
-  };
   publishedAt?: string | null;
   slug?: string | null;
   slugLock?: boolean | null;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | MediaCloud;
+  };
   folder?: (number | null) | FolderInterface;
   updatedAt: string;
   createdAt: string;
@@ -7943,47 +7593,17 @@ export interface GrantsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        twoColumnBlock?:
-          | T
-          | {
-              title?: T;
-              subtitle?: T;
-              leftColumn?: T;
-              rightColumn?: T;
-              id?: T;
-              blockName?: T;
-            };
-        threeColumnTableBlock?:
-          | T
-          | {
-              title?: T;
-              subtitle?: T;
-              columnWidths?: T;
-              rows?:
-                | T
-                | {
-                    columns?:
-                      | T
-                      | {
-                          content?: T;
-                          id?: T;
-                        };
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-      };
-  meta?:
-    | T
-    | {
-        title?: T;
-        image?: T;
-        description?: T;
       };
   publishedAt?: T;
   slug?: T;
   slugLock?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
   folder?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -8691,47 +8311,17 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        twoColumnBlock?:
-          | T
-          | {
-              title?: T;
-              subtitle?: T;
-              leftColumn?: T;
-              rightColumn?: T;
-              id?: T;
-              blockName?: T;
-            };
-        threeColumnTableBlock?:
-          | T
-          | {
-              title?: T;
-              subtitle?: T;
-              columnWidths?: T;
-              rows?:
-                | T
-                | {
-                    columns?:
-                      | T
-                      | {
-                          content?: T;
-                          id?: T;
-                        };
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-      };
-  meta?:
-    | T
-    | {
-        title?: T;
-        image?: T;
-        description?: T;
       };
   publishedAt?: T;
   slug?: T;
   slugLock?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
   folder?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -9294,47 +8884,17 @@ export interface BlogSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        twoColumnBlock?:
-          | T
-          | {
-              title?: T;
-              subtitle?: T;
-              leftColumn?: T;
-              rightColumn?: T;
-              id?: T;
-              blockName?: T;
-            };
-        threeColumnTableBlock?:
-          | T
-          | {
-              title?: T;
-              subtitle?: T;
-              columnWidths?: T;
-              rows?:
-                | T
-                | {
-                    columns?:
-                      | T
-                      | {
-                          content?: T;
-                          id?: T;
-                        };
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-      };
-  meta?:
-    | T
-    | {
-        title?: T;
-        image?: T;
-        description?: T;
       };
   publishedAt?: T;
   slug?: T;
   slugLock?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
   folder?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -9898,47 +9458,17 @@ export interface ReportsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        twoColumnBlock?:
-          | T
-          | {
-              title?: T;
-              subtitle?: T;
-              leftColumn?: T;
-              rightColumn?: T;
-              id?: T;
-              blockName?: T;
-            };
-        threeColumnTableBlock?:
-          | T
-          | {
-              title?: T;
-              subtitle?: T;
-              columnWidths?: T;
-              rows?:
-                | T
-                | {
-                    columns?:
-                      | T
-                      | {
-                          content?: T;
-                          id?: T;
-                        };
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-      };
-  meta?:
-    | T
-    | {
-        title?: T;
-        image?: T;
-        description?: T;
       };
   publishedAt?: T;
   slug?: T;
   slugLock?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
   folder?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -10501,47 +10031,17 @@ export interface MmediaSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        twoColumnBlock?:
-          | T
-          | {
-              title?: T;
-              subtitle?: T;
-              leftColumn?: T;
-              rightColumn?: T;
-              id?: T;
-              blockName?: T;
-            };
-        threeColumnTableBlock?:
-          | T
-          | {
-              title?: T;
-              subtitle?: T;
-              columnWidths?: T;
-              rows?:
-                | T
-                | {
-                    columns?:
-                      | T
-                      | {
-                          content?: T;
-                          id?: T;
-                        };
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-      };
-  meta?:
-    | T
-    | {
-        title?: T;
-        image?: T;
-        description?: T;
       };
   publishedAt?: T;
   slug?: T;
   slugLock?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
   folder?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -11019,55 +10519,53 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Homepage {
   id: number;
-  heroSection?: {
-    heroTitle?: string | null;
-    heroSubtitle?: string | null;
-    ctaButton?:
-      | {
-          link?: {
-            type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
-            newTab?: boolean | null;
-            downloadLink?: boolean | null;
-            arrowLink?: boolean | null;
-            pillSolid?: boolean | null;
-            pillOutline?: boolean | null;
-            reference?:
-              | ({
-                  relationTo: 'grants';
-                  value: number | Grant;
-                } | null)
-              | ({
-                  relationTo: 'pages';
-                  value: number | Page;
-                } | null)
-              | ({
-                  relationTo: 'blog';
-                  value: number | Blog;
-                } | null)
-              | ({
-                  relationTo: 'reports';
-                  value: number | Report;
-                } | null)
-              | ({
-                  relationTo: 'mmedia';
-                  value: number | Mmedia;
-                } | null);
-            url?: string | null;
-            email?: string | null;
-            doc?: {
-              relationTo: 'documents';
-              value: number | Document;
-            } | null;
-            etestlink?: {
-              relationTo: 'etests';
-              value: number | Etest;
-            } | null;
-            label?: string | null;
-          };
-          id?: string | null;
-        }[]
-      | null;
-  };
+  heroTitle?: string | null;
+  heroSubtitle?: string | null;
+  ctaButton?:
+    | {
+        link?: {
+          type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+          newTab?: boolean | null;
+          downloadLink?: boolean | null;
+          arrowLink?: boolean | null;
+          pillSolid?: boolean | null;
+          pillOutline?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'grants';
+                value: number | Grant;
+              } | null)
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'blog';
+                value: number | Blog;
+              } | null)
+            | ({
+                relationTo: 'reports';
+                value: number | Report;
+              } | null)
+            | ({
+                relationTo: 'mmedia';
+                value: number | Mmedia;
+              } | null);
+          url?: string | null;
+          email?: string | null;
+          doc?: {
+            relationTo: 'documents';
+            value: number | Document;
+          } | null;
+          etestlink?: {
+            relationTo: 'etests';
+            value: number | Etest;
+          } | null;
+          label?: string | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
   contentBlocks?:
     | (
         | {
@@ -12138,85 +11636,24 @@ export interface Homepage {
             blockName?: string | null;
             blockType: 'idCardGallery';
           }
-        | {
-            title?: string | null;
-            subtitle?: string | null;
-            leftColumn?: {
-              root: {
-                type: string;
-                children: {
-                  type: any;
-                  version: number;
-                  [k: string]: unknown;
-                }[];
-                direction: ('ltr' | 'rtl') | null;
-                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                indent: number;
-                version: number;
-              };
-              [k: string]: unknown;
-            } | null;
-            rightColumn?: {
-              root: {
-                type: string;
-                children: {
-                  type: any;
-                  version: number;
-                  [k: string]: unknown;
-                }[];
-                direction: ('ltr' | 'rtl') | null;
-                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                indent: number;
-                version: number;
-              };
-              [k: string]: unknown;
-            } | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'twoColumnBlock';
-          }
-        | {
-            title?: string | null;
-            subtitle?: string | null;
-            columnWidths?: ('f-t-t' | 't-f-t' | 't-t-f' | 'vt-t-f') | null;
-            rows?:
-              | {
-                  columns?:
-                    | {
-                        content?: {
-                          root: {
-                            type: string;
-                            children: {
-                              type: any;
-                              version: number;
-                              [k: string]: unknown;
-                            }[];
-                            direction: ('ltr' | 'rtl') | null;
-                            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                            indent: number;
-                            version: number;
-                          };
-                          [k: string]: unknown;
-                        } | null;
-                        id?: string | null;
-                      }[]
-                    | null;
-                  id?: string | null;
-                }[]
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'threeColumnTableBlock';
-          }
       )[]
     | null;
+  /**
+   * SEO settings for the homepage.
+   */
   meta?: {
+    /**
+     * Title for search engines and social sharing. Recommended: 50-60 characters.
+     */
     title?: string | null;
     /**
-     * Recommended file size for images is <500KB. Image must have a minimum width of 800px for optimal social media display and should be a .jpg, .png.
+     * Description for search engines and social sharing. Recommended: 120-160 characters.
+     */
+    description?: string | null;
+    /**
+     * Image for social sharing. Only PNG, JPG, and GIF formats are supported for meta images.
      */
     image?: (number | null) | MediaCloud;
-    description?: string | null;
   };
   _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
@@ -12421,32 +11858,28 @@ export interface ContactInfo {
  * via the `definition` "homepage_select".
  */
 export interface HomepageSelect<T extends boolean = true> {
-  heroSection?:
+  heroTitle?: T;
+  heroSubtitle?: T;
+  ctaButton?:
     | T
     | {
-        heroTitle?: T;
-        heroSubtitle?: T;
-        ctaButton?:
+        link?:
           | T
           | {
-              link?:
-                | T
-                | {
-                    type?: T;
-                    newTab?: T;
-                    downloadLink?: T;
-                    arrowLink?: T;
-                    pillSolid?: T;
-                    pillOutline?: T;
-                    reference?: T;
-                    url?: T;
-                    email?: T;
-                    doc?: T;
-                    etestlink?: T;
-                    label?: T;
-                  };
-              id?: T;
+              type?: T;
+              newTab?: T;
+              downloadLink?: T;
+              arrowLink?: T;
+              pillSolid?: T;
+              pillOutline?: T;
+              reference?: T;
+              url?: T;
+              email?: T;
+              doc?: T;
+              etestlink?: T;
+              label?: T;
             };
+        id?: T;
       };
   contentBlocks?:
     | T
@@ -12971,43 +12404,13 @@ export interface HomepageSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        twoColumnBlock?:
-          | T
-          | {
-              title?: T;
-              subtitle?: T;
-              leftColumn?: T;
-              rightColumn?: T;
-              id?: T;
-              blockName?: T;
-            };
-        threeColumnTableBlock?:
-          | T
-          | {
-              title?: T;
-              subtitle?: T;
-              columnWidths?: T;
-              rows?:
-                | T
-                | {
-                    columns?:
-                      | T
-                      | {
-                          content?: T;
-                          id?: T;
-                        };
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
       };
   meta?:
     | T
     | {
         title?: T;
-        image?: T;
         description?: T;
+        image?: T;
       };
   _status?: T;
   updatedAt?: T;
