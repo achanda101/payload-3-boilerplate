@@ -49,9 +49,15 @@ export const generateMeta = async (args: {
   // Priority: meta.image > seoImage > default
   ogImageUrl = getImageUrl(meta?.image) || getImageUrl(seoImage) || '/uafanp-icon2.png'
 
-  const ogImage = ogImageUrl ? `${getServerSideURL()}${ogImageUrl}` : null
+  // Handle absolute URLs (e.g., S3) vs relative URLs
+  const ogImage = ogImageUrl
+    ? ogImageUrl.startsWith('http')
+      ? ogImageUrl
+      : `${getServerSideURL()}${ogImageUrl}`
+    : null
 
   const title = meta?.title ? meta?.title : 'Urgent Action Fund: Asia & Pacific'
+  const description = meta?.description || ''
 
   // Generate URL for Open Graph
   const slug = doc && 'slug' in doc ? doc.slug : null
@@ -60,7 +66,7 @@ export const generateMeta = async (args: {
   return {
     description: meta?.description,
     openGraph: mergeOpenGraph({
-      description: meta?.description || '',
+      description,
       images: ogImage
         ? [
             {
@@ -71,6 +77,12 @@ export const generateMeta = async (args: {
       title,
       url: ogUrl,
     }),
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: ogImage ? [ogImage] : undefined,
+    },
     title,
   }
 }
