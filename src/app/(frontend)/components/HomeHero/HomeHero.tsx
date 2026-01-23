@@ -15,9 +15,9 @@ interface HeroProps {
 export const HomeHero: React.FC<HeroProps> = ({ data = {}, isDraft = false }) => {
   const { selectedLanguage } = useLanguage()
   const { setHeaderTheme } = useHeaderTheme()
-  const [heroTitle, setHeroTitle] = useState<any>(data?.heroTitle || {})
-  const [heroSubtitle, setHeroSubtitle] = useState<any>(data?.heroSubtitle || {})
-  const [ctaButton, setCtaButton] = useState<any>(data?.ctaButton || {})
+  const [heroTitle, setHeroTitle] = useState<string>(data?.heroTitle || '')
+  const [heroSubtitle, setHeroSubtitle] = useState<string>(data?.heroSubtitle || '')
+  const [ctaButton, setCtaButton] = useState<any[]>(data?.ctaButton || [])
 
   const handleLanguageChange = useCallback(
     async (newLanguage: string) => {
@@ -28,9 +28,9 @@ export const HomeHero: React.FC<HeroProps> = ({ data = {}, isDraft = false }) =>
         )
         const data = await response.json()
 
-        setHeroTitle(data?.heroTitle || {})
-        setHeroSubtitle(data?.heroSubtitle || {})
-        setCtaButton(data?.ctaButton || {})
+        setHeroTitle(data?.heroTitle || '')
+        setHeroSubtitle(data?.heroSubtitle || '')
+        setCtaButton(data?.ctaButton || [])
       } catch (error) {
         console.error('Failed to fetch Hero Section data:', error)
       }
