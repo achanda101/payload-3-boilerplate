@@ -202,11 +202,11 @@ export const SeoPreviewComponent: React.FC<Props> = (props) => {
           </div>
           <h4 style={{ margin: '0 0 8px 0', fontSize: '18px', color: '#1a0dab' }}>
             <a href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-              {metaTitle as string}
+              {typeof metaTitle === 'string' ? metaTitle : ''}
             </a>
           </h4>
           <p style={{ margin: 0, fontSize: '14px', color: '#4d5156', lineHeight: '1.4' }}>
-            {metaDescription as string}
+            {typeof metaDescription === 'string' ? metaDescription : ''}
           </p>
         </div>
       </div>
