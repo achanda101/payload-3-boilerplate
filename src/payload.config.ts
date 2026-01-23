@@ -165,7 +165,7 @@ export default buildConfig({
       globals: [],
       uploadsCollection: 'mediaCloud',
       fields: ({ defaultFields }) => [
-        ...defaultFields.filter((field) => field.name !== 'preview'),
+        ...defaultFields.filter((field) => !('name' in field) || field.name !== 'preview'),
         {
           name: 'preview',
           type: 'ui',
