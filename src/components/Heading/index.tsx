@@ -24,7 +24,8 @@ export const Heading: React.FC<HeadingProps> = ({
   formatCurrency,
   ...props
 }) => {
-  const Tag = `h${level}` as keyof JSX.IntrinsicElements
+  const Tag = `h${level}` as const
+  const HeadingTag = Tag as keyof React.JSX.IntrinsicElements
 
   // Only format currency for h1-h4 by default
   const shouldFormat = formatCurrency ?? level <= 4
@@ -36,7 +37,7 @@ export const Heading: React.FC<HeadingProps> = ({
     return child
   }
 
-  return <Tag {...props}>{processChildren(children)}</Tag>
+  return React.createElement(HeadingTag, props, processChildren(children))
 }
 
 export default Heading
