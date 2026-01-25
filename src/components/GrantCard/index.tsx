@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 import { ButtonArray } from '@/components/ButtonArray';
+import { Heading } from '@/components/Heading';
 
 interface AssetCloud {
   id: string;
@@ -77,7 +78,7 @@ export const GrantCard: React.FC<GrantCardProps> = ({
             ) : <></>}
           
             <div className="text-center mb-3">
-              <h5>{title}</h5>
+              <Heading level={5}>{title}</Heading>
             </div>
               
             <p className="text-center mb-4">
@@ -132,7 +133,7 @@ export const GrantCard: React.FC<GrantCardProps> = ({
               )}
 
             <div className="text-center mb-2">
-              <h5>{title}</h5>
+              <Heading level={5}>{title}</Heading>
             </div>
               
             <p className="text-center mb-2">

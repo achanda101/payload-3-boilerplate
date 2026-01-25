@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Lightbulb, Minus, Plus } from "lucide-react";
 import { serializeLexical } from "@/components/RichText/serialize";
+import { Heading } from "@/components/Heading";
 
 interface AssetCloud {
   id: string;
@@ -46,7 +47,7 @@ export const FeatureCardAccordion: React.FC<FeatureCardAccordionProps> = ({
       <div className="page_column_layout gap-6 gap-y-0">
         {title && (  
             <div className="col-span-5 col-start-1">
-              <h3>{title}</h3>
+              <Heading level={3}>{title}</Heading>
             </div>
         )}
         {/* Accordion Section */}
@@ -57,7 +58,7 @@ export const FeatureCardAccordion: React.FC<FeatureCardAccordionProps> = ({
                   onClick={() => toggleItem(card.id)}
                   className="w-full py-6 flex items-center justify-between text-left hover:opacity-70 transition-opacity"
               >
-                <h6 className="inline-block">{card.accTitle}</h6>
+                <Heading level={6} className="inline-block">{card.accTitle}</Heading>
                 <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full border-2 border-foreground">
                   {activeItem === card.id ? (
                     <Minus className="w-6 h-6" />

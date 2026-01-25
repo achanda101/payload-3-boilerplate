@@ -7,6 +7,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from './ResourceCarousel'
 import WheelGestures from 'embla-carousel-wheel-gestures'
 import { serializeLexical } from '@/components/RichText/serialize'
+import { Heading } from '@/components/Heading'
 import type { Blog, Report, Mmedia, MediaCloud, Doctype } from '@/payload-types'
 
 interface ResourceFeatureCardProps {
@@ -130,7 +131,7 @@ const CarouselResourceCard: React.FC<{
           {/* Title */}
           {title && (
             <div className="mb-2 lg:mb-4">
-              <h4>{title}</h4>
+              <Heading level={4}>{title}</Heading>
             </div>
           )}
 
@@ -218,7 +219,7 @@ const SingleResourceCard: React.FC<{
           {/* Title */}
           {title && (
             <div className="mb-2 lg:mb-4">
-              <h4>{title}</h4>
+              <Heading level={4}>{title}</Heading>
             </div>
           )}
 
@@ -331,7 +332,7 @@ export const ResourceFeatureCard: React.FC<ResourceFeatureCardProps> = ({
           {/* Header Section - Title and Description */}
           {(title || desc) && (
             <div className={`col-span-full ${textAlignClass}`}>
-              {title && <h3>{title}</h3>}
+              {title && <Heading level={3}>{title}</Heading>}
               {desc && typeof desc === 'object' ? (
                 <div className="mt-1">{serializeLexical({ nodes: desc.root?.children || [] })}</div>
               ) : (
@@ -351,7 +352,7 @@ export const ResourceFeatureCard: React.FC<ResourceFeatureCardProps> = ({
       {/* Header Section - Title and Description */}
       {(title || desc) && (
         <div className={`col-span-full ${textAlignClass}`}>
-          {title && <h3>{title}</h3>}
+          {title && <Heading level={3}>{title}</Heading>}
           {desc && typeof desc === 'object' ? (
             <div className="mt-1">{serializeLexical({ nodes: desc.root?.children || [] })}</div>
           ) : (

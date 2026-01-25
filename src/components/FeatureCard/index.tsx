@@ -2,6 +2,7 @@ import React from "react";
 import Image from 'next/image';
 import { UAFButton } from "@/components/UAFButton";
 import { serializeLexical } from "@/components/RichText/serialize";
+import { Heading } from "@/components/Heading";
 
 interface AssetCloud {
   id: string;
@@ -56,7 +57,7 @@ export const FeatureCard: React.FC<FeatureCardProps> = ({
         <div className="page_column_layout gap-6 gap-y-0">
           {title && (  
             <div className="md:col-span-4 md:col-start-5 lg:col-span-6 lg:col-start-7">
-              <h4>{title}</h4>
+              <Heading level={4}>{title}</Heading>
             </div>
           )}
           {image && image.url && (
@@ -72,7 +73,7 @@ export const FeatureCard: React.FC<FeatureCardProps> = ({
           )}
           <div className="md:col-span-4 md:col-start-5 lg:col-span-6 lg:col-start-7 flex flex-col justify-between">
             <div>
-              {subtitle && <h5>{subtitle}</h5>}
+              {subtitle && <Heading level={5}>{subtitle}</Heading>}
               {tags && (
                 <div className="flex flex-wrap gap-1 items-center">
                   {tags.map((tag, index) => (
@@ -103,7 +104,7 @@ export const FeatureCard: React.FC<FeatureCardProps> = ({
       <div className="block md:hidden">
         {/* Mobile View */}
         <div className="flex flex-col gap-2">
-          {title && <h4>{title}</h4>}
+          {title && <Heading level={4}>{title}</Heading>}
           {image && image.url && (
             <Image
               src={image.url}
@@ -113,7 +114,7 @@ export const FeatureCard: React.FC<FeatureCardProps> = ({
               className="object-contain w-full h-auto rounded-3xl overflow-hidden"
             />
           )}
-          {subtitle && <h5 className="mt-4 mb-0">{subtitle}</h5>}
+          {subtitle && <Heading level={5} className="mt-4 mb-0">{subtitle}</Heading>}
           {tags && (
             <div className="flex flex-wrap gap-1 items-center mt-0">
               {tags.map((tag, index) => (

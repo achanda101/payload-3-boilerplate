@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/accordion";
 import { UAFButton } from "../UAFButton";
 import { serializeLexical } from "@/components/RichText/serialize";
+import { Heading } from "@/components/Heading";
 
 interface FaqBlockProps {
   title: string | null;
@@ -48,9 +49,9 @@ export const FaqBlock: React.FC<FaqBlockProps> = ({
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-10 items-start">
         {/* Left Column - Title and Description */}
         <div className="flex flex-col gap-[0.5rem] h-full">
-            <h3>
+            <Heading level={3}>
               {title}
-            </h3>
+            </Heading>
             <p>
               {desc}
             </p>
@@ -69,7 +70,7 @@ export const FaqBlock: React.FC<FaqBlockProps> = ({
                 className="border-b border-foreground"
               >
                 <AccordionTrigger className="py-4 hover:no-underline [&[data-state=open]>svg]:rotate-45">
-                  <h6 className="text-left mb-0">{faq.question}</h6>
+                  <Heading level={6} className="text-left mb-0">{faq.question}</Heading>
                 </AccordionTrigger>
                 <AccordionContent className="pb-6">
                   {faq.answer && typeof faq.answer === 'object' ? (

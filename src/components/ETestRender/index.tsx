@@ -9,6 +9,7 @@ import {
 } from '@/components/ui/carousel_etest'
 import { UAFButton } from '@/components/UAFButton'
 import { Drawer, DrawerClose, DrawerContent, DrawerTitle } from '@/components/ui/drawer'
+import { Heading } from '@/components/Heading'
 
 interface AssetCloud {
   id: string
@@ -171,12 +172,13 @@ export const ETestRender: React.FC<ETestRenderProps> = ({ etestData, onClose }) 
     <>
       {!hasStarted ? (
         <div className="p-12">
-          <h2
+          <Heading
+            level={2}
             className="text-4xl font-bold mb-6 text-black text-left"
             style={{ fontFamily: 'serif' }}
           >
             {introTitle || 'Your Grant Eligibility'}
-          </h2>
+          </Heading>
           {introDesc && typeof introDesc === 'object' ? (
             <div className="mb-8 text-base leading-relaxed text-black text-left">
               {serializeLexical({
@@ -212,9 +214,9 @@ export const ETestRender: React.FC<ETestRenderProps> = ({ etestData, onClose }) 
         <div className="p-12">
           {incompleteAnswers ? (
             <>
-              <h4 className="text-2xl font-bold mb-6 text-black leading-relaxed text-left">
+              <Heading level={4} className="text-2xl font-bold mb-6 text-black leading-relaxed text-left">
                 Please Answer All Questions
-              </h4>
+              </Heading>
               <p className="mb-8 text-base leading-relaxed text-black text-left">
                 You need to answer all questions to complete the eligibility test. Please go back
                 and make sure you&apos;ve selected an option for each question.
@@ -233,9 +235,9 @@ export const ETestRender: React.FC<ETestRenderProps> = ({ etestData, onClose }) 
             </>
           ) : (
             <>
-              <h4 className="text-2xl font-bold mb-6 text-black leading-relaxed text-left">
+              <Heading level={4} className="text-2xl font-bold mb-6 text-black leading-relaxed text-left">
                 {notECard?.notETitle}
-              </h4>
+              </Heading>
               {notECard?.notEDesc && typeof notECard.notEDesc === 'object' ? (
                 <div className="mb-8 text-base leading-relaxed text-black text-left">
                   {serializeLexical({
@@ -257,9 +259,9 @@ export const ETestRender: React.FC<ETestRenderProps> = ({ etestData, onClose }) 
         </div>
       ) : showEligible ? (
         <div className="p-12">
-          <h4 className="text-2xl font-bold mb-6 text-black leading-relaxed text-left">
+          <Heading level={4} className="text-2xl font-bold mb-6 text-black leading-relaxed text-left">
             {isECard?.isETitle}
-          </h4>
+          </Heading>
           {isECard?.isEDesc && typeof isECard.isEDesc === 'object' ? (
             <div className="mb-8 text-base leading-relaxed text-black text-left">
               {serializeLexical({
@@ -303,9 +305,9 @@ export const ETestRender: React.FC<ETestRenderProps> = ({ etestData, onClose }) 
               {criteria.map((criterion, index) => (
                 <CarouselItem key={index} className="pl-0 basis-full">
                   <div className="space-y-6 w-full">
-                    <h5 className="text-xl font-semibold text-black leading-relaxed text-left">
+                    <Heading level={5} className="text-xl font-semibold text-black leading-relaxed text-left">
                       {criterion?.question}
-                    </h5>
+                    </Heading>
                     {criterion?.reason && (
                       <div className="space-y-1 text-left">
                         <p className="text-sm text-gray-700" style={{ whiteSpace: 'pre-line' }}>

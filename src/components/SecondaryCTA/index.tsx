@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { ButtonArray } from '@/components/ButtonArray'
+import { Heading } from '@/components/Heading'
 
 interface SecondaryCTAProps {
   title: string
@@ -39,13 +40,13 @@ export const SecondaryCTA: React.FC<SecondaryCTAProps> = ({
 
     switch (uiType) {
       case 'md_txt_cta':
-        return <h4 style={style}>{title}</h4>
+        return <Heading level={4} style={style}>{title}</Heading>
       case 'min_cta':
-        return <h5 style={style}>{title}</h5>
+        return <Heading level={5} style={style}>{title}</Heading>
       case 'puffy_beige_cta':
       case 'lrg_txt_cta':
       default:
-        return <h3 style={style}>{title}</h3>
+        return <Heading level={3} style={style}>{title}</Heading>
     }
   }
 
@@ -54,7 +55,7 @@ export const SecondaryCTA: React.FC<SecondaryCTAProps> = ({
 
     switch (uiType) {
       case 'md_txt_cta':
-        return <h5 style={style}>{subtitle}</h5>
+        return <Heading level={5} style={style}>{subtitle}</Heading>
       case 'min_cta':
       case 'puffy_beige_cta':
       case 'lrg_txt_cta':

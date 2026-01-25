@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import { Heading } from '@/components/Heading'
 
 // List marker images - cycle through these in sequence
 const LIST_MARKERS = [
@@ -47,7 +48,7 @@ export const FancyList: React.FC<FancyListProps> = ({ items }) => {
             </div>
             {/* Content */}
             <div className="flex-1">
-              <h6 className="m-0 mb-1">{item.title}</h6>
+              <Heading level={6} className="m-0 mb-1">{item.title}</Heading>
               {item.description && <p className="m-0">{item.description}</p>}
             </div>
           </li>

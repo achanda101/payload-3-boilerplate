@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useLanguage } from '@/providers/LanguageContext'
 import { useHeaderTheme } from '@/providers/HeaderTheme'
+import { Heading } from '@/components/Heading'
 
 interface AssetCloud {
   id: string;
@@ -118,7 +119,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
             <p className="tag">{heroBlock?.badgeText}</p>
           </div>
         ) : null}  
-        <h2 style={{ whiteSpace: 'pre-line' }}>{heroBlock?.title}</h2>
+        <Heading level={2} style={{ whiteSpace: 'pre-line' }}>{heroBlock?.title}</Heading>
         <p style={{ whiteSpace: 'pre-line' }}>{heroBlock?.subtitle}</p>
         <div>
           <div className="hero-buttons">

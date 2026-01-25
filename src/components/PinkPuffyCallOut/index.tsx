@@ -1,6 +1,7 @@
 import React from 'react'
 import '@/styles/callouts.scss'
 import { ButtonArray } from '@/components/ButtonArray'
+import { Heading } from '@/components/Heading'
 
 interface TopRowItem {
   title?: string | null
@@ -74,7 +75,7 @@ export const PinkPuffyCallOut: React.FC<PinkPuffyCallOutProps> = ({
       >
         {(title || subtitle) && (
           <div className={`container mx-auto px-4 mb-8 md:mb-12 ${alignmentClass}`}>
-            {title && <h4>{title}</h4>}
+            {title && <Heading level={4}>{title}</Heading>}
             {subtitle && <p>{subtitle}</p>}
           </div>
         )}
@@ -95,7 +96,7 @@ export const PinkPuffyCallOut: React.FC<PinkPuffyCallOutProps> = ({
                     className="stat-item py-1 md:py-2 px-4 md:px-6 border-b border-black last:border-b-0 lg:border-b-0 lg:border-r lg:last:border-r-0"
                   >
                     <div className="mb-2">
-                      {item.title && <h1>{item.title}</h1>}
+                      {item.title && <Heading level={1}>{item.title}</Heading>}
                       {item.subtitle && <p className="tag">{item.subtitle}</p>}
                     </div>
                     {item.description && <p className="pb-6 lg:pb-0">{item.description}</p>}
@@ -117,7 +118,7 @@ export const PinkPuffyCallOut: React.FC<PinkPuffyCallOutProps> = ({
                     key={item.id || index}
                     className="stat-item py-1 md:py-2 px-4 md:px-6 border-b border-black last:border-b-0 lg:border-b-0 lg:border-r lg:last:border-r-0"
                   >
-                    {item.title && <h1>{item.title}</h1>}
+                    {item.title && <Heading level={1}>{item.title}</Heading>}
                     {item.description && <p className="pb-6 lg:pb-0">{item.description}</p>}
                   </div>
                 ))}

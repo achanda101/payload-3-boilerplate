@@ -1,6 +1,7 @@
 'use client'
 import React from 'react'
 import Image from 'next/image'
+import { Heading } from '@/components/Heading'
 
 interface IDCardGalleryProps {
   header?: {
@@ -29,8 +30,8 @@ export const IDCardGallery: React.FC<IDCardGalleryProps> = ({ header, cards }) =
       {/* Block Header - Left Aligned */}
       {(header?.title || header?.subtitle || header?.description) && (
         <div className="col-span-6 md:col-span-5 lg:col-span-6">
-          {header?.title && <h3 className="text-left">{header.title}</h3>}
-          {header?.subtitle && <h4 className="text-left mt-2">{header.subtitle}</h4>}
+          {header?.title && <Heading level={3} className="text-left">{header.title}</Heading>}
+          {header?.subtitle && <Heading level={4} className="text-left mt-2">{header.subtitle}</Heading>}
           {header?.description && <p className="text-left mt-4">{header.description}</p>}
         </div>
       )}
@@ -61,7 +62,7 @@ export const IDCardGallery: React.FC<IDCardGalleryProps> = ({ header, cards }) =
               </div>
 
               {/* Full Name */}
-              <h5 className="mt-4 break-words">{card.fullname}</h5>
+              <Heading level={5} className="mt-4 break-words">{card.fullname}</Heading>
 
               {/* Designation */}
               {card.designation && (

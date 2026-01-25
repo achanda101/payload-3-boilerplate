@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { serializeLexical } from '@/components/RichText/serialize'
+import { Heading } from '@/components/Heading'
 import type { Blog, Report, Mmedia, MediaCloud, Doctype } from '@/payload-types'
 
 interface ResourceGalleryProps {
@@ -122,7 +123,7 @@ const GalleryCard: React.FC<{
       {/* Title */}
       {title && (
         <div className="mb-2">
-          <h6>{title}</h6>
+          <Heading level={6}>{title}</Heading>
         </div>
       )}
 
@@ -184,7 +185,7 @@ export const ResourceGallery: React.FC<ResourceGalleryProps> = ({
       {/* Header Section - Title and Description */}
       {(title || desc) && (
         <div className={`col-span-full ${textAlignClass}`}>
-          {title && <h3>{title}</h3>}
+          {title && <Heading level={3}>{title}</Heading>}
           {desc && typeof desc === 'object' ? (
             <div className="mt-1">{serializeLexical({ nodes: desc.root?.children || [] })}</div>
           ) : (

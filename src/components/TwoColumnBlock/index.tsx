@@ -1,5 +1,6 @@
 import React from 'react'
 import { serializeLexical } from '@/components/RichText/serializeRichText'
+import { Heading } from '@/components/Heading'
 
 interface TwoColumnBlockProps {
   title?: string | null
@@ -47,7 +48,7 @@ export const TwoColumnBlock: React.FC<TwoColumnBlockProps> = ({
   return (
     <div className="page_column_layout gap-6">
       <div className="col-span-full md:col-span-6 lg:col-span-6 md:col-start-1 lg:col-start-1">
-        {title && <h3 style={{ whiteSpace: 'pre-line' }}>{title}</h3>}
+        {title && <Heading level={3} style={{ whiteSpace: 'pre-line' }}>{title}</Heading>}
       </div>
       <div className="col-span-full md:col-span-6 lg:col-span-6 md:col-start-1 lg:col-start-1">
         {subtitle && <p style={{ whiteSpace: 'pre-line' }}>{subtitle}</p>}

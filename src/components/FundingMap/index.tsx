@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
+import { Heading } from '@/components/Heading'
 
 interface FundingMapSubitem {
   id?: string | null
@@ -83,7 +84,7 @@ export const FundingMap: React.FC<FundingMapProps> = ({
     <div className="page_column_layout gap-6">
       {/* Text Content Section - 4 columns on desktop, full width on mobile/tablet */}
       <div className="col-span-full md:col-span-8 lg:col-span-4">
-        {title && <h3>{title}</h3>}
+        {title && <Heading level={3}>{title}</Heading>}
         {subtitle && <p>{subtitle}</p>}
 
         {selectorLabel && <p className="tag mt-6">{selectorLabel}</p>}
@@ -115,8 +116,8 @@ export const FundingMap: React.FC<FundingMapProps> = ({
               >
                 {subitem.statnumber && (
                   <>
-                    <h3 className="md:hidden">{subitem.statnumber}</h3>
-                    <h2 className="hidden md:block">{subitem.statnumber}</h2>
+                    <Heading level={3} className="md:hidden">{subitem.statnumber}</Heading>
+                    <Heading level={2} className="hidden md:block">{subitem.statnumber}</Heading>
                   </>
                 )}
                 {subitem.description && (

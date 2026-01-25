@@ -12,6 +12,7 @@ import {
 import { reduceToSerializableFields } from '@payloadcms/ui/shared'
 import { formatAdminURL } from 'payload/shared'
 import React, { useEffect, useState } from 'react'
+import { Heading } from '@/components/Heading'
 
 type Props = {
   descriptionPath?: string
@@ -200,11 +201,11 @@ export const SeoPreviewComponent: React.FC<Props> = (props) => {
               {href || 'https://...'}
             </a>
           </div>
-          <h4 style={{ margin: '0 0 8px 0', fontSize: '18px', color: '#1a0dab' }}>
+          <Heading level={4} style={{ margin: '0 0 8px 0', fontSize: '18px', color: '#1a0dab' }}>
             <a href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
               {typeof metaTitle === 'string' ? metaTitle : ''}
             </a>
-          </h4>
+          </Heading>
           <p style={{ margin: 0, fontSize: '14px', color: '#4d5156', lineHeight: '1.4' }}>
             {typeof metaDescription === 'string' ? metaDescription : ''}
           </p>

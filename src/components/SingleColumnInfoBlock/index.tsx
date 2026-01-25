@@ -1,5 +1,6 @@
 import React from "react";
 import { ButtonArray } from '@/components/ButtonArray';
+import { Heading } from '@/components/Heading';
 
 interface SingleColumnInfoProps {
   title: string | null;
@@ -33,12 +34,12 @@ export const SingleColumnInfo: React.FC<SingleColumnInfoProps> = ({
     <>
     <div className="col-span-full lg:col-span-6 lg:col-start-4">
       <div className="flex flex-col items-center text-center">
-        <h4>
+        <Heading level={4}>
           {title}
-        </h4>
-        <h5>
+        </Heading>
+        <Heading level={5}>
           {desc}
-        </h5>
+        </Heading>
       </div>
     </div>
     <div className="col-span-full">

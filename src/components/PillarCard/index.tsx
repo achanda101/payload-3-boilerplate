@@ -2,6 +2,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { serializeLexical } from '@/components/RichText/serialize'
+import { Heading } from '@/components/Heading'
 import '@/styles/cards.scss'
 
 interface PillarCardProps {
@@ -35,9 +36,9 @@ export const PillarCard: React.FC<PillarCardProps> = ({
     <>
       {/* Title */}
       {title && (
-        <h4 className={`col-span-full md:col-span-6 lg:col-span-6 ${columnClass} ${alignClass}`}>
+        <Heading level={4} className={`col-span-full md:col-span-6 lg:col-span-6 ${columnClass} ${alignClass}`}>
           {title}
-        </h4>
+        </Heading>
       )}
 
       {/* Subtitle (Lexical rich text) */}
@@ -62,8 +63,8 @@ export const PillarCard: React.FC<PillarCardProps> = ({
             <div className="p-6 md:p-8 flex flex-col h-full">
               {/* Card Number & Title */}
               <div className="flex flex-col row-gap-1 lg:flex-row lg:gap-5 lg:items-start">
-                <h4 className="text-color-light mb-0">{String(index + 1).padStart(2, '0')}</h4>
-                <h6 className="mt-[5px] mb-4 lg:mt-0 lg:mb-0">{card.title}</h6>
+                <Heading level={4} className="text-color-light mb-0">{String(index + 1).padStart(2, '0')}</Heading>
+                <Heading level={6} className="mt-[5px] mb-4 lg:mt-0 lg:mb-0">{card.title}</Heading>
               </div>
 
               {/* Mascot Image */}

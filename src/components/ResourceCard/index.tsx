@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { UAFButton } from '@/components/UAFButton'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
+import { Heading } from '@/components/Heading'
 
 interface ResourceCardProps {
   id: string
@@ -92,7 +93,7 @@ export const ResourceCard: React.FC<ResourceCardProps> = ({
           </div>
         </Link>
       )}
-      {title && <h5 className="mb-2">{title}</h5>}
+      {title && <Heading level={5} className="mb-2">{title}</Heading>}
       {tags && (
         <div className="flex flex-wrap gap-1 items-center my-[0.5rem]">
           {tags.map((tag, index) => (

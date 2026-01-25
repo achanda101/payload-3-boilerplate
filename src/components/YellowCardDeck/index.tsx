@@ -12,6 +12,7 @@ import Image from 'next/image'
 import { UAFButton } from "@/components/UAFButton";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { serializeLexical } from "@/components/RichText/serialize";
+import { Heading } from "@/components/Heading";
 
 interface YellowCardDeckProps {
   blockName: string;
@@ -111,7 +112,7 @@ export const YellowCardDeck: React.FC<YellowCardDeckProps> = ({
   return (
     <>
       {title && (
-        <h3 className={`${align === 'left' ? 'col-span-6 text-left' : 'col-span-full text-center'}`}>{title}</h3>
+        <Heading level={3} className={`${align === 'left' ? 'col-span-6 text-left' : 'col-span-full text-center'}`}>{title}</Heading>
       )}
       {desc && typeof desc === 'object' ? (
         <div className={`${align === 'left' ? 'col-start-1 col-span-6 text-left' : 'col-span-full text-center'} -mt-6`}>
@@ -157,8 +158,8 @@ export const YellowCardDeck: React.FC<YellowCardDeckProps> = ({
                             />
                           </div>
                         )}
-                        {card.title && <h3>{card.title}</h3>}
-                        {card.subtitle && <h6 className="text-left">{card.subtitle}</h6>}
+                        {card.title && <Heading level={3}>{card.title}</Heading>}
+                        {card.subtitle && <Heading level={6} className="text-left">{card.subtitle}</Heading>}
                         {card.desc && <p className="leading-snug">{card.desc}</p>}
                         {card.links && (
                           <div className="mt-3 flex flex-col gap-3">
@@ -226,15 +227,15 @@ export const YellowCardDeck: React.FC<YellowCardDeckProps> = ({
                         />
                       </div>
                       <div className="flex flex-col items-start gap-4">
-                        {card.title && <h3 className="-mb-3">{card.title}</h3>}
-                        {card.subtitle && <h6 className="text-left">{card.subtitle}</h6>}
+                        {card.title && <Heading level={3} className="-mb-3">{card.title}</Heading>}
+                        {card.subtitle && <Heading level={6} className="text-left">{card.subtitle}</Heading>}
                       </div>
                     </>
                   ) :
                   (
                     <div className="flex items-start gap-4">
-                      {card.title && <h3>{card.title}</h3>}
-                      {card.subtitle && <h6 className="text-left">{card.subtitle}</h6>}
+                      {card.title && <Heading level={3}>{card.title}</Heading>}
+                      {card.subtitle && <Heading level={6} className="text-left">{card.subtitle}</Heading>}
                     </div>
                   )}
                 

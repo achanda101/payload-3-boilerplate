@@ -1,5 +1,6 @@
 import React from 'react'
 import { GrantCard } from '@/components/GrantCard'
+import { Heading } from '@/components/Heading'
 
 interface AssetCloud {
   id: string
@@ -64,7 +65,7 @@ export const GrantCardGrid: React.FC<GrantCardGridProps> = ({ title, desc, grant
 
   return (
     <>
-      {title && <h3 className="col-span-full text-center">{title}</h3>}
+      {title && <Heading level={3} className="col-span-full text-center">{title}</Heading>}
       {desc && <p className="col-span-full text-center -mt-6">{desc}</p>}
       {colouredCards?.length > 0
         ? colouredCards.map((card, index) => {

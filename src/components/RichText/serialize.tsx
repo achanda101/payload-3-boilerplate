@@ -12,6 +12,7 @@ import {
   IS_SUPERSCRIPT,
   IS_UNDERLINE,
 } from './nodeFormat'
+import { formatCurrencySymbols } from '@/utilities/formatCurrencySymbols'
 
 // Local interfaces for block types (since they don't exist in payload-types yet)
 interface CTABlockProps {
@@ -35,9 +36,10 @@ export type NodeTypes =
 
 type Props = {
   nodes: NodeTypes[]
+  insideHeading?: boolean
 }
 
-export function serializeLexical({ nodes }: Props): JSX.Element {
+export function serializeLexical({ nodes, insideHeading = false }: Props): JSX.Element {
   return (
     <Fragment>
       {nodes?.map((node, index): JSX.Element | null => {
@@ -46,7 +48,9 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
         }
 
         if (node.type === 'text') {
-          let text = <React.Fragment key={index}>{node.text}</React.Fragment>
+          // Format currency symbols as superscript in headings (h1-h4)
+          const textContent = insideHeading ? formatCurrencySymbols(node.text) : node.text
+          let text = <React.Fragment key={index}>{textContent}</React.Fragment>
           if (node.format & IS_BOLD) {
             text = <strong key={index}>{text}</strong>
           }
@@ -83,7 +87,10 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
         // NOTE: Hacky fix for
         // https://github.com/facebook/lexical/blob/d10c4e6e55261b2fdd7d1845aed46151d0f06a8c/packages/lexical-list/src/LexicalListItemNode.ts#L133
         // which does not return checked: false (only true - i.e. there is no prop for false)
-        const serializedChildrenFn = (node: NodeTypes): JSX.Element | null => {
+        const serializedChildrenFn = (
+          node: NodeTypes,
+          isHeading = false,
+        ): JSX.Element | null => {
           if (!('children' in node) || node.children == null) {
             return null
           } else {
@@ -96,11 +103,17 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
                 }
               }
             }
-            return serializeLexical({ nodes: node.children as NodeTypes[] })
+            return serializeLexical({
+              nodes: node.children as NodeTypes[],
+              insideHeading: isHeading,
+            })
           }
         }
 
-        const serializedChildren = 'children' in node ? serializedChildrenFn(node) : ''
+        // Check if this node is a heading (h1-h4)
+        const isHeadingNode =
+          node.type === 'heading' && 'tag' in node && ['h1', 'h2', 'h3', 'h4'].includes(node.tag)
+        const serializedChildren = 'children' in node ? serializedChildrenFn(node, isHeadingNode) : ''
 
         if (node.type === 'block') {
           const block = node.fields

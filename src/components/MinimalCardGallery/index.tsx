@@ -1,6 +1,7 @@
 'use client'
 import React from 'react'
 import Image from 'next/image'
+import { Heading } from '@/components/Heading'
 
 interface MinimalCardGalleryProps {
   header?: {
@@ -30,7 +31,7 @@ export const MinimalCardGallery: React.FC<MinimalCardGalleryProps> = ({ header, 
       {/* Block Header */}
       {(header?.title || header?.subtitle) && (
         <div className="col-span-6 md:col-span-5 lg:col-span-6">
-          {header?.title && <h3 className={alignClass}>{header.title}</h3>}
+          {header?.title && <Heading level={3} className={alignClass}>{header.title}</Heading>}
           {header?.subtitle && <p className={`${alignClass} mt-4`}>{header.subtitle}</p>}
         </div>
       )}
@@ -56,7 +57,7 @@ export const MinimalCardGallery: React.FC<MinimalCardGalleryProps> = ({ header, 
               )}
 
               {/* Card Title */}
-              <h5 className="mb-2">{card.title}</h5>
+              <Heading level={5} className="mb-2">{card.title}</Heading>
 
               {/* Card Description */}
               {card.description && (

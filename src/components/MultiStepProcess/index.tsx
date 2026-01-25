@@ -12,6 +12,7 @@ import {
   Lightbulb,
 } from "lucide-react";
 import { serializeLexical } from "@/components/RichText/serialize";
+import { Heading } from "@/components/Heading";
 
 interface MultiStepProcessProps {
   title: string;
@@ -47,7 +48,7 @@ export const MultiStepProcess: React.FC<MultiStepProcessProps> = ({ title, subti
 
   return (
     <>
-      <h4 className="col-span-6 col-start-1">{title}</h4>
+      <Heading level={4} className="col-span-6 col-start-1">{title}</Heading>
       <p className="col-span-6 col-start-1 -mt-6">{subtitle}</p>
       <div className="col-span-5 col-start-1">
         <div className="flex flex-col gap-[1.5rem]">
@@ -58,7 +59,7 @@ export const MultiStepProcess: React.FC<MultiStepProcessProps> = ({ title, subti
                 key={step.id}
                 onClick={() => { setActiveStep(index); setCurrentStep(steps[index]) }}
               >
-                <h6 className={`flex gap-[1.5rem] ${
+                <Heading level={6} className={`flex gap-[1.5rem] ${
                     isActive
                       ? "text-color-dark"
                       : "text-color-vlight"
@@ -69,7 +70,7 @@ export const MultiStepProcess: React.FC<MultiStepProcessProps> = ({ title, subti
                   <span className="capitalize">
                     {step.stepTitle}
                   </span>
-                </h6>
+                </Heading>
                 <hr className={`mt-[1.5rem] ${
                     isActive
                       ? "bg-color-dark"
@@ -84,9 +85,9 @@ export const MultiStepProcess: React.FC<MultiStepProcessProps> = ({ title, subti
         <div className="beige_wavycard">
           <div className="flex flex-col gap-1 p-[3.5rem]">
             {React.createElement(iconMap[currentStep.icon], { className: "w-12 h-12 text-color-light mb-4" })}
-            <h6>
+            <Heading level={6}>
               {currentStep.title}
-            </h6>
+            </Heading>
             {currentStep.details?.length > 0 && (
               <ul className="flex flex-col gap-[2px]">
                 {currentStep.details?.map((detail, index) => (

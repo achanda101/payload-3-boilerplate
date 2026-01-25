@@ -1,5 +1,6 @@
 import React from 'react'
 import '@/styles/callouts.scss'
+import { Heading } from '@/components/Heading'
 
 interface ItemType {
   title?: string | null
@@ -35,7 +36,7 @@ export const BeigePuffyCallOut: React.FC<BeigePuffyCallOutProps> = ({
       >
         {(title || subtitle) && (
           <div className={`container mx-auto px-4 ${alignmentClass}`}>
-            {title && <h4>{title}</h4>}
+            {title && <Heading level={4}>{title}</Heading>}
             {subtitle && <p>{subtitle}</p>}
           </div>
         )}
@@ -49,7 +50,7 @@ export const BeigePuffyCallOut: React.FC<BeigePuffyCallOutProps> = ({
               <div key={item.id || index} className="beigepuffy_callout">
                 <div className="py-12 lg:py-16 px-8 lg:px-12">
                   <div className="mb-4">
-                    {item.title && <h4>{item.title}</h4>}
+                    {item.title && <Heading level={4}>{item.title}</Heading>}
                     {item.subtitle && <p className="tag">{item.subtitle}</p>}
                   </div>
                   {item.description && <p>{item.description}</p>}

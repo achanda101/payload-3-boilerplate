@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { useLanguage } from '@/providers/LanguageContext'
 import { useHeaderTheme } from '@/providers/HeaderTheme'
 import { ButtonArray } from '@/components/ButtonArray'
+import { Heading } from '@/components/Heading'
 
 interface HeroProps {
   data?: any
@@ -69,7 +70,7 @@ export const HomeHero: React.FC<HeroProps> = ({ data = {}, isDraft = false }) =>
       />
       <div className="hero-container">
         <div className="hero-content">
-          <h2 style={{ whiteSpace: 'pre-line' }}>{heroTitle}</h2>
+          <Heading level={2} style={{ whiteSpace: 'pre-line' }}>{heroTitle}</Heading>
           <p style={{ whiteSpace: 'pre-line' }}>{heroSubtitle}</p>
           <ButtonArray btnArray={ctaButton || []} colStackOnMobile={true} />
         </div>

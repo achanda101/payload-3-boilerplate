@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react'
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from '@/components/ui/carousel'
 import WheelGestures from 'embla-carousel-wheel-gestures'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
+import { Heading } from '@/components/Heading'
 
 interface TestimonialCardDeckProps {
   title?: string | null
@@ -106,7 +107,7 @@ export const TestimonialCardDeck: React.FC<TestimonialCardDeckProps> = ({ title,
   return (
     <>
       {/* Block Title */}
-      {title && <h3 className="col-span-full">{title}</h3>}
+      {title && <Heading level={3} className="col-span-full">{title}</Heading>}
 
       <div className="col-span-full relative overflow-hidden">
         {/* Carousel for all screen sizes */}

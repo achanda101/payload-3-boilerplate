@@ -1,5 +1,6 @@
 import React from 'react'
 import { serializeLexical } from '@/components/RichText/serializeRichText'
+import { Heading } from '@/components/Heading'
 
 interface ColumnData {
   id?: string
@@ -65,7 +66,7 @@ export const ThreeColumnTable: React.FC<ThreeColumnTableProps> = ({
       <div className="col-span-full md:col-span-5 lg:col-span-6">
         {/* Title and Subtitle */}
         <div className="mb-6">
-          {title && <h3 style={{ whiteSpace: 'pre-line' }}>{title}</h3>}
+          {title && <Heading level={3} style={{ whiteSpace: 'pre-line' }}>{title}</Heading>}
           {subtitle && <p style={{ whiteSpace: 'pre-line' }}>{subtitle}</p>}
         </div>
       </div>

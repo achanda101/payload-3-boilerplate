@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { ButtonArray } from '@/components/ButtonArray'
 import { UAFButton } from '@/components/UAFButton'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
+import { Heading } from '@/components/Heading'
 
 interface ListingCardDeckProps {
   title: string | null
@@ -119,7 +120,7 @@ export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({ title, cards, 
   return (
     <>
       {title && (
-        <h3 className="col-span-6 md:col-start-2 lg:col-start-4 mb-6 text-center">{title}</h3>
+        <Heading level={3} className="col-span-6 md:col-start-2 lg:col-start-4 mb-6 text-center">{title}</Heading>
       )}
       <div className="col-span-full relative overflow-x-hidden sm:overflow-x-visible">
         <Carousel
@@ -153,7 +154,7 @@ export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({ title, cards, 
                       />
                     </div>
                   )}
-                  {card.title && <h5 className="mb-2">{card.title}</h5>}
+                  {card.title && <Heading level={5} className="mb-2">{card.title}</Heading>}
                   {card.tags && (
                     <div className="flex flex-wrap gap-1 items-center">
                       {card.tags.map((tag, index) => (
