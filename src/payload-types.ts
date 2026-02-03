@@ -7453,6 +7453,16 @@ export interface Search {
     description?: string | null;
     image?: (number | null) | MediaCloud;
   };
+  /**
+   * Auto-populated content extracted from blocks and rich text
+   */
+  contentData?: string | null;
+  author?: string | null;
+  /**
+   * Auto-populated from document tags
+   */
+  tags?: string | null;
+  publishedDate?: string | null;
   categories?:
     | {
         relationTo?: string | null;
@@ -11136,6 +11146,10 @@ export interface SearchSelect<T extends boolean = true> {
         description?: T;
         image?: T;
       };
+  contentData?: T;
+  author?: T;
+  tags?: T;
+  publishedDate?: T;
   categories?:
     | T
     | {

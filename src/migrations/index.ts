@@ -20,6 +20,7 @@ import * as migration_20260123_143908_seoforall from './20260123_143908_seoforal
 import * as migration_20260203_080732_feat_rcslider from './20260203_080732_feat_rcslider';
 import * as migration_20260203_083116_fix_twocol_tabs from './20260203_083116_fix_twocol_tabs';
 import * as migration_20260203_092308_fix_3column_tabs from './20260203_092308_fix_3column_tabs';
+import * as migration_20260203_170724_feat_search_index_richtextcontent from './20260203_170724_feat_search_index_richtextcontent';
 
 export const migrations = [
   {
@@ -130,6 +131,11 @@ export const migrations = [
   {
     up: migration_20260203_092308_fix_3column_tabs.up,
     down: migration_20260203_092308_fix_3column_tabs.down,
-    name: '20260203_092308_fix_3column_tabs'
+    name: '20260203_092308_fix_3column_tabs',
+  },
+  {
+    up: migration_20260203_170724_feat_search_index_richtextcontent.up,
+    down: migration_20260203_170724_feat_search_index_richtextcontent.down,
+    name: '20260203_170724_feat_search_index_richtextcontent'
   },
 ];

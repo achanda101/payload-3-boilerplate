@@ -37,11 +37,55 @@ export const searchFields: Field[] = [
     ],
   },
   {
+    name: 'contentData',
+    label: 'Content Data',
+    type: 'textarea',
+    index: true,
+    admin: {
+      readOnly: true,
+      hidden: true,
+      description: 'Auto-populated content extracted from blocks and rich text',
+    },
+  },
+  {
+    name: 'author',
+    label: 'Author',
+    type: 'text',
+    index: true,
+    admin: {
+      readOnly: true,
+      hidden: true,
+    },
+  },
+  {
+    name: 'tags',
+    label: 'Tags',
+    type: 'text',
+    index: true,
+    admin: {
+      readOnly: true,
+      hidden: true,
+      description: 'Auto-populated from document tags',
+    },
+  },
+  {
+    name: 'publishedDate',
+    label: 'Published Date',
+    type: 'text',
+    index: true,
+    admin: {
+      readOnly: true,
+      hidden: true,
+    },
+  },
+  {
     label: 'Categories',
     name: 'categories',
     type: 'array',
+    index: true,
     admin: {
       readOnly: true,
+      hidden: true,
     },
     fields: [
       {

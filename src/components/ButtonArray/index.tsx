@@ -200,13 +200,15 @@ export const ButtonArray: React.FC<{ btnArray: ButtonArrayProps; colStackOnMobil
           const fileSize = isDocumentLink ? button.link.doc?.value?.filesize : null
 
           return (
-            <div key={index}>
+            <div key={index} className="flex flex-col items-center h-full">
               <Link href={getHref()} target={button.link?.newTab ? '_blank' : '_self'}>
                 <button className={getBtnClassName()}>{button.link.label}</button>
               </Link>
-              {isDocumentLink && fileSize && (
-                <div className="text-xs text-gray-500 mt-1">Filesize: {formatFileSize(fileSize)}</div>
-              )}
+              <div className="h-5">
+                {isDocumentLink && fileSize && (
+                  <div className="text-xs text-gray-500 mt-1">Filesize: {formatFileSize(fileSize)}</div>
+                )}
+              </div>
             </div>
           )
         })}

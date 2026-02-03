@@ -174,13 +174,15 @@ export const UAFButton: React.FC<ButtonProps> = ({ button }) => {
   const fileSize = isDocumentLink ? button.doc?.value?.filesize : null
 
   return (
-    <div>
+    <div className="flex flex-col items-center h-full">
       <Link href={getHref()} target={button?.newTab ? '_blank' : '_self'}>
         <button className={getBtnClassName()}>{button.label}</button>
       </Link>
-      {isDocumentLink && fileSize && (
-        <div className="text-xs text-gray-500 mt-1">Filesize: {formatFileSize(fileSize)}</div>
-      )}
+      <div className="h-5">
+        {isDocumentLink && fileSize && (
+          <div className="text-xs text-gray-500 mt-1">Filesize: {formatFileSize(fileSize)}</div>
+        )}
+      </div>
     </div>
   )
 }

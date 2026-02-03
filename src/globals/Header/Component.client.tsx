@@ -3,10 +3,12 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import languageOptions from './languageOptions.json'
 import { NavMenuClient } from './NavMenu.client'
 import { useLanguage } from '@/providers/LanguageContext'
 import { useHeaderTheme } from '@/providers/HeaderTheme'
+import { useDebounce } from '@/utilities/useDebounce'
 import * as SheetPrimitive from '@radix-ui/react-dialog'
 import { Sheet, SheetPortal, SheetOverlay } from '@/components/ui/sheet'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
@@ -38,13 +40,18 @@ interface HeaderClientProps {
 export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
   const { selectedLanguage, setSelectedLanguage, setAvailableLanguages } = useLanguage()
   const { headerTheme } = useHeaderTheme()
+  const router = useRouter()
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isNavigating, setIsNavigating] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
   const [headerData, setHeaderData] = useState<Partial<NonNullable<HeaderClientProps['data']>>>({})
   const [navData, setNavData] = useState<any>(null)
   const [donateUrl, setDonateUrl] = useState('')
   const [donateButtonText, setDonateButtonText] = useState('Donate')
+
+  // Debounce search query for automatic navigation
+  const debouncedSearchQuery = useDebounce(searchQuery, 300)
 
   // Fetch header data and set available languages
   useEffect(() => {
@@ -64,7 +71,12 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
     fetchHeaderData()
   }, [setAvailableLanguages])
 
-  const toggleSearch = () => setIsSearchOpen(!isSearchOpen)
+  const toggleSearch = () => {
+    if (isSearchOpen) {
+      setSearchQuery('') // Clear query when closing
+    }
+    setIsSearchOpen(!isSearchOpen)
+  }
 
   const handleNavigation = () => {
     setIsMobileMenuOpen(false)
@@ -99,6 +111,26 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
     // Initial fetch without changing the selected language
     fetchDataForLanguage(selectedLanguage)
   }, [selectedLanguage])
+
+  // Navigate to search page when debounced query changes
+  useEffect(() => {
+    if (debouncedSearchQuery.trim()) {
+      router.push(`/search?q=${encodeURIComponent(debouncedSearchQuery)}`)
+    }
+  }, [debouncedSearchQuery, router])
+
+  // Handle Escape key to close search
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isSearchOpen) {
+        setIsSearchOpen(false)
+        setSearchQuery('')
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [isSearchOpen])
 
   return (
     <header className={`site-header ${headerTheme}`}>
@@ -279,7 +311,23 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
       </div>
       {isSearchOpen && (
         <div className="search-bar">
-          <input type="text" placeholder="Search..." />
+          <form
+            onSubmit={(e) => {
+              e.preventDefault()
+              if (searchQuery.trim()) {
+                router.push(`/search?q=${encodeURIComponent(searchQuery)}`)
+                setIsSearchOpen(false)
+              }
+            }}
+          >
+            <input
+              type="text"
+              placeholder="Search..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              autoFocus
+            />
+          </form>
         </div>
       )}
       <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
@@ -350,12 +398,26 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
               {/* Search Bar */}
               {isSearchOpen && (
                 <div className="mb-6">
-                  <div className="flex items-center border-2 border-gray-300 rounded-full px-4 py-2">
-                    <input type="text" placeholder="Search" className="flex-1 outline-none" />
-                    <button
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="p-1 flex items-center justify-center"
-                    >
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault()
+                      if (searchQuery.trim()) {
+                        router.push(`/search?q=${encodeURIComponent(searchQuery)}`)
+                        setIsMobileMenuOpen(false)
+                        setIsSearchOpen(false)
+                      }
+                    }}
+                    className="flex items-center border-2 border-gray-300 rounded-full px-4 py-2"
+                  >
+                    <input
+                      type="text"
+                      placeholder="Search"
+                      className="flex-1 outline-none bg-transparent"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      autoFocus
+                    />
+                    <button type="submit" className="p-1 flex items-center justify-center">
                       <svg
                         viewBox="0 0 24 24"
                         fill="none"
@@ -370,7 +432,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
                         ></path>
                       </svg>
                     </button>
-                  </div>
+                  </form>
                 </div>
               )}
 
