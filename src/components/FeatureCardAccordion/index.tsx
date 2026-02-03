@@ -79,7 +79,7 @@ export const FeatureCardAccordion: React.FC<FeatureCardAccordionProps> = ({
                     card.accContent
                   )}
                 </div>
-                <div className="forest_featurecard">
+                <div className={`${card.crdColour || 'forest'}_featurecard`}>
                   <div
                     className="relative p-8 rounded-[2rem]"
                   >
@@ -132,8 +132,8 @@ export const FeatureCardAccordion: React.FC<FeatureCardAccordionProps> = ({
         {/* Desktop: Detail Card on Right */}
         {activeData && (
           <div className="hidden lg:block lg:col-start-7 lg:col-span-6 sticky top-8 self-start">
-            <div className="forest_featurecard">
-              <div 
+            <div className={`${activeData.crdColour || 'forest'}_featurecard`}>
+              <div
                   className="relative p-12 rounded-[3rem] transition-all duration-500"
               >
               <div className="relative z-10">
