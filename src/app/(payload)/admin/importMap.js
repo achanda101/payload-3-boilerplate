@@ -42,8 +42,6 @@ import { default as default_839c0a88edd3e9bf3d7dc80ff4184732 } from 'src/blocks/
 import { default as default_6c6eda6916f93f4d13975881219946b5 } from 'src/blocks/MinimalCardGallery/CardRowLabel.tsx'
 import { default as default_04f62d488cd7b5273f2e036f0763c737 } from 'src/blocks/IDCardGallery/CardRowLabel.tsx'
 import { default as default_f90b0e4bd24771fcf78c78a14498d080 } from 'src/blocks/TagsBlock/TagRowLabel.tsx'
-import { default as default_d4a172df56326c316f917752b0d37b9b } from 'src/blocks/ThreeColumnTableBlock/ColumnRowLabel.tsx'
-import { default as default_cfc47b75c55f8641410c772c6528bb99 } from 'src/blocks/ThreeColumnTableBlock/RowRowLabel.tsx'
 import { SlugComponent as SlugComponent_92cc057d0a2abb4f6cf0307edf59f986 } from '@/fields/slug/SlugComponent'
 import { MetaTitleField as MetaTitleField_d3379f1bd72083fb3a9d5a258cd4552d } from 'src/components/SeoFields/MetaTitleField.tsx'
 import { MetaDescriptionField as MetaDescriptionField_c5da501ee9d8b764f2d1dbc358f7bcb0 } from 'src/components/SeoFields/MetaDescriptionField.tsx'
@@ -122,8 +120,6 @@ export const importMap = {
   "src/blocks/MinimalCardGallery/CardRowLabel.tsx#default": default_6c6eda6916f93f4d13975881219946b5,
   "src/blocks/IDCardGallery/CardRowLabel.tsx#default": default_04f62d488cd7b5273f2e036f0763c737,
   "src/blocks/TagsBlock/TagRowLabel.tsx#default": default_f90b0e4bd24771fcf78c78a14498d080,
-  "src/blocks/ThreeColumnTableBlock/ColumnRowLabel.tsx#default": default_d4a172df56326c316f917752b0d37b9b,
-  "src/blocks/ThreeColumnTableBlock/RowRowLabel.tsx#default": default_cfc47b75c55f8641410c772c6528bb99,
   "@/fields/slug/SlugComponent#SlugComponent": SlugComponent_92cc057d0a2abb4f6cf0307edf59f986,
   "src/components/SeoFields/MetaTitleField.tsx#MetaTitleField": MetaTitleField_d3379f1bd72083fb3a9d5a258cd4552d,
   "src/components/SeoFields/MetaDescriptionField.tsx#MetaDescriptionField": MetaDescriptionField_c5da501ee9d8b764f2d1dbc358f7bcb0,

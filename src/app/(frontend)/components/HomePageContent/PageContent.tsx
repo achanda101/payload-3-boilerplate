@@ -434,7 +434,9 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false })
                   <ThreeColumnTable
                     title={block.title}
                     subtitle={block.subtitle}
-                    rows={block.rows}
+                    firstColumn={block.firstColumn}
+                    secondColumn={block.secondColumn}
+                    thirdColumn={block.thirdColumn}
                     columnWidths={block.columnWidths}
                   />
                 </div>

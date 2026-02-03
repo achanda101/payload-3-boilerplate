@@ -19,6 +19,7 @@ import * as migration_20260120_211136_threecolumntable from './20260120_211136_t
 import * as migration_20260123_143908_seoforall from './20260123_143908_seoforall';
 import * as migration_20260203_080732_feat_rcslider from './20260203_080732_feat_rcslider';
 import * as migration_20260203_083116_fix_twocol_tabs from './20260203_083116_fix_twocol_tabs';
+import * as migration_20260203_092308_fix_3column_tabs from './20260203_092308_fix_3column_tabs';
 
 export const migrations = [
   {
@@ -124,6 +125,11 @@ export const migrations = [
   {
     up: migration_20260203_083116_fix_twocol_tabs.up,
     down: migration_20260203_083116_fix_twocol_tabs.down,
-    name: '20260203_083116_fix_twocol_tabs'
+    name: '20260203_083116_fix_twocol_tabs',
+  },
+  {
+    up: migration_20260203_092308_fix_3column_tabs.up,
+    down: migration_20260203_092308_fix_3column_tabs.down,
+    name: '20260203_092308_fix_3column_tabs'
   },
 ];

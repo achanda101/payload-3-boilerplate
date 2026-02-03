@@ -566,7 +566,9 @@ export const UAFPage: React.FC<UAFPageProps> = ({ collection, docId, isDraft = f
                       <ThreeColumnTable
                         title={block.title}
                         subtitle={block.subtitle}
-                        rows={block.rows}
+                        firstColumn={block.firstColumn}
+                        secondColumn={block.secondColumn}
+                        thirdColumn={block.thirdColumn}
                         columnWidths={block.columnWidths}
                       />
                     </div>

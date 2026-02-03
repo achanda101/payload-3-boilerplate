@@ -810,7 +810,9 @@ export const ReportPage: React.FC<ReportPageProps> = ({ collection, docId, isDra
                       <ThreeColumnTable
                         title={block.title}
                         subtitle={block.subtitle}
-                        rows={block.rows}
+                        firstColumn={block.firstColumn}
+                        secondColumn={block.secondColumn}
+                        thirdColumn={block.thirdColumn}
                         columnWidths={block.columnWidths}
                       />
                     </div>

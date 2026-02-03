@@ -643,7 +643,9 @@ export const GrantPage: React.FC<GrantPageProps> = ({ collection, docId, isDraft
                       <ThreeColumnTable
                         title={block.title}
                         subtitle={block.subtitle}
-                        rows={block.rows}
+                        firstColumn={block.firstColumn}
+                        secondColumn={block.secondColumn}
+                        thirdColumn={block.thirdColumn}
                         columnWidths={block.columnWidths}
                       />
                     </div>

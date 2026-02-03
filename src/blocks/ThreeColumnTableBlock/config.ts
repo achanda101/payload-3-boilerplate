@@ -85,44 +85,47 @@ export const ThreeColumnTableBlock: Block = {
       ],
     },
     {
-      name: 'rows',
-      type: 'array',
-      labels: {
-        singular: 'Row',
-        plural: 'Rows',
-      },
-      admin: {
-        components: {
-          RowLabel: {
-            path: 'src/blocks/ThreeColumnTableBlock/RowRowLabel.tsx',
-          },
-        },
-      },
-      fields: [
+      type: 'tabs',
+      tabs: [
         {
-          name: 'columns',
-          type: 'array',
-          minRows: 3,
-          maxRows: 3,
-          labels: {
-            singular: 'Column',
-            plural: 'Columns',
-          },
-          admin: {
-            components: {
-              RowLabel: {
-                path: 'src/blocks/ThreeColumnTableBlock/ColumnRowLabel.tsx',
-              },
-            },
-          },
+          label: 'First Column',
           fields: [
             {
-              name: 'content',
+              name: 'firstColumn',
+              label: 'First Column Content',
               type: 'richText',
-              localized: true,
               editor: lexicalEditor({
                 features: lexicalFeatures,
               }),
+              localized: true,
+            },
+          ],
+        },
+        {
+          label: 'Second Column',
+          fields: [
+            {
+              name: 'secondColumn',
+              label: 'Second Column Content',
+              type: 'richText',
+              editor: lexicalEditor({
+                features: lexicalFeatures,
+              }),
+              localized: true,
+            },
+          ],
+        },
+        {
+          label: 'Third Column',
+          fields: [
+            {
+              name: 'thirdColumn',
+              label: 'Third Column Content',
+              type: 'richText',
+              editor: lexicalEditor({
+                features: lexicalFeatures,
+              }),
+              localized: true,
             },
           ],
         },
