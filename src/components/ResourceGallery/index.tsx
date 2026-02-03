@@ -29,7 +29,7 @@ interface ResourceGalleryProps {
     | null
 }
 
-// Helper function to format date as "MMM d, YYYY"
+// Helper function to format date as "MMM D, YYYY" (uppercase)
 const formatDate = (dateString?: string | null): string | null => {
   if (!dateString) return null
   try {
@@ -38,7 +38,7 @@ const formatDate = (dateString?: string | null): string | null => {
       month: 'short',
       day: 'numeric',
       year: 'numeric',
-    })
+    }).toUpperCase()
   } catch {
     return null
   }
@@ -195,11 +195,11 @@ export const ResourceGallery: React.FC<ResourceGalleryProps> = ({
       )}
 
       <div className="col-span-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-12">
-        {itemsToDisplay.map((galleryItem, index) => {
+        {itemsToDisplay.map((galleryItem) => {
           const item = galleryItem.value as Blog | Report | Mmedia
           const relationTo = galleryItem.relationTo
 
-          return <GalleryCard key={index} item={item} relationTo={relationTo} />
+          return <GalleryCard key={item.id} item={item} relationTo={relationTo} />
         })}
       </div>
 

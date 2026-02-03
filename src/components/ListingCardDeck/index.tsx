@@ -55,27 +55,29 @@ interface ListingCardDeckProps {
   }[]
   resourcePages?: {
     relationTo: 'blog' | 'reports' | 'mmedia'
-    value: {
-      id: string
-      title: string
-      slug: string
-      heroSubtitle?: string
-      image?: {
-        id: string
-        alt: string | null
-        url?: string | null
-        width?: number | null
-        height?: number | null
-        focalX?: number | null
-        focalY?: number | null
-      }
-      docType?: {
-        id: string
-        type: string
-      }[]
-      publishedAt?: string
-      pubDate?: string
-    }
+    value:
+      | number
+      | {
+          id: string
+          title: string
+          slug: string
+          heroSubtitle?: string
+          image?: {
+            id: string
+            alt: string | null
+            url?: string | null
+            width?: number | null
+            height?: number | null
+            focalX?: number | null
+            focalY?: number | null
+          }
+          docType?: {
+            id: string
+            type: string
+          }[]
+          publishedAt?: string
+          pubDate?: string
+        }
   }[]
   buttons?: {
     id: string
@@ -141,49 +143,50 @@ export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({
   // Normalize cards based on data source
   const normalizedCards = useMemo(() => {
     if (dataSource === 'resources' && resourcePages?.length) {
-      return resourcePages
-        .filter((item) => typeof item.value === 'object')
-        .map((item) => {
-          const doc = item.value
-          const relationTo = item.relationTo
+      // Filter out non-populated relationships (where value is just an ID number)
+      const populatedItems = resourcePages.filter((item) => typeof item.value !== 'number')
 
-          // Build tags from docType
-          const tags =
-            doc.docType
-              ?.map((dt) => ({
-                id: dt.id,
-                tag: dt.type || null,
-              }))
-              .filter((t) => t.tag) || []
+      return populatedItems.map((item) => {
+        const doc = item.value as Exclude<typeof item.value, number>
+        const relationTo = item.relationTo
 
-          // Add publication date as the last tag
-          const dateStr = doc.pubDate || doc.publishedAt
-          if (dateStr) {
-            const formattedDate = new Date(dateStr).toLocaleDateString('en-US', {
-              month: 'short',
-              day: 'numeric',
-              year: 'numeric',
-            })
-            tags.push({
-              id: 'publishedAt',
-              tag: formattedDate.toUpperCase(),
-            })
-          }
+        // Build tags from docType
+        const tags =
+          doc.docType
+            ?.map((dt) => ({
+              id: dt.id,
+              tag: dt.type || null,
+            }))
+            .filter((t) => t.tag) || []
 
-          return {
-            id: doc.id,
-            title: doc.title || null,
-            desc: doc.heroSubtitle || null,
-            image: typeof doc.image === 'object' ? doc.image : undefined,
-            tags,
-            link: {
-              type: 'custom',
-              url: `/${relationTo}/${doc.slug}`,
-              label: 'Read More',
-              arrowLink: true,
-            },
-          }
-        })
+        // Add publication date as the last tag
+        const dateStr = doc.pubDate || doc.publishedAt
+        if (dateStr) {
+          const formattedDate = new Date(dateStr).toLocaleDateString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric',
+          })
+          tags.push({
+            id: 'publishedAt',
+            tag: formattedDate.toUpperCase(),
+          })
+        }
+
+        return {
+          id: doc.id,
+          title: doc.title || null,
+          desc: doc.heroSubtitle || null,
+          image: typeof doc.image === 'object' ? doc.image : undefined,
+          tags,
+          link: {
+            type: 'custom',
+            url: `/${relationTo}/${doc.slug}`,
+            label: 'Read More',
+            arrowLink: true,
+          },
+        }
+      })
     }
     return cards || []
   }, [dataSource, resourcePages, cards])
@@ -255,7 +258,7 @@ export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({
                       ))}
                     </div>
                   )}
-                  {card.desc && <p className="mb-4">{card.desc}</p>}
+                  {card.desc && <p className="mt-2 mb-4 text-color-light">{card.desc}</p>}
                   {card.link && <div className="text-base"><UAFButton button={card.link} /></div>}
                 </div>
               </CarouselItem>

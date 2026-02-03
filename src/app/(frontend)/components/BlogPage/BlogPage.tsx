@@ -170,7 +170,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ collection, docId, isDraft =
   const handleLanguageChange = useCallback(
     async (newLanguage: string) => {
       const draftParam = isDraft ? '&draft=true' : ''
-      const fetchPath = `/api/${collection}/${docId}?locale=${newLanguage}&depth=2${draftParam}&trash=false`
+      const fetchPath = `/api/${collection}/${docId}?locale=${newLanguage}&depth=3${draftParam}&trash=false`
 
       try {
         const response = await fetch(fetchPath)

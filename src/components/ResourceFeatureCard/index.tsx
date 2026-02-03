@@ -32,7 +32,7 @@ interface ResourceFeatureCardProps {
     | null
 }
 
-// Helper function to format date as "MMM d, YYYY"
+// Helper function to format date as "MMM D, YYYY" (uppercase)
 const formatDate = (dateString?: string | null): string | null => {
   if (!dateString) return null
   try {
@@ -41,7 +41,7 @@ const formatDate = (dateString?: string | null): string | null => {
       month: 'short',
       day: 'numeric',
       year: 'numeric',
-    })
+    }).toUpperCase()
   } catch {
     return null
   }
@@ -372,12 +372,12 @@ export const ResourceFeatureCard: React.FC<ResourceFeatureCardProps> = ({
           className="w-full"
         >
           <CarouselContent>
-            {populatedItems.map((featItem, index) => {
+            {populatedItems.map((featItem) => {
               const item = featItem.value as Blog | Report | Mmedia
               const relationTo = featItem.relationTo
 
               return (
-                <CarouselItem key={index}>
+                <CarouselItem key={item.id}>
                   <CarouselResourceCard item={item} relationTo={relationTo} />
                 </CarouselItem>
               )

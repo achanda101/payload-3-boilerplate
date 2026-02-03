@@ -62,7 +62,7 @@ async function getAllResourceTypesFromCollection(
     const draftParam = isDraft ? '&draft=true' : ''
 
     const response = await fetch(
-      `/api/${collection}?limit=1000&locale=${locale}&depth=2&where[pageType][equals]=individual&sort=-pubDate${draftParam}`,
+      `/api/${collection}?limit=1000&locale=${locale}&depth=3&where[pageType][equals]=individual&sort=-pubDate${draftParam}`,
     )
     const data = await response.json()
 
@@ -170,7 +170,7 @@ export const ReportPage: React.FC<ReportPageProps> = ({ collection, docId, isDra
   const handleLanguageChange = useCallback(
     async (newLanguage: string) => {
       const draftParam = isDraft ? '&draft=true' : ''
-      const fetchPath = `/api/${collection}/${docId}?locale=${newLanguage}&depth=2${draftParam}&trash=false`
+      const fetchPath = `/api/${collection}/${docId}?locale=${newLanguage}&depth=3${draftParam}&trash=false`
 
       try {
         const response = await fetch(fetchPath)

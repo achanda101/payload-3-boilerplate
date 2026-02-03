@@ -42,7 +42,7 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false })
       try {
         const draftParam = isDraft ? '&draft=true' : ''
         const response = await fetch(
-          `/api/globals/homepage?locale=${newLanguage}&depth=2${draftParam}`,
+          `/api/globals/homepage?locale=${newLanguage}&depth=3${draftParam}`,
         )
 
         if (!response.ok) {

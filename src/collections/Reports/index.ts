@@ -135,7 +135,7 @@ export const Report: CollectionConfig<'reports'> = {
               admin: {
                 date: {
                   pickerAppearance: 'default',
-                  displayFormat: 'DD MMMM yyyy',
+                  displayFormat: 'dd MMM yyyy',
                 },
                 condition: (siblingData) => siblingData?.pageType === 'individual' || false,
               },
