@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { ETestRender } from '@/components/ETestRender'
 import { getValidUrl } from '@/utilities/getValidUrl'
+import { formatFileSize } from '@/utilities/formatFileSize'
 
 interface AssetCloud {
   id: string
@@ -55,6 +56,7 @@ interface ButtonItem {
       relationTo: string
       value: {
         url?: string
+        filesize?: number | null
       }
     } | null
     reference?: {
@@ -194,10 +196,18 @@ export const ButtonArray: React.FC<{ btnArray: ButtonArrayProps; colStackOnMobil
             )
           }
 
+          const isDocumentLink = button.link.type === 'document'
+          const fileSize = isDocumentLink ? button.link.doc?.value?.filesize : null
+
           return (
-            <Link key={index} href={getHref()} target={button.link?.newTab ? '_blank' : '_self'}>
-              <button className={getBtnClassName()}>{button.link.label}</button>
-            </Link>
+            <div key={index}>
+              <Link href={getHref()} target={button.link?.newTab ? '_blank' : '_self'}>
+                <button className={getBtnClassName()}>{button.link.label}</button>
+              </Link>
+              {isDocumentLink && fileSize && (
+                <div className="text-xs text-gray-500 mt-1">Filesize: {formatFileSize(fileSize)}</div>
+              )}
+            </div>
           )
         })}
       </div>
