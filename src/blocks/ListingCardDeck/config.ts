@@ -15,6 +15,49 @@ export const ListingCardDeck: Block = {
       localized: true,
     },
     {
+      name: 'dataSource',
+      type: 'radio',
+      label: 'Data Source',
+      defaultValue: 'manual',
+      options: [
+        { label: 'Manual Cards', value: 'manual' },
+        { label: 'Resource Pages', value: 'resources' },
+      ],
+      admin: {
+        layout: 'horizontal',
+        description:
+          'Choose whether to manually create cards or select from existing resource pages',
+      },
+    },
+    {
+      name: 'resourcePages',
+      label: 'Select Resource Pages',
+      type: 'relationship',
+      relationTo: ['blog', 'reports', 'mmedia'],
+      hasMany: true,
+      filterOptions: ({ relationTo, id }) => {
+        if (relationTo === 'blog' || relationTo === 'reports' || relationTo === 'mmedia') {
+          const filter: any = {
+            pageType: {
+              equals: 'individual',
+            },
+          }
+          if (id) {
+            filter.id = {
+              not_equals: id,
+            }
+          }
+          return filter
+        }
+        return true
+      },
+      admin: {
+        description:
+          'Select blog posts, reports, or multimedia pages to display as cards in the slider',
+        condition: (_data, siblingData) => siblingData?.dataSource === 'resources',
+      },
+    },
+    {
       name: 'cards',
       label: 'Listing Cards',
       labels: {
@@ -22,7 +65,6 @@ export const ListingCardDeck: Block = {
         plural: 'Listing Cards'
       },
       type: 'array',
-      minRows: 1,
       fields: [
         {
           type: 'tabs',
@@ -101,6 +143,7 @@ export const ListingCardDeck: Block = {
             path: 'src/blocks/ListingCardDeck/CardRowLabel.tsx',
           }
         },
+        condition: (_data, siblingData) => siblingData?.dataSource !== 'resources',
       }
     },
     {

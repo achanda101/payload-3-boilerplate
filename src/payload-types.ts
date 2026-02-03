@@ -854,6 +854,29 @@ export interface Grant {
         | {
             title?: string | null;
             /**
+             * Choose whether to manually create cards or select from existing resource pages
+             */
+            dataSource?: ('manual' | 'resources') | null;
+            /**
+             * Select blog posts, reports, or multimedia pages to display as cards in the slider
+             */
+            resourcePages?:
+              | (
+                  | {
+                      relationTo: 'blog';
+                      value: number | Blog;
+                    }
+                  | {
+                      relationTo: 'reports';
+                      value: number | Report;
+                    }
+                  | {
+                      relationTo: 'mmedia';
+                      value: number | Mmedia;
+                    }
+                )[]
+              | null;
+            /**
              * Add listing cards to be displayed in the deck
              */
             cards?:
@@ -2222,6 +2245,29 @@ export interface Page {
         | {
             title?: string | null;
             /**
+             * Choose whether to manually create cards or select from existing resource pages
+             */
+            dataSource?: ('manual' | 'resources') | null;
+            /**
+             * Select blog posts, reports, or multimedia pages to display as cards in the slider
+             */
+            resourcePages?:
+              | (
+                  | {
+                      relationTo: 'blog';
+                      value: number | Blog;
+                    }
+                  | {
+                      relationTo: 'reports';
+                      value: number | Report;
+                    }
+                  | {
+                      relationTo: 'mmedia';
+                      value: number | Mmedia;
+                    }
+                )[]
+              | null;
+            /**
              * Add listing cards to be displayed in the deck
              */
             cards?:
@@ -3371,6 +3417,29 @@ export interface Blog {
           }
         | {
             title?: string | null;
+            /**
+             * Choose whether to manually create cards or select from existing resource pages
+             */
+            dataSource?: ('manual' | 'resources') | null;
+            /**
+             * Select blog posts, reports, or multimedia pages to display as cards in the slider
+             */
+            resourcePages?:
+              | (
+                  | {
+                      relationTo: 'blog';
+                      value: number | Blog;
+                    }
+                  | {
+                      relationTo: 'reports';
+                      value: number | Report;
+                    }
+                  | {
+                      relationTo: 'mmedia';
+                      value: number | Mmedia;
+                    }
+                )[]
+              | null;
             /**
              * Add listing cards to be displayed in the deck
              */
@@ -4574,6 +4643,29 @@ export interface Report {
           }
         | {
             title?: string | null;
+            /**
+             * Choose whether to manually create cards or select from existing resource pages
+             */
+            dataSource?: ('manual' | 'resources') | null;
+            /**
+             * Select blog posts, reports, or multimedia pages to display as cards in the slider
+             */
+            resourcePages?:
+              | (
+                  | {
+                      relationTo: 'blog';
+                      value: number | Blog;
+                    }
+                  | {
+                      relationTo: 'reports';
+                      value: number | Report;
+                    }
+                  | {
+                      relationTo: 'mmedia';
+                      value: number | Mmedia;
+                    }
+                )[]
+              | null;
             /**
              * Add listing cards to be displayed in the deck
              */
@@ -5796,6 +5888,29 @@ export interface Mmedia {
           }
         | {
             title?: string | null;
+            /**
+             * Choose whether to manually create cards or select from existing resource pages
+             */
+            dataSource?: ('manual' | 'resources') | null;
+            /**
+             * Select blog posts, reports, or multimedia pages to display as cards in the slider
+             */
+            resourcePages?:
+              | (
+                  | {
+                      relationTo: 'blog';
+                      value: number | Blog;
+                    }
+                  | {
+                      relationTo: 'reports';
+                      value: number | Report;
+                    }
+                  | {
+                      relationTo: 'mmedia';
+                      value: number | Mmedia;
+                    }
+                )[]
+              | null;
             /**
              * Add listing cards to be displayed in the deck
              */
@@ -7326,6 +7441,8 @@ export interface GrantsSelect<T extends boolean = true> {
           | T
           | {
               title?: T;
+              dataSource?: T;
+              resourcePages?: T;
               cards?:
                 | T
                 | {
@@ -8044,6 +8161,8 @@ export interface PagesSelect<T extends boolean = true> {
           | T
           | {
               title?: T;
+              dataSource?: T;
+              resourcePages?: T;
               cards?:
                 | T
                 | {
@@ -8617,6 +8736,8 @@ export interface BlogSelect<T extends boolean = true> {
           | T
           | {
               title?: T;
+              dataSource?: T;
+              resourcePages?: T;
               cards?:
                 | T
                 | {
@@ -9191,6 +9312,8 @@ export interface ReportsSelect<T extends boolean = true> {
           | T
           | {
               title?: T;
+              dataSource?: T;
+              resourcePages?: T;
               cards?:
                 | T
                 | {
@@ -9764,6 +9887,8 @@ export interface MmediaSelect<T extends boolean = true> {
           | T
           | {
               title?: T;
+              dataSource?: T;
+              resourcePages?: T;
               cards?:
                 | T
                 | {
@@ -11070,6 +11195,29 @@ export interface Homepage {
         | {
             title?: string | null;
             /**
+             * Choose whether to manually create cards or select from existing resource pages
+             */
+            dataSource?: ('manual' | 'resources') | null;
+            /**
+             * Select blog posts, reports, or multimedia pages to display as cards in the slider
+             */
+            resourcePages?:
+              | (
+                  | {
+                      relationTo: 'blog';
+                      value: number | Blog;
+                    }
+                  | {
+                      relationTo: 'reports';
+                      value: number | Report;
+                    }
+                  | {
+                      relationTo: 'mmedia';
+                      value: number | Mmedia;
+                    }
+                )[]
+              | null;
+            /**
              * Add listing cards to be displayed in the deck
              */
             cards?:
@@ -12137,6 +12285,8 @@ export interface HomepageSelect<T extends boolean = true> {
           | T
           | {
               title?: T;
+              dataSource?: T;
+              resourcePages?: T;
               cards?:
                 | T
                 | {

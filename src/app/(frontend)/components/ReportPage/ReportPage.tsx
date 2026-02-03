@@ -589,7 +589,9 @@ export const ReportPage: React.FC<ReportPageProps> = ({ collection, docId, isDra
                     <div className="page_column_layout gap-6">
                       <ListingCardDeck
                         title={block.title}
+                        dataSource={block.dataSource}
                         cards={block.cards}
+                        resourcePages={block.resourcePages}
                         buttons={block.buttons}
                       />
                     </div>

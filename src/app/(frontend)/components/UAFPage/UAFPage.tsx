@@ -345,7 +345,9 @@ export const UAFPage: React.FC<UAFPageProps> = ({ collection, docId, isDraft = f
                     <div className="page_column_layout gap-6">
                       <ListingCardDeck
                         title={block.title}
+                        dataSource={block.dataSource}
                         cards={block.cards}
+                        resourcePages={block.resourcePages}
                         buttons={block.buttons}
                       />
                     </div>
