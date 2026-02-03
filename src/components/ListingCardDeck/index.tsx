@@ -113,6 +113,28 @@ export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({
   const [canScrollPrev, setCanScrollPrev] = useState(false)
   const [canScrollNext, setCanScrollNext] = useState(false)
 
+  // Call hooks at the top level before any early returns
+  const isDesktop = useMediaQuery('(min-width: 1024px)')
+  const isTablet = useMediaQuery('(min-width: 768px) and (max-width: 1023px)')
+
+  useEffect(() => {
+    if (!api) return
+
+    const updateScrollButtons = () => {
+      setCanScrollPrev(api.canScrollPrev())
+      setCanScrollNext(api.canScrollNext())
+    }
+
+    updateScrollButtons()
+    api.on('select', updateScrollButtons)
+    api.on('reInit', updateScrollButtons)
+
+    return () => {
+      api.off('select', updateScrollButtons)
+      api.off('reInit', updateScrollButtons)
+    }
+  }, [api])
+
   // Normalize cards based on data source
   const normalizedCards = useMemo(() => {
     if (dataSource === 'resources' && resourcePages?.length) {
@@ -150,11 +172,8 @@ export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({
     return null
   }
 
-  const isDesktop = useMediaQuery('(min-width: 1024px)')
-  const isTablet = useMediaQuery('(min-width: 768px) and (max-width: 1023px)')
-  let currentCardWidth = 0
-
   // Calculate width based on the number of cards and available space
+  let currentCardWidth = 0
   if (isDesktop) {
     const desiredCardWidth = Math.max(100 / normalizedCards.length, 18)
     currentCardWidth = Math.min(desiredCardWidth, 28)
@@ -164,24 +183,6 @@ export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({
   } else {
     currentCardWidth = 80 //80vw for mobile
   }
-
-  useEffect(() => {
-    if (!api) return
-
-    const updateScrollButtons = () => {
-      setCanScrollPrev(api.canScrollPrev())
-      setCanScrollNext(api.canScrollNext())
-    }
-
-    updateScrollButtons()
-    api.on('select', updateScrollButtons)
-    api.on('reInit', updateScrollButtons)
-
-    return () => {
-      api.off('select', updateScrollButtons)
-      api.off('reInit', updateScrollButtons)
-    }
-  }, [api])
 
   return (
     <>
