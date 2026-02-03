@@ -3,6 +3,7 @@ import { ChevronDown, ChevronUp, ArrowRight, ChevronLeft, ChevronRight } from 'l
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from '@/components/ui/carousel'
 import WheelGestures from 'embla-carousel-wheel-gestures'
 import Image from 'next/image'
+import Link from 'next/link'
 import { ButtonArray } from '@/components/ButtonArray'
 import { UAFButton } from '@/components/UAFButton'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
@@ -72,6 +73,8 @@ interface ListingCardDeckProps {
         id: string
         type: string
       }[]
+      publishedAt?: string
+      pubDate?: string
     }
   }[]
   buttons?: {
@@ -143,18 +146,36 @@ export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({
         .map((item) => {
           const doc = item.value
           const relationTo = item.relationTo
+
+          // Build tags from docType
+          const tags =
+            doc.docType
+              ?.map((dt) => ({
+                id: dt.id,
+                tag: dt.type || null,
+              }))
+              .filter((t) => t.tag) || []
+
+          // Add publication date as the last tag
+          const dateStr = doc.pubDate || doc.publishedAt
+          if (dateStr) {
+            const formattedDate = new Date(dateStr).toLocaleDateString('en-US', {
+              month: 'short',
+              day: 'numeric',
+              year: 'numeric',
+            })
+            tags.push({
+              id: 'publishedAt',
+              tag: formattedDate.toUpperCase(),
+            })
+          }
+
           return {
             id: doc.id,
             title: doc.title || null,
             desc: doc.heroSubtitle || null,
             image: typeof doc.image === 'object' ? doc.image : undefined,
-            tags:
-              doc.docType
-                ?.map((dt) => ({
-                  id: dt.id,
-                  tag: dt.type || null,
-                }))
-                .filter((t) => t.tag) || [],
+            tags,
             link: {
               type: 'custom',
               url: `/${relationTo}/${doc.slug}`,
@@ -208,18 +229,20 @@ export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({
                   style={{ width: `${currentCardWidth}vw` }}
                 >
                   {card.image?.url && (
-                    <div className="w-full relative mb-4 h-80 overflow-hidden rounded-2xl">
-                      <Image
-                        src={card.image.url}
-                        alt={card.image.alt || 'Listing Card Image'}
-                        fill
-                        sizes="(max-width: 768px) 80vw, (max-width: 1023px) 48vw, 28vw"
-                        className="object-cover"
-                        style={{
-                          objectPosition: `${card.image.focalX ?? 50}% ${card.image.focalY ?? 50}%`,
-                        }}
-                      />
-                    </div>
+                    <Link href={card.link?.url || '#'}>
+                      <div className="w-full relative mb-4 h-80 overflow-hidden rounded-2xl cursor-pointer hover:opacity-90 transition-opacity">
+                        <Image
+                          src={card.image.url}
+                          alt={card.image.alt || 'Listing Card Image'}
+                          fill
+                          sizes="(max-width: 768px) 80vw, (max-width: 1023px) 48vw, 28vw"
+                          className="object-cover"
+                          style={{
+                            objectPosition: `${card.image.focalX ?? 50}% ${card.image.focalY ?? 50}%`,
+                          }}
+                        />
+                      </div>
+                    </Link>
                   )}
                   {card.title && <Heading level={5} className="mb-2">{card.title}</Heading>}
                   {card.tags && (
