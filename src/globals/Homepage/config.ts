@@ -26,8 +26,8 @@ import { PillarCard } from '@/blocks/PillarCard/config'
 import { TestimonialCardDeck } from '@/blocks/TestimonialCardDeck/config'
 import { MinimalCardGallery } from '@/blocks/MinimalCardGallery/config'
 import { IDCardGallery } from '@/blocks/IDCardGallery/config'
-// import { TwoColumnBlock } from '@/blocks/TwoColumnBlock/config'
-// import { ThreeColumnTableBlock } from '@/blocks/ThreeColumnTableBlock/config'
+import { TwoColumnBlock } from '@/blocks/TwoColumnBlock/config'
+import { ThreeColumnTableBlock } from '@/blocks/ThreeColumnTableBlock/config'
 
 export const Homepage: GlobalConfig = {
   slug: 'homepage',
@@ -148,8 +148,8 @@ export const Homepage: GlobalConfig = {
         TestimonialCardDeck,
         MinimalCardGallery,
         IDCardGallery,
-        // TwoColumnBlock,
-        // ThreeColumnTableBlock,
+        TwoColumnBlock,
+        ThreeColumnTableBlock,
       ],
       labels: {
         singular: 'A Content Block',
@@ -171,7 +171,8 @@ export const Homepage: GlobalConfig = {
           type: 'text',
           label: 'Meta Title',
           admin: {
-            description: 'Title for search engines and social sharing. Recommended: 50-60 characters.',
+            description:
+              'Title for search engines and social sharing. Recommended: 50-60 characters.',
           },
         },
         {
@@ -179,7 +180,8 @@ export const Homepage: GlobalConfig = {
           type: 'textarea',
           label: 'Meta Description',
           admin: {
-            description: 'Description for search engines and social sharing. Recommended: 120-160 characters.',
+            description:
+              'Description for search engines and social sharing. Recommended: 120-160 characters.',
           },
         },
         {

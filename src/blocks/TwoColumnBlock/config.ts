@@ -61,22 +61,37 @@ export const TwoColumnBlock: Block = {
       localized: true,
     },
     {
-      name: 'leftColumn',
-      label: 'Left Column',
-      type: 'richText',
-      editor: lexicalEditor({
-        features: lexicalFeatures,
-      }),
-      localized: true,
-    },
-    {
-      name: 'rightColumn',
-      label: 'Right Column',
-      type: 'richText',
-      editor: lexicalEditor({
-        features: lexicalFeatures,
-      }),
-      localized: true,
+      type: 'tabs',
+      tabs: [
+        {
+          label: 'Left Column',
+          fields: [
+            {
+              name: 'leftColumn',
+              label: 'Left Column Content',
+              type: 'richText',
+              editor: lexicalEditor({
+                features: lexicalFeatures,
+              }),
+              localized: true,
+            },
+          ],
+        },
+        {
+          label: 'Right Column',
+          fields: [
+            {
+              name: 'rightColumn',
+              label: 'Right Column Content',
+              type: 'richText',
+              editor: lexicalEditor({
+                features: lexicalFeatures,
+              }),
+              localized: true,
+            },
+          ],
+        },
+      ],
     },
   ],
 }

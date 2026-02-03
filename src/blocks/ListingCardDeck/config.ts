@@ -1,11 +1,11 @@
-import { Block } from "payload";
-import { link } from "@/fields/link";
+import { Block } from 'payload'
+import { link } from '@/fields/link'
 
 export const ListingCardDeck: Block = {
   slug: 'listCrdDck',
   labels: {
-    singular: 'Listing Card Deck',
-    plural: 'Listing Card Decks'
+    singular: 'Resource Card Slider',
+    plural: 'Resource Card Sliders',
   },
   imageURL: '/block_icons/listingcarddeck-block-icon.png',
   fields: [
@@ -62,7 +62,7 @@ export const ListingCardDeck: Block = {
       label: 'Listing Cards',
       labels: {
         singular: 'Listing Card',
-        plural: 'Listing Cards'
+        plural: 'Listing Cards',
       },
       type: 'array',
       fields: [
@@ -97,7 +97,7 @@ export const ListingCardDeck: Block = {
                   type: 'upload',
                   relationTo: 'mediaCloud',
                 },
-              ]
+              ],
             },
             {
               label: 'Card Tags',
@@ -119,9 +119,9 @@ export const ListingCardDeck: Block = {
                     components: {
                       RowLabel: {
                         path: 'src/blocks/ListingCardDeck/TagRowLabel.tsx',
-                      }
+                      },
                     },
-                  }
+                  },
                 },
               ],
             },
@@ -132,7 +132,7 @@ export const ListingCardDeck: Block = {
                   appearances: false,
                 }),
               ],
-            }
+            },
           ],
         },
       ],
@@ -141,16 +141,16 @@ export const ListingCardDeck: Block = {
         components: {
           RowLabel: {
             path: 'src/blocks/ListingCardDeck/CardRowLabel.tsx',
-          }
+          },
         },
         condition: (_data, siblingData) => siblingData?.dataSource !== 'resources',
-      }
+      },
     },
     {
       name: 'buttons',
       labels: {
         singular: 'Button',
-        plural: 'Buttons'
+        plural: 'Buttons',
       },
       type: 'array',
       minRows: 1,
@@ -164,9 +164,9 @@ export const ListingCardDeck: Block = {
         components: {
           RowLabel: {
             path: 'src/blocks/ListingCardDeck/ButtonRowLabel.tsx',
-          }
+          },
         },
-      }
+      },
     },
   ],
-};
+}
