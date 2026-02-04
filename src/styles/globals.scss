@@ -632,21 +632,47 @@ hr {
   }
 }
 
+@keyframes slideDownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .search-bar {
-  position: absolute;
-  top: 12rem;
-  left: 4rem;
-  width: calc(100% - 8rem);
+  width: 100%;
   background-color: $color-background;
-  border: 1px solid $color-body-text;
-  padding: $spacing-md;
   border-radius: $radius-md;
+  padding: $spacing-sm $spacing-md;
   box-shadow: $shadow-lg;
-  z-index: 1000;
+  display: none;
+  animation: slideDownFade 0.4s ease-out 0.1s both;
+
+  @media (min-width: $tablet) {
+    display: block;
+    padding: $spacing-lg $spacing-xl;
+  }
+
+  form {
+    @apply max-w-full;
+  }
 
   input {
-    padding: 5px;
+    padding: $spacing-md;
     width: 100%;
     background-color: $color-background;
+    border: 1px solid $color-body-text-light;
+    border-radius: $radius-md;
+    font-size: $font-size-base;
+
+    &:focus {
+      outline: none;
+      border-color: $color-body-text;
+      box-shadow: 0 0 0 2px rgba($color-body-text, 0.1);
+    }
   }
 }

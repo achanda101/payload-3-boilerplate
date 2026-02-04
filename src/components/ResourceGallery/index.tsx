@@ -34,11 +34,13 @@ const formatDate = (dateString?: string | null): string | null => {
   if (!dateString) return null
   try {
     const date = new Date(dateString)
-    return date.toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric',
-      year: 'numeric',
-    }).toUpperCase()
+    return date
+      .toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric',
+      })
+      .toUpperCase()
   } catch {
     return null
   }
@@ -96,7 +98,8 @@ const GalleryCard: React.FC<{
       {/* Cover Image */}
       {image?.url && (
         <Link href={resourceUrl} className="block mb-4">
-          <div className="relative w-full h-[250px] rounded-3xl overflow-hidden">
+          {/* <div className="relative w-full h-[250px] rounded-3xl overflow-hidden"> */}
+          <div className="w-full relative mb-4 h-80 overflow-hidden rounded-2xl cursor-pointer hover:opacity-90 transition-opacity">
             <Image
               src={image.url}
               alt={image.alt || title || 'Resource image'}

@@ -102,9 +102,10 @@ interface ButtonProps {
       }
     } | null
   }
+  align?: 'left' | 'center'
 }
 
-export const UAFButton: React.FC<ButtonProps> = ({ button }) => {
+export const UAFButton: React.FC<ButtonProps> = ({ button, align = 'center' }) => {
   const [isETestOpen, setIsETestOpen] = useState(false)
 
   const handleEtestClick = (e: React.MouseEvent) => {
@@ -174,7 +175,7 @@ export const UAFButton: React.FC<ButtonProps> = ({ button }) => {
   const fileSize = isDocumentLink ? button.doc?.value?.filesize : null
 
   return (
-    <div className="flex flex-col items-center h-full">
+    <div className={`flex flex-col h-full ${align === 'left' ? 'items-start' : 'items-center'}`}>
       <Link href={getHref()} target={button?.newTab ? '_blank' : '_self'}>
         <button className={getBtnClassName()}>{button.label}</button>
       </Link>

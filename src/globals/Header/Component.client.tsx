@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
@@ -41,6 +41,8 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
   const { selectedLanguage, setSelectedLanguage, setAvailableLanguages } = useLanguage()
   const { headerTheme } = useHeaderTheme()
   const router = useRouter()
+  const searchBarRef = useRef<HTMLDivElement>(null)
+  const searchButtonRef = useRef<HTMLButtonElement>(null)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isNavigating, setIsNavigating] = useState(false)
@@ -71,11 +73,17 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
     fetchHeaderData()
   }, [setAvailableLanguages])
 
-  const toggleSearch = () => {
-    if (isSearchOpen) {
-      setSearchQuery('') // Clear query when closing
+  const toggleSearch = (e?: React.MouseEvent) => {
+    if (e) {
+      e.preventDefault()
+      e.stopPropagation()
     }
-    setIsSearchOpen(!isSearchOpen)
+    setIsSearchOpen((prev) => {
+      if (prev) {
+        setSearchQuery('')
+      }
+      return !prev
+    })
   }
 
   const handleNavigation = () => {
@@ -130,6 +138,28 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [isSearchOpen])
+
+  // Handle click outside search bar to close it
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      // Don't close if clicking on the search button
+      if (searchButtonRef.current && searchButtonRef.current.contains(e.target as Node)) {
+        return
+      }
+
+      if (searchBarRef.current && !searchBarRef.current.contains(e.target as Node)) {
+        if (isSearchOpen) {
+          setIsSearchOpen(false)
+          setSearchQuery('')
+        }
+      }
+    }
+
+    if (isSearchOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+      return () => document.removeEventListener('mousedown', handleClickOutside)
+    }
   }, [isSearchOpen])
 
   return (
@@ -254,7 +284,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
           <div className="hidden lg:flex">
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
               {headerData.searchEnabled && (
-                <button onClick={toggleSearch} className="search-icon">
+                <button ref={searchButtonRef} onClick={toggleSearch} className="search-icon">
                   {isSearchOpen ? (
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
@@ -310,7 +340,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
         </div>
       </div>
       {isSearchOpen && (
-        <div className="search-bar">
+        <div className="search-bar" ref={searchBarRef}>
           <form
             onSubmit={(e) => {
               e.preventDefault()
@@ -325,6 +355,12 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
               placeholder="Search..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Escape') {
+                  setIsSearchOpen(false)
+                  setSearchQuery('')
+                }
+              }}
               autoFocus
             />
           </form>
@@ -415,6 +451,12 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
                       className="flex-1 outline-none bg-transparent"
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Escape') {
+                          setIsSearchOpen(false)
+                          setSearchQuery('')
+                        }
+                      }}
                       autoFocus
                     />
                     <button type="submit" className="p-1 flex items-center justify-center">

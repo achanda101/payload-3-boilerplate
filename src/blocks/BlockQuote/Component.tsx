@@ -24,7 +24,7 @@ export const BlockQuoteBlock: React.FC<BlockQuoteProps> = ({
         height={100}
         className="mb-6"
       />
-      {quote_text && <h5>{quote_text}</h5>}
+      {quote_text && <h5 style={{ whiteSpace: 'pre-line' }}>{quote_text}</h5>}
       {attrib_name && <p className="italic text-right">- {attrib_name}</p>}
       {attrib_dsg && <p className="italic text-right">{attrib_dsg}</p>}
     </div>

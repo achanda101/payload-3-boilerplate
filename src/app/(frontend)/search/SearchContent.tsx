@@ -196,7 +196,7 @@ export default function SearchContent() {
             {results.map((result) => (
               <article
                 key={result.id}
-                className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-md"
+                className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-md"
               >
                 <Link href={getResultLink(result)}>
                   <div className="flex flex-col sm:flex-row">

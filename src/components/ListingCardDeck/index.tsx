@@ -211,7 +211,9 @@ export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({
   return (
     <>
       {title && (
-        <Heading level={3} className="col-span-6 md:col-start-2 lg:col-start-4 mb-6 text-center">{title}</Heading>
+        <Heading level={3} className="col-span-6 md:col-start-2 lg:col-start-4 mb-6 text-center">
+          {title}
+        </Heading>
       )}
       <div className="col-span-full relative overflow-x-hidden sm:overflow-x-visible">
         <Carousel
@@ -247,9 +249,8 @@ export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({
                       </div>
                     </Link>
                   )}
-                  {card.title && <Heading level={5} className="mb-2">{card.title}</Heading>}
                   {card.tags && (
-                    <div className="flex flex-wrap gap-1 items-center">
+                    <div className="flex flex-wrap gap-1 items-center mb-2">
                       {card.tags.map((tag, index) => (
                         <React.Fragment key={tag.id || index}>
                           <span className="tag">{tag.tag}</span>
@@ -258,8 +259,17 @@ export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({
                       ))}
                     </div>
                   )}
+                  {card.title && (
+                    <Heading level={5} className="mb-2">
+                      {card.title}
+                    </Heading>
+                  )}
                   {card.desc && <p className="mt-2 mb-4 text-color-light">{card.desc}</p>}
-                  {card.link && <div className="text-base"><UAFButton button={card.link} /></div>}
+                  {card.link && (
+                    <div className="text-base">
+                      <UAFButton button={card.link} align="left" />
+                    </div>
+                  )}
                 </div>
               </CarouselItem>
             ))}
