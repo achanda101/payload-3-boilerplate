@@ -212,10 +212,10 @@ export const GrantPage: React.FC<GrantPageProps> = ({ collection, docId, isDraft
 
   // Calculate period status for hero buttons
   const { shouldDisableApply, message } = checkGrantPeriodStatus(
-    heroBlock.activePeriod,
-    heroBlock.startDate,
-    heroBlock.endDate,
-    heroBlock.msg,
+    heroBlock.activePeriod ?? undefined,
+    heroBlock.startDate ?? undefined,
+    heroBlock.endDate ?? undefined,
+    heroBlock.msg ?? undefined,
   )
 
   return (
