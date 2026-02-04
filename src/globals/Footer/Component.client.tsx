@@ -395,26 +395,32 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
             </div>
           </div>
           <div className="footer-grid-item div-h">
-            <Link href="https://uafanp.org/#" target="_blank" rel="noopener noreferrer">
+            <Link
+              href="https://uafanp.org/#"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ display: 'flex', lineHeight: 0 }}
+            >
               <Image
                 src="/footer_imgs/ngo-source-logo.png"
                 alt="NGO Source logo"
                 width={150}
                 height={58}
-                style={{ alignSelf: 'center' }}
+                style={{ display: 'block' }}
               />
             </Link>
             <Link
               href="https://www.ngosource.org/about-equivalency-determination-on-file-badge?ref=https%3A%2F%2Fwww.aswaalliance.org%2F"
               target="_blank"
               rel="noopener noreferrer"
+              style={{ display: 'flex', lineHeight: 0 }}
             >
               <Image
                 src="/footer_imgs/ACNC-Registered-Charity-Logo.png"
                 alt="ACNC registered charity logo"
-                width={150}
-                height={150}
-                style={{ alignSelf: 'center' }}
+                width={100}
+                height={100}
+                style={{ display: 'block' }}
               />
             </Link>
           </div>
