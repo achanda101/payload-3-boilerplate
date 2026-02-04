@@ -431,8 +431,8 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
                 </button>
               </div>
 
-              {/* Search Bar */}
-              {isSearchOpen && (
+              {/* Search Input Box */}
+              {headerData.searchEnabled && (
                 <div className="mb-6">
                   <form
                     onSubmit={(e) => {
@@ -440,7 +440,6 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
                       if (searchQuery.trim()) {
                         router.push(`/search?q=${encodeURIComponent(searchQuery)}`)
                         setIsMobileMenuOpen(false)
-                        setIsSearchOpen(false)
                       }
                     }}
                     className="flex items-center border-2 border-gray-300 rounded-full px-4 py-2"
@@ -453,11 +452,9 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
                       onChange={(e) => setSearchQuery(e.target.value)}
                       onKeyDown={(e) => {
                         if (e.key === 'Escape') {
-                          setIsSearchOpen(false)
                           setSearchQuery('')
                         }
                       }}
-                      autoFocus
                     />
                     <button type="submit" className="p-1 flex items-center justify-center">
                       <svg
