@@ -6,6 +6,6 @@
   background-color: transparent;
 
   @media (min-width: vars.$tablet) {
-    @apply aspect-square px-[2.5rem] py-[3.75rem];
+    @apply px-[2.5rem] py-[3.75rem];
   }
 }

@@ -69,6 +69,10 @@ export const GrantCardComponent: React.FC<GrantCardComponentProps> = ({
       link: CardLink
     }> | null
     specialGrant?: boolean | null
+    activePeriod?: 'open_all_year' | 'specific_period' | 'closed' | null
+    startDate?: string | null
+    endDate?: string | null
+    msg?: string | null
   }>({})
 
   const handleLanguageChange = useCallback(
@@ -107,6 +111,10 @@ export const GrantCardComponent: React.FC<GrantCardComponentProps> = ({
               grantUses={grantBlock.grantUses || ''}
               cardButtons={grantBlock.cardButtons || []}
               specialGrant={grantBlock.specialGrant || false}
+              activePeriod={grantBlock.activePeriod || undefined}
+              startDate={grantBlock.startDate || null}
+              endDate={grantBlock.endDate || null}
+              msg={grantBlock.msg || null}
             />
           </div>
         </div>

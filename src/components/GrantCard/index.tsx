@@ -1,52 +1,57 @@
-import React, { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
-import Image from 'next/image';
-import { ButtonArray } from '@/components/ButtonArray';
-import { Heading } from '@/components/Heading';
+import React, { useState } from 'react'
+import { ChevronDown } from 'lucide-react'
+import Image from 'next/image'
+import { ButtonArray } from '@/components/ButtonArray'
+import { Heading } from '@/components/Heading'
+import { checkGrantPeriodStatus } from '@/utilities/checkGrantPeriod'
 
 interface AssetCloud {
-  id: string;
-  alt: string;
-  url?: string | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
+  id: string
+  alt: string
+  url?: string | null
+  width?: number | null
+  height?: number | null
+  focalX?: number | null
+  focalY?: number | null
 }
 
 interface GrantCardProps {
-  badgeText: string;
-  badgeType: string;
-  title: string;
-  desc: string;
-  cardColour?: string;
-  mascot?: AssetCloud | null;
+  badgeText: string
+  badgeType: string
+  title: string
+  desc: string
+  cardColour?: string
+  mascot?: AssetCloud | null
   grantSpecs: {
     id: string
     spec: string
-  }[];
-  grantUses: string;
+  }[]
+  grantUses: string
   cardButtons: {
-    id: string;
+    id: string
     link: {
-      type: string;
-      newTab?: boolean | null;
-      downloadLink?: boolean | null;
-      arrowLink?: boolean | null;
-      pillSolid?: boolean | null;
-      pillOutline?: boolean | null;
-      url?: string | null;
-      label: string | null;
-      email?: string | null;
+      type: string
+      newTab?: boolean | null
+      downloadLink?: boolean | null
+      arrowLink?: boolean | null
+      pillSolid?: boolean | null
+      pillOutline?: boolean | null
+      url?: string | null
+      label: string | null
+      email?: string | null
       reference?: {
-        relationTo?: string;
+        relationTo?: string
         value: {
-          slug?: string;
-        };
+          slug?: string
+        }
       }
-    };
-  }[];
-  specialGrant?: boolean;
+    }
+  }[]
+  specialGrant?: boolean
+  activePeriod?: 'open_all_year' | 'specific_period' | 'closed'
+  startDate?: string | null
+  endDate?: string | null
+  msg?: string | null
 }
 
 export const GrantCard: React.FC<GrantCardProps> = ({
@@ -56,38 +61,50 @@ export const GrantCard: React.FC<GrantCardProps> = ({
   desc,
   cardColour,
   mascot,
-  grantSpecs=[],
-  grantUses='',
+  grantSpecs = [],
+  grantUses = '',
   cardButtons,
-  specialGrant=false
+  specialGrant = false,
+  activePeriod,
+  startDate,
+  endDate,
+  msg,
 }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false)
+
+  // Calculate if Apply buttons should be disabled based on period
+  const { shouldDisableApply, message } = checkGrantPeriodStatus(
+    activePeriod,
+    startDate,
+    endDate,
+    msg,
+  )
 
   return (
-    <div className="w-full">
+    <div className="w-full h-full">
       {specialGrant ? (
-        <div className={`grant-card`}>
-          <div className='flex flex-col justify-between gap-[1.25rem]'>
-            <hr/>
+        <div className={`grant-card h-full`}>
+          <div className="flex flex-col justify-between gap-[1.25rem]">
+            <hr />
             {badgeText && badgeText !== '' ? (
               <div className="flex justify-center mb-4">
                 <div className={`badge ${badgeType}`}>
                   <p className="tag">{badgeText}</p>
                 </div>
               </div>
-            ) : <></>}
-          
+            ) : (
+              <></>
+            )}
+
             <div className="text-center mb-3">
               <Heading level={5}>{title}</Heading>
             </div>
-              
-            <p className="text-center mb-4">
-              {desc}
-            </p>
+
+            <p className="text-center mb-4">{desc}</p>
 
             <div className={`text-center`}>
-              <Image 
-                src={(typeof mascot === 'object' && mascot?.url) || '/mascots/default-mascot.png'} 
+              <Image
+                src={(typeof mascot === 'object' && mascot?.url) || '/mascots/default-mascot.png'}
                 width={Math.min(mascot?.width || 220, 220)}
                 height={180}
                 sizes="(max-width: 768px) 100vw, 180px"
@@ -98,47 +115,45 @@ export const GrantCard: React.FC<GrantCardProps> = ({
 
             {grantSpecs && grantSpecs.length > 0 && (
               <div className="text-center">
-                <p className="tag">
-                  {grantSpecs?.map((spec) => spec.spec).join(' • ') || ''}
-                </p>
+                <p className="tag">{grantSpecs?.map((spec) => spec.spec).join(' • ') || ''}</p>
               </div>
             )}
 
             {grantUses && grantUses !== '' && (
-              <div className='w-[95%] mx-auto'>
+              <div className="w-[95%] mx-auto">
                 <div className="flex items-start justify-center gap-[0.5rem]">
-                    <p className='tag whitespace-nowrap'>COMMON USES:</p>
-                    <p className="tag sml text-center">
-                      {grantUses}
-                    </p>
+                  <p className="tag whitespace-nowrap">COMMON USES:</p>
+                  <p className="tag sml text-center">{grantUses}</p>
                 </div>
               </div>
             )}
 
-            <ButtonArray btnArray={cardButtons} colStackOnMobile={false} />
+            <ButtonArray
+              btnArray={cardButtons}
+              colStackOnMobile={false}
+              disableApplyButtons={shouldDisableApply}
+              disabledMessage={message}
+            />
 
-            <hr/>
+            <hr />
           </div>
         </div>
       ) : (
-        <div className={`grant-card bg-${cardColour}`}>
-          
-            <div>
-              {badgeText && badgeText !== '' && (
+        <div className={`grant-card h-full bg-${cardColour}`}>
+          <div>
+            {badgeText && badgeText !== '' && (
               <div className="flex justify-center mb-4">
                 <div className={`badge ${badgeType}`}>
                   <p className="tag">{badgeText}</p>
                 </div>
               </div>
-              )}
+            )}
 
             <div className="text-center mb-2">
               <Heading level={5}>{title}</Heading>
             </div>
-              
-            <p className="text-center mb-2">
-              {desc}
-            </p>
+
+            <p className="text-center mb-2">{desc}</p>
 
             {/* Mobile Read More Button - Only show when not expanded */}
             {!isExpanded && (
@@ -156,12 +171,12 @@ export const GrantCard: React.FC<GrantCardProps> = ({
 
           {/* Middle section - Mascot */}
           <div className={`text-center ${!isExpanded ? 'hidden md:block' : 'block'}`}>
-            <Image 
-                src={(typeof mascot === 'object' && mascot?.url) || '/mascots/default-mascot.png'} 
-                width={Math.min(mascot?.width || 220, 220)}
-                height={180}
-                alt={(typeof mascot === 'object' && mascot?.alt) || 'Mascot Image'}
-                className="mx-auto object-contain max-w-[220px] h-[180px] my-1"
+            <Image
+              src={(typeof mascot === 'object' && mascot?.url) || '/mascots/default-mascot.png'}
+              width={Math.min(mascot?.width || 220, 220)}
+              height={180}
+              alt={(typeof mascot === 'object' && mascot?.alt) || 'Mascot Image'}
+              className="mx-auto object-contain max-w-[220px] h-[180px] my-1"
             />
           </div>
 
@@ -171,26 +186,27 @@ export const GrantCard: React.FC<GrantCardProps> = ({
               <div className="space-y-2 mb-4">
                 <hr />
                 <div className="text-center">
-                  <p className="tag">
-                    {grantSpecs?.map((spec) => spec.spec).join(' • ') || ''}
-                  </p>
+                  <p className="tag">{grantSpecs?.map((spec) => spec.spec).join(' • ') || ''}</p>
                 </div>
                 <hr />
-              </div>)}
+              </div>
+            )}
 
-              {grantUses && grantUses !== '' && (
-                <div className='w-[95%] mx-auto'>
-                  <div className="flex items-start justify-center gap-[0.5rem]">
-                      <p className='tag whitespace-nowrap'>COMMON USES:</p>
-                      <p className="tag sml text-center">
-                        {grantUses}
-                      </p>
-                  </div>
+            {grantUses && grantUses !== '' && (
+              <div className="w-[95%] mx-auto">
+                <div className="flex items-start justify-center gap-[0.5rem]">
+                  <p className="tag whitespace-nowrap">COMMON USES:</p>
+                  <p className="tag sml text-center">{grantUses}</p>
                 </div>
-              )}
+              </div>
+            )}
 
-              <ButtonArray btnArray={cardButtons} colStackOnMobile={false} />
-
+            <ButtonArray
+              btnArray={cardButtons}
+              colStackOnMobile={false}
+              disableApplyButtons={shouldDisableApply}
+              disabledMessage={message}
+            />
 
             {/* Mobile Read Less Button - Only show when expanded */}
             {isExpanded && (
@@ -207,7 +223,6 @@ export const GrantCard: React.FC<GrantCardProps> = ({
           </div>
         </div>
       )}
-      
     </div>
-  );
-};
+  )
+}

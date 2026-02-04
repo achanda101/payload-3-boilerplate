@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { ETestRender } from '@/components/ETestRender'
 import { getValidUrl } from '@/utilities/getValidUrl'
@@ -107,14 +107,34 @@ interface ButtonItem {
 
 type ButtonArrayProps = ButtonItem[]
 
-export const ButtonArray: React.FC<{ btnArray: ButtonArrayProps; colStackOnMobile: boolean }> = ({
+export const ButtonArray: React.FC<{
+  btnArray: ButtonArrayProps
+  colStackOnMobile: boolean
+  disableApplyButtons?: boolean
+  disabledMessage?: string | null
+}> = ({
   btnArray,
   colStackOnMobile = false,
+  disableApplyButtons = false,
+  disabledMessage = null,
 }) => {
   const [isETestOpen, setIsETestOpen] = useState(false)
   const [currentEtestData, setCurrentEtestData] = useState<ButtonItem['link']['etestlink'] | null>(
     null,
   )
+  const buttonRefs = useRef<(HTMLButtonElement | null)[]>([])
+  const messageRefs = useRef<(HTMLDivElement | null)[]>([])
+
+  // Measure button widths and apply to messages after render
+  useEffect(() => {
+    buttonRefs.current.forEach((buttonEl, index) => {
+      const messageEl = messageRefs.current[index]
+      if (buttonEl && messageEl) {
+        const buttonWidth = buttonEl.offsetWidth
+        messageEl.style.width = `${buttonWidth}px`
+      }
+    })
+  }, [btnArray, disableApplyButtons])
 
   const getBtnArrayClassName = () => {
     const classes: string[] = ['btn-array']
@@ -199,11 +219,40 @@ export const ButtonArray: React.FC<{ btnArray: ButtonArrayProps; colStackOnMobil
           const isDocumentLink = button.link.type === 'document'
           const fileSize = isDocumentLink ? button.link.doc?.value?.filesize : null
 
+          // Check if this is an Apply button that should be disabled
+          const isApplyButton = button.link.label?.toLowerCase().includes('apply')
+          const isDisabled = disableApplyButtons && isApplyButton
+
           return (
-            <div key={index} className="flex flex-col items-center h-full">
-              <Link href={getHref()} target={button.link?.newTab ? '_blank' : '_self'}>
-                <button className={getBtnClassName()}>{button.link.label}</button>
+            <div key={index} className="flex flex-col items-center">
+              <Link
+                href={isDisabled ? '#' : getHref()}
+                target={button.link?.newTab ? '_blank' : '_self'}
+                onClick={isDisabled ? (e) => e.preventDefault() : undefined}
+              >
+                <button
+                  ref={(el) => {
+                    buttonRefs.current[index] = el
+                  }}
+                  className={`${getBtnClassName()} ${
+                    isDisabled ? 'disabled' : ''
+                  }`}
+                  disabled={isDisabled}
+                >
+                  {button.link.label}
+                </button>
               </Link>
+              {isDisabled && disabledMessage && (
+                <div
+                  ref={(el) => {
+                    messageRefs.current[index] = el
+                  }}
+                  className="text-xs mt-1 text-center overflow-hidden"
+                  style={{ wordWrap: 'break-word' }}
+                >
+                  {disabledMessage}
+                </div>
+              )}
               {isDocumentLink && fileSize && (
                 <div className="h-5">
                   <div className="text-xs text-gray-500 mt-1">

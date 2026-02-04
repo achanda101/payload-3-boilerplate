@@ -16,7 +16,7 @@ interface GrantCardData {
   _status: ('draft' | 'published') | null
   badgeText: string
   badgeType: string
-  activePeriod: string
+  activePeriod: 'open_all_year' | 'specific_period' | 'closed'
   title: string
   desc: string
   cardColour?: string
@@ -26,6 +26,9 @@ interface GrantCardData {
     spec: string
   }[]
   grantUses: string
+  startDate?: string | null
+  endDate?: string | null
+  msg?: string | null
   cardButtons: {
     id: string
     link: {
@@ -65,7 +68,11 @@ export const GrantCardGrid: React.FC<GrantCardGridProps> = ({ title, desc, grant
 
   return (
     <>
-      {title && <Heading level={3} className="col-span-full text-center">{title}</Heading>}
+      {title && (
+        <Heading level={3} className="col-span-full text-center">
+          {title}
+        </Heading>
+      )}
       {desc && <p className="col-span-full text-center -mt-6">{desc}</p>}
       {colouredCards?.length > 0
         ? colouredCards.map((card, index) => {

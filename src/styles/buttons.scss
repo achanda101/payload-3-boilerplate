@@ -2,7 +2,9 @@
 @use 'mixins' as mix;
 
 .btn-array {
-  @include mix.flex-center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align button tops instead of centering vertically */
 
   gap: 1.5rem;
   margin-top: 1.25rem;
@@ -150,5 +152,28 @@ button.underline {
       cursor: pointer;
       opacity: 70%;
     }
+  }
+}
+
+// Disabled button styles for period-based deactivation
+button.disabled,
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #6b7280 !important; /* gray-600 - darker than gray-400 */
+  border-color: #6b7280 !important;
+  color: #ffffff !important;
+  pointer-events: none;
+  text-decoration: none !important;
+
+  &::after {
+    display: none;
+  }
+
+  &:hover {
+    background-color: #6b7280 !important;
+    border-color: #6b7280 !important;
+    opacity: 0.6;
+    cursor: not-allowed;
   }
 }
