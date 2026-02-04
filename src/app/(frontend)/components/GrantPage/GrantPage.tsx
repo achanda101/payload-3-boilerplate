@@ -6,6 +6,7 @@ import { useLanguage } from '@/providers/LanguageContext'
 import { useHeaderTheme } from '@/providers/HeaderTheme'
 import { ButtonArray } from '@/components/ButtonArray'
 import { GrantCardGrid } from '@/components/GrantCardGrid'
+import { checkGrantPeriodStatus } from '@/utilities/checkGrantPeriod'
 import { MultiStepProcess } from '@/components/MultiStepProcess'
 import { MultiColumnInfo } from '@/components/MultiColumnInfoBlock'
 import { SingleColumnInfo } from '@/components/SingleColumnInfoBlock'
@@ -144,6 +145,10 @@ export const GrantPage: React.FC<GrantPageProps> = ({ collection, docId, isDraft
       label?: string | null
       email?: string | null
     }
+    activePeriod?: 'open_all_year' | 'specific_period' | 'closed' | null
+    startDate?: string | null
+    endDate?: string | null
+    msg?: string | null
   }>({})
   const [contentBlocks, setContentBlocks] = useState<
     Array<{
@@ -186,6 +191,10 @@ export const GrantPage: React.FC<GrantPageProps> = ({ collection, docId, isDraft
             }),
           ),
           heroContact: data.heroContact,
+          activePeriod: data.grantCard?.activePeriod || null,
+          startDate: data.grantCard?.startDate || null,
+          endDate: data.grantCard?.endDate || null,
+          msg: data.grantCard?.msg || null,
         })
         if (data?.contentBlocks?.length > 0) {
           setContentBlocks(data.contentBlocks)
@@ -200,6 +209,14 @@ export const GrantPage: React.FC<GrantPageProps> = ({ collection, docId, isDraft
   useEffect(() => {
     handleLanguageChange(selectedLanguage)
   }, [selectedLanguage, handleLanguageChange])
+
+  // Calculate period status for hero buttons
+  const { shouldDisableApply, message } = checkGrantPeriodStatus(
+    heroBlock.activePeriod,
+    heroBlock.startDate,
+    heroBlock.endDate,
+    heroBlock.msg,
+  )
 
   return (
     <>
@@ -253,6 +270,8 @@ export const GrantPage: React.FC<GrantPageProps> = ({ collection, docId, isDraft
             <ButtonArray
               btnArray={heroBlock?.heroButtons || []}
               colStackOnMobile={pageType === 'landing' ? true : false}
+              disableApplyButtons={shouldDisableApply}
+              disabledMessage={message}
             />
 
             <div className="hero-contact">

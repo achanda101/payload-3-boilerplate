@@ -394,9 +394,196 @@ Add disabled button styles:
 3. **Time Zones:** Consider whether dates should be evaluated in a specific timezone or server local time
 4. **Cache Invalidation:** Since this is client-side date comparison, ISR cache won't affect behavior
 
+---
+
+## Feature Extension: Hero Block Button Deactivation
+
+### Overview
+
+Extend the period-based button deactivation feature to also apply to the hero block buttons on individual Grant pages. When a Grant page is linked to a GrantCard with `activePeriod = 'specific_period'` and the current date falls outside the specified period, any "Apply" button in the hero block should also be deactivated.
+
+### Current Architecture
+
+#### GrantPage Component (`src/app/(frontend)/components/GrantPage/GrantPage.tsx`)
+
+**Key observations:**
+- Fetches Grant data including the related `grantCard` object (line 163)
+- The `grantCard` contains: `activePeriod`, `startDate`, `endDate`, `msg`, `badgeText`, `badgeType`, `mascot`, etc.
+- Hero block state is set at lines 168-189, extracting some grantCard data (badgeText, badgeType, mascot)
+- The `heroButtons` array is separate from `cardButtons` - it comes from `data.heroButtons` on the Grant page itself
+- ButtonArray for hero is rendered at lines 253-256 without disable props:
+  ```typescript
+  <ButtonArray
+    btnArray={heroBlock?.heroButtons || []}
+    colStackOnMobile={pageType === 'landing' ? true : false}
+  />
+  ```
+
+#### Data Flow for Hero Block
+
+```
+Grant Page (collection)
+    ├── heroButtons (array of links)
+    └── grantCard (relationship to GrantCards)
+           ├── activePeriod
+           ├── startDate
+           ├── endDate
+           └── msg
+                ↓
+GrantPage component (fetches both)
+                ↓
+ButtonArray (hero buttons + period data from grantCard)
+```
+
+### Implementation Plan
+
+#### Phase 7: Update GrantPage State Interface
+
+**File:** `src/app/(frontend)/components/GrantPage/GrantPage.tsx`
+
+Add period-related fields to the heroBlock state interface:
+
+```typescript
+const [heroBlock, setHeroBlock] = useState<{
+  // ... existing fields
+  title?: string | null
+  subtitle?: string | null
+  badgeText?: string | null
+  badgeType?: string | null
+  heroImage?: AssetCloud | null
+  heroButtons?: { ... }[]
+  heroContact?: { ... }
+  // NEW: Period fields from related grantCard
+  activePeriod?: 'open_all_year' | 'specific_period' | 'closed' | null
+  startDate?: string | null
+  endDate?: string | null
+  msg?: string | null
+}>({})
+```
+
+#### Phase 8: Extract Period Data from grantCard
+
+**File:** `src/app/(frontend)/components/GrantPage/GrantPage.tsx`
+
+Update the `handleLanguageChange` function to extract period data from the related grantCard:
+
+```typescript
+setHeroBlock({
+  title: data.heroTitle,
+  subtitle: data.heroSubtitle,
+  badgeText: data.grantCard?.badgeText,
+  badgeType: data.grantCard?.badgeType,
+  heroImage: data.grantCard?.mascot,
+  heroButtons: data.heroButtons?.map(...),
+  heroContact: data.heroContact,
+  // NEW: Extract period data from grantCard
+  activePeriod: data.grantCard?.activePeriod || null,
+  startDate: data.grantCard?.startDate || null,
+  endDate: data.grantCard?.endDate || null,
+  msg: data.grantCard?.msg || null,
+})
+```
+
+#### Phase 9: Import and Use Period Utility
+
+**File:** `src/app/(frontend)/components/GrantPage/GrantPage.tsx`
+
+Import the existing utility:
+```typescript
+import { checkGrantPeriodStatus } from '@/utilities/checkGrantPeriod'
+```
+
+Calculate disable status before rendering:
+```typescript
+// Inside the component, before return statement
+const { shouldDisableApply, message } = checkGrantPeriodStatus(
+  heroBlock.activePeriod,
+  heroBlock.startDate,
+  heroBlock.endDate,
+  heroBlock.msg,
+)
+```
+
+#### Phase 10: Pass Disable Props to Hero ButtonArray
+
+**File:** `src/app/(frontend)/components/GrantPage/GrantPage.tsx`
+
+Update the ButtonArray call in the hero section:
+
+```typescript
+<ButtonArray
+  btnArray={heroBlock?.heroButtons || []}
+  colStackOnMobile={pageType === 'landing' ? true : false}
+  disableApplyButtons={shouldDisableApply}
+  disabledMessage={message}
+/>
+```
+
+### File Changes Summary (Hero Block Extension)
+
+| File | Action | Description |
+|------|--------|-------------|
+| `src/app/(frontend)/components/GrantPage/GrantPage.tsx` | MODIFY | Add period fields to state, extract from grantCard, pass to ButtonArray |
+
+### Testing Scenarios (Hero Block)
+
+#### Test Case 7: Hero Block - Period Active
+- **Setup:**
+  - Grant page linked to GrantCard with `activePeriod = 'specific_period'`
+  - `startDate = '2024-01-01'`, `endDate = '2027-12-31'`
+  - Hero has "Apply Now" button
+  - Current date: Within range
+- **Expected:**
+  - Hero "Apply Now" button is ACTIVE and functional
+  - No message displayed
+
+#### Test Case 8: Hero Block - Period Inactive
+- **Setup:**
+  - Grant page linked to GrantCard with `activePeriod = 'specific_period'`
+  - `startDate = '2026-06-01'`, `endDate = '2026-07-31'`
+  - `msg = 'Application open June 1 - July 31, 2026'`
+  - Hero has "Apply Now" and "Check Eligibility" buttons
+  - Current date: Outside range (e.g., February 2026)
+- **Expected:**
+  - Hero "Apply Now" button is DISABLED and greyed out
+  - Message "Application open June 1 - July 31, 2026" displayed under the Apply button
+  - "Check Eligibility" button remains ACTIVE
+
+#### Test Case 9: Hero Block - Open All Year
+- **Setup:**
+  - Grant page linked to GrantCard with `activePeriod = 'open_all_year'`
+  - Hero has "Apply Now" button
+- **Expected:**
+  - Hero "Apply Now" button is ACTIVE and functional
+  - No message displayed
+
+#### Test Case 10: Landing Page (No GrantCard)
+- **Setup:**
+  - Grant page with `pageType = 'landing'` (no grantCard relationship)
+  - Hero has "Apply" button
+- **Expected:**
+  - All buttons remain ACTIVE (no period data to check)
+  - No message displayed
+
+### Visual Reference
+
+The hero block with disabled Apply button should appear similar to Image #4:
+- "Check Eligibility" button remains active (outline style)
+- "Apply Now" button is greyed out and disabled
+- Period message displayed below the disabled button in small text
+
+### Considerations
+
+1. **Landing vs Individual Pages:** Only individual grant pages have a `grantCard` relationship. Landing pages should not be affected.
+2. **Null Safety:** If `grantCard` is null/undefined, the utility returns `shouldDisableApply: false`, so buttons remain active.
+3. **Consistent Styling:** The disabled button styling in the hero should match the styling in grant cards (same grey color, same message styling).
+
+---
+
 ## Future Enhancements
 
 1. Add admin UI preview showing which buttons would be disabled
 2. Add countdown timer showing when the period will end/start
 3. Add email notification system for period transitions
 4. Add bulk scheduling for multiple grant cards
+5. Add visual indicator in admin panel showing current period status for each grant
