@@ -176,14 +176,19 @@ export const UAFButton: React.FC<ButtonProps> = ({ button, align = 'center' }) =
 
   return (
     <div className={`flex flex-col h-full ${align === 'left' ? 'items-start' : 'items-center'}`}>
-      <Link href={getHref()} target={button?.newTab ? '_blank' : '_self'}>
+      <Link
+        href={getHref()}
+        target={button?.newTab ? '_blank' : '_self'}
+        className="flex flex-col items-center"
+      >
         <button className={getBtnClassName()}>{button.label}</button>
-      </Link>
-      <div className="h-5">
+
         {isDocumentLink && fileSize && (
-          <div className="text-xs text-gray-500 mt-1">Filesize: {formatFileSize(fileSize)}</div>
+          <div className="h-5">
+            <div className="text-xs text-gray-500 mt-1">Filesize: {formatFileSize(fileSize)}</div>
+          </div>
         )}
-      </div>
+      </Link>
     </div>
   )
 }
