@@ -377,7 +377,7 @@ export const ResourceFeatureCard: React.FC<ResourceFeatureCardProps> = ({
               const relationTo = featItem.relationTo
 
               return (
-                <CarouselItem key={item.id}>
+                <CarouselItem key={`${relationTo}-${item.id}`}>
                   <CarouselResourceCard item={item} relationTo={relationTo} />
                 </CarouselItem>
               )

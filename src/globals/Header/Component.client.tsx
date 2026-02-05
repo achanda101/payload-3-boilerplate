@@ -34,7 +34,64 @@ interface HeaderClientProps {
     logo?: (number | null) | AssetCloud
     searchEnabled?: boolean | null
     languages: string[]
+    showBanner?: boolean | null
+    banner?: {
+      text?: string | null
+      link?: {
+        type?: 'reference' | 'custom' | 'email' | 'document' | 'etest' | null
+        reference?: {
+          relationTo: string
+          value: { slug: string } | string | number
+        } | null
+        url?: string | null
+        email?: string | null
+        label?: string | null
+        newTab?: boolean | null
+      } | null
+    } | null
   }
+}
+
+function BannerLink({
+  link,
+}: {
+  link: NonNullable<NonNullable<HeaderClientProps['data']>['banner']>['link']
+}) {
+  if (!link) return null
+
+  let href = '#'
+  const target = link.newTab ? '_blank' : undefined
+  const rel = link.newTab ? 'noopener noreferrer' : undefined
+
+  if (link.type === 'reference' && link.reference) {
+    const ref = link.reference
+    if (typeof ref.value === 'object' && 'slug' in ref.value) {
+      href =
+        ref.relationTo === 'pages' ? `/${ref.value.slug}` : `/${ref.relationTo}/${ref.value.slug}`
+    }
+  } else if (link.type === 'custom' && link.url) {
+    href = link.url
+  } else if (link.type === 'email' && link.email) {
+    href = `mailto:${link.email}`
+  }
+
+  return (
+    <a href={href} target={target} rel={rel} className="site-header-banner-link">
+      {link.label}
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M5 12h14M12 5l7 7-7 7" />
+      </svg>
+    </a>
+  )
 }
 
 export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
@@ -164,6 +221,15 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
 
   return (
     <header className={`site-header ${headerTheme}`}>
+      {/* Announcement Banner */}
+      {headerData.showBanner && headerData.banner?.text && (
+        <div className="site-header-banner">
+          <div className="site-header-banner-content">
+            <p>{headerData.banner.text}</p>
+            {headerData.banner.link?.label && <BannerLink link={headerData.banner.link} />}
+          </div>
+        </div>
+      )}
       <div className="site-header-content">
         <div className="site-header-toprow">
           <span style={{ display: 'inline-flex', alignItems: 'center' }}>

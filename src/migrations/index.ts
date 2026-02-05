@@ -21,6 +21,8 @@ import * as migration_20260203_080732_feat_rcslider from './20260203_080732_feat
 import * as migration_20260203_083116_fix_twocol_tabs from './20260203_083116_fix_twocol_tabs';
 import * as migration_20260203_092308_fix_3column_tabs from './20260203_092308_fix_3column_tabs';
 import * as migration_20260203_170724_feat_search_index_richtextcontent from './20260203_170724_feat_search_index_richtextcontent';
+import * as migration_20260205_083618_add_header_banner from './20260205_083618_add_header_banner';
+import * as migration_20260205_085920_add_header_banner from './20260205_085920_add_header_banner';
 
 export const migrations = [
   {
@@ -136,6 +138,16 @@ export const migrations = [
   {
     up: migration_20260203_170724_feat_search_index_richtextcontent.up,
     down: migration_20260203_170724_feat_search_index_richtextcontent.down,
-    name: '20260203_170724_feat_search_index_richtextcontent'
+    name: '20260203_170724_feat_search_index_richtextcontent',
+  },
+  {
+    up: migration_20260205_083618_add_header_banner.up,
+    down: migration_20260205_083618_add_header_banner.down,
+    name: '20260205_083618_add_header_banner',
+  },
+  {
+    up: migration_20260205_085920_add_header_banner.up,
+    down: migration_20260205_085920_add_header_banner.down,
+    name: '20260205_085920_add_header_banner'
   },
 ];

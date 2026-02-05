@@ -12525,6 +12525,59 @@ export interface Header {
     | 'lpl15'
     | 'lpl16'
   )[];
+  /**
+   * Enable announcement banner at the top of every page
+   */
+  showBanner?: boolean | null;
+  /**
+   * Configure the announcement banner displayed at the top of every page.
+   */
+  banner?: {
+    /**
+     * Banner announcement text
+     */
+    text?: string | null;
+    link?: {
+      type?: ('reference' | 'custom' | 'email' | 'document' | 'etest') | null;
+      newTab?: boolean | null;
+      downloadLink?: boolean | null;
+      arrowLink?: boolean | null;
+      pillSolid?: boolean | null;
+      pillOutline?: boolean | null;
+      reference?:
+        | ({
+            relationTo: 'grants';
+            value: number | Grant;
+          } | null)
+        | ({
+            relationTo: 'pages';
+            value: number | Page;
+          } | null)
+        | ({
+            relationTo: 'blog';
+            value: number | Blog;
+          } | null)
+        | ({
+            relationTo: 'reports';
+            value: number | Report;
+          } | null)
+        | ({
+            relationTo: 'mmedia';
+            value: number | Mmedia;
+          } | null);
+      url?: string | null;
+      email?: string | null;
+      doc?: {
+        relationTo: 'documents';
+        value: number | Document;
+      } | null;
+      etestlink?: {
+        relationTo: 'etests';
+        value: number | Etest;
+      } | null;
+      label?: string | null;
+    };
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -13261,6 +13314,28 @@ export interface HeaderSelect<T extends boolean = true> {
   logo?: T;
   searchEnabled?: T;
   languages?: T;
+  showBanner?: T;
+  banner?:
+    | T
+    | {
+        text?: T;
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              downloadLink?: T;
+              arrowLink?: T;
+              pillSolid?: T;
+              pillOutline?: T;
+              reference?: T;
+              url?: T;
+              email?: T;
+              doc?: T;
+              etestlink?: T;
+              label?: T;
+            };
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

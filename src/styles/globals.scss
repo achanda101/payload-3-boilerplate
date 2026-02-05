@@ -332,6 +332,56 @@ hr {
     background-color: $color-fire;
   }
 }
+
+// Announcement Banner (inside header, above header-content)
+.site-header-banner {
+  background-color: $color-fire;
+  @apply w-full py-2 px-[1.25rem] lg:px-[5rem];
+  // Negate the parent .site-header padding so the banner is truly full-width edge-to-edge
+  margin: -1.25rem -1.25rem 1.25rem -1.25rem;
+  width: calc(100% + 2.5rem);
+
+  @media (min-width: $desktop) {
+    margin: -2.5rem -5rem 2.5rem -5rem;
+    width: calc(100% + 10rem);
+  }
+}
+
+.site-header-banner-content {
+  @apply flex flex-wrap items-center justify-center gap-2 text-center;
+
+  p {
+    color: $white;
+    // font-family: $font-body-bold;
+    font-size: $font-size-button-mob;
+    margin: 0;
+
+    @media (min-width: $tablet) {
+      font-size: $font-size-button;
+    }
+  }
+}
+
+.site-header-banner-link {
+  @apply inline-flex items-center gap-1;
+  color: $white;
+  font-family: $font-body-bold;
+  font-size: $font-size-button-mob;
+  text-decoration: none;
+  padding-left: 10px;
+
+  &:hover {
+    text-decoration-thickness: 2px;
+  }
+
+  @media (min-width: $tablet) {
+    font-size: $font-size-button;
+  }
+
+  svg {
+    flex-shrink: 0;
+  }
+}
 .site-header-content {
   @apply flex flex-col gap-2 lg:gap-4 mx-0;
   .site-header-toprow {
@@ -645,17 +695,18 @@ hr {
 }
 
 .search-bar {
-  width: 100%;
+  width: 75%;
+  margin: 0 auto;
   background-color: $color-background;
   border-radius: $radius-md;
-  padding: $spacing-sm $spacing-md;
+  // padding: $spacing-sm $spacing-md;
+  margin-top: 0.5rem;
   box-shadow: $shadow-lg;
   display: none;
   animation: slideDownFade 0.4s ease-out 0.1s both;
 
   @media (min-width: $tablet) {
     display: block;
-    padding: $spacing-lg $spacing-xl;
   }
 
   form {
@@ -663,10 +714,9 @@ hr {
   }
 
   input {
-    padding: $spacing-md;
+    padding: $spacing-sm;
     width: 100%;
     background-color: $color-background;
-    border: 1px solid $color-body-text-light;
     border-radius: $radius-md;
     font-size: $font-size-base;
 

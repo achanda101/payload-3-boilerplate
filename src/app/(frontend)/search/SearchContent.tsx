@@ -98,7 +98,7 @@ export default function SearchContent() {
   const getSnippet = (
     content: string | undefined,
     searchQuery: string,
-    contextLength: number = 60
+    contextLength: number = 60,
   ): { before: string; match: string; after: string } | null => {
     if (!content || !searchQuery) return null
 
@@ -129,16 +129,18 @@ export default function SearchContent() {
 
     const before = (startIndex > 0 ? '...' : '') + content.slice(startIndex, matchIndex)
     const match = content.slice(matchIndex, matchIndex + searchQuery.length)
-    const after = content.slice(matchIndex + searchQuery.length, endIndex) + (endIndex < content.length ? '...' : '')
+    const after =
+      content.slice(matchIndex + searchQuery.length, endIndex) +
+      (endIndex < content.length ? '...' : '')
 
     return { before, match, after }
   }
 
   return (
     <div className="min-h-screen">
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto py-12">
         {/* Search Header */}
-        <div className="mb-12">
+        <div className="mb-12 margin-auto text-center">
           <h1 className="text-4xl font-bold mb-2">Search Results</h1>
           {query && (
             <p className="text-lg text-gray-600">
@@ -170,7 +172,7 @@ export default function SearchContent() {
         {/* Loading State */}
         {loading && (
           <div className="flex justify-center">
-            <div className="h-12 w-12 animate-spin rounded-full border-4 border-gray-300 border-t-blue-600"></div>
+            <div className="h-12 w-12 animate-spin rounded-full border-4 border-gray-300 border-t-green-600"></div>
           </div>
         )}
 
@@ -192,7 +194,7 @@ export default function SearchContent() {
 
         {/* Results Grid */}
         {!loading && results.length > 0 && (
-          <div className="space-y-6">
+          <div className="space-y-6 pb-[10rem]">
             {results.map((result) => (
               <article
                 key={result.id}
@@ -215,26 +217,26 @@ export default function SearchContent() {
                     {/* Content */}
                     <div className="flex flex-1 flex-col justify-between p-6">
                       {/* Title */}
-                      <h2 className="mb-2 text-xl font-bold text-gray-900 hover:text-blue-600">
-                        {result.meta?.title || result.slug}
-                      </h2>
+                      <h5>{result.meta?.title || result.slug}</h5>
 
                       {/* Contextual Snippet with highlighted match */}
-                      {query && result.contentData && (() => {
-                        const snippet = getSnippet(result.contentData, query)
-                        if (snippet) {
-                          return (
-                            <p className="mb-3 text-gray-600">
-                              {snippet.before}
-                              <mark className="bg-yellow-200 px-0.5 font-medium text-gray-900">
-                                {snippet.match}
-                              </mark>
-                              {snippet.after}
-                            </p>
-                          )
-                        }
-                        return null
-                      })()}
+                      {query &&
+                        result.contentData &&
+                        (() => {
+                          const snippet = getSnippet(result.contentData, query)
+                          if (snippet) {
+                            return (
+                              <p className="mb-3 text-gray-600">
+                                {snippet.before}
+                                <mark className="bg-yellow-200 px-0.5 font-medium text-gray-900">
+                                  {snippet.match}
+                                </mark>
+                                {snippet.after}
+                              </p>
+                            )
+                          }
+                          return null
+                        })()}
 
                       {/* Fallback: Description if no snippet match */}
                       {result.meta?.description && !getSnippet(result.contentData, query || '') && (

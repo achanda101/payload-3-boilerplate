@@ -202,7 +202,7 @@ export const ResourceGallery: React.FC<ResourceGalleryProps> = ({
           const item = galleryItem.value as Blog | Report | Mmedia
           const relationTo = galleryItem.relationTo
 
-          return <GalleryCard key={item.id} item={item} relationTo={relationTo} />
+          return <GalleryCard key={`${relationTo}-${item.id}`} item={item} relationTo={relationTo} />
         })}
       </div>
 
