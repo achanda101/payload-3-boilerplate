@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url'
 
 import { anyone } from '../access/anyone'
 import { authenticated } from '../access/authenticated'
+import { generateBlurHash } from '../hooks/generateBlurHash'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -30,6 +31,9 @@ export const MediaCloud: CollectionConfig = {
     read: anyone,
     update: authenticated,
   },
+  hooks: {
+    beforeValidate: [generateBlurHash],
+  },
   fields: [
     {
       name: 'alt',
@@ -40,6 +44,14 @@ export const MediaCloud: CollectionConfig = {
       name: 'caption',
       type: 'text',
       localized: true,
+    },
+    {
+      name: 'blurhash',
+      type: 'text',
+      admin: {
+        hidden: true,
+        readOnly: true,
+      },
     },
   ],
   upload: {

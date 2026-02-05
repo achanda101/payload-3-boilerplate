@@ -1,4 +1,11 @@
 import type { Block } from 'payload'
+import {
+  BoldFeature,
+  ItalicFeature,
+  UnderlineFeature,
+  LinkFeature,
+  lexicalEditor,
+} from '@payloadcms/richtext-lexical'
 
 export const BlockQuote: Block = {
   slug: 'blckquote',
@@ -23,8 +30,11 @@ export const BlockQuote: Block = {
     {
       name: 'attrib_dsg',
       label: 'Attribution Designation',
-      type: 'text',
+      type: 'richText',
       localized: true,
+      editor: lexicalEditor({
+        features: () => [BoldFeature(), ItalicFeature(), UnderlineFeature(), LinkFeature({})],
+      }),
     },
   ],
 }

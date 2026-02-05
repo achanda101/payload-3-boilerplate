@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { ChevronDown } from 'lucide-react'
 import Image from 'next/image'
+import { OptimizedImage } from '@/components/OptimizedImage'
 import { useLanguage } from '@/providers/LanguageContext'
 import { useHeaderTheme } from '@/providers/HeaderTheme'
 import { ButtonArray } from '@/components/ButtonArray'
@@ -40,6 +41,9 @@ interface MediaCloud {
   height?: number | null
   focalX?: number | null
   focalY?: number | null
+  blurhash?: string | null
+  updatedAt?: string
+  createdAt?: string
 }
 
 interface MMediaPageProps {
@@ -343,11 +347,8 @@ export const MMediaPage: React.FC<MMediaPageProps> = ({ collection, docId, isDra
           heroBlock.coverImage.url ? (
             <div className="w-full px-[1.25rem] lg:px-[5rem]">
               <div className={`hero-content hero-cover-image h-auto ${getCoverImageWidth()}`}>
-                <Image
-                  src={heroBlock.coverImage.url}
-                  alt={heroBlock.coverImage.alt || 'Resource Cover Image'}
-                  width={heroBlock.coverImage.width || 800}
-                  height={heroBlock.coverImage.height || 600}
+                <OptimizedImage
+                  media={heroBlock.coverImage as any}
                   sizes="(max-width: 640px) 80vw, 33vw"
                   className="rounded-3xl overflow-hidden"
                   priority

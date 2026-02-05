@@ -15,6 +15,7 @@ import { SpotifyTrackBlock } from '@/blocks/SpotifyTrackBlock/config'
 import { SoundCloudEmbedBlock } from '@/blocks/SoundCloudEmbedBlock/config'
 import { BlockQuote } from '@/blocks/BlockQuote/config'
 import { FancyListBlock } from '@/blocks/FancyListBlock/config'
+import { PillButtonsBlock } from '@/blocks/PillButtonsBlock/config'
 
 export const RichContentBlock: Block = {
   slug: 'richContentBlock',
@@ -45,6 +46,7 @@ export const RichContentBlock: Block = {
                 SpotifyTrackBlock,
                 SoundCloudEmbedBlock,
                 FancyListBlock,
+                PillButtonsBlock,
               ],
             }),
           ]

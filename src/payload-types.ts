@@ -1644,6 +1644,7 @@ export interface AssetCloud {
   id: number;
   alt: string;
   caption?: string | null;
+  blurhash?: string | null;
   folder?: (number | null) | FolderInterface;
   updatedAt: string;
   createdAt: string;
@@ -5620,6 +5621,7 @@ export interface MediaCloud {
   id: number;
   alt: string;
   caption?: string | null;
+  blurhash?: string | null;
   folder?: (number | null) | FolderInterface;
   updatedAt: string;
   createdAt: string;
@@ -10766,6 +10768,7 @@ export interface DoctypesSelect<T extends boolean = true> {
 export interface MediaCloudSelect<T extends boolean = true> {
   alt?: T;
   caption?: T;
+  blurhash?: T;
   folder?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -10851,6 +10854,7 @@ export interface MediaCloudSelect<T extends boolean = true> {
 export interface AssetCloudSelect<T extends boolean = true> {
   alt?: T;
   caption?: T;
+  blurhash?: T;
   folder?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -13440,7 +13444,21 @@ export interface ContactInfoSelect<T extends boolean = true> {
 export interface BlockQuote {
   quote_text?: string | null;
   attrib_name?: string | null;
-  attrib_dsg?: string | null;
+  attrib_dsg?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'blckquote';

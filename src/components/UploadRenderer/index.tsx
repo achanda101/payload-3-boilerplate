@@ -1,5 +1,5 @@
 import React from 'react'
-import Image from 'next/image'
+import { OptimizedImage } from '@/components/OptimizedImage'
 import { PDFViewer } from '@/components/PDFViewer'
 
 interface UploadFields {
@@ -12,6 +12,7 @@ interface UploadFields {
   height?: number
   focalX?: number
   focalY?: number
+  blurhash?: string
 }
 
 interface UploadRendererProps {
@@ -45,17 +46,24 @@ function UploadRenderer({ uploadFields, topMargin }: UploadRendererProps) {
 
   const captionClassName = isPortrait ? 'small mt-3' : 'small mt-3 md:w-2/3'
 
+  // Construct a media object for OptimizedImage
+  const mediaObject = {
+    url: uploadFields.url,
+    alt: uploadFields.alt || '',
+    width: uploadFields.width,
+    height: uploadFields.height,
+    focalX: uploadFields.focalX,
+    focalY: uploadFields.focalY,
+    blurhash: uploadFields.blurhash,
+  }
+
   return (
     <div className={containerClassName}>
-      <Image
-        src={(uploadFields.url as string) || ''}
-        alt={(uploadFields.alt as string) || ''}
+      <OptimizedImage
+        media={mediaObject as any}
         width={width}
         height={height}
         className="w-full object-cover"
-        style={{
-          objectPosition: `${(uploadFields.focalX as number) ?? 50}% ${(uploadFields.focalY as number) ?? 50}%`,
-        }}
       />
       <div className={captionClassName}>{uploadFields.caption}</div>
     </div>

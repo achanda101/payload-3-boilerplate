@@ -1,11 +1,12 @@
 import React from 'react'
 import Image from 'next/image'
+import { serializeLexical } from '@/components/RichText/serializeRichText'
 
 interface BlockQuoteProps {
   id?: string
   quote_text?: string
   attrib_name?: string
-  attrib_dsg?: string
+  attrib_dsg?: any
   blockType?: 'blckquote'
 }
 
@@ -26,7 +27,9 @@ export const BlockQuoteBlock: React.FC<BlockQuoteProps> = ({
       />
       {quote_text && <h5 style={{ whiteSpace: 'pre-line' }}>{quote_text}</h5>}
       {attrib_name && <p className="italic text-right">- {attrib_name}</p>}
-      {attrib_dsg && <p className="italic text-right">{attrib_dsg}</p>}
+      {attrib_dsg && (
+        <div className="italic text-right">{serializeLexical({ nodes: attrib_dsg.root.children })}</div>
+      )}
     </div>
   )
 }
