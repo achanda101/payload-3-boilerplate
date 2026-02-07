@@ -24,6 +24,7 @@ import * as migration_20260203_170724_feat_search_index_richtextcontent from './
 import * as migration_20260205_083618_add_header_banner from './20260205_083618_add_header_banner';
 import * as migration_20260205_085920_add_header_banner from './20260205_085920_add_header_banner';
 import * as migration_20260205_152212_feat_blurhash from './20260205_152212_feat_blurhash';
+import * as migration_20260207_080532_remove_contenttext_index from './20260207_080532_remove_contenttext_index';
 
 export const migrations = [
   {
@@ -154,6 +155,11 @@ export const migrations = [
   {
     up: migration_20260205_152212_feat_blurhash.up,
     down: migration_20260205_152212_feat_blurhash.down,
-    name: '20260205_152212_feat_blurhash'
+    name: '20260205_152212_feat_blurhash',
+  },
+  {
+    up: migration_20260207_080532_remove_contenttext_index.up,
+    down: migration_20260207_080532_remove_contenttext_index.down,
+    name: '20260207_080532_remove_contenttext_index'
   },
 ];
