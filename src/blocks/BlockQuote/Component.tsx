@@ -27,7 +27,7 @@ export const BlockQuoteBlock: React.FC<BlockQuoteProps> = ({
       />
       {quote_text && <h5 style={{ whiteSpace: 'pre-line' }}>{quote_text}</h5>}
       {attrib_name && <p className="italic text-right">- {attrib_name}</p>}
-      {attrib_dsg && (
+      {attrib_dsg?.root?.children && (
         <div className="italic text-right">{serializeLexical({ nodes: attrib_dsg.root.children })}</div>
       )}
     </div>

@@ -252,6 +252,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
               value={selectedLanguage}
               onChange={(e) => handleLanguageChange(e.target.value)}
               className="language-selector"
+              aria-label="Select language"
             >
               {(headerData.languages || []).map((langValue: string) => {
                 const langOption = languageOptions.find((option) => option.value === langValue)
@@ -350,7 +351,12 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
           <div className="hidden lg:flex">
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
               {headerData.searchEnabled && (
-                <button ref={searchButtonRef} onClick={toggleSearch} className="search-icon">
+                <button
+                  ref={searchButtonRef}
+                  onClick={toggleSearch}
+                  className="search-icon"
+                  aria-label={isSearchOpen ? "Close search" : "Open search"}
+                >
                   {isSearchOpen ? (
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>

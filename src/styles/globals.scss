@@ -1,39 +1,3 @@
-@font-face {
-  src:
-    url('/fonts/Roslindale-DisplayNarrowSemiBold-Testing.woff2') format('woff2'),
-    url('/fonts/Roslindale-DisplayNarrowSemiBold-Testing.woff') format('woff');
-  font-family: 'Roslindale Display Narrow Semibold';
-  font-style: normal;
-  font-weight: 600;
-}
-
-@font-face {
-  src:
-    url('/fonts/SchibstedGrotesk-Regular.woff2') format('woff2'),
-    url('/fonts/SchibstedGrotesk-Regular.woff') format('woff');
-  font-family: 'Schibsted Grotesk Regular';
-  font-style: normal;
-  font-weight: normal;
-}
-
-@font-face {
-  src:
-    url('/fonts/SchibstedGrotesk-Bold.woff2') format('woff2'),
-    url('/fonts/SchibstedGrotesk-Bold.woff') format('woff');
-  font-family: 'Schibsted Grotesk Bold';
-  font-style: normal;
-  font-weight: bold;
-}
-
-@font-face {
-  src:
-    url('/fonts/SchibstedGrotesk-Italic.woff2') format('woff2'),
-    url('/fonts/SchibstedGrotesk-Italic.woff') format('woff');
-  font-family: 'Schibsted Grotesk Italic';
-  font-style: italic;
-  font-weight: normal;
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

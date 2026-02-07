@@ -325,10 +325,15 @@ export const BlogPage: React.FC<BlogPageProps> = ({ collection, docId, isDraft =
             <div className="hero-content !gap-[0.25rem] !mt-[2rem] pill-outline">
               <p className="small">Blogpost Type</p>
               <div className="relative inline-block">
+                <label htmlFor="resource-type-filter" className="sr-only">
+                  Filter by blogpost type
+                </label>
                 <select
+                  id="resource-type-filter"
                   className="appearance-none pr-10 bg-transparent border border-black rounded-full py-3 px-5 text-base font-medium focus:outline-none"
                   value={selectedResourceType}
                   onChange={(e) => setSelectedResourceType(e.target.value)}
+                  aria-label="Filter blogposts by type"
                 >
                   <option value="">Show All</option>
                   {resourceTypes.map((type) => (
@@ -337,7 +342,10 @@ export const BlogPage: React.FC<BlogPageProps> = ({ collection, docId, isDraft =
                     </option>
                   ))}
                 </select>
-                <ChevronDown className="w-6 h-6 absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none" />
+                <ChevronDown
+                  className="w-6 h-6 absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none"
+                  aria-hidden="true"
+                />
               </div>
             </div>
           )}
@@ -347,12 +355,15 @@ export const BlogPage: React.FC<BlogPageProps> = ({ collection, docId, isDraft =
           heroBlock.coverImage.url ? (
             <div className="w-full px-[1.25rem] lg:px-[5rem]">
               <div className={`hero-content hero-cover-image h-auto ${getCoverImageWidth()}`}>
-                <OptimizedImage
-                  media={heroBlock.coverImage as any}
-                  sizes="(max-width: 640px) 80vw, 33vw"
-                  className="rounded-3xl overflow-hidden"
-                  priority
-                />
+                <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
+                  <OptimizedImage
+                    media={heroBlock.coverImage as any}
+                    fill
+                    sizes="(max-width: 640px) 80vw, 33vw"
+                    className="rounded-3xl overflow-hidden"
+                    priority
+                  />
+                </div>
                 {heroBlock.coverImageCaption && (
                   <p className="text-color-light text-sm mt-0 text-center w-2/3 mx-auto">
                     {heroBlock.coverImageCaption}

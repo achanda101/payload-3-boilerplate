@@ -33,6 +33,23 @@ const nextConfig = {
   },
   reactStrictMode: true,
   redirects,
+
+  // Performance optimizations
+  compiler: {
+    // Remove console.logs in production
+    removeConsole: process.env.NODE_ENV === 'production' ? {
+      exclude: ['error', 'warn'],
+    } : false,
+  },
+
+  // Enable SWC minification (default in Next.js 13+, but explicit is good)
+  swcMinify: true,
+
+  // Experimental features for better performance
+  experimental: {
+    // Optimize package imports
+    optimizePackageImports: ['lucide-react'],
+  },
 }
 
 export default withPayload(nextConfig)

@@ -1,10 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const config = {
-  content: [
-    './components/**/*.{js,ts,jsx,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-  ],
+  content: ['./components/**/*.{js,ts,jsx,tsx}', './app/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
   darkMode: ['selector', '[data-theme="dark"]'],
   plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],
   prefix: '',
@@ -91,7 +87,12 @@ const config = {
       },
       fontFamily: {
         mono: ['var(--font-geist-mono)'],
-        sans: ['var(--font-geist-sans)'],
+        sans: ['var(--font-schibsted)', 'sans-serif'],
+        heading: ['var(--font-roslindale)', 'serif'],
+        body: ['var(--font-schibsted)', 'sans-serif'],
+        'body-bold': ['var(--font-schibsted)', 'sans-serif'],
+        'body-italic': ['var(--font-schibsted)', 'sans-serif'],
+        subheading: ['var(--font-schibsted)', 'sans-serif'],
       },
       keyframes: {
         'accordion-down': {

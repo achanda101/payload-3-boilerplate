@@ -146,6 +146,7 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
             sizes="(min-width: 769px) 100vw, 0vw"
             style={{ width: '100%', height: 'auto' }}
             className="desktop-image"
+            priority
           />
           <Image
             src="/footer_imgs/donate-banner-top-mobile.png"
@@ -204,11 +205,16 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
               action="https://list.uafanp.org/subscription/form"
               className="flex flex-col justify-center items-center md:flex-row md:justify-start md:items-start gap-0"
             >
+              <label htmlFor="email-input" className="sr-only">
+                Email address for newsletter
+              </label>
               <input
+                id="email-input"
                 type="email"
                 name="email"
                 placeholder={newsletterData?.inputPlaceholder}
                 ref={emailInputRef}
+                aria-label="Enter your email address"
               />
               <input
                 id="c41c8"
@@ -381,7 +387,13 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
                 (smLink, index) =>
                   smLink.smType &&
                   smLink.url && (
-                    <Link key={index} href={smLink.url} target="_blank" rel="noopener noreferrer">
+                    <Link
+                      key={index}
+                      href={smLink.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Visit us on ${smLink.smType}`}
+                    >
                       <Image
                         src={`/icons/${smLink.smType.toLowerCase()}.svg`}
                         alt={`${smLink.smType} icon`}
@@ -406,7 +418,7 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
                 alt="NGO Source logo"
                 width={150}
                 height={58}
-                style={{ display: 'block' }}
+                style={{ display: 'block', height: 'auto' }}
               />
             </Link>
             <Link
@@ -438,6 +450,7 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
                           alt={'arrow right icon'}
                           width={16}
                           height={16}
+                          aria-hidden="true"
                         />
                       </span>
                     </div>

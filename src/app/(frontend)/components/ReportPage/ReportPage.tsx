@@ -348,12 +348,15 @@ export const ReportPage: React.FC<ReportPageProps> = ({ collection, docId, isDra
           heroBlock.coverImage.url ? (
             <div className="w-full px-[1.25rem] lg:px-[5rem]">
               <div className={`hero-content hero-cover-image h-auto ${getCoverImageWidth()}`}>
-                <OptimizedImage
-                  media={heroBlock.coverImage as any}
-                  sizes="(max-width: 640px) 80vw, 33vw"
-                  className="rounded-3xl overflow-hidden"
-                  priority
-                />
+                <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
+                  <OptimizedImage
+                    media={heroBlock.coverImage as any}
+                    fill
+                    sizes="(max-width: 640px) 80vw, 33vw"
+                    className="rounded-3xl overflow-hidden"
+                    priority
+                  />
+                </div>
                 {heroBlock.coverImageCaption && (
                   <p className="text-color-light text-sm mt-0 text-center w-2/3 mx-auto">
                     {heroBlock.coverImageCaption}

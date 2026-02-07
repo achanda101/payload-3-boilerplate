@@ -23,13 +23,39 @@ export const beforeSyncWithSearch: BeforeSync = async ({ originalDoc, searchDoc,
     contentData = extractMMediaContent(originalDoc)
   }
 
+  // Handle polymorphic meta image (can be from mediaCloud or assetCloud)
+  // Pages and Grants use assetCloud, others use mediaCloud
+  let metaImage: { relationTo: string; value: number } | null = null
+  if (meta?.image) {
+    if (typeof meta.image === 'object' && meta.image.id) {
+      // Image is populated - determine which collection it's from
+      // Check if it has a collection property or infer from the original doc structure
+      const imageCollection = meta.image.collection ||
+                             (collection === 'grants' || collection === 'pages' ? 'assetCloud' : 'mediaCloud')
+      metaImage = {
+        relationTo: imageCollection,
+        value: meta.image.id
+      }
+    } else if (typeof meta.image === 'number') {
+      // Image is just an ID - infer collection based on document type
+      const imageCollection = collection === 'grants' || collection === 'pages' ? 'assetCloud' : 'mediaCloud'
+      metaImage = {
+        relationTo: imageCollection,
+        value: meta.image
+      }
+    } else if (typeof meta.image === 'object' && 'relationTo' in meta.image && 'value' in meta.image) {
+      // Already in correct format
+      metaImage = meta.image as { relationTo: string; value: number }
+    }
+  }
+
   const modifiedDoc: DocToSync = {
     ...searchDoc,
     slug,
     meta: {
       ...meta,
       title: meta?.title || title,
-      image: meta?.image?.id || meta?.image,
+      image: metaImage,
       description: meta?.description,
     },
     contentData,

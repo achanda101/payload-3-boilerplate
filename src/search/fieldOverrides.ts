@@ -32,7 +32,7 @@ export const searchFields: Field[] = [
         name: 'image',
         label: 'Image',
         type: 'upload',
-        relationTo: 'mediaCloud',
+        relationTo: ['mediaCloud', 'assetCloud'], // Support both collections
       },
     ],
   },
@@ -40,7 +40,8 @@ export const searchFields: Field[] = [
     name: 'contentData',
     label: 'Content Data',
     type: 'textarea',
-    index: true,
+    // index: true, // Removed: Content can be too large for btree index (2704 byte limit)
+    // For full-text search, use PostgreSQL's text search or external search service
     admin: {
       readOnly: true,
       hidden: true,

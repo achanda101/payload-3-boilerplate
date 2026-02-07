@@ -7453,7 +7453,15 @@ export interface Search {
   meta?: {
     title?: string | null;
     description?: string | null;
-    image?: (number | null) | MediaCloud;
+    image?:
+      | ({
+          relationTo: 'mediaCloud';
+          value: number | MediaCloud;
+        } | null)
+      | ({
+          relationTo: 'assetCloud';
+          value: number | AssetCloud;
+        } | null);
   };
   /**
    * Auto-populated content extracted from blocks and rich text
