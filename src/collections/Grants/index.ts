@@ -323,16 +323,16 @@ export const Grants: CollectionConfig<'grants'> = {
         {
           name: 'image',
           type: 'upload',
-          relationTo: 'assetCloud',
+          relationTo: ['mediaCloud', 'assetCloud'],
           label: 'Meta Image',
           filterOptions: {
             mimeType: {
-              in: ['image/png', 'image/jpeg', 'image/gif'],
+              contains: 'image',
             },
           },
           admin: {
             description:
-              'Image for social sharing. Only PNG, JPG, and GIF formats are supported. Select from Assets.',
+              'Image for social sharing. Select from Media or Assets.',
           },
         },
         {
@@ -355,9 +355,6 @@ export const Grants: CollectionConfig<'grants'> = {
           label: 'Preview',
         },
       ],
-      admin: {
-        position: 'sidebar',
-      },
     },
   ],
   versions: {

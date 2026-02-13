@@ -29,6 +29,26 @@ export const generateMeta = async (args: {
   // Helper function to extract image URL
   const getImageUrl = (image: any): string | null => {
     if (typeof image === 'object' && image !== null) {
+      // Handle polymorphic relationships (when relationTo is an array)
+      if ('relationTo' in image && 'value' in image) {
+        const { value } = image
+        if (typeof value === 'object' && value !== null) {
+          // Check for sizes.ogImage first (JPG format for Open Graph)
+          if (value.sizes?.ogImage?.url) {
+            return value.sizes.ogImage.url
+          }
+          // Fall back to the main url if ogImage doesn't exist
+          if ('url' in value && value.url) {
+            const imageUrl = value.url
+            // Check if the URL is WebP format
+            if (imageUrl.toLowerCase().endsWith('.webp')) {
+              return null // Skip WebP, will fall back to default
+            }
+            return imageUrl
+          }
+        }
+      }
+      // Handle single relationTo (regular upload field)
       // Check for sizes.ogImage first (JPG format for Open Graph)
       if (image.sizes?.ogImage?.url) {
         return image.sizes.ogImage.url

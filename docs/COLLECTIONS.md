@@ -39,7 +39,7 @@ General-purpose pages with flexible block-based layouts.
   - Background type
   - Hero color
 - **Page Sections** - Flexible blocks (see Blocks section)
-- **SEO Fields** - Meta title, description, image
+- **SEO Fields** - Manual meta fields (title, description, image, preview)
 
 #### Available Blocks
 
@@ -101,7 +101,7 @@ Specialized pages for grant programs and opportunities.
   - Background type
   - Eligibility test selector
 - **Grant Sections** - Block-based content
-- **SEO Fields**
+- **SEO Fields** - Manual meta fields (title, description, image, preview)
 
 #### Unique Features
 - Grant card relationship
@@ -175,7 +175,7 @@ Blog posts and articles with rich content.
   - Featured image
 - **Content Blocks** - Flexible block-based layout
 - **Published Date**
-- **SEO Fields**
+- **SEO Fields** - Manual meta fields (title, description, image, preview)
 
 #### Features
 - ✅ Live preview
@@ -208,7 +208,7 @@ Annual reports, research documents, and organizational reports.
 - **Hero Configuration**
 - **Content Sections** - Block-based layout
 - **Download PDF** - Document reference
-- **SEO Fields**
+- **SEO Fields** - Manual meta fields (title, description, image, preview)
 
 #### Features
 - ✅ Live preview
@@ -240,7 +240,7 @@ Multimedia content pages (videos, podcasts, galleries).
 - **Hero Configuration**
 - **Media Embed** - Embedded media
 - **Content** - Rich text description
-- **SEO Fields**
+- **SEO Fields** - Manual meta fields (title, description, image, preview)
 
 #### Features
 - ✅ Live preview
@@ -321,16 +321,30 @@ Primary media library for images and visual content.
 #### Upload Configuration
 ```typescript
 upload: {
-  staticDir: 'media',
+  // Local storage when S3 is disabled
+  ...(process.env.S3_ENABLED === 'false' && {
+    staticDir: path.resolve(dirname, '../../media'),
+  }),
+  adminThumbnail: 'small',
   imageSizes: [
-    { name: 'thumbnail', width: 400 },
-    { name: 'card', width: 768 },
-    { name: 'tablet', width: 1024 },
-    { name: 'desktop', width: 1920 },
+    { name: 'thumbnail', width: 50, formatOptions: { format: 'webp' } },
+    { name: 'small', width: 300, formatOptions: { format: 'webp' } },
+    { name: 'medium', width: 900, formatOptions: { format: 'webp' } },
+    { name: 'large', width: 1400, formatOptions: { format: 'webp' } },
+    { name: 'xlarge', width: 1920, formatOptions: { format: 'webp' } },
+    { name: 'ogImage', width: 200, height: 200, formatOptions: { format: 'jpg' } },
   ],
   mimeTypes: ['image/*'],
 }
 ```
+
+**Image Sizes:**
+- **thumbnail** (50px) - WebP format, for admin thumbnails
+- **small** (300px) - WebP format, for cards and small displays
+- **medium** (900px) - WebP format, for tablet views
+- **large** (1400px) - WebP format, for desktop displays
+- **xlarge** (1920px) - WebP format, for full-width displays
+- **ogImage** (200x200px) - JPG format, optimized for social sharing
 
 ---
 
@@ -600,6 +614,9 @@ Features:
 - Restore capability
 
 ### SEO Fields
+
+All content collections use **manual SEO fields** for consistent editor experience and to avoid circular reference issues with the SEO plugin's auto-generate feature.
+
 Collections with SEO:
 - Pages
 - Grants
@@ -607,11 +624,46 @@ Collections with SEO:
 - Reports
 - MMedia
 
-SEO fields:
-- Meta title
-- Meta description
-- Meta image
-- Social sharing preview
+#### SEO Field Structure
+
+Each collection includes a `meta` group with the following fields:
+
+**Meta Title**
+- Custom field component with character counter
+- Helps optimize title length for search engines
+- Falls back to page/document title if not set
+
+**Meta Description**
+- Custom field component with character counter
+- Textarea for SEO description
+- Falls back to hero subtitle if not set
+
+**Meta Image**
+- Upload field with polymorphic relationship
+- Accepts images from **both** `mediaCloud` and `assetCloud` collections
+- Filter: All image types (PNG, JPEG, GIF, WebP, SVG, etc.)
+- Used for Open Graph and Twitter Card social sharing
+- Generates optimized sizes automatically
+
+**SEO Preview**
+- Visual preview of how content appears in search results
+- Shows title, description, and image as they will appear
+- Updates in real-time as fields are edited
+- Displays correct URL for the page
+
+#### Configuration
+
+SEO fields are positioned **inline** (not in sidebar) for consistent editor experience across all collections.
+
+#### Metadata Generation
+
+The `generateMeta` utility (src/utilities/generateMeta.ts) handles:
+- Extracting meta fields from documents
+- Handling polymorphic image relationships
+- Generating Open Graph metadata
+- Generating Twitter Card metadata
+- Fallback to default values
+- Proper URL handling for S3 and local images
 
 ## Revalidation Hooks
 
@@ -699,8 +751,9 @@ Rules:
 
 3. **SEO Optimization**
    - Fill in meta title and description
-   - Use appropriate meta images
-   - Review SEO preview
+   - Upload or select meta images from MediaCloud or AssetCloud
+   - Review SEO preview to see how content appears in search/social
+   - Ensure meta image is in a social-media-friendly format
 
 4. **Testing**
    - Test links before publishing

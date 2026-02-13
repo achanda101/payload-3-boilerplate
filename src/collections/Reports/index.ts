@@ -295,6 +295,68 @@ export const Report: CollectionConfig<'reports'> = {
       },
     },
     ...slugField(),
+    // Manual SEO fields for consistent editor experience
+    {
+      name: 'meta',
+      type: 'group',
+      label: 'SEO',
+      fields: [
+        {
+          name: 'title',
+          type: 'text',
+          label: 'Meta Title',
+          admin: {
+            components: {
+              Field: 'src/components/SeoFields/MetaTitleField.tsx#MetaTitleField',
+            },
+          },
+        },
+        {
+          name: 'description',
+          type: 'textarea',
+          label: 'Meta Description',
+          admin: {
+            components: {
+              Field: 'src/components/SeoFields/MetaDescriptionField.tsx#MetaDescriptionField',
+            },
+          },
+        },
+        {
+          name: 'image',
+          type: 'upload',
+          relationTo: ['mediaCloud', 'assetCloud'],
+          label: 'Meta Image',
+          filterOptions: {
+            mimeType: {
+              contains: 'image',
+            },
+          },
+          admin: {
+            description:
+              'Image for social sharing. Select from Media or Assets.',
+          },
+        },
+        {
+          name: 'preview',
+          type: 'ui',
+          admin: {
+            components: {
+              Field: {
+                path: 'src/components/SeoPreview/index.tsx#SeoPreviewComponent',
+                clientProps: {
+                  titlePath: 'meta.title',
+                  descriptionPath: 'meta.description',
+                  imagePath: 'meta.image',
+                  hasGenerateURLFn: false,
+                  uploadsCollection: 'assetCloud',
+                },
+              },
+            },
+          },
+          label: 'Preview',
+        },
+      ],
+    },
   ],
   versions: {
     drafts: {

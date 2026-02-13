@@ -139,7 +139,7 @@ export default buildConfig({
   plugins: [
     ...plugins,
     s3Storage({
-      enabled: process.env.S3_ENABLED !== 'false', // Disable S3 in local development
+      enabled: process.env.S3_ENABLED !== 'false', // Disable S3 in local storage mode
       collections: {
         mediaCloud: true,
         assetCloud: true,
@@ -147,21 +147,19 @@ export default buildConfig({
       },
       bucket: process.env.S3_BUCKET || '',
       config: {
-        region: process.env.S3_REGION || '',
+        region: process.env.S3_REGION || 'auto',
         endpoint: process.env.S3_ENDPOINT || '',
         credentials: {
           accessKeyId: process.env.S3_ACCESS_KEY_ID || '',
           secretAccessKey: process.env.S3_SECRET_ACCESS_KEY || '',
         },
         forcePathStyle: true,
-        tls: true,
-        signingEscapePath: false,
       },
     }),
     seoPlugin({
-      // Note: 'pages' and 'grants' removed - they have manual seoImage field instead
+      // Note: All collections use manual SEO fields for consistent editor experience
       // Note: 'homepage' removed due to seoPlugin bug with globals causing circular reference error
-      collections: ['blog', 'reports', 'mmedia'],
+      collections: [],
       globals: [],
       uploadsCollection: 'mediaCloud',
       fields: ({ defaultFields }) => [

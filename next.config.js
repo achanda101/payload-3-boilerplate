@@ -13,7 +13,7 @@ const nextConfig = {
       // Filter out any invalid URLs and only process valid ones
       ...[NEXT_PUBLIC_SERVER_URL /* 'https://example.com' */]
         .filter(Boolean) // Remove undefined/null values
-        .filter(url => {
+        .filter((url) => {
           try {
             new URL(url)
             return true
@@ -37,18 +37,22 @@ const nextConfig = {
   // Performance optimizations
   compiler: {
     // Remove console.logs in production
-    removeConsole: process.env.NODE_ENV === 'production' ? {
-      exclude: ['error', 'warn'],
-    } : false,
+    removeConsole:
+      process.env.NODE_ENV === 'production'
+        ? {
+            exclude: ['error', 'warn'],
+          }
+        : false,
   },
-
-  // Enable SWC minification (default in Next.js 13+, but explicit is good)
-  swcMinify: true,
 
   // Experimental features for better performance
   experimental: {
     // Optimize package imports
     optimizePackageImports: ['lucide-react'],
+    // Increase Server Actions body size limit for file uploads
+    serverActions: {
+      bodySizeLimit: '50mb',
+    },
   },
 }
 

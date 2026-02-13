@@ -1542,9 +1542,17 @@ export interface Grant {
     title?: string | null;
     description?: string | null;
     /**
-     * Image for social sharing. Only PNG, JPG, and GIF formats are supported. Select from Assets.
+     * Image for social sharing. Select from Media or Assets.
      */
-    image?: (number | null) | AssetCloud;
+    image?:
+      | ({
+          relationTo: 'mediaCloud';
+          value: number | MediaCloud;
+        } | null)
+      | ({
+          relationTo: 'assetCloud';
+          value: number | AssetCloud;
+        } | null);
   };
   folder?: (number | null) | FolderInterface;
   updatedAt: string;
@@ -3024,9 +3032,17 @@ export interface Page {
     title?: string | null;
     description?: string | null;
     /**
-     * Image for social sharing. Only PNG, JPG, and GIF formats are supported. Select from Assets.
+     * Image for social sharing. Select from Media or Assets.
      */
-    image?: (number | null) | AssetCloud;
+    image?:
+      | ({
+          relationTo: 'mediaCloud';
+          value: number | MediaCloud;
+        } | null)
+      | ({
+          relationTo: 'assetCloud';
+          value: number | AssetCloud;
+        } | null);
   };
   folder?: (number | null) | FolderInterface;
   updatedAt: string;
@@ -4287,9 +4303,17 @@ export interface Blog {
     title?: string | null;
     description?: string | null;
     /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     * Image for social sharing. Select from Media or Assets.
      */
-    image?: (number | null) | MediaCloud;
+    image?:
+      | ({
+          relationTo: 'mediaCloud';
+          value: number | MediaCloud;
+        } | null)
+      | ({
+          relationTo: 'assetCloud';
+          value: number | AssetCloud;
+        } | null);
   };
   folder?: (number | null) | FolderInterface;
   updatedAt: string;
@@ -5603,9 +5627,17 @@ export interface Report {
     title?: string | null;
     description?: string | null;
     /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     * Image for social sharing. Select from Media or Assets.
      */
-    image?: (number | null) | MediaCloud;
+    image?:
+      | ({
+          relationTo: 'mediaCloud';
+          value: number | MediaCloud;
+        } | null)
+      | ({
+          relationTo: 'assetCloud';
+          value: number | AssetCloud;
+        } | null);
   };
   folder?: (number | null) | FolderInterface;
   updatedAt: string;
@@ -6939,9 +6971,17 @@ export interface Mmedia {
     title?: string | null;
     description?: string | null;
     /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     * Image for social sharing. Select from Media or Assets.
      */
-    image?: (number | null) | MediaCloud;
+    image?:
+      | ({
+          relationTo: 'mediaCloud';
+          value: number | MediaCloud;
+        } | null)
+      | ({
+          relationTo: 'assetCloud';
+          value: number | AssetCloud;
+        } | null);
   };
   folder?: (number | null) | FolderInterface;
   updatedAt: string;

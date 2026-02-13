@@ -130,11 +130,37 @@ export const SeoPreviewComponent: React.FC<Props> = (props) => {
 
   // Build the image URL from the metaImage value
   useEffect(() => {
-    if (metaImage && typeof metaImage === 'object' && 'url' in metaImage) {
-      // If metaImage has a url property directly
+    // Handle polymorphic relationships (when relationTo is an array)
+    if (metaImage && typeof metaImage === 'object' && 'relationTo' in metaImage && 'value' in metaImage) {
+      const { relationTo, value } = metaImage as { relationTo: string; value: any }
+
+      if (value && typeof value === 'object' && 'url' in value) {
+        // Value is already populated with the full object
+        setImageUrl(value.url as string)
+      } else if (value && (typeof value === 'string' || typeof value === 'number')) {
+        // Value is just an ID, fetch from the correct collection
+        const fetchImage = async () => {
+          try {
+            const response = await fetch(`${serverURL}${api}/${relationTo}/${value}`, {
+              credentials: 'include',
+            })
+            if (response.ok) {
+              const imageData = await response.json()
+              if (imageData?.url) {
+                setImageUrl(imageData.url)
+              }
+            }
+          } catch (error) {
+            console.error('Error fetching image:', error)
+          }
+        }
+        void fetchImage()
+      }
+    } else if (metaImage && typeof metaImage === 'object' && 'url' in metaImage) {
+      // If metaImage has a url property directly (single relationTo)
       setImageUrl(metaImage.url as string)
     } else if (metaImage && (typeof metaImage === 'string' || typeof metaImage === 'number')) {
-      // If metaImage is an ID (string or number), fetch the image
+      // If metaImage is an ID (string or number), fetch the image (single relationTo)
       const fetchImage = async () => {
         try {
           const response = await fetch(`${serverURL}${api}/${uploadsCollection}/${metaImage}`, {
