@@ -1,8 +1,11 @@
+'use client'
+
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { ETestRender } from '@/components/ETestRender'
 import { getValidUrl } from '@/utilities/getValidUrl'
 import { formatFileSize } from '@/utilities/formatFileSize'
+import { useLanguage } from '@/providers/LanguageContext'
 
 interface AssetCloud {
   id: string
@@ -106,6 +109,7 @@ interface ButtonProps {
 }
 
 export const UAFButton: React.FC<ButtonProps> = ({ button, align = 'left' }) => {
+  const { selectedLanguage } = useLanguage()
   const [isETestOpen, setIsETestOpen] = useState(false)
 
   const handleEtestClick = (e: React.MouseEvent) => {
@@ -118,7 +122,7 @@ export const UAFButton: React.FC<ButtonProps> = ({ button, align = 'left' }) => 
   }
 
   const getHref = () => {
-    return getValidUrl(button as any)
+    return getValidUrl(button as any, selectedLanguage)
   }
 
   const getBtnClassName = () => {

@@ -1,8 +1,11 @@
+'use client'
+
 import React, { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { ETestRender } from '@/components/ETestRender'
 import { getValidUrl } from '@/utilities/getValidUrl'
 import { formatFileSize } from '@/utilities/formatFileSize'
+import { useLanguage } from '@/providers/LanguageContext'
 
 interface AssetCloud {
   id: string
@@ -118,6 +121,7 @@ export const ButtonArray: React.FC<{
   disableApplyButtons = false,
   disabledMessage = null,
 }) => {
+  const { selectedLanguage } = useLanguage()
   const [isETestOpen, setIsETestOpen] = useState(false)
   const [currentEtestData, setCurrentEtestData] = useState<ButtonItem['link']['etestlink'] | null>(
     null,
@@ -162,7 +166,7 @@ export const ButtonArray: React.FC<{
         {btnArray.map((button, index) => {
           const getHref = () => {
             if (!button.link) return '#'
-            return getValidUrl(button.link as any)
+            return getValidUrl(button.link as any, selectedLanguage)
           }
 
           const getBtnClassName = () => {

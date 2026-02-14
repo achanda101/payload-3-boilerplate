@@ -26,9 +26,10 @@ type LinkButton = {
 /**
  * Validates and constructs a safe URL from link button data
  * @param button - The button/link configuration object
+ * @param locale - The current locale for URL construction (e.g., 'en', 'hi')
  * @returns A valid URL string or '#' as a safe fallback
  */
-export function getValidUrl(button: LinkButton): string {
+export function getValidUrl(button: LinkButton, locale: string = 'en'): string {
   // Handle reference type links
   if (button.type === 'reference' && button.reference) {
     const relationTo = button.reference.relationTo
@@ -48,13 +49,13 @@ export function getValidUrl(button: LinkButton): string {
       return '#'
     }
 
-    // Pages collection should not have a prefix
+    // Pages collection: /{locale}/{slug}
     if (relationTo === 'pages') {
-      return `/${slug}`
+      return `/${locale}/${slug}`
     }
 
-    // All other collections have their collection name as prefix
-    return `/${relationTo}/${slug}`
+    // All other collections: /{locale}/{relationTo}/{slug}
+    return `/${locale}/${relationTo}/${slug}`
   }
 
   // Handle email links
@@ -84,7 +85,18 @@ export function getValidUrl(button: LinkButton): string {
       console.warn('Invalid custom URL: missing or invalid URL', button)
       return '#'
     }
-    return button.url
+
+    // If it's an internal path (starts with / but not //) and doesn't already have locale
+    const url = button.url
+    if (url.startsWith('/') && !url.startsWith('//') && !url.startsWith(`/${locale}/`)) {
+      // Check if it already starts with a different locale
+      const hasLocalePrefix = /^\/[a-z]{2}(\/|$)/.test(url)
+      if (!hasLocalePrefix) {
+        return `/${locale}${url}`
+      }
+    }
+
+    return url
   }
 
   // Handle eligibility test (always returns #, handled by modal)

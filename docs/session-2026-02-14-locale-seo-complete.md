@@ -351,6 +351,124 @@ export const Providers: React.FC<{
 
 ---
 
+## Part 4: Button Components Locale Fix (2026-02-15)
+
+### Problem Discovered
+After fixing hydration, discovered that **all button components** were generating URLs without locale prefix:
+- Buttons on `/hi` pages linked to `/grants/my-grant` instead of `/hi/grants/my-grant`
+- Clicking buttons redirected users to English version of pages
+- Affected all buttons across the entire app (~15 usage locations)
+
+### Root Cause
+**ButtonArray and UAFButton components were not locale-aware:**
+
+1. **Components affected:**
+   - `ButtonArray` - Used in HomeHero, UAFPage, BlogPage, GrantPage, ReportPage, MMediaPage, ListingCardDeck, GrantCard, ComparisonBlock, SecondaryCTA, PillButtons, SingleColumnInfoBlock, PinkPuffyCallOut
+   - `UAFButton` - Used in various page components
+
+2. **getValidUrl utility generated URLs without locale:**
+   ```typescript
+   // Before: Missing locale prefix
+   if (relationTo === 'pages') {
+     return `/${slug}`  // ❌ Should be /{locale}/{slug}
+   }
+   return `/${relationTo}/${slug}`  // ❌ Should be /{locale}/{relationTo}/{slug}
+   ```
+
+3. **Components had no access to current locale:**
+   - Neither component used `useLanguage()` hook
+   - No locale parameter passed to `getValidUrl()`
+
+### Solution
+
+**Three-file fix to make all buttons locale-aware:**
+
+#### 1. Update getValidUrl utility to accept locale parameter
+
+**File:** `src/utilities/getValidUrl.ts`
+
+```typescript
+// Before: No locale parameter
+export function getValidUrl(button: LinkButton): string {
+
+// After: Accept locale with default fallback
+export function getValidUrl(button: LinkButton, locale: string = 'en'): string {
+
+  // Reference links now include locale prefix
+  if (relationTo === 'pages') {
+    return `/${locale}/${slug}`  // ✓ Locale-aware
+  }
+  return `/${locale}/${relationTo}/${slug}`  // ✓ Locale-aware
+
+  // Custom URLs: add locale to internal paths
+  if (url.startsWith('/') && !url.startsWith('//') && !url.startsWith(`/${locale}/`)) {
+    const hasLocalePrefix = /^\/[a-z]{2}(\/|$)/.test(url)
+    if (!hasLocalePrefix) {
+      return `/${locale}${url}`
+    }
+  }
+}
+```
+
+#### 2. Update ButtonArray component
+
+**File:** `src/components/ButtonArray/index.tsx`
+
+```typescript
+// Added at top
+'use client'
+import { useLanguage } from '@/providers/LanguageContext'
+
+// Inside component
+export const ButtonArray: React.FC<{...}> = ({...}) => {
+  const { selectedLanguage } = useLanguage()  // ✓ Get current locale
+
+  // Pass locale to getValidUrl
+  const getHref = () => {
+    if (!button.link) return '#'
+    return getValidUrl(button.link as any, selectedLanguage)  // ✓ Locale-aware
+  }
+}
+```
+
+#### 3. Update UAFButton component
+
+**File:** `src/components/UAFButton/index.tsx`
+
+```typescript
+// Added at top
+'use client'
+import { useLanguage } from '@/providers/LanguageContext'
+
+// Inside component
+export const UAFButton: React.FC<ButtonProps> = ({ button, align = 'left' }) => {
+  const { selectedLanguage } = useLanguage()  // ✓ Get current locale
+
+  const getHref = () => {
+    return getValidUrl(button as any, selectedLanguage)  // ✓ Locale-aware
+  }
+}
+```
+
+### Impact
+**Fixed buttons across entire application in one place:**
+- ✅ Homepage CTA buttons now locale-aware
+- ✅ Page hero buttons locale-aware
+- ✅ Grant/Blog/Report/MMedia page buttons locale-aware
+- ✅ ListingCardDeck buttons locale-aware
+- ✅ All 15+ ButtonArray usage locations fixed
+- ✅ All UAFButton usage locations fixed
+
+### Files Modified - Button Locale Fix
+
+| File | Changes |
+|------|---------|
+| `src/utilities/getValidUrl.ts` | Added `locale` parameter, prefix all reference URLs with `/{locale}`, handle custom internal URLs |
+| `src/components/ButtonArray/index.tsx` | Added `'use client'`, import `useLanguage()`, pass `selectedLanguage` to `getValidUrl()` |
+| `src/components/UAFButton/index.tsx` | Added `'use client'`, import `useLanguage()`, pass `selectedLanguage` to `getValidUrl()` |
+
+---
+
 ## Testing Verification
 
 ✅ **Route Loading:**
@@ -383,6 +501,14 @@ export const Providers: React.FC<{
 - Direct navigation to `/hi` shows all content in Hindi ✓
 - No hydration mismatch between server and client ✓
 - LanguageProvider initializes from URL locale ✓
+
+✅ **Button Components (All Buttons Site-Wide):**
+- Homepage CTA buttons generate locale-aware URLs ✓
+- Page hero buttons navigate with locale prefix ✓
+- Grant/Blog/Report/MMedia page buttons locale-aware ✓
+- All ButtonArray usages (15+ locations) fixed ✓
+- All UAFButton usages fixed ✓
+- Buttons on `/hi` pages link to `/hi/*` (not `/*`) ✓
 
 ---
 
