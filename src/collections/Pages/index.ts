@@ -360,9 +360,6 @@ export const Pages: CollectionConfig<'pages'> = {
           label: 'Preview',
         },
       ],
-      admin: {
-        position: 'sidebar',
-      },
     },
   ],
   versions: {

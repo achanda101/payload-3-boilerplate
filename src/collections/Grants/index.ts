@@ -355,9 +355,6 @@ export const Grants: CollectionConfig<'grants'> = {
           label: 'Preview',
         },
       ],
-      admin: {
-        position: 'sidebar',
-      },
     },
   ],
   versions: {
