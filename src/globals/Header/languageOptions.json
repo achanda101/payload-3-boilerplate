@@ -147,36 +147,5 @@
     "label": "LangPlaceholder10",
     "display": "LangPlaceholder10",
     "value": "lpl10"
-  },
-  {
-    "label": "LangPlaceholder11",
-    "display": "LangPlaceholder11",
-    "value": "lpl11"
-  },
-  {
-    "label": "LangPlaceholder12",
-    "display": "LangPlaceholder12",
-    "value": "lpl12"
-  },
-  {
-    "label": "LangPlaceholder13",
-    "display": "LangPlaceholder13",
-    "value": "lpl13"
-  },
-  {
-    "label": "LangPlaceholder14",
-    "display": "LangPlaceholder14",
-    "value": "lpl14"
-  },
-  {
-    "label": "LangPlaceholder15",
-    "display": "LangPlaceholder15",
-    "value": "lpl15"
-  },
-  {
-    "label": "LangPlaceholder16",
-    "display": "LangPlaceholder16",
-    "value": "lpl16",
-    "dir": "rtl"
   }
 ]

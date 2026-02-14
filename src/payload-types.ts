@@ -169,12 +169,6 @@ export interface Config {
         | 'lpl8'
         | 'lpl9'
         | 'lpl10'
-        | 'lpl11'
-        | 'lpl12'
-        | 'lpl13'
-        | 'lpl14'
-        | 'lpl15'
-        | 'lpl16'
       )
     | (
         | 'en'
@@ -206,12 +200,6 @@ export interface Config {
         | 'lpl8'
         | 'lpl9'
         | 'lpl10'
-        | 'lpl11'
-        | 'lpl12'
-        | 'lpl13'
-        | 'lpl14'
-        | 'lpl15'
-        | 'lpl16'
       )[];
   globals: {
     homepage: Homepage;
@@ -256,13 +244,7 @@ export interface Config {
     | 'lpl7'
     | 'lpl8'
     | 'lpl9'
-    | 'lpl10'
-    | 'lpl11'
-    | 'lpl12'
-    | 'lpl13'
-    | 'lpl14'
-    | 'lpl15'
-    | 'lpl16';
+    | 'lpl10';
   user: User & {
     collection: 'users';
   };
@@ -12530,12 +12512,6 @@ export interface Header {
     | 'lpl8'
     | 'lpl9'
     | 'lpl10'
-    | 'lpl11'
-    | 'lpl12'
-    | 'lpl13'
-    | 'lpl14'
-    | 'lpl15'
-    | 'lpl16'
   )[];
   /**
    * Enable announcement banner at the top of every page
