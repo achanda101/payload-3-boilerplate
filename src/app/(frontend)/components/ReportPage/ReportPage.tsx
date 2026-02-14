@@ -50,6 +50,8 @@ interface ReportPageProps {
   collection: string
   docId: number
   isDraft?: boolean
+  locale?: string
+  initialData?: any  // Server-provided page data
 }
 
 interface DocType {
@@ -100,7 +102,7 @@ async function getAllResourceTypesFromCollection(
   }
 }
 
-export const ReportPage: React.FC<ReportPageProps> = ({ collection, docId, isDraft = false }) => {
+export const ReportPage: React.FC<ReportPageProps> = ({ collection, docId, isDraft = false, locale = 'en', initialData }) => {
   const { selectedLanguage } = useLanguage()
   const { setHeaderTheme } = useHeaderTheme()
   const heroHeaderImg = 'wavy_top-trans'
@@ -212,9 +214,44 @@ export const ReportPage: React.FC<ReportPageProps> = ({ collection, docId, isDra
     [collection, docId, isDraft, setHeaderTheme],
   )
 
+  // Initialize with server-provided data
   useEffect(() => {
-    handleLanguageChange(selectedLanguage)
-  }, [selectedLanguage, handleLanguageChange])
+    if (initialData) {
+      const headerColour = 'trans'
+      setPageType(initialData.pageType || 'landing')
+      setHeaderTheme(headerColour)
+      setHeroBlock({
+        title: initialData.heroTitle,
+        subtitle: initialData.heroSubtitle,
+        coverImage: initialData.image,
+        coverImageCaption: initialData.image?.caption || initialData.imageCaption,
+        resourceType: initialData.docType,
+        showFilter: initialData.showFilter,
+        heroButtons: initialData.heroButtons?.map((button: { id: string; link: any }) => ({
+          id: button.id,
+          type: button.link.type,
+          link: button.link,
+          pillSolid: button.link.pillSolid,
+          url: button.link.url,
+          label: button.link.label,
+          newTab: button.link.newTab,
+          email: button.link.email,
+          reference: button.link.reference,
+        })),
+        publishDate: initialData.pubDate,
+      })
+      if (initialData?.contentBlocks?.length > 0) {
+        setContentBlocks(initialData.contentBlocks)
+      }
+    }
+  }, [initialData, setHeaderTheme])
+
+  // Only fetch when language changes from the initial server-provided locale
+  useEffect(() => {
+    if (selectedLanguage !== locale) {
+      handleLanguageChange(selectedLanguage)
+    }
+  }, [selectedLanguage, locale, handleLanguageChange])
 
   useEffect(() => {
     const fetchResourceTypes = async () => {

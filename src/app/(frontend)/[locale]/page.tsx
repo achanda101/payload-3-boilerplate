@@ -1,0 +1,53 @@
+import type { Metadata } from 'next/types'
+import React from 'react'
+import { notFound } from 'next/navigation'
+import { Homepage } from '@/globals/Homepage/Component'
+
+import { getPayload } from 'payload'
+import configPromise from '@payload-config'
+import { generateMeta } from '@/utilities/generateMeta'
+import { isValidLocale, VALID_LOCALES } from '@/utilities/localeUtils'
+
+// ISR Configuration
+export const revalidate = 60
+export const dynamic = 'force-static'
+export const dynamicParams = true
+
+type Args = {
+  params: Promise<{
+    locale: string
+  }>
+}
+
+export default async function LocaleHomePage({ params: paramsPromise }: Args) {
+  const { locale } = await paramsPromise
+
+  if (!isValidLocale(locale)) {
+    notFound()
+  }
+
+  return <Homepage locale={locale} />
+}
+
+export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
+  const { locale } = await paramsPromise
+
+  if (!isValidLocale(locale)) {
+    return {}
+  }
+
+  const payload = await getPayload({ config: configPromise })
+  const homepage = await payload.findGlobal({
+    slug: 'homepage',
+    locale: locale as any,
+    depth: 1,
+  })
+
+  return generateMeta({ doc: homepage })
+}
+
+export async function generateStaticParams() {
+  return VALID_LOCALES.map((locale) => ({
+    locale,
+  }))
+}

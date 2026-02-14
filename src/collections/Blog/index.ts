@@ -4,7 +4,7 @@ import { link } from '@/fields/link'
 import { authenticated } from '@/access/authenticated'
 import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
 
-import { revalidateBlog } from './hooks/revalidateBlog'
+import { revalidateBlog, revalidateDelete } from './hooks/revalidateBlog'
 import { slugField } from '@/fields/slug'
 
 import { generatePreviewPath } from '@/utilities/generatePreviewPath'
@@ -53,7 +53,7 @@ export const Blog: CollectionConfig<'blog'> = {
       name: 'Content',
       order: '6',
     },
-    defaultColumns: ['title', 'pageType', 'docType', 'image', '_status', 'folder'],
+    defaultColumns: ['heroTitle', 'pageType', 'docType', 'image', '_status', 'folder'],
     livePreview: {
       url: ({ data, locale }) => {
         const path = generatePreviewPath({
@@ -282,6 +282,68 @@ export const Blog: CollectionConfig<'blog'> = {
       },
     },
     ...slugField(),
+    // Manual SEO fields
+    {
+      name: 'meta',
+      type: 'group',
+      label: 'SEO',
+      fields: [
+        {
+          name: 'title',
+          type: 'text',
+          label: 'Meta Title',
+          admin: {
+            components: {
+              Field: 'src/components/SeoFields/MetaTitleField.tsx#MetaTitleField',
+            },
+          },
+        },
+        {
+          name: 'description',
+          type: 'textarea',
+          label: 'Meta Description',
+          admin: {
+            components: {
+              Field: 'src/components/SeoFields/MetaDescriptionField.tsx#MetaDescriptionField',
+            },
+          },
+        },
+        {
+          name: 'image',
+          type: 'upload',
+          relationTo: 'assetCloud',
+          label: 'Meta Image',
+          filterOptions: {
+            mimeType: {
+              in: ['image/png', 'image/jpeg', 'image/gif'],
+            },
+          },
+          admin: {
+            description:
+              'Image for social sharing. Only PNG, JPG, and GIF formats are supported. Select from Assets.',
+          },
+        },
+        {
+          name: 'preview',
+          type: 'ui',
+          admin: {
+            components: {
+              Field: {
+                path: 'src/components/SeoPreview/index.tsx#SeoPreviewComponent',
+                clientProps: {
+                  titlePath: 'meta.title',
+                  descriptionPath: 'meta.description',
+                  imagePath: 'meta.image',
+                  hasGenerateURLFn: false,
+                  uploadsCollection: 'assetCloud',
+                },
+              },
+            },
+          },
+          label: 'Preview',
+        },
+      ],
+    },
   ],
   versions: {
     drafts: {
@@ -291,5 +353,6 @@ export const Blog: CollectionConfig<'blog'> = {
   },
   hooks: {
     afterChange: [revalidateBlog],
+    afterDelete: [revalidateDelete],
   },
 }

@@ -31,9 +31,10 @@ import { serializeLexical } from '@/components/RichText/serializeRichText'
 interface PageProps {
   data?: any
   isDraft?: boolean
+  initialLocale?: string
 }
 
-export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false }) => {
+export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, initialLocale = 'en' }) => {
   const { selectedLanguage } = useLanguage()
   const [contentBlocks, setContentBlocks] = useState<any[]>(data?.contentBlocks || [])
 
@@ -63,393 +64,406 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false })
     [isDraft],
   )
 
+  // Only re-fetch when language changes from the initial server-provided locale
   useEffect(() => {
-    handleLanguageChange(selectedLanguage)
-  }, [selectedLanguage, handleLanguageChange])
+    if (selectedLanguage !== initialLocale) {
+      handleLanguageChange(selectedLanguage)
+    }
+  }, [selectedLanguage, initialLocale, handleLanguageChange])
 
   return (
-    <div className="frame_layout">
-      {contentBlocks &&
-        contentBlocks.length > 0 &&
-        contentBlocks.map((block, index) => {
-          if (block.blockType === 'secondarycta') {
-            return (
-              <React.Fragment key={index}>
-                <SecondaryCTA
-                  title={(block as any).ctaTitle || ''}
-                  subtitle={(block as any).ctaSubtitle || ''}
-                  uiType={(block as any).uiType}
-                  ctaButton={(block as any).ctaButton || []}
-                />
-                {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
-                  <div className="page_column_layout gap-6">
-                    <ColumnIndicators />
-                  </div>
-                )}
-              </React.Fragment>
-            )
-          }
-          if (block.blockType === 'grantCardGridBlock') {
-            return (
-              <React.Fragment key={index}>
-                <div className="page_column_layout gap-6">
-                  <GrantCardGrid title={block.title} desc={block.desc} grantCards={block as any} />
-                </div>
-                {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
-                  <div className="page_column_layout gap-6">
-                    <ColumnIndicators />
-                  </div>
-                )}
-              </React.Fragment>
-            )
-          }
-          if (block.blockType === 'featCrd') {
-            return (
-              <React.Fragment key={index}>
-                <FeatureCard
-                  title={block.title}
-                  subtitle={block.subtitle}
-                  desc={block.desc}
-                  tags={block.tags}
-                  image={block.image}
-                  link={block.link}
-                />
-
-                {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
-                  <div className="page_column_layout gap-6">
-                    <ColumnIndicators />
-                  </div>
-                )}
-              </React.Fragment>
-            )
-          }
-          if (block.blockType === 'listCrdDck') {
-            return (
-              <React.Fragment key={index}>
-                <div className="page_column_layout gap-6">
-                  <ListingCardDeck
-                    title={block.title}
-                    dataSource={block.dataSource}
-                    cards={block.cards}
-                    resourcePages={block.resourcePages}
-                    buttons={block.buttons}
+    <div className="w-full px-[1.25rem] lg:px-[5rem]">
+      <div className="frame_layout">
+        {contentBlocks &&
+          contentBlocks.length > 0 &&
+          contentBlocks.map((block, index) => {
+            if (block.blockType === 'secondarycta') {
+              return (
+                <React.Fragment key={index}>
+                  <SecondaryCTA
+                    title={(block as any).ctaTitle || ''}
+                    subtitle={(block as any).ctaSubtitle || ''}
+                    uiType={(block as any).uiType}
+                    ctaButton={(block as any).ctaButton || []}
                   />
-                </div>
-              </React.Fragment>
-            )
-          }
-          if (block.blockType === 'mstepProcess') {
-            return (
-              <React.Fragment key={index}>
-                <div className="page_column_layout gap-6">
-                  <MultiStepProcess
-                    title={block.title}
-                    subtitle={block.subtitle}
-                    steps={block.steps}
-                  />
-                </div>
-                {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
-                  <div className="page_column_layout gap-6">
-                    <ColumnIndicators />
-                  </div>
-                )}
-              </React.Fragment>
-            )
-          }
-          if (block.blockType === 'mcolInfoBlock') {
-            return (
-              <React.Fragment key={index}>
-                <div className="page_column_layout gap-6">
-                  <MultiColumnInfo infoColumns={block.multicols} />
-                </div>
-
-                {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
-                  <div className="page_column_layout gap-6">
-                    <ColumnIndicators />
-                  </div>
-                )}
-              </React.Fragment>
-            )
-          }
-          if (block.blockType === 'scolInfoBlk') {
-            return (
-              <React.Fragment key={index}>
-                <div className="page_column_layout gap-6">
-                  <SingleColumnInfo title={block.title} desc={block.desc} buttons={block.colBtns} />
-                </div>
-
-                {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
-                  <div className="page_column_layout gap-6">
-                    <ColumnIndicators />
-                  </div>
-                )}
-              </React.Fragment>
-            )
-          }
-          if (block.blockType === 'comparisonBlk') {
-            return (
-              <React.Fragment key={index}>
-                <div className="page_column_layout  gap-0 md:gap-0 lg:gap-6">
-                  <ComparisonBlock
-                    title={block.title}
-                    desc={block.desc}
-                    buttons={block.buttons}
-                    lftCol={block.lftGrp}
-                    rtCol={block.rtGrp}
-                  />
-                </div>
-
-                {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
-                  <div className="page_column_layout gap-6">
-                    <ColumnIndicators />
-                  </div>
-                )}
-              </React.Fragment>
-            )
-          }
-          if (block.blockType === 'ylwDeck') {
-            return (
-              <React.Fragment key={index}>
-                <div className="page_column_layout gap-6">
-                  <YellowCardDeck
-                    blockName={block.blockName}
-                    title={block.title}
-                    desc={block.desc}
-                    cards={block.cards}
-                    align={block.align}
-                  />
-                </div>
-              </React.Fragment>
-            )
-          }
-          if (block.blockType === 'faqBlk') {
-            return (
-              <React.Fragment key={index}>
-                <div className="page_column_layout gap-6">
-                  <FaqBlock
-                    title={block.title}
-                    desc={block.desc}
-                    link={block.link}
-                    faqs={block.faqs}
-                  />
-                </div>
-              </React.Fragment>
-            )
-          }
-          if (block.blockType === 'featCrdAcc') {
-            return (
-              <React.Fragment key={index}>
-                <FeatureCardAccordion
-                  title={block.title}
-                  blockName={block.blockName}
-                  featureCards={block.featCrds}
-                />
-              </React.Fragment>
-            )
-          }
-          if (block.blockType === 'richContentBlock') {
-            return (
-              <React.Fragment key={index}>
-                <div className="page_column_layout gap-6 [&>*:first-child]:mt-0">
-                  {block.richText && typeof block.richText == 'object' ? (
-                    serializeLexical({ nodes: block.richText.root?.children || [] })
-                  ) : (
-                    <p className="col-span-full md:col-span-6 md:col-start-2 lg:col-span-6 lg:col-start-4 md:block lg:hidden mb-8">
-                      {block.richText}
-                    </p>
+                  {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                    <div className="page_column_layout gap-6">
+                      <ColumnIndicators />
+                    </div>
                   )}
-                </div>
-              </React.Fragment>
-            )
-          }
-          if (block.blockType === 'pinkPuffy') {
-            return (
-              <React.Fragment key={index}>
-                <PinkPuffyCallOut
-                  title={block.title}
-                  subtitle={block.subtitle}
-                  align={block.align}
-                  topRow={block.topRow}
-                  botRow={block.botRow}
-                  links={block.links}
-                />
-                {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                </React.Fragment>
+              )
+            }
+            if (block.blockType === 'grantCardGridBlock') {
+              return (
+                <React.Fragment key={index}>
                   <div className="page_column_layout gap-6">
-                    <ColumnIndicators />
+                    <GrantCardGrid
+                      title={block.title}
+                      desc={block.desc}
+                      grantCards={block as any}
+                    />
                   </div>
-                )}
-              </React.Fragment>
-            )
-          }
-          if (block.blockType === 'beigePuffy') {
-            return (
-              <React.Fragment key={index}>
-                <BeigePuffyCallOut
-                  title={block.title}
-                  subtitle={block.subtitle}
-                  align={block.align}
-                  items={block.items}
-                />
-                {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                  {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                    <div className="page_column_layout gap-6">
+                      <ColumnIndicators />
+                    </div>
+                  )}
+                </React.Fragment>
+              )
+            }
+            if (block.blockType === 'featCrd') {
+              return (
+                <React.Fragment key={index}>
+                  <FeatureCard
+                    title={block.title}
+                    subtitle={block.subtitle}
+                    desc={block.desc}
+                    tags={block.tags}
+                    image={block.image}
+                    link={block.link}
+                  />
+
+                  {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                    <div className="page_column_layout gap-6">
+                      <ColumnIndicators />
+                    </div>
+                  )}
+                </React.Fragment>
+              )
+            }
+            if (block.blockType === 'listCrdDck') {
+              return (
+                <React.Fragment key={index}>
                   <div className="page_column_layout gap-6">
-                    <ColumnIndicators />
+                    <ListingCardDeck
+                      title={block.title}
+                      dataSource={block.dataSource}
+                      cards={block.cards}
+                      resourcePages={block.resourcePages}
+                      buttons={block.buttons}
+                    />
                   </div>
-                )}
-              </React.Fragment>
-            )
-          }
-          if (block.blockType === 'fundingMap') {
-            return (
-              <React.Fragment key={index}>
-                <FundingMap
-                  title={block.title}
-                  subtitle={block.subtitle}
-                  selectorLabel={block.selectorLabel}
-                  items={block.items}
-                />
-                {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                </React.Fragment>
+              )
+            }
+            if (block.blockType === 'mstepProcess') {
+              return (
+                <React.Fragment key={index}>
                   <div className="page_column_layout gap-6">
-                    <ColumnIndicators />
+                    <MultiStepProcess
+                      title={block.title}
+                      subtitle={block.subtitle}
+                      steps={block.steps}
+                    />
                   </div>
-                )}
-              </React.Fragment>
-            )
-          }
-          if (block.blockType === 'resourceFeatCard') {
-            return (
-              <React.Fragment key={index}>
-                <ResourceFeatureCard
-                  title={block.title}
-                  align={block.align}
-                  desc={block.desc}
-                  featCardList={block.featCardList}
-                />
-                {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                  {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                    <div className="page_column_layout gap-6">
+                      <ColumnIndicators />
+                    </div>
+                  )}
+                </React.Fragment>
+              )
+            }
+            if (block.blockType === 'mcolInfoBlock') {
+              return (
+                <React.Fragment key={index}>
                   <div className="page_column_layout gap-6">
-                    <ColumnIndicators />
+                    <MultiColumnInfo infoColumns={block.multicols} />
                   </div>
-                )}
-              </React.Fragment>
-            )
-          }
-          if (block.blockType === 'resourceGallery') {
-            return (
-              <React.Fragment key={index}>
-                <ResourceGallery
-                  title={block.title}
-                  align={block.align}
-                  desc={block.desc}
-                  galleryList={block.galleryList}
-                />
-                {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+
+                  {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                    <div className="page_column_layout gap-6">
+                      <ColumnIndicators />
+                    </div>
+                  )}
+                </React.Fragment>
+              )
+            }
+            if (block.blockType === 'scolInfoBlk') {
+              return (
+                <React.Fragment key={index}>
                   <div className="page_column_layout gap-6">
-                    <ColumnIndicators />
+                    <SingleColumnInfo
+                      title={block.title}
+                      desc={block.desc}
+                      buttons={block.colBtns}
+                    />
                   </div>
-                )}
-              </React.Fragment>
-            )
-          }
-          if (block.blockType === 'pillarCard') {
-            return (
-              <React.Fragment key={index}>
-                <div className="page_column_layout gap-6">
-                  <PillarCard
+
+                  {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                    <div className="page_column_layout gap-6">
+                      <ColumnIndicators />
+                    </div>
+                  )}
+                </React.Fragment>
+              )
+            }
+            if (block.blockType === 'comparisonBlk') {
+              return (
+                <React.Fragment key={index}>
+                  <div className="page_column_layout  gap-0 md:gap-0 lg:gap-6">
+                    <ComparisonBlock
+                      title={block.title}
+                      desc={block.desc}
+                      buttons={block.buttons}
+                      lftCol={block.lftGrp}
+                      rtCol={block.rtGrp}
+                    />
+                  </div>
+
+                  {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                    <div className="page_column_layout gap-6">
+                      <ColumnIndicators />
+                    </div>
+                  )}
+                </React.Fragment>
+              )
+            }
+            if (block.blockType === 'ylwDeck') {
+              return (
+                <React.Fragment key={index}>
+                  <div className="page_column_layout gap-6">
+                    <YellowCardDeck
+                      blockName={block.blockName}
+                      title={block.title}
+                      desc={block.desc}
+                      cards={block.cards}
+                      align={block.align}
+                    />
+                  </div>
+                </React.Fragment>
+              )
+            }
+            if (block.blockType === 'faqBlk') {
+              return (
+                <React.Fragment key={index}>
+                  <div className="page_column_layout gap-6">
+                    <FaqBlock
+                      title={block.title}
+                      desc={block.desc}
+                      link={block.link}
+                      faqs={block.faqs}
+                    />
+                  </div>
+                </React.Fragment>
+              )
+            }
+            if (block.blockType === 'featCrdAcc') {
+              return (
+                <React.Fragment key={index}>
+                  <FeatureCardAccordion
+                    title={block.title}
+                    blockName={block.blockName}
+                    featureCards={block.featCrds}
+                  />
+                </React.Fragment>
+              )
+            }
+            if (block.blockType === 'richContentBlock') {
+              return (
+                <React.Fragment key={index}>
+                  <div className="page_column_layout gap-6 [&>*:first-child]:mt-0">
+                    {block.richText && typeof block.richText == 'object' ? (
+                      serializeLexical({ nodes: block.richText.root?.children || [] })
+                    ) : (
+                      <p className="col-span-full md:col-span-6 md:col-start-2 lg:col-span-6 lg:col-start-4 md:block lg:hidden mb-8">
+                        {block.richText}
+                      </p>
+                    )}
+                  </div>
+                </React.Fragment>
+              )
+            }
+            if (block.blockType === 'pinkPuffy') {
+              return (
+                <React.Fragment key={index}>
+                  <PinkPuffyCallOut
                     title={block.title}
                     subtitle={block.subtitle}
                     align={block.align}
-                    cards={block.cards}
+                    topRow={block.topRow}
+                    botRow={block.botRow}
+                    links={block.links}
                   />
-                </div>
-                {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
-                  <div className="page_column_layout gap-6">
-                    <ColumnIndicators />
-                  </div>
-                )}
-              </React.Fragment>
-            )
-          }
-          if (block.blockType === 'testimonialDeck') {
-            return (
-              <React.Fragment key={index}>
-                <div className="page_column_layout gap-6">
-                  <TestimonialCardDeck title={block.title} cards={block.cards} />
-                </div>
-                {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
-                  <div className="page_column_layout gap-6">
-                    <ColumnIndicators />
-                  </div>
-                )}
-              </React.Fragment>
-            )
-          }
-          if (block.blockType === 'minCardGallery') {
-            return (
-              <React.Fragment key={index}>
-                <div className="page_column_layout gap-6">
-                  <MinimalCardGallery header={block.header} cards={block.cards} />
-                </div>
-                {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
-                  <div className="page_column_layout gap-6">
-                    <ColumnIndicators />
-                  </div>
-                )}
-              </React.Fragment>
-            )
-          }
-          if (block.blockType === 'idCardGallery') {
-            return (
-              <React.Fragment key={index}>
-                <div className="page_column_layout gap-6">
-                  <IDCardGallery header={block.header} cards={block.cards} />
-                </div>
-                {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
-                  <div className="page_column_layout gap-6">
-                    <ColumnIndicators />
-                  </div>
-                )}
-              </React.Fragment>
-            )
-          }
-          if (block.blockType === 'twoColumnBlock') {
-            return (
-              <React.Fragment key={index}>
-                <TwoColumnBlock
-                  title={block.title}
-                  subtitle={block.subtitle}
-                  leftColumn={block.leftColumn}
-                  rightColumn={block.rightColumn}
-                />
-                {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
-                  <div className="page_column_layout gap-6">
-                    <ColumnIndicators />
-                  </div>
-                )}
-              </React.Fragment>
-            )
-          }
-          if (block.blockType === 'threeColumnTableBlock') {
-            return (
-              <React.Fragment key={index}>
-                <div className="page_column_layout gap-6">
-                  <ThreeColumnTable
+                  {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                    <div className="page_column_layout gap-6">
+                      <ColumnIndicators />
+                    </div>
+                  )}
+                </React.Fragment>
+              )
+            }
+            if (block.blockType === 'beigePuffy') {
+              return (
+                <React.Fragment key={index}>
+                  <BeigePuffyCallOut
                     title={block.title}
                     subtitle={block.subtitle}
-                    firstColumn={block.firstColumn}
-                    secondColumn={block.secondColumn}
-                    thirdColumn={block.thirdColumn}
-                    columnWidths={block.columnWidths}
+                    align={block.align}
+                    items={block.items}
                   />
-                </div>
-                {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                  {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                    <div className="page_column_layout gap-6">
+                      <ColumnIndicators />
+                    </div>
+                  )}
+                </React.Fragment>
+              )
+            }
+            if (block.blockType === 'fundingMap') {
+              return (
+                <React.Fragment key={index}>
+                  <FundingMap
+                    title={block.title}
+                    subtitle={block.subtitle}
+                    selectorLabel={block.selectorLabel}
+                    items={block.items}
+                  />
+                  {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                    <div className="page_column_layout gap-6">
+                      <ColumnIndicators />
+                    </div>
+                  )}
+                </React.Fragment>
+              )
+            }
+            if (block.blockType === 'resourceFeatCard') {
+              return (
+                <React.Fragment key={index}>
+                  <ResourceFeatureCard
+                    title={block.title}
+                    align={block.align}
+                    desc={block.desc}
+                    featCardList={block.featCardList}
+                  />
+                  {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                    <div className="page_column_layout gap-6">
+                      <ColumnIndicators />
+                    </div>
+                  )}
+                </React.Fragment>
+              )
+            }
+            if (block.blockType === 'resourceGallery') {
+              return (
+                <React.Fragment key={index}>
+                  <ResourceGallery
+                    title={block.title}
+                    align={block.align}
+                    desc={block.desc}
+                    galleryList={block.galleryList}
+                  />
+                  {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                    <div className="page_column_layout gap-6">
+                      <ColumnIndicators />
+                    </div>
+                  )}
+                </React.Fragment>
+              )
+            }
+            if (block.blockType === 'pillarCard') {
+              return (
+                <React.Fragment key={index}>
                   <div className="page_column_layout gap-6">
-                    <ColumnIndicators />
+                    <PillarCard
+                      title={block.title}
+                      subtitle={block.subtitle}
+                      align={block.align}
+                      cards={block.cards}
+                    />
                   </div>
-                )}
-              </React.Fragment>
-            )
-          }
-          return null
-        })}
+                  {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                    <div className="page_column_layout gap-6">
+                      <ColumnIndicators />
+                    </div>
+                  )}
+                </React.Fragment>
+              )
+            }
+            if (block.blockType === 'testimonialDeck') {
+              return (
+                <React.Fragment key={index}>
+                  <div className="page_column_layout gap-6">
+                    <TestimonialCardDeck title={block.title} cards={block.cards} />
+                  </div>
+                  {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                    <div className="page_column_layout gap-6">
+                      <ColumnIndicators />
+                    </div>
+                  )}
+                </React.Fragment>
+              )
+            }
+            if (block.blockType === 'minCardGallery') {
+              return (
+                <React.Fragment key={index}>
+                  <div className="page_column_layout gap-6">
+                    <MinimalCardGallery header={block.header} cards={block.cards} />
+                  </div>
+                  {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                    <div className="page_column_layout gap-6">
+                      <ColumnIndicators />
+                    </div>
+                  )}
+                </React.Fragment>
+              )
+            }
+            if (block.blockType === 'idCardGallery') {
+              return (
+                <React.Fragment key={index}>
+                  <div className="page_column_layout gap-6">
+                    <IDCardGallery header={block.header} cards={block.cards} />
+                  </div>
+                  {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                    <div className="page_column_layout gap-6">
+                      <ColumnIndicators />
+                    </div>
+                  )}
+                </React.Fragment>
+              )
+            }
+            if (block.blockType === 'twoColumnBlock') {
+              return (
+                <React.Fragment key={index}>
+                  <TwoColumnBlock
+                    title={block.title}
+                    subtitle={block.subtitle}
+                    leftColumn={block.leftColumn}
+                    rightColumn={block.rightColumn}
+                  />
+                  {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                    <div className="page_column_layout gap-6">
+                      <ColumnIndicators />
+                    </div>
+                  )}
+                </React.Fragment>
+              )
+            }
+            if (block.blockType === 'threeColumnTableBlock') {
+              return (
+                <React.Fragment key={index}>
+                  <div className="page_column_layout gap-6">
+                    <ThreeColumnTable
+                      title={block.title}
+                      subtitle={block.subtitle}
+                      firstColumn={block.firstColumn}
+                      secondColumn={block.secondColumn}
+                      thirdColumn={block.thirdColumn}
+                      columnWidths={block.columnWidths}
+                    />
+                  </div>
+                  {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
+                    <div className="page_column_layout gap-6">
+                      <ColumnIndicators />
+                    </div>
+                  )}
+                </React.Fragment>
+              )
+            }
+            return null
+          })}
+      </div>
     </div>
   )
 }

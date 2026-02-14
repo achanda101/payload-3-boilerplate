@@ -11,9 +11,10 @@ import { Heading } from '@/components/Heading'
 interface HeroProps {
   data?: any
   isDraft?: boolean
+  initialLocale?: string
 }
 
-export const HomeHero: React.FC<HeroProps> = ({ data = {}, isDraft = false }) => {
+export const HomeHero: React.FC<HeroProps> = ({ data = {}, isDraft = false, initialLocale = 'en' }) => {
   const { selectedLanguage } = useLanguage()
   const { setHeaderTheme } = useHeaderTheme()
   const [heroTitle, setHeroTitle] = useState<string>(data?.heroTitle || '')
@@ -42,9 +43,14 @@ export const HomeHero: React.FC<HeroProps> = ({ data = {}, isDraft = false }) =>
   useEffect(() => {
     // Set the header colour to transparent
     setHeaderTheme('blank')
-    // Any side effects based on selectedLanguage can be handled here
-    handleLanguageChange(selectedLanguage)
-  }, [selectedLanguage, setHeaderTheme, handleLanguageChange])
+  }, [setHeaderTheme])
+
+  // Only re-fetch when language changes from the initial server-provided locale
+  useEffect(() => {
+    if (selectedLanguage !== initialLocale) {
+      handleLanguageChange(selectedLanguage)
+    }
+  }, [selectedLanguage, initialLocale, handleLanguageChange])
 
   return (
     <section className="hero-banner">

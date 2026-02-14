@@ -105,7 +105,7 @@ interface ButtonProps {
   align?: 'left' | 'center'
 }
 
-export const UAFButton: React.FC<ButtonProps> = ({ button, align = 'center' }) => {
+export const UAFButton: React.FC<ButtonProps> = ({ button, align = 'left' }) => {
   const [isETestOpen, setIsETestOpen] = useState(false)
 
   const handleEtestClick = (e: React.MouseEvent) => {

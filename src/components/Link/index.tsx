@@ -2,6 +2,8 @@ import { Button, type ButtonProps } from '@/components/ui/button'
 import { cn } from 'src/utilities/cn'
 import Link from 'next/link'
 import React from 'react'
+import { useLanguage } from '@/providers/LanguageContext'
+import { getLocalizedUrl } from '@/utilities/localeUtils'
 
 import type { Page, Grant, Blog, Report, Mmedia } from '@/payload-types'
 
@@ -10,6 +12,7 @@ type CMSLinkType = {
   children?: React.ReactNode
   className?: string
   label?: string | null
+  locale?: string
   newTab?: boolean | null
   reference?: {
     relationTo: 'pages' | 'grants' | 'blog' | 'reports' | 'mmedia'
@@ -27,16 +30,25 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
     children,
     className,
     label,
+    locale: localeProp,
     newTab,
     reference,
     size: sizeFromProps,
     url,
   } = props
 
-  const href =
-    type === 'reference' && typeof reference?.value === 'object' && reference.value.slug
-      ? `/${reference?.relationTo}/${reference.value.slug}`
-      : url
+  const { selectedLanguage } = useLanguage()
+  const locale = localeProp || selectedLanguage || 'en'
+
+  let href = url
+
+  if (type === 'reference' && typeof reference?.value === 'object' && reference.value.slug) {
+    const collectionPath =
+      reference.relationTo === 'pages'
+        ? `/${reference.value.slug}`
+        : `/${reference.relationTo}/${reference.value.slug}`
+    href = getLocalizedUrl(collectionPath, locale)
+  }
 
   if (!href) return null
 

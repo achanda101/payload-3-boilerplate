@@ -4,7 +4,7 @@ import { link } from '@/fields/link'
 import { authenticated } from '@/access/authenticated'
 import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
 
-import { revalidateGrant } from './hooks/revalidateGrant'
+import { revalidateGrant, revalidateDelete } from './hooks/revalidateGrant'
 import { slugField } from '@/fields/slug'
 
 import { generatePreviewPath } from '@/utilities/generatePreviewPath'
@@ -368,5 +368,6 @@ export const Grants: CollectionConfig<'grants'> = {
   },
   hooks: {
     afterChange: [revalidateGrant],
+    afterDelete: [revalidateDelete],
   },
 }

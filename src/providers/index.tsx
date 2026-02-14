@@ -6,10 +6,11 @@ import { LanguageProvider } from './LanguageContext'
 
 export const Providers: React.FC<{
   children: React.ReactNode
-}> = ({ children }) => {
+  locale?: string
+}> = ({ children, locale = 'en' }) => {
   return (
     <ThemeProvider>
-      <LanguageProvider>
+      <LanguageProvider locale={locale}>
         <HeaderThemeProvider>{children}</HeaderThemeProvider>
       </LanguageProvider>
     </ThemeProvider>

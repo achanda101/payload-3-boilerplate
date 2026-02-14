@@ -1,32 +1,34 @@
-import type { Metadata } from 'next/types'
 import React, { cache } from 'react'
-import { GrantCardComponent } from '../../components/GrantCardComponent/GrantCardComponent'
+import { GrantCardComponent } from '../../../components/GrantCardComponent/GrantCardComponent'
+import { notFound } from 'next/navigation'
 
 import { getPayload } from 'payload'
 import { draftMode } from 'next/headers'
 import configPromise from '@payload-config'
+import { isValidLocale } from '@/utilities/localeUtils'
 
 type Args = {
   params: Promise<{
-    slug?: string
+    locale: string
+    slug: string
   }>
 }
 
-export default async function Page({ params: paramsPromise }: Args) {
-  const { slug = '' } = await paramsPromise
+export default async function LocaleGrantCardPage({ params: paramsPromise }: Args) {
+  const { locale, slug } = await paramsPromise
+
+  if (!isValidLocale(locale)) {
+    notFound()
+  }
+
   const { isEnabled: isDraftMode } = await draftMode()
   const card = await queryCardBySlug({ slug })
 
   if (!card) {
-    return <div>Grant Card not found</div>
+    notFound()
   }
 
-  // Need to find out the document id using the collection name and slug value
-  return (
-    <>
-      <GrantCardComponent collection="grantcards" docId={card.id} isDraft={isDraftMode} />
-    </>
-  )
+  return <GrantCardComponent collection="grantcards" docId={card.id} isDraft={isDraftMode} locale={locale} initialData={card} />
 }
 
 const queryCardBySlug = cache(async ({ slug }: { slug: string }) => {
@@ -40,6 +42,7 @@ const queryCardBySlug = cache(async ({ slug }: { slug: string }) => {
     limit: 1,
     overrideAccess: draft,
     pagination: false,
+    depth: 3,
     where: {
       slug: {
         equals: slug,

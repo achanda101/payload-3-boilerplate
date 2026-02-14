@@ -6,7 +6,7 @@ import { unstable_cache } from 'next/cache'
 
 type Global = keyof Config['globals']
 
-async function getGlobal(slug: Global, depth = 0, locale?: string) {
+export async function getGlobal(slug: Global, depth = 0, locale?: string) {
   const payload = await getPayload({ config: configPromise })
 
   const global = await payload.findGlobal({
@@ -20,8 +20,14 @@ async function getGlobal(slug: Global, depth = 0, locale?: string) {
 
 /**
  * Returns a unstable_cache function mapped with the cache tag for the slug
+ * IMPORTANT: The cache key MUST include depth and locale to prevent cache collisions
  */
 export const getCachedGlobal = (slug: Global, depth = 0, locale?: string) =>
-  unstable_cache(async () => getGlobal(slug, depth, locale), [slug, locale || 'default'], {
-    tags: [`global_${slug}`, ...(locale ? [`global_${slug}_${locale}`] : [])],
-  })
+  unstable_cache(
+    async () => getGlobal(slug, depth, locale),
+    [slug, String(depth), locale || 'default'],
+    {
+      tags: [`global_${slug}`, ...(locale ? [`global_${slug}_${locale}`] : [])],
+      revalidate: 60,
+    }
+  )

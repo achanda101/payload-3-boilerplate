@@ -46,22 +46,18 @@ import { SlugComponent as SlugComponent_92cc057d0a2abb4f6cf0307edf59f986 } from 
 import { MetaTitleField as MetaTitleField_d3379f1bd72083fb3a9d5a258cd4552d } from 'src/components/SeoFields/MetaTitleField.tsx'
 import { MetaDescriptionField as MetaDescriptionField_c5da501ee9d8b764f2d1dbc358f7bcb0 } from 'src/components/SeoFields/MetaDescriptionField.tsx'
 import { SeoPreviewComponent as SeoPreviewComponent_b97c76eed381aee96189da8b569d859b } from 'src/components/SeoPreview/index.tsx'
-import { FolderTableCell as FolderTableCell_ab83ff7e88da8d3530831f296ec4756a } from '@payloadcms/ui/rsc'
-import { FolderField as FolderField_ab83ff7e88da8d3530831f296ec4756a } from '@payloadcms/ui/rsc'
+import { FolderTableCell as FolderTableCell_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
+import { FolderField as FolderField_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
 import { default as default_d53673b0f0592349e1f76e20f0e35a8a } from 'src/collections/AssetCloudCell'
 import { default as default_fade8116570b03adfdc99c640cfd1f1c } from 'src/collections/GrantCards/GrantCardSpecRowLabel.tsx'
 import { default as default_1ca90977107cbb5e33eef51b3d659f98 } from 'src/collections/GrantCards/GrantCardButtonRowLabel.tsx'
 import { default as default_e6f635e33cdcc4d4d11b58dc87fdbc28 } from 'src/collections/EligibilityTests/OptionsRowLabel.tsx'
 import { default as default_5c27a4360ad720e85354b3b24721e696 } from 'src/collections/EligibilityTests/CriteriaRowLabel.tsx'
 import { default as default_53602952b3aad17a0cfc4bbf43cc4181 } from 'src/collections/MediaCloudCell'
-import { OverviewComponent as OverviewComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
-import { MetaTitleComponent as MetaTitleComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
-import { MetaDescriptionComponent as MetaDescriptionComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
-import { MetaImageComponent as MetaImageComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { default as default_6e5325882d4f1cdba6ec4e761f75cd71 } from 'src/collections/Users/AvatarCell'
 import { LinkToDoc as LinkToDoc_aead06e4cbf6b2620c5c51c9ab283634 } from '@payloadcms/plugin-search/client'
 import { ReindexButton as ReindexButton_aead06e4cbf6b2620c5c51c9ab283634 } from '@payloadcms/plugin-search/client'
-import { FolderTypeField as FolderTypeField_3817bf644402e67bfe6577f60ef982de } from '@payloadcms/ui'
+import { FolderTypeField as FolderTypeField_2b8867833a34864a02ddf429b0728a40 } from '@payloadcms/next/client'
 import { default as default_9702e426ff612febae1976764fe56710 } from 'src/globals/Footer/SmItemRowLabel.tsx'
 import { default as default_dde45096079356e8a763d3b11b727b2d } from 'src/globals/Navigation/NavItemRowLabel.tsx'
 import { default as default_760c331c4141744d569a29c3060f6950 } from 'src/globals/Navigation/MenuItemRowLabel.tsx'
@@ -73,7 +69,7 @@ import { Logo as Logo_566629f80931517f5befb54103e89cc5 } from '@/components/Logo
 import { default as default_1a7510af427896d367a49dbf838d2de6 } from '@/components/BeforeDashboard'
 import { default as default_8a7ab0eb7ab5c511aba12e68480bfe5e } from '@/components/BeforeLogin'
 import { S3ClientUploadHandler as S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24 } from '@payloadcms/storage-s3/client'
-import { CollectionCards as CollectionCards_ab83ff7e88da8d3530831f296ec4756a } from '@payloadcms/ui/rsc'
+import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
 
 export const importMap = {
   "@/utilities/characterCounter.tsx#default": default_7baef2a5f372f8eb3e6c3c9a98bc5194,
@@ -124,22 +120,18 @@ export const importMap = {
   "src/components/SeoFields/MetaTitleField.tsx#MetaTitleField": MetaTitleField_d3379f1bd72083fb3a9d5a258cd4552d,
   "src/components/SeoFields/MetaDescriptionField.tsx#MetaDescriptionField": MetaDescriptionField_c5da501ee9d8b764f2d1dbc358f7bcb0,
   "src/components/SeoPreview/index.tsx#SeoPreviewComponent": SeoPreviewComponent_b97c76eed381aee96189da8b569d859b,
-  "@payloadcms/ui/rsc#FolderTableCell": FolderTableCell_ab83ff7e88da8d3530831f296ec4756a,
-  "@payloadcms/ui/rsc#FolderField": FolderField_ab83ff7e88da8d3530831f296ec4756a,
+  "@payloadcms/next/rsc#FolderTableCell": FolderTableCell_f9c02e79a4aed9a3924487c0cd4cafb1,
+  "@payloadcms/next/rsc#FolderField": FolderField_f9c02e79a4aed9a3924487c0cd4cafb1,
   "src/collections/AssetCloudCell#default": default_d53673b0f0592349e1f76e20f0e35a8a,
   "src/collections/GrantCards/GrantCardSpecRowLabel.tsx#default": default_fade8116570b03adfdc99c640cfd1f1c,
   "src/collections/GrantCards/GrantCardButtonRowLabel.tsx#default": default_1ca90977107cbb5e33eef51b3d659f98,
   "src/collections/EligibilityTests/OptionsRowLabel.tsx#default": default_e6f635e33cdcc4d4d11b58dc87fdbc28,
   "src/collections/EligibilityTests/CriteriaRowLabel.tsx#default": default_5c27a4360ad720e85354b3b24721e696,
   "src/collections/MediaCloudCell#default": default_53602952b3aad17a0cfc4bbf43cc4181,
-  "@payloadcms/plugin-seo/client#OverviewComponent": OverviewComponent_a8a977ebc872c5d5ea7ee689724c0860,
-  "@payloadcms/plugin-seo/client#MetaTitleComponent": MetaTitleComponent_a8a977ebc872c5d5ea7ee689724c0860,
-  "@payloadcms/plugin-seo/client#MetaDescriptionComponent": MetaDescriptionComponent_a8a977ebc872c5d5ea7ee689724c0860,
-  "@payloadcms/plugin-seo/client#MetaImageComponent": MetaImageComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "src/collections/Users/AvatarCell#default": default_6e5325882d4f1cdba6ec4e761f75cd71,
   "@payloadcms/plugin-search/client#LinkToDoc": LinkToDoc_aead06e4cbf6b2620c5c51c9ab283634,
   "@payloadcms/plugin-search/client#ReindexButton": ReindexButton_aead06e4cbf6b2620c5c51c9ab283634,
-  "@payloadcms/ui#FolderTypeField": FolderTypeField_3817bf644402e67bfe6577f60ef982de,
+  "@payloadcms/next/client#FolderTypeField": FolderTypeField_2b8867833a34864a02ddf429b0728a40,
   "src/globals/Footer/SmItemRowLabel.tsx#default": default_9702e426ff612febae1976764fe56710,
   "src/globals/Navigation/NavItemRowLabel.tsx#default": default_dde45096079356e8a763d3b11b727b2d,
   "src/globals/Navigation/MenuItemRowLabel.tsx#default": default_760c331c4141744d569a29c3060f6950,
@@ -151,5 +143,5 @@ export const importMap = {
   "@/components/BeforeDashboard#default": default_1a7510af427896d367a49dbf838d2de6,
   "@/components/BeforeLogin#default": default_8a7ab0eb7ab5c511aba12e68480bfe5e,
   "@payloadcms/storage-s3/client#S3ClientUploadHandler": S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24,
-  "@payloadcms/ui/rsc#CollectionCards": CollectionCards_ab83ff7e88da8d3530831f296ec4756a
+  "@payloadcms/next/rsc#CollectionCards": CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1
 }

@@ -161,7 +161,8 @@ export default buildConfig({
     seoPlugin({
       // Note: 'pages' and 'grants' removed - they have manual seoImage field instead
       // Note: 'homepage' removed due to seoPlugin bug with globals causing circular reference error
-      collections: ['blog', 'reports', 'mmedia'],
+      // Note: 'blog', 'reports', 'mmedia' now use manual SEO fields instead of plugin
+      collections: [],
       globals: [],
       uploadsCollection: 'mediaCloud',
       fields: ({ defaultFields }) => [

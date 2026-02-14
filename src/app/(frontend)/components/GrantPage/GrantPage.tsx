@@ -71,9 +71,11 @@ interface GrantPageProps {
   collection: string
   docId: number
   isDraft?: boolean
+  locale?: string
+  initialData?: any  // Server-provided page data
 }
 
-export const GrantPage: React.FC<GrantPageProps> = ({ collection, docId, isDraft = false }) => {
+export const GrantPage: React.FC<GrantPageProps> = ({ collection, docId, isDraft = false, locale = 'en', initialData }) => {
   const { selectedLanguage } = useLanguage()
   const { setHeaderTheme } = useHeaderTheme()
   const [heroHeaderImg, setHeroHeaderImg] = useState('wavy_top-trans')
@@ -206,9 +208,52 @@ export const GrantPage: React.FC<GrantPageProps> = ({ collection, docId, isDraft
     [collection, docId, isDraft, setHeaderTheme],
   )
 
+  // Initialize with server-provided data
   useEffect(() => {
-    handleLanguageChange(selectedLanguage)
-  }, [selectedLanguage, handleLanguageChange])
+    if (initialData) {
+      const headerColour = getHeaderColour(initialData.pageType, initialData.grantCard)
+      setPageType(initialData.pageType || 'landing')
+      setHeroHeaderImg(`${initialData.bgType}-${headerColour}`)
+      if (initialData.bgType === 'center_blob') setHeaderTheme('trans')
+      else setHeaderTheme(headerColour)
+      setHeroBlock({
+        title: initialData.heroTitle,
+        subtitle: initialData.heroSubtitle,
+        badgeText: initialData.grantCard?.badgeText,
+        badgeType: initialData.grantCard?.badgeType,
+        heroImage: initialData.grantCard?.mascot,
+        heroButtons: initialData.heroButtons?.map(
+          (button: { id: string; link: any }) => ({
+            id: button.id,
+            type: button.link.type,
+            link: button.link,
+            pillSolid: button.link.pillSolid,
+            url: button.link.url,
+            label: button.link.label,
+            newTab: button.link.newTab,
+            email: button.link.email,
+            reference: button.link.reference,
+            etest: button.link.etestlink,
+          }),
+        ),
+        heroContact: initialData.heroContact,
+        activePeriod: initialData.grantCard?.activePeriod || null,
+        startDate: initialData.grantCard?.startDate || null,
+        endDate: initialData.grantCard?.endDate || null,
+        msg: initialData.grantCard?.msg || null,
+      })
+      if (initialData?.contentBlocks?.length > 0) {
+        setContentBlocks(initialData.contentBlocks)
+      }
+    }
+  }, [initialData, setHeaderTheme])
+
+  // Only fetch when language changes from the initial server-provided locale
+  useEffect(() => {
+    if (selectedLanguage !== locale) {
+      handleLanguageChange(selectedLanguage)
+    }
+  }, [selectedLanguage, locale, handleLanguageChange])
 
   // Calculate period status for hero buttons
   const { shouldDisableApply, message } = checkGrantPeriodStatus(

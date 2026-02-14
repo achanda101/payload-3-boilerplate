@@ -44,12 +44,16 @@ interface GrantCardComponentProps {
   collection: string
   docId: number
   isDraft?: boolean
+  locale?: string
+  initialData?: any  // Server-provided card data
 }
 
 export const GrantCardComponent: React.FC<GrantCardComponentProps> = ({
   collection,
   docId,
   isDraft = false,
+  locale = 'en',
+  initialData,
 }) => {
   const { selectedLanguage } = useLanguage()
   const [grantBlock, setGrantBlock] = useState<{
@@ -91,9 +95,19 @@ export const GrantCardComponent: React.FC<GrantCardComponentProps> = ({
     [collection, docId, isDraft],
   )
 
+  // Initialize with server-provided data
   useEffect(() => {
-    handleLanguageChange(selectedLanguage)
-  }, [selectedLanguage, handleLanguageChange])
+    if (initialData) {
+      setGrantBlock(initialData)
+    }
+  }, [initialData])
+
+  // Only fetch when language changes from the initial server-provided locale
+  useEffect(() => {
+    if (selectedLanguage !== locale) {
+      handleLanguageChange(selectedLanguage)
+    }
+  }, [selectedLanguage, locale, handleLanguageChange])
 
   return (
     <>

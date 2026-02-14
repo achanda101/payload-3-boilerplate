@@ -4287,9 +4287,9 @@ export interface Blog {
     title?: string | null;
     description?: string | null;
     /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     * Image for social sharing. Only PNG, JPG, and GIF formats are supported. Select from Assets.
      */
-    image?: (number | null) | MediaCloud;
+    image?: (number | null) | AssetCloud;
   };
   folder?: (number | null) | FolderInterface;
   updatedAt: string;
@@ -5603,9 +5603,9 @@ export interface Report {
     title?: string | null;
     description?: string | null;
     /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     * Image for social sharing. Only PNG, JPG, and GIF formats are supported. Select from Assets.
      */
-    image?: (number | null) | MediaCloud;
+    image?: (number | null) | AssetCloud;
   };
   folder?: (number | null) | FolderInterface;
   updatedAt: string;
@@ -6939,9 +6939,9 @@ export interface Mmedia {
     title?: string | null;
     description?: string | null;
     /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     * Image for social sharing. Only PNG, JPG, and GIF formats are supported. Select from Assets.
      */
-    image?: (number | null) | MediaCloud;
+    image?: (number | null) | AssetCloud;
   };
   folder?: (number | null) | FolderInterface;
   updatedAt: string;

@@ -8,6 +8,7 @@ import { ButtonArray } from '@/components/ButtonArray'
 import { UAFButton } from '@/components/UAFButton'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { Heading } from '@/components/Heading'
+import { useLanguage } from '@/providers/LanguageContext'
 
 interface ListingCardDeckProps {
   title: string | null
@@ -60,6 +61,7 @@ interface ListingCardDeckProps {
       | {
           id: string
           title: string
+          heroTitle?: string
           slug: string
           heroSubtitle?: string
           image?: {
@@ -114,6 +116,7 @@ export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({
   resourcePages,
   buttons,
 }) => {
+  const { selectedLanguage } = useLanguage()
   const [api, setApi] = useState<CarouselApi>()
   const [canScrollPrev, setCanScrollPrev] = useState(false)
   const [canScrollNext, setCanScrollNext] = useState(false)
@@ -175,13 +178,13 @@ export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({
 
         return {
           id: doc.id,
-          title: doc.title || null,
+          title: doc.heroTitle || doc.title || null,
           desc: doc.heroSubtitle || null,
           image: typeof doc.image === 'object' ? doc.image : undefined,
           tags,
           link: {
             type: 'custom',
-            url: `/${relationTo}/${doc.slug}`,
+            url: `/${selectedLanguage}/${relationTo}/${doc.slug}`,
             label: 'Read More',
             arrowLink: true,
           },

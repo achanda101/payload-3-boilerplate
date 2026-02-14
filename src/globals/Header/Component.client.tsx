@@ -1,25 +1,21 @@
 'use client'
 
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import languageOptions from './languageOptions.json'
 import { NavMenuClient } from './NavMenu.client'
 import { useLanguage } from '@/providers/LanguageContext'
 import { useHeaderTheme } from '@/providers/HeaderTheme'
 import { useDebounce } from '@/utilities/useDebounce'
+import { stripLocaleFromPathname } from '@/utilities/localeUtils'
 import * as SheetPrimitive from '@radix-ui/react-dialog'
 import { Sheet, SheetPortal, SheetOverlay } from '@/components/ui/sheet'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 import { cn } from 'src/utilities/cn'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
 import { ChevronDown } from 'lucide-react'
-
-interface Language {
-  value: string
-  label: string
-}
 
 interface AssetCloud {
   id: string
@@ -29,33 +25,45 @@ interface AssetCloud {
   height?: number | null
 }
 
-interface HeaderClientProps {
-  data?: {
-    logo?: (number | null) | AssetCloud
-    searchEnabled?: boolean | null
-    languages: string[]
-    showBanner?: boolean | null
-    banner?: {
-      text?: string | null
-      link?: {
-        type?: 'reference' | 'custom' | 'email' | 'document' | 'etest' | null
-        reference?: {
-          relationTo: string
-          value: { slug: string } | string | number
-        } | null
-        url?: string | null
-        email?: string | null
-        label?: string | null
-        newTab?: boolean | null
+interface HeaderData {
+  logo?: (number | null) | AssetCloud
+  searchEnabled?: boolean | null
+  languages?: string[]
+  showBanner?: boolean | null
+  banner?: {
+    text?: string | null
+    link?: {
+      type?: 'reference' | 'custom' | 'email' | 'document' | 'etest' | null
+      reference?: {
+        relationTo: string
+        value: { slug: string } | string | number
       } | null
+      url?: string | null
+      email?: string | null
+      label?: string | null
+      newTab?: boolean | null
     } | null
-  }
+  } | null
+}
+
+interface DonateData {
+  url: string
+  buttonText: string
+}
+
+interface HeaderClientProps {
+  initialHeaderData?: HeaderData
+  initialNavData?: any
+  initialDonateData?: DonateData
+  initialLocale?: string
 }
 
 function BannerLink({
   link,
+  locale = 'en',
 }: {
-  link: NonNullable<NonNullable<HeaderClientProps['data']>['banner']>['link']
+  link: NonNullable<NonNullable<HeaderData['banner']>>['link']
+  locale?: string
 }) {
   if (!link) return null
 
@@ -66,8 +74,9 @@ function BannerLink({
   if (link.type === 'reference' && link.reference) {
     const ref = link.reference
     if (typeof ref.value === 'object' && 'slug' in ref.value) {
-      href =
+      const collectionPath =
         ref.relationTo === 'pages' ? `/${ref.value.slug}` : `/${ref.relationTo}/${ref.value.slug}`
+      href = `/${locale}${collectionPath}`
     }
   } else if (link.type === 'custom' && link.url) {
     href = link.url
@@ -94,41 +103,62 @@ function BannerLink({
   )
 }
 
-export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
+export const HeaderClient: React.FC<HeaderClientProps> = ({
+  initialHeaderData = {},
+  initialNavData = null,
+  initialDonateData = { url: '', buttonText: 'Donate' },
+  initialLocale = 'en',
+}) => {
   const { selectedLanguage, setSelectedLanguage, setAvailableLanguages } = useLanguage()
   const { headerTheme } = useHeaderTheme()
   const router = useRouter()
+  const pathname = usePathname()
   const searchBarRef = useRef<HTMLDivElement>(null)
   const searchButtonRef = useRef<HTMLButtonElement>(null)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isNavigating, setIsNavigating] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
-  const [headerData, setHeaderData] = useState<Partial<NonNullable<HeaderClientProps['data']>>>({})
-  const [navData, setNavData] = useState<any>(null)
-  const [donateUrl, setDonateUrl] = useState('')
-  const [donateButtonText, setDonateButtonText] = useState('Donate')
+
+  // Initialize state with server-provided data
+  const [headerData] = useState<HeaderData>(initialHeaderData)
+  const [navData, setNavData] = useState<any>(initialNavData)
+  const [donateUrl, setDonateUrl] = useState(initialDonateData.url)
+  const [donateButtonText, setDonateButtonText] = useState(initialDonateData.buttonText)
 
   // Debounce search query for automatic navigation
   const debouncedSearchQuery = useDebounce(searchQuery, 300)
 
-  // Fetch header data and set available languages
+  // Set available languages on mount from server data
   useEffect(() => {
-    const fetchHeaderData = async () => {
-      try {
-        const response = await fetch('/api/globals/header?depth=1')
-        const data = await response.json()
-        setHeaderData(data)
-        if (data.languages && data.languages.length > 0) {
-          setAvailableLanguages(data.languages)
-        }
-      } catch (error) {
-        console.error('Failed to fetch header data:', error)
-      }
+    if (initialHeaderData.languages && initialHeaderData.languages.length > 0) {
+      setAvailableLanguages(initialHeaderData.languages)
     }
+  }, [initialHeaderData.languages, setAvailableLanguages])
 
-    fetchHeaderData()
-  }, [setAvailableLanguages])
+  const fetchDataForLanguage = useCallback(async (language: string) => {
+    try {
+      const response = await fetch(`/api/globals/nav?locale=${language}&depth=1`)
+      const data = await response.json()
+      setNavData(data)
+    } catch (error) {
+      console.error('Failed to fetch navigation data:', error)
+    }
+    try {
+      const response = await fetch(`/api/globals/footer?locale=${language}&depth=1`)
+      const data = await response.json()
+      setDonateUrl(data?.donateCTA?.url || '')
+      setDonateButtonText(data?.donateCTA?.buttonText || 'Donate')
+    } catch (error) {
+      console.error('Failed to fetch footer Donate CTA data:', error)
+    }
+  }, [])
+
+  // Only re-fetch when language changes from the initial server-provided locale
+  useEffect(() => {
+    if (selectedLanguage !== initialLocale) {
+      fetchDataForLanguage(selectedLanguage)
+    }
+  }, [selectedLanguage, initialLocale, fetchDataForLanguage])
 
   const toggleSearch = (e?: React.MouseEvent) => {
     if (e) {
@@ -147,42 +177,22 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
     setIsMobileMenuOpen(false)
   }
 
-  const fetchDataForLanguage = async (language: string) => {
-    // Fetch nav data for the selected language
-    try {
-      const response = await fetch(`/api/globals/nav?locale=${language}&depth=1`)
-      const data = await response.json()
-      setNavData(data)
-    } catch (error) {
-      console.error('Failed to fetch navigation data:', error)
-    }
-    // Fetch donate URL and button text from footer global
-    try {
-      const response = await fetch(`/api/globals/footer?locale=${language}&depth=1`)
-      const data = await response.json()
-      setDonateUrl(data?.donateCTA?.url || '')
-      setDonateButtonText(data?.donateCTA?.buttonText || 'Donate')
-    } catch (error) {
-      console.error('Failed to fetch footer Donate CTA data:', error)
-    }
-  }
-
-  const handleLanguageChange = async (newLanguage: string) => {
+  const handleLanguageChange = (newLanguage: string) => {
     setSelectedLanguage(newLanguage)
-    await fetchDataForLanguage(newLanguage)
-  }
 
-  useEffect(() => {
-    // Initial fetch without changing the selected language
-    fetchDataForLanguage(selectedLanguage)
-  }, [selectedLanguage])
+    // Build locale-aware URL - all locales get prefix including English
+    const cleanPath = stripLocaleFromPathname(pathname)
+    const newPath = `/${newLanguage}${cleanPath === '/' ? '' : cleanPath}`
+
+    router.push(newPath)
+  }
 
   // Navigate to search page when debounced query changes
   useEffect(() => {
     if (debouncedSearchQuery.trim()) {
-      router.push(`/search?q=${encodeURIComponent(debouncedSearchQuery)}`)
+      router.push(`/${selectedLanguage}/search?q=${encodeURIComponent(debouncedSearchQuery)}`)
     }
-  }, [debouncedSearchQuery, router])
+  }, [debouncedSearchQuery, router, selectedLanguage])
 
   // Handle Escape key to close search
   useEffect(() => {
@@ -200,7 +210,6 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
   // Handle click outside search bar to close it
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      // Don't close if clicking on the search button
       if (searchButtonRef.current && searchButtonRef.current.contains(e.target as Node)) {
         return
       }
@@ -226,7 +235,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
         <div className="site-header-banner">
           <div className="site-header-banner-content">
             <p>{headerData.banner.text}</p>
-            {headerData.banner.link?.label && <BannerLink link={headerData.banner.link} />}
+            {headerData.banner.link?.label && <BannerLink link={headerData.banner.link} locale={selectedLanguage} />}
           </div>
         </div>
       )}
@@ -270,7 +279,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
           typeof headerData.logo === 'object' &&
           'url' in headerData.logo &&
           headerData.logo.url ? (
-            <Link href="/">
+            <Link href={`/${selectedLanguage}`}>
               <Image
                 src={headerData.logo.url}
                 alt={headerData.logo.alt || 'Site Logo'}
@@ -280,7 +289,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
               />
             </Link>
           ) : (
-            <Link href="/">Home</Link>
+            <Link href={`/${selectedLanguage}`}>Home</Link>
           )}
           <div className="hidden lg:block">
             <NavMenuClient data={navData} />
@@ -292,7 +301,6 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
             aria-label="Toggle mobile menu"
           >
             {isMobileMenuOpen ? (
-              // menu close icon
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
@@ -315,7 +323,6 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
                 </g>
               </svg>
             ) : (
-              // hamburger menu open icon
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
@@ -417,7 +424,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
             onSubmit={(e) => {
               e.preventDefault()
               if (searchQuery.trim()) {
-                router.push(`/search?q=${encodeURIComponent(searchQuery)}`)
+                router.push(`/${selectedLanguage}/search?q=${encodeURIComponent(searchQuery)}`)
                 setIsSearchOpen(false)
               }
             }}
@@ -460,7 +467,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
                 typeof headerData.logo === 'object' &&
                 'url' in headerData.logo &&
                 headerData.logo.url ? (
-                  <Link href="/" onClick={() => handleNavigation()}>
+                  <Link href={`/${selectedLanguage}`} onClick={() => handleNavigation()}>
                     <Image
                       src={headerData.logo.url}
                       alt={headerData.logo.alt || 'Site Logo'}
@@ -470,7 +477,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
                     />
                   </Link>
                 ) : (
-                  <Link href="/" onClick={() => handleNavigation()} className="font-bold">
+                  <Link href={`/${selectedLanguage}`} onClick={() => handleNavigation()} className="font-bold">
                     Menu
                   </Link>
                 )}
@@ -510,7 +517,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
                     onSubmit={(e) => {
                       e.preventDefault()
                       if (searchQuery.trim()) {
-                        router.push(`/search?q=${encodeURIComponent(searchQuery)}`)
+                        router.push(`/${selectedLanguage}/search?q=${encodeURIComponent(searchQuery)}`)
                         setIsMobileMenuOpen(false)
                       }
                     }}
@@ -564,11 +571,11 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data = {} }) => {
                               if (navItem.link.type === 'reference') {
                                 const ref = navItem.link.reference
                                 if (ref?.relationTo && ref?.value?.slug) {
-                                  // Pages collection should not have a prefix
-                                  if (ref.relationTo === 'pages') {
-                                    return `/${ref.value.slug}`
-                                  }
-                                  return `/${ref.relationTo}/${ref.value.slug}`
+                                  const collectionPath =
+                                    ref.relationTo === 'pages'
+                                      ? `/${ref.value.slug}`
+                                      : `/${ref.relationTo}/${ref.value.slug}`
+                                  return `/${selectedLanguage}${collectionPath}`
                                 }
                                 return '#'
                               } else {

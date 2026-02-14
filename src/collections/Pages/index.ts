@@ -4,7 +4,7 @@ import { link } from '@/fields/link'
 import { authenticated } from '@/access/authenticated'
 import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
 
-import { revalidatePage } from './hooks/revalidatePage'
+import { revalidatePage, revalidateDelete } from './hooks/revalidatePage'
 import { slugField } from '@/fields/slug'
 
 import { generatePreviewPath } from '@/utilities/generatePreviewPath'
@@ -53,7 +53,7 @@ export const Pages: CollectionConfig<'pages'> = {
       name: 'Content',
       order: '5',
     },
-    defaultColumns: ['title', 'mascot', 'bgType', 'heroColour', '_status', 'folder'],
+    defaultColumns: ['heroTitle', 'mascot', 'bgType', 'heroColour', '_status', 'folder'],
     livePreview: {
       url: ({ data, locale }) => {
         const path = generatePreviewPath({
@@ -373,5 +373,6 @@ export const Pages: CollectionConfig<'pages'> = {
   },
   hooks: {
     afterChange: [revalidatePage],
+    afterDelete: [revalidateDelete],
   },
 }

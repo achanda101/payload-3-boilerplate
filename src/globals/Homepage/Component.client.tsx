@@ -7,35 +7,21 @@ import { useLanguage } from '../../providers/LanguageContext'
 import { set } from 'react-hook-form'
 
 interface HomepageClientProps {
-  data?: {
-    heroSection?: {
-      heroTitle?: string | null,
-      heroSubtitle?: string | null,
-      ctaButton?: {
-        id: string,
-        link?: {
-          type: string | null,
-          newTab?: boolean | null,
-          url?: string | null,
-          label?: string | null
-        }
-      }[],
-   }
-  }
+  homepage: any  // Update to receive full homepage data
 }
 
-export const HomepageClient: React.FC<HomepageClientProps> = ({ data = {} }) => {
+export const HomepageClient: React.FC<HomepageClientProps> = ({ homepage }) => {
 
   const { selectedLanguage } = useLanguage()
-  const [ heroData, setHeroData ] = useState<NonNullable<HomepageClientProps[ 'data' ]>[ 'heroSection' ]>({})
-  
-  
+  const [ heroData, setHeroData ] = useState(homepage?.heroSection || {})
+
+
   const handleLanguageChange = async (newLanguage: string) => {
     try {
       const response = await fetch(`/api/globals/homepage?locale=${newLanguage}&depth=1`)
       const data = await response.json()
       setHeroData(data?.heroSection || {})
-      
+
     } catch (error) {
       console.error('Failed to fetch Hero Section data:', error)
     }

@@ -114,7 +114,7 @@ export const ButtonArray: React.FC<{
   disabledMessage?: string | null
 }> = ({
   btnArray,
-  colStackOnMobile = false,
+  colStackOnMobile = true,
   disableApplyButtons = false,
   disabledMessage = null,
 }) => {
@@ -234,9 +234,7 @@ export const ButtonArray: React.FC<{
                   ref={(el) => {
                     buttonRefs.current[index] = el
                   }}
-                  className={`${getBtnClassName()} ${
-                    isDisabled ? 'disabled' : ''
-                  }`}
+                  className={`${getBtnClassName()} ${isDisabled ? 'disabled' : ''}`}
                   disabled={isDisabled}
                 >
                   {button.link.label}

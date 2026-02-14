@@ -1,10 +1,9 @@
 'use client'
 
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useLanguage } from '../../providers/LanguageContext'
-import { set } from 'react-hook-form'
 
 interface AssetCloud {
   id: string
@@ -14,52 +13,67 @@ interface AssetCloud {
   height?: number | null
 }
 
-interface FooterClientProps {
-  data?: {
-    logo?: (number | null) | AssetCloud
-    donateCTA?: {
-      heading?: string
-      description?: string
-      buttonText?: string
+interface FooterData {
+  logo?: (number | null) | AssetCloud
+  orgName?: string
+  donateCTA?: {
+    heading?: string
+    description?: string
+    buttonText?: string
+    url?: string
+  }
+  newsletterSub?: {
+    description?: string
+    inputPlaceholder?: string
+    buttonText?: string
+    url?: string
+  }
+  smLinksGroup?: {
+    smLinks?: {
+      smType?: string
       url?: string
-    }
-    newsletterSub?: {
-      description?: string
-      inputPlaceholder?: string
-      buttonText?: string
-      url?: string
-    }
-    smLinksGroup?: {
-      smLinks?: {
-        smType?: string
-        url?: string
-      }[]
-    }
+    }[]
   }
 }
 
-export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
+interface ContactData {
+  emails?: Array<{ email?: string; label?: string }>
+}
+
+interface FooterClientProps {
+  initialFooterData?: FooterData
+  initialNavData?: any
+  initialContactData?: ContactData
+  initialLocale?: string
+}
+
+export const FooterClient: React.FC<FooterClientProps> = ({
+  initialFooterData = {},
+  initialNavData = null,
+  initialContactData = {},
+  initialLocale = 'en',
+}) => {
   const { selectedLanguage } = useLanguage()
-  const [orgLogo, setOrgLogo] = useState<NonNullable<FooterClientProps['data']>['logo']>(null)
-  const [orgName, setOrgName] = useState('Urgent Action Fund Asia & Pacific')
-  const [donateCTAData, setDonateCTAData] = useState<
-    NonNullable<FooterClientProps['data']>['donateCTA']
-  >({})
-  const [newsletterData, setNewsletterData] = useState<
-    NonNullable<FooterClientProps['data']>['newsletterSub']
-  >({})
-  const [navData, setNavData] = useState<any>(null)
-  const [contactInfo, setContactInfo] = useState<{
-    emails?: Array<{ email?: string; label?: string }>
-  }>({})
-  const [smLinks, setSmLinks] = useState<NonNullable<FooterClientProps['data']>['smLinksGroup']>({
-    smLinks: [],
-  })
+  const [orgLogo, setOrgLogo] = useState<FooterData['logo']>(initialFooterData?.logo || null)
+  const [orgName, setOrgName] = useState(
+    initialFooterData?.orgName || 'Urgent Action Fund Asia & Pacific',
+  )
+  const [donateCTAData, setDonateCTAData] = useState<FooterData['donateCTA']>(
+    initialFooterData?.donateCTA || {},
+  )
+  const [newsletterData, setNewsletterData] = useState<FooterData['newsletterSub']>(
+    initialFooterData?.newsletterSub || {},
+  )
+  const [navData, setNavData] = useState<any>(initialNavData)
+  const [contactInfo, setContactInfo] = useState<ContactData>(initialContactData || { emails: [] })
+  const [smLinks, setSmLinks] = useState<FooterData['smLinksGroup']>(
+    initialFooterData?.smLinksGroup || { smLinks: [] },
+  )
   const [showModal, setShowModal] = useState(false)
   const [subscribeMsg, setSubscribeMsg] = useState('')
   const emailInputRef = useRef<HTMLInputElement>(null)
 
-  const handleLanguageChange = async (newLanguage: string) => {
+  const handleLanguageChange = useCallback(async (newLanguage: string) => {
     try {
       const response = await fetch(`/api/globals/footer?locale=${newLanguage}&depth=1`)
       const data = await response.json()
@@ -69,9 +83,8 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
       setOrgName(data?.orgName || 'Urgent Action Fund Asia & Pacific')
       setOrgLogo(data?.logo || null)
     } catch (error) {
-      console.error('Failed to fetch footer Donate CTA data and Newsletter data:', error)
+      console.error('Failed to fetch footer data:', error)
     }
-    // Fetch nav data for the selected language
     try {
       const response = await fetch(`/api/globals/nav?locale=${newLanguage}&depth=1`)
       const data = await response.json()
@@ -79,20 +92,21 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
     } catch (error) {
       console.error('Failed to fetch footer navigation data:', error)
     }
-    // Fetch contact data for the selected language
     try {
       const response = await fetch(`/api/globals/contactInfo?locale=${newLanguage}&depth=1`)
       const data = await response.json()
       setContactInfo(data || { emails: [] })
     } catch (error) {
-      console.error('Failed to fetch footer navigation data:', error)
+      console.error('Failed to fetch contact data:', error)
     }
-  }
+  }, [])
 
+  // Only re-fetch when language changes from the initial server-provided locale
   useEffect(() => {
-    // Any side effects based on selectedLanguage can be handled here
-    handleLanguageChange(selectedLanguage)
-  }, [selectedLanguage])
+    if (selectedLanguage !== initialLocale) {
+      handleLanguageChange(selectedLanguage)
+    }
+  }, [selectedLanguage, initialLocale, handleLanguageChange])
 
   const handleSubscriptionSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -101,7 +115,6 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (email && emailRegex.test(email)) {
-      // Make call to add email to the subscription list
       try {
         const response = await fetch('https://list.uafanp.org/api/public/subscription', {
           method: 'POST',
@@ -110,7 +123,6 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
           },
           body: JSON.stringify({
             email: email,
-            // TODO: put the list UUID in env vars
             list_uuids: ['c41c894d-7563-4c8c-ad30-51cb77907cbf'],
           }),
         })
@@ -123,9 +135,9 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
           const errorData = await response.json()
           throw new Error(errorData.message || 'Subscription failed')
         }
-      } catch (error) {
+      } catch (error: any) {
         setSubscribeMsg(
-          `Error message:${error.message}. ${email} subscription failed.` ||
+          `Error message: ${error.message}. ${email} subscription failed.` ||
             'An error occurred. Please try again.',
         )
       }
@@ -199,7 +211,6 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
             {newsletterData?.description && <h5>{newsletterData.description}</h5>}
           </div>
           <div className="footer-grid-item div-j h-auto min-h-fit">
-            {/* <form method="post" action="https://list.uafanp.org/subscription/form" style={{display: 'flex'}}> */}
             <form
               onSubmit={handleSubscriptionSubmit}
               action="https://list.uafanp.org/subscription/form"
@@ -235,17 +246,15 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
                 <p className="tag">{navData.menuItems?.[0]?.label}</p>
                 {navData.menuItems?.[0]?.navItems && (
                   <ul>
-                    {navData.menuItems?.[0]?.navItems?.map((navItem, index) => {
+                    {navData.menuItems?.[0]?.navItems?.map((navItem: any, index: number) => {
                       const getHref = () => {
                         if (!navItem.link) return '#'
                         if (navItem.link.type === 'reference') {
                           const relationTo = navItem.link.reference?.relationTo
                           const slug = navItem.link.reference?.value?.slug
-                          // Pages collection should not have a prefix
-                          if (relationTo === 'pages') {
-                            return `/${slug}` || '#'
-                          }
-                          return `/${relationTo}/${slug}` || '#'
+                          const collectionPath =
+                            relationTo === 'pages' ? `/${slug}` : `/${relationTo}/${slug}`
+                          return `/${selectedLanguage}${collectionPath}` || '#'
                         } else {
                           return navItem.link.url || '#'
                         }
@@ -269,17 +278,15 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
                 <p className="tag">{navData.menuItems?.[1]?.label}</p>
                 {navData.menuItems?.[1]?.navItems && (
                   <ul>
-                    {navData.menuItems?.[1]?.navItems?.map((navItem, index) => {
+                    {navData.menuItems?.[1]?.navItems?.map((navItem: any, index: number) => {
                       const getHref = () => {
                         if (!navItem.link) return '#'
                         if (navItem.link.type === 'reference') {
                           const relationTo = navItem.link.reference?.relationTo
                           const slug = navItem.link.reference?.value?.slug
-                          // Pages collection should not have a prefix
-                          if (relationTo === 'pages') {
-                            return `/${slug}` || '#'
-                          }
-                          return `/${relationTo}/${slug}` || '#'
+                          const collectionPath =
+                            relationTo === 'pages' ? `/${slug}` : `/${relationTo}/${slug}`
+                          return `/${selectedLanguage}${collectionPath}` || '#'
                         } else {
                           return navItem.link.url || '#'
                         }
@@ -303,17 +310,15 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
                 <p className="tag">{navData.menuItems?.[2]?.label}</p>
                 {navData.menuItems?.[2]?.navItems && (
                   <ul>
-                    {navData.menuItems?.[2]?.navItems?.map((navItem, index) => {
+                    {navData.menuItems?.[2]?.navItems?.map((navItem: any, index: number) => {
                       const getHref = () => {
                         if (!navItem.link) return '#'
                         if (navItem.link.type === 'reference') {
                           const relationTo = navItem.link.reference?.relationTo
                           const slug = navItem.link.reference?.value?.slug
-                          // Pages collection should not have a prefix
-                          if (relationTo === 'pages') {
-                            return `/${slug}` || '#'
-                          }
-                          return `/${relationTo}/${slug}` || '#'
+                          const collectionPath =
+                            relationTo === 'pages' ? `/${slug}` : `/${relationTo}/${slug}`
+                          return `/${selectedLanguage}${collectionPath}` || '#'
                         } else {
                           return navItem.link.url || '#'
                         }
@@ -337,17 +342,15 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
                 <p className="tag">{navData.menuItems?.[3]?.label}</p>
                 {navData.menuItems?.[3]?.navItems && (
                   <ul>
-                    {navData.menuItems?.[3]?.navItems?.map((navItem, index) => {
+                    {navData.menuItems?.[3]?.navItems?.map((navItem: any, index: number) => {
                       const getHref = () => {
                         if (!navItem.link) return '#'
                         if (navItem.link.type === 'reference') {
                           const relationTo = navItem.link.reference?.relationTo
                           const slug = navItem.link.reference?.value?.slug
-                          // Pages collection should not have a prefix
-                          if (relationTo === 'pages') {
-                            return `/${slug}` || '#'
-                          }
-                          return `/${relationTo}/${slug}` || '#'
+                          const collectionPath =
+                            relationTo === 'pages' ? `/${slug}` : `/${relationTo}/${slug}`
+                          return `/${selectedLanguage}${collectionPath}` || '#'
                         } else {
                           return navItem.link.url || '#'
                         }
@@ -367,7 +370,7 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
           </div>
           <div className="footer-grid-item div-e">
             {orgLogo && typeof orgLogo !== 'number' && orgLogo.url ? (
-              <Link href="/">
+              <Link href={`/${selectedLanguage}`}>
                 <Image
                   src={orgLogo.url}
                   alt={orgLogo.alt || 'Site Logo'}
@@ -377,7 +380,7 @@ export const FooterClient: React.FC<FooterClientProps> = ({ data = {} }) => {
                 />
               </Link>
             ) : (
-              <Link href="/">Home</Link>
+              <Link href={`/${selectedLanguage}`}>Home</Link>
             )}
           </div>
           <div className="footer-grid-item div-f">

@@ -8,6 +8,7 @@ import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from './Res
 import WheelGestures from 'embla-carousel-wheel-gestures'
 import { serializeLexical } from '@/components/RichText/serialize'
 import { Heading } from '@/components/Heading'
+import { useLanguage } from '@/providers/LanguageContext'
 import type { Blog, Report, Mmedia, MediaCloud, Doctype } from '@/payload-types'
 
 interface ResourceFeatureCardProps {
@@ -53,20 +54,20 @@ const getCollectionSlug = (relationTo?: string): string => {
   return relationTo || ''
 }
 
-// Helper function to construct URL
-const getResourceUrl = (slug?: string | null, relationTo?: string): string => {
-  if (!slug) return '#'
-  const collectionSlug = getCollectionSlug(relationTo)
-  return collectionSlug ? `/${collectionSlug}/${slug}` : `/${slug}`
-}
-
 // Helper component to render a single card for carousel (image left, text right on desktop)
 const CarouselResourceCard: React.FC<{
   item: Blog | Report | Mmedia
   relationTo: string
-}> = ({ item, relationTo }) => {
+  locale: string
+}> = ({ item, relationTo, locale }) => {
+  // Helper function to construct locale-aware URL
+  const getResourceUrl = (slug?: string | null, relationTo?: string): string => {
+    if (!slug) return '#'
+    const collectionSlug = getCollectionSlug(relationTo)
+    return collectionSlug ? `/${locale}/${collectionSlug}/${slug}` : `/${locale}/${slug}`
+  }
   // Extract common fields
-  const title = item.title
+  const title = 'heroTitle' in item && item.heroTitle ? item.heroTitle : item.title
   const slug = item.slug
   const heroSubtitle = item.heroSubtitle
 
@@ -172,9 +173,16 @@ const CarouselResourceCard: React.FC<{
 const SingleResourceCard: React.FC<{
   item: Blog | Report | Mmedia
   relationTo: string
-}> = ({ item, relationTo }) => {
+  locale: string
+}> = ({ item, relationTo, locale }) => {
+  // Helper function to construct locale-aware URL
+  const getResourceUrl = (slug?: string | null, relationTo?: string): string => {
+    if (!slug) return '#'
+    const collectionSlug = getCollectionSlug(relationTo)
+    return collectionSlug ? `/${locale}/${collectionSlug}/${slug}` : `/${locale}/${slug}`
+  }
   // Extract common fields
-  const title = item.title
+  const title = 'heroTitle' in item && item.heroTitle ? item.heroTitle : item.title
   const slug = item.slug
   const heroSubtitle = item.heroSubtitle
 
@@ -282,6 +290,7 @@ export const ResourceFeatureCard: React.FC<ResourceFeatureCardProps> = ({
   desc,
   featCardList,
 }) => {
+  const { selectedLanguage } = useLanguage()
   const [api, setApi] = useState<CarouselApi>()
   const [canScrollPrev, setCanScrollPrev] = useState(false)
   const [canScrollNext, setCanScrollNext] = useState(false)
@@ -341,7 +350,7 @@ export const ResourceFeatureCard: React.FC<ResourceFeatureCardProps> = ({
             </div>
           )}
         </div>
-        <SingleResourceCard item={item} relationTo={relationTo} />
+        <SingleResourceCard item={item} relationTo={relationTo} locale={selectedLanguage} />
       </>
     )
   }
@@ -378,7 +387,7 @@ export const ResourceFeatureCard: React.FC<ResourceFeatureCardProps> = ({
 
               return (
                 <CarouselItem key={`${relationTo}-${item.id}`}>
-                  <CarouselResourceCard item={item} relationTo={relationTo} />
+                  <CarouselResourceCard item={item} relationTo={relationTo} locale={selectedLanguage} />
                 </CarouselItem>
               )
             })}

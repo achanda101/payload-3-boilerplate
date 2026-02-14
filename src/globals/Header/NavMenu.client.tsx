@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
+import { useLanguage } from '@/providers/LanguageContext'
 
 interface LinkField {
   type: 'reference' | 'custom'
@@ -107,6 +108,8 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ label, id, children }) => {
 }
 
 export const NavMenuClient: React.FC<NavMenuClientProps> = ({ data }) => {
+  const { selectedLanguage } = useLanguage()
+
   if (!data || !data.menuItems) {
     return null
   }
@@ -128,11 +131,9 @@ export const NavMenuClient: React.FC<NavMenuClientProps> = ({ data }) => {
               if (navItem.link.type === 'reference') {
                 const relationTo = navItem.link.reference?.relationTo
                 const slug = navItem.link.reference?.value?.slug
-                // Pages collection should not have a prefix
-                if (relationTo === 'pages') {
-                  return `/${slug}` || '#'
-                }
-                return `/${relationTo}/${slug}` || '#'
+                const collectionPath =
+                  relationTo === 'pages' ? `/${slug}` : `/${relationTo}/${slug}`
+                return `/${selectedLanguage}${collectionPath}` || '#'
               } else {
                 return navItem.link.url || '#'
               }

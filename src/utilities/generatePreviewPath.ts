@@ -1,4 +1,5 @@
 import { CollectionSlug } from 'payload'
+import { getLocalizedUrl } from './localeUtils'
 
 const collectionPrefixMap: Partial<Record<CollectionSlug, string>> = {
   grants: '/grants',
@@ -16,8 +17,12 @@ type Props = {
   locale?: string
 }
 
-export const generatePreviewPath = ({ collection, slug, locale }: Props) => {
-  const path = `${collectionPrefixMap[collection]}/${slug}`
+export const generatePreviewPath = ({ collection, slug, locale = 'en' }: Props) => {
+  // Build base path without locale
+  const basePath = `${collectionPrefixMap[collection]}/${slug}`
+
+  // Add locale prefix using getLocalizedUrl
+  const path = getLocalizedUrl(basePath, locale)
 
   const params = {
     slug,

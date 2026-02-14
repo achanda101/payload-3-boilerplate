@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { UAFButton } from '@/components/UAFButton'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { Heading } from '@/components/Heading'
+import { useLanguage } from '@/providers/LanguageContext'
 
 interface ResourceCardProps {
   id: string
@@ -55,6 +56,7 @@ export const ResourceCard: React.FC<ResourceCardProps> = ({
   tags,
   link,
 }) => {
+  const { selectedLanguage } = useLanguage()
   const isDesktop = useMediaQuery('(min-width: 1024px)')
   const isTablet = useMediaQuery('(min-width: 768px) and (max-width: 1023px)')
   let currentCardWidth = 0
@@ -78,7 +80,7 @@ export const ResourceCard: React.FC<ResourceCardProps> = ({
       key={id}
     >
       {image?.url && (
-        <Link href={link?.reference?.value?.slug ? `/${link.reference.relationTo}/${link.reference.value.slug}` : '#'}>
+        <Link href={link?.reference?.value?.slug ? `/${selectedLanguage}/${link.reference.relationTo}/${link.reference.value.slug}` : '#'}>
           <div className="w-full relative mb-4 h-80 overflow-hidden rounded-2xl">
             <Image
               src={image.url}

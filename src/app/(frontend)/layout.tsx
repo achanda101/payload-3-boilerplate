@@ -3,8 +3,6 @@ import React from 'react'
 import localFont from 'next/font/local'
 import dynamic from 'next/dynamic'
 
-import { Footer } from '@/globals/Footer/Component'
-import { Header } from '@/globals/Header/Component'
 import { Providers } from '@/providers'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import { draftMode } from 'next/headers'
@@ -71,11 +69,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             />
           )}
 
-          <div>
-            <Header />
-            <main>{children}</main>
-            <Footer />
-          </div>
+          {children}
         </Providers>
       </body>
     </html>

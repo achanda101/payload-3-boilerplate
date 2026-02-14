@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { serializeLexical } from '@/components/RichText/serialize'
 import { Heading } from '@/components/Heading'
+import { useLanguage } from '@/providers/LanguageContext'
 import type { Blog, Report, Mmedia, MediaCloud, Doctype } from '@/payload-types'
 
 interface ResourceGalleryProps {
@@ -52,20 +53,20 @@ const getCollectionSlug = (relationTo?: string): string => {
   return relationTo || ''
 }
 
-// Helper function to construct URL
-const getResourceUrl = (slug?: string | null, relationTo?: string): string => {
-  if (!slug) return '#'
-  const collectionSlug = getCollectionSlug(relationTo)
-  return collectionSlug ? `/${collectionSlug}/${slug}` : `/${slug}`
-}
-
 // Helper component to render a single gallery card
 const GalleryCard: React.FC<{
   item: Blog | Report | Mmedia
   relationTo: string
-}> = ({ item, relationTo }) => {
+  locale: string
+}> = ({ item, relationTo, locale }) => {
+  // Helper function to construct locale-aware URL
+  const getResourceUrl = (slug?: string | null, relationTo?: string): string => {
+    if (!slug) return '#'
+    const collectionSlug = getCollectionSlug(relationTo)
+    return collectionSlug ? `/${locale}/${collectionSlug}/${slug}` : `/${locale}/${slug}`
+  }
   // Extract common fields
-  const title = item.title
+  const title = 'heroTitle' in item && item.heroTitle ? item.heroTitle : item.title
   const slug = item.slug
   const heroSubtitle = item.heroSubtitle
 
@@ -167,6 +168,7 @@ export const ResourceGallery: React.FC<ResourceGalleryProps> = ({
   desc,
   galleryList,
 }) => {
+  const { selectedLanguage } = useLanguage()
   const [displayCount, setDisplayCount] = useState(6)
 
   // Only render if we have at least one item
@@ -202,7 +204,7 @@ export const ResourceGallery: React.FC<ResourceGalleryProps> = ({
           const item = galleryItem.value as Blog | Report | Mmedia
           const relationTo = galleryItem.relationTo
 
-          return <GalleryCard key={`${relationTo}-${item.id}`} item={item} relationTo={relationTo} />
+          return <GalleryCard key={`${relationTo}-${item.id}`} item={item} relationTo={relationTo} locale={selectedLanguage} />
         })}
       </div>
 

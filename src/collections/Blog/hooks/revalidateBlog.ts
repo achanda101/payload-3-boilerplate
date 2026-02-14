@@ -1,30 +1,13 @@
-import type { CollectionAfterChangeHook } from 'payload'
+import { createRevalidateHook, createRevalidateDeleteHook } from '@/utilities/revalidateCollection'
 
-import { revalidatePath } from 'next/cache'
+export const revalidateBlog = createRevalidateHook({
+  collectionSlug: 'blog',
+  basePath: '/blog',
+  tagName: 'blog',
+})
 
-import type { Blog } from '../../../payload-types'
-
-export const revalidateBlog: CollectionAfterChangeHook<Blog> = ({
-  doc,
-  previousDoc,
-  req: { payload },
-}) => {
-  if (doc._status === 'published') {
-    const path = `/blog/${doc.slug}`
-
-    payload.logger.info(`Revalidating Blog at path: ${path}`)
-
-    revalidatePath(path)
-  }
-
-  // If the blogpost was previously published, we need to revalidate the old path
-  if (previousDoc._status === 'published' && doc._status !== 'published') {
-    const oldPath = `/blog/${previousDoc.slug}`
-
-    payload.logger.info(`Revalidating old Blog at path: ${oldPath}`)
-
-    revalidatePath(oldPath)
-  }
-
-  return doc
-}
+export const revalidateDelete = createRevalidateDeleteHook({
+  collectionSlug: 'blog',
+  basePath: '/blog',
+  tagName: 'blog',
+})

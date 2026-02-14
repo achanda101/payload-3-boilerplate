@@ -1,5 +1,5 @@
 'use client'
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams, useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -31,6 +31,8 @@ interface SearchResult {
 
 export default function SearchContent() {
   const searchParams = useSearchParams()
+  const params = useParams()
+  const locale = (params?.locale as string) || 'en'
   const query = searchParams.get('q')
   const [results, setResults] = useState<SearchResult[]>([])
   const [loading, setLoading] = useState(false)
@@ -75,22 +77,24 @@ export default function SearchContent() {
 
   const getResultLink = (result: SearchResult): string => {
     const collection = result.doc?.relationTo
-    if (!collection) return `/${result.slug}`
+    const prefix = `/${locale}`
+
+    if (!collection) return `${prefix}/${result.slug}`
 
     switch (collection) {
       case 'blog':
-        return `/blog/${result.slug}`
+        return `${prefix}/blog/${result.slug}`
       case 'grants':
-        return `/grants/${result.slug}`
+        return `${prefix}/grants/${result.slug}`
       case 'reports':
-        return `/reports/${result.slug}`
+        return `${prefix}/reports/${result.slug}`
       case 'mmedia':
-        return `/mmedia/${result.slug}`
+        return `${prefix}/mmedia/${result.slug}`
       case 'grantcards':
-        return `/grantcards/${result.slug}`
+        return `${prefix}/grantcards/${result.slug}`
       case 'pages':
       default:
-        return `/${result.slug}`
+        return `${prefix}/${result.slug}`
     }
   }
 
