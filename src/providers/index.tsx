@@ -7,7 +7,7 @@ import { LanguageProvider } from './LanguageContext'
 export const Providers: React.FC<{
   children: React.ReactNode
   locale?: string
-}> = ({ children, locale = 'en' }) => {
+}> = ({ children, locale }) => {
   return (
     <ThemeProvider>
       <LanguageProvider locale={locale}>
