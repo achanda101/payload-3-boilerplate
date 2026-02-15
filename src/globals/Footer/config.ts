@@ -5,7 +5,7 @@ import { array } from 'node_modules/payload/dist/fields/validations'
 
 export const Footer: GlobalConfig = {
   slug: 'footer',
-  label: 'Footer: Social Media Links, Donate CTA & Newsletter, Badges',
+  label: 'Footer: Social Media Links, Donate CTA, Newsletter, Badges',
   access: {
     read: () => true,
   },

@@ -53,7 +53,7 @@ export const Grants: CollectionConfig<'grants'> = {
       name: 'Content',
       order: '2',
     },
-    defaultColumns: ['title', 'pageType', 'grantCard', 'bgType', '_status', 'folder'],
+    defaultColumns: ['heroTitle', 'pageType', 'grantCard', 'bgType', '_status', 'folder'],
     livePreview: {
       url: ({ data, locale }) => {
         const path = generatePreviewPath({

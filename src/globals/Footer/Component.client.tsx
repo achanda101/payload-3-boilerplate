@@ -425,7 +425,7 @@ export const FooterClient: React.FC<FooterClientProps> = ({
               )}
             </div>
           </div>
-          <div className="footer-grid-item div-h">
+          <div className="footer-grid-item div-h" style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
             {badges &&
               badges.map((badge) => {
                 const badgeImage =

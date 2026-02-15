@@ -25,6 +25,7 @@ import * as migration_20260205_083618_add_header_banner from './20260205_083618_
 import * as migration_20260205_085920_add_header_banner from './20260205_085920_add_header_banner';
 import * as migration_20260205_152212_feat_blurhash from './20260205_152212_feat_blurhash';
 import * as migration_20260207_080532_remove_contenttext_index from './20260207_080532_remove_contenttext_index';
+import * as migration_20260215_082545_footer_badges from './20260215_082545_footer_badges';
 
 export const migrations = [
   {
@@ -160,6 +161,11 @@ export const migrations = [
   {
     up: migration_20260207_080532_remove_contenttext_index.up,
     down: migration_20260207_080532_remove_contenttext_index.down,
-    name: '20260207_080532_remove_contenttext_index'
+    name: '20260207_080532_remove_contenttext_index',
+  },
+  {
+    up: migration_20260215_082545_footer_badges.up,
+    down: migration_20260215_082545_footer_badges.down,
+    name: '20260215_082545_footer_badges'
   },
 ];

@@ -59,6 +59,7 @@ import { LinkToDoc as LinkToDoc_aead06e4cbf6b2620c5c51c9ab283634 } from '@payloa
 import { ReindexButton as ReindexButton_aead06e4cbf6b2620c5c51c9ab283634 } from '@payloadcms/plugin-search/client'
 import { FolderTypeField as FolderTypeField_2b8867833a34864a02ddf429b0728a40 } from '@payloadcms/next/client'
 import { default as default_9702e426ff612febae1976764fe56710 } from 'src/globals/Footer/SmItemRowLabel.tsx'
+import { default as default_5960d07c4d66ab705c1f93baa0a9b0c2 } from 'src/globals/Footer/BadgeItemLabel.tsx'
 import { default as default_dde45096079356e8a763d3b11b727b2d } from 'src/globals/Navigation/NavItemRowLabel.tsx'
 import { default as default_760c331c4141744d569a29c3060f6950 } from 'src/globals/Navigation/MenuItemRowLabel.tsx'
 import { default as default_24d932ac7ff0c3e5020bd0c465b1324e } from 'src/globals/ContactInfo/EmailItemRowLabel.tsx'
@@ -133,6 +134,7 @@ export const importMap = {
   "@payloadcms/plugin-search/client#ReindexButton": ReindexButton_aead06e4cbf6b2620c5c51c9ab283634,
   "@payloadcms/next/client#FolderTypeField": FolderTypeField_2b8867833a34864a02ddf429b0728a40,
   "src/globals/Footer/SmItemRowLabel.tsx#default": default_9702e426ff612febae1976764fe56710,
+  "src/globals/Footer/BadgeItemLabel.tsx#default": default_5960d07c4d66ab705c1f93baa0a9b0c2,
   "src/globals/Navigation/NavItemRowLabel.tsx#default": default_dde45096079356e8a763d3b11b727b2d,
   "src/globals/Navigation/MenuItemRowLabel.tsx#default": default_760c331c4141744d569a29c3060f6950,
   "src/globals/ContactInfo/EmailItemRowLabel.tsx#default": default_24d932ac7ff0c3e5020bd0c465b1324e,
