@@ -13,6 +13,14 @@ interface AssetCloud {
   height?: number | null
 }
 
+interface MediaCloud {
+  id: string
+  alt: string
+  url?: string | null
+  width?: number | null
+  height?: number | null
+}
+
 interface FooterData {
   logo?: (number | null) | AssetCloud
   orgName?: string
@@ -34,6 +42,12 @@ interface FooterData {
       url?: string
     }[]
   }
+  badges?: {
+    id: string
+    label?: string
+    image?: (number | null) | MediaCloud
+    link?: string | null
+  }[]
 }
 
 interface ContactData {
@@ -69,6 +83,7 @@ export const FooterClient: React.FC<FooterClientProps> = ({
   const [smLinks, setSmLinks] = useState<FooterData['smLinksGroup']>(
     initialFooterData?.smLinksGroup || { smLinks: [] },
   )
+  const [badges, setBadges] = useState<FooterData['badges']>(initialFooterData?.badges || [])
   const [showModal, setShowModal] = useState(false)
   const [subscribeMsg, setSubscribeMsg] = useState('')
   const emailInputRef = useRef<HTMLInputElement>(null)
@@ -80,6 +95,7 @@ export const FooterClient: React.FC<FooterClientProps> = ({
       setDonateCTAData(data?.donateCTA || {})
       setNewsletterData(data?.newsletterSub || {})
       setSmLinks(data?.smLinksGroup || { smLinks: [] })
+      setBadges(data?.badges || [])
       setOrgName(data?.orgName || 'Urgent Action Fund Asia & Pacific')
       setOrgLogo(data?.logo || null)
     } catch (error) {
@@ -410,34 +426,45 @@ export const FooterClient: React.FC<FooterClientProps> = ({
             </div>
           </div>
           <div className="footer-grid-item div-h">
-            <Link
-              href="https://uafanp.org/#"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ display: 'flex', lineHeight: 0 }}
-            >
-              <Image
-                src="/footer_imgs/ngo-source-logo.png"
-                alt="NGO Source logo"
-                width={150}
-                height={58}
-                style={{ display: 'block', height: 'auto' }}
-              />
-            </Link>
-            <Link
-              href="https://www.ngosource.org/about-equivalency-determination-on-file-badge?ref=https%3A%2F%2Fwww.aswaalliance.org%2F"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ display: 'flex', lineHeight: 0 }}
-            >
-              <Image
-                src="/footer_imgs/ACNC-Registered-Charity-Logo.png"
-                alt="ACNC registered charity logo"
-                width={100}
-                height={100}
-                style={{ display: 'block' }}
-              />
-            </Link>
+            {badges &&
+              badges.map((badge) => {
+                const badgeImage =
+                  typeof badge.image === 'object' && badge.image !== null ? badge.image : null
+
+                if (!badgeImage?.url) return null
+
+                const badgeContent = (
+                  <Image
+                    src={badgeImage.url}
+                    alt={badgeImage.alt || badge.label || 'Badge'}
+                    width={badgeImage.width || 150}
+                    height={80}
+                    style={{ display: 'block', height: '80px', width: 'auto' }}
+                  />
+                )
+
+                // If badge has a link, wrap in Link component
+                if (badge.link) {
+                  return (
+                    <Link
+                      key={badge.id}
+                      href={badge.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ display: 'flex', lineHeight: 0 }}
+                    >
+                      {badgeContent}
+                    </Link>
+                  )
+                }
+
+                // Otherwise, just render the image
+                return (
+                  <div key={badge.id} style={{ display: 'flex', lineHeight: 0 }}>
+                    {badgeContent}
+                  </div>
+                )
+              })}
           </div>
           {contactInfo?.emails && contactInfo.emails.length > 0 && (
             <div className="footer-grid-item div-g">

@@ -5,7 +5,7 @@ import { array } from 'node_modules/payload/dist/fields/validations'
 
 export const Footer: GlobalConfig = {
   slug: 'footer',
-  label: 'Footer: Social Media Links, Donate CTA & Newsletter',
+  label: 'Footer: Social Media Links, Donate CTA & Newsletter, Badges',
   access: {
     read: () => true,
   },
@@ -30,8 +30,8 @@ export const Footer: GlobalConfig = {
               padding: '20px',
               border: '1px solid #dee2e6',
               borderRadius: '8px',
-            }
-          }
+            },
+          },
         },
         {
           name: 'logo',
@@ -45,10 +45,10 @@ export const Footer: GlobalConfig = {
               padding: '20px',
               border: '1px solid #dee2e6',
               borderRadius: '8px',
-            }
+            },
           },
         },
-      ]
+      ],
     },
     {
       type: 'row',
@@ -66,7 +66,7 @@ export const Footer: GlobalConfig = {
               localized: true,
               admin: {
                 width: '25%',
-              }
+              },
             },
             {
               name: 'inputPlaceholder',
@@ -76,7 +76,7 @@ export const Footer: GlobalConfig = {
               localized: true,
               admin: {
                 width: '25%',
-              }
+              },
             },
             {
               name: 'buttonText',
@@ -86,22 +86,22 @@ export const Footer: GlobalConfig = {
               localized: true,
               admin: {
                 width: '25%',
-              }
+              },
             },
             {
               name: 'url',
               label: 'Subscription URL',
               type: 'text',
               defaultValue: 'https://list.uafanp.org/subscription/form',
-              validate: (val) => {
-                  if (!val) return 'External URL is required'
-                  const isValidUrl = /^https?:\/\/.+/.test(val)
-                  if (!isValidUrl) {
-                    return 'Please enter a valid URL starting with http:// or https://'
-                  }
-                  return true
+              validate: (val: string) => {
+                if (!val) return 'External URL is required'
+                const isValidUrl = /^https?:\/\/.+/.test(val)
+                if (!isValidUrl) {
+                  return 'Please enter a valid URL starting with http:// or https://'
+                }
+                return true
               },
-            }
+            },
           ],
           admin: {
             style: {
@@ -110,9 +110,9 @@ export const Footer: GlobalConfig = {
               border: '1px solid #dee2e6',
               borderRadius: '8px',
             },
-          }
-        }
-      ]
+          },
+        },
+      ],
     },
     {
       type: 'row',
@@ -132,7 +132,8 @@ export const Footer: GlobalConfig = {
             {
               name: 'description',
               type: 'textarea',
-              defaultValue: 'Every contribution - big or small - fuels safety, resilience, and justice.',
+              defaultValue:
+                'Every contribution - big or small - fuels safety, resilience, and justice.',
               required: true,
               admin: {
                 description: 'A short description to encourage donations',
@@ -155,13 +156,13 @@ export const Footer: GlobalConfig = {
               admin: {
                 description: 'Enter a URL to the donation platform (https://example.com/donate)',
               },
-              validate: (val) => {
-                  if (!val) return 'External URL is required'
-                  const isValidUrl = /^https?:\/\/.+/.test(val)
-                  if (!isValidUrl) {
-                    return 'Please enter a valid URL starting with http:// or https://'
-                  }
-                  return true
+              validate: (val: string) => {
+                if (!val) return 'External URL is required'
+                const isValidUrl = /^https?:\/\/.+/.test(val)
+                if (!isValidUrl) {
+                  return 'Please enter a valid URL starting with http:// or https://'
+                }
+                return true
               },
             },
           ],
@@ -172,11 +173,11 @@ export const Footer: GlobalConfig = {
               padding: '20px',
               border: '1px solid #dee2e6',
               borderRadius: '8px',
-            }
+            },
           },
         },
         {
-          name: 'smLinksGroup', 
+          name: 'smLinksGroup',
           label: 'Social Media Links',
           type: 'group',
           admin: {
@@ -185,7 +186,7 @@ export const Footer: GlobalConfig = {
               padding: '20px',
               border: '1px solid #dee2e6',
               borderRadius: '8px',
-            }
+            },
           },
           fields: [
             {
@@ -193,7 +194,7 @@ export const Footer: GlobalConfig = {
               label: '',
               labels: {
                 singular: 'Social Media Link',
-                plural: 'Social Media Links'
+                plural: 'Social Media Links',
               },
               type: 'array',
               fields: [
@@ -206,13 +207,13 @@ export const Footer: GlobalConfig = {
                     { label: 'Instagram', value: 'insta' },
                     { label: 'Threads', value: 'threads' },
                     { label: 'Mastodon', value: 'mast' },
-                    { label: 'Whatsapp', value: 'wa'},
+                    { label: 'Whatsapp', value: 'wa' },
                     { label: 'LinkedIn', value: 'linkedin' },
                     { label: 'Soundcloud', value: 'scloud' },
                     { label: 'Medium', value: 'med' },
                     { label: 'Substack', value: 'sstack' },
                     { label: 'Spotify', value: 'spotify' },
-                  ]
+                  ],
                 },
                 {
                   name: 'url',
@@ -222,13 +223,13 @@ export const Footer: GlobalConfig = {
                   admin: {
                     description: 'Enter an external URL (https://example.com)',
                   },
-                  validate: (val) => {
-                      if (!val) return 'External URL is required'
-                      const isValidUrl = /^https?:\/\/.+/.test(val)
-                      if (!isValidUrl) {
-                        return 'Please enter a valid URL starting with http:// or https://'
-                      }
-                      return true
+                  validate: (val: string) => {
+                    if (!val) return 'External URL is required'
+                    const isValidUrl = /^https?:\/\/.+/.test(val)
+                    if (!isValidUrl) {
+                      return 'Please enter a valid URL starting with http:// or https://'
+                    }
+                    return true
                   },
                 },
               ],
@@ -236,17 +237,73 @@ export const Footer: GlobalConfig = {
                 components: {
                   RowLabel: {
                     path: 'src/globals/Footer/SmItemRowLabel.tsx',
-                  }
+                  },
                 },
-                description: 'Add links to your social media profiles. Icons will be auto-selected by type.',
+                description:
+                  'Add links to your social media profiles. Icons will be auto-selected by type.',
                 width: '50%',
               },
             },
-          ]
+          ],
         },
       ],
     },
-    
+    {
+      name: 'badges',
+      label: 'Badges',
+      type: 'array',
+      labels: {
+        singular: 'Badge',
+        plural: 'Badges',
+      },
+      fields: [
+        {
+          name: 'label',
+          label: 'Label',
+          type: 'text',
+          required: true,
+          admin: {
+            description: 'Label for this badge',
+          },
+        },
+        {
+          name: 'image',
+          label: 'Badge Image',
+          type: 'upload',
+          relationTo: 'mediaCloud',
+          required: true,
+          admin: {
+            description: 'Upload the badge image',
+          },
+        },
+        {
+          name: 'link',
+          label: 'Link URL',
+          type: 'text',
+          required: false,
+          admin: {
+            description: 'Optional: External link when badge is clicked (e.g., certification page)',
+          },
+          validate: (val: string) => {
+            if (!val) return true // Optional field
+            const isValidUrl = /^https?:\/\/.+/.test(val)
+            if (!isValidUrl) {
+              return 'Please enter a valid URL starting with http:// or https://'
+            }
+            return true
+          },
+        },
+      ],
+      admin: {
+        components: {
+          RowLabel: {
+            path: 'src/globals/Footer/BadgeItemLabel.tsx',
+          },
+        },
+        description:
+          'Add badges or certifications to display in the footer (e.g., charity ratings, awards)',
+      },
+    },
   ],
   hooks: {
     afterChange: [revalidateFooter],

@@ -12615,6 +12615,26 @@ export interface Footer {
         }[]
       | null;
   };
+  /**
+   * Add badges or certifications to display in the footer (e.g., charity ratings, awards)
+   */
+  badges?:
+    | {
+        /**
+         * Label for this badge
+         */
+        label: string;
+        /**
+         * Upload the badge image
+         */
+        image: number | MediaCloud;
+        /**
+         * Optional: External link when badge is clicked (e.g., certification page)
+         */
+        link?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -13361,6 +13381,14 @@ export interface FooterSelect<T extends boolean = true> {
               url?: T;
               id?: T;
             };
+      };
+  badges?:
+    | T
+    | {
+        label?: T;
+        image?: T;
+        link?: T;
+        id?: T;
       };
   updatedAt?: T;
   createdAt?: T;
