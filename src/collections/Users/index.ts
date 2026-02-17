@@ -49,7 +49,7 @@ export const Users: CollectionConfig = {
         { label: 'Writer', value: 'writer' },
         { label: 'Translator', value: 'translator' },
       ],
-      defaultValue: 'writer',
+      defaultValue: 'editor',
     },
     {
       name: 'assignedLanguages',
@@ -79,6 +79,15 @@ export const Users: CollectionConfig = {
       admin: {
         description: 'Languages this user can edit (only applicable for Translator role)',
         condition: (data) => data?.role === 'translator',
+      },
+    },
+    {
+      name: 'twoFactorInfo',
+      type: 'ui',
+      admin: {
+        components: {
+          Field: 'src/collections/Users/TwoFactorInfoField',
+        },
       },
     },
   ],

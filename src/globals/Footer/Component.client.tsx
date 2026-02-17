@@ -195,7 +195,7 @@ export const FooterClient: React.FC<FooterClientProps> = ({
           </span>
           <button
             className="pill-button dark"
-            onClick={() => (window.location.href = donateCTAData?.url || '#')}
+            onClick={() => window.open(donateCTAData?.url || '#', '_blank', 'noopener,noreferrer')}
           >
             {donateCTAData?.buttonText || 'Donate Now'}
           </button>

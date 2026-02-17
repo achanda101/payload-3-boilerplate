@@ -56,6 +56,8 @@ import { default as default_e6f635e33cdcc4d4d11b58dc87fdbc28 } from 'src/collect
 import { default as default_5c27a4360ad720e85354b3b24721e696 } from 'src/collections/EligibilityTests/CriteriaRowLabel.tsx'
 import { default as default_53602952b3aad17a0cfc4bbf43cc4181 } from 'src/collections/MediaCloudCell'
 import { default as default_6e5325882d4f1cdba6ec4e761f75cd71 } from 'src/collections/Users/AvatarCell'
+import { default as default_67b6981b26fa2ed7f7245c21640659ca } from 'src/collections/Users/TwoFactorInfoField'
+import { TOTPField as TOTPField_3eb2cc20d1a2569c2ccbafcee15bd128 } from '@clocklimited/payload-2fa/rsc'
 import { LinkToDoc as LinkToDoc_aead06e4cbf6b2620c5c51c9ab283634 } from '@payloadcms/plugin-search/client'
 import { ReindexButton as ReindexButton_aead06e4cbf6b2620c5c51c9ab283634 } from '@payloadcms/plugin-search/client'
 import { FolderTypeField as FolderTypeField_2b8867833a34864a02ddf429b0728a40 } from '@payloadcms/next/client'
@@ -71,6 +73,9 @@ import { Logo as Logo_566629f80931517f5befb54103e89cc5 } from '@/components/Logo
 import { default as default_1a7510af427896d367a49dbf838d2de6 } from '@/components/BeforeDashboard'
 import { default as default_8a7ab0eb7ab5c511aba12e68480bfe5e } from '@/components/BeforeLogin'
 import { S3ClientUploadHandler as S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24 } from '@payloadcms/storage-s3/client'
+import { TOTPProvider as TOTPProvider_3eb2cc20d1a2569c2ccbafcee15bd128 } from '@clocklimited/payload-2fa/rsc'
+import { TOTPSetup as TOTPSetup_3eb2cc20d1a2569c2ccbafcee15bd128 } from '@clocklimited/payload-2fa/rsc'
+import { TOTPVerify as TOTPVerify_3eb2cc20d1a2569c2ccbafcee15bd128 } from '@clocklimited/payload-2fa/rsc'
 import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
 
 export const importMap = {
@@ -132,6 +137,8 @@ export const importMap = {
   "src/collections/EligibilityTests/CriteriaRowLabel.tsx#default": default_5c27a4360ad720e85354b3b24721e696,
   "src/collections/MediaCloudCell#default": default_53602952b3aad17a0cfc4bbf43cc4181,
   "src/collections/Users/AvatarCell#default": default_6e5325882d4f1cdba6ec4e761f75cd71,
+  "src/collections/Users/TwoFactorInfoField#default": default_67b6981b26fa2ed7f7245c21640659ca,
+  "@clocklimited/payload-2fa/rsc#TOTPField": TOTPField_3eb2cc20d1a2569c2ccbafcee15bd128,
   "@payloadcms/plugin-search/client#LinkToDoc": LinkToDoc_aead06e4cbf6b2620c5c51c9ab283634,
   "@payloadcms/plugin-search/client#ReindexButton": ReindexButton_aead06e4cbf6b2620c5c51c9ab283634,
   "@payloadcms/next/client#FolderTypeField": FolderTypeField_2b8867833a34864a02ddf429b0728a40,
@@ -147,5 +154,8 @@ export const importMap = {
   "@/components/BeforeDashboard#default": default_1a7510af427896d367a49dbf838d2de6,
   "@/components/BeforeLogin#default": default_8a7ab0eb7ab5c511aba12e68480bfe5e,
   "@payloadcms/storage-s3/client#S3ClientUploadHandler": S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24,
+  "@clocklimited/payload-2fa/rsc#TOTPProvider": TOTPProvider_3eb2cc20d1a2569c2ccbafcee15bd128,
+  "@clocklimited/payload-2fa/rsc#TOTPSetup": TOTPSetup_3eb2cc20d1a2569c2ccbafcee15bd128,
+  "@clocklimited/payload-2fa/rsc#TOTPVerify": TOTPVerify_3eb2cc20d1a2569c2ccbafcee15bd128,
   "@payloadcms/next/rsc#CollectionCards": CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1
 }

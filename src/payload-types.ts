@@ -3170,6 +3170,8 @@ export interface User {
         | 'ur'
       )[]
     | null;
+  totpSecret?: string | null;
+  hasTotp?: boolean | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -11329,6 +11331,8 @@ export interface UsersSelect<T extends boolean = true> {
   avatar?: T;
   role?: T;
   assignedLanguages?: T;
+  totpSecret?: T;
+  hasTotp?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;

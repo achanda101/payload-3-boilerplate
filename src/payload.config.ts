@@ -1,6 +1,7 @@
 // storage-adapter-import-placeholder
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { s3Storage } from '@payloadcms/storage-s3'
+import { payloadTotp } from '@clocklimited/payload-2fa'
 
 import sharp from 'sharp' // sharp-import
 import path from 'path'
@@ -243,6 +244,13 @@ export default buildConfig({
         }
         // No image found
         return null
+      },
+    }),
+    payloadTotp({
+      collection: 'users',
+      totp: {
+        period: 60, // 60 seconds
+        issuer: 'Urgent Action Fund Asia & Pacific CMS',
       },
     }),
   ],
