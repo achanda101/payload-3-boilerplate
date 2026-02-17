@@ -21,5 +21,14 @@ export const Code: Block = {
       label: false,
       required: true,
     },
+    {
+      name: 'blockAnchorId',
+      type: 'ui',
+      admin: {
+        components: {
+          Field: '@/components/BlockIdDisplay#BlockIdDisplay',
+        },
+      },
+    },
   ],
 }

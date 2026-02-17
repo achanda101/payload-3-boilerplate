@@ -29,5 +29,14 @@ export const BadgeBlock: Block = {
       ],
       defaultValue: 'info',
     },
+    {
+      name: 'blockAnchorId',
+      type: 'ui',
+      admin: {
+        components: {
+          Field: '@/components/BlockIdDisplay#BlockIdDisplay',
+        },
+      },
+    },
   ],
 }

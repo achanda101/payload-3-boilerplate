@@ -93,5 +93,14 @@ export const FaqBlock: Block = {
         },
       },
     },
+    {
+      name: 'blockAnchorId',
+      type: 'ui',
+      admin: {
+        components: {
+          Field: '@/components/BlockIdDisplay#BlockIdDisplay',
+        },
+      },
+    },
   ],
 }

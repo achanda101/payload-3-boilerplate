@@ -40,6 +40,15 @@ export const FormBlock: Block = {
       }),
       label: 'Intro Content',
     },
+    {
+      name: 'blockAnchorId',
+      type: 'ui',
+      admin: {
+        components: {
+          Field: '@/components/BlockIdDisplay#BlockIdDisplay',
+        },
+      },
+    },
   ],
   graphQL: {
     singularName: 'FormBlock',

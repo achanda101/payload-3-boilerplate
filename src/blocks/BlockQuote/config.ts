@@ -36,5 +36,14 @@ export const BlockQuote: Block = {
         features: () => [BoldFeature(), ItalicFeature(), UnderlineFeature(), LinkFeature({})],
       }),
     },
+    {
+      name: 'blockAnchorId',
+      type: 'ui',
+      admin: {
+        components: {
+          Field: '@/components/BlockIdDisplay#BlockIdDisplay',
+        },
+      },
+    },
   ],
 }

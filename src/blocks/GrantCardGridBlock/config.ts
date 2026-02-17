@@ -35,5 +35,14 @@ export const GrantCardGridBlock: Block = {
           'Grant Cards to display - only active grants (excludes closed grants). You can reorder or remove cards as needed.',
       },
     },
+    {
+      name: 'blockAnchorId',
+      type: 'ui',
+      admin: {
+        components: {
+          Field: '@/components/BlockIdDisplay#BlockIdDisplay',
+        },
+      },
+    },
   ],
 }

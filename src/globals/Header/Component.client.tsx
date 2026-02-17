@@ -10,6 +10,7 @@ import { useLanguage } from '@/providers/LanguageContext'
 import { useHeaderTheme } from '@/providers/HeaderTheme'
 import { useDebounce } from '@/utilities/useDebounce'
 import { stripLocaleFromPathname } from '@/utilities/localeUtils'
+import { getValidUrl } from '@/utilities/getValidUrl'
 import * as SheetPrimitive from '@radix-ui/react-dialog'
 import { Sheet, SheetPortal, SheetOverlay } from '@/components/ui/sheet'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
@@ -42,6 +43,7 @@ interface HeaderData {
       email?: string | null
       label?: string | null
       newTab?: boolean | null
+      anchor?: string | null
     } | null
   } | null
 }
@@ -67,22 +69,9 @@ function BannerLink({
 }) {
   if (!link) return null
 
-  let href = '#'
+  const href = getValidUrl(link as any, locale)
   const target = link.newTab ? '_blank' : undefined
   const rel = link.newTab ? 'noopener noreferrer' : undefined
-
-  if (link.type === 'reference' && link.reference) {
-    const ref = link.reference
-    if (typeof ref.value === 'object' && 'slug' in ref.value) {
-      const collectionPath =
-        ref.relationTo === 'pages' ? `/${ref.value.slug}` : `/${ref.relationTo}/${ref.value.slug}`
-      href = `/${locale}${collectionPath}`
-    }
-  } else if (link.type === 'custom' && link.url) {
-    href = link.url
-  } else if (link.type === 'email' && link.email) {
-    href = `mailto:${link.email}`
-  }
 
   return (
     <a href={href} target={target} rel={rel} className="site-header-banner-link">

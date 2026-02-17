@@ -66,5 +66,14 @@ export const SpotifyTrackBlock: Block = {
         description: 'Display artist name and duration below the player',
       },
     },
+    {
+      name: 'blockAnchorId',
+      type: 'ui',
+      admin: {
+        components: {
+          Field: '@/components/BlockIdDisplay#BlockIdDisplay',
+        },
+      },
+    },
   ],
 }

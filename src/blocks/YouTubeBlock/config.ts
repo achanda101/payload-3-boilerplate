@@ -42,5 +42,14 @@ export const YouTubeBlock: Block = {
       localized: true,
       label: 'Description (optional)',
     },
+    {
+      name: 'blockAnchorId',
+      type: 'ui',
+      admin: {
+        components: {
+          Field: '@/components/BlockIdDisplay#BlockIdDisplay',
+        },
+      },
+    },
   ],
 }

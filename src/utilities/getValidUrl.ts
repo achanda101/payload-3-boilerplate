@@ -15,6 +15,7 @@ type LinkButton = {
   email?: string | null
   newTab?: boolean | null
   reference?: LinkReference | null
+  anchor?: string | null
   doc?: {
     relationTo?: string
     value?: {
@@ -49,13 +50,22 @@ export function getValidUrl(button: LinkButton, locale: string = 'en'): string {
       return '#'
     }
 
+    // Build base URL
+    let baseUrl: string
     // Pages collection: /{locale}/{slug}
     if (relationTo === 'pages') {
-      return `/${locale}/${slug}`
+      baseUrl = `/${locale}/${slug}`
+    } else {
+      // All other collections: /{locale}/{relationTo}/{slug}
+      baseUrl = `/${locale}/${relationTo}/${slug}`
     }
 
-    // All other collections: /{locale}/{relationTo}/{slug}
-    return `/${locale}/${relationTo}/${slug}`
+    // Append anchor if provided
+    if (button.anchor && typeof button.anchor === 'string' && button.anchor.trim() !== '') {
+      return `${baseUrl}#${button.anchor}`
+    }
+
+    return baseUrl
   }
 
   // Handle email links

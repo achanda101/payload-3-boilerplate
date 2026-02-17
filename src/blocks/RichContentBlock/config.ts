@@ -55,5 +55,14 @@ export const RichContentBlock: Block = {
       localized: true,
       label: false,
     },
+    {
+      name: 'blockAnchorId',
+      type: 'ui',
+      admin: {
+        components: {
+          Field: '@/components/BlockIdDisplay#BlockIdDisplay',
+        },
+      },
+    },
   ],
 }

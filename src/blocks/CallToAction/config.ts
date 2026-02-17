@@ -34,6 +34,15 @@ export const CallToAction: Block = {
         maxRows: 2,
       },
     }),
+    {
+      name: 'blockAnchorId',
+      type: 'ui',
+      admin: {
+        components: {
+          Field: '@/components/BlockIdDisplay#BlockIdDisplay',
+        },
+      },
+    },
   ],
   labels: {
     plural: 'Calls to Action',

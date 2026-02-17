@@ -79,7 +79,7 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
           contentBlocks.map((block, index) => {
             if (block.blockType === 'secondarycta') {
               return (
-                <React.Fragment key={index}>
+                <div key={index} id={block.id}>
                   <SecondaryCTA
                     title={(block as any).ctaTitle || ''}
                     subtitle={(block as any).ctaSubtitle || ''}
@@ -91,12 +91,12 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                       <ColumnIndicators />
                     </div>
                   )}
-                </React.Fragment>
+                </div>
               )
             }
             if (block.blockType === 'grantCardGridBlock') {
               return (
-                <React.Fragment key={index}>
+                <div key={index} id={block.id}>
                   <div className="page_column_layout gap-6">
                     <GrantCardGrid
                       title={block.title}
@@ -110,12 +110,12 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                       <ColumnIndicators />
                     </div>
                   )}
-                </React.Fragment>
+                </div>
               )
             }
             if (block.blockType === 'featCrd') {
               return (
-                <React.Fragment key={index}>
+                <div key={index} id={block.id}>
                   <FeatureCard
                     title={block.title}
                       titleAlignment={block.titleAlignment}
@@ -131,12 +131,12 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                       <ColumnIndicators />
                     </div>
                   )}
-                </React.Fragment>
+                </div>
               )
             }
             if (block.blockType === 'listCrdDck') {
               return (
-                <React.Fragment key={index}>
+                <div key={index} id={block.id}>
                   <div className="page_column_layout gap-6">
                     <ListingCardDeck
                       title={block.title}
@@ -147,12 +147,12 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                       buttons={block.buttons}
                     />
                   </div>
-                </React.Fragment>
+                </div>
               )
             }
             if (block.blockType === 'mstepProcess') {
               return (
-                <React.Fragment key={index}>
+                <div key={index} id={block.id}>
                   <div className="page_column_layout gap-6">
                     <MultiStepProcess
                       title={block.title}
@@ -166,12 +166,12 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                       <ColumnIndicators />
                     </div>
                   )}
-                </React.Fragment>
+                </div>
               )
             }
             if (block.blockType === 'mcolInfoBlock') {
               return (
-                <React.Fragment key={index}>
+                <div key={index} id={block.id}>
                   <div className="page_column_layout gap-6">
                     <MultiColumnInfo infoColumns={block.multicols} />
                   </div>
@@ -181,12 +181,12 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                       <ColumnIndicators />
                     </div>
                   )}
-                </React.Fragment>
+                </div>
               )
             }
             if (block.blockType === 'scolInfoBlk') {
               return (
-                <React.Fragment key={index}>
+                <div key={index} id={block.id}>
                   <div className="page_column_layout gap-6">
                     <SingleColumnInfo
                       title={block.title}
@@ -201,12 +201,12 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                       <ColumnIndicators />
                     </div>
                   )}
-                </React.Fragment>
+                </div>
               )
             }
             if (block.blockType === 'comparisonBlk') {
               return (
-                <React.Fragment key={index}>
+                <div key={index} id={block.id}>
                   <div className="page_column_layout  gap-0 md:gap-0 lg:gap-6">
                     <ComparisonBlock
                       title={block.title}
@@ -223,12 +223,12 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                       <ColumnIndicators />
                     </div>
                   )}
-                </React.Fragment>
+                </div>
               )
             }
             if (block.blockType === 'ylwDeck') {
               return (
-                <React.Fragment key={index}>
+                <div key={index} id={block.id}>
                   <div className="page_column_layout gap-6">
                     <YellowCardDeck
                       blockName={block.blockName}
@@ -239,12 +239,12 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                       align={block.align}
                     />
                   </div>
-                </React.Fragment>
+                </div>
               )
             }
             if (block.blockType === 'faqBlk') {
               return (
-                <React.Fragment key={index}>
+                <div key={index} id={block.id}>
                   <div className="page_column_layout gap-6">
                     <FaqBlock
                       title={block.title}
@@ -254,24 +254,24 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                       faqs={block.faqs}
                     />
                   </div>
-                </React.Fragment>
+                </div>
               )
             }
             if (block.blockType === 'featCrdAcc') {
               return (
-                <React.Fragment key={index}>
+                <div key={index} id={block.id}>
                   <FeatureCardAccordion
                     title={block.title}
                       titleAlignment={block.titleAlignment}
                     blockName={block.blockName}
                     featureCards={block.featCrds}
                   />
-                </React.Fragment>
+                </div>
               )
             }
             if (block.blockType === 'richContentBlock') {
               return (
-                <React.Fragment key={index}>
+                <div key={index} id={block.id}>
                   <div className="page_column_layout gap-6 [&>*:first-child]:mt-0">
                     {block.richText && typeof block.richText == 'object' ? (
                       serializeLexical({ nodes: block.richText.root?.children || [] })
@@ -281,12 +281,12 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                       </p>
                     )}
                   </div>
-                </React.Fragment>
+                </div>
               )
             }
             if (block.blockType === 'pinkPuffy') {
               return (
-                <React.Fragment key={index}>
+                <div key={index} id={block.id}>
                   <PinkPuffyCallOut
                     title={block.title}
                       titleAlignment={block.titleAlignment}
@@ -301,12 +301,12 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                       <ColumnIndicators />
                     </div>
                   )}
-                </React.Fragment>
+                </div>
               )
             }
             if (block.blockType === 'beigePuffy') {
               return (
-                <React.Fragment key={index}>
+                <div key={index} id={block.id}>
                   <BeigePuffyCallOut
                     title={block.title}
                       titleAlignment={block.titleAlignment}
@@ -319,12 +319,12 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                       <ColumnIndicators />
                     </div>
                   )}
-                </React.Fragment>
+                </div>
               )
             }
             if (block.blockType === 'fundingMap') {
               return (
-                <React.Fragment key={index}>
+                <div key={index} id={block.id}>
                   <FundingMap
                     title={block.title}
                       titleAlignment={block.titleAlignment}
@@ -337,12 +337,12 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                       <ColumnIndicators />
                     </div>
                   )}
-                </React.Fragment>
+                </div>
               )
             }
             if (block.blockType === 'resourceFeatCard') {
               return (
-                <React.Fragment key={index}>
+                <div key={index} id={block.id}>
                   <ResourceFeatureCard
                     title={block.title}
                       titleAlignment={block.titleAlignment}
@@ -355,12 +355,12 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                       <ColumnIndicators />
                     </div>
                   )}
-                </React.Fragment>
+                </div>
               )
             }
             if (block.blockType === 'resourceGallery') {
               return (
-                <React.Fragment key={index}>
+                <div key={index} id={block.id}>
                   <ResourceGallery
                     title={block.title}
                       titleAlignment={block.titleAlignment}
@@ -373,12 +373,12 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                       <ColumnIndicators />
                     </div>
                   )}
-                </React.Fragment>
+                </div>
               )
             }
             if (block.blockType === 'pillarCard') {
               return (
-                <React.Fragment key={index}>
+                <div key={index} id={block.id}>
                   <div className="page_column_layout gap-6">
                     <PillarCard
                       title={block.title}
@@ -393,12 +393,12 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                       <ColumnIndicators />
                     </div>
                   )}
-                </React.Fragment>
+                </div>
               )
             }
             if (block.blockType === 'testimonialDeck') {
               return (
-                <React.Fragment key={index}>
+                <div key={index} id={block.id}>
                   <div className="page_column_layout gap-6">
                     <TestimonialCardDeck title={block.title}
                       titleAlignment={block.titleAlignment} cards={block.cards} />
@@ -408,12 +408,12 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                       <ColumnIndicators />
                     </div>
                   )}
-                </React.Fragment>
+                </div>
               )
             }
             if (block.blockType === 'minCardGallery') {
               return (
-                <React.Fragment key={index}>
+                <div key={index} id={block.id}>
                   <div className="page_column_layout gap-6">
                     <MinimalCardGallery header={block.header} cards={block.cards} />
                   </div>
@@ -422,12 +422,12 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                       <ColumnIndicators />
                     </div>
                   )}
-                </React.Fragment>
+                </div>
               )
             }
             if (block.blockType === 'idCardGallery') {
               return (
-                <React.Fragment key={index}>
+                <div key={index} id={block.id}>
                   <div className="page_column_layout gap-6">
                     <IDCardGallery header={block.header} cards={block.cards} />
                   </div>
@@ -436,12 +436,12 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                       <ColumnIndicators />
                     </div>
                   )}
-                </React.Fragment>
+                </div>
               )
             }
             if (block.blockType === 'twoColumnBlock') {
               return (
-                <React.Fragment key={index}>
+                <div key={index} id={block.id}>
                   <TwoColumnBlock
                     title={block.title}
                       titleAlignment={block.titleAlignment}
@@ -454,12 +454,12 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                       <ColumnIndicators />
                     </div>
                   )}
-                </React.Fragment>
+                </div>
               )
             }
             if (block.blockType === 'threeColumnTableBlock') {
               return (
-                <React.Fragment key={index}>
+                <div key={index} id={block.id}>
                   <div className="page_column_layout gap-6">
                     <ThreeColumnTable
                       title={block.title}
@@ -476,7 +476,7 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                       <ColumnIndicators />
                     </div>
                   )}
-                </React.Fragment>
+                </div>
               )
             }
             return null

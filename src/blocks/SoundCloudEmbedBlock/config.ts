@@ -54,5 +54,14 @@ export const SoundCloudEmbedBlock: Block = {
         description: 'Add context or description for this track or album',
       },
     },
+    {
+      name: 'blockAnchorId',
+      type: 'ui',
+      admin: {
+        components: {
+          Field: '@/components/BlockIdDisplay#BlockIdDisplay',
+        },
+      },
+    },
   ],
 }

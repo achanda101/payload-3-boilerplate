@@ -79,5 +79,14 @@ export const Content: Block = {
       type: 'array',
       fields: columnFields,
     },
+    {
+      name: 'blockAnchorId',
+      type: 'ui',
+      admin: {
+        components: {
+          Field: '@/components/BlockIdDisplay#BlockIdDisplay',
+        },
+      },
+    },
   ],
 }

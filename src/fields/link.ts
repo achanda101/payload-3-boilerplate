@@ -150,14 +150,24 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
       },
     },
     {
+      name: 'anchor',
+      type: 'text',
+      admin: {
+        condition: (_, siblingData) => siblingData?.type === 'reference',
+        description: 'Optional: Paste the block anchor ID to link to a specific section on the page',
+        placeholder: 'e.g., 67a1b2c3d4e5f6g7h8i9j0k1',
+      },
+      label: 'Anchor ID (optional)',
+    },
+    {
       name: 'url',
       type: 'text',
       admin: {
         condition: (_, siblingData) => siblingData?.type === 'custom',
       },
-      validate: (val) => {
+      validate: (val: unknown) => {
         if (!val) return 'External URL is required'
-        const isValidUrl = /^https?:\/\/.+/.test(val)
+        const isValidUrl = /^https?:\/\/.+/.test(val as string)
         if (!isValidUrl) {
           return 'Please enter a valid URL starting with http:// or https://'
         }

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Header } from '@/globals/Header/Component'
 import { Footer } from '@/globals/Footer/Component'
+import { ScrollToAnchor } from '@/components/ScrollToAnchor'
 import { isValidLocale } from '@/utilities/localeUtils'
 
 type Props = {
@@ -14,6 +15,7 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <div>
+      <ScrollToAnchor />
       <Header locale={validLocale} />
       <main>{children}</main>
       <Footer locale={validLocale} />

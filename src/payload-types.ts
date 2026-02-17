@@ -321,6 +321,10 @@ export interface Grant {
                 relationTo: 'mmedia';
                 value: number | Mmedia;
               } | null);
+          /**
+           * Optional: Paste the block anchor ID to link to a specific section on the page
+           */
+          anchor?: string | null;
           url?: string | null;
           email?: string | null;
           doc?: {
@@ -400,6 +404,10 @@ export interface Grant {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -453,6 +461,10 @@ export interface Grant {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -609,6 +621,10 @@ export interface Grant {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -693,6 +709,10 @@ export interface Grant {
                                 relationTo: 'mmedia';
                                 value: number | Mmedia;
                               } | null);
+                          /**
+                           * Optional: Paste the block anchor ID to link to a specific section on the page
+                           */
+                          anchor?: string | null;
                           url?: string | null;
                           email?: string | null;
                           doc?: {
@@ -775,6 +795,10 @@ export interface Grant {
                     relationTo: 'mmedia';
                     value: number | Mmedia;
                   } | null);
+              /**
+               * Optional: Paste the block anchor ID to link to a specific section on the page
+               */
+              anchor?: string | null;
               url?: string | null;
               email?: string | null;
               doc?: {
@@ -912,6 +936,10 @@ export interface Grant {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -957,6 +985,10 @@ export interface Grant {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -1007,6 +1039,10 @@ export interface Grant {
                     relationTo: 'mmedia';
                     value: number | Mmedia;
                   } | null);
+              /**
+               * Optional: Paste the block anchor ID to link to a specific section on the page
+               */
+              anchor?: string | null;
               url?: string | null;
               email?: string | null;
               doc?: {
@@ -1129,6 +1165,10 @@ export interface Grant {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -1605,6 +1645,10 @@ export interface Grantcard {
                 relationTo: 'mmedia';
                 value: number | Mmedia;
               } | null);
+          /**
+           * Optional: Paste the block anchor ID to link to a specific section on the page
+           */
+          anchor?: string | null;
           url?: string | null;
           email?: string | null;
           doc?: {
@@ -1827,6 +1871,10 @@ export interface Page {
                 relationTo: 'mmedia';
                 value: number | Mmedia;
               } | null);
+          /**
+           * Optional: Paste the block anchor ID to link to a specific section on the page
+           */
+          anchor?: string | null;
           url?: string | null;
           email?: string | null;
           doc?: {
@@ -1902,6 +1950,10 @@ export interface Page {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -1955,6 +2007,10 @@ export interface Page {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -2111,6 +2167,10 @@ export interface Page {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -2195,6 +2255,10 @@ export interface Page {
                                 relationTo: 'mmedia';
                                 value: number | Mmedia;
                               } | null);
+                          /**
+                           * Optional: Paste the block anchor ID to link to a specific section on the page
+                           */
+                          anchor?: string | null;
                           url?: string | null;
                           email?: string | null;
                           doc?: {
@@ -2277,6 +2341,10 @@ export interface Page {
                     relationTo: 'mmedia';
                     value: number | Mmedia;
                   } | null);
+              /**
+               * Optional: Paste the block anchor ID to link to a specific section on the page
+               */
+              anchor?: string | null;
               url?: string | null;
               email?: string | null;
               doc?: {
@@ -2414,6 +2482,10 @@ export interface Page {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -2459,6 +2531,10 @@ export interface Page {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -2509,6 +2585,10 @@ export interface Page {
                     relationTo: 'mmedia';
                     value: number | Mmedia;
                   } | null);
+              /**
+               * Optional: Paste the block anchor ID to link to a specific section on the page
+               */
+              anchor?: string | null;
               url?: string | null;
               email?: string | null;
               doc?: {
@@ -2631,6 +2711,10 @@ export interface Page {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -3223,6 +3307,10 @@ export interface Blog {
                 relationTo: 'mmedia';
                 value: number | Mmedia;
               } | null);
+          /**
+           * Optional: Paste the block anchor ID to link to a specific section on the page
+           */
+          anchor?: string | null;
           url?: string | null;
           email?: string | null;
           doc?: {
@@ -3298,6 +3386,10 @@ export interface Blog {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -3351,6 +3443,10 @@ export interface Blog {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -3507,6 +3603,10 @@ export interface Blog {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -3591,6 +3691,10 @@ export interface Blog {
                                 relationTo: 'mmedia';
                                 value: number | Mmedia;
                               } | null);
+                          /**
+                           * Optional: Paste the block anchor ID to link to a specific section on the page
+                           */
+                          anchor?: string | null;
                           url?: string | null;
                           email?: string | null;
                           doc?: {
@@ -3673,6 +3777,10 @@ export interface Blog {
                     relationTo: 'mmedia';
                     value: number | Mmedia;
                   } | null);
+              /**
+               * Optional: Paste the block anchor ID to link to a specific section on the page
+               */
+              anchor?: string | null;
               url?: string | null;
               email?: string | null;
               doc?: {
@@ -3810,6 +3918,10 @@ export interface Blog {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -3855,6 +3967,10 @@ export interface Blog {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -3905,6 +4021,10 @@ export interface Blog {
                     relationTo: 'mmedia';
                     value: number | Mmedia;
                   } | null);
+              /**
+               * Optional: Paste the block anchor ID to link to a specific section on the page
+               */
+              anchor?: string | null;
               url?: string | null;
               email?: string | null;
               doc?: {
@@ -4027,6 +4147,10 @@ export interface Blog {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -4551,6 +4675,10 @@ export interface Report {
                 relationTo: 'mmedia';
                 value: number | Mmedia;
               } | null);
+          /**
+           * Optional: Paste the block anchor ID to link to a specific section on the page
+           */
+          anchor?: string | null;
           url?: string | null;
           email?: string | null;
           doc?: {
@@ -4626,6 +4754,10 @@ export interface Report {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -4679,6 +4811,10 @@ export interface Report {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -4835,6 +4971,10 @@ export interface Report {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -4919,6 +5059,10 @@ export interface Report {
                                 relationTo: 'mmedia';
                                 value: number | Mmedia;
                               } | null);
+                          /**
+                           * Optional: Paste the block anchor ID to link to a specific section on the page
+                           */
+                          anchor?: string | null;
                           url?: string | null;
                           email?: string | null;
                           doc?: {
@@ -5001,6 +5145,10 @@ export interface Report {
                     relationTo: 'mmedia';
                     value: number | Mmedia;
                   } | null);
+              /**
+               * Optional: Paste the block anchor ID to link to a specific section on the page
+               */
+              anchor?: string | null;
               url?: string | null;
               email?: string | null;
               doc?: {
@@ -5138,6 +5286,10 @@ export interface Report {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -5183,6 +5335,10 @@ export interface Report {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -5233,6 +5389,10 @@ export interface Report {
                     relationTo: 'mmedia';
                     value: number | Mmedia;
                   } | null);
+              /**
+               * Optional: Paste the block anchor ID to link to a specific section on the page
+               */
+              anchor?: string | null;
               url?: string | null;
               email?: string | null;
               doc?: {
@@ -5355,6 +5515,10 @@ export interface Report {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -5826,6 +5990,10 @@ export interface Mmedia {
                 relationTo: 'mmedia';
                 value: number | Mmedia;
               } | null);
+          /**
+           * Optional: Paste the block anchor ID to link to a specific section on the page
+           */
+          anchor?: string | null;
           url?: string | null;
           email?: string | null;
           doc?: {
@@ -5901,6 +6069,10 @@ export interface Mmedia {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -5954,6 +6126,10 @@ export interface Mmedia {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -6110,6 +6286,10 @@ export interface Mmedia {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -6194,6 +6374,10 @@ export interface Mmedia {
                                 relationTo: 'mmedia';
                                 value: number | Mmedia;
                               } | null);
+                          /**
+                           * Optional: Paste the block anchor ID to link to a specific section on the page
+                           */
+                          anchor?: string | null;
                           url?: string | null;
                           email?: string | null;
                           doc?: {
@@ -6276,6 +6460,10 @@ export interface Mmedia {
                     relationTo: 'mmedia';
                     value: number | Mmedia;
                   } | null);
+              /**
+               * Optional: Paste the block anchor ID to link to a specific section on the page
+               */
+              anchor?: string | null;
               url?: string | null;
               email?: string | null;
               doc?: {
@@ -6413,6 +6601,10 @@ export interface Mmedia {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -6458,6 +6650,10 @@ export interface Mmedia {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -6508,6 +6704,10 @@ export interface Mmedia {
                     relationTo: 'mmedia';
                     value: number | Mmedia;
                   } | null);
+              /**
+               * Optional: Paste the block anchor ID to link to a specific section on the page
+               */
+              anchor?: string | null;
               url?: string | null;
               email?: string | null;
               doc?: {
@@ -6630,6 +6830,10 @@ export interface Mmedia {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -7182,6 +7386,10 @@ export interface Etest {
               relationTo: 'mmedia';
               value: number | Mmedia;
             } | null);
+        /**
+         * Optional: Paste the block anchor ID to link to a specific section on the page
+         */
+        anchor?: string | null;
         url?: string | null;
         email?: string | null;
         doc?: {
@@ -7243,6 +7451,10 @@ export interface Etest {
               relationTo: 'mmedia';
               value: number | Mmedia;
             } | null);
+        /**
+         * Optional: Paste the block anchor ID to link to a specific section on the page
+         */
+        anchor?: string | null;
         url?: string | null;
         email?: string | null;
         doc?: {
@@ -7727,6 +7939,7 @@ export interface GrantsSelect<T extends boolean = true> {
               pillSolid?: T;
               pillOutline?: T;
               reference?: T;
+              anchor?: T;
               url?: T;
               email?: T;
               doc?: T;
@@ -7776,6 +7989,7 @@ export interface GrantsSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -7806,6 +8020,7 @@ export interface GrantsSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -7891,6 +8106,7 @@ export interface GrantsSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -7930,6 +8146,7 @@ export interface GrantsSelect<T extends boolean = true> {
                                 pillSolid?: T;
                                 pillOutline?: T;
                                 reference?: T;
+                                anchor?: T;
                                 url?: T;
                                 email?: T;
                                 doc?: T;
@@ -7967,6 +8184,7 @@ export interface GrantsSelect<T extends boolean = true> {
                     pillSolid?: T;
                     pillOutline?: T;
                     reference?: T;
+                    anchor?: T;
                     url?: T;
                     email?: T;
                     doc?: T;
@@ -8022,6 +8240,7 @@ export interface GrantsSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -8043,6 +8262,7 @@ export interface GrantsSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -8069,6 +8289,7 @@ export interface GrantsSelect<T extends boolean = true> {
                     pillSolid?: T;
                     pillOutline?: T;
                     reference?: T;
+                    anchor?: T;
                     url?: T;
                     email?: T;
                     doc?: T;
@@ -8119,6 +8340,7 @@ export interface GrantsSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -8341,6 +8563,7 @@ export interface GrantcardsSelect<T extends boolean = true> {
               pillSolid?: T;
               pillOutline?: T;
               reference?: T;
+              anchor?: T;
               url?: T;
               email?: T;
               doc?: T;
@@ -8409,6 +8632,7 @@ export interface EtestsSelect<T extends boolean = true> {
                     pillSolid?: T;
                     pillOutline?: T;
                     reference?: T;
+                    anchor?: T;
                     url?: T;
                     email?: T;
                     doc?: T;
@@ -8436,6 +8660,7 @@ export interface EtestsSelect<T extends boolean = true> {
                     pillSolid?: T;
                     pillOutline?: T;
                     reference?: T;
+                    anchor?: T;
                     url?: T;
                     email?: T;
                     doc?: T;
@@ -8482,6 +8707,7 @@ export interface PagesSelect<T extends boolean = true> {
               pillSolid?: T;
               pillOutline?: T;
               reference?: T;
+              anchor?: T;
               url?: T;
               email?: T;
               doc?: T;
@@ -8525,6 +8751,7 @@ export interface PagesSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -8555,6 +8782,7 @@ export interface PagesSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -8640,6 +8868,7 @@ export interface PagesSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -8679,6 +8908,7 @@ export interface PagesSelect<T extends boolean = true> {
                                 pillSolid?: T;
                                 pillOutline?: T;
                                 reference?: T;
+                                anchor?: T;
                                 url?: T;
                                 email?: T;
                                 doc?: T;
@@ -8716,6 +8946,7 @@ export interface PagesSelect<T extends boolean = true> {
                     pillSolid?: T;
                     pillOutline?: T;
                     reference?: T;
+                    anchor?: T;
                     url?: T;
                     email?: T;
                     doc?: T;
@@ -8771,6 +9002,7 @@ export interface PagesSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -8792,6 +9024,7 @@ export interface PagesSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -8818,6 +9051,7 @@ export interface PagesSelect<T extends boolean = true> {
                     pillSolid?: T;
                     pillOutline?: T;
                     reference?: T;
+                    anchor?: T;
                     url?: T;
                     email?: T;
                     doc?: T;
@@ -8868,6 +9102,7 @@ export interface PagesSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -9080,6 +9315,7 @@ export interface BlogSelect<T extends boolean = true> {
               pillSolid?: T;
               pillOutline?: T;
               reference?: T;
+              anchor?: T;
               url?: T;
               email?: T;
               doc?: T;
@@ -9123,6 +9359,7 @@ export interface BlogSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -9153,6 +9390,7 @@ export interface BlogSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -9238,6 +9476,7 @@ export interface BlogSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -9277,6 +9516,7 @@ export interface BlogSelect<T extends boolean = true> {
                                 pillSolid?: T;
                                 pillOutline?: T;
                                 reference?: T;
+                                anchor?: T;
                                 url?: T;
                                 email?: T;
                                 doc?: T;
@@ -9314,6 +9554,7 @@ export interface BlogSelect<T extends boolean = true> {
                     pillSolid?: T;
                     pillOutline?: T;
                     reference?: T;
+                    anchor?: T;
                     url?: T;
                     email?: T;
                     doc?: T;
@@ -9369,6 +9610,7 @@ export interface BlogSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -9390,6 +9632,7 @@ export interface BlogSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -9416,6 +9659,7 @@ export interface BlogSelect<T extends boolean = true> {
                     pillSolid?: T;
                     pillOutline?: T;
                     reference?: T;
+                    anchor?: T;
                     url?: T;
                     email?: T;
                     doc?: T;
@@ -9466,6 +9710,7 @@ export interface BlogSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -9681,6 +9926,7 @@ export interface ReportsSelect<T extends boolean = true> {
               pillSolid?: T;
               pillOutline?: T;
               reference?: T;
+              anchor?: T;
               url?: T;
               email?: T;
               doc?: T;
@@ -9724,6 +9970,7 @@ export interface ReportsSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -9754,6 +10001,7 @@ export interface ReportsSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -9839,6 +10087,7 @@ export interface ReportsSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -9878,6 +10127,7 @@ export interface ReportsSelect<T extends boolean = true> {
                                 pillSolid?: T;
                                 pillOutline?: T;
                                 reference?: T;
+                                anchor?: T;
                                 url?: T;
                                 email?: T;
                                 doc?: T;
@@ -9915,6 +10165,7 @@ export interface ReportsSelect<T extends boolean = true> {
                     pillSolid?: T;
                     pillOutline?: T;
                     reference?: T;
+                    anchor?: T;
                     url?: T;
                     email?: T;
                     doc?: T;
@@ -9970,6 +10221,7 @@ export interface ReportsSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -9991,6 +10243,7 @@ export interface ReportsSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -10017,6 +10270,7 @@ export interface ReportsSelect<T extends boolean = true> {
                     pillSolid?: T;
                     pillOutline?: T;
                     reference?: T;
+                    anchor?: T;
                     url?: T;
                     email?: T;
                     doc?: T;
@@ -10067,6 +10321,7 @@ export interface ReportsSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -10281,6 +10536,7 @@ export interface MmediaSelect<T extends boolean = true> {
               pillSolid?: T;
               pillOutline?: T;
               reference?: T;
+              anchor?: T;
               url?: T;
               email?: T;
               doc?: T;
@@ -10324,6 +10580,7 @@ export interface MmediaSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -10354,6 +10611,7 @@ export interface MmediaSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -10439,6 +10697,7 @@ export interface MmediaSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -10478,6 +10737,7 @@ export interface MmediaSelect<T extends boolean = true> {
                                 pillSolid?: T;
                                 pillOutline?: T;
                                 reference?: T;
+                                anchor?: T;
                                 url?: T;
                                 email?: T;
                                 doc?: T;
@@ -10515,6 +10775,7 @@ export interface MmediaSelect<T extends boolean = true> {
                     pillSolid?: T;
                     pillOutline?: T;
                     reference?: T;
+                    anchor?: T;
                     url?: T;
                     email?: T;
                     doc?: T;
@@ -10570,6 +10831,7 @@ export interface MmediaSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -10591,6 +10853,7 @@ export interface MmediaSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -10617,6 +10880,7 @@ export interface MmediaSelect<T extends boolean = true> {
                     pillSolid?: T;
                     pillOutline?: T;
                     reference?: T;
+                    anchor?: T;
                     url?: T;
                     email?: T;
                     doc?: T;
@@ -10667,6 +10931,7 @@ export interface MmediaSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -11366,6 +11631,10 @@ export interface Homepage {
                 relationTo: 'mmedia';
                 value: number | Mmedia;
               } | null);
+          /**
+           * Optional: Paste the block anchor ID to link to a specific section on the page
+           */
+          anchor?: string | null;
           url?: string | null;
           email?: string | null;
           doc?: {
@@ -11441,6 +11710,10 @@ export interface Homepage {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -11494,6 +11767,10 @@ export interface Homepage {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -11650,6 +11927,10 @@ export interface Homepage {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -11734,6 +12015,10 @@ export interface Homepage {
                                 relationTo: 'mmedia';
                                 value: number | Mmedia;
                               } | null);
+                          /**
+                           * Optional: Paste the block anchor ID to link to a specific section on the page
+                           */
+                          anchor?: string | null;
                           url?: string | null;
                           email?: string | null;
                           doc?: {
@@ -11816,6 +12101,10 @@ export interface Homepage {
                     relationTo: 'mmedia';
                     value: number | Mmedia;
                   } | null);
+              /**
+               * Optional: Paste the block anchor ID to link to a specific section on the page
+               */
+              anchor?: string | null;
               url?: string | null;
               email?: string | null;
               doc?: {
@@ -11953,6 +12242,10 @@ export interface Homepage {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -11998,6 +12291,10 @@ export interface Homepage {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -12048,6 +12345,10 @@ export interface Homepage {
                     relationTo: 'mmedia';
                     value: number | Mmedia;
                   } | null);
+              /**
+               * Optional: Paste the block anchor ID to link to a specific section on the page
+               */
+              anchor?: string | null;
               url?: string | null;
               email?: string | null;
               doc?: {
@@ -12170,6 +12471,10 @@ export interface Homepage {
                           relationTo: 'mmedia';
                           value: number | Mmedia;
                         } | null);
+                    /**
+                     * Optional: Paste the block anchor ID to link to a specific section on the page
+                     */
+                    anchor?: string | null;
                     url?: string | null;
                     email?: string | null;
                     doc?: {
@@ -12687,6 +12992,10 @@ export interface Header {
             relationTo: 'mmedia';
             value: number | Mmedia;
           } | null);
+      /**
+       * Optional: Paste the block anchor ID to link to a specific section on the page
+       */
+      anchor?: string | null;
       url?: string | null;
       email?: string | null;
       doc?: {
@@ -12811,6 +13120,10 @@ export interface Nav {
                       relationTo: 'mmedia';
                       value: number | Mmedia;
                     } | null);
+                /**
+                 * Optional: Paste the block anchor ID to link to a specific section on the page
+                 */
+                anchor?: string | null;
                 url?: string | null;
                 email?: string | null;
                 doc?: {
@@ -12880,6 +13193,7 @@ export interface HomepageSelect<T extends boolean = true> {
               pillSolid?: T;
               pillOutline?: T;
               reference?: T;
+              anchor?: T;
               url?: T;
               email?: T;
               doc?: T;
@@ -12923,6 +13237,7 @@ export interface HomepageSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -12953,6 +13268,7 @@ export interface HomepageSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -13038,6 +13354,7 @@ export interface HomepageSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -13077,6 +13394,7 @@ export interface HomepageSelect<T extends boolean = true> {
                                 pillSolid?: T;
                                 pillOutline?: T;
                                 reference?: T;
+                                anchor?: T;
                                 url?: T;
                                 email?: T;
                                 doc?: T;
@@ -13114,6 +13432,7 @@ export interface HomepageSelect<T extends boolean = true> {
                     pillSolid?: T;
                     pillOutline?: T;
                     reference?: T;
+                    anchor?: T;
                     url?: T;
                     email?: T;
                     doc?: T;
@@ -13169,6 +13488,7 @@ export interface HomepageSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -13190,6 +13510,7 @@ export interface HomepageSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -13216,6 +13537,7 @@ export interface HomepageSelect<T extends boolean = true> {
                     pillSolid?: T;
                     pillOutline?: T;
                     reference?: T;
+                    anchor?: T;
                     url?: T;
                     email?: T;
                     doc?: T;
@@ -13266,6 +13588,7 @@ export interface HomepageSelect<T extends boolean = true> {
                           pillSolid?: T;
                           pillOutline?: T;
                           reference?: T;
+                          anchor?: T;
                           url?: T;
                           email?: T;
                           doc?: T;
@@ -13474,6 +13797,7 @@ export interface HeaderSelect<T extends boolean = true> {
               pillSolid?: T;
               pillOutline?: T;
               reference?: T;
+              anchor?: T;
               url?: T;
               email?: T;
               doc?: T;
@@ -13553,6 +13877,7 @@ export interface NavSelect<T extends boolean = true> {
                     pillSolid?: T;
                     pillOutline?: T;
                     reference?: T;
+                    anchor?: T;
                     url?: T;
                     email?: T;
                     doc?: T;
