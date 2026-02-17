@@ -100,6 +100,7 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                   <div className="page_column_layout gap-6">
                     <GrantCardGrid
                       title={block.title}
+                      titleAlignment={block.titleAlignment}
                       desc={block.desc}
                       grantCards={block as any}
                     />
@@ -117,6 +118,7 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                 <React.Fragment key={index}>
                   <FeatureCard
                     title={block.title}
+                      titleAlignment={block.titleAlignment}
                     subtitle={block.subtitle}
                     desc={block.desc}
                     tags={block.tags}
@@ -138,6 +140,7 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                   <div className="page_column_layout gap-6">
                     <ListingCardDeck
                       title={block.title}
+                      titleAlignment={block.titleAlignment}
                       dataSource={block.dataSource}
                       cards={block.cards}
                       resourcePages={block.resourcePages}
@@ -153,6 +156,7 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                   <div className="page_column_layout gap-6">
                     <MultiStepProcess
                       title={block.title}
+                      titleAlignment={block.titleAlignment}
                       subtitle={block.subtitle}
                       steps={block.steps}
                     />
@@ -186,6 +190,7 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                   <div className="page_column_layout gap-6">
                     <SingleColumnInfo
                       title={block.title}
+                      titleAlignment={block.titleAlignment}
                       desc={block.desc}
                       buttons={block.colBtns}
                     />
@@ -205,6 +210,7 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                   <div className="page_column_layout  gap-0 md:gap-0 lg:gap-6">
                     <ComparisonBlock
                       title={block.title}
+                      titleAlignment={block.titleAlignment}
                       desc={block.desc}
                       buttons={block.buttons}
                       lftCol={block.lftGrp}
@@ -227,6 +233,7 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                     <YellowCardDeck
                       blockName={block.blockName}
                       title={block.title}
+                      titleAlignment={block.titleAlignment}
                       desc={block.desc}
                       cards={block.cards}
                       align={block.align}
@@ -241,6 +248,7 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                   <div className="page_column_layout gap-6">
                     <FaqBlock
                       title={block.title}
+                      titleAlignment={block.titleAlignment}
                       desc={block.desc}
                       link={block.link}
                       faqs={block.faqs}
@@ -254,6 +262,7 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                 <React.Fragment key={index}>
                   <FeatureCardAccordion
                     title={block.title}
+                      titleAlignment={block.titleAlignment}
                     blockName={block.blockName}
                     featureCards={block.featCrds}
                   />
@@ -280,6 +289,7 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                 <React.Fragment key={index}>
                   <PinkPuffyCallOut
                     title={block.title}
+                      titleAlignment={block.titleAlignment}
                     subtitle={block.subtitle}
                     align={block.align}
                     topRow={block.topRow}
@@ -299,6 +309,7 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                 <React.Fragment key={index}>
                   <BeigePuffyCallOut
                     title={block.title}
+                      titleAlignment={block.titleAlignment}
                     subtitle={block.subtitle}
                     align={block.align}
                     items={block.items}
@@ -316,6 +327,7 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                 <React.Fragment key={index}>
                   <FundingMap
                     title={block.title}
+                      titleAlignment={block.titleAlignment}
                     subtitle={block.subtitle}
                     selectorLabel={block.selectorLabel}
                     items={block.items}
@@ -333,6 +345,7 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                 <React.Fragment key={index}>
                   <ResourceFeatureCard
                     title={block.title}
+                      titleAlignment={block.titleAlignment}
                     align={block.align}
                     desc={block.desc}
                     featCardList={block.featCardList}
@@ -350,6 +363,7 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                 <React.Fragment key={index}>
                   <ResourceGallery
                     title={block.title}
+                      titleAlignment={block.titleAlignment}
                     align={block.align}
                     desc={block.desc}
                     galleryList={block.galleryList}
@@ -368,6 +382,7 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                   <div className="page_column_layout gap-6">
                     <PillarCard
                       title={block.title}
+                      titleAlignment={block.titleAlignment}
                       subtitle={block.subtitle}
                       align={block.align}
                       cards={block.cards}
@@ -385,7 +400,8 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
               return (
                 <React.Fragment key={index}>
                   <div className="page_column_layout gap-6">
-                    <TestimonialCardDeck title={block.title} cards={block.cards} />
+                    <TestimonialCardDeck title={block.title}
+                      titleAlignment={block.titleAlignment} cards={block.cards} />
                   </div>
                   {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
                     <div className="page_column_layout gap-6">
@@ -428,6 +444,7 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                 <React.Fragment key={index}>
                   <TwoColumnBlock
                     title={block.title}
+                      titleAlignment={block.titleAlignment}
                     subtitle={block.subtitle}
                     leftColumn={block.leftColumn}
                     rightColumn={block.rightColumn}
@@ -446,6 +463,7 @@ export const PageContent: React.FC<PageProps> = ({ data = {}, isDraft = false, i
                   <div className="page_column_layout gap-6">
                     <ThreeColumnTable
                       title={block.title}
+                      titleAlignment={block.titleAlignment}
                       subtitle={block.subtitle}
                       firstColumn={block.firstColumn}
                       secondColumn={block.secondColumn}

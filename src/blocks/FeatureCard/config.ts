@@ -36,6 +36,25 @@ export const FeatureCard: Block = {
               type: 'text',
               localized: true,
             },
+            {
+              name: 'titleAlignment',
+              type: 'radio',
+              defaultValue: 'left',
+              options: [
+                {
+                  label: 'Left',
+                  value: 'left',
+                },
+                {
+                  label: 'Right',
+                  value: 'right',
+                },
+              ],
+              admin: {
+                description: 'Choose the alignment for the title',
+                layout: 'horizontal',
+              },
+            },
           ],
         },
         {

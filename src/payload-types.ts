@@ -280,6 +280,14 @@ export interface Grant {
   title: string;
   pageType: 'landing' | 'individual';
   grantCard?: (number | null) | Grantcard;
+  /**
+   * User who created this grant page
+   */
+  createdBy?: (number | null) | User;
+  /**
+   * User who last updated this grant page
+   */
+  updatedBy?: (number | null) | User;
   heroTitle?: string | null;
   heroSubtitle?: string | null;
   bgType?: ('wavy_top' | 'wavy_full' | 'center_blob') | null;
@@ -713,6 +721,10 @@ export interface Grant {
              */
             image?: (number | null) | MediaCloud;
             title?: string | null;
+            /**
+             * Choose the alignment for the title
+             */
+            titleAlignment?: ('left' | 'right') | null;
             subtitle?: string | null;
             tags?:
               | {
@@ -1608,6 +1620,14 @@ export interface Grantcard {
         id?: string | null;
       }[]
     | null;
+  /**
+   * User who created this grant card
+   */
+  createdBy?: (number | null) | User;
+  /**
+   * User who last updated this grant card
+   */
+  updatedBy?: (number | null) | User;
   slug?: string | null;
   slugLock?: boolean | null;
   folder?: (number | null) | FolderInterface;
@@ -1750,6 +1770,14 @@ export interface FolderInterface {
 export interface Page {
   id: number;
   title: string;
+  /**
+   * User who created this page
+   */
+  createdBy?: (number | null) | User;
+  /**
+   * User who last updated this page
+   */
+  updatedBy?: (number | null) | User;
   heroTitle?: string | null;
   heroSubtitle?: string | null;
   bgType?: ('wavy_top' | 'wavy_full' | 'center_blob') | null;
@@ -2195,6 +2223,10 @@ export interface Page {
              */
             image?: (number | null) | MediaCloud;
             title?: string | null;
+            /**
+             * Choose the alignment for the title
+             */
+            titleAlignment?: ('left' | 'right') | null;
             subtitle?: string | null;
             tags?:
               | {
@@ -3018,6 +3050,135 @@ export interface Page {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users".
+ */
+export interface User {
+  id: number;
+  name?: string | null;
+  /**
+   * Upload a profile picture
+   */
+  avatar?: (number | null) | MediaCloud;
+  role?: ('admin' | 'editor' | 'writer' | 'translator') | null;
+  /**
+   * Languages this user can edit (only applicable for Translator role)
+   */
+  assignedLanguages?:
+    | (
+        | 'en'
+        | 'ar'
+        | 'bi'
+        | 'bn-IN'
+        | 'br'
+        | 'ch'
+        | 'prs-Arab'
+        | 'km'
+        | 'hi'
+        | 'ms'
+        | 'ne'
+        | 'ps-Arab'
+        | 'pcm'
+        | 'si'
+        | 'tl'
+        | 'ta'
+        | 'th'
+        | 'vi'
+        | 'ur'
+      )[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+  email: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  sessions?:
+    | {
+        id: string;
+        createdAt?: string | null;
+        expiresAt: string;
+      }[]
+    | null;
+  password?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "mediaCloud".
+ */
+export interface MediaCloud {
+  id: number;
+  alt: string;
+  caption?: string | null;
+  blurhash?: string | null;
+  folder?: (number | null) | FolderInterface;
+  updatedAt: string;
+  createdAt: string;
+  deletedAt?: string | null;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+  sizes?: {
+    thumbnail?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    small?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    medium?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    large?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    xlarge?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    ogImage?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "blog".
  */
 export interface Blog {
@@ -3458,6 +3619,10 @@ export interface Blog {
              */
             image?: (number | null) | MediaCloud;
             title?: string | null;
+            /**
+             * Choose the alignment for the title
+             */
+            titleAlignment?: ('left' | 'right') | null;
             subtitle?: string | null;
             tags?:
               | {
@@ -4263,6 +4428,14 @@ export interface Blog {
       )[]
     | null;
   publishedAt?: string | null;
+  /**
+   * User who created this blog post
+   */
+  createdBy?: (number | null) | User;
+  /**
+   * User who last updated this blog post
+   */
+  updatedBy?: (number | null) | User;
   slug?: string | null;
   slugLock?: boolean | null;
   meta?: {
@@ -4774,6 +4947,10 @@ export interface Report {
              */
             image?: (number | null) | MediaCloud;
             title?: string | null;
+            /**
+             * Choose the alignment for the title
+             */
+            titleAlignment?: ('left' | 'right') | null;
             subtitle?: string | null;
             tags?:
               | {
@@ -5579,6 +5756,14 @@ export interface Report {
       )[]
     | null;
   publishedAt?: string | null;
+  /**
+   * User who created this report
+   */
+  createdBy?: (number | null) | User;
+  /**
+   * User who last updated this report
+   */
+  updatedBy?: (number | null) | User;
   slug?: string | null;
   slugLock?: boolean | null;
   meta?: {
@@ -5594,79 +5779,6 @@ export interface Report {
   createdAt: string;
   deletedAt?: string | null;
   _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "mediaCloud".
- */
-export interface MediaCloud {
-  id: number;
-  alt: string;
-  caption?: string | null;
-  blurhash?: string | null;
-  folder?: (number | null) | FolderInterface;
-  updatedAt: string;
-  createdAt: string;
-  deletedAt?: string | null;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
-  sizes?: {
-    thumbnail?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    small?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    medium?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    large?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    xlarge?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    ogImage?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-  };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -6110,6 +6222,10 @@ export interface Mmedia {
              */
             image?: (number | null) | MediaCloud;
             title?: string | null;
+            /**
+             * Choose the alignment for the title
+             */
+            titleAlignment?: ('left' | 'right') | null;
             subtitle?: string | null;
             tags?:
               | {
@@ -6915,6 +7031,14 @@ export interface Mmedia {
       )[]
     | null;
   publishedAt?: string | null;
+  /**
+   * User who created this multimedia post
+   */
+  createdBy?: (number | null) | User;
+  /**
+   * User who last updated this multimedia post
+   */
+  updatedBy?: (number | null) | User;
   slug?: string | null;
   slugLock?: boolean | null;
   meta?: {
@@ -7134,42 +7258,20 @@ export interface Etest {
     };
     notEMascot?: (number | null) | AssetCloud;
   };
+  /**
+   * User who created this eligibility test
+   */
+  createdBy?: (number | null) | User;
+  /**
+   * User who last updated this eligibility test
+   */
+  updatedBy?: (number | null) | User;
   slug?: string | null;
   slugLock?: boolean | null;
   updatedAt: string;
   createdAt: string;
   deletedAt?: string | null;
   _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users".
- */
-export interface User {
-  id: number;
-  name?: string | null;
-  /**
-   * Upload a profile picture
-   */
-  avatar?: (number | null) | MediaCloud;
-  role?: ('admin' | 'editor' | 'writer') | null;
-  updatedAt: string;
-  createdAt: string;
-  email: string;
-  resetPasswordToken?: string | null;
-  resetPasswordExpiration?: string | null;
-  salt?: string | null;
-  hash?: string | null;
-  loginAttempts?: number | null;
-  lockUntil?: string | null;
-  sessions?:
-    | {
-        id: string;
-        createdAt?: string | null;
-        expiresAt: string;
-      }[]
-    | null;
-  password?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -7607,6 +7709,8 @@ export interface GrantsSelect<T extends boolean = true> {
   title?: T;
   pageType?: T;
   grantCard?: T;
+  createdBy?: T;
+  updatedBy?: T;
   heroTitle?: T;
   heroSubtitle?: T;
   bgType?: T;
@@ -7844,6 +7948,7 @@ export interface GrantsSelect<T extends boolean = true> {
           | {
               image?: T;
               title?: T;
+              titleAlignment?: T;
               subtitle?: T;
               tags?:
                 | T
@@ -8244,6 +8349,8 @@ export interface GrantcardsSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  createdBy?: T;
+  updatedBy?: T;
   slug?: T;
   slugLock?: T;
   folder?: T;
@@ -8338,6 +8445,8 @@ export interface EtestsSelect<T extends boolean = true> {
             };
         notEMascot?: T;
       };
+  createdBy?: T;
+  updatedBy?: T;
   slug?: T;
   slugLock?: T;
   updatedAt?: T;
@@ -8351,6 +8460,8 @@ export interface EtestsSelect<T extends boolean = true> {
  */
 export interface PagesSelect<T extends boolean = true> {
   title?: T;
+  createdBy?: T;
+  updatedBy?: T;
   heroTitle?: T;
   heroSubtitle?: T;
   bgType?: T;
@@ -8586,6 +8697,7 @@ export interface PagesSelect<T extends boolean = true> {
           | {
               image?: T;
               title?: T;
+              titleAlignment?: T;
               subtitle?: T;
               tags?:
                 | T
@@ -9183,6 +9295,7 @@ export interface BlogSelect<T extends boolean = true> {
           | {
               image?: T;
               title?: T;
+              titleAlignment?: T;
               subtitle?: T;
               tags?:
                 | T
@@ -9525,6 +9638,8 @@ export interface BlogSelect<T extends boolean = true> {
             };
       };
   publishedAt?: T;
+  createdBy?: T;
+  updatedBy?: T;
   slug?: T;
   slugLock?: T;
   meta?:
@@ -9781,6 +9896,7 @@ export interface ReportsSelect<T extends boolean = true> {
           | {
               image?: T;
               title?: T;
+              titleAlignment?: T;
               subtitle?: T;
               tags?:
                 | T
@@ -10123,6 +10239,8 @@ export interface ReportsSelect<T extends boolean = true> {
             };
       };
   publishedAt?: T;
+  createdBy?: T;
+  updatedBy?: T;
   slug?: T;
   slugLock?: T;
   meta?:
@@ -10378,6 +10496,7 @@ export interface MmediaSelect<T extends boolean = true> {
           | {
               image?: T;
               title?: T;
+              titleAlignment?: T;
               subtitle?: T;
               tags?:
                 | T
@@ -10720,6 +10839,8 @@ export interface MmediaSelect<T extends boolean = true> {
             };
       };
   publishedAt?: T;
+  createdBy?: T;
+  updatedBy?: T;
   slug?: T;
   slugLock?: T;
   meta?:
@@ -10942,6 +11063,7 @@ export interface UsersSelect<T extends boolean = true> {
   name?: T;
   avatar?: T;
   role?: T;
+  assignedLanguages?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -11640,6 +11762,10 @@ export interface Homepage {
              */
             image?: (number | null) | MediaCloud;
             title?: string | null;
+            /**
+             * Choose the alignment for the title
+             */
+            titleAlignment?: ('left' | 'right') | null;
             subtitle?: string | null;
             tags?:
               | {
@@ -12461,6 +12587,14 @@ export interface Homepage {
      */
     image?: (number | null) | MediaCloud;
   };
+  /**
+   * User who created this homepage configuration
+   */
+  createdBy?: (number | null) | User;
+  /**
+   * User who last updated this homepage configuration
+   */
+  updatedBy?: (number | null) | User;
   _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -12961,6 +13095,7 @@ export interface HomepageSelect<T extends boolean = true> {
           | {
               image?: T;
               title?: T;
+              titleAlignment?: T;
               subtitle?: T;
               tags?:
                 | T
@@ -13309,6 +13444,8 @@ export interface HomepageSelect<T extends boolean = true> {
         description?: T;
         image?: T;
       };
+  createdBy?: T;
+  updatedBy?: T;
   _status?: T;
   updatedAt?: T;
   createdAt?: T;

@@ -3,6 +3,8 @@ import { link } from '@/fields/link'
 
 import { authenticated } from '@/access/authenticated'
 import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
+import { translatorLanguageAccess } from '@/access/translatorLanguageAccess'
+import { noDeleteForTranslators } from '@/access/noDeleteForTranslators'
 
 import { slugField } from '@/fields/slug'
 import { generatePreviewPath } from '@/utilities/generatePreviewPath'
@@ -16,18 +18,16 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
   },
   access: {
     create: authenticated,
-    //TODO: GrantCard - Fix RBAC for delete
-    delete: authenticated,
+    delete: noDeleteForTranslators,
     read: authenticatedOrPublished,
-    //TODO: GrantCard - Fix RBAC - writer should be able to update only their records
-    update: authenticated,
+    update: translatorLanguageAccess,
   },
   admin: {
     group: {
       name: 'Content',
       order: '3',
     },
-    defaultColumns: ['title', 'cardColour', 'order', 'activePeriod', 'mascot', '_status', 'folder'],
+    defaultColumns: ['title', 'createdBy', 'updatedBy', '_status', 'folder'],
     useAsTitle: 'title',
     livePreview: {
       url: ({ data, locale }) => {
@@ -347,6 +347,46 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
             path: 'src/collections/GrantCards/GrantCardButtonRowLabel.tsx',
           },
         },
+      },
+    },
+    {
+      name: 'createdBy',
+      type: 'relationship',
+      relationTo: 'users',
+      admin: {
+        position: 'sidebar',
+        description: 'User who created this grant card',
+        readOnly: true,
+      },
+      hooks: {
+        beforeChange: [
+          ({ req, operation, value }) => {
+            if (operation === 'create' && !value && req.user) {
+              return req.user.id
+            }
+            return value
+          },
+        ],
+      },
+    },
+    {
+      name: 'updatedBy',
+      type: 'relationship',
+      relationTo: 'users',
+      admin: {
+        position: 'sidebar',
+        description: 'User who last updated this grant card',
+        readOnly: true,
+      },
+      hooks: {
+        beforeChange: [
+          ({ req, value }) => {
+            if (req.user) {
+              return req.user.id
+            }
+            return value
+          },
+        ],
       },
     },
     ...slugField(),

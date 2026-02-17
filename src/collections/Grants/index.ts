@@ -3,6 +3,8 @@ import { link } from '@/fields/link'
 
 import { authenticated } from '@/access/authenticated'
 import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
+import { translatorLanguageAccess } from '@/access/translatorLanguageAccess'
+import { noDeleteForTranslators } from '@/access/noDeleteForTranslators'
 
 import { revalidateGrant, revalidateDelete } from './hooks/revalidateGrant'
 import { slugField } from '@/fields/slug'
@@ -42,18 +44,16 @@ export const Grants: CollectionConfig<'grants'> = {
   },
   access: {
     create: authenticated,
-    //TODO: Grant - Fix RBAC for delete
-    delete: authenticated,
+    delete: noDeleteForTranslators,
     read: authenticatedOrPublished,
-    //TODO: Grant - Fix RBAC - writer should be able to update only their records
-    update: authenticated,
+    update: translatorLanguageAccess,
   },
   admin: {
     group: {
       name: 'Content',
       order: '2',
     },
-    defaultColumns: ['heroTitle', 'pageType', 'grantCard', 'bgType', '_status', 'folder'],
+    defaultColumns: ['heroTitle', 'createdBy', 'updatedBy', '_status', 'folder'],
     livePreview: {
       url: ({ data, locale }) => {
         const path = generatePreviewPath({
@@ -132,6 +132,46 @@ export const Grants: CollectionConfig<'grants'> = {
           },
         },
       ],
+    },
+    {
+      name: 'createdBy',
+      type: 'relationship',
+      relationTo: 'users',
+      admin: {
+        position: 'sidebar',
+        description: 'User who created this grant page',
+        readOnly: true,
+      },
+      hooks: {
+        beforeChange: [
+          ({ req, operation, value }) => {
+            if (operation === 'create' && !value && req.user) {
+              return req.user.id
+            }
+            return value
+          },
+        ],
+      },
+    },
+    {
+      name: 'updatedBy',
+      type: 'relationship',
+      relationTo: 'users',
+      admin: {
+        position: 'sidebar',
+        description: 'User who last updated this grant page',
+        readOnly: true,
+      },
+      hooks: {
+        beforeChange: [
+          ({ req, value }) => {
+            if (req.user) {
+              return req.user.id
+            }
+            return value
+          },
+        ],
+      },
     },
     {
       label: 'Hero Block',

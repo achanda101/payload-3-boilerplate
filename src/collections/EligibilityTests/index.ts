@@ -2,6 +2,8 @@ import type { CollectionConfig } from 'payload'
 
 import { authenticated } from '@/access/authenticated'
 import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
+import { translatorLanguageAccess } from '@/access/translatorLanguageAccess'
+import { noDeleteForTranslators } from '@/access/noDeleteForTranslators'
 
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import {
@@ -27,15 +29,15 @@ export const EligibilityTests: CollectionConfig<'etests'> = {
   access: {
     create: authenticated,
     read: authenticatedOrPublished,
-    update: authenticated,
-    delete: authenticated,
+    update: translatorLanguageAccess,
+    delete: noDeleteForTranslators,
   },
   admin: {
     group: {
       name: 'Content',
       order: '4',
     },
-    defaultColumns: ['testName', '_status'],
+    defaultColumns: ['testName', 'createdBy', 'updatedBy', '_status'],
     useAsTitle: 'testName',
   },
   trash: true,
@@ -321,6 +323,46 @@ export const EligibilityTests: CollectionConfig<'etests'> = {
           ],
         },
       ],
+    },
+    {
+      name: 'createdBy',
+      type: 'relationship',
+      relationTo: 'users',
+      admin: {
+        position: 'sidebar',
+        description: 'User who created this eligibility test',
+        readOnly: true,
+      },
+      hooks: {
+        beforeChange: [
+          ({ req, operation, value }) => {
+            if (operation === 'create' && !value && req.user) {
+              return req.user.id
+            }
+            return value
+          },
+        ],
+      },
+    },
+    {
+      name: 'updatedBy',
+      type: 'relationship',
+      relationTo: 'users',
+      admin: {
+        position: 'sidebar',
+        description: 'User who last updated this eligibility test',
+        readOnly: true,
+      },
+      hooks: {
+        beforeChange: [
+          ({ req, value }) => {
+            if (req.user) {
+              return req.user.id
+            }
+            return value
+          },
+        ],
+      },
     },
     ...slugField('testName'),
   ],

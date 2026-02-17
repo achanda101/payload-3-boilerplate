@@ -3,6 +3,8 @@ import { link } from '@/fields/link'
 
 import { authenticated } from '@/access/authenticated'
 import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
+import { translatorLanguageAccess } from '@/access/translatorLanguageAccess'
+import { noDeleteForTranslators } from '@/access/noDeleteForTranslators'
 
 import { revalidatePage, revalidateDelete } from './hooks/revalidatePage'
 import { slugField } from '@/fields/slug'
@@ -42,18 +44,16 @@ export const Pages: CollectionConfig<'pages'> = {
   },
   access: {
     create: authenticated,
-    //TODO: Grant - Fix RBAC for delete
-    delete: authenticated,
+    delete: noDeleteForTranslators,
     read: authenticatedOrPublished,
-    //TODO: Grant - Fix RBAC - writer should be able to update only their records
-    update: authenticated,
+    update: translatorLanguageAccess,
   },
   admin: {
     group: {
       name: 'Content',
       order: '5',
     },
-    defaultColumns: ['heroTitle', 'mascot', 'bgType', 'heroColour', '_status', 'folder'],
+    defaultColumns: ['heroTitle', 'createdBy', 'updatedBy', '_status', 'folder'],
     livePreview: {
       url: ({ data, locale }) => {
         const path = generatePreviewPath({
@@ -83,6 +83,48 @@ export const Pages: CollectionConfig<'pages'> = {
           borderRadius: '8px',
           marginBottom: '5px',
         },
+      },
+    },
+    {
+      name: 'createdBy',
+      type: 'relationship',
+      relationTo: 'users',
+      admin: {
+        position: 'sidebar',
+        description: 'User who created this page',
+        readOnly: true,
+      },
+      hooks: {
+        beforeChange: [
+          ({ req, operation, value }) => {
+            // Only set on create, never update
+            if (operation === 'create' && !value && req.user) {
+              return req.user.id
+            }
+            return value
+          },
+        ],
+      },
+    },
+    {
+      name: 'updatedBy',
+      type: 'relationship',
+      relationTo: 'users',
+      admin: {
+        position: 'sidebar',
+        description: 'User who last updated this page',
+        readOnly: true,
+      },
+      hooks: {
+        beforeChange: [
+          ({ req, value }) => {
+            // Always update to current user on any change
+            if (req.user) {
+              return req.user.id
+            }
+            return value
+          },
+        ],
       },
     },
     {

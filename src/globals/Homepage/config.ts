@@ -1,6 +1,6 @@
 import type { GlobalConfig } from 'payload'
 import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
-import { canUpdateUser } from '@/access/canUpdateUser'
+import { translatorLanguageAccess } from '@/access/translatorLanguageAccess'
 import { revalidateHomepage } from './hooks/revalidateHomepage'
 import { link } from '@/fields/link'
 import { getServerSideURL } from '@/utilities/getURL'
@@ -34,8 +34,7 @@ export const Homepage: GlobalConfig = {
   label: 'Homepage',
   access: {
     read: authenticatedOrPublished,
-    update: canUpdateUser,
-    readVersions: canUpdateUser,
+    update: translatorLanguageAccess,
   },
   admin: {
     group: {
@@ -220,6 +219,46 @@ export const Homepage: GlobalConfig = {
       ],
       admin: {
         description: 'SEO settings for the homepage.',
+      },
+    },
+    {
+      name: 'createdBy',
+      type: 'relationship',
+      relationTo: 'users',
+      admin: {
+        position: 'sidebar',
+        description: 'User who created this homepage configuration',
+        readOnly: true,
+      },
+      hooks: {
+        beforeChange: [
+          ({ req, operation, value }) => {
+            if (operation === 'create' && !value && req.user) {
+              return req.user.id
+            }
+            return value
+          },
+        ],
+      },
+    },
+    {
+      name: 'updatedBy',
+      type: 'relationship',
+      relationTo: 'users',
+      admin: {
+        position: 'sidebar',
+        description: 'User who last updated this homepage configuration',
+        readOnly: true,
+      },
+      hooks: {
+        beforeChange: [
+          ({ req, value }) => {
+            if (req.user) {
+              return req.user.id
+            }
+            return value
+          },
+        ],
       },
     },
   ],

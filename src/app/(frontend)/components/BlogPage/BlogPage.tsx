@@ -622,6 +622,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({
                   <React.Fragment key={index}>
                     <FeatureCard
                       title={block.title}
+                      titleAlignment={block.titleAlignment}
                       subtitle={block.subtitle}
                       desc={block.desc}
                       tags={block.tags}
