@@ -1,5 +1,6 @@
 import type { MediaCloud } from '@/payload-types'
 import { getMeUser } from '@/utilities/getMeUser'
+import { getServerSideURL } from '@/utilities/getURL'
 import Image from 'next/image'
 
 const DefaultAvatarSVG = () => (
@@ -23,9 +24,15 @@ export const Avatar = async () => {
   try {
     const { user } = await getMeUser()
     const avatar = user?.avatar as MediaCloud
-    const avatarUrl = avatar?.sizes?.thumbnail?.url || avatar?.url
+    const relativeUrl = avatar?.sizes?.thumbnail?.url || avatar?.url
+    const userName = user?.name || user?.email || 'User'
 
-    if (avatar && avatarUrl) {
+    if (avatar && relativeUrl) {
+      // Convert relative URL to absolute URL
+      const avatarUrl = relativeUrl.startsWith('http')
+        ? relativeUrl
+        : `${getServerSideURL()}${relativeUrl}`
+
       return (
         <Image
           style={{
@@ -38,13 +45,30 @@ export const Avatar = async () => {
         />
       )
     }
+
+    // Default avatar with name
+    return (
+      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+        <DefaultAvatarSVG />
+        <span
+          style={{
+            fontSize: '11px',
+            color: '#666',
+            maxWidth: '400px',
+            wordWrap: 'break-word',
+            overflowWrap: 'break-word',
+            textAlign: 'center',
+          }}
+        >
+          {userName}
+        </span>
+      </div>
+    )
   } catch (error) {
     // Log error but don't break the page - fall through to default avatar
     console.error('Error loading user avatar:', error)
+    return <DefaultAvatarSVG />
   }
-
-  // Default avatar fallback
-  return <DefaultAvatarSVG />
 }
 
 export default Avatar
