@@ -19,7 +19,7 @@ export const Documents: CollectionConfig = {
       name: 'Media',
       order: '3',
     },
-    defaultColumns: ['filename', 'alt', 'folder'],
+    defaultColumns: ['filename', 'alt', 'caption', 'folder'],
     description: 'Upload and manage PDF documents. Maximum file size is 50MB.',
   },
   folders: true,

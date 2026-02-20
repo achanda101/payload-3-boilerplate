@@ -21,7 +21,7 @@ export const MediaCloud: CollectionConfig = {
       name: 'Media',
       order: '1',
     },
-    defaultColumns: ['filename', 'alt', 'folder'],
+    defaultColumns: ['filename', 'alt', 'caption', 'folder'],
   },
   folders: true,
   trash: true,

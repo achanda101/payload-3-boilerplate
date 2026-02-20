@@ -1,7 +1,7 @@
 import type { CollectionConfig } from 'payload'
 
 import { authenticated } from '../access/authenticated'
-import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
+import { anyone } from '../access/anyone'
 
 export const DocTypes: CollectionConfig = {
   slug: 'doctypes',
@@ -12,7 +12,7 @@ export const DocTypes: CollectionConfig = {
   access: {
     create: authenticated,
     delete: authenticated,
-    read: authenticatedOrPublished,
+    read: anyone,
     update: authenticated,
   },
   admin: {

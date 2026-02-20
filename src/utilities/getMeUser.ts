@@ -34,23 +34,11 @@ export const getMeUser = async (args?: {
     // Verify the token and get user using Payload's auth
     const authResult = await payload.auth({ headers })
 
-    if (process.env.NODE_ENV === 'development') {
-      console.log('getMeUser - Auth result:', {
-        hasUser: !!authResult?.user,
-        userId: authResult?.user?.id,
-        userEmail: authResult?.user?.email,
-      })
-    }
-
     if (!authResult?.user) {
       if (nullUserRedirect) {
         redirect(nullUserRedirect)
       }
       throw new Error('User not found or invalid token')
-    }
-
-    if (process.env.NODE_ENV === 'development') {
-      console.log('getMeUser - Fetching full user with depth: 1 and overrideAccess: true')
     }
 
     // Fetch user with populated avatar, bypassing ALL access control
@@ -60,19 +48,6 @@ export const getMeUser = async (args?: {
       depth: 1,
       overrideAccess: true, // Bypass 2FA and other access control
     })
-
-    if (process.env.NODE_ENV === 'development') {
-      console.log('getMeUser - Full user fetched:', {
-        id: fullUser.id,
-        email: fullUser.email,
-        hasAvatar: !!fullUser.avatar,
-      })
-    }
-
-    if (process.env.NODE_ENV === 'development') {
-      console.log('getMeUser - User:', fullUser.email)
-      console.log('getMeUser - Avatar:', fullUser.avatar ? 'populated' : 'null')
-    }
 
     if (validUserRedirect && fullUser) {
       redirect(validUserRedirect)

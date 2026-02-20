@@ -23,6 +23,7 @@ export const AssetCloud: CollectionConfig = {
     },
     description:
       'Upload and manage design assets like logos, mascots, icons, brand illustrations here.',
+    defaultColumns: ['filename', 'alt', 'caption', 'folder'],
   },
   folders: true,
   trash: true,

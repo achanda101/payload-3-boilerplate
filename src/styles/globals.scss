@@ -356,7 +356,7 @@ hr {
   }
   .language-selector,
   .resource-type-selector {
-    background-color: $color-background;
+    background-color: transparent;
     font-family: $font-body;
     padding: 0.5rem;
     cursor: pointer;
@@ -385,7 +385,7 @@ hr {
 
 .site-footer {
   @apply w-full;
-  background-color: $color-sky;
+  background-color: $color-sky-wave;
 }
 
 .footer-grid {
