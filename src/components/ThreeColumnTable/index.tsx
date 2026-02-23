@@ -2,21 +2,23 @@ import React from 'react'
 import { serializeLexical } from '@/components/RichText/serializeRichText'
 import { Heading } from '@/components/Heading'
 
+interface ThreeColumnRow {
+  firstColumn?: any
+  secondColumn?: any
+  thirdColumn?: any
+}
+
 interface ThreeColumnTableProps {
   title?: string | null
   subtitle?: string | null
-  firstColumn?: any // Lexical richText data
-  secondColumn?: any // Lexical richText data
-  thirdColumn?: any // Lexical richText data
+  rows?: ThreeColumnRow[] | null
   columnWidths?: 'f-t-t' | 't-f-t' | 't-t-f' | 'vt-t-f'
 }
 
 export const ThreeColumnTable: React.FC<ThreeColumnTableProps> = ({
   title,
   subtitle,
-  firstColumn,
-  secondColumn,
-  thirdColumn,
+  rows,
   columnWidths = 'f-t-t',
 }) => {
   const getColumnWidthClass = (columnIndex: number): string => {
@@ -32,21 +34,19 @@ export const ThreeColumnTable: React.FC<ThreeColumnTableProps> = ({
   const renderColumn = (columnData: any) => {
     if (!columnData) return null
 
-    // Handle string data
     if (typeof columnData === 'string') {
       return (
-        <div className="prose [&>*:first-child]:!mt-0 [&>*:first-child]:!pt-0 [&_p]:!mt-0 [&_li]:!my-0 [&_li]:!text-[18px]">
+        <div className="prose [&>*:first-child]:!mt-0 [&>*:first-child]:!pt-0 [&_p]:!mt-0 [&_li]:!text-[18px]">
           {columnData}
         </div>
       )
     }
 
-    // Handle object data (Lexical)
     if (typeof columnData === 'object' && columnData !== null && columnData.root) {
       const children = columnData.root?.children
       if (Array.isArray(children) && children.length > 0) {
         return (
-          <div className="prose [&>*:first-child]:!mt-0 [&>*:first-child]:!pt-0 [&>*:first-child_img]:!mt-0 [&_p]:!mt-0 [&_li]:!my-0 [&_li]:!text-[18px]">
+          <div className="prose [&>*:first-child]:!mt-0 [&>*:first-child]:!pt-0 [&>*:first-child_img]:!mt-0 [&_p]:!mt-0 [&_li]:!text-[18px]">
             {serializeLexical({ nodes: children })}
           </div>
         )
@@ -69,20 +69,19 @@ export const ThreeColumnTable: React.FC<ThreeColumnTableProps> = ({
         </div>
       </div>
       <div className="col-span-full">
-        <div className="flex flex-col lg:flex-row border-t border-black py-4">
-          {/* First Column */}
-          <div className={`${getColumnWidthClass(0)} px-0 lg:px-4 first:lg:pl-0`}>
-            {renderColumn(firstColumn)}
+        {rows?.map((row, index) => (
+          <div key={index} className="flex flex-col lg:flex-row border-t border-black py-4">
+            <div className={`${getColumnWidthClass(0)} px-0 lg:px-4 first:lg:pl-0`}>
+              {renderColumn(row.firstColumn)}
+            </div>
+            <div className={`${getColumnWidthClass(1)} px-0 lg:px-4`}>
+              {renderColumn(row.secondColumn)}
+            </div>
+            <div className={`${getColumnWidthClass(2)} px-0 lg:px-4 last:lg:pr-0`}>
+              {renderColumn(row.thirdColumn)}
+            </div>
           </div>
-          {/* Second Column */}
-          <div className={`${getColumnWidthClass(1)} px-0 lg:px-4`}>
-            {renderColumn(secondColumn)}
-          </div>
-          {/* Third Column */}
-          <div className={`${getColumnWidthClass(2)} px-0 lg:px-4 last:lg:pr-0`}>
-            {renderColumn(thirdColumn)}
-          </div>
-        </div>
+        ))}
       </div>
     </>
   )

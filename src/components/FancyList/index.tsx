@@ -29,13 +29,17 @@ export const FancyList: React.FC<FancyListProps> = ({ items }) => {
   if (!items || items.length === 0) return null
 
   return (
-    <ul className="list-none p-0 m-0 space-y-6">
+    <ul className="list-none p-0 m-0">
       {items.map((item, index) => {
         // Cycle through list markers
         const markerImage = LIST_MARKERS[index % LIST_MARKERS.length]
 
         return (
-          <li key={item.id || index} className="flex items-start gap-4">
+          <li
+            key={item.id || index}
+            className="flex items-start gap-4"
+            style={index > 0 ? { marginTop: '2rem' } : undefined}
+          >
             {/* Auto-assigned list marker - max 40px */}
             <div className="flex-shrink-0 w-10 h-10 flex items-start justify-center">
               <Image
@@ -49,7 +53,7 @@ export const FancyList: React.FC<FancyListProps> = ({ items }) => {
             {/* Content */}
             <div className="flex-1">
               <Heading level={6} className="m-0 mb-1">{item.title}</Heading>
-              {item.description && <p className="m-0">{item.description}</p>}
+              {item.description && <p className="m-0 leading-normal">{item.description}</p>}
             </div>
           </li>
         )

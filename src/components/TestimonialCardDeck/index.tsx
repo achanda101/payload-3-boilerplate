@@ -6,6 +6,7 @@ import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from '@/com
 import WheelGestures from 'embla-carousel-wheel-gestures'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { Heading } from '@/components/Heading'
+import { serializeLexical } from '@/components/RichText/serialize'
 
 interface TestimonialCardDeckProps {
   title?: string | null
@@ -13,7 +14,7 @@ interface TestimonialCardDeckProps {
     id: string
     quote_text: string
     attrib_name?: string | null
-    attrib_dsg?: string | null
+    attrib_dsg?: any
   }[]
 }
 
@@ -140,7 +141,11 @@ export const TestimonialCardDeck: React.FC<TestimonialCardDeckProps> = ({ title,
                   {card.quote_text && renderQuote(card)}
                   {/* Attribution */}
                   {card.attrib_name && <p className="mt-auto font-bold">- {card.attrib_name}</p>}
-                  {card.attrib_dsg && <p className="font-bold">{card.attrib_dsg}</p>}
+                  {card.attrib_dsg && (
+                    <div className="font-bold">
+                      {serializeLexical({ nodes: card.attrib_dsg?.root?.children || [] })}
+                    </div>
+                  )}
                 </div>
               </CarouselItem>
             ))}

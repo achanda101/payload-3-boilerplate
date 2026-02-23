@@ -28,6 +28,8 @@ import * as migration_20260207_080532_remove_contenttext_index from './20260207_
 import * as migration_20260215_082545_footer_badges from './20260215_082545_footer_badges';
 import * as migration_20260216_172509_remove_author_and_translators from './20260216_172509_remove_author_and_translators';
 import * as migration_20260216_181726_add_translator_role_and_audit_fields from './20260216_181726_add_translator_role_and_audit_fields';
+import * as migration_20260223_154503_three_column_table_rows from './20260223_154503_three_column_table_rows';
+import * as migration_20260223_165503_testimonial_attrib_dsg_richtext from './20260223_165503_testimonial_attrib_dsg_richtext';
 
 export const migrations = [
   {
@@ -178,6 +180,16 @@ export const migrations = [
   {
     up: migration_20260216_181726_add_translator_role_and_audit_fields.up,
     down: migration_20260216_181726_add_translator_role_and_audit_fields.down,
-    name: '20260216_181726_add_translator_role_and_audit_fields'
+    name: '20260216_181726_add_translator_role_and_audit_fields',
+  },
+  {
+    up: migration_20260223_154503_three_column_table_rows.up,
+    down: migration_20260223_154503_three_column_table_rows.down,
+    name: '20260223_154503_three_column_table_rows',
+  },
+  {
+    up: migration_20260223_165503_testimonial_attrib_dsg_richtext.up,
+    down: migration_20260223_165503_testimonial_attrib_dsg_richtext.down,
+    name: '20260223_165503_testimonial_attrib_dsg_richtext'
   },
 ];

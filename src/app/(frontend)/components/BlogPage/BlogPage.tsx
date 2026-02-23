@@ -622,7 +622,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({
                   <div key={index} id={block.id}>
                     <FeatureCard
                       title={block.title}
-                      titleAlignment={block.titleAlignment}
+
                       subtitle={block.subtitle}
                       desc={block.desc}
                       tags={block.tags}
@@ -865,9 +865,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({
                       <ThreeColumnTable
                         title={block.title}
                         subtitle={block.subtitle}
-                        firstColumn={block.firstColumn}
-                        secondColumn={block.secondColumn}
-                        thirdColumn={block.thirdColumn}
+                        rows={block.rows}
                         columnWidths={block.columnWidths}
                       />
                     </div>

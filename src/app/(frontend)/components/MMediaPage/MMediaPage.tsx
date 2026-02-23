@@ -503,7 +503,7 @@ export const MMediaPage: React.FC<MMediaPageProps> = ({ collection, docId, isDra
                     <div className="page_column_layout gap-6">
                       <GrantCardGrid
                         title={block.title}
-                      titleAlignment={block.titleAlignment}
+
                         desc={block.desc}
                         grantCards={(block as any) || []}
                       />
@@ -522,7 +522,7 @@ export const MMediaPage: React.FC<MMediaPageProps> = ({ collection, docId, isDra
                     <div className="page_column_layout gap-6">
                       <MultiStepProcess
                         title={block.title}
-                      titleAlignment={block.titleAlignment}
+
                         subtitle={block.subtitle}
                         steps={block.steps}
                       />
@@ -556,7 +556,7 @@ export const MMediaPage: React.FC<MMediaPageProps> = ({ collection, docId, isDra
                     <div className="page_column_layout gap-6">
                       <SingleColumnInfo
                         title={block.title}
-                      titleAlignment={block.titleAlignment}
+
                         desc={block.desc}
                         buttons={block.colBtns}
                       />
@@ -576,7 +576,7 @@ export const MMediaPage: React.FC<MMediaPageProps> = ({ collection, docId, isDra
                     <div className="page_column_layout  gap-0 md:gap-0 lg:gap-6">
                       <ComparisonBlock
                         title={block.title}
-                      titleAlignment={block.titleAlignment}
+
                         desc={block.desc}
                         buttons={block.buttons}
                         lftCol={block.lftGrp}
@@ -599,7 +599,7 @@ export const MMediaPage: React.FC<MMediaPageProps> = ({ collection, docId, isDra
                       <YellowCardDeck
                         blockName={block.blockName}
                         title={block.title}
-                      titleAlignment={block.titleAlignment}
+
                         desc={block.desc}
                         cards={block.cards}
                         align={block.align}
@@ -613,7 +613,7 @@ export const MMediaPage: React.FC<MMediaPageProps> = ({ collection, docId, isDra
                   <div key={index} id={block.id}>
                     <FeatureCard
                       title={block.title}
-                      titleAlignment={block.titleAlignment}
+
                       subtitle={block.subtitle}
                       desc={block.desc}
                       tags={block.tags}
@@ -635,7 +635,7 @@ export const MMediaPage: React.FC<MMediaPageProps> = ({ collection, docId, isDra
                     <div className="page_column_layout gap-6">
                       <ListingCardDeck
                         title={block.title}
-                      titleAlignment={block.titleAlignment}
+
                         dataSource={block.dataSource}
                         cards={block.cards}
                         resourcePages={block.resourcePages}
@@ -651,7 +651,7 @@ export const MMediaPage: React.FC<MMediaPageProps> = ({ collection, docId, isDra
                     <div className="page_column_layout gap-6">
                       <FaqBlock
                         title={block.title}
-                      titleAlignment={block.titleAlignment}
+
                         desc={block.desc}
                         link={block.link}
                         faqs={block.faqs}
@@ -665,7 +665,7 @@ export const MMediaPage: React.FC<MMediaPageProps> = ({ collection, docId, isDra
                   <div key={index} id={block.id}>
                     <FeatureCardAccordion
                       title={block.title}
-                      titleAlignment={block.titleAlignment}
+
                       blockName={block.blockName}
                       featureCards={block.featCrds}
                     />
@@ -692,7 +692,7 @@ export const MMediaPage: React.FC<MMediaPageProps> = ({ collection, docId, isDra
                   <div key={index} id={block.id}>
                     <PinkPuffyCallOut
                       title={block.title}
-                      titleAlignment={block.titleAlignment}
+
                       subtitle={block.subtitle}
                       align={block.align}
                       topRow={block.topRow}
@@ -712,7 +712,7 @@ export const MMediaPage: React.FC<MMediaPageProps> = ({ collection, docId, isDra
                   <div key={index} id={block.id}>
                     <BeigePuffyCallOut
                       title={block.title}
-                      titleAlignment={block.titleAlignment}
+
                       subtitle={block.subtitle}
                       align={block.align}
                       items={block.items}
@@ -730,7 +730,7 @@ export const MMediaPage: React.FC<MMediaPageProps> = ({ collection, docId, isDra
                   <div key={index} id={block.id}>
                     <FundingMap
                       title={block.title}
-                      titleAlignment={block.titleAlignment}
+
                       subtitle={block.subtitle}
                       selectorLabel={block.selectorLabel}
                       items={block.items}
@@ -748,7 +748,7 @@ export const MMediaPage: React.FC<MMediaPageProps> = ({ collection, docId, isDra
                   <div key={index} id={block.id}>
                     <ResourceFeatureCard
                       title={block.title}
-                      titleAlignment={block.titleAlignment}
+
                       align={block.align}
                       desc={block.desc}
                       featCardList={block.featCardList}
@@ -766,7 +766,7 @@ export const MMediaPage: React.FC<MMediaPageProps> = ({ collection, docId, isDra
                   <div key={index} id={block.id}>
                     <ResourceGallery
                       title={block.title}
-                      titleAlignment={block.titleAlignment}
+
                       align={block.align}
                       desc={block.desc}
                       galleryList={block.galleryList}
@@ -785,7 +785,7 @@ export const MMediaPage: React.FC<MMediaPageProps> = ({ collection, docId, isDra
                     <div className="page_column_layout gap-6">
                       <PillarCard
                         title={block.title}
-                      titleAlignment={block.titleAlignment}
+
                         subtitle={block.subtitle}
                         align={block.align}
                         cards={block.cards}
@@ -803,8 +803,7 @@ export const MMediaPage: React.FC<MMediaPageProps> = ({ collection, docId, isDra
                 return (
                   <div key={index} id={block.id}>
                     <div className="page_column_layout gap-6">
-                      <TestimonialCardDeck title={block.title}
-                      titleAlignment={block.titleAlignment} cards={block.cards} />
+                      <TestimonialCardDeck title={block.title} cards={block.cards} />
                     </div>
                     {process.env.NEXT_PUBLIC_SHOW_COLUMN_INDICATORS === 'true' && (
                       <div className="page_column_layout gap-6">
@@ -847,7 +846,7 @@ export const MMediaPage: React.FC<MMediaPageProps> = ({ collection, docId, isDra
                   <div key={index} id={block.id}>
                     <TwoColumnBlock
                       title={block.title}
-                      titleAlignment={block.titleAlignment}
+
                       subtitle={block.subtitle}
                       leftColumn={block.leftColumn}
                       rightColumn={block.rightColumn}
@@ -866,11 +865,8 @@ export const MMediaPage: React.FC<MMediaPageProps> = ({ collection, docId, isDra
                     <div className="page_column_layout gap-6">
                       <ThreeColumnTable
                         title={block.title}
-                      titleAlignment={block.titleAlignment}
                         subtitle={block.subtitle}
-                        firstColumn={block.firstColumn}
-                        secondColumn={block.secondColumn}
-                        thirdColumn={block.thirdColumn}
+                        rows={block.rows}
                         columnWidths={block.columnWidths}
                       />
                     </div>

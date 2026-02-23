@@ -17,11 +17,12 @@ import { BlockQuote } from '@/blocks/BlockQuote/config'
 import { BadgeBlock } from '@/blocks/BadgeBlock/config'
 import { PillButtonsBlock } from '@/blocks/PillButtonsBlock/config'
 import { TagsBlock } from '@/blocks/TagsBlock/config'
+import { FancyListBlock } from '@/blocks/FancyListBlock/config'
 
 const lexicalFeatures = ({ rootFeatures }: { rootFeatures: any }) => {
   return [
     ...rootFeatures,
-    HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4', 'h5', 'h6'] }),
+    HeadingFeature({ enabledHeadingSizes: ['h3', 'h4', 'h5', 'h6'] }),
     OrderedListFeature(),
     UnorderedListFeature(),
     UploadFeature(),
@@ -37,6 +38,7 @@ const lexicalFeatures = ({ rootFeatures }: { rootFeatures: any }) => {
         BadgeBlock,
         PillButtonsBlock,
         TagsBlock,
+        FancyListBlock,
       ],
     }),
   ]
@@ -85,47 +87,59 @@ export const ThreeColumnTableBlock: Block = {
       ],
     },
     {
-      type: 'tabs',
-      tabs: [
+      name: 'rows',
+      label: 'Rows',
+      labels: {
+        singular: 'Row',
+        plural: 'Rows',
+      },
+      type: 'array',
+      minRows: 1,
+      fields: [
         {
-          label: 'First Column',
-          fields: [
+          type: 'tabs',
+          tabs: [
             {
-              name: 'firstColumn',
-              label: 'First Column Content',
-              type: 'richText',
-              editor: lexicalEditor({
-                features: lexicalFeatures,
-              }),
-              localized: true,
+              label: 'First Column',
+              fields: [
+                {
+                  name: 'firstColumn',
+                  label: 'First Column Content',
+                  type: 'richText',
+                  editor: lexicalEditor({
+                    features: lexicalFeatures,
+                  }),
+                  localized: true,
+                },
+              ],
             },
-          ],
-        },
-        {
-          label: 'Second Column',
-          fields: [
             {
-              name: 'secondColumn',
-              label: 'Second Column Content',
-              type: 'richText',
-              editor: lexicalEditor({
-                features: lexicalFeatures,
-              }),
-              localized: true,
+              label: 'Second Column',
+              fields: [
+                {
+                  name: 'secondColumn',
+                  label: 'Second Column Content',
+                  type: 'richText',
+                  editor: lexicalEditor({
+                    features: lexicalFeatures,
+                  }),
+                  localized: true,
+                },
+              ],
             },
-          ],
-        },
-        {
-          label: 'Third Column',
-          fields: [
             {
-              name: 'thirdColumn',
-              label: 'Third Column Content',
-              type: 'richText',
-              editor: lexicalEditor({
-                features: lexicalFeatures,
-              }),
-              localized: true,
+              label: 'Third Column',
+              fields: [
+                {
+                  name: 'thirdColumn',
+                  label: 'Third Column Content',
+                  type: 'richText',
+                  editor: lexicalEditor({
+                    features: lexicalFeatures,
+                  }),
+                  localized: true,
+                },
+              ],
             },
           ],
         },

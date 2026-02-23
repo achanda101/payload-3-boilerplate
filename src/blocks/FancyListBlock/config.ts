@@ -24,6 +24,7 @@ export const FancyListBlock: Block = {
           name: 'description',
           label: 'Description',
           type: 'textarea',
+          required: true,
           localized: true,
         },
       ],

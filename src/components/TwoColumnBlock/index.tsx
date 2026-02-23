@@ -21,7 +21,7 @@ export const TwoColumnBlock: React.FC<TwoColumnBlockProps> = ({
     // Handle string data
     if (typeof columnData === 'string') {
       return (
-        <div className="prose [&>*:first-child]:!mt-0 [&>*:first-child]:!pt-0 [&_li]:!my-0 [&_li]:!text-[18px]">{columnData}</div>
+        <div className="prose [&>*:first-child]:!mt-0 [&>*:first-child]:!pt-0 [&_li]:!text-[18px]">{columnData}</div>
       )
     }
 
@@ -31,7 +31,7 @@ export const TwoColumnBlock: React.FC<TwoColumnBlockProps> = ({
         const children = columnData.root?.children || []
         if (Array.isArray(children) && children.length > 0) {
           return (
-            <div className="prose [&>*:first-child]:!mt-0 [&>*:first-child]:!pt-0 [&>*:first-child_img]:!mt-0 [&_li]:!my-0 [&_li]:!text-[18px]">
+            <div className="prose [&>*:first-child]:!mt-0 [&>*:first-child]:!pt-0 [&>*:first-child_img]:!mt-0 [&_li]:!text-[18px]">
               {serializeLexical({ nodes: children })}
             </div>
           )
