@@ -11,6 +11,7 @@ import { draftMode } from 'next/headers'
 
 import '@/styles/globals.scss'
 import { getServerSideURL } from '@/utilities/getURL'
+import { ServiceWorkerCleanup } from '@/components/ServiceWorkerCleanup'
 
 // Dynamically load AdminBar only when in draft mode (not needed for production pages)
 const AdminBar = dynamic(() => import('@/components/AdminBar').then(mod => mod.AdminBar))
@@ -71,6 +72,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             />
           )}
 
+          <ServiceWorkerCleanup />
           <div>
             <Header />
             <main>{children}</main>
