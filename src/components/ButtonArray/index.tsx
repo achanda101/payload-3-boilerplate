@@ -130,10 +130,14 @@ export const ButtonArray: React.FC<{
   const messageRefs = useRef<(HTMLDivElement | null)[]>([])
 
   // Measure button widths and apply to messages after render
+  // Only set width if button is visible (offsetWidth > 0); on mobile with collapsed
+  // grant cards, buttons are display:none, giving offsetWidth=0. Setting width:0
+  // on the message div causes it to be invisible AND have a massive computed height
+  // (text wrapping in 0px width), which elongates the card when expanded.
   useEffect(() => {
     buttonRefs.current.forEach((buttonEl, index) => {
       const messageEl = messageRefs.current[index]
-      if (buttonEl && messageEl) {
+      if (buttonEl && messageEl && buttonEl.offsetWidth > 0) {
         const buttonWidth = buttonEl.offsetWidth
         messageEl.style.width = `${buttonWidth}px`
       }

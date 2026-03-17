@@ -12,6 +12,7 @@
   &.col-stack-mobile {
     @media (max-width: vars.$tablet) {
       @include mix.flex-column;
+      align-items: center;
       width: 100%;
       margin-top: vars.$spacing-sm;
     }
