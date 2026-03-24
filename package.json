@@ -1,7 +1,7 @@
 {
-  "name": "payload-3-boilerplate",
+  "name": "uafanp-payload",
   "version": "1.0.0",
-  "description": "Payload V3 Website builder boilerplate for Railway",
+  "description": "A multilingual grants and funding portal built with Payload CMS, Next.js, and PostgreSQL, designed to streamline the application process for grant seekers and enhance the management experience for administrators.",
   "license": "MIT",
   "type": "module",
   "scripts": {
