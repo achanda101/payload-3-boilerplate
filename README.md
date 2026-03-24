@@ -102,9 +102,14 @@ To transfer data from a local database to Railway PostgreSQL:
 # Dump data only (no schema, no migrations table)
 pg_dump -d YOUR_LOCAL_DB --data-only --no-owner --no-privileges --exclude-table=payload_migrations -Fc -f data.dump
 
+# Truncate all tables first (preserves schema and migrations)
+psql "DATABASE_PUBLIC_URL" -c "DO \$\$ DECLARE r RECORD; BEGIN FOR r IN (SELECT tablename FROM pg_tables WHERE schemaname = 'public' AND tablename != 'payload_migrations') LOOP EXECUTE 'TRUNCATE TABLE public.' || quote_ident(r.tablename) || ' CASCADE'; END LOOP; END \$\$;"
+
 # Restore to Railway (use the public URL from PostgreSQL service)
 pg_restore --data-only --no-owner --no-privileges --disable-triggers --schema=public -d "DATABASE_PUBLIC_URL" data.dump
 ```
+
+> Get `DATABASE_PUBLIC_URL` from the PostgreSQL service's Variables tab. Requires TCP Proxy enabled in the PostgreSQL service's Networking settings.
 
 ## Project Structure
 
