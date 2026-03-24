@@ -24,7 +24,7 @@ export const translatorLanguageAccess: Access = ({ req: { user, locale } }) => {
     const assignedLanguages = user.assignedLanguages || []
 
     // Check if the current locale is in their assigned languages
-    if (assignedLanguages.includes(currentLocale)) {
+    if ((assignedLanguages as string[]).includes(currentLocale)) {
       return true
     }
 
