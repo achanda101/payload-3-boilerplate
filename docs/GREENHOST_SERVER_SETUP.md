@@ -129,6 +129,47 @@ sudo certbot renew --dry-run
 npm install -g pm2
 ```
 
+## S3-Compatible Storage Options
+
+The app uses S3-compatible storage for media files. You can self-host an open-source alternative instead of using Cloudflare R2 or AWS S3:
+
+| Solution | Description | Best For |
+|----------|-------------|----------|
+| **MinIO** | High-performance S3-compatible object storage | Production self-hosting, most popular option |
+| **Garage** | Lightweight, geo-distributed storage | Multi-site setups, low-resource servers |
+| **SeaweedFS** | Fast distributed storage with S3 gateway | Large file volumes, high throughput |
+
+### MinIO (Recommended)
+
+```bash
+# Install
+wget https://dl.min.io/server/minio/release/linux-amd64/minio
+chmod +x minio
+sudo mv minio /usr/local/bin/
+
+# Create data directory
+sudo mkdir -p /data/minio
+sudo chown $USER:$USER /data/minio
+
+# Run (set your own credentials)
+export MINIO_ROOT_USER=your_access_key
+export MINIO_ROOT_PASSWORD=your_secret_key
+minio server /data/minio --console-address ":9001"
+```
+
+Then create a bucket via the MinIO console at `http://localhost:9001` and set these env vars in the app:
+
+```env
+S3_ENABLED=true
+S3_BUCKET=uafanp-media
+S3_ENDPOINT=http://localhost:9000
+S3_REGION=us-east-1
+S3_ACCESS_KEY_ID=your_access_key
+S3_SECRET_ACCESS_KEY=your_secret_key
+```
+
+> For production, run MinIO behind Nginx with SSL and use a systemd service or Docker to keep it running.
+
 ## Deploying the App
 
 ### Clone and Install
