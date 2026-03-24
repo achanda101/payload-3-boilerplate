@@ -1,8 +1,9 @@
 import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-postgres'
 
 export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
+  // chunk 1/121
   await db.execute(sql`
-   CREATE TYPE "public"."_locales" AS ENUM('en', 'ar', 'bi', 'bn-IN', 'br', 'ch', 'prs-Arab', 'km', 'hi', 'ms', 'ne', 'ps-Arab', 'pcm', 'si', 'tl', 'ta', 'th', 'vi', 'ur', 'lpl1', 'lpl2', 'lpl3', 'lpl4', 'lpl5', 'lpl6', 'lpl7', 'lpl8', 'lpl9', 'lpl10');
+  CREATE TYPE "public"."_locales" AS ENUM('en', 'ar', 'bi', 'bn-IN', 'br', 'ch', 'prs-Arab', 'km', 'hi', 'ms', 'ne', 'ps-Arab', 'pcm', 'si', 'tl', 'ta', 'th', 'vi', 'ur', 'lpl1', 'lpl2', 'lpl3', 'lpl4', 'lpl5', 'lpl6', 'lpl7', 'lpl8', 'lpl9', 'lpl10');
   CREATE TYPE "public"."enum_grants_hero_buttons_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum_grants_blocks_secondarycta_cta_button_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum_grants_blocks_secondarycta_ui_type" AS ENUM('lrg_txt_cta', 'md_txt_cta', 'min_cta', 'puffy_beige_cta');
@@ -52,6 +53,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum__grants_v_blocks_beige_puffy_align" AS ENUM('center', 'left');
   CREATE TYPE "public"."enum__grants_v_blocks_funding_map_items_region_name" AS ENUM('uaf-asia-pacific', 'afghan', 'aus', 'bangla', 'cambodia', 'china', 'india', 'indonesia', 'korea', 'laos', 'malaysia', 'mongolia', 'myanmar', 'nepal', 'pak', 'papua', 'philippines', 'srilanka', 'thailand', 'vietnam');
   CREATE TYPE "public"."enum__grants_v_blocks_resource_feat_card_align" AS ENUM('left', 'center');
+  `)
+
+  // chunk 2/121
+  await db.execute(sql`
   CREATE TYPE "public"."enum__grants_v_blocks_resource_gallery_align" AS ENUM('left', 'center');
   CREATE TYPE "public"."enum__grants_v_blocks_pillar_card_align" AS ENUM('left', 'center');
   CREATE TYPE "public"."enum__grants_v_blocks_min_card_gallery_header_align" AS ENUM('left', 'center');
@@ -102,6 +107,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum_pages_blocks_resource_gallery_align" AS ENUM('left', 'center');
   CREATE TYPE "public"."enum_pages_blocks_pillar_card_align" AS ENUM('left', 'center');
   CREATE TYPE "public"."enum_pages_blocks_min_card_gallery_header_align" AS ENUM('left', 'center');
+  `)
+
+  // chunk 3/121
+  await db.execute(sql`
   CREATE TYPE "public"."enum_pages_blocks_three_column_table_block_column_widths" AS ENUM('f-t-t', 't-f-t', 't-t-f', 'vt-t-f');
   CREATE TYPE "public"."enum_pages_bg_type" AS ENUM('wavy_top', 'wavy_full', 'center_blob');
   CREATE TYPE "public"."enum_pages_hero_colour" AS ENUM('forest', 'turmeric', 'sky', 'rose', 'lavender', 'fire', 'trans');
@@ -152,6 +161,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum_blog_blocks_list_crd_dck_data_source" AS ENUM('manual', 'resources');
   CREATE TYPE "public"."enum_blog_blocks_faq_blk_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum_blog_blocks_pink_puffy_links_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
+  `)
+
+  // chunk 4/121
+  await db.execute(sql`
   CREATE TYPE "public"."enum_blog_blocks_pink_puffy_align" AS ENUM('center', 'left');
   CREATE TYPE "public"."enum_blog_blocks_beige_puffy_align" AS ENUM('center', 'left');
   CREATE TYPE "public"."enum_blog_blocks_funding_map_items_region_name" AS ENUM('uaf-asia-pacific', 'afghan', 'aus', 'bangla', 'cambodia', 'china', 'india', 'indonesia', 'korea', 'laos', 'malaysia', 'mongolia', 'myanmar', 'nepal', 'pak', 'papua', 'philippines', 'srilanka', 'thailand', 'vietnam');
@@ -202,6 +215,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum_reports_blocks_feat_crd_title_alignment" AS ENUM('left', 'right');
   CREATE TYPE "public"."enum_reports_blocks_feat_crd_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum_reports_blocks_feat_crd_acc_feat_crds_crd_colour" AS ENUM('forest', 'turmeric', 'sky', 'rose', 'lavender', 'fire');
+  `)
+
+  // chunk 5/121
+  await db.execute(sql`
   CREATE TYPE "public"."enum_reports_blocks_list_crd_dck_cards_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum_reports_blocks_list_crd_dck_buttons_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum_reports_blocks_list_crd_dck_data_source" AS ENUM('manual', 'resources');
@@ -252,6 +269,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum_mmedia_blocks_mstep_process_steps_icon" AS ENUM('FileText', 'Clock', 'ShieldCheck', 'Vote', 'ScrollText', 'Banknote', 'Rocket', 'FileCheck');
   CREATE TYPE "public"."enum_mmedia_blocks_comparison_blk_buttons_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum_mmedia_blocks_ylw_deck_cards_links_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
+  `)
+
+  // chunk 6/121
+  await db.execute(sql`
   CREATE TYPE "public"."enum_mmedia_blocks_ylw_deck_cards_mascot_pos" AS ENUM('top_left', 'center');
   CREATE TYPE "public"."enum_mmedia_blocks_ylw_deck_align" AS ENUM('left', 'center');
   CREATE TYPE "public"."enum_mmedia_blocks_feat_crd_title_alignment" AS ENUM('left', 'right');
@@ -302,6 +323,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum__mmedia_v_published_locale" AS ENUM('en', 'ar', 'bi', 'bn-IN', 'br', 'ch', 'prs-Arab', 'km', 'hi', 'ms', 'ne', 'ps-Arab', 'pcm', 'si', 'tl', 'ta', 'th', 'vi', 'ur', 'lpl1', 'lpl2', 'lpl3', 'lpl4', 'lpl5', 'lpl6', 'lpl7', 'lpl8', 'lpl9', 'lpl10');
   CREATE TYPE "public"."enum_users_assigned_languages" AS ENUM('en', 'ar', 'bi', 'bn-IN', 'br', 'ch', 'prs-Arab', 'km', 'hi', 'ms', 'ne', 'ps-Arab', 'pcm', 'si', 'tl', 'ta', 'th', 'vi', 'ur');
   CREATE TYPE "public"."enum_users_role" AS ENUM('admin', 'editor', 'writer', 'translator');
+  `)
+
+  // chunk 7/121
+  await db.execute(sql`
   CREATE TYPE "public"."enum_redirects_to_type" AS ENUM('reference', 'custom');
   CREATE TYPE "public"."enum_forms_confirmation_type" AS ENUM('message', 'redirect');
   CREATE TYPE "public"."enum_payload_folders_folder_type" AS ENUM('grants', 'grantcards', 'pages', 'blog', 'reports', 'mmedia', 'mediaCloud', 'assetCloud', 'documents');
@@ -352,6 +377,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum__homepage_v_blocks_beige_puffy_align" AS ENUM('center', 'left');
   CREATE TYPE "public"."enum__homepage_v_blocks_funding_map_items_region_name" AS ENUM('uaf-asia-pacific', 'afghan', 'aus', 'bangla', 'cambodia', 'china', 'india', 'indonesia', 'korea', 'laos', 'malaysia', 'mongolia', 'myanmar', 'nepal', 'pak', 'papua', 'philippines', 'srilanka', 'thailand', 'vietnam');
   CREATE TYPE "public"."enum__homepage_v_blocks_resource_feat_card_align" AS ENUM('left', 'center');
+  `)
+
+  // chunk 8/121
+  await db.execute(sql`
   CREATE TYPE "public"."enum__homepage_v_blocks_resource_gallery_align" AS ENUM('left', 'center');
   CREATE TYPE "public"."enum__homepage_v_blocks_pillar_card_align" AS ENUM('left', 'center');
   CREATE TYPE "public"."enum__homepage_v_blocks_min_card_gallery_header_align" AS ENUM('left', 'center');
@@ -364,12025 +393,10845 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum_nav_menu_items_nav_items_link_type" AS ENUM('reference', 'custom', 'email', 'document', 'etest');
   CREATE TYPE "public"."enum_contact_info_emails_email_type" AS ENUM('info', 'grants', 'whistle', 'wsc', 'general');
   CREATE TABLE "grants_hero_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_grants_hero_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_grants_hero_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "grants_hero_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_rich_content_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "grants_blocks_rich_content_block_locales" (
-  	"rich_text" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"rich_text" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_secondarycta_cta_button" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_grants_blocks_secondarycta_cta_button_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_grants_blocks_secondarycta_cta_button_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "grants_blocks_secondarycta_cta_button_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_secondarycta" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"contact_email" varchar,
-  	"ui_type" "enum_grants_blocks_secondarycta_ui_type" DEFAULT 'lrg_txt_cta',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"contact_email" varchar,
+    	"ui_type" "enum_grants_blocks_secondarycta_ui_type" DEFAULT 'lrg_txt_cta',
+    	"block_name" varchar
+    );
   CREATE TABLE "grants_blocks_secondarycta_locales" (
-  	"cta_title" varchar,
-  	"cta_subtitle" varchar,
-  	"contact_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"cta_title" varchar,
+    	"cta_subtitle" varchar,
+    	"contact_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_mcol_info_block_multicols" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"add_link" boolean,
-  	"link_type" "enum_grants_blocks_mcol_info_block_multicols_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"add_link" boolean,
+    	"link_type" "enum_grants_blocks_mcol_info_block_multicols_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "grants_blocks_mcol_info_block_multicols_locales" (
-  	"title" varchar,
-  	"col_content" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"col_content" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_mcol_info_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "grants_blocks_grant_card_grid_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "grants_blocks_grant_card_grid_block_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_mstep_process_steps_details" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "grants_blocks_mstep_process_steps_details_locales" (
-  	"bullet" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"bullet" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_mstep_process_steps" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"icon" "enum_grants_blocks_mstep_process_steps_icon" DEFAULT 'FileText'
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"icon" "enum_grants_blocks_mstep_process_steps_icon" DEFAULT 'FileText'
+    );
   CREATE TABLE "grants_blocks_mstep_process_steps_locales" (
-  	"step_title" varchar,
-  	"title" varchar,
-  	"tip" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"step_title" varchar,
+    	"title" varchar,
+    	"tip" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_mstep_process" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "grants_blocks_mstep_process_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_comparison_blk_lft_grp_lft_points" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "grants_blocks_comparison_blk_lft_grp_lft_points_locales" (
-  	"point" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"point" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_comparison_blk_rt_grp_rt_points" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "grants_blocks_comparison_blk_rt_grp_rt_points_locales" (
-  	"point" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"point" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_comparison_blk_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_grants_blocks_comparison_blk_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_grants_blocks_comparison_blk_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "grants_blocks_comparison_blk_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_comparison_blk" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "grants_blocks_comparison_blk_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"lft_grp_title" varchar,
-  	"lft_grp_desc" varchar,
-  	"rt_grp_title" varchar,
-  	"rt_grp_desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"lft_grp_title" varchar,
+    	"lft_grp_desc" varchar,
+    	"rt_grp_title" varchar,
+    	"rt_grp_desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_ylw_deck_cards_links" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_grants_blocks_ylw_deck_cards_links_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_grants_blocks_ylw_deck_cards_links_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "grants_blocks_ylw_deck_cards_links_locales" (
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_ylw_deck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"mascot_pos" "enum_grants_blocks_ylw_deck_cards_mascot_pos" DEFAULT 'center'
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"mascot_pos" "enum_grants_blocks_ylw_deck_cards_mascot_pos" DEFAULT 'center'
+    );
   CREATE TABLE "grants_blocks_ylw_deck_cards_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_ylw_deck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_grants_blocks_ylw_deck_align" DEFAULT 'center',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_grants_blocks_ylw_deck_align" DEFAULT 'center',
+    	"block_name" varchar
+    );
   CREATE TABLE "grants_blocks_ylw_deck_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_feat_crd_tags" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "grants_blocks_feat_crd_tags_locales" (
-  	"tag" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"tag" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_feat_crd" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"image_id" integer,
-  	"title_alignment" "enum_grants_blocks_feat_crd_title_alignment" DEFAULT 'left',
-  	"link_type" "enum_grants_blocks_feat_crd_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"image_id" integer,
+    	"title_alignment" "enum_grants_blocks_feat_crd_title_alignment" DEFAULT 'left',
+    	"link_type" "enum_grants_blocks_feat_crd_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "grants_blocks_feat_crd_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"desc" jsonb,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"desc" jsonb,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_feat_crd_acc_feat_crds" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"crd_colour" "enum_grants_blocks_feat_crd_acc_feat_crds_crd_colour" DEFAULT 'forest'
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"crd_colour" "enum_grants_blocks_feat_crd_acc_feat_crds_crd_colour" DEFAULT 'forest'
+    );
   CREATE TABLE "grants_blocks_feat_crd_acc_feat_crds_locales" (
-  	"acc_title" varchar,
-  	"acc_content" jsonb,
-  	"crd_tag" varchar,
-  	"crd_content" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"acc_title" varchar,
+    	"acc_content" jsonb,
+    	"crd_tag" varchar,
+    	"crd_content" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
+  `)
+
+  // chunk 9/121
+  await db.execute(sql`
   CREATE TABLE "grants_blocks_feat_crd_acc" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "grants_blocks_feat_crd_acc_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_list_crd_dck_cards_tags" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "grants_blocks_list_crd_dck_cards_tags_locales" (
-  	"tag" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"tag" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_list_crd_dck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"image_id" integer,
-  	"link_type" "enum_grants_blocks_list_crd_dck_cards_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"image_id" integer,
+    	"link_type" "enum_grants_blocks_list_crd_dck_cards_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "grants_blocks_list_crd_dck_cards_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_list_crd_dck_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_grants_blocks_list_crd_dck_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_grants_blocks_list_crd_dck_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "grants_blocks_list_crd_dck_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_list_crd_dck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"data_source" "enum_grants_blocks_list_crd_dck_data_source" DEFAULT 'manual',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"data_source" "enum_grants_blocks_list_crd_dck_data_source" DEFAULT 'manual',
+    	"block_name" varchar
+    );
   CREATE TABLE "grants_blocks_list_crd_dck_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_faq_blk_faqs" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "grants_blocks_faq_blk_faqs_locales" (
-  	"question" varchar,
-  	"answer" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"question" varchar,
+    	"answer" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_faq_blk" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_grants_blocks_faq_blk_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_grants_blocks_faq_blk_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "grants_blocks_faq_blk_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_pink_puffy_top_row" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "grants_blocks_pink_puffy_top_row_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_pink_puffy_bot_row" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "grants_blocks_pink_puffy_bot_row_locales" (
-  	"title" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_pink_puffy_links" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_grants_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_grants_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "grants_blocks_pink_puffy_links_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_pink_puffy" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_grants_blocks_pink_puffy_align" DEFAULT 'center',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_grants_blocks_pink_puffy_align" DEFAULT 'center',
+    	"block_name" varchar
+    );
   CREATE TABLE "grants_blocks_pink_puffy_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_beige_puffy_items" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "grants_blocks_beige_puffy_items_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_beige_puffy" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_grants_blocks_beige_puffy_align" DEFAULT 'center',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_grants_blocks_beige_puffy_align" DEFAULT 'center',
+    	"block_name" varchar
+    );
   CREATE TABLE "grants_blocks_beige_puffy_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_funding_map_items_subitems" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "grants_blocks_funding_map_items_subitems_locales" (
-  	"statnumber" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"statnumber" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_funding_map_items" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"region_name" "enum_grants_blocks_funding_map_items_region_name" DEFAULT 'uaf-asia-pacific'
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"region_name" "enum_grants_blocks_funding_map_items_region_name" DEFAULT 'uaf-asia-pacific'
+    );
   CREATE TABLE "grants_blocks_funding_map" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "grants_blocks_funding_map_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"selector_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"selector_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_resource_feat_card" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_grants_blocks_resource_feat_card_align" DEFAULT 'center',
-  	"add_all_resources" boolean,
-  	"filter_by_doc_type_id" integer,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_grants_blocks_resource_feat_card_align" DEFAULT 'center',
+    	"add_all_resources" boolean,
+    	"filter_by_doc_type_id" integer,
+    	"block_name" varchar
+    );
   CREATE TABLE "grants_blocks_resource_feat_card_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_resource_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_grants_blocks_resource_gallery_align" DEFAULT 'center',
-  	"add_all_resources" boolean,
-  	"filter_by_doc_type_id" integer,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_grants_blocks_resource_gallery_align" DEFAULT 'center',
+    	"add_all_resources" boolean,
+    	"filter_by_doc_type_id" integer,
+    	"block_name" varchar
+    );
   CREATE TABLE "grants_blocks_resource_gallery_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_pillar_card_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"mascot_id" integer
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"mascot_id" integer
+    );
   CREATE TABLE "grants_blocks_pillar_card_cards_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_pillar_card" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_grants_blocks_pillar_card_align" DEFAULT 'left',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_grants_blocks_pillar_card_align" DEFAULT 'left',
+    	"block_name" varchar
+    );
   CREATE TABLE "grants_blocks_pillar_card_locales" (
-  	"title" varchar,
-  	"subtitle" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_testimonial_deck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "grants_blocks_testimonial_deck_cards_locales" (
-  	"quote_text" varchar,
-  	"attrib_name" varchar,
-  	"attrib_dsg" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"quote_text" varchar,
+    	"attrib_name" varchar,
+    	"attrib_dsg" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_testimonial_deck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "grants_blocks_testimonial_deck_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_min_card_gallery_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"mascot_id" integer
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"mascot_id" integer
+    );
   CREATE TABLE "grants_blocks_min_card_gallery_cards_locales" (
-  	"title" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_min_card_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"header_align" "enum_grants_blocks_min_card_gallery_header_align" DEFAULT 'left',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"header_align" "enum_grants_blocks_min_card_gallery_header_align" DEFAULT 'left',
+    	"block_name" varchar
+    );
   CREATE TABLE "grants_blocks_min_card_gallery_locales" (
-  	"header_title" varchar,
-  	"header_subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"header_title" varchar,
+    	"header_subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_id_card_gallery_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"mascot_id" integer
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"mascot_id" integer
+    );
   CREATE TABLE "grants_blocks_id_card_gallery_cards_locales" (
-  	"pronouns" varchar,
-  	"fullname" varchar,
-  	"designation" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"pronouns" varchar,
+    	"fullname" varchar,
+    	"designation" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_id_card_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
+  `)
+
+  // chunk 10/121
+  await db.execute(sql`
   CREATE TABLE "grants_blocks_id_card_gallery_locales" (
-  	"header_title" varchar,
-  	"header_subtitle" varchar,
-  	"header_description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"header_title" varchar,
+    	"header_subtitle" varchar,
+    	"header_description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_two_column_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "grants_blocks_two_column_block_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"left_column" jsonb,
-  	"right_column" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"left_column" jsonb,
+    	"right_column" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_three_column_table_block_rows" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "grants_blocks_three_column_table_block_rows_locales" (
-  	"first_column" jsonb,
-  	"second_column" jsonb,
-  	"third_column" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"first_column" jsonb,
+    	"second_column" jsonb,
+    	"third_column" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants_blocks_three_column_table_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"column_widths" "enum_grants_blocks_three_column_table_block_column_widths" DEFAULT 'f-t-t',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"column_widths" "enum_grants_blocks_three_column_table_block_column_widths" DEFAULT 'f-t-t',
+    	"block_name" varchar
+    );
   CREATE TABLE "grants_blocks_three_column_table_block_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grants" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"title" varchar,
-  	"page_type" "enum_grants_page_type" DEFAULT 'landing',
-  	"grant_card_id" integer,
-  	"created_by_id" integer,
-  	"updated_by_id" integer,
-  	"bg_type" "enum_grants_bg_type",
-  	"hero_contact_email" varchar,
-  	"published_at" timestamp(3) with time zone,
-  	"slug" varchar,
-  	"slug_lock" boolean DEFAULT true,
-  	"meta_title" varchar,
-  	"meta_description" varchar,
-  	"meta_image_id" integer,
-  	"folder_id" integer,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"deleted_at" timestamp(3) with time zone,
-  	"_status" "enum_grants_status" DEFAULT 'draft'
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"title" varchar,
+    	"page_type" "enum_grants_page_type" DEFAULT 'landing',
+    	"grant_card_id" integer,
+    	"created_by_id" integer,
+    	"updated_by_id" integer,
+    	"bg_type" "enum_grants_bg_type",
+    	"hero_contact_email" varchar,
+    	"published_at" timestamp(3) with time zone,
+    	"slug" varchar,
+    	"slug_lock" boolean DEFAULT true,
+    	"meta_title" varchar,
+    	"meta_description" varchar,
+    	"meta_image_id" integer,
+    	"folder_id" integer,
+    	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"deleted_at" timestamp(3) with time zone,
+    	"_status" "enum_grants_status" DEFAULT 'draft'
+    );
   CREATE TABLE "grants_locales" (
-  	"hero_title" varchar,
-  	"hero_subtitle" varchar,
-  	"hero_contact_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"hero_title" varchar,
+    	"hero_subtitle" varchar,
+    	"hero_contact_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "grants_rels" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"order" integer,
-  	"parent_id" integer NOT NULL,
-  	"path" varchar NOT NULL,
-  	"grants_id" integer,
-  	"pages_id" integer,
-  	"blog_id" integer,
-  	"reports_id" integer,
-  	"mmedia_id" integer,
-  	"documents_id" integer,
-  	"etests_id" integer,
-  	"grantcards_id" integer
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"order" integer,
+    	"parent_id" integer NOT NULL,
+    	"path" varchar NOT NULL,
+    	"grants_id" integer,
+    	"pages_id" integer,
+    	"blog_id" integer,
+    	"reports_id" integer,
+    	"mmedia_id" integer,
+    	"documents_id" integer,
+    	"etests_id" integer,
+    	"grantcards_id" integer
+    );
   CREATE TABLE "_grants_v_version_hero_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__grants_v_version_hero_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__grants_v_version_hero_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_grants_v_version_hero_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_rich_content_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_grants_v_blocks_rich_content_block_locales" (
-  	"rich_text" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"rich_text" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_secondarycta_cta_button" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__grants_v_blocks_secondarycta_cta_button_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__grants_v_blocks_secondarycta_cta_button_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_grants_v_blocks_secondarycta_cta_button_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_secondarycta" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"contact_email" varchar,
-  	"ui_type" "enum__grants_v_blocks_secondarycta_ui_type" DEFAULT 'lrg_txt_cta',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"contact_email" varchar,
+    	"ui_type" "enum__grants_v_blocks_secondarycta_ui_type" DEFAULT 'lrg_txt_cta',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_grants_v_blocks_secondarycta_locales" (
-  	"cta_title" varchar,
-  	"cta_subtitle" varchar,
-  	"contact_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"cta_title" varchar,
+    	"cta_subtitle" varchar,
+    	"contact_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_mcol_info_block_multicols" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"add_link" boolean,
-  	"link_type" "enum__grants_v_blocks_mcol_info_block_multicols_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"add_link" boolean,
+    	"link_type" "enum__grants_v_blocks_mcol_info_block_multicols_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_grants_v_blocks_mcol_info_block_multicols_locales" (
-  	"title" varchar,
-  	"col_content" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"col_content" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_mcol_info_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_grants_v_blocks_grant_card_grid_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_grants_v_blocks_grant_card_grid_block_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_mstep_process_steps_details" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_grants_v_blocks_mstep_process_steps_details_locales" (
-  	"bullet" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"bullet" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_mstep_process_steps" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"icon" "enum__grants_v_blocks_mstep_process_steps_icon" DEFAULT 'FileText',
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"icon" "enum__grants_v_blocks_mstep_process_steps_icon" DEFAULT 'FileText',
+    	"_uuid" varchar
+    );
   CREATE TABLE "_grants_v_blocks_mstep_process_steps_locales" (
-  	"step_title" varchar,
-  	"title" varchar,
-  	"tip" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"step_title" varchar,
+    	"title" varchar,
+    	"tip" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_mstep_process" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_grants_v_blocks_mstep_process_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_comparison_blk_lft_grp_lft_points" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_grants_v_blocks_comparison_blk_lft_grp_lft_points_locales" (
-  	"point" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"point" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_comparison_blk_rt_grp_rt_points" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_grants_v_blocks_comparison_blk_rt_grp_rt_points_locales" (
-  	"point" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"point" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_comparison_blk_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__grants_v_blocks_comparison_blk_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__grants_v_blocks_comparison_blk_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_grants_v_blocks_comparison_blk_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_comparison_blk" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_grants_v_blocks_comparison_blk_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"lft_grp_title" varchar,
-  	"lft_grp_desc" varchar,
-  	"rt_grp_title" varchar,
-  	"rt_grp_desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"lft_grp_title" varchar,
+    	"lft_grp_desc" varchar,
+    	"rt_grp_title" varchar,
+    	"rt_grp_desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_ylw_deck_cards_links" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__grants_v_blocks_ylw_deck_cards_links_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__grants_v_blocks_ylw_deck_cards_links_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_grants_v_blocks_ylw_deck_cards_links_locales" (
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_ylw_deck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"mascot_pos" "enum__grants_v_blocks_ylw_deck_cards_mascot_pos" DEFAULT 'center',
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"mascot_pos" "enum__grants_v_blocks_ylw_deck_cards_mascot_pos" DEFAULT 'center',
+    	"_uuid" varchar
+    );
   CREATE TABLE "_grants_v_blocks_ylw_deck_cards_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_ylw_deck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__grants_v_blocks_ylw_deck_align" DEFAULT 'center',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__grants_v_blocks_ylw_deck_align" DEFAULT 'center',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_grants_v_blocks_ylw_deck_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_feat_crd_tags" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_grants_v_blocks_feat_crd_tags_locales" (
-  	"tag" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"tag" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_feat_crd" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"image_id" integer,
-  	"title_alignment" "enum__grants_v_blocks_feat_crd_title_alignment" DEFAULT 'left',
-  	"link_type" "enum__grants_v_blocks_feat_crd_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"image_id" integer,
+    	"title_alignment" "enum__grants_v_blocks_feat_crd_title_alignment" DEFAULT 'left',
+    	"link_type" "enum__grants_v_blocks_feat_crd_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_grants_v_blocks_feat_crd_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"desc" jsonb,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"desc" jsonb,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_feat_crd_acc_feat_crds" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"crd_colour" "enum__grants_v_blocks_feat_crd_acc_feat_crds_crd_colour" DEFAULT 'forest',
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"crd_colour" "enum__grants_v_blocks_feat_crd_acc_feat_crds_crd_colour" DEFAULT 'forest',
+    	"_uuid" varchar
+    );
   CREATE TABLE "_grants_v_blocks_feat_crd_acc_feat_crds_locales" (
-  	"acc_title" varchar,
-  	"acc_content" jsonb,
-  	"crd_tag" varchar,
-  	"crd_content" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"acc_title" varchar,
+    	"acc_content" jsonb,
+    	"crd_tag" varchar,
+    	"crd_content" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_feat_crd_acc" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
+  `)
+
+  // chunk 11/121
+  await db.execute(sql`
   CREATE TABLE "_grants_v_blocks_feat_crd_acc_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_list_crd_dck_cards_tags" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_grants_v_blocks_list_crd_dck_cards_tags_locales" (
-  	"tag" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"tag" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_list_crd_dck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"image_id" integer,
-  	"link_type" "enum__grants_v_blocks_list_crd_dck_cards_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"image_id" integer,
+    	"link_type" "enum__grants_v_blocks_list_crd_dck_cards_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_grants_v_blocks_list_crd_dck_cards_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_list_crd_dck_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__grants_v_blocks_list_crd_dck_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__grants_v_blocks_list_crd_dck_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_grants_v_blocks_list_crd_dck_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_list_crd_dck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"data_source" "enum__grants_v_blocks_list_crd_dck_data_source" DEFAULT 'manual',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"data_source" "enum__grants_v_blocks_list_crd_dck_data_source" DEFAULT 'manual',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_grants_v_blocks_list_crd_dck_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_faq_blk_faqs" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_grants_v_blocks_faq_blk_faqs_locales" (
-  	"question" varchar,
-  	"answer" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"question" varchar,
+    	"answer" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_faq_blk" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__grants_v_blocks_faq_blk_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__grants_v_blocks_faq_blk_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_grants_v_blocks_faq_blk_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_pink_puffy_top_row" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_grants_v_blocks_pink_puffy_top_row_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_pink_puffy_bot_row" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_grants_v_blocks_pink_puffy_bot_row_locales" (
-  	"title" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_pink_puffy_links" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__grants_v_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__grants_v_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_grants_v_blocks_pink_puffy_links_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_pink_puffy" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__grants_v_blocks_pink_puffy_align" DEFAULT 'center',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__grants_v_blocks_pink_puffy_align" DEFAULT 'center',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_grants_v_blocks_pink_puffy_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_beige_puffy_items" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_grants_v_blocks_beige_puffy_items_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_beige_puffy" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__grants_v_blocks_beige_puffy_align" DEFAULT 'center',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__grants_v_blocks_beige_puffy_align" DEFAULT 'center',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_grants_v_blocks_beige_puffy_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_funding_map_items_subitems" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_grants_v_blocks_funding_map_items_subitems_locales" (
-  	"statnumber" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"statnumber" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_funding_map_items" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"region_name" "enum__grants_v_blocks_funding_map_items_region_name" DEFAULT 'uaf-asia-pacific',
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"region_name" "enum__grants_v_blocks_funding_map_items_region_name" DEFAULT 'uaf-asia-pacific',
+    	"_uuid" varchar
+    );
   CREATE TABLE "_grants_v_blocks_funding_map" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_grants_v_blocks_funding_map_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"selector_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"selector_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_resource_feat_card" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__grants_v_blocks_resource_feat_card_align" DEFAULT 'center',
-  	"add_all_resources" boolean,
-  	"filter_by_doc_type_id" integer,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__grants_v_blocks_resource_feat_card_align" DEFAULT 'center',
+    	"add_all_resources" boolean,
+    	"filter_by_doc_type_id" integer,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_grants_v_blocks_resource_feat_card_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_resource_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__grants_v_blocks_resource_gallery_align" DEFAULT 'center',
-  	"add_all_resources" boolean,
-  	"filter_by_doc_type_id" integer,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__grants_v_blocks_resource_gallery_align" DEFAULT 'center',
+    	"add_all_resources" boolean,
+    	"filter_by_doc_type_id" integer,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_grants_v_blocks_resource_gallery_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_pillar_card_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_grants_v_blocks_pillar_card_cards_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_pillar_card" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__grants_v_blocks_pillar_card_align" DEFAULT 'left',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__grants_v_blocks_pillar_card_align" DEFAULT 'left',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_grants_v_blocks_pillar_card_locales" (
-  	"title" varchar,
-  	"subtitle" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_testimonial_deck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_grants_v_blocks_testimonial_deck_cards_locales" (
-  	"quote_text" varchar,
-  	"attrib_name" varchar,
-  	"attrib_dsg" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"quote_text" varchar,
+    	"attrib_name" varchar,
+    	"attrib_dsg" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_testimonial_deck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_grants_v_blocks_testimonial_deck_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_min_card_gallery_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_grants_v_blocks_min_card_gallery_cards_locales" (
-  	"title" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_min_card_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"header_align" "enum__grants_v_blocks_min_card_gallery_header_align" DEFAULT 'left',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"header_align" "enum__grants_v_blocks_min_card_gallery_header_align" DEFAULT 'left',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_grants_v_blocks_min_card_gallery_locales" (
-  	"header_title" varchar,
-  	"header_subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"header_title" varchar,
+    	"header_subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_id_card_gallery_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_grants_v_blocks_id_card_gallery_cards_locales" (
-  	"pronouns" varchar,
-  	"fullname" varchar,
-  	"designation" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"pronouns" varchar,
+    	"fullname" varchar,
+    	"designation" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_id_card_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_grants_v_blocks_id_card_gallery_locales" (
-  	"header_title" varchar,
-  	"header_subtitle" varchar,
-  	"header_description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"header_title" varchar,
+    	"header_subtitle" varchar,
+    	"header_description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
+  `)
+
+  // chunk 12/121
+  await db.execute(sql`
   CREATE TABLE "_grants_v_blocks_two_column_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_grants_v_blocks_two_column_block_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"left_column" jsonb,
-  	"right_column" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"left_column" jsonb,
+    	"right_column" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_three_column_table_block_rows" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_grants_v_blocks_three_column_table_block_rows_locales" (
-  	"first_column" jsonb,
-  	"second_column" jsonb,
-  	"third_column" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"first_column" jsonb,
+    	"second_column" jsonb,
+    	"third_column" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_blocks_three_column_table_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"column_widths" "enum__grants_v_blocks_three_column_table_block_column_widths" DEFAULT 'f-t-t',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"column_widths" "enum__grants_v_blocks_three_column_table_block_column_widths" DEFAULT 'f-t-t',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_grants_v_blocks_three_column_table_block_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"parent_id" integer,
-  	"version_title" varchar,
-  	"version_page_type" "enum__grants_v_version_page_type" DEFAULT 'landing',
-  	"version_grant_card_id" integer,
-  	"version_created_by_id" integer,
-  	"version_updated_by_id" integer,
-  	"version_bg_type" "enum__grants_v_version_bg_type",
-  	"version_hero_contact_email" varchar,
-  	"version_published_at" timestamp(3) with time zone,
-  	"version_slug" varchar,
-  	"version_slug_lock" boolean DEFAULT true,
-  	"version_meta_title" varchar,
-  	"version_meta_description" varchar,
-  	"version_meta_image_id" integer,
-  	"version_folder_id" integer,
-  	"version_updated_at" timestamp(3) with time zone,
-  	"version_created_at" timestamp(3) with time zone,
-  	"version_deleted_at" timestamp(3) with time zone,
-  	"version__status" "enum__grants_v_version_status" DEFAULT 'draft',
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"snapshot" boolean,
-  	"published_locale" "enum__grants_v_published_locale",
-  	"latest" boolean
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"parent_id" integer,
+    	"version_title" varchar,
+    	"version_page_type" "enum__grants_v_version_page_type" DEFAULT 'landing',
+    	"version_grant_card_id" integer,
+    	"version_created_by_id" integer,
+    	"version_updated_by_id" integer,
+    	"version_bg_type" "enum__grants_v_version_bg_type",
+    	"version_hero_contact_email" varchar,
+    	"version_published_at" timestamp(3) with time zone,
+    	"version_slug" varchar,
+    	"version_slug_lock" boolean DEFAULT true,
+    	"version_meta_title" varchar,
+    	"version_meta_description" varchar,
+    	"version_meta_image_id" integer,
+    	"version_folder_id" integer,
+    	"version_updated_at" timestamp(3) with time zone,
+    	"version_created_at" timestamp(3) with time zone,
+    	"version_deleted_at" timestamp(3) with time zone,
+    	"version__status" "enum__grants_v_version_status" DEFAULT 'draft',
+    	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"snapshot" boolean,
+    	"published_locale" "enum__grants_v_published_locale",
+    	"latest" boolean
+    );
   CREATE TABLE "_grants_v_locales" (
-  	"version_hero_title" varchar,
-  	"version_hero_subtitle" varchar,
-  	"version_hero_contact_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"version_hero_title" varchar,
+    	"version_hero_subtitle" varchar,
+    	"version_hero_contact_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grants_v_rels" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"order" integer,
-  	"parent_id" integer NOT NULL,
-  	"path" varchar NOT NULL,
-  	"grants_id" integer,
-  	"pages_id" integer,
-  	"blog_id" integer,
-  	"reports_id" integer,
-  	"mmedia_id" integer,
-  	"documents_id" integer,
-  	"etests_id" integer,
-  	"grantcards_id" integer
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"order" integer,
+    	"parent_id" integer NOT NULL,
+    	"path" varchar NOT NULL,
+    	"grants_id" integer,
+    	"pages_id" integer,
+    	"blog_id" integer,
+    	"reports_id" integer,
+    	"mmedia_id" integer,
+    	"documents_id" integer,
+    	"etests_id" integer,
+    	"grantcards_id" integer
+    );
   CREATE TABLE "grantcards_grant_specs" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "grantcards_grant_specs_locales" (
-  	"spec" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"spec" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grantcards_card_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_grantcards_card_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_grantcards_card_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "grantcards_card_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "grantcards" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"badge_type" "enum_grantcards_badge_type" DEFAULT 'info',
-  	"active_period" "enum_grantcards_active_period" DEFAULT 'open_all_year',
-  	"start_date" timestamp(3) with time zone,
-  	"end_date" timestamp(3) with time zone,
-  	"card_colour" "enum_grantcards_card_colour" DEFAULT 'forest',
-  	"mascot_id" integer,
-  	"created_by_id" integer,
-  	"updated_by_id" integer,
-  	"slug" varchar,
-  	"slug_lock" boolean DEFAULT true,
-  	"folder_id" integer,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"deleted_at" timestamp(3) with time zone,
-  	"_status" "enum_grantcards_status" DEFAULT 'draft'
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"badge_type" "enum_grantcards_badge_type" DEFAULT 'info',
+    	"active_period" "enum_grantcards_active_period" DEFAULT 'open_all_year',
+    	"start_date" timestamp(3) with time zone,
+    	"end_date" timestamp(3) with time zone,
+    	"card_colour" "enum_grantcards_card_colour" DEFAULT 'forest',
+    	"mascot_id" integer,
+    	"created_by_id" integer,
+    	"updated_by_id" integer,
+    	"slug" varchar,
+    	"slug_lock" boolean DEFAULT true,
+    	"folder_id" integer,
+    	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"deleted_at" timestamp(3) with time zone,
+    	"_status" "enum_grantcards_status" DEFAULT 'draft'
+    );
   CREATE TABLE "grantcards_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"badge_text" varchar,
-  	"msg" varchar,
-  	"grant_uses" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"badge_text" varchar,
+    	"msg" varchar,
+    	"grant_uses" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "grantcards_rels" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"order" integer,
-  	"parent_id" integer NOT NULL,
-  	"path" varchar NOT NULL,
-  	"grants_id" integer,
-  	"pages_id" integer,
-  	"blog_id" integer,
-  	"reports_id" integer,
-  	"mmedia_id" integer,
-  	"documents_id" integer,
-  	"etests_id" integer
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"order" integer,
+    	"parent_id" integer NOT NULL,
+    	"path" varchar NOT NULL,
+    	"grants_id" integer,
+    	"pages_id" integer,
+    	"blog_id" integer,
+    	"reports_id" integer,
+    	"mmedia_id" integer,
+    	"documents_id" integer,
+    	"etests_id" integer
+    );
   CREATE TABLE "_grantcards_v_version_grant_specs" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_grantcards_v_version_grant_specs_locales" (
-  	"spec" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"spec" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grantcards_v_version_card_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__grantcards_v_version_card_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__grantcards_v_version_card_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_grantcards_v_version_card_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grantcards_v" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"parent_id" integer,
-  	"version_badge_type" "enum__grantcards_v_version_badge_type" DEFAULT 'info',
-  	"version_active_period" "enum__grantcards_v_version_active_period" DEFAULT 'open_all_year',
-  	"version_start_date" timestamp(3) with time zone,
-  	"version_end_date" timestamp(3) with time zone,
-  	"version_card_colour" "enum__grantcards_v_version_card_colour" DEFAULT 'forest',
-  	"version_mascot_id" integer,
-  	"version_created_by_id" integer,
-  	"version_updated_by_id" integer,
-  	"version_slug" varchar,
-  	"version_slug_lock" boolean DEFAULT true,
-  	"version_folder_id" integer,
-  	"version_updated_at" timestamp(3) with time zone,
-  	"version_created_at" timestamp(3) with time zone,
-  	"version_deleted_at" timestamp(3) with time zone,
-  	"version__status" "enum__grantcards_v_version_status" DEFAULT 'draft',
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"snapshot" boolean,
-  	"published_locale" "enum__grantcards_v_published_locale",
-  	"latest" boolean
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"parent_id" integer,
+    	"version_badge_type" "enum__grantcards_v_version_badge_type" DEFAULT 'info',
+    	"version_active_period" "enum__grantcards_v_version_active_period" DEFAULT 'open_all_year',
+    	"version_start_date" timestamp(3) with time zone,
+    	"version_end_date" timestamp(3) with time zone,
+    	"version_card_colour" "enum__grantcards_v_version_card_colour" DEFAULT 'forest',
+    	"version_mascot_id" integer,
+    	"version_created_by_id" integer,
+    	"version_updated_by_id" integer,
+    	"version_slug" varchar,
+    	"version_slug_lock" boolean DEFAULT true,
+    	"version_folder_id" integer,
+    	"version_updated_at" timestamp(3) with time zone,
+    	"version_created_at" timestamp(3) with time zone,
+    	"version_deleted_at" timestamp(3) with time zone,
+    	"version__status" "enum__grantcards_v_version_status" DEFAULT 'draft',
+    	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"snapshot" boolean,
+    	"published_locale" "enum__grantcards_v_published_locale",
+    	"latest" boolean
+    );
   CREATE TABLE "_grantcards_v_locales" (
-  	"version_title" varchar,
-  	"version_desc" varchar,
-  	"version_badge_text" varchar,
-  	"version_msg" varchar,
-  	"version_grant_uses" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"version_title" varchar,
+    	"version_desc" varchar,
+    	"version_badge_text" varchar,
+    	"version_msg" varchar,
+    	"version_grant_uses" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_grantcards_v_rels" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"order" integer,
-  	"parent_id" integer NOT NULL,
-  	"path" varchar NOT NULL,
-  	"grants_id" integer,
-  	"pages_id" integer,
-  	"blog_id" integer,
-  	"reports_id" integer,
-  	"mmedia_id" integer,
-  	"documents_id" integer,
-  	"etests_id" integer
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"order" integer,
+    	"parent_id" integer NOT NULL,
+    	"path" varchar NOT NULL,
+    	"grants_id" integer,
+    	"pages_id" integer,
+    	"blog_id" integer,
+    	"reports_id" integer,
+    	"mmedia_id" integer,
+    	"documents_id" integer,
+    	"etests_id" integer
+    );
   CREATE TABLE "etests_crit_list_criteria_options" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"is_eligible" boolean DEFAULT false,
-  	"is_custom" boolean DEFAULT false
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"is_eligible" boolean DEFAULT false,
+    	"is_custom" boolean DEFAULT false
+    );
   CREATE TABLE "etests_crit_list_criteria_options_locales" (
-  	"option_text" varchar,
-  	"custom_response" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"option_text" varchar,
+    	"custom_response" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "etests_crit_list_criteria" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "etests_crit_list_criteria_locales" (
-  	"question" varchar,
-  	"reason" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"question" varchar,
+    	"reason" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "etests" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"is_e_card_is_e_link_link_type" "enum_etests_is_e_card_is_e_link_link_type" DEFAULT 'reference',
-  	"is_e_card_is_e_link_link_new_tab" boolean,
-  	"is_e_card_is_e_link_link_download_link" boolean,
-  	"is_e_card_is_e_link_link_arrow_link" boolean,
-  	"is_e_card_is_e_link_link_pill_solid" boolean,
-  	"is_e_card_is_e_link_link_pill_outline" boolean,
-  	"is_e_card_is_e_link_link_anchor" varchar,
-  	"is_e_card_is_e_link_link_url" varchar,
-  	"is_e_card_is_e_link_link_email" varchar,
-  	"is_e_card_is_e_mascot_id" integer,
-  	"not_e_card_not_e_link_link_type" "enum_etests_not_e_card_not_e_link_link_type" DEFAULT 'reference',
-  	"not_e_card_not_e_link_link_new_tab" boolean,
-  	"not_e_card_not_e_link_link_download_link" boolean,
-  	"not_e_card_not_e_link_link_arrow_link" boolean,
-  	"not_e_card_not_e_link_link_pill_solid" boolean,
-  	"not_e_card_not_e_link_link_pill_outline" boolean,
-  	"not_e_card_not_e_link_link_anchor" varchar,
-  	"not_e_card_not_e_link_link_url" varchar,
-  	"not_e_card_not_e_link_link_email" varchar,
-  	"not_e_card_not_e_mascot_id" integer,
-  	"created_by_id" integer,
-  	"updated_by_id" integer,
-  	"slug" varchar,
-  	"slug_lock" boolean DEFAULT true,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"deleted_at" timestamp(3) with time zone,
-  	"_status" "enum_etests_status" DEFAULT 'draft'
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"is_e_card_is_e_link_link_type" "enum_etests_is_e_card_is_e_link_link_type" DEFAULT 'reference',
+    	"is_e_card_is_e_link_link_new_tab" boolean,
+    	"is_e_card_is_e_link_link_download_link" boolean,
+    	"is_e_card_is_e_link_link_arrow_link" boolean,
+    	"is_e_card_is_e_link_link_pill_solid" boolean,
+    	"is_e_card_is_e_link_link_pill_outline" boolean,
+    	"is_e_card_is_e_link_link_anchor" varchar,
+    	"is_e_card_is_e_link_link_url" varchar,
+    	"is_e_card_is_e_link_link_email" varchar,
+    	"is_e_card_is_e_mascot_id" integer,
+    	"not_e_card_not_e_link_link_type" "enum_etests_not_e_card_not_e_link_link_type" DEFAULT 'reference',
+    	"not_e_card_not_e_link_link_new_tab" boolean,
+    	"not_e_card_not_e_link_link_download_link" boolean,
+    	"not_e_card_not_e_link_link_arrow_link" boolean,
+    	"not_e_card_not_e_link_link_pill_solid" boolean,
+    	"not_e_card_not_e_link_link_pill_outline" boolean,
+    	"not_e_card_not_e_link_link_anchor" varchar,
+    	"not_e_card_not_e_link_link_url" varchar,
+    	"not_e_card_not_e_link_link_email" varchar,
+    	"not_e_card_not_e_mascot_id" integer,
+    	"created_by_id" integer,
+    	"updated_by_id" integer,
+    	"slug" varchar,
+    	"slug_lock" boolean DEFAULT true,
+    	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"deleted_at" timestamp(3) with time zone,
+    	"_status" "enum_etests_status" DEFAULT 'draft'
+    );
   CREATE TABLE "etests_locales" (
-  	"test_name" varchar,
-  	"intro_card_intro_title" varchar,
-  	"intro_card_intro_desc" jsonb,
-  	"is_e_card_is_e_title" varchar,
-  	"is_e_card_is_e_desc" jsonb,
-  	"is_e_card_is_e_link_link_label" varchar,
-  	"not_e_card_not_e_title" varchar,
-  	"not_e_card_not_e_desc" jsonb,
-  	"not_e_card_not_e_link_link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"test_name" varchar,
+    	"intro_card_intro_title" varchar,
+    	"intro_card_intro_desc" jsonb,
+    	"is_e_card_is_e_title" varchar,
+    	"is_e_card_is_e_desc" jsonb,
+    	"is_e_card_is_e_link_link_label" varchar,
+    	"not_e_card_not_e_title" varchar,
+    	"not_e_card_not_e_desc" jsonb,
+    	"not_e_card_not_e_link_link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "etests_rels" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"order" integer,
-  	"parent_id" integer NOT NULL,
-  	"path" varchar NOT NULL,
-  	"grants_id" integer,
-  	"pages_id" integer,
-  	"blog_id" integer,
-  	"reports_id" integer,
-  	"mmedia_id" integer,
-  	"documents_id" integer,
-  	"etests_id" integer
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"order" integer,
+    	"parent_id" integer NOT NULL,
+    	"path" varchar NOT NULL,
+    	"grants_id" integer,
+    	"pages_id" integer,
+    	"blog_id" integer,
+    	"reports_id" integer,
+    	"mmedia_id" integer,
+    	"documents_id" integer,
+    	"etests_id" integer
+    );
   CREATE TABLE "_etests_v_version_crit_list_criteria_options" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"is_eligible" boolean DEFAULT false,
-  	"is_custom" boolean DEFAULT false,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"is_eligible" boolean DEFAULT false,
+    	"is_custom" boolean DEFAULT false,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_etests_v_version_crit_list_criteria_options_locales" (
-  	"option_text" varchar,
-  	"custom_response" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"option_text" varchar,
+    	"custom_response" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_etests_v_version_crit_list_criteria" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_etests_v_version_crit_list_criteria_locales" (
-  	"question" varchar,
-  	"reason" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"question" varchar,
+    	"reason" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_etests_v" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"parent_id" integer,
-  	"version_is_e_card_is_e_link_link_type" "enum__etests_v_version_is_e_card_is_e_link_link_type" DEFAULT 'reference',
-  	"version_is_e_card_is_e_link_link_new_tab" boolean,
-  	"version_is_e_card_is_e_link_link_download_link" boolean,
-  	"version_is_e_card_is_e_link_link_arrow_link" boolean,
-  	"version_is_e_card_is_e_link_link_pill_solid" boolean,
-  	"version_is_e_card_is_e_link_link_pill_outline" boolean,
-  	"version_is_e_card_is_e_link_link_anchor" varchar,
-  	"version_is_e_card_is_e_link_link_url" varchar,
-  	"version_is_e_card_is_e_link_link_email" varchar,
-  	"version_is_e_card_is_e_mascot_id" integer,
-  	"version_not_e_card_not_e_link_link_type" "enum__etests_v_version_not_e_card_not_e_link_link_type" DEFAULT 'reference',
-  	"version_not_e_card_not_e_link_link_new_tab" boolean,
-  	"version_not_e_card_not_e_link_link_download_link" boolean,
-  	"version_not_e_card_not_e_link_link_arrow_link" boolean,
-  	"version_not_e_card_not_e_link_link_pill_solid" boolean,
-  	"version_not_e_card_not_e_link_link_pill_outline" boolean,
-  	"version_not_e_card_not_e_link_link_anchor" varchar,
-  	"version_not_e_card_not_e_link_link_url" varchar,
-  	"version_not_e_card_not_e_link_link_email" varchar,
-  	"version_not_e_card_not_e_mascot_id" integer,
-  	"version_created_by_id" integer,
-  	"version_updated_by_id" integer,
-  	"version_slug" varchar,
-  	"version_slug_lock" boolean DEFAULT true,
-  	"version_updated_at" timestamp(3) with time zone,
-  	"version_created_at" timestamp(3) with time zone,
-  	"version_deleted_at" timestamp(3) with time zone,
-  	"version__status" "enum__etests_v_version_status" DEFAULT 'draft',
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"snapshot" boolean,
-  	"published_locale" "enum__etests_v_published_locale",
-  	"latest" boolean
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"parent_id" integer,
+    	"version_is_e_card_is_e_link_link_type" "enum__etests_v_version_is_e_card_is_e_link_link_type" DEFAULT 'reference',
+    	"version_is_e_card_is_e_link_link_new_tab" boolean,
+    	"version_is_e_card_is_e_link_link_download_link" boolean,
+    	"version_is_e_card_is_e_link_link_arrow_link" boolean,
+    	"version_is_e_card_is_e_link_link_pill_solid" boolean,
+    	"version_is_e_card_is_e_link_link_pill_outline" boolean,
+    	"version_is_e_card_is_e_link_link_anchor" varchar,
+    	"version_is_e_card_is_e_link_link_url" varchar,
+    	"version_is_e_card_is_e_link_link_email" varchar,
+    	"version_is_e_card_is_e_mascot_id" integer,
+    	"version_not_e_card_not_e_link_link_type" "enum__etests_v_version_not_e_card_not_e_link_link_type" DEFAULT 'reference',
+    	"version_not_e_card_not_e_link_link_new_tab" boolean,
+    	"version_not_e_card_not_e_link_link_download_link" boolean,
+    	"version_not_e_card_not_e_link_link_arrow_link" boolean,
+    	"version_not_e_card_not_e_link_link_pill_solid" boolean,
+    	"version_not_e_card_not_e_link_link_pill_outline" boolean,
+    	"version_not_e_card_not_e_link_link_anchor" varchar,
+    	"version_not_e_card_not_e_link_link_url" varchar,
+    	"version_not_e_card_not_e_link_link_email" varchar,
+    	"version_not_e_card_not_e_mascot_id" integer,
+    	"version_created_by_id" integer,
+    	"version_updated_by_id" integer,
+    	"version_slug" varchar,
+    	"version_slug_lock" boolean DEFAULT true,
+    	"version_updated_at" timestamp(3) with time zone,
+    	"version_created_at" timestamp(3) with time zone,
+    	"version_deleted_at" timestamp(3) with time zone,
+    	"version__status" "enum__etests_v_version_status" DEFAULT 'draft',
+    	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"snapshot" boolean,
+    	"published_locale" "enum__etests_v_published_locale",
+    	"latest" boolean
+    );
   CREATE TABLE "_etests_v_locales" (
-  	"version_test_name" varchar,
-  	"version_intro_card_intro_title" varchar,
-  	"version_intro_card_intro_desc" jsonb,
-  	"version_is_e_card_is_e_title" varchar,
-  	"version_is_e_card_is_e_desc" jsonb,
-  	"version_is_e_card_is_e_link_link_label" varchar,
-  	"version_not_e_card_not_e_title" varchar,
-  	"version_not_e_card_not_e_desc" jsonb,
-  	"version_not_e_card_not_e_link_link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"version_test_name" varchar,
+    	"version_intro_card_intro_title" varchar,
+    	"version_intro_card_intro_desc" jsonb,
+    	"version_is_e_card_is_e_title" varchar,
+    	"version_is_e_card_is_e_desc" jsonb,
+    	"version_is_e_card_is_e_link_link_label" varchar,
+    	"version_not_e_card_not_e_title" varchar,
+    	"version_not_e_card_not_e_desc" jsonb,
+    	"version_not_e_card_not_e_link_link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_etests_v_rels" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"order" integer,
-  	"parent_id" integer NOT NULL,
-  	"path" varchar NOT NULL,
-  	"grants_id" integer,
-  	"pages_id" integer,
-  	"blog_id" integer,
-  	"reports_id" integer,
-  	"mmedia_id" integer,
-  	"documents_id" integer,
-  	"etests_id" integer
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"order" integer,
+    	"parent_id" integer NOT NULL,
+    	"path" varchar NOT NULL,
+    	"grants_id" integer,
+    	"pages_id" integer,
+    	"blog_id" integer,
+    	"reports_id" integer,
+    	"mmedia_id" integer,
+    	"documents_id" integer,
+    	"etests_id" integer
+    );
   CREATE TABLE "pages_hero_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_pages_hero_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_pages_hero_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "pages_hero_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_rich_content_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "pages_blocks_rich_content_block_locales" (
-  	"rich_text" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"rich_text" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_secondarycta_cta_button" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_pages_blocks_secondarycta_cta_button_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_pages_blocks_secondarycta_cta_button_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "pages_blocks_secondarycta_cta_button_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_secondarycta" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"contact_email" varchar,
-  	"ui_type" "enum_pages_blocks_secondarycta_ui_type" DEFAULT 'lrg_txt_cta',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"contact_email" varchar,
+    	"ui_type" "enum_pages_blocks_secondarycta_ui_type" DEFAULT 'lrg_txt_cta',
+    	"block_name" varchar
+    );
   CREATE TABLE "pages_blocks_secondarycta_locales" (
-  	"cta_title" varchar,
-  	"cta_subtitle" varchar,
-  	"contact_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"cta_title" varchar,
+    	"cta_subtitle" varchar,
+    	"contact_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_mcol_info_block_multicols" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"add_link" boolean,
-  	"link_type" "enum_pages_blocks_mcol_info_block_multicols_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"add_link" boolean,
+    	"link_type" "enum_pages_blocks_mcol_info_block_multicols_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "pages_blocks_mcol_info_block_multicols_locales" (
-  	"title" varchar,
-  	"col_content" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"col_content" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_mcol_info_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "pages_blocks_grant_card_grid_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "pages_blocks_grant_card_grid_block_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
+  `)
+
+  // chunk 13/121
+  await db.execute(sql`
   CREATE TABLE "pages_blocks_mstep_process_steps_details" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "pages_blocks_mstep_process_steps_details_locales" (
-  	"bullet" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"bullet" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_mstep_process_steps" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"icon" "enum_pages_blocks_mstep_process_steps_icon" DEFAULT 'FileText'
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"icon" "enum_pages_blocks_mstep_process_steps_icon" DEFAULT 'FileText'
+    );
   CREATE TABLE "pages_blocks_mstep_process_steps_locales" (
-  	"step_title" varchar,
-  	"title" varchar,
-  	"tip" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"step_title" varchar,
+    	"title" varchar,
+    	"tip" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_mstep_process" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "pages_blocks_mstep_process_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_comparison_blk_lft_grp_lft_points" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "pages_blocks_comparison_blk_lft_grp_lft_points_locales" (
-  	"point" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"point" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_comparison_blk_rt_grp_rt_points" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "pages_blocks_comparison_blk_rt_grp_rt_points_locales" (
-  	"point" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"point" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_comparison_blk_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_pages_blocks_comparison_blk_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_pages_blocks_comparison_blk_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "pages_blocks_comparison_blk_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_comparison_blk" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "pages_blocks_comparison_blk_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"lft_grp_title" varchar,
-  	"lft_grp_desc" varchar,
-  	"rt_grp_title" varchar,
-  	"rt_grp_desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"lft_grp_title" varchar,
+    	"lft_grp_desc" varchar,
+    	"rt_grp_title" varchar,
+    	"rt_grp_desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_ylw_deck_cards_links" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_pages_blocks_ylw_deck_cards_links_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_pages_blocks_ylw_deck_cards_links_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "pages_blocks_ylw_deck_cards_links_locales" (
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_ylw_deck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"mascot_pos" "enum_pages_blocks_ylw_deck_cards_mascot_pos" DEFAULT 'center'
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"mascot_pos" "enum_pages_blocks_ylw_deck_cards_mascot_pos" DEFAULT 'center'
+    );
   CREATE TABLE "pages_blocks_ylw_deck_cards_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_ylw_deck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_pages_blocks_ylw_deck_align" DEFAULT 'center',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_pages_blocks_ylw_deck_align" DEFAULT 'center',
+    	"block_name" varchar
+    );
   CREATE TABLE "pages_blocks_ylw_deck_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_feat_crd_tags" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "pages_blocks_feat_crd_tags_locales" (
-  	"tag" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"tag" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_feat_crd" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"image_id" integer,
-  	"title_alignment" "enum_pages_blocks_feat_crd_title_alignment" DEFAULT 'left',
-  	"link_type" "enum_pages_blocks_feat_crd_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"image_id" integer,
+    	"title_alignment" "enum_pages_blocks_feat_crd_title_alignment" DEFAULT 'left',
+    	"link_type" "enum_pages_blocks_feat_crd_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "pages_blocks_feat_crd_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"desc" jsonb,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"desc" jsonb,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_feat_crd_acc_feat_crds" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"crd_colour" "enum_pages_blocks_feat_crd_acc_feat_crds_crd_colour" DEFAULT 'forest'
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"crd_colour" "enum_pages_blocks_feat_crd_acc_feat_crds_crd_colour" DEFAULT 'forest'
+    );
   CREATE TABLE "pages_blocks_feat_crd_acc_feat_crds_locales" (
-  	"acc_title" varchar,
-  	"acc_content" jsonb,
-  	"crd_tag" varchar,
-  	"crd_content" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"acc_title" varchar,
+    	"acc_content" jsonb,
+    	"crd_tag" varchar,
+    	"crd_content" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_feat_crd_acc" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "pages_blocks_feat_crd_acc_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_list_crd_dck_cards_tags" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "pages_blocks_list_crd_dck_cards_tags_locales" (
-  	"tag" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"tag" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_list_crd_dck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"image_id" integer,
-  	"link_type" "enum_pages_blocks_list_crd_dck_cards_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"image_id" integer,
+    	"link_type" "enum_pages_blocks_list_crd_dck_cards_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "pages_blocks_list_crd_dck_cards_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_list_crd_dck_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_pages_blocks_list_crd_dck_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_pages_blocks_list_crd_dck_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "pages_blocks_list_crd_dck_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_list_crd_dck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"data_source" "enum_pages_blocks_list_crd_dck_data_source" DEFAULT 'manual',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"data_source" "enum_pages_blocks_list_crd_dck_data_source" DEFAULT 'manual',
+    	"block_name" varchar
+    );
   CREATE TABLE "pages_blocks_list_crd_dck_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_faq_blk_faqs" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "pages_blocks_faq_blk_faqs_locales" (
-  	"question" varchar,
-  	"answer" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"question" varchar,
+    	"answer" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_faq_blk" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_pages_blocks_faq_blk_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_pages_blocks_faq_blk_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "pages_blocks_faq_blk_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_pink_puffy_top_row" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "pages_blocks_pink_puffy_top_row_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_pink_puffy_bot_row" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "pages_blocks_pink_puffy_bot_row_locales" (
-  	"title" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_pink_puffy_links" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_pages_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_pages_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "pages_blocks_pink_puffy_links_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_pink_puffy" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_pages_blocks_pink_puffy_align" DEFAULT 'center',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_pages_blocks_pink_puffy_align" DEFAULT 'center',
+    	"block_name" varchar
+    );
   CREATE TABLE "pages_blocks_pink_puffy_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_beige_puffy_items" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "pages_blocks_beige_puffy_items_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
+  `)
+
+  // chunk 14/121
+  await db.execute(sql`
   CREATE TABLE "pages_blocks_beige_puffy" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_pages_blocks_beige_puffy_align" DEFAULT 'center',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_pages_blocks_beige_puffy_align" DEFAULT 'center',
+    	"block_name" varchar
+    );
   CREATE TABLE "pages_blocks_beige_puffy_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_funding_map_items_subitems" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "pages_blocks_funding_map_items_subitems_locales" (
-  	"statnumber" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"statnumber" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_funding_map_items" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"region_name" "enum_pages_blocks_funding_map_items_region_name" DEFAULT 'uaf-asia-pacific'
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"region_name" "enum_pages_blocks_funding_map_items_region_name" DEFAULT 'uaf-asia-pacific'
+    );
   CREATE TABLE "pages_blocks_funding_map" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "pages_blocks_funding_map_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"selector_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"selector_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_resource_feat_card" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_pages_blocks_resource_feat_card_align" DEFAULT 'center',
-  	"add_all_resources" boolean,
-  	"filter_by_doc_type_id" integer,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_pages_blocks_resource_feat_card_align" DEFAULT 'center',
+    	"add_all_resources" boolean,
+    	"filter_by_doc_type_id" integer,
+    	"block_name" varchar
+    );
   CREATE TABLE "pages_blocks_resource_feat_card_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_resource_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_pages_blocks_resource_gallery_align" DEFAULT 'center',
-  	"add_all_resources" boolean,
-  	"filter_by_doc_type_id" integer,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_pages_blocks_resource_gallery_align" DEFAULT 'center',
+    	"add_all_resources" boolean,
+    	"filter_by_doc_type_id" integer,
+    	"block_name" varchar
+    );
   CREATE TABLE "pages_blocks_resource_gallery_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_pillar_card_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"mascot_id" integer
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"mascot_id" integer
+    );
   CREATE TABLE "pages_blocks_pillar_card_cards_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_pillar_card" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_pages_blocks_pillar_card_align" DEFAULT 'left',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_pages_blocks_pillar_card_align" DEFAULT 'left',
+    	"block_name" varchar
+    );
   CREATE TABLE "pages_blocks_pillar_card_locales" (
-  	"title" varchar,
-  	"subtitle" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_testimonial_deck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "pages_blocks_testimonial_deck_cards_locales" (
-  	"quote_text" varchar,
-  	"attrib_name" varchar,
-  	"attrib_dsg" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"quote_text" varchar,
+    	"attrib_name" varchar,
+    	"attrib_dsg" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_testimonial_deck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "pages_blocks_testimonial_deck_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_min_card_gallery_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"mascot_id" integer
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"mascot_id" integer
+    );
   CREATE TABLE "pages_blocks_min_card_gallery_cards_locales" (
-  	"title" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_min_card_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"header_align" "enum_pages_blocks_min_card_gallery_header_align" DEFAULT 'left',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"header_align" "enum_pages_blocks_min_card_gallery_header_align" DEFAULT 'left',
+    	"block_name" varchar
+    );
   CREATE TABLE "pages_blocks_min_card_gallery_locales" (
-  	"header_title" varchar,
-  	"header_subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"header_title" varchar,
+    	"header_subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_id_card_gallery_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"mascot_id" integer
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"mascot_id" integer
+    );
   CREATE TABLE "pages_blocks_id_card_gallery_cards_locales" (
-  	"pronouns" varchar,
-  	"fullname" varchar,
-  	"designation" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"pronouns" varchar,
+    	"fullname" varchar,
+    	"designation" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_id_card_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "pages_blocks_id_card_gallery_locales" (
-  	"header_title" varchar,
-  	"header_subtitle" varchar,
-  	"header_description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"header_title" varchar,
+    	"header_subtitle" varchar,
+    	"header_description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_two_column_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "pages_blocks_two_column_block_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"left_column" jsonb,
-  	"right_column" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"left_column" jsonb,
+    	"right_column" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_three_column_table_block_rows" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "pages_blocks_three_column_table_block_rows_locales" (
-  	"first_column" jsonb,
-  	"second_column" jsonb,
-  	"third_column" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"first_column" jsonb,
+    	"second_column" jsonb,
+    	"third_column" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages_blocks_three_column_table_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"column_widths" "enum_pages_blocks_three_column_table_block_column_widths" DEFAULT 'f-t-t',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"column_widths" "enum_pages_blocks_three_column_table_block_column_widths" DEFAULT 'f-t-t',
+    	"block_name" varchar
+    );
   CREATE TABLE "pages_blocks_three_column_table_block_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "pages" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"title" varchar,
-  	"created_by_id" integer,
-  	"updated_by_id" integer,
-  	"bg_type" "enum_pages_bg_type",
-  	"hero_colour" "enum_pages_hero_colour" DEFAULT 'forest',
-  	"mascot_id" integer,
-  	"email" varchar,
-  	"published_at" timestamp(3) with time zone,
-  	"slug" varchar,
-  	"slug_lock" boolean DEFAULT true,
-  	"meta_title" varchar,
-  	"meta_description" varchar,
-  	"meta_image_id" integer,
-  	"folder_id" integer,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"deleted_at" timestamp(3) with time zone,
-  	"_status" "enum_pages_status" DEFAULT 'draft'
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"title" varchar,
+    	"created_by_id" integer,
+    	"updated_by_id" integer,
+    	"bg_type" "enum_pages_bg_type",
+    	"hero_colour" "enum_pages_hero_colour" DEFAULT 'forest',
+    	"mascot_id" integer,
+    	"email" varchar,
+    	"published_at" timestamp(3) with time zone,
+    	"slug" varchar,
+    	"slug_lock" boolean DEFAULT true,
+    	"meta_title" varchar,
+    	"meta_description" varchar,
+    	"meta_image_id" integer,
+    	"folder_id" integer,
+    	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"deleted_at" timestamp(3) with time zone,
+    	"_status" "enum_pages_status" DEFAULT 'draft'
+    );
   CREATE TABLE "pages_locales" (
-  	"hero_title" varchar,
-  	"hero_subtitle" varchar,
-  	"label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"hero_title" varchar,
+    	"hero_subtitle" varchar,
+    	"label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "pages_rels" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"order" integer,
-  	"parent_id" integer NOT NULL,
-  	"path" varchar NOT NULL,
-  	"grants_id" integer,
-  	"pages_id" integer,
-  	"blog_id" integer,
-  	"reports_id" integer,
-  	"mmedia_id" integer,
-  	"documents_id" integer,
-  	"etests_id" integer,
-  	"grantcards_id" integer
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"order" integer,
+    	"parent_id" integer NOT NULL,
+    	"path" varchar NOT NULL,
+    	"grants_id" integer,
+    	"pages_id" integer,
+    	"blog_id" integer,
+    	"reports_id" integer,
+    	"mmedia_id" integer,
+    	"documents_id" integer,
+    	"etests_id" integer,
+    	"grantcards_id" integer
+    );
   CREATE TABLE "_pages_v_version_hero_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__pages_v_version_hero_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__pages_v_version_hero_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_pages_v_version_hero_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_rich_content_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_pages_v_blocks_rich_content_block_locales" (
-  	"rich_text" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"rich_text" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_secondarycta_cta_button" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__pages_v_blocks_secondarycta_cta_button_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__pages_v_blocks_secondarycta_cta_button_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_pages_v_blocks_secondarycta_cta_button_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_secondarycta" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"contact_email" varchar,
-  	"ui_type" "enum__pages_v_blocks_secondarycta_ui_type" DEFAULT 'lrg_txt_cta',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"contact_email" varchar,
+    	"ui_type" "enum__pages_v_blocks_secondarycta_ui_type" DEFAULT 'lrg_txt_cta',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_pages_v_blocks_secondarycta_locales" (
-  	"cta_title" varchar,
-  	"cta_subtitle" varchar,
-  	"contact_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"cta_title" varchar,
+    	"cta_subtitle" varchar,
+    	"contact_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_mcol_info_block_multicols" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"add_link" boolean,
-  	"link_type" "enum__pages_v_blocks_mcol_info_block_multicols_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"add_link" boolean,
+    	"link_type" "enum__pages_v_blocks_mcol_info_block_multicols_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_pages_v_blocks_mcol_info_block_multicols_locales" (
-  	"title" varchar,
-  	"col_content" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"col_content" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_mcol_info_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_pages_v_blocks_grant_card_grid_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_pages_v_blocks_grant_card_grid_block_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_mstep_process_steps_details" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
+  `)
+
+  // chunk 15/121
+  await db.execute(sql`
   CREATE TABLE "_pages_v_blocks_mstep_process_steps_details_locales" (
-  	"bullet" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"bullet" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_mstep_process_steps" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"icon" "enum__pages_v_blocks_mstep_process_steps_icon" DEFAULT 'FileText',
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"icon" "enum__pages_v_blocks_mstep_process_steps_icon" DEFAULT 'FileText',
+    	"_uuid" varchar
+    );
   CREATE TABLE "_pages_v_blocks_mstep_process_steps_locales" (
-  	"step_title" varchar,
-  	"title" varchar,
-  	"tip" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"step_title" varchar,
+    	"title" varchar,
+    	"tip" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_mstep_process" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_pages_v_blocks_mstep_process_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_comparison_blk_lft_grp_lft_points" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_pages_v_blocks_comparison_blk_lft_grp_lft_points_locales" (
-  	"point" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"point" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_comparison_blk_rt_grp_rt_points" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_pages_v_blocks_comparison_blk_rt_grp_rt_points_locales" (
-  	"point" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"point" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_comparison_blk_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__pages_v_blocks_comparison_blk_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__pages_v_blocks_comparison_blk_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_pages_v_blocks_comparison_blk_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_comparison_blk" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_pages_v_blocks_comparison_blk_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"lft_grp_title" varchar,
-  	"lft_grp_desc" varchar,
-  	"rt_grp_title" varchar,
-  	"rt_grp_desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"lft_grp_title" varchar,
+    	"lft_grp_desc" varchar,
+    	"rt_grp_title" varchar,
+    	"rt_grp_desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_ylw_deck_cards_links" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__pages_v_blocks_ylw_deck_cards_links_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__pages_v_blocks_ylw_deck_cards_links_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_pages_v_blocks_ylw_deck_cards_links_locales" (
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_ylw_deck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"mascot_pos" "enum__pages_v_blocks_ylw_deck_cards_mascot_pos" DEFAULT 'center',
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"mascot_pos" "enum__pages_v_blocks_ylw_deck_cards_mascot_pos" DEFAULT 'center',
+    	"_uuid" varchar
+    );
   CREATE TABLE "_pages_v_blocks_ylw_deck_cards_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_ylw_deck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__pages_v_blocks_ylw_deck_align" DEFAULT 'center',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__pages_v_blocks_ylw_deck_align" DEFAULT 'center',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_pages_v_blocks_ylw_deck_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_feat_crd_tags" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_pages_v_blocks_feat_crd_tags_locales" (
-  	"tag" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"tag" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_feat_crd" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"image_id" integer,
-  	"title_alignment" "enum__pages_v_blocks_feat_crd_title_alignment" DEFAULT 'left',
-  	"link_type" "enum__pages_v_blocks_feat_crd_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"image_id" integer,
+    	"title_alignment" "enum__pages_v_blocks_feat_crd_title_alignment" DEFAULT 'left',
+    	"link_type" "enum__pages_v_blocks_feat_crd_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_pages_v_blocks_feat_crd_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"desc" jsonb,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"desc" jsonb,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_feat_crd_acc_feat_crds" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"crd_colour" "enum__pages_v_blocks_feat_crd_acc_feat_crds_crd_colour" DEFAULT 'forest',
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"crd_colour" "enum__pages_v_blocks_feat_crd_acc_feat_crds_crd_colour" DEFAULT 'forest',
+    	"_uuid" varchar
+    );
   CREATE TABLE "_pages_v_blocks_feat_crd_acc_feat_crds_locales" (
-  	"acc_title" varchar,
-  	"acc_content" jsonb,
-  	"crd_tag" varchar,
-  	"crd_content" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"acc_title" varchar,
+    	"acc_content" jsonb,
+    	"crd_tag" varchar,
+    	"crd_content" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_feat_crd_acc" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_pages_v_blocks_feat_crd_acc_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_list_crd_dck_cards_tags" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_pages_v_blocks_list_crd_dck_cards_tags_locales" (
-  	"tag" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"tag" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_list_crd_dck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"image_id" integer,
-  	"link_type" "enum__pages_v_blocks_list_crd_dck_cards_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"image_id" integer,
+    	"link_type" "enum__pages_v_blocks_list_crd_dck_cards_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_pages_v_blocks_list_crd_dck_cards_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_list_crd_dck_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__pages_v_blocks_list_crd_dck_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__pages_v_blocks_list_crd_dck_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_pages_v_blocks_list_crd_dck_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_list_crd_dck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"data_source" "enum__pages_v_blocks_list_crd_dck_data_source" DEFAULT 'manual',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"data_source" "enum__pages_v_blocks_list_crd_dck_data_source" DEFAULT 'manual',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_pages_v_blocks_list_crd_dck_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_faq_blk_faqs" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_pages_v_blocks_faq_blk_faqs_locales" (
-  	"question" varchar,
-  	"answer" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"question" varchar,
+    	"answer" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_faq_blk" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__pages_v_blocks_faq_blk_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__pages_v_blocks_faq_blk_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_pages_v_blocks_faq_blk_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_pink_puffy_top_row" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_pages_v_blocks_pink_puffy_top_row_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_pink_puffy_bot_row" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_pages_v_blocks_pink_puffy_bot_row_locales" (
-  	"title" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_pink_puffy_links" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__pages_v_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__pages_v_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_pages_v_blocks_pink_puffy_links_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_pink_puffy" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__pages_v_blocks_pink_puffy_align" DEFAULT 'center',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__pages_v_blocks_pink_puffy_align" DEFAULT 'center',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_pages_v_blocks_pink_puffy_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_beige_puffy_items" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_pages_v_blocks_beige_puffy_items_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_beige_puffy" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__pages_v_blocks_beige_puffy_align" DEFAULT 'center',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__pages_v_blocks_beige_puffy_align" DEFAULT 'center',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
+  `)
+
+  // chunk 16/121
+  await db.execute(sql`
   CREATE TABLE "_pages_v_blocks_beige_puffy_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_funding_map_items_subitems" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_pages_v_blocks_funding_map_items_subitems_locales" (
-  	"statnumber" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"statnumber" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_funding_map_items" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"region_name" "enum__pages_v_blocks_funding_map_items_region_name" DEFAULT 'uaf-asia-pacific',
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"region_name" "enum__pages_v_blocks_funding_map_items_region_name" DEFAULT 'uaf-asia-pacific',
+    	"_uuid" varchar
+    );
   CREATE TABLE "_pages_v_blocks_funding_map" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_pages_v_blocks_funding_map_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"selector_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"selector_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_resource_feat_card" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__pages_v_blocks_resource_feat_card_align" DEFAULT 'center',
-  	"add_all_resources" boolean,
-  	"filter_by_doc_type_id" integer,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__pages_v_blocks_resource_feat_card_align" DEFAULT 'center',
+    	"add_all_resources" boolean,
+    	"filter_by_doc_type_id" integer,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_pages_v_blocks_resource_feat_card_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_resource_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__pages_v_blocks_resource_gallery_align" DEFAULT 'center',
-  	"add_all_resources" boolean,
-  	"filter_by_doc_type_id" integer,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__pages_v_blocks_resource_gallery_align" DEFAULT 'center',
+    	"add_all_resources" boolean,
+    	"filter_by_doc_type_id" integer,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_pages_v_blocks_resource_gallery_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_pillar_card_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_pages_v_blocks_pillar_card_cards_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_pillar_card" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__pages_v_blocks_pillar_card_align" DEFAULT 'left',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__pages_v_blocks_pillar_card_align" DEFAULT 'left',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_pages_v_blocks_pillar_card_locales" (
-  	"title" varchar,
-  	"subtitle" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_testimonial_deck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_pages_v_blocks_testimonial_deck_cards_locales" (
-  	"quote_text" varchar,
-  	"attrib_name" varchar,
-  	"attrib_dsg" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"quote_text" varchar,
+    	"attrib_name" varchar,
+    	"attrib_dsg" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_testimonial_deck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_pages_v_blocks_testimonial_deck_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_min_card_gallery_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_pages_v_blocks_min_card_gallery_cards_locales" (
-  	"title" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_min_card_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"header_align" "enum__pages_v_blocks_min_card_gallery_header_align" DEFAULT 'left',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"header_align" "enum__pages_v_blocks_min_card_gallery_header_align" DEFAULT 'left',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_pages_v_blocks_min_card_gallery_locales" (
-  	"header_title" varchar,
-  	"header_subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"header_title" varchar,
+    	"header_subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_id_card_gallery_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_pages_v_blocks_id_card_gallery_cards_locales" (
-  	"pronouns" varchar,
-  	"fullname" varchar,
-  	"designation" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"pronouns" varchar,
+    	"fullname" varchar,
+    	"designation" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_id_card_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_pages_v_blocks_id_card_gallery_locales" (
-  	"header_title" varchar,
-  	"header_subtitle" varchar,
-  	"header_description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"header_title" varchar,
+    	"header_subtitle" varchar,
+    	"header_description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_two_column_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_pages_v_blocks_two_column_block_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"left_column" jsonb,
-  	"right_column" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"left_column" jsonb,
+    	"right_column" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_three_column_table_block_rows" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_pages_v_blocks_three_column_table_block_rows_locales" (
-  	"first_column" jsonb,
-  	"second_column" jsonb,
-  	"third_column" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"first_column" jsonb,
+    	"second_column" jsonb,
+    	"third_column" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_blocks_three_column_table_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"column_widths" "enum__pages_v_blocks_three_column_table_block_column_widths" DEFAULT 'f-t-t',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"column_widths" "enum__pages_v_blocks_three_column_table_block_column_widths" DEFAULT 'f-t-t',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_pages_v_blocks_three_column_table_block_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"parent_id" integer,
-  	"version_title" varchar,
-  	"version_created_by_id" integer,
-  	"version_updated_by_id" integer,
-  	"version_bg_type" "enum__pages_v_version_bg_type",
-  	"version_hero_colour" "enum__pages_v_version_hero_colour" DEFAULT 'forest',
-  	"version_mascot_id" integer,
-  	"version_email" varchar,
-  	"version_published_at" timestamp(3) with time zone,
-  	"version_slug" varchar,
-  	"version_slug_lock" boolean DEFAULT true,
-  	"version_meta_title" varchar,
-  	"version_meta_description" varchar,
-  	"version_meta_image_id" integer,
-  	"version_folder_id" integer,
-  	"version_updated_at" timestamp(3) with time zone,
-  	"version_created_at" timestamp(3) with time zone,
-  	"version_deleted_at" timestamp(3) with time zone,
-  	"version__status" "enum__pages_v_version_status" DEFAULT 'draft',
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"snapshot" boolean,
-  	"published_locale" "enum__pages_v_published_locale",
-  	"latest" boolean
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"parent_id" integer,
+    	"version_title" varchar,
+    	"version_created_by_id" integer,
+    	"version_updated_by_id" integer,
+    	"version_bg_type" "enum__pages_v_version_bg_type",
+    	"version_hero_colour" "enum__pages_v_version_hero_colour" DEFAULT 'forest',
+    	"version_mascot_id" integer,
+    	"version_email" varchar,
+    	"version_published_at" timestamp(3) with time zone,
+    	"version_slug" varchar,
+    	"version_slug_lock" boolean DEFAULT true,
+    	"version_meta_title" varchar,
+    	"version_meta_description" varchar,
+    	"version_meta_image_id" integer,
+    	"version_folder_id" integer,
+    	"version_updated_at" timestamp(3) with time zone,
+    	"version_created_at" timestamp(3) with time zone,
+    	"version_deleted_at" timestamp(3) with time zone,
+    	"version__status" "enum__pages_v_version_status" DEFAULT 'draft',
+    	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"snapshot" boolean,
+    	"published_locale" "enum__pages_v_published_locale",
+    	"latest" boolean
+    );
   CREATE TABLE "_pages_v_locales" (
-  	"version_hero_title" varchar,
-  	"version_hero_subtitle" varchar,
-  	"version_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"version_hero_title" varchar,
+    	"version_hero_subtitle" varchar,
+    	"version_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_pages_v_rels" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"order" integer,
-  	"parent_id" integer NOT NULL,
-  	"path" varchar NOT NULL,
-  	"grants_id" integer,
-  	"pages_id" integer,
-  	"blog_id" integer,
-  	"reports_id" integer,
-  	"mmedia_id" integer,
-  	"documents_id" integer,
-  	"etests_id" integer,
-  	"grantcards_id" integer
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"order" integer,
+    	"parent_id" integer NOT NULL,
+    	"path" varchar NOT NULL,
+    	"grants_id" integer,
+    	"pages_id" integer,
+    	"blog_id" integer,
+    	"reports_id" integer,
+    	"mmedia_id" integer,
+    	"documents_id" integer,
+    	"etests_id" integer,
+    	"grantcards_id" integer
+    );
   CREATE TABLE "blog_hero_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_blog_hero_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_blog_hero_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "blog_hero_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_rich_content_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "blog_blocks_rich_content_block_locales" (
-  	"rich_text" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"rich_text" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_secondarycta_cta_button" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_blog_blocks_secondarycta_cta_button_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_blog_blocks_secondarycta_cta_button_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "blog_blocks_secondarycta_cta_button_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_secondarycta" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"contact_email" varchar,
-  	"ui_type" "enum_blog_blocks_secondarycta_ui_type" DEFAULT 'lrg_txt_cta',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"contact_email" varchar,
+    	"ui_type" "enum_blog_blocks_secondarycta_ui_type" DEFAULT 'lrg_txt_cta',
+    	"block_name" varchar
+    );
   CREATE TABLE "blog_blocks_secondarycta_locales" (
-  	"cta_title" varchar,
-  	"cta_subtitle" varchar,
-  	"contact_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"cta_title" varchar,
+    	"cta_subtitle" varchar,
+    	"contact_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_mcol_info_block_multicols" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"add_link" boolean,
-  	"link_type" "enum_blog_blocks_mcol_info_block_multicols_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"add_link" boolean,
+    	"link_type" "enum_blog_blocks_mcol_info_block_multicols_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "blog_blocks_mcol_info_block_multicols_locales" (
-  	"title" varchar,
-  	"col_content" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"col_content" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_mcol_info_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "blog_blocks_grant_card_grid_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "blog_blocks_grant_card_grid_block_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_mstep_process_steps_details" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "blog_blocks_mstep_process_steps_details_locales" (
-  	"bullet" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"bullet" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
+  `)
+
+  // chunk 17/121
+  await db.execute(sql`
   CREATE TABLE "blog_blocks_mstep_process_steps" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"icon" "enum_blog_blocks_mstep_process_steps_icon" DEFAULT 'FileText'
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"icon" "enum_blog_blocks_mstep_process_steps_icon" DEFAULT 'FileText'
+    );
   CREATE TABLE "blog_blocks_mstep_process_steps_locales" (
-  	"step_title" varchar,
-  	"title" varchar,
-  	"tip" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"step_title" varchar,
+    	"title" varchar,
+    	"tip" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_mstep_process" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "blog_blocks_mstep_process_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_comparison_blk_lft_grp_lft_points" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "blog_blocks_comparison_blk_lft_grp_lft_points_locales" (
-  	"point" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"point" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_comparison_blk_rt_grp_rt_points" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "blog_blocks_comparison_blk_rt_grp_rt_points_locales" (
-  	"point" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"point" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_comparison_blk_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_blog_blocks_comparison_blk_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_blog_blocks_comparison_blk_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "blog_blocks_comparison_blk_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_comparison_blk" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "blog_blocks_comparison_blk_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"lft_grp_title" varchar,
-  	"lft_grp_desc" varchar,
-  	"rt_grp_title" varchar,
-  	"rt_grp_desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"lft_grp_title" varchar,
+    	"lft_grp_desc" varchar,
+    	"rt_grp_title" varchar,
+    	"rt_grp_desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_ylw_deck_cards_links" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_blog_blocks_ylw_deck_cards_links_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_blog_blocks_ylw_deck_cards_links_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "blog_blocks_ylw_deck_cards_links_locales" (
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_ylw_deck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"mascot_pos" "enum_blog_blocks_ylw_deck_cards_mascot_pos" DEFAULT 'center'
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"mascot_pos" "enum_blog_blocks_ylw_deck_cards_mascot_pos" DEFAULT 'center'
+    );
   CREATE TABLE "blog_blocks_ylw_deck_cards_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_ylw_deck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_blog_blocks_ylw_deck_align" DEFAULT 'center',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_blog_blocks_ylw_deck_align" DEFAULT 'center',
+    	"block_name" varchar
+    );
   CREATE TABLE "blog_blocks_ylw_deck_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_feat_crd_tags" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "blog_blocks_feat_crd_tags_locales" (
-  	"tag" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"tag" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_feat_crd" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"image_id" integer,
-  	"title_alignment" "enum_blog_blocks_feat_crd_title_alignment" DEFAULT 'left',
-  	"link_type" "enum_blog_blocks_feat_crd_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"image_id" integer,
+    	"title_alignment" "enum_blog_blocks_feat_crd_title_alignment" DEFAULT 'left',
+    	"link_type" "enum_blog_blocks_feat_crd_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "blog_blocks_feat_crd_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"desc" jsonb,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"desc" jsonb,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_feat_crd_acc_feat_crds" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"crd_colour" "enum_blog_blocks_feat_crd_acc_feat_crds_crd_colour" DEFAULT 'forest'
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"crd_colour" "enum_blog_blocks_feat_crd_acc_feat_crds_crd_colour" DEFAULT 'forest'
+    );
   CREATE TABLE "blog_blocks_feat_crd_acc_feat_crds_locales" (
-  	"acc_title" varchar,
-  	"acc_content" jsonb,
-  	"crd_tag" varchar,
-  	"crd_content" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"acc_title" varchar,
+    	"acc_content" jsonb,
+    	"crd_tag" varchar,
+    	"crd_content" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_feat_crd_acc" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "blog_blocks_feat_crd_acc_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_list_crd_dck_cards_tags" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "blog_blocks_list_crd_dck_cards_tags_locales" (
-  	"tag" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"tag" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_list_crd_dck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"image_id" integer,
-  	"link_type" "enum_blog_blocks_list_crd_dck_cards_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"image_id" integer,
+    	"link_type" "enum_blog_blocks_list_crd_dck_cards_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "blog_blocks_list_crd_dck_cards_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_list_crd_dck_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_blog_blocks_list_crd_dck_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_blog_blocks_list_crd_dck_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "blog_blocks_list_crd_dck_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_list_crd_dck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"data_source" "enum_blog_blocks_list_crd_dck_data_source" DEFAULT 'manual',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"data_source" "enum_blog_blocks_list_crd_dck_data_source" DEFAULT 'manual',
+    	"block_name" varchar
+    );
   CREATE TABLE "blog_blocks_list_crd_dck_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_faq_blk_faqs" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "blog_blocks_faq_blk_faqs_locales" (
-  	"question" varchar,
-  	"answer" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"question" varchar,
+    	"answer" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_faq_blk" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_blog_blocks_faq_blk_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_blog_blocks_faq_blk_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "blog_blocks_faq_blk_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_pink_puffy_top_row" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "blog_blocks_pink_puffy_top_row_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_pink_puffy_bot_row" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "blog_blocks_pink_puffy_bot_row_locales" (
-  	"title" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_pink_puffy_links" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_blog_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_blog_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "blog_blocks_pink_puffy_links_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_pink_puffy" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_blog_blocks_pink_puffy_align" DEFAULT 'center',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_blog_blocks_pink_puffy_align" DEFAULT 'center',
+    	"block_name" varchar
+    );
   CREATE TABLE "blog_blocks_pink_puffy_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_beige_puffy_items" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "blog_blocks_beige_puffy_items_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_beige_puffy" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_blog_blocks_beige_puffy_align" DEFAULT 'center',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_blog_blocks_beige_puffy_align" DEFAULT 'center',
+    	"block_name" varchar
+    );
   CREATE TABLE "blog_blocks_beige_puffy_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
+  `)
+
+  // chunk 18/121
+  await db.execute(sql`
   CREATE TABLE "blog_blocks_funding_map_items_subitems" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "blog_blocks_funding_map_items_subitems_locales" (
-  	"statnumber" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"statnumber" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_funding_map_items" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"region_name" "enum_blog_blocks_funding_map_items_region_name" DEFAULT 'uaf-asia-pacific'
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"region_name" "enum_blog_blocks_funding_map_items_region_name" DEFAULT 'uaf-asia-pacific'
+    );
   CREATE TABLE "blog_blocks_funding_map" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "blog_blocks_funding_map_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"selector_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"selector_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_resource_feat_card" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_blog_blocks_resource_feat_card_align" DEFAULT 'center',
-  	"add_all_resources" boolean,
-  	"filter_by_doc_type_id" integer,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_blog_blocks_resource_feat_card_align" DEFAULT 'center',
+    	"add_all_resources" boolean,
+    	"filter_by_doc_type_id" integer,
+    	"block_name" varchar
+    );
   CREATE TABLE "blog_blocks_resource_feat_card_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_resource_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_blog_blocks_resource_gallery_align" DEFAULT 'center',
-  	"add_all_resources" boolean,
-  	"filter_by_doc_type_id" integer,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_blog_blocks_resource_gallery_align" DEFAULT 'center',
+    	"add_all_resources" boolean,
+    	"filter_by_doc_type_id" integer,
+    	"block_name" varchar
+    );
   CREATE TABLE "blog_blocks_resource_gallery_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_pillar_card_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"mascot_id" integer
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"mascot_id" integer
+    );
   CREATE TABLE "blog_blocks_pillar_card_cards_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_pillar_card" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_blog_blocks_pillar_card_align" DEFAULT 'left',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_blog_blocks_pillar_card_align" DEFAULT 'left',
+    	"block_name" varchar
+    );
   CREATE TABLE "blog_blocks_pillar_card_locales" (
-  	"title" varchar,
-  	"subtitle" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_testimonial_deck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "blog_blocks_testimonial_deck_cards_locales" (
-  	"quote_text" varchar,
-  	"attrib_name" varchar,
-  	"attrib_dsg" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"quote_text" varchar,
+    	"attrib_name" varchar,
+    	"attrib_dsg" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_testimonial_deck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "blog_blocks_testimonial_deck_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_min_card_gallery_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"mascot_id" integer
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"mascot_id" integer
+    );
   CREATE TABLE "blog_blocks_min_card_gallery_cards_locales" (
-  	"title" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_min_card_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"header_align" "enum_blog_blocks_min_card_gallery_header_align" DEFAULT 'left',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"header_align" "enum_blog_blocks_min_card_gallery_header_align" DEFAULT 'left',
+    	"block_name" varchar
+    );
   CREATE TABLE "blog_blocks_min_card_gallery_locales" (
-  	"header_title" varchar,
-  	"header_subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"header_title" varchar,
+    	"header_subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_id_card_gallery_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"mascot_id" integer
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"mascot_id" integer
+    );
   CREATE TABLE "blog_blocks_id_card_gallery_cards_locales" (
-  	"pronouns" varchar,
-  	"fullname" varchar,
-  	"designation" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"pronouns" varchar,
+    	"fullname" varchar,
+    	"designation" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_id_card_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "blog_blocks_id_card_gallery_locales" (
-  	"header_title" varchar,
-  	"header_subtitle" varchar,
-  	"header_description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"header_title" varchar,
+    	"header_subtitle" varchar,
+    	"header_description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_two_column_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "blog_blocks_two_column_block_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"left_column" jsonb,
-  	"right_column" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"left_column" jsonb,
+    	"right_column" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_three_column_table_block_rows" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "blog_blocks_three_column_table_block_rows_locales" (
-  	"first_column" jsonb,
-  	"second_column" jsonb,
-  	"third_column" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"first_column" jsonb,
+    	"second_column" jsonb,
+    	"third_column" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog_blocks_three_column_table_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"column_widths" "enum_blog_blocks_three_column_table_block_column_widths" DEFAULT 'f-t-t',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"column_widths" "enum_blog_blocks_three_column_table_block_column_widths" DEFAULT 'f-t-t',
+    	"block_name" varchar
+    );
   CREATE TABLE "blog_blocks_three_column_table_block_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "blog" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"title" varchar,
-  	"page_type" "enum_blog_page_type" DEFAULT 'landing',
-  	"show_filter" boolean DEFAULT false,
-  	"image_id" integer,
-  	"published_at" timestamp(3) with time zone,
-  	"created_by_id" integer,
-  	"updated_by_id" integer,
-  	"slug" varchar,
-  	"slug_lock" boolean DEFAULT true,
-  	"meta_title" varchar,
-  	"meta_description" varchar,
-  	"meta_image_id" integer,
-  	"folder_id" integer,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"deleted_at" timestamp(3) with time zone,
-  	"_status" "enum_blog_status" DEFAULT 'draft'
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"title" varchar,
+    	"page_type" "enum_blog_page_type" DEFAULT 'landing',
+    	"show_filter" boolean DEFAULT false,
+    	"image_id" integer,
+    	"published_at" timestamp(3) with time zone,
+    	"created_by_id" integer,
+    	"updated_by_id" integer,
+    	"slug" varchar,
+    	"slug_lock" boolean DEFAULT true,
+    	"meta_title" varchar,
+    	"meta_description" varchar,
+    	"meta_image_id" integer,
+    	"folder_id" integer,
+    	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"deleted_at" timestamp(3) with time zone,
+    	"_status" "enum_blog_status" DEFAULT 'draft'
+    );
   CREATE TABLE "blog_locales" (
-  	"hero_title" varchar,
-  	"hero_subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"hero_title" varchar,
+    	"hero_subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "blog_rels" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"order" integer,
-  	"parent_id" integer NOT NULL,
-  	"path" varchar NOT NULL,
-  	"doctypes_id" integer,
-  	"grants_id" integer,
-  	"pages_id" integer,
-  	"blog_id" integer,
-  	"reports_id" integer,
-  	"mmedia_id" integer,
-  	"documents_id" integer,
-  	"etests_id" integer,
-  	"grantcards_id" integer
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"order" integer,
+    	"parent_id" integer NOT NULL,
+    	"path" varchar NOT NULL,
+    	"doctypes_id" integer,
+    	"grants_id" integer,
+    	"pages_id" integer,
+    	"blog_id" integer,
+    	"reports_id" integer,
+    	"mmedia_id" integer,
+    	"documents_id" integer,
+    	"etests_id" integer,
+    	"grantcards_id" integer
+    );
   CREATE TABLE "_blog_v_version_hero_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__blog_v_version_hero_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__blog_v_version_hero_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_blog_v_version_hero_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_rich_content_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_blog_v_blocks_rich_content_block_locales" (
-  	"rich_text" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"rich_text" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_secondarycta_cta_button" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__blog_v_blocks_secondarycta_cta_button_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__blog_v_blocks_secondarycta_cta_button_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_blog_v_blocks_secondarycta_cta_button_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_secondarycta" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"contact_email" varchar,
-  	"ui_type" "enum__blog_v_blocks_secondarycta_ui_type" DEFAULT 'lrg_txt_cta',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"contact_email" varchar,
+    	"ui_type" "enum__blog_v_blocks_secondarycta_ui_type" DEFAULT 'lrg_txt_cta',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_blog_v_blocks_secondarycta_locales" (
-  	"cta_title" varchar,
-  	"cta_subtitle" varchar,
-  	"contact_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"cta_title" varchar,
+    	"cta_subtitle" varchar,
+    	"contact_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_mcol_info_block_multicols" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"add_link" boolean,
-  	"link_type" "enum__blog_v_blocks_mcol_info_block_multicols_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"add_link" boolean,
+    	"link_type" "enum__blog_v_blocks_mcol_info_block_multicols_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_blog_v_blocks_mcol_info_block_multicols_locales" (
-  	"title" varchar,
-  	"col_content" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"col_content" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_mcol_info_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_blog_v_blocks_grant_card_grid_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_blog_v_blocks_grant_card_grid_block_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_mstep_process_steps_details" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_blog_v_blocks_mstep_process_steps_details_locales" (
-  	"bullet" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"bullet" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_mstep_process_steps" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"icon" "enum__blog_v_blocks_mstep_process_steps_icon" DEFAULT 'FileText',
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"icon" "enum__blog_v_blocks_mstep_process_steps_icon" DEFAULT 'FileText',
+    	"_uuid" varchar
+    );
+  `)
+
+  // chunk 19/121
+  await db.execute(sql`
   CREATE TABLE "_blog_v_blocks_mstep_process_steps_locales" (
-  	"step_title" varchar,
-  	"title" varchar,
-  	"tip" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"step_title" varchar,
+    	"title" varchar,
+    	"tip" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_mstep_process" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_blog_v_blocks_mstep_process_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_comparison_blk_lft_grp_lft_points" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_blog_v_blocks_comparison_blk_lft_grp_lft_points_locales" (
-  	"point" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"point" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_comparison_blk_rt_grp_rt_points" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_blog_v_blocks_comparison_blk_rt_grp_rt_points_locales" (
-  	"point" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"point" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_comparison_blk_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__blog_v_blocks_comparison_blk_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__blog_v_blocks_comparison_blk_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_blog_v_blocks_comparison_blk_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_comparison_blk" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_blog_v_blocks_comparison_blk_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"lft_grp_title" varchar,
-  	"lft_grp_desc" varchar,
-  	"rt_grp_title" varchar,
-  	"rt_grp_desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"lft_grp_title" varchar,
+    	"lft_grp_desc" varchar,
+    	"rt_grp_title" varchar,
+    	"rt_grp_desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_ylw_deck_cards_links" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__blog_v_blocks_ylw_deck_cards_links_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__blog_v_blocks_ylw_deck_cards_links_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_blog_v_blocks_ylw_deck_cards_links_locales" (
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_ylw_deck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"mascot_pos" "enum__blog_v_blocks_ylw_deck_cards_mascot_pos" DEFAULT 'center',
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"mascot_pos" "enum__blog_v_blocks_ylw_deck_cards_mascot_pos" DEFAULT 'center',
+    	"_uuid" varchar
+    );
   CREATE TABLE "_blog_v_blocks_ylw_deck_cards_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_ylw_deck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__blog_v_blocks_ylw_deck_align" DEFAULT 'center',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__blog_v_blocks_ylw_deck_align" DEFAULT 'center',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_blog_v_blocks_ylw_deck_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_feat_crd_tags" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_blog_v_blocks_feat_crd_tags_locales" (
-  	"tag" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"tag" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_feat_crd" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"image_id" integer,
-  	"title_alignment" "enum__blog_v_blocks_feat_crd_title_alignment" DEFAULT 'left',
-  	"link_type" "enum__blog_v_blocks_feat_crd_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"image_id" integer,
+    	"title_alignment" "enum__blog_v_blocks_feat_crd_title_alignment" DEFAULT 'left',
+    	"link_type" "enum__blog_v_blocks_feat_crd_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_blog_v_blocks_feat_crd_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"desc" jsonb,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"desc" jsonb,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_feat_crd_acc_feat_crds" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"crd_colour" "enum__blog_v_blocks_feat_crd_acc_feat_crds_crd_colour" DEFAULT 'forest',
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"crd_colour" "enum__blog_v_blocks_feat_crd_acc_feat_crds_crd_colour" DEFAULT 'forest',
+    	"_uuid" varchar
+    );
   CREATE TABLE "_blog_v_blocks_feat_crd_acc_feat_crds_locales" (
-  	"acc_title" varchar,
-  	"acc_content" jsonb,
-  	"crd_tag" varchar,
-  	"crd_content" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"acc_title" varchar,
+    	"acc_content" jsonb,
+    	"crd_tag" varchar,
+    	"crd_content" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_feat_crd_acc" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_blog_v_blocks_feat_crd_acc_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_list_crd_dck_cards_tags" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_blog_v_blocks_list_crd_dck_cards_tags_locales" (
-  	"tag" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"tag" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_list_crd_dck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"image_id" integer,
-  	"link_type" "enum__blog_v_blocks_list_crd_dck_cards_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"image_id" integer,
+    	"link_type" "enum__blog_v_blocks_list_crd_dck_cards_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_blog_v_blocks_list_crd_dck_cards_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_list_crd_dck_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__blog_v_blocks_list_crd_dck_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__blog_v_blocks_list_crd_dck_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_blog_v_blocks_list_crd_dck_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_list_crd_dck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"data_source" "enum__blog_v_blocks_list_crd_dck_data_source" DEFAULT 'manual',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"data_source" "enum__blog_v_blocks_list_crd_dck_data_source" DEFAULT 'manual',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_blog_v_blocks_list_crd_dck_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_faq_blk_faqs" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_blog_v_blocks_faq_blk_faqs_locales" (
-  	"question" varchar,
-  	"answer" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"question" varchar,
+    	"answer" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_faq_blk" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__blog_v_blocks_faq_blk_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__blog_v_blocks_faq_blk_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_blog_v_blocks_faq_blk_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_pink_puffy_top_row" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_blog_v_blocks_pink_puffy_top_row_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_pink_puffy_bot_row" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_blog_v_blocks_pink_puffy_bot_row_locales" (
-  	"title" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_pink_puffy_links" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__blog_v_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__blog_v_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_blog_v_blocks_pink_puffy_links_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_pink_puffy" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__blog_v_blocks_pink_puffy_align" DEFAULT 'center',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__blog_v_blocks_pink_puffy_align" DEFAULT 'center',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_blog_v_blocks_pink_puffy_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_beige_puffy_items" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_blog_v_blocks_beige_puffy_items_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_beige_puffy" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__blog_v_blocks_beige_puffy_align" DEFAULT 'center',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__blog_v_blocks_beige_puffy_align" DEFAULT 'center',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_blog_v_blocks_beige_puffy_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_funding_map_items_subitems" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
+  `)
+
+  // chunk 20/121
+  await db.execute(sql`
   CREATE TABLE "_blog_v_blocks_funding_map_items_subitems_locales" (
-  	"statnumber" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"statnumber" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_funding_map_items" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"region_name" "enum__blog_v_blocks_funding_map_items_region_name" DEFAULT 'uaf-asia-pacific',
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"region_name" "enum__blog_v_blocks_funding_map_items_region_name" DEFAULT 'uaf-asia-pacific',
+    	"_uuid" varchar
+    );
   CREATE TABLE "_blog_v_blocks_funding_map" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_blog_v_blocks_funding_map_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"selector_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"selector_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_resource_feat_card" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__blog_v_blocks_resource_feat_card_align" DEFAULT 'center',
-  	"add_all_resources" boolean,
-  	"filter_by_doc_type_id" integer,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__blog_v_blocks_resource_feat_card_align" DEFAULT 'center',
+    	"add_all_resources" boolean,
+    	"filter_by_doc_type_id" integer,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_blog_v_blocks_resource_feat_card_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_resource_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__blog_v_blocks_resource_gallery_align" DEFAULT 'center',
-  	"add_all_resources" boolean,
-  	"filter_by_doc_type_id" integer,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__blog_v_blocks_resource_gallery_align" DEFAULT 'center',
+    	"add_all_resources" boolean,
+    	"filter_by_doc_type_id" integer,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_blog_v_blocks_resource_gallery_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_pillar_card_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_blog_v_blocks_pillar_card_cards_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_pillar_card" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__blog_v_blocks_pillar_card_align" DEFAULT 'left',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__blog_v_blocks_pillar_card_align" DEFAULT 'left',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_blog_v_blocks_pillar_card_locales" (
-  	"title" varchar,
-  	"subtitle" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_testimonial_deck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_blog_v_blocks_testimonial_deck_cards_locales" (
-  	"quote_text" varchar,
-  	"attrib_name" varchar,
-  	"attrib_dsg" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"quote_text" varchar,
+    	"attrib_name" varchar,
+    	"attrib_dsg" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_testimonial_deck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_blog_v_blocks_testimonial_deck_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_min_card_gallery_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_blog_v_blocks_min_card_gallery_cards_locales" (
-  	"title" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_min_card_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"header_align" "enum__blog_v_blocks_min_card_gallery_header_align" DEFAULT 'left',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"header_align" "enum__blog_v_blocks_min_card_gallery_header_align" DEFAULT 'left',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_blog_v_blocks_min_card_gallery_locales" (
-  	"header_title" varchar,
-  	"header_subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"header_title" varchar,
+    	"header_subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_id_card_gallery_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_blog_v_blocks_id_card_gallery_cards_locales" (
-  	"pronouns" varchar,
-  	"fullname" varchar,
-  	"designation" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"pronouns" varchar,
+    	"fullname" varchar,
+    	"designation" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_id_card_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_blog_v_blocks_id_card_gallery_locales" (
-  	"header_title" varchar,
-  	"header_subtitle" varchar,
-  	"header_description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"header_title" varchar,
+    	"header_subtitle" varchar,
+    	"header_description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_two_column_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_blog_v_blocks_two_column_block_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"left_column" jsonb,
-  	"right_column" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"left_column" jsonb,
+    	"right_column" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_three_column_table_block_rows" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_blog_v_blocks_three_column_table_block_rows_locales" (
-  	"first_column" jsonb,
-  	"second_column" jsonb,
-  	"third_column" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"first_column" jsonb,
+    	"second_column" jsonb,
+    	"third_column" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_blocks_three_column_table_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"column_widths" "enum__blog_v_blocks_three_column_table_block_column_widths" DEFAULT 'f-t-t',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"column_widths" "enum__blog_v_blocks_three_column_table_block_column_widths" DEFAULT 'f-t-t',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_blog_v_blocks_three_column_table_block_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"parent_id" integer,
-  	"version_title" varchar,
-  	"version_page_type" "enum__blog_v_version_page_type" DEFAULT 'landing',
-  	"version_show_filter" boolean DEFAULT false,
-  	"version_image_id" integer,
-  	"version_published_at" timestamp(3) with time zone,
-  	"version_created_by_id" integer,
-  	"version_updated_by_id" integer,
-  	"version_slug" varchar,
-  	"version_slug_lock" boolean DEFAULT true,
-  	"version_meta_title" varchar,
-  	"version_meta_description" varchar,
-  	"version_meta_image_id" integer,
-  	"version_folder_id" integer,
-  	"version_updated_at" timestamp(3) with time zone,
-  	"version_created_at" timestamp(3) with time zone,
-  	"version_deleted_at" timestamp(3) with time zone,
-  	"version__status" "enum__blog_v_version_status" DEFAULT 'draft',
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"snapshot" boolean,
-  	"published_locale" "enum__blog_v_published_locale",
-  	"latest" boolean
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"parent_id" integer,
+    	"version_title" varchar,
+    	"version_page_type" "enum__blog_v_version_page_type" DEFAULT 'landing',
+    	"version_show_filter" boolean DEFAULT false,
+    	"version_image_id" integer,
+    	"version_published_at" timestamp(3) with time zone,
+    	"version_created_by_id" integer,
+    	"version_updated_by_id" integer,
+    	"version_slug" varchar,
+    	"version_slug_lock" boolean DEFAULT true,
+    	"version_meta_title" varchar,
+    	"version_meta_description" varchar,
+    	"version_meta_image_id" integer,
+    	"version_folder_id" integer,
+    	"version_updated_at" timestamp(3) with time zone,
+    	"version_created_at" timestamp(3) with time zone,
+    	"version_deleted_at" timestamp(3) with time zone,
+    	"version__status" "enum__blog_v_version_status" DEFAULT 'draft',
+    	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"snapshot" boolean,
+    	"published_locale" "enum__blog_v_published_locale",
+    	"latest" boolean
+    );
   CREATE TABLE "_blog_v_locales" (
-  	"version_hero_title" varchar,
-  	"version_hero_subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"version_hero_title" varchar,
+    	"version_hero_subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_blog_v_rels" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"order" integer,
-  	"parent_id" integer NOT NULL,
-  	"path" varchar NOT NULL,
-  	"doctypes_id" integer,
-  	"grants_id" integer,
-  	"pages_id" integer,
-  	"blog_id" integer,
-  	"reports_id" integer,
-  	"mmedia_id" integer,
-  	"documents_id" integer,
-  	"etests_id" integer,
-  	"grantcards_id" integer
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"order" integer,
+    	"parent_id" integer NOT NULL,
+    	"path" varchar NOT NULL,
+    	"doctypes_id" integer,
+    	"grants_id" integer,
+    	"pages_id" integer,
+    	"blog_id" integer,
+    	"reports_id" integer,
+    	"mmedia_id" integer,
+    	"documents_id" integer,
+    	"etests_id" integer,
+    	"grantcards_id" integer
+    );
   CREATE TABLE "reports_hero_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_reports_hero_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_reports_hero_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "reports_hero_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_rich_content_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "reports_blocks_rich_content_block_locales" (
-  	"rich_text" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"rich_text" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_secondarycta_cta_button" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_reports_blocks_secondarycta_cta_button_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_reports_blocks_secondarycta_cta_button_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "reports_blocks_secondarycta_cta_button_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_secondarycta" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"contact_email" varchar,
-  	"ui_type" "enum_reports_blocks_secondarycta_ui_type" DEFAULT 'lrg_txt_cta',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"contact_email" varchar,
+    	"ui_type" "enum_reports_blocks_secondarycta_ui_type" DEFAULT 'lrg_txt_cta',
+    	"block_name" varchar
+    );
   CREATE TABLE "reports_blocks_secondarycta_locales" (
-  	"cta_title" varchar,
-  	"cta_subtitle" varchar,
-  	"contact_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"cta_title" varchar,
+    	"cta_subtitle" varchar,
+    	"contact_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_mcol_info_block_multicols" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"add_link" boolean,
-  	"link_type" "enum_reports_blocks_mcol_info_block_multicols_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"add_link" boolean,
+    	"link_type" "enum_reports_blocks_mcol_info_block_multicols_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "reports_blocks_mcol_info_block_multicols_locales" (
-  	"title" varchar,
-  	"col_content" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"col_content" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_mcol_info_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "reports_blocks_grant_card_grid_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "reports_blocks_grant_card_grid_block_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_mstep_process_steps_details" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "reports_blocks_mstep_process_steps_details_locales" (
-  	"bullet" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"bullet" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_mstep_process_steps" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"icon" "enum_reports_blocks_mstep_process_steps_icon" DEFAULT 'FileText'
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"icon" "enum_reports_blocks_mstep_process_steps_icon" DEFAULT 'FileText'
+    );
   CREATE TABLE "reports_blocks_mstep_process_steps_locales" (
-  	"step_title" varchar,
-  	"title" varchar,
-  	"tip" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"step_title" varchar,
+    	"title" varchar,
+    	"tip" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
+  `)
+
+  // chunk 21/121
+  await db.execute(sql`
   CREATE TABLE "reports_blocks_mstep_process" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "reports_blocks_mstep_process_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_comparison_blk_lft_grp_lft_points" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "reports_blocks_comparison_blk_lft_grp_lft_points_locales" (
-  	"point" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"point" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_comparison_blk_rt_grp_rt_points" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "reports_blocks_comparison_blk_rt_grp_rt_points_locales" (
-  	"point" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"point" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_comparison_blk_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_reports_blocks_comparison_blk_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_reports_blocks_comparison_blk_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "reports_blocks_comparison_blk_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_comparison_blk" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "reports_blocks_comparison_blk_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"lft_grp_title" varchar,
-  	"lft_grp_desc" varchar,
-  	"rt_grp_title" varchar,
-  	"rt_grp_desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"lft_grp_title" varchar,
+    	"lft_grp_desc" varchar,
+    	"rt_grp_title" varchar,
+    	"rt_grp_desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_ylw_deck_cards_links" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_reports_blocks_ylw_deck_cards_links_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_reports_blocks_ylw_deck_cards_links_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "reports_blocks_ylw_deck_cards_links_locales" (
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_ylw_deck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"mascot_pos" "enum_reports_blocks_ylw_deck_cards_mascot_pos" DEFAULT 'center'
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"mascot_pos" "enum_reports_blocks_ylw_deck_cards_mascot_pos" DEFAULT 'center'
+    );
   CREATE TABLE "reports_blocks_ylw_deck_cards_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_ylw_deck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_reports_blocks_ylw_deck_align" DEFAULT 'center',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_reports_blocks_ylw_deck_align" DEFAULT 'center',
+    	"block_name" varchar
+    );
   CREATE TABLE "reports_blocks_ylw_deck_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_feat_crd_tags" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "reports_blocks_feat_crd_tags_locales" (
-  	"tag" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"tag" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_feat_crd" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"image_id" integer,
-  	"title_alignment" "enum_reports_blocks_feat_crd_title_alignment" DEFAULT 'left',
-  	"link_type" "enum_reports_blocks_feat_crd_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"image_id" integer,
+    	"title_alignment" "enum_reports_blocks_feat_crd_title_alignment" DEFAULT 'left',
+    	"link_type" "enum_reports_blocks_feat_crd_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "reports_blocks_feat_crd_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"desc" jsonb,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"desc" jsonb,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_feat_crd_acc_feat_crds" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"crd_colour" "enum_reports_blocks_feat_crd_acc_feat_crds_crd_colour" DEFAULT 'forest'
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"crd_colour" "enum_reports_blocks_feat_crd_acc_feat_crds_crd_colour" DEFAULT 'forest'
+    );
   CREATE TABLE "reports_blocks_feat_crd_acc_feat_crds_locales" (
-  	"acc_title" varchar,
-  	"acc_content" jsonb,
-  	"crd_tag" varchar,
-  	"crd_content" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"acc_title" varchar,
+    	"acc_content" jsonb,
+    	"crd_tag" varchar,
+    	"crd_content" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_feat_crd_acc" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "reports_blocks_feat_crd_acc_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_list_crd_dck_cards_tags" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "reports_blocks_list_crd_dck_cards_tags_locales" (
-  	"tag" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"tag" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_list_crd_dck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"image_id" integer,
-  	"link_type" "enum_reports_blocks_list_crd_dck_cards_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"image_id" integer,
+    	"link_type" "enum_reports_blocks_list_crd_dck_cards_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "reports_blocks_list_crd_dck_cards_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_list_crd_dck_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_reports_blocks_list_crd_dck_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_reports_blocks_list_crd_dck_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "reports_blocks_list_crd_dck_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_list_crd_dck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"data_source" "enum_reports_blocks_list_crd_dck_data_source" DEFAULT 'manual',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"data_source" "enum_reports_blocks_list_crd_dck_data_source" DEFAULT 'manual',
+    	"block_name" varchar
+    );
   CREATE TABLE "reports_blocks_list_crd_dck_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_faq_blk_faqs" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "reports_blocks_faq_blk_faqs_locales" (
-  	"question" varchar,
-  	"answer" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"question" varchar,
+    	"answer" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_faq_blk" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_reports_blocks_faq_blk_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_reports_blocks_faq_blk_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "reports_blocks_faq_blk_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_pink_puffy_top_row" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "reports_blocks_pink_puffy_top_row_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_pink_puffy_bot_row" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "reports_blocks_pink_puffy_bot_row_locales" (
-  	"title" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_pink_puffy_links" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_reports_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_reports_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "reports_blocks_pink_puffy_links_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_pink_puffy" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_reports_blocks_pink_puffy_align" DEFAULT 'center',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_reports_blocks_pink_puffy_align" DEFAULT 'center',
+    	"block_name" varchar
+    );
   CREATE TABLE "reports_blocks_pink_puffy_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_beige_puffy_items" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "reports_blocks_beige_puffy_items_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_beige_puffy" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_reports_blocks_beige_puffy_align" DEFAULT 'center',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_reports_blocks_beige_puffy_align" DEFAULT 'center',
+    	"block_name" varchar
+    );
   CREATE TABLE "reports_blocks_beige_puffy_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_funding_map_items_subitems" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "reports_blocks_funding_map_items_subitems_locales" (
-  	"statnumber" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"statnumber" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
+  `)
+
+  // chunk 22/121
+  await db.execute(sql`
   CREATE TABLE "reports_blocks_funding_map_items" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"region_name" "enum_reports_blocks_funding_map_items_region_name" DEFAULT 'uaf-asia-pacific'
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"region_name" "enum_reports_blocks_funding_map_items_region_name" DEFAULT 'uaf-asia-pacific'
+    );
   CREATE TABLE "reports_blocks_funding_map" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "reports_blocks_funding_map_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"selector_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"selector_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_resource_feat_card" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_reports_blocks_resource_feat_card_align" DEFAULT 'center',
-  	"add_all_resources" boolean,
-  	"filter_by_doc_type_id" integer,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_reports_blocks_resource_feat_card_align" DEFAULT 'center',
+    	"add_all_resources" boolean,
+    	"filter_by_doc_type_id" integer,
+    	"block_name" varchar
+    );
   CREATE TABLE "reports_blocks_resource_feat_card_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_resource_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_reports_blocks_resource_gallery_align" DEFAULT 'center',
-  	"add_all_resources" boolean,
-  	"filter_by_doc_type_id" integer,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_reports_blocks_resource_gallery_align" DEFAULT 'center',
+    	"add_all_resources" boolean,
+    	"filter_by_doc_type_id" integer,
+    	"block_name" varchar
+    );
   CREATE TABLE "reports_blocks_resource_gallery_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_pillar_card_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"mascot_id" integer
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"mascot_id" integer
+    );
   CREATE TABLE "reports_blocks_pillar_card_cards_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_pillar_card" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_reports_blocks_pillar_card_align" DEFAULT 'left',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_reports_blocks_pillar_card_align" DEFAULT 'left',
+    	"block_name" varchar
+    );
   CREATE TABLE "reports_blocks_pillar_card_locales" (
-  	"title" varchar,
-  	"subtitle" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_testimonial_deck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "reports_blocks_testimonial_deck_cards_locales" (
-  	"quote_text" varchar,
-  	"attrib_name" varchar,
-  	"attrib_dsg" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"quote_text" varchar,
+    	"attrib_name" varchar,
+    	"attrib_dsg" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_testimonial_deck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "reports_blocks_testimonial_deck_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_min_card_gallery_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"mascot_id" integer
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"mascot_id" integer
+    );
   CREATE TABLE "reports_blocks_min_card_gallery_cards_locales" (
-  	"title" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_min_card_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"header_align" "enum_reports_blocks_min_card_gallery_header_align" DEFAULT 'left',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"header_align" "enum_reports_blocks_min_card_gallery_header_align" DEFAULT 'left',
+    	"block_name" varchar
+    );
   CREATE TABLE "reports_blocks_min_card_gallery_locales" (
-  	"header_title" varchar,
-  	"header_subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"header_title" varchar,
+    	"header_subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_id_card_gallery_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"mascot_id" integer
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"mascot_id" integer
+    );
   CREATE TABLE "reports_blocks_id_card_gallery_cards_locales" (
-  	"pronouns" varchar,
-  	"fullname" varchar,
-  	"designation" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"pronouns" varchar,
+    	"fullname" varchar,
+    	"designation" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_id_card_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "reports_blocks_id_card_gallery_locales" (
-  	"header_title" varchar,
-  	"header_subtitle" varchar,
-  	"header_description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"header_title" varchar,
+    	"header_subtitle" varchar,
+    	"header_description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_two_column_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "reports_blocks_two_column_block_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"left_column" jsonb,
-  	"right_column" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"left_column" jsonb,
+    	"right_column" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_three_column_table_block_rows" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "reports_blocks_three_column_table_block_rows_locales" (
-  	"first_column" jsonb,
-  	"second_column" jsonb,
-  	"third_column" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"first_column" jsonb,
+    	"second_column" jsonb,
+    	"third_column" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports_blocks_three_column_table_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"column_widths" "enum_reports_blocks_three_column_table_block_column_widths" DEFAULT 'f-t-t',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"column_widths" "enum_reports_blocks_three_column_table_block_column_widths" DEFAULT 'f-t-t',
+    	"block_name" varchar
+    );
   CREATE TABLE "reports_blocks_three_column_table_block_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "reports" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"title" varchar,
-  	"page_type" "enum_reports_page_type" DEFAULT 'landing',
-  	"show_filter" boolean,
-  	"pub_date" timestamp(3) with time zone,
-  	"image_id" integer,
-  	"published_at" timestamp(3) with time zone,
-  	"created_by_id" integer,
-  	"updated_by_id" integer,
-  	"slug" varchar,
-  	"slug_lock" boolean DEFAULT true,
-  	"meta_title" varchar,
-  	"meta_description" varchar,
-  	"meta_image_id" integer,
-  	"folder_id" integer,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"deleted_at" timestamp(3) with time zone,
-  	"_status" "enum_reports_status" DEFAULT 'draft'
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"title" varchar,
+    	"page_type" "enum_reports_page_type" DEFAULT 'landing',
+    	"show_filter" boolean,
+    	"pub_date" timestamp(3) with time zone,
+    	"image_id" integer,
+    	"published_at" timestamp(3) with time zone,
+    	"created_by_id" integer,
+    	"updated_by_id" integer,
+    	"slug" varchar,
+    	"slug_lock" boolean DEFAULT true,
+    	"meta_title" varchar,
+    	"meta_description" varchar,
+    	"meta_image_id" integer,
+    	"folder_id" integer,
+    	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"deleted_at" timestamp(3) with time zone,
+    	"_status" "enum_reports_status" DEFAULT 'draft'
+    );
   CREATE TABLE "reports_locales" (
-  	"hero_title" varchar,
-  	"hero_subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"hero_title" varchar,
+    	"hero_subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "reports_rels" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"order" integer,
-  	"parent_id" integer NOT NULL,
-  	"path" varchar NOT NULL,
-  	"doctypes_id" integer,
-  	"grants_id" integer,
-  	"pages_id" integer,
-  	"blog_id" integer,
-  	"reports_id" integer,
-  	"mmedia_id" integer,
-  	"documents_id" integer,
-  	"etests_id" integer,
-  	"grantcards_id" integer
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"order" integer,
+    	"parent_id" integer NOT NULL,
+    	"path" varchar NOT NULL,
+    	"doctypes_id" integer,
+    	"grants_id" integer,
+    	"pages_id" integer,
+    	"blog_id" integer,
+    	"reports_id" integer,
+    	"mmedia_id" integer,
+    	"documents_id" integer,
+    	"etests_id" integer,
+    	"grantcards_id" integer
+    );
   CREATE TABLE "_reports_v_version_hero_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__reports_v_version_hero_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__reports_v_version_hero_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_reports_v_version_hero_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_rich_content_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_reports_v_blocks_rich_content_block_locales" (
-  	"rich_text" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"rich_text" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_secondarycta_cta_button" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__reports_v_blocks_secondarycta_cta_button_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__reports_v_blocks_secondarycta_cta_button_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_reports_v_blocks_secondarycta_cta_button_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_secondarycta" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"contact_email" varchar,
-  	"ui_type" "enum__reports_v_blocks_secondarycta_ui_type" DEFAULT 'lrg_txt_cta',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"contact_email" varchar,
+    	"ui_type" "enum__reports_v_blocks_secondarycta_ui_type" DEFAULT 'lrg_txt_cta',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_reports_v_blocks_secondarycta_locales" (
-  	"cta_title" varchar,
-  	"cta_subtitle" varchar,
-  	"contact_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"cta_title" varchar,
+    	"cta_subtitle" varchar,
+    	"contact_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_mcol_info_block_multicols" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"add_link" boolean,
-  	"link_type" "enum__reports_v_blocks_mcol_info_block_multicols_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"add_link" boolean,
+    	"link_type" "enum__reports_v_blocks_mcol_info_block_multicols_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_reports_v_blocks_mcol_info_block_multicols_locales" (
-  	"title" varchar,
-  	"col_content" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"col_content" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_mcol_info_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_reports_v_blocks_grant_card_grid_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_reports_v_blocks_grant_card_grid_block_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_mstep_process_steps_details" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_reports_v_blocks_mstep_process_steps_details_locales" (
-  	"bullet" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"bullet" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_mstep_process_steps" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"icon" "enum__reports_v_blocks_mstep_process_steps_icon" DEFAULT 'FileText',
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"icon" "enum__reports_v_blocks_mstep_process_steps_icon" DEFAULT 'FileText',
+    	"_uuid" varchar
+    );
   CREATE TABLE "_reports_v_blocks_mstep_process_steps_locales" (
-  	"step_title" varchar,
-  	"title" varchar,
-  	"tip" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"step_title" varchar,
+    	"title" varchar,
+    	"tip" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_mstep_process" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
+  `)
+
+  // chunk 23/121
+  await db.execute(sql`
   CREATE TABLE "_reports_v_blocks_mstep_process_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_comparison_blk_lft_grp_lft_points" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_reports_v_blocks_comparison_blk_lft_grp_lft_points_locales" (
-  	"point" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"point" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_comparison_blk_rt_grp_rt_points" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_reports_v_blocks_comparison_blk_rt_grp_rt_points_locales" (
-  	"point" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"point" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_comparison_blk_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__reports_v_blocks_comparison_blk_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__reports_v_blocks_comparison_blk_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_reports_v_blocks_comparison_blk_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_comparison_blk" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_reports_v_blocks_comparison_blk_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"lft_grp_title" varchar,
-  	"lft_grp_desc" varchar,
-  	"rt_grp_title" varchar,
-  	"rt_grp_desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"lft_grp_title" varchar,
+    	"lft_grp_desc" varchar,
+    	"rt_grp_title" varchar,
+    	"rt_grp_desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_ylw_deck_cards_links" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__reports_v_blocks_ylw_deck_cards_links_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__reports_v_blocks_ylw_deck_cards_links_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_reports_v_blocks_ylw_deck_cards_links_locales" (
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_ylw_deck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"mascot_pos" "enum__reports_v_blocks_ylw_deck_cards_mascot_pos" DEFAULT 'center',
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"mascot_pos" "enum__reports_v_blocks_ylw_deck_cards_mascot_pos" DEFAULT 'center',
+    	"_uuid" varchar
+    );
   CREATE TABLE "_reports_v_blocks_ylw_deck_cards_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_ylw_deck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__reports_v_blocks_ylw_deck_align" DEFAULT 'center',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__reports_v_blocks_ylw_deck_align" DEFAULT 'center',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_reports_v_blocks_ylw_deck_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_feat_crd_tags" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_reports_v_blocks_feat_crd_tags_locales" (
-  	"tag" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"tag" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_feat_crd" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"image_id" integer,
-  	"title_alignment" "enum__reports_v_blocks_feat_crd_title_alignment" DEFAULT 'left',
-  	"link_type" "enum__reports_v_blocks_feat_crd_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"image_id" integer,
+    	"title_alignment" "enum__reports_v_blocks_feat_crd_title_alignment" DEFAULT 'left',
+    	"link_type" "enum__reports_v_blocks_feat_crd_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_reports_v_blocks_feat_crd_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"desc" jsonb,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"desc" jsonb,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_feat_crd_acc_feat_crds" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"crd_colour" "enum__reports_v_blocks_feat_crd_acc_feat_crds_crd_colour" DEFAULT 'forest',
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"crd_colour" "enum__reports_v_blocks_feat_crd_acc_feat_crds_crd_colour" DEFAULT 'forest',
+    	"_uuid" varchar
+    );
   CREATE TABLE "_reports_v_blocks_feat_crd_acc_feat_crds_locales" (
-  	"acc_title" varchar,
-  	"acc_content" jsonb,
-  	"crd_tag" varchar,
-  	"crd_content" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"acc_title" varchar,
+    	"acc_content" jsonb,
+    	"crd_tag" varchar,
+    	"crd_content" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_feat_crd_acc" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_reports_v_blocks_feat_crd_acc_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_list_crd_dck_cards_tags" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_reports_v_blocks_list_crd_dck_cards_tags_locales" (
-  	"tag" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"tag" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_list_crd_dck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"image_id" integer,
-  	"link_type" "enum__reports_v_blocks_list_crd_dck_cards_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"image_id" integer,
+    	"link_type" "enum__reports_v_blocks_list_crd_dck_cards_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_reports_v_blocks_list_crd_dck_cards_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_list_crd_dck_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__reports_v_blocks_list_crd_dck_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__reports_v_blocks_list_crd_dck_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_reports_v_blocks_list_crd_dck_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_list_crd_dck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"data_source" "enum__reports_v_blocks_list_crd_dck_data_source" DEFAULT 'manual',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"data_source" "enum__reports_v_blocks_list_crd_dck_data_source" DEFAULT 'manual',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_reports_v_blocks_list_crd_dck_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_faq_blk_faqs" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_reports_v_blocks_faq_blk_faqs_locales" (
-  	"question" varchar,
-  	"answer" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"question" varchar,
+    	"answer" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_faq_blk" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__reports_v_blocks_faq_blk_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__reports_v_blocks_faq_blk_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_reports_v_blocks_faq_blk_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_pink_puffy_top_row" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_reports_v_blocks_pink_puffy_top_row_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_pink_puffy_bot_row" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_reports_v_blocks_pink_puffy_bot_row_locales" (
-  	"title" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_pink_puffy_links" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__reports_v_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__reports_v_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_reports_v_blocks_pink_puffy_links_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_pink_puffy" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__reports_v_blocks_pink_puffy_align" DEFAULT 'center',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__reports_v_blocks_pink_puffy_align" DEFAULT 'center',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_reports_v_blocks_pink_puffy_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_beige_puffy_items" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_reports_v_blocks_beige_puffy_items_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_beige_puffy" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__reports_v_blocks_beige_puffy_align" DEFAULT 'center',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__reports_v_blocks_beige_puffy_align" DEFAULT 'center',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_reports_v_blocks_beige_puffy_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_funding_map_items_subitems" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_reports_v_blocks_funding_map_items_subitems_locales" (
-  	"statnumber" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"statnumber" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_funding_map_items" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"region_name" "enum__reports_v_blocks_funding_map_items_region_name" DEFAULT 'uaf-asia-pacific',
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"region_name" "enum__reports_v_blocks_funding_map_items_region_name" DEFAULT 'uaf-asia-pacific',
+    	"_uuid" varchar
+    );
+  `)
+
+  // chunk 24/121
+  await db.execute(sql`
   CREATE TABLE "_reports_v_blocks_funding_map" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_reports_v_blocks_funding_map_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"selector_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"selector_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_resource_feat_card" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__reports_v_blocks_resource_feat_card_align" DEFAULT 'center',
-  	"add_all_resources" boolean,
-  	"filter_by_doc_type_id" integer,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__reports_v_blocks_resource_feat_card_align" DEFAULT 'center',
+    	"add_all_resources" boolean,
+    	"filter_by_doc_type_id" integer,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_reports_v_blocks_resource_feat_card_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_resource_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__reports_v_blocks_resource_gallery_align" DEFAULT 'center',
-  	"add_all_resources" boolean,
-  	"filter_by_doc_type_id" integer,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__reports_v_blocks_resource_gallery_align" DEFAULT 'center',
+    	"add_all_resources" boolean,
+    	"filter_by_doc_type_id" integer,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_reports_v_blocks_resource_gallery_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_pillar_card_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_reports_v_blocks_pillar_card_cards_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_pillar_card" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__reports_v_blocks_pillar_card_align" DEFAULT 'left',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__reports_v_blocks_pillar_card_align" DEFAULT 'left',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_reports_v_blocks_pillar_card_locales" (
-  	"title" varchar,
-  	"subtitle" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_testimonial_deck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_reports_v_blocks_testimonial_deck_cards_locales" (
-  	"quote_text" varchar,
-  	"attrib_name" varchar,
-  	"attrib_dsg" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"quote_text" varchar,
+    	"attrib_name" varchar,
+    	"attrib_dsg" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_testimonial_deck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_reports_v_blocks_testimonial_deck_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_min_card_gallery_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_reports_v_blocks_min_card_gallery_cards_locales" (
-  	"title" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_min_card_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"header_align" "enum__reports_v_blocks_min_card_gallery_header_align" DEFAULT 'left',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"header_align" "enum__reports_v_blocks_min_card_gallery_header_align" DEFAULT 'left',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_reports_v_blocks_min_card_gallery_locales" (
-  	"header_title" varchar,
-  	"header_subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"header_title" varchar,
+    	"header_subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_id_card_gallery_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_reports_v_blocks_id_card_gallery_cards_locales" (
-  	"pronouns" varchar,
-  	"fullname" varchar,
-  	"designation" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"pronouns" varchar,
+    	"fullname" varchar,
+    	"designation" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_id_card_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_reports_v_blocks_id_card_gallery_locales" (
-  	"header_title" varchar,
-  	"header_subtitle" varchar,
-  	"header_description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"header_title" varchar,
+    	"header_subtitle" varchar,
+    	"header_description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_two_column_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_reports_v_blocks_two_column_block_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"left_column" jsonb,
-  	"right_column" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"left_column" jsonb,
+    	"right_column" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_three_column_table_block_rows" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_reports_v_blocks_three_column_table_block_rows_locales" (
-  	"first_column" jsonb,
-  	"second_column" jsonb,
-  	"third_column" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"first_column" jsonb,
+    	"second_column" jsonb,
+    	"third_column" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_blocks_three_column_table_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"column_widths" "enum__reports_v_blocks_three_column_table_block_column_widths" DEFAULT 'f-t-t',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"column_widths" "enum__reports_v_blocks_three_column_table_block_column_widths" DEFAULT 'f-t-t',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_reports_v_blocks_three_column_table_block_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"parent_id" integer,
-  	"version_title" varchar,
-  	"version_page_type" "enum__reports_v_version_page_type" DEFAULT 'landing',
-  	"version_show_filter" boolean,
-  	"version_pub_date" timestamp(3) with time zone,
-  	"version_image_id" integer,
-  	"version_published_at" timestamp(3) with time zone,
-  	"version_created_by_id" integer,
-  	"version_updated_by_id" integer,
-  	"version_slug" varchar,
-  	"version_slug_lock" boolean DEFAULT true,
-  	"version_meta_title" varchar,
-  	"version_meta_description" varchar,
-  	"version_meta_image_id" integer,
-  	"version_folder_id" integer,
-  	"version_updated_at" timestamp(3) with time zone,
-  	"version_created_at" timestamp(3) with time zone,
-  	"version_deleted_at" timestamp(3) with time zone,
-  	"version__status" "enum__reports_v_version_status" DEFAULT 'draft',
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"snapshot" boolean,
-  	"published_locale" "enum__reports_v_published_locale",
-  	"latest" boolean
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"parent_id" integer,
+    	"version_title" varchar,
+    	"version_page_type" "enum__reports_v_version_page_type" DEFAULT 'landing',
+    	"version_show_filter" boolean,
+    	"version_pub_date" timestamp(3) with time zone,
+    	"version_image_id" integer,
+    	"version_published_at" timestamp(3) with time zone,
+    	"version_created_by_id" integer,
+    	"version_updated_by_id" integer,
+    	"version_slug" varchar,
+    	"version_slug_lock" boolean DEFAULT true,
+    	"version_meta_title" varchar,
+    	"version_meta_description" varchar,
+    	"version_meta_image_id" integer,
+    	"version_folder_id" integer,
+    	"version_updated_at" timestamp(3) with time zone,
+    	"version_created_at" timestamp(3) with time zone,
+    	"version_deleted_at" timestamp(3) with time zone,
+    	"version__status" "enum__reports_v_version_status" DEFAULT 'draft',
+    	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"snapshot" boolean,
+    	"published_locale" "enum__reports_v_published_locale",
+    	"latest" boolean
+    );
   CREATE TABLE "_reports_v_locales" (
-  	"version_hero_title" varchar,
-  	"version_hero_subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"version_hero_title" varchar,
+    	"version_hero_subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_reports_v_rels" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"order" integer,
-  	"parent_id" integer NOT NULL,
-  	"path" varchar NOT NULL,
-  	"doctypes_id" integer,
-  	"grants_id" integer,
-  	"pages_id" integer,
-  	"blog_id" integer,
-  	"reports_id" integer,
-  	"mmedia_id" integer,
-  	"documents_id" integer,
-  	"etests_id" integer,
-  	"grantcards_id" integer
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"order" integer,
+    	"parent_id" integer NOT NULL,
+    	"path" varchar NOT NULL,
+    	"doctypes_id" integer,
+    	"grants_id" integer,
+    	"pages_id" integer,
+    	"blog_id" integer,
+    	"reports_id" integer,
+    	"mmedia_id" integer,
+    	"documents_id" integer,
+    	"etests_id" integer,
+    	"grantcards_id" integer
+    );
   CREATE TABLE "mmedia_hero_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_mmedia_hero_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_mmedia_hero_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "mmedia_hero_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_rich_content_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "mmedia_blocks_rich_content_block_locales" (
-  	"rich_text" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"rich_text" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_secondarycta_cta_button" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_mmedia_blocks_secondarycta_cta_button_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_mmedia_blocks_secondarycta_cta_button_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "mmedia_blocks_secondarycta_cta_button_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_secondarycta" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"contact_email" varchar,
-  	"ui_type" "enum_mmedia_blocks_secondarycta_ui_type" DEFAULT 'lrg_txt_cta',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"contact_email" varchar,
+    	"ui_type" "enum_mmedia_blocks_secondarycta_ui_type" DEFAULT 'lrg_txt_cta',
+    	"block_name" varchar
+    );
   CREATE TABLE "mmedia_blocks_secondarycta_locales" (
-  	"cta_title" varchar,
-  	"cta_subtitle" varchar,
-  	"contact_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"cta_title" varchar,
+    	"cta_subtitle" varchar,
+    	"contact_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_mcol_info_block_multicols" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"add_link" boolean,
-  	"link_type" "enum_mmedia_blocks_mcol_info_block_multicols_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"add_link" boolean,
+    	"link_type" "enum_mmedia_blocks_mcol_info_block_multicols_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "mmedia_blocks_mcol_info_block_multicols_locales" (
-  	"title" varchar,
-  	"col_content" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"col_content" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_mcol_info_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "mmedia_blocks_grant_card_grid_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "mmedia_blocks_grant_card_grid_block_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_mstep_process_steps_details" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_mstep_process_steps_details_locales" (
-  	"bullet" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"bullet" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_mstep_process_steps" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"icon" "enum_mmedia_blocks_mstep_process_steps_icon" DEFAULT 'FileText'
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"icon" "enum_mmedia_blocks_mstep_process_steps_icon" DEFAULT 'FileText'
+    );
   CREATE TABLE "mmedia_blocks_mstep_process_steps_locales" (
-  	"step_title" varchar,
-  	"title" varchar,
-  	"tip" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"step_title" varchar,
+    	"title" varchar,
+    	"tip" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_mstep_process" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "mmedia_blocks_mstep_process_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
+  `)
+
+  // chunk 25/121
+  await db.execute(sql`
   CREATE TABLE "mmedia_blocks_comparison_blk_lft_grp_lft_points" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_comparison_blk_lft_grp_lft_points_locales" (
-  	"point" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"point" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_comparison_blk_rt_grp_rt_points" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_comparison_blk_rt_grp_rt_points_locales" (
-  	"point" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"point" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_comparison_blk_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_mmedia_blocks_comparison_blk_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_mmedia_blocks_comparison_blk_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "mmedia_blocks_comparison_blk_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_comparison_blk" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "mmedia_blocks_comparison_blk_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"lft_grp_title" varchar,
-  	"lft_grp_desc" varchar,
-  	"rt_grp_title" varchar,
-  	"rt_grp_desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"lft_grp_title" varchar,
+    	"lft_grp_desc" varchar,
+    	"rt_grp_title" varchar,
+    	"rt_grp_desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_ylw_deck_cards_links" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_mmedia_blocks_ylw_deck_cards_links_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_mmedia_blocks_ylw_deck_cards_links_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "mmedia_blocks_ylw_deck_cards_links_locales" (
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_ylw_deck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"mascot_pos" "enum_mmedia_blocks_ylw_deck_cards_mascot_pos" DEFAULT 'center'
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"mascot_pos" "enum_mmedia_blocks_ylw_deck_cards_mascot_pos" DEFAULT 'center'
+    );
   CREATE TABLE "mmedia_blocks_ylw_deck_cards_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_ylw_deck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_mmedia_blocks_ylw_deck_align" DEFAULT 'center',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_mmedia_blocks_ylw_deck_align" DEFAULT 'center',
+    	"block_name" varchar
+    );
   CREATE TABLE "mmedia_blocks_ylw_deck_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_feat_crd_tags" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_feat_crd_tags_locales" (
-  	"tag" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"tag" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_feat_crd" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"image_id" integer,
-  	"title_alignment" "enum_mmedia_blocks_feat_crd_title_alignment" DEFAULT 'left',
-  	"link_type" "enum_mmedia_blocks_feat_crd_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"image_id" integer,
+    	"title_alignment" "enum_mmedia_blocks_feat_crd_title_alignment" DEFAULT 'left',
+    	"link_type" "enum_mmedia_blocks_feat_crd_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "mmedia_blocks_feat_crd_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"desc" jsonb,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"desc" jsonb,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_feat_crd_acc_feat_crds" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"crd_colour" "enum_mmedia_blocks_feat_crd_acc_feat_crds_crd_colour" DEFAULT 'forest'
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"crd_colour" "enum_mmedia_blocks_feat_crd_acc_feat_crds_crd_colour" DEFAULT 'forest'
+    );
   CREATE TABLE "mmedia_blocks_feat_crd_acc_feat_crds_locales" (
-  	"acc_title" varchar,
-  	"acc_content" jsonb,
-  	"crd_tag" varchar,
-  	"crd_content" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"acc_title" varchar,
+    	"acc_content" jsonb,
+    	"crd_tag" varchar,
+    	"crd_content" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_feat_crd_acc" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "mmedia_blocks_feat_crd_acc_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_list_crd_dck_cards_tags" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_list_crd_dck_cards_tags_locales" (
-  	"tag" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"tag" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_list_crd_dck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"image_id" integer,
-  	"link_type" "enum_mmedia_blocks_list_crd_dck_cards_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"image_id" integer,
+    	"link_type" "enum_mmedia_blocks_list_crd_dck_cards_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "mmedia_blocks_list_crd_dck_cards_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_list_crd_dck_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_mmedia_blocks_list_crd_dck_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_mmedia_blocks_list_crd_dck_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "mmedia_blocks_list_crd_dck_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_list_crd_dck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"data_source" "enum_mmedia_blocks_list_crd_dck_data_source" DEFAULT 'manual',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"data_source" "enum_mmedia_blocks_list_crd_dck_data_source" DEFAULT 'manual',
+    	"block_name" varchar
+    );
   CREATE TABLE "mmedia_blocks_list_crd_dck_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_faq_blk_faqs" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_faq_blk_faqs_locales" (
-  	"question" varchar,
-  	"answer" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"question" varchar,
+    	"answer" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_faq_blk" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_mmedia_blocks_faq_blk_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_mmedia_blocks_faq_blk_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "mmedia_blocks_faq_blk_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_pink_puffy_top_row" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_pink_puffy_top_row_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_pink_puffy_bot_row" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_pink_puffy_bot_row_locales" (
-  	"title" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_pink_puffy_links" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_mmedia_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_mmedia_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "mmedia_blocks_pink_puffy_links_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_pink_puffy" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_mmedia_blocks_pink_puffy_align" DEFAULT 'center',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_mmedia_blocks_pink_puffy_align" DEFAULT 'center',
+    	"block_name" varchar
+    );
   CREATE TABLE "mmedia_blocks_pink_puffy_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_beige_puffy_items" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_beige_puffy_items_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_beige_puffy" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_mmedia_blocks_beige_puffy_align" DEFAULT 'center',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_mmedia_blocks_beige_puffy_align" DEFAULT 'center',
+    	"block_name" varchar
+    );
   CREATE TABLE "mmedia_blocks_beige_puffy_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_funding_map_items_subitems" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_funding_map_items_subitems_locales" (
-  	"statnumber" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"statnumber" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_funding_map_items" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"region_name" "enum_mmedia_blocks_funding_map_items_region_name" DEFAULT 'uaf-asia-pacific'
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"region_name" "enum_mmedia_blocks_funding_map_items_region_name" DEFAULT 'uaf-asia-pacific'
+    );
   CREATE TABLE "mmedia_blocks_funding_map" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
+  `)
+
+  // chunk 26/121
+  await db.execute(sql`
   CREATE TABLE "mmedia_blocks_funding_map_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"selector_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"selector_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_resource_feat_card" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_mmedia_blocks_resource_feat_card_align" DEFAULT 'center',
-  	"add_all_resources" boolean,
-  	"filter_by_doc_type_id" integer,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_mmedia_blocks_resource_feat_card_align" DEFAULT 'center',
+    	"add_all_resources" boolean,
+    	"filter_by_doc_type_id" integer,
+    	"block_name" varchar
+    );
   CREATE TABLE "mmedia_blocks_resource_feat_card_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_resource_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_mmedia_blocks_resource_gallery_align" DEFAULT 'center',
-  	"add_all_resources" boolean,
-  	"filter_by_doc_type_id" integer,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_mmedia_blocks_resource_gallery_align" DEFAULT 'center',
+    	"add_all_resources" boolean,
+    	"filter_by_doc_type_id" integer,
+    	"block_name" varchar
+    );
   CREATE TABLE "mmedia_blocks_resource_gallery_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_pillar_card_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"mascot_id" integer
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"mascot_id" integer
+    );
   CREATE TABLE "mmedia_blocks_pillar_card_cards_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_pillar_card" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_mmedia_blocks_pillar_card_align" DEFAULT 'left',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_mmedia_blocks_pillar_card_align" DEFAULT 'left',
+    	"block_name" varchar
+    );
   CREATE TABLE "mmedia_blocks_pillar_card_locales" (
-  	"title" varchar,
-  	"subtitle" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_testimonial_deck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_testimonial_deck_cards_locales" (
-  	"quote_text" varchar,
-  	"attrib_name" varchar,
-  	"attrib_dsg" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"quote_text" varchar,
+    	"attrib_name" varchar,
+    	"attrib_dsg" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_testimonial_deck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "mmedia_blocks_testimonial_deck_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_min_card_gallery_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"mascot_id" integer
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"mascot_id" integer
+    );
   CREATE TABLE "mmedia_blocks_min_card_gallery_cards_locales" (
-  	"title" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_min_card_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"header_align" "enum_mmedia_blocks_min_card_gallery_header_align" DEFAULT 'left',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"header_align" "enum_mmedia_blocks_min_card_gallery_header_align" DEFAULT 'left',
+    	"block_name" varchar
+    );
   CREATE TABLE "mmedia_blocks_min_card_gallery_locales" (
-  	"header_title" varchar,
-  	"header_subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"header_title" varchar,
+    	"header_subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_id_card_gallery_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"mascot_id" integer
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"mascot_id" integer
+    );
   CREATE TABLE "mmedia_blocks_id_card_gallery_cards_locales" (
-  	"pronouns" varchar,
-  	"fullname" varchar,
-  	"designation" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"pronouns" varchar,
+    	"fullname" varchar,
+    	"designation" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_id_card_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "mmedia_blocks_id_card_gallery_locales" (
-  	"header_title" varchar,
-  	"header_subtitle" varchar,
-  	"header_description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"header_title" varchar,
+    	"header_subtitle" varchar,
+    	"header_description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_two_column_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "mmedia_blocks_two_column_block_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"left_column" jsonb,
-  	"right_column" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"left_column" jsonb,
+    	"right_column" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_three_column_table_block_rows" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_three_column_table_block_rows_locales" (
-  	"first_column" jsonb,
-  	"second_column" jsonb,
-  	"third_column" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"first_column" jsonb,
+    	"second_column" jsonb,
+    	"third_column" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia_blocks_three_column_table_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"column_widths" "enum_mmedia_blocks_three_column_table_block_column_widths" DEFAULT 'f-t-t',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"column_widths" "enum_mmedia_blocks_three_column_table_block_column_widths" DEFAULT 'f-t-t',
+    	"block_name" varchar
+    );
   CREATE TABLE "mmedia_blocks_three_column_table_block_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "mmedia" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"title" varchar,
-  	"page_type" "enum_mmedia_page_type" DEFAULT 'landing',
-  	"show_filter" boolean DEFAULT false,
-  	"image_id" integer,
-  	"published_at" timestamp(3) with time zone,
-  	"created_by_id" integer,
-  	"updated_by_id" integer,
-  	"slug" varchar,
-  	"slug_lock" boolean DEFAULT true,
-  	"meta_title" varchar,
-  	"meta_description" varchar,
-  	"meta_image_id" integer,
-  	"folder_id" integer,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"deleted_at" timestamp(3) with time zone,
-  	"_status" "enum_mmedia_status" DEFAULT 'draft'
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"title" varchar,
+    	"page_type" "enum_mmedia_page_type" DEFAULT 'landing',
+    	"show_filter" boolean DEFAULT false,
+    	"image_id" integer,
+    	"published_at" timestamp(3) with time zone,
+    	"created_by_id" integer,
+    	"updated_by_id" integer,
+    	"slug" varchar,
+    	"slug_lock" boolean DEFAULT true,
+    	"meta_title" varchar,
+    	"meta_description" varchar,
+    	"meta_image_id" integer,
+    	"folder_id" integer,
+    	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"deleted_at" timestamp(3) with time zone,
+    	"_status" "enum_mmedia_status" DEFAULT 'draft'
+    );
   CREATE TABLE "mmedia_locales" (
-  	"hero_title" varchar,
-  	"hero_subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"hero_title" varchar,
+    	"hero_subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "mmedia_rels" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"order" integer,
-  	"parent_id" integer NOT NULL,
-  	"path" varchar NOT NULL,
-  	"doctypes_id" integer,
-  	"grants_id" integer,
-  	"pages_id" integer,
-  	"blog_id" integer,
-  	"reports_id" integer,
-  	"mmedia_id" integer,
-  	"documents_id" integer,
-  	"etests_id" integer,
-  	"grantcards_id" integer
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"order" integer,
+    	"parent_id" integer NOT NULL,
+    	"path" varchar NOT NULL,
+    	"doctypes_id" integer,
+    	"grants_id" integer,
+    	"pages_id" integer,
+    	"blog_id" integer,
+    	"reports_id" integer,
+    	"mmedia_id" integer,
+    	"documents_id" integer,
+    	"etests_id" integer,
+    	"grantcards_id" integer
+    );
   CREATE TABLE "_mmedia_v_version_hero_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__mmedia_v_version_hero_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__mmedia_v_version_hero_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_mmedia_v_version_hero_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_rich_content_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_rich_content_block_locales" (
-  	"rich_text" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"rich_text" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_secondarycta_cta_button" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__mmedia_v_blocks_secondarycta_cta_button_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__mmedia_v_blocks_secondarycta_cta_button_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_secondarycta_cta_button_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_secondarycta" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"contact_email" varchar,
-  	"ui_type" "enum__mmedia_v_blocks_secondarycta_ui_type" DEFAULT 'lrg_txt_cta',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"contact_email" varchar,
+    	"ui_type" "enum__mmedia_v_blocks_secondarycta_ui_type" DEFAULT 'lrg_txt_cta',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_secondarycta_locales" (
-  	"cta_title" varchar,
-  	"cta_subtitle" varchar,
-  	"contact_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"cta_title" varchar,
+    	"cta_subtitle" varchar,
+    	"contact_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_mcol_info_block_multicols" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"add_link" boolean,
-  	"link_type" "enum__mmedia_v_blocks_mcol_info_block_multicols_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"add_link" boolean,
+    	"link_type" "enum__mmedia_v_blocks_mcol_info_block_multicols_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_mcol_info_block_multicols_locales" (
-  	"title" varchar,
-  	"col_content" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"col_content" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_mcol_info_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_grant_card_grid_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_grant_card_grid_block_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_mstep_process_steps_details" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_mstep_process_steps_details_locales" (
-  	"bullet" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"bullet" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_mstep_process_steps" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"icon" "enum__mmedia_v_blocks_mstep_process_steps_icon" DEFAULT 'FileText',
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"icon" "enum__mmedia_v_blocks_mstep_process_steps_icon" DEFAULT 'FileText',
+    	"_uuid" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_mstep_process_steps_locales" (
-  	"step_title" varchar,
-  	"title" varchar,
-  	"tip" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"step_title" varchar,
+    	"title" varchar,
+    	"tip" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_mstep_process" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_mstep_process_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_comparison_blk_lft_grp_lft_points" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
+  `)
+
+  // chunk 27/121
+  await db.execute(sql`
   CREATE TABLE "_mmedia_v_blocks_comparison_blk_lft_grp_lft_points_locales" (
-  	"point" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"point" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_comparison_blk_rt_grp_rt_points" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_comparison_blk_rt_grp_rt_points_locales" (
-  	"point" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"point" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_comparison_blk_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__mmedia_v_blocks_comparison_blk_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__mmedia_v_blocks_comparison_blk_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_comparison_blk_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_comparison_blk" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_comparison_blk_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"lft_grp_title" varchar,
-  	"lft_grp_desc" varchar,
-  	"rt_grp_title" varchar,
-  	"rt_grp_desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"lft_grp_title" varchar,
+    	"lft_grp_desc" varchar,
+    	"rt_grp_title" varchar,
+    	"rt_grp_desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_ylw_deck_cards_links" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__mmedia_v_blocks_ylw_deck_cards_links_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__mmedia_v_blocks_ylw_deck_cards_links_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_ylw_deck_cards_links_locales" (
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_ylw_deck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"mascot_pos" "enum__mmedia_v_blocks_ylw_deck_cards_mascot_pos" DEFAULT 'center',
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"mascot_pos" "enum__mmedia_v_blocks_ylw_deck_cards_mascot_pos" DEFAULT 'center',
+    	"_uuid" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_ylw_deck_cards_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_ylw_deck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__mmedia_v_blocks_ylw_deck_align" DEFAULT 'center',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__mmedia_v_blocks_ylw_deck_align" DEFAULT 'center',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_ylw_deck_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_feat_crd_tags" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_feat_crd_tags_locales" (
-  	"tag" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"tag" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_feat_crd" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"image_id" integer,
-  	"title_alignment" "enum__mmedia_v_blocks_feat_crd_title_alignment" DEFAULT 'left',
-  	"link_type" "enum__mmedia_v_blocks_feat_crd_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"image_id" integer,
+    	"title_alignment" "enum__mmedia_v_blocks_feat_crd_title_alignment" DEFAULT 'left',
+    	"link_type" "enum__mmedia_v_blocks_feat_crd_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_feat_crd_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"desc" jsonb,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"desc" jsonb,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_feat_crd_acc_feat_crds" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"crd_colour" "enum__mmedia_v_blocks_feat_crd_acc_feat_crds_crd_colour" DEFAULT 'forest',
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"crd_colour" "enum__mmedia_v_blocks_feat_crd_acc_feat_crds_crd_colour" DEFAULT 'forest',
+    	"_uuid" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_feat_crd_acc_feat_crds_locales" (
-  	"acc_title" varchar,
-  	"acc_content" jsonb,
-  	"crd_tag" varchar,
-  	"crd_content" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"acc_title" varchar,
+    	"acc_content" jsonb,
+    	"crd_tag" varchar,
+    	"crd_content" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_feat_crd_acc" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_feat_crd_acc_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_list_crd_dck_cards_tags" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_list_crd_dck_cards_tags_locales" (
-  	"tag" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"tag" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_list_crd_dck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"image_id" integer,
-  	"link_type" "enum__mmedia_v_blocks_list_crd_dck_cards_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"image_id" integer,
+    	"link_type" "enum__mmedia_v_blocks_list_crd_dck_cards_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_list_crd_dck_cards_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_list_crd_dck_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__mmedia_v_blocks_list_crd_dck_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__mmedia_v_blocks_list_crd_dck_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_list_crd_dck_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_list_crd_dck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"data_source" "enum__mmedia_v_blocks_list_crd_dck_data_source" DEFAULT 'manual',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"data_source" "enum__mmedia_v_blocks_list_crd_dck_data_source" DEFAULT 'manual',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_list_crd_dck_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_faq_blk_faqs" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_faq_blk_faqs_locales" (
-  	"question" varchar,
-  	"answer" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"question" varchar,
+    	"answer" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_faq_blk" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__mmedia_v_blocks_faq_blk_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__mmedia_v_blocks_faq_blk_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_faq_blk_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_pink_puffy_top_row" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_pink_puffy_top_row_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_pink_puffy_bot_row" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_pink_puffy_bot_row_locales" (
-  	"title" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_pink_puffy_links" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__mmedia_v_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__mmedia_v_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_pink_puffy_links_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_pink_puffy" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__mmedia_v_blocks_pink_puffy_align" DEFAULT 'center',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__mmedia_v_blocks_pink_puffy_align" DEFAULT 'center',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_pink_puffy_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_beige_puffy_items" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_beige_puffy_items_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_beige_puffy" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__mmedia_v_blocks_beige_puffy_align" DEFAULT 'center',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__mmedia_v_blocks_beige_puffy_align" DEFAULT 'center',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_beige_puffy_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_funding_map_items_subitems" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_funding_map_items_subitems_locales" (
-  	"statnumber" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"statnumber" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_funding_map_items" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"region_name" "enum__mmedia_v_blocks_funding_map_items_region_name" DEFAULT 'uaf-asia-pacific',
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"region_name" "enum__mmedia_v_blocks_funding_map_items_region_name" DEFAULT 'uaf-asia-pacific',
+    	"_uuid" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_funding_map" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_funding_map_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"selector_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"selector_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
+  `)
+
+  // chunk 28/121
+  await db.execute(sql`
   CREATE TABLE "_mmedia_v_blocks_resource_feat_card" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__mmedia_v_blocks_resource_feat_card_align" DEFAULT 'center',
-  	"add_all_resources" boolean,
-  	"filter_by_doc_type_id" integer,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__mmedia_v_blocks_resource_feat_card_align" DEFAULT 'center',
+    	"add_all_resources" boolean,
+    	"filter_by_doc_type_id" integer,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_resource_feat_card_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_resource_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__mmedia_v_blocks_resource_gallery_align" DEFAULT 'center',
-  	"add_all_resources" boolean,
-  	"filter_by_doc_type_id" integer,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__mmedia_v_blocks_resource_gallery_align" DEFAULT 'center',
+    	"add_all_resources" boolean,
+    	"filter_by_doc_type_id" integer,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_resource_gallery_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_pillar_card_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_pillar_card_cards_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_pillar_card" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__mmedia_v_blocks_pillar_card_align" DEFAULT 'left',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__mmedia_v_blocks_pillar_card_align" DEFAULT 'left',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_pillar_card_locales" (
-  	"title" varchar,
-  	"subtitle" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_testimonial_deck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_testimonial_deck_cards_locales" (
-  	"quote_text" varchar,
-  	"attrib_name" varchar,
-  	"attrib_dsg" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"quote_text" varchar,
+    	"attrib_name" varchar,
+    	"attrib_dsg" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_testimonial_deck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_testimonial_deck_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_min_card_gallery_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_min_card_gallery_cards_locales" (
-  	"title" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_min_card_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"header_align" "enum__mmedia_v_blocks_min_card_gallery_header_align" DEFAULT 'left',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"header_align" "enum__mmedia_v_blocks_min_card_gallery_header_align" DEFAULT 'left',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_min_card_gallery_locales" (
-  	"header_title" varchar,
-  	"header_subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"header_title" varchar,
+    	"header_subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_id_card_gallery_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_id_card_gallery_cards_locales" (
-  	"pronouns" varchar,
-  	"fullname" varchar,
-  	"designation" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"pronouns" varchar,
+    	"fullname" varchar,
+    	"designation" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_id_card_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_id_card_gallery_locales" (
-  	"header_title" varchar,
-  	"header_subtitle" varchar,
-  	"header_description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"header_title" varchar,
+    	"header_subtitle" varchar,
+    	"header_description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_two_column_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_two_column_block_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"left_column" jsonb,
-  	"right_column" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"left_column" jsonb,
+    	"right_column" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_three_column_table_block_rows" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_three_column_table_block_rows_locales" (
-  	"first_column" jsonb,
-  	"second_column" jsonb,
-  	"third_column" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"first_column" jsonb,
+    	"second_column" jsonb,
+    	"third_column" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_blocks_three_column_table_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"column_widths" "enum__mmedia_v_blocks_three_column_table_block_column_widths" DEFAULT 'f-t-t',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"column_widths" "enum__mmedia_v_blocks_three_column_table_block_column_widths" DEFAULT 'f-t-t',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_mmedia_v_blocks_three_column_table_block_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"parent_id" integer,
-  	"version_title" varchar,
-  	"version_page_type" "enum__mmedia_v_version_page_type" DEFAULT 'landing',
-  	"version_show_filter" boolean DEFAULT false,
-  	"version_image_id" integer,
-  	"version_published_at" timestamp(3) with time zone,
-  	"version_created_by_id" integer,
-  	"version_updated_by_id" integer,
-  	"version_slug" varchar,
-  	"version_slug_lock" boolean DEFAULT true,
-  	"version_meta_title" varchar,
-  	"version_meta_description" varchar,
-  	"version_meta_image_id" integer,
-  	"version_folder_id" integer,
-  	"version_updated_at" timestamp(3) with time zone,
-  	"version_created_at" timestamp(3) with time zone,
-  	"version_deleted_at" timestamp(3) with time zone,
-  	"version__status" "enum__mmedia_v_version_status" DEFAULT 'draft',
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"snapshot" boolean,
-  	"published_locale" "enum__mmedia_v_published_locale",
-  	"latest" boolean
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"parent_id" integer,
+    	"version_title" varchar,
+    	"version_page_type" "enum__mmedia_v_version_page_type" DEFAULT 'landing',
+    	"version_show_filter" boolean DEFAULT false,
+    	"version_image_id" integer,
+    	"version_published_at" timestamp(3) with time zone,
+    	"version_created_by_id" integer,
+    	"version_updated_by_id" integer,
+    	"version_slug" varchar,
+    	"version_slug_lock" boolean DEFAULT true,
+    	"version_meta_title" varchar,
+    	"version_meta_description" varchar,
+    	"version_meta_image_id" integer,
+    	"version_folder_id" integer,
+    	"version_updated_at" timestamp(3) with time zone,
+    	"version_created_at" timestamp(3) with time zone,
+    	"version_deleted_at" timestamp(3) with time zone,
+    	"version__status" "enum__mmedia_v_version_status" DEFAULT 'draft',
+    	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"snapshot" boolean,
+    	"published_locale" "enum__mmedia_v_published_locale",
+    	"latest" boolean
+    );
   CREATE TABLE "_mmedia_v_locales" (
-  	"version_hero_title" varchar,
-  	"version_hero_subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"version_hero_title" varchar,
+    	"version_hero_subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_mmedia_v_rels" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"order" integer,
-  	"parent_id" integer NOT NULL,
-  	"path" varchar NOT NULL,
-  	"doctypes_id" integer,
-  	"grants_id" integer,
-  	"pages_id" integer,
-  	"blog_id" integer,
-  	"reports_id" integer,
-  	"mmedia_id" integer,
-  	"documents_id" integer,
-  	"etests_id" integer,
-  	"grantcards_id" integer
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"order" integer,
+    	"parent_id" integer NOT NULL,
+    	"path" varchar NOT NULL,
+    	"doctypes_id" integer,
+    	"grants_id" integer,
+    	"pages_id" integer,
+    	"blog_id" integer,
+    	"reports_id" integer,
+    	"mmedia_id" integer,
+    	"documents_id" integer,
+    	"etests_id" integer,
+    	"grantcards_id" integer
+    );
   CREATE TABLE "doctypes" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"blog_count" numeric,
-  	"report_count" numeric,
-  	"mmedia_count" numeric,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"deleted_at" timestamp(3) with time zone
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"blog_count" numeric,
+    	"report_count" numeric,
+    	"mmedia_count" numeric,
+    	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"deleted_at" timestamp(3) with time zone
+    );
   CREATE TABLE "doctypes_locales" (
-  	"type" varchar NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"type" varchar NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "media_cloud" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"alt" varchar NOT NULL,
-  	"blurhash" varchar,
-  	"folder_id" integer,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"deleted_at" timestamp(3) with time zone,
-  	"url" varchar,
-  	"thumbnail_u_r_l" varchar,
-  	"filename" varchar,
-  	"mime_type" varchar,
-  	"filesize" numeric,
-  	"width" numeric,
-  	"height" numeric,
-  	"focal_x" numeric,
-  	"focal_y" numeric,
-  	"sizes_thumbnail_url" varchar,
-  	"sizes_thumbnail_width" numeric,
-  	"sizes_thumbnail_height" numeric,
-  	"sizes_thumbnail_mime_type" varchar,
-  	"sizes_thumbnail_filesize" numeric,
-  	"sizes_thumbnail_filename" varchar,
-  	"sizes_small_url" varchar,
-  	"sizes_small_width" numeric,
-  	"sizes_small_height" numeric,
-  	"sizes_small_mime_type" varchar,
-  	"sizes_small_filesize" numeric,
-  	"sizes_small_filename" varchar,
-  	"sizes_medium_url" varchar,
-  	"sizes_medium_width" numeric,
-  	"sizes_medium_height" numeric,
-  	"sizes_medium_mime_type" varchar,
-  	"sizes_medium_filesize" numeric,
-  	"sizes_medium_filename" varchar,
-  	"sizes_large_url" varchar,
-  	"sizes_large_width" numeric,
-  	"sizes_large_height" numeric,
-  	"sizes_large_mime_type" varchar,
-  	"sizes_large_filesize" numeric,
-  	"sizes_large_filename" varchar,
-  	"sizes_xlarge_url" varchar,
-  	"sizes_xlarge_width" numeric,
-  	"sizes_xlarge_height" numeric,
-  	"sizes_xlarge_mime_type" varchar,
-  	"sizes_xlarge_filesize" numeric,
-  	"sizes_xlarge_filename" varchar,
-  	"sizes_og_image_url" varchar,
-  	"sizes_og_image_width" numeric,
-  	"sizes_og_image_height" numeric,
-  	"sizes_og_image_mime_type" varchar,
-  	"sizes_og_image_filesize" numeric,
-  	"sizes_og_image_filename" varchar
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"alt" varchar NOT NULL,
+    	"blurhash" varchar,
+    	"folder_id" integer,
+    	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"deleted_at" timestamp(3) with time zone,
+    	"url" varchar,
+    	"thumbnail_u_r_l" varchar,
+    	"filename" varchar,
+    	"mime_type" varchar,
+    	"filesize" numeric,
+    	"width" numeric,
+    	"height" numeric,
+    	"focal_x" numeric,
+    	"focal_y" numeric,
+    	"sizes_thumbnail_url" varchar,
+    	"sizes_thumbnail_width" numeric,
+    	"sizes_thumbnail_height" numeric,
+    	"sizes_thumbnail_mime_type" varchar,
+    	"sizes_thumbnail_filesize" numeric,
+    	"sizes_thumbnail_filename" varchar,
+    	"sizes_small_url" varchar,
+    	"sizes_small_width" numeric,
+    	"sizes_small_height" numeric,
+    	"sizes_small_mime_type" varchar,
+    	"sizes_small_filesize" numeric,
+    	"sizes_small_filename" varchar,
+    	"sizes_medium_url" varchar,
+    	"sizes_medium_width" numeric,
+    	"sizes_medium_height" numeric,
+    	"sizes_medium_mime_type" varchar,
+    	"sizes_medium_filesize" numeric,
+    	"sizes_medium_filename" varchar,
+    	"sizes_large_url" varchar,
+    	"sizes_large_width" numeric,
+    	"sizes_large_height" numeric,
+    	"sizes_large_mime_type" varchar,
+    	"sizes_large_filesize" numeric,
+    	"sizes_large_filename" varchar,
+    	"sizes_xlarge_url" varchar,
+    	"sizes_xlarge_width" numeric,
+    	"sizes_xlarge_height" numeric,
+    	"sizes_xlarge_mime_type" varchar,
+    	"sizes_xlarge_filesize" numeric,
+    	"sizes_xlarge_filename" varchar,
+    	"sizes_og_image_url" varchar,
+    	"sizes_og_image_width" numeric,
+    	"sizes_og_image_height" numeric,
+    	"sizes_og_image_mime_type" varchar,
+    	"sizes_og_image_filesize" numeric,
+    	"sizes_og_image_filename" varchar
+    );
   CREATE TABLE "media_cloud_locales" (
-  	"caption" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"caption" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "asset_cloud" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"alt" varchar NOT NULL,
-  	"blurhash" varchar,
-  	"folder_id" integer,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"deleted_at" timestamp(3) with time zone,
-  	"url" varchar,
-  	"thumbnail_u_r_l" varchar,
-  	"filename" varchar,
-  	"mime_type" varchar,
-  	"filesize" numeric,
-  	"width" numeric,
-  	"height" numeric,
-  	"focal_x" numeric,
-  	"focal_y" numeric,
-  	"sizes_thumbnail_url" varchar,
-  	"sizes_thumbnail_width" numeric,
-  	"sizes_thumbnail_height" numeric,
-  	"sizes_thumbnail_mime_type" varchar,
-  	"sizes_thumbnail_filesize" numeric,
-  	"sizes_thumbnail_filename" varchar,
-  	"sizes_small_url" varchar,
-  	"sizes_small_width" numeric,
-  	"sizes_small_height" numeric,
-  	"sizes_small_mime_type" varchar,
-  	"sizes_small_filesize" numeric,
-  	"sizes_small_filename" varchar,
-  	"sizes_medium_url" varchar,
-  	"sizes_medium_width" numeric,
-  	"sizes_medium_height" numeric,
-  	"sizes_medium_mime_type" varchar,
-  	"sizes_medium_filesize" numeric,
-  	"sizes_medium_filename" varchar,
-  	"sizes_large_url" varchar,
-  	"sizes_large_width" numeric,
-  	"sizes_large_height" numeric,
-  	"sizes_large_mime_type" varchar,
-  	"sizes_large_filesize" numeric,
-  	"sizes_large_filename" varchar,
-  	"sizes_xlarge_url" varchar,
-  	"sizes_xlarge_width" numeric,
-  	"sizes_xlarge_height" numeric,
-  	"sizes_xlarge_mime_type" varchar,
-  	"sizes_xlarge_filesize" numeric,
-  	"sizes_xlarge_filename" varchar
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"alt" varchar NOT NULL,
+    	"blurhash" varchar,
+    	"folder_id" integer,
+    	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"deleted_at" timestamp(3) with time zone,
+    	"url" varchar,
+    	"thumbnail_u_r_l" varchar,
+    	"filename" varchar,
+    	"mime_type" varchar,
+    	"filesize" numeric,
+    	"width" numeric,
+    	"height" numeric,
+    	"focal_x" numeric,
+    	"focal_y" numeric,
+    	"sizes_thumbnail_url" varchar,
+    	"sizes_thumbnail_width" numeric,
+    	"sizes_thumbnail_height" numeric,
+    	"sizes_thumbnail_mime_type" varchar,
+    	"sizes_thumbnail_filesize" numeric,
+    	"sizes_thumbnail_filename" varchar,
+    	"sizes_small_url" varchar,
+    	"sizes_small_width" numeric,
+    	"sizes_small_height" numeric,
+    	"sizes_small_mime_type" varchar,
+    	"sizes_small_filesize" numeric,
+    	"sizes_small_filename" varchar,
+    	"sizes_medium_url" varchar,
+    	"sizes_medium_width" numeric,
+    	"sizes_medium_height" numeric,
+    	"sizes_medium_mime_type" varchar,
+    	"sizes_medium_filesize" numeric,
+    	"sizes_medium_filename" varchar,
+    	"sizes_large_url" varchar,
+    	"sizes_large_width" numeric,
+    	"sizes_large_height" numeric,
+    	"sizes_large_mime_type" varchar,
+    	"sizes_large_filesize" numeric,
+    	"sizes_large_filename" varchar,
+    	"sizes_xlarge_url" varchar,
+    	"sizes_xlarge_width" numeric,
+    	"sizes_xlarge_height" numeric,
+    	"sizes_xlarge_mime_type" varchar,
+    	"sizes_xlarge_filesize" numeric,
+    	"sizes_xlarge_filename" varchar
+    );
   CREATE TABLE "asset_cloud_locales" (
-  	"caption" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"caption" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "documents" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"alt" varchar NOT NULL,
-  	"folder_id" integer,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"deleted_at" timestamp(3) with time zone,
-  	"url" varchar,
-  	"thumbnail_u_r_l" varchar,
-  	"filename" varchar,
-  	"mime_type" varchar,
-  	"filesize" numeric,
-  	"width" numeric,
-  	"height" numeric,
-  	"focal_x" numeric,
-  	"focal_y" numeric
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"alt" varchar NOT NULL,
+    	"folder_id" integer,
+    	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"deleted_at" timestamp(3) with time zone,
+    	"url" varchar,
+    	"thumbnail_u_r_l" varchar,
+    	"filename" varchar,
+    	"mime_type" varchar,
+    	"filesize" numeric,
+    	"width" numeric,
+    	"height" numeric,
+    	"focal_x" numeric,
+    	"focal_y" numeric
+    );
   CREATE TABLE "documents_locales" (
-  	"caption" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"caption" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "users_assigned_languages" (
-  	"order" integer NOT NULL,
-  	"parent_id" integer NOT NULL,
-  	"value" "enum_users_assigned_languages",
-  	"id" serial PRIMARY KEY NOT NULL
-  );
-  
+    	"order" integer NOT NULL,
+    	"parent_id" integer NOT NULL,
+    	"value" "enum_users_assigned_languages",
+    	"id" serial PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "users_sessions" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"created_at" timestamp(3) with time zone,
-  	"expires_at" timestamp(3) with time zone NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"created_at" timestamp(3) with time zone,
+    	"expires_at" timestamp(3) with time zone NOT NULL
+    );
   CREATE TABLE "users" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"name" varchar,
-  	"avatar_id" integer,
-  	"role" "enum_users_role" DEFAULT 'editor',
-  	"totp_secret" varchar,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"email" varchar NOT NULL,
-  	"reset_password_token" varchar,
-  	"reset_password_expiration" timestamp(3) with time zone,
-  	"salt" varchar,
-  	"hash" varchar,
-  	"login_attempts" numeric DEFAULT 0,
-  	"lock_until" timestamp(3) with time zone
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"name" varchar,
+    	"avatar_id" integer,
+    	"role" "enum_users_role" DEFAULT 'editor',
+    	"totp_secret" varchar,
+    	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"email" varchar NOT NULL,
+    	"reset_password_token" varchar,
+    	"reset_password_expiration" timestamp(3) with time zone,
+    	"salt" varchar,
+    	"hash" varchar,
+    	"login_attempts" numeric DEFAULT 0,
+    	"lock_until" timestamp(3) with time zone
+    );
   CREATE TABLE "redirects" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"from" varchar NOT NULL,
-  	"to_type" "enum_redirects_to_type" DEFAULT 'reference',
-  	"to_url" varchar,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"from" varchar NOT NULL,
+    	"to_type" "enum_redirects_to_type" DEFAULT 'reference',
+    	"to_url" varchar,
+    	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
+    );
   CREATE TABLE "redirects_rels" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"order" integer,
-  	"parent_id" integer NOT NULL,
-  	"path" varchar NOT NULL,
-  	"pages_id" integer,
-  	"reports_id" integer,
-  	"blog_id" integer,
-  	"mmedia_id" integer,
-  	"grants_id" integer
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"order" integer,
+    	"parent_id" integer NOT NULL,
+    	"path" varchar NOT NULL,
+    	"pages_id" integer,
+    	"reports_id" integer,
+    	"blog_id" integer,
+    	"mmedia_id" integer,
+    	"grants_id" integer
+    );
   CREATE TABLE "forms_blocks_checkbox" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"name" varchar NOT NULL,
-  	"width" numeric,
-  	"required" boolean,
-  	"default_value" boolean,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"name" varchar NOT NULL,
+    	"width" numeric,
+    	"required" boolean,
+    	"default_value" boolean,
+    	"block_name" varchar
+    );
   CREATE TABLE "forms_blocks_checkbox_locales" (
-  	"label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "forms_blocks_country" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"name" varchar NOT NULL,
-  	"width" numeric,
-  	"required" boolean,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"name" varchar NOT NULL,
+    	"width" numeric,
+    	"required" boolean,
+    	"block_name" varchar
+    );
   CREATE TABLE "forms_blocks_country_locales" (
-  	"label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "forms_blocks_email" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"name" varchar NOT NULL,
-  	"width" numeric,
-  	"required" boolean,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"name" varchar NOT NULL,
+    	"width" numeric,
+    	"required" boolean,
+    	"block_name" varchar
+    );
   CREATE TABLE "forms_blocks_email_locales" (
-  	"label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "forms_blocks_message" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "forms_blocks_message_locales" (
-  	"message" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"message" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
+  `)
+
+  // chunk 29/121
+  await db.execute(sql`
   CREATE TABLE "forms_blocks_number" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"name" varchar NOT NULL,
-  	"width" numeric,
-  	"default_value" numeric,
-  	"required" boolean,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"name" varchar NOT NULL,
+    	"width" numeric,
+    	"default_value" numeric,
+    	"required" boolean,
+    	"block_name" varchar
+    );
   CREATE TABLE "forms_blocks_number_locales" (
-  	"label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "forms_blocks_select_options" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"value" varchar NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"value" varchar NOT NULL
+    );
   CREATE TABLE "forms_blocks_select_options_locales" (
-  	"label" varchar NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"label" varchar NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "forms_blocks_select" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"name" varchar NOT NULL,
-  	"width" numeric,
-  	"placeholder" varchar,
-  	"required" boolean,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"name" varchar NOT NULL,
+    	"width" numeric,
+    	"placeholder" varchar,
+    	"required" boolean,
+    	"block_name" varchar
+    );
   CREATE TABLE "forms_blocks_select_locales" (
-  	"label" varchar,
-  	"default_value" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"label" varchar,
+    	"default_value" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "forms_blocks_state" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"name" varchar NOT NULL,
-  	"width" numeric,
-  	"required" boolean,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"name" varchar NOT NULL,
+    	"width" numeric,
+    	"required" boolean,
+    	"block_name" varchar
+    );
   CREATE TABLE "forms_blocks_state_locales" (
-  	"label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "forms_blocks_text" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"name" varchar NOT NULL,
-  	"width" numeric,
-  	"required" boolean,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"name" varchar NOT NULL,
+    	"width" numeric,
+    	"required" boolean,
+    	"block_name" varchar
+    );
   CREATE TABLE "forms_blocks_text_locales" (
-  	"label" varchar,
-  	"default_value" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"label" varchar,
+    	"default_value" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "forms_blocks_textarea" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"name" varchar NOT NULL,
-  	"width" numeric,
-  	"required" boolean,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"name" varchar NOT NULL,
+    	"width" numeric,
+    	"required" boolean,
+    	"block_name" varchar
+    );
   CREATE TABLE "forms_blocks_textarea_locales" (
-  	"label" varchar,
-  	"default_value" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"label" varchar,
+    	"default_value" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "forms_emails" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"email_to" varchar,
-  	"cc" varchar,
-  	"bcc" varchar,
-  	"reply_to" varchar,
-  	"email_from" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"email_to" varchar,
+    	"cc" varchar,
+    	"bcc" varchar,
+    	"reply_to" varchar,
+    	"email_from" varchar
+    );
   CREATE TABLE "forms_emails_locales" (
-  	"subject" varchar DEFAULT 'You''ve received a new message.' NOT NULL,
-  	"message" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"subject" varchar DEFAULT 'You''ve received a new message.' NOT NULL,
+    	"message" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "forms" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"title" varchar NOT NULL,
-  	"confirmation_type" "enum_forms_confirmation_type" DEFAULT 'message',
-  	"redirect_url" varchar,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"title" varchar NOT NULL,
+    	"confirmation_type" "enum_forms_confirmation_type" DEFAULT 'message',
+    	"redirect_url" varchar,
+    	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
+    );
   CREATE TABLE "forms_locales" (
-  	"submit_button_label" varchar,
-  	"confirmation_message" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"submit_button_label" varchar,
+    	"confirmation_message" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "form_submissions_submission_data" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"field" varchar NOT NULL,
-  	"value" varchar NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"field" varchar NOT NULL,
+    	"value" varchar NOT NULL
+    );
   CREATE TABLE "form_submissions" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"form_id" integer NOT NULL,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"form_id" integer NOT NULL,
+    	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
+    );
   CREATE TABLE "search_categories" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"relation_to" varchar,
-  	"title" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"relation_to" varchar,
+    	"title" varchar
+    );
   CREATE TABLE "search" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"priority" numeric,
-  	"slug" varchar,
-  	"meta_title" varchar,
-  	"meta_description" varchar,
-  	"content_data" varchar,
-  	"author" varchar,
-  	"tags" varchar,
-  	"published_date" varchar,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"priority" numeric,
+    	"slug" varchar,
+    	"meta_title" varchar,
+    	"meta_description" varchar,
+    	"content_data" varchar,
+    	"author" varchar,
+    	"tags" varchar,
+    	"published_date" varchar,
+    	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
+    );
   CREATE TABLE "search_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "search_rels" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"order" integer,
-  	"parent_id" integer NOT NULL,
-  	"path" varchar NOT NULL,
-  	"pages_id" integer,
-  	"reports_id" integer,
-  	"blog_id" integer,
-  	"mmedia_id" integer,
-  	"grants_id" integer,
-  	"media_cloud_id" integer,
-  	"asset_cloud_id" integer
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"order" integer,
+    	"parent_id" integer NOT NULL,
+    	"path" varchar NOT NULL,
+    	"pages_id" integer,
+    	"reports_id" integer,
+    	"blog_id" integer,
+    	"mmedia_id" integer,
+    	"grants_id" integer,
+    	"media_cloud_id" integer,
+    	"asset_cloud_id" integer
+    );
   CREATE TABLE "payload_kv" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"key" varchar NOT NULL,
-  	"data" jsonb NOT NULL
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"key" varchar NOT NULL,
+    	"data" jsonb NOT NULL
+    );
   CREATE TABLE "payload_folders_folder_type" (
-  	"order" integer NOT NULL,
-  	"parent_id" integer NOT NULL,
-  	"value" "enum_payload_folders_folder_type",
-  	"id" serial PRIMARY KEY NOT NULL
-  );
-  
+    	"order" integer NOT NULL,
+    	"parent_id" integer NOT NULL,
+    	"value" "enum_payload_folders_folder_type",
+    	"id" serial PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "payload_folders" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"name" varchar NOT NULL,
-  	"folder_id" integer,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"name" varchar NOT NULL,
+    	"folder_id" integer,
+    	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
+    );
   CREATE TABLE "payload_locked_documents" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"global_slug" varchar,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"global_slug" varchar,
+    	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
+    );
   CREATE TABLE "payload_locked_documents_rels" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"order" integer,
-  	"parent_id" integer NOT NULL,
-  	"path" varchar NOT NULL,
-  	"grants_id" integer,
-  	"grantcards_id" integer,
-  	"etests_id" integer,
-  	"pages_id" integer,
-  	"blog_id" integer,
-  	"reports_id" integer,
-  	"mmedia_id" integer,
-  	"doctypes_id" integer,
-  	"media_cloud_id" integer,
-  	"asset_cloud_id" integer,
-  	"documents_id" integer,
-  	"users_id" integer,
-  	"redirects_id" integer,
-  	"forms_id" integer,
-  	"form_submissions_id" integer,
-  	"search_id" integer,
-  	"payload_folders_id" integer
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"order" integer,
+    	"parent_id" integer NOT NULL,
+    	"path" varchar NOT NULL,
+    	"grants_id" integer,
+    	"grantcards_id" integer,
+    	"etests_id" integer,
+    	"pages_id" integer,
+    	"blog_id" integer,
+    	"reports_id" integer,
+    	"mmedia_id" integer,
+    	"doctypes_id" integer,
+    	"media_cloud_id" integer,
+    	"asset_cloud_id" integer,
+    	"documents_id" integer,
+    	"users_id" integer,
+    	"redirects_id" integer,
+    	"forms_id" integer,
+    	"form_submissions_id" integer,
+    	"search_id" integer,
+    	"payload_folders_id" integer
+    );
   CREATE TABLE "payload_preferences" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"key" varchar,
-  	"value" jsonb,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"key" varchar,
+    	"value" jsonb,
+    	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
+    );
   CREATE TABLE "payload_preferences_rels" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"order" integer,
-  	"parent_id" integer NOT NULL,
-  	"path" varchar NOT NULL,
-  	"users_id" integer
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"order" integer,
+    	"parent_id" integer NOT NULL,
+    	"path" varchar NOT NULL,
+    	"users_id" integer
+    );
   CREATE TABLE "payload_migrations" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"name" varchar,
-  	"batch" numeric,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"name" varchar,
+    	"batch" numeric,
+    	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
+    );
   CREATE TABLE "homepage_cta_button" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_homepage_cta_button_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_homepage_cta_button_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "homepage_cta_button_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_rich_content_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "homepage_blocks_rich_content_block_locales" (
-  	"rich_text" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"rich_text" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_secondarycta_cta_button" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_homepage_blocks_secondarycta_cta_button_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_homepage_blocks_secondarycta_cta_button_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "homepage_blocks_secondarycta_cta_button_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_secondarycta" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"contact_email" varchar,
-  	"ui_type" "enum_homepage_blocks_secondarycta_ui_type" DEFAULT 'lrg_txt_cta',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"contact_email" varchar,
+    	"ui_type" "enum_homepage_blocks_secondarycta_ui_type" DEFAULT 'lrg_txt_cta',
+    	"block_name" varchar
+    );
   CREATE TABLE "homepage_blocks_secondarycta_locales" (
-  	"cta_title" varchar,
-  	"cta_subtitle" varchar,
-  	"contact_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"cta_title" varchar,
+    	"cta_subtitle" varchar,
+    	"contact_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_mcol_info_block_multicols" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"add_link" boolean,
-  	"link_type" "enum_homepage_blocks_mcol_info_block_multicols_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"add_link" boolean,
+    	"link_type" "enum_homepage_blocks_mcol_info_block_multicols_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "homepage_blocks_mcol_info_block_multicols_locales" (
-  	"title" varchar,
-  	"col_content" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"col_content" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_mcol_info_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "homepage_blocks_grant_card_grid_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "homepage_blocks_grant_card_grid_block_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_mstep_process_steps_details" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "homepage_blocks_mstep_process_steps_details_locales" (
-  	"bullet" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"bullet" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_mstep_process_steps" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"icon" "enum_homepage_blocks_mstep_process_steps_icon" DEFAULT 'FileText'
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"icon" "enum_homepage_blocks_mstep_process_steps_icon" DEFAULT 'FileText'
+    );
   CREATE TABLE "homepage_blocks_mstep_process_steps_locales" (
-  	"step_title" varchar,
-  	"title" varchar,
-  	"tip" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"step_title" varchar,
+    	"title" varchar,
+    	"tip" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_mstep_process" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "homepage_blocks_mstep_process_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_comparison_blk_lft_grp_lft_points" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
+  `)
+
+  // chunk 30/121
+  await db.execute(sql`
   CREATE TABLE "homepage_blocks_comparison_blk_lft_grp_lft_points_locales" (
-  	"point" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"point" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_comparison_blk_rt_grp_rt_points" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "homepage_blocks_comparison_blk_rt_grp_rt_points_locales" (
-  	"point" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"point" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_comparison_blk_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_homepage_blocks_comparison_blk_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_homepage_blocks_comparison_blk_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "homepage_blocks_comparison_blk_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_comparison_blk" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "homepage_blocks_comparison_blk_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"lft_grp_title" varchar,
-  	"lft_grp_desc" varchar,
-  	"rt_grp_title" varchar,
-  	"rt_grp_desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"lft_grp_title" varchar,
+    	"lft_grp_desc" varchar,
+    	"rt_grp_title" varchar,
+    	"rt_grp_desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_ylw_deck_cards_links" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_homepage_blocks_ylw_deck_cards_links_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_homepage_blocks_ylw_deck_cards_links_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "homepage_blocks_ylw_deck_cards_links_locales" (
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_ylw_deck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"mascot_pos" "enum_homepage_blocks_ylw_deck_cards_mascot_pos" DEFAULT 'center'
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"mascot_pos" "enum_homepage_blocks_ylw_deck_cards_mascot_pos" DEFAULT 'center'
+    );
   CREATE TABLE "homepage_blocks_ylw_deck_cards_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_ylw_deck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_homepage_blocks_ylw_deck_align" DEFAULT 'center',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_homepage_blocks_ylw_deck_align" DEFAULT 'center',
+    	"block_name" varchar
+    );
   CREATE TABLE "homepage_blocks_ylw_deck_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_feat_crd_tags" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "homepage_blocks_feat_crd_tags_locales" (
-  	"tag" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"tag" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_feat_crd" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"image_id" integer,
-  	"title_alignment" "enum_homepage_blocks_feat_crd_title_alignment" DEFAULT 'left',
-  	"link_type" "enum_homepage_blocks_feat_crd_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"image_id" integer,
+    	"title_alignment" "enum_homepage_blocks_feat_crd_title_alignment" DEFAULT 'left',
+    	"link_type" "enum_homepage_blocks_feat_crd_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "homepage_blocks_feat_crd_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"desc" jsonb,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"desc" jsonb,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_feat_crd_acc_feat_crds" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"crd_colour" "enum_homepage_blocks_feat_crd_acc_feat_crds_crd_colour" DEFAULT 'forest'
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"crd_colour" "enum_homepage_blocks_feat_crd_acc_feat_crds_crd_colour" DEFAULT 'forest'
+    );
   CREATE TABLE "homepage_blocks_feat_crd_acc_feat_crds_locales" (
-  	"acc_title" varchar,
-  	"acc_content" jsonb,
-  	"crd_tag" varchar,
-  	"crd_content" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"acc_title" varchar,
+    	"acc_content" jsonb,
+    	"crd_tag" varchar,
+    	"crd_content" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_feat_crd_acc" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "homepage_blocks_feat_crd_acc_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_list_crd_dck_cards_tags" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "homepage_blocks_list_crd_dck_cards_tags_locales" (
-  	"tag" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"tag" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_list_crd_dck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"image_id" integer,
-  	"link_type" "enum_homepage_blocks_list_crd_dck_cards_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"image_id" integer,
+    	"link_type" "enum_homepage_blocks_list_crd_dck_cards_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "homepage_blocks_list_crd_dck_cards_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_list_crd_dck_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_homepage_blocks_list_crd_dck_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_homepage_blocks_list_crd_dck_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "homepage_blocks_list_crd_dck_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_list_crd_dck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"data_source" "enum_homepage_blocks_list_crd_dck_data_source" DEFAULT 'manual',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"data_source" "enum_homepage_blocks_list_crd_dck_data_source" DEFAULT 'manual',
+    	"block_name" varchar
+    );
   CREATE TABLE "homepage_blocks_list_crd_dck_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_faq_blk_faqs" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "homepage_blocks_faq_blk_faqs_locales" (
-  	"question" varchar,
-  	"answer" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"question" varchar,
+    	"answer" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_faq_blk" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_homepage_blocks_faq_blk_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_homepage_blocks_faq_blk_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "homepage_blocks_faq_blk_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_pink_puffy_top_row" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "homepage_blocks_pink_puffy_top_row_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_pink_puffy_bot_row" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "homepage_blocks_pink_puffy_bot_row_locales" (
-  	"title" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_pink_puffy_links" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_homepage_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_homepage_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "homepage_blocks_pink_puffy_links_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_pink_puffy" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_homepage_blocks_pink_puffy_align" DEFAULT 'center',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_homepage_blocks_pink_puffy_align" DEFAULT 'center',
+    	"block_name" varchar
+    );
   CREATE TABLE "homepage_blocks_pink_puffy_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_beige_puffy_items" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "homepage_blocks_beige_puffy_items_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_beige_puffy" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_homepage_blocks_beige_puffy_align" DEFAULT 'center',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_homepage_blocks_beige_puffy_align" DEFAULT 'center',
+    	"block_name" varchar
+    );
   CREATE TABLE "homepage_blocks_beige_puffy_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_funding_map_items_subitems" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "homepage_blocks_funding_map_items_subitems_locales" (
-  	"statnumber" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"statnumber" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_funding_map_items" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"region_name" "enum_homepage_blocks_funding_map_items_region_name" DEFAULT 'uaf-asia-pacific'
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"region_name" "enum_homepage_blocks_funding_map_items_region_name" DEFAULT 'uaf-asia-pacific'
+    );
   CREATE TABLE "homepage_blocks_funding_map" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "homepage_blocks_funding_map_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"selector_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"selector_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
+  `)
+
+  // chunk 31/121
+  await db.execute(sql`
   CREATE TABLE "homepage_blocks_resource_feat_card" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_homepage_blocks_resource_feat_card_align" DEFAULT 'center',
-  	"add_all_resources" boolean,
-  	"filter_by_doc_type_id" integer,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_homepage_blocks_resource_feat_card_align" DEFAULT 'center',
+    	"add_all_resources" boolean,
+    	"filter_by_doc_type_id" integer,
+    	"block_name" varchar
+    );
   CREATE TABLE "homepage_blocks_resource_feat_card_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_resource_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_homepage_blocks_resource_gallery_align" DEFAULT 'center',
-  	"add_all_resources" boolean,
-  	"filter_by_doc_type_id" integer,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_homepage_blocks_resource_gallery_align" DEFAULT 'center',
+    	"add_all_resources" boolean,
+    	"filter_by_doc_type_id" integer,
+    	"block_name" varchar
+    );
   CREATE TABLE "homepage_blocks_resource_gallery_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_pillar_card_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"mascot_id" integer
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"mascot_id" integer
+    );
   CREATE TABLE "homepage_blocks_pillar_card_cards_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_pillar_card" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"align" "enum_homepage_blocks_pillar_card_align" DEFAULT 'left',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"align" "enum_homepage_blocks_pillar_card_align" DEFAULT 'left',
+    	"block_name" varchar
+    );
   CREATE TABLE "homepage_blocks_pillar_card_locales" (
-  	"title" varchar,
-  	"subtitle" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_testimonial_deck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "homepage_blocks_testimonial_deck_cards_locales" (
-  	"quote_text" varchar,
-  	"attrib_name" varchar,
-  	"attrib_dsg" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"quote_text" varchar,
+    	"attrib_name" varchar,
+    	"attrib_dsg" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_testimonial_deck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "homepage_blocks_testimonial_deck_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_min_card_gallery_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"mascot_id" integer
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"mascot_id" integer
+    );
   CREATE TABLE "homepage_blocks_min_card_gallery_cards_locales" (
-  	"title" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_min_card_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"header_align" "enum_homepage_blocks_min_card_gallery_header_align" DEFAULT 'left',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"header_align" "enum_homepage_blocks_min_card_gallery_header_align" DEFAULT 'left',
+    	"block_name" varchar
+    );
   CREATE TABLE "homepage_blocks_min_card_gallery_locales" (
-  	"header_title" varchar,
-  	"header_subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"header_title" varchar,
+    	"header_subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_id_card_gallery_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"mascot_id" integer
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"mascot_id" integer
+    );
   CREATE TABLE "homepage_blocks_id_card_gallery_cards_locales" (
-  	"pronouns" varchar,
-  	"fullname" varchar,
-  	"designation" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"pronouns" varchar,
+    	"fullname" varchar,
+    	"designation" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_id_card_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "homepage_blocks_id_card_gallery_locales" (
-  	"header_title" varchar,
-  	"header_subtitle" varchar,
-  	"header_description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"header_title" varchar,
+    	"header_subtitle" varchar,
+    	"header_description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_two_column_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"block_name" varchar
+    );
   CREATE TABLE "homepage_blocks_two_column_block_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"left_column" jsonb,
-  	"right_column" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"left_column" jsonb,
+    	"right_column" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_three_column_table_block_rows" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "homepage_blocks_three_column_table_block_rows_locales" (
-  	"first_column" jsonb,
-  	"second_column" jsonb,
-  	"third_column" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"first_column" jsonb,
+    	"second_column" jsonb,
+    	"third_column" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage_blocks_three_column_table_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"column_widths" "enum_homepage_blocks_three_column_table_block_column_widths" DEFAULT 'f-t-t',
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"column_widths" "enum_homepage_blocks_three_column_table_block_column_widths" DEFAULT 'f-t-t',
+    	"block_name" varchar
+    );
   CREATE TABLE "homepage_blocks_three_column_table_block_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "homepage" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"meta_title" varchar,
-  	"meta_description" varchar,
-  	"meta_image_id" integer,
-  	"created_by_id" integer,
-  	"updated_by_id" integer,
-  	"_status" "enum_homepage_status" DEFAULT 'draft',
-  	"updated_at" timestamp(3) with time zone,
-  	"created_at" timestamp(3) with time zone
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"meta_title" varchar,
+    	"meta_description" varchar,
+    	"meta_image_id" integer,
+    	"created_by_id" integer,
+    	"updated_by_id" integer,
+    	"_status" "enum_homepage_status" DEFAULT 'draft',
+    	"updated_at" timestamp(3) with time zone,
+    	"created_at" timestamp(3) with time zone
+    );
   CREATE TABLE "homepage_locales" (
-  	"hero_title" varchar,
-  	"hero_subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"hero_title" varchar,
+    	"hero_subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "homepage_rels" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"order" integer,
-  	"parent_id" integer NOT NULL,
-  	"path" varchar NOT NULL,
-  	"grants_id" integer,
-  	"pages_id" integer,
-  	"blog_id" integer,
-  	"reports_id" integer,
-  	"mmedia_id" integer,
-  	"documents_id" integer,
-  	"etests_id" integer,
-  	"grantcards_id" integer
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"order" integer,
+    	"parent_id" integer NOT NULL,
+    	"path" varchar NOT NULL,
+    	"grants_id" integer,
+    	"pages_id" integer,
+    	"blog_id" integer,
+    	"reports_id" integer,
+    	"mmedia_id" integer,
+    	"documents_id" integer,
+    	"etests_id" integer,
+    	"grantcards_id" integer
+    );
   CREATE TABLE "_homepage_v_version_cta_button" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__homepage_v_version_cta_button_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__homepage_v_version_cta_button_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_homepage_v_version_cta_button_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_rich_content_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_rich_content_block_locales" (
-  	"rich_text" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"rich_text" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_secondarycta_cta_button" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__homepage_v_blocks_secondarycta_cta_button_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__homepage_v_blocks_secondarycta_cta_button_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_secondarycta_cta_button_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_secondarycta" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"contact_email" varchar,
-  	"ui_type" "enum__homepage_v_blocks_secondarycta_ui_type" DEFAULT 'lrg_txt_cta',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"contact_email" varchar,
+    	"ui_type" "enum__homepage_v_blocks_secondarycta_ui_type" DEFAULT 'lrg_txt_cta',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_secondarycta_locales" (
-  	"cta_title" varchar,
-  	"cta_subtitle" varchar,
-  	"contact_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"cta_title" varchar,
+    	"cta_subtitle" varchar,
+    	"contact_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_mcol_info_block_multicols" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"add_link" boolean,
-  	"link_type" "enum__homepage_v_blocks_mcol_info_block_multicols_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"add_link" boolean,
+    	"link_type" "enum__homepage_v_blocks_mcol_info_block_multicols_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_mcol_info_block_multicols_locales" (
-  	"title" varchar,
-  	"col_content" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"col_content" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_mcol_info_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_grant_card_grid_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_grant_card_grid_block_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_mstep_process_steps_details" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_mstep_process_steps_details_locales" (
-  	"bullet" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"bullet" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_mstep_process_steps" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"icon" "enum__homepage_v_blocks_mstep_process_steps_icon" DEFAULT 'FileText',
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"icon" "enum__homepage_v_blocks_mstep_process_steps_icon" DEFAULT 'FileText',
+    	"_uuid" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_mstep_process_steps_locales" (
-  	"step_title" varchar,
-  	"title" varchar,
-  	"tip" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"step_title" varchar,
+    	"title" varchar,
+    	"tip" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_mstep_process" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_mstep_process_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_comparison_blk_lft_grp_lft_points" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_comparison_blk_lft_grp_lft_points_locales" (
-  	"point" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"point" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
+  `)
+
+  // chunk 32/121
+  await db.execute(sql`
   CREATE TABLE "_homepage_v_blocks_comparison_blk_rt_grp_rt_points" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_comparison_blk_rt_grp_rt_points_locales" (
-  	"point" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"point" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_comparison_blk_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__homepage_v_blocks_comparison_blk_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__homepage_v_blocks_comparison_blk_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_comparison_blk_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_comparison_blk" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_comparison_blk_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"lft_grp_title" varchar,
-  	"lft_grp_desc" varchar,
-  	"rt_grp_title" varchar,
-  	"rt_grp_desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"lft_grp_title" varchar,
+    	"lft_grp_desc" varchar,
+    	"rt_grp_title" varchar,
+    	"rt_grp_desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_ylw_deck_cards_links" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__homepage_v_blocks_ylw_deck_cards_links_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__homepage_v_blocks_ylw_deck_cards_links_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_ylw_deck_cards_links_locales" (
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_ylw_deck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"mascot_pos" "enum__homepage_v_blocks_ylw_deck_cards_mascot_pos" DEFAULT 'center',
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"mascot_pos" "enum__homepage_v_blocks_ylw_deck_cards_mascot_pos" DEFAULT 'center',
+    	"_uuid" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_ylw_deck_cards_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"desc" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"desc" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_ylw_deck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__homepage_v_blocks_ylw_deck_align" DEFAULT 'center',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__homepage_v_blocks_ylw_deck_align" DEFAULT 'center',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_ylw_deck_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_feat_crd_tags" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_feat_crd_tags_locales" (
-  	"tag" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"tag" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_feat_crd" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"image_id" integer,
-  	"title_alignment" "enum__homepage_v_blocks_feat_crd_title_alignment" DEFAULT 'left',
-  	"link_type" "enum__homepage_v_blocks_feat_crd_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"image_id" integer,
+    	"title_alignment" "enum__homepage_v_blocks_feat_crd_title_alignment" DEFAULT 'left',
+    	"link_type" "enum__homepage_v_blocks_feat_crd_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_feat_crd_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"desc" jsonb,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"desc" jsonb,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_feat_crd_acc_feat_crds" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"crd_colour" "enum__homepage_v_blocks_feat_crd_acc_feat_crds_crd_colour" DEFAULT 'forest',
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"crd_colour" "enum__homepage_v_blocks_feat_crd_acc_feat_crds_crd_colour" DEFAULT 'forest',
+    	"_uuid" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_feat_crd_acc_feat_crds_locales" (
-  	"acc_title" varchar,
-  	"acc_content" jsonb,
-  	"crd_tag" varchar,
-  	"crd_content" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"acc_title" varchar,
+    	"acc_content" jsonb,
+    	"crd_tag" varchar,
+    	"crd_content" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_feat_crd_acc" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_feat_crd_acc_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_list_crd_dck_cards_tags" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_list_crd_dck_cards_tags_locales" (
-  	"tag" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"tag" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_list_crd_dck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"image_id" integer,
-  	"link_type" "enum__homepage_v_blocks_list_crd_dck_cards_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"image_id" integer,
+    	"link_type" "enum__homepage_v_blocks_list_crd_dck_cards_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_list_crd_dck_cards_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_list_crd_dck_buttons" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__homepage_v_blocks_list_crd_dck_buttons_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__homepage_v_blocks_list_crd_dck_buttons_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_list_crd_dck_buttons_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_list_crd_dck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"data_source" "enum__homepage_v_blocks_list_crd_dck_data_source" DEFAULT 'manual',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"data_source" "enum__homepage_v_blocks_list_crd_dck_data_source" DEFAULT 'manual',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_list_crd_dck_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_faq_blk_faqs" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_faq_blk_faqs_locales" (
-  	"question" varchar,
-  	"answer" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"question" varchar,
+    	"answer" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_faq_blk" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__homepage_v_blocks_faq_blk_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__homepage_v_blocks_faq_blk_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_faq_blk_locales" (
-  	"title" varchar,
-  	"desc" varchar,
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" varchar,
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_pink_puffy_top_row" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_pink_puffy_top_row_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_pink_puffy_bot_row" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_pink_puffy_bot_row_locales" (
-  	"title" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_pink_puffy_links" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"link_type" "enum__homepage_v_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"link_type" "enum__homepage_v_blocks_pink_puffy_links_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_pink_puffy_links_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_pink_puffy" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__homepage_v_blocks_pink_puffy_align" DEFAULT 'center',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__homepage_v_blocks_pink_puffy_align" DEFAULT 'center',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_pink_puffy_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_beige_puffy_items" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_beige_puffy_items_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_beige_puffy" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__homepage_v_blocks_beige_puffy_align" DEFAULT 'center',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__homepage_v_blocks_beige_puffy_align" DEFAULT 'center',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_beige_puffy_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_funding_map_items_subitems" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_funding_map_items_subitems_locales" (
-  	"statnumber" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"statnumber" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_funding_map_items" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"region_name" "enum__homepage_v_blocks_funding_map_items_region_name" DEFAULT 'uaf-asia-pacific',
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"region_name" "enum__homepage_v_blocks_funding_map_items_region_name" DEFAULT 'uaf-asia-pacific',
+    	"_uuid" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_funding_map" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_funding_map_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"selector_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"selector_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_resource_feat_card" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__homepage_v_blocks_resource_feat_card_align" DEFAULT 'center',
-  	"add_all_resources" boolean,
-  	"filter_by_doc_type_id" integer,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__homepage_v_blocks_resource_feat_card_align" DEFAULT 'center',
+    	"add_all_resources" boolean,
+    	"filter_by_doc_type_id" integer,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
+  `)
+
+  // chunk 33/121
+  await db.execute(sql`
   CREATE TABLE "_homepage_v_blocks_resource_feat_card_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_resource_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__homepage_v_blocks_resource_gallery_align" DEFAULT 'center',
-  	"add_all_resources" boolean,
-  	"filter_by_doc_type_id" integer,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__homepage_v_blocks_resource_gallery_align" DEFAULT 'center',
+    	"add_all_resources" boolean,
+    	"filter_by_doc_type_id" integer,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_resource_gallery_locales" (
-  	"title" varchar,
-  	"desc" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"desc" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_pillar_card_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_pillar_card_cards_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_pillar_card" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"align" "enum__homepage_v_blocks_pillar_card_align" DEFAULT 'left',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"align" "enum__homepage_v_blocks_pillar_card_align" DEFAULT 'left',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_pillar_card_locales" (
-  	"title" varchar,
-  	"subtitle" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_testimonial_deck_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_testimonial_deck_cards_locales" (
-  	"quote_text" varchar,
-  	"attrib_name" varchar,
-  	"attrib_dsg" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"quote_text" varchar,
+    	"attrib_name" varchar,
+    	"attrib_dsg" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_testimonial_deck" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_testimonial_deck_locales" (
-  	"title" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_min_card_gallery_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_min_card_gallery_cards_locales" (
-  	"title" varchar,
-  	"description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_min_card_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"header_align" "enum__homepage_v_blocks_min_card_gallery_header_align" DEFAULT 'left',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"header_align" "enum__homepage_v_blocks_min_card_gallery_header_align" DEFAULT 'left',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_min_card_gallery_locales" (
-  	"header_title" varchar,
-  	"header_subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"header_title" varchar,
+    	"header_subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_id_card_gallery_cards" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"mascot_id" integer,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"mascot_id" integer,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_id_card_gallery_cards_locales" (
-  	"pronouns" varchar,
-  	"fullname" varchar,
-  	"designation" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"pronouns" varchar,
+    	"fullname" varchar,
+    	"designation" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_id_card_gallery" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_id_card_gallery_locales" (
-  	"header_title" varchar,
-  	"header_subtitle" varchar,
-  	"header_description" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"header_title" varchar,
+    	"header_subtitle" varchar,
+    	"header_description" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_two_column_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_two_column_block_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"left_column" jsonb,
-  	"right_column" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"left_column" jsonb,
+    	"right_column" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_three_column_table_block_rows" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_uuid" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_uuid" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_three_column_table_block_rows_locales" (
-  	"first_column" jsonb,
-  	"second_column" jsonb,
-  	"third_column" jsonb,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"first_column" jsonb,
+    	"second_column" jsonb,
+    	"third_column" jsonb,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_blocks_three_column_table_block" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"_path" text NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"column_widths" "enum__homepage_v_blocks_three_column_table_block_column_widths" DEFAULT 'f-t-t',
-  	"_uuid" varchar,
-  	"block_name" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"_path" text NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"column_widths" "enum__homepage_v_blocks_three_column_table_block_column_widths" DEFAULT 'f-t-t',
+    	"_uuid" varchar,
+    	"block_name" varchar
+    );
   CREATE TABLE "_homepage_v_blocks_three_column_table_block_locales" (
-  	"title" varchar,
-  	"subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"title" varchar,
+    	"subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"version_meta_title" varchar,
-  	"version_meta_description" varchar,
-  	"version_meta_image_id" integer,
-  	"version_created_by_id" integer,
-  	"version_updated_by_id" integer,
-  	"version__status" "enum__homepage_v_version_status" DEFAULT 'draft',
-  	"version_updated_at" timestamp(3) with time zone,
-  	"version_created_at" timestamp(3) with time zone,
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"snapshot" boolean,
-  	"published_locale" "enum__homepage_v_published_locale",
-  	"latest" boolean
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"version_meta_title" varchar,
+    	"version_meta_description" varchar,
+    	"version_meta_image_id" integer,
+    	"version_created_by_id" integer,
+    	"version_updated_by_id" integer,
+    	"version__status" "enum__homepage_v_version_status" DEFAULT 'draft',
+    	"version_updated_at" timestamp(3) with time zone,
+    	"version_created_at" timestamp(3) with time zone,
+    	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    	"snapshot" boolean,
+    	"published_locale" "enum__homepage_v_published_locale",
+    	"latest" boolean
+    );
   CREATE TABLE "_homepage_v_locales" (
-  	"version_hero_title" varchar,
-  	"version_hero_subtitle" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"version_hero_title" varchar,
+    	"version_hero_subtitle" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "_homepage_v_rels" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"order" integer,
-  	"parent_id" integer NOT NULL,
-  	"path" varchar NOT NULL,
-  	"grants_id" integer,
-  	"pages_id" integer,
-  	"blog_id" integer,
-  	"reports_id" integer,
-  	"mmedia_id" integer,
-  	"documents_id" integer,
-  	"etests_id" integer,
-  	"grantcards_id" integer
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"order" integer,
+    	"parent_id" integer NOT NULL,
+    	"path" varchar NOT NULL,
+    	"grants_id" integer,
+    	"pages_id" integer,
+    	"blog_id" integer,
+    	"reports_id" integer,
+    	"mmedia_id" integer,
+    	"documents_id" integer,
+    	"etests_id" integer,
+    	"grantcards_id" integer
+    );
   CREATE TABLE "header_languages" (
-  	"order" integer NOT NULL,
-  	"parent_id" integer NOT NULL,
-  	"value" "enum_header_languages",
-  	"id" serial PRIMARY KEY NOT NULL
-  );
-  
+    	"order" integer NOT NULL,
+    	"parent_id" integer NOT NULL,
+    	"value" "enum_header_languages",
+    	"id" serial PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "header" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"logo_id" integer,
-  	"search_enabled" boolean DEFAULT true,
-  	"show_banner" boolean DEFAULT false,
-  	"banner_link_type" "enum_header_banner_link_type" DEFAULT 'reference',
-  	"banner_link_new_tab" boolean,
-  	"banner_link_download_link" boolean,
-  	"banner_link_arrow_link" boolean,
-  	"banner_link_pill_solid" boolean,
-  	"banner_link_pill_outline" boolean,
-  	"banner_link_anchor" varchar,
-  	"banner_link_url" varchar,
-  	"banner_link_email" varchar,
-  	"updated_at" timestamp(3) with time zone,
-  	"created_at" timestamp(3) with time zone
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"logo_id" integer,
+    	"search_enabled" boolean DEFAULT true,
+    	"show_banner" boolean DEFAULT false,
+    	"banner_link_type" "enum_header_banner_link_type" DEFAULT 'reference',
+    	"banner_link_new_tab" boolean,
+    	"banner_link_download_link" boolean,
+    	"banner_link_arrow_link" boolean,
+    	"banner_link_pill_solid" boolean,
+    	"banner_link_pill_outline" boolean,
+    	"banner_link_anchor" varchar,
+    	"banner_link_url" varchar,
+    	"banner_link_email" varchar,
+    	"updated_at" timestamp(3) with time zone,
+    	"created_at" timestamp(3) with time zone
+    );
   CREATE TABLE "header_locales" (
-  	"banner_text" varchar,
-  	"banner_link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"banner_text" varchar,
+    	"banner_link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "header_rels" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"order" integer,
-  	"parent_id" integer NOT NULL,
-  	"path" varchar NOT NULL,
-  	"grants_id" integer,
-  	"pages_id" integer,
-  	"blog_id" integer,
-  	"reports_id" integer,
-  	"mmedia_id" integer,
-  	"documents_id" integer,
-  	"etests_id" integer
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"order" integer,
+    	"parent_id" integer NOT NULL,
+    	"path" varchar NOT NULL,
+    	"grants_id" integer,
+    	"pages_id" integer,
+    	"blog_id" integer,
+    	"reports_id" integer,
+    	"mmedia_id" integer,
+    	"documents_id" integer,
+    	"etests_id" integer
+    );
   CREATE TABLE "footer_sm_links_group_sm_links" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"sm_type" "enum_footer_sm_links_group_sm_links_sm_type",
-  	"url" varchar NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"sm_type" "enum_footer_sm_links_group_sm_links_sm_type",
+    	"url" varchar NOT NULL
+    );
   CREATE TABLE "footer_badges" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"label" varchar NOT NULL,
-  	"image_id" integer NOT NULL,
-  	"link" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"label" varchar NOT NULL,
+    	"image_id" integer NOT NULL,
+    	"link" varchar
+    );
   CREATE TABLE "footer" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"logo_id" integer,
-  	"newsletter_sub_url" varchar DEFAULT 'https://list.uafanp.org/subscription/form',
-  	"donate_c_t_a_url" varchar DEFAULT 'https://example.com/donate' NOT NULL,
-  	"updated_at" timestamp(3) with time zone,
-  	"created_at" timestamp(3) with time zone
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"logo_id" integer,
+    	"newsletter_sub_url" varchar DEFAULT 'https://list.uafanp.org/subscription/form',
+    	"donate_c_t_a_url" varchar DEFAULT 'https://example.com/donate' NOT NULL,
+    	"updated_at" timestamp(3) with time zone,
+    	"created_at" timestamp(3) with time zone
+    );
   CREATE TABLE "footer_locales" (
-  	"org_name" varchar DEFAULT 'Urgent Action Fund Asia Pacific' NOT NULL,
-  	"newsletter_sub_description" varchar DEFAULT 'Subscribe to our newsletter.',
-  	"newsletter_sub_input_placeholder" varchar DEFAULT 'Enter your email',
-  	"newsletter_sub_button_text" varchar DEFAULT 'Subscribe',
-  	"donate_c_t_a_heading" varchar DEFAULT 'Your support powers Urgent Action' NOT NULL,
-  	"donate_c_t_a_description" varchar DEFAULT 'Every contribution - big or small - fuels safety, resilience, and justice.' NOT NULL,
-  	"donate_c_t_a_button_text" varchar DEFAULT 'Donate' NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" integer NOT NULL
-  );
-  
+    	"org_name" varchar DEFAULT 'Urgent Action Fund Asia Pacific' NOT NULL,
+    	"newsletter_sub_description" varchar DEFAULT 'Subscribe to our newsletter.',
+    	"newsletter_sub_input_placeholder" varchar DEFAULT 'Enter your email',
+    	"newsletter_sub_button_text" varchar DEFAULT 'Subscribe',
+    	"donate_c_t_a_heading" varchar DEFAULT 'Your support powers Urgent Action' NOT NULL,
+    	"donate_c_t_a_description" varchar DEFAULT 'Every contribution - big or small - fuels safety, resilience, and justice.' NOT NULL,
+    	"donate_c_t_a_button_text" varchar DEFAULT 'Donate' NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" integer NOT NULL
+    );
   CREATE TABLE "nav_menu_items_nav_items" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"link_type" "enum_nav_menu_items_nav_items_link_type" DEFAULT 'reference',
-  	"link_new_tab" boolean,
-  	"link_download_link" boolean,
-  	"link_arrow_link" boolean,
-  	"link_pill_solid" boolean,
-  	"link_pill_outline" boolean,
-  	"link_anchor" varchar,
-  	"link_url" varchar,
-  	"link_email" varchar
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" varchar NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"link_type" "enum_nav_menu_items_nav_items_link_type" DEFAULT 'reference',
+    	"link_new_tab" boolean,
+    	"link_download_link" boolean,
+    	"link_arrow_link" boolean,
+    	"link_pill_solid" boolean,
+    	"link_pill_outline" boolean,
+    	"link_anchor" varchar,
+    	"link_url" varchar,
+    	"link_email" varchar
+    );
   CREATE TABLE "nav_menu_items_nav_items_locales" (
-  	"link_label" varchar,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"link_label" varchar,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "nav_menu_items" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL
+    );
   CREATE TABLE "nav_menu_items_locales" (
-  	"label" varchar NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"label" varchar NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "nav" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"updated_at" timestamp(3) with time zone,
-  	"created_at" timestamp(3) with time zone
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"updated_at" timestamp(3) with time zone,
+    	"created_at" timestamp(3) with time zone
+    );
   CREATE TABLE "nav_rels" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"order" integer,
-  	"parent_id" integer NOT NULL,
-  	"path" varchar NOT NULL,
-  	"grants_id" integer,
-  	"pages_id" integer,
-  	"blog_id" integer,
-  	"reports_id" integer,
-  	"mmedia_id" integer,
-  	"documents_id" integer,
-  	"etests_id" integer
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"order" integer,
+    	"parent_id" integer NOT NULL,
+    	"path" varchar NOT NULL,
+    	"grants_id" integer,
+    	"pages_id" integer,
+    	"blog_id" integer,
+    	"reports_id" integer,
+    	"mmedia_id" integer,
+    	"documents_id" integer,
+    	"etests_id" integer
+    );
   CREATE TABLE "contact_info_emails" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"email" varchar NOT NULL,
-  	"email_type" "enum_contact_info_emails_email_type" DEFAULT 'info' NOT NULL
-  );
-  
+    	"_order" integer NOT NULL,
+    	"_parent_id" integer NOT NULL,
+    	"id" varchar PRIMARY KEY NOT NULL,
+    	"email" varchar NOT NULL,
+    	"email_type" "enum_contact_info_emails_email_type" DEFAULT 'info' NOT NULL
+    );
   CREATE TABLE "contact_info_emails_locales" (
-  	"label" varchar DEFAULT 'Contact Us' NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"_locale" "_locales" NOT NULL,
-  	"_parent_id" varchar NOT NULL
-  );
-  
+    	"label" varchar DEFAULT 'Contact Us' NOT NULL,
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"_locale" "_locales" NOT NULL,
+    	"_parent_id" varchar NOT NULL
+    );
   CREATE TABLE "contact_info" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"updated_at" timestamp(3) with time zone,
-  	"created_at" timestamp(3) with time zone
-  );
-  
+    	"id" serial PRIMARY KEY NOT NULL,
+    	"updated_at" timestamp(3) with time zone,
+    	"created_at" timestamp(3) with time zone
+    );
   ALTER TABLE "grants_hero_buttons" ADD CONSTRAINT "grants_hero_buttons_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "grants_hero_buttons_locales" ADD CONSTRAINT "grants_hero_buttons_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants_hero_buttons"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "grants_blocks_rich_content_block" ADD CONSTRAINT "grants_blocks_rich_content_block_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "grants_blocks_rich_content_block_locales" ADD CONSTRAINT "grants_blocks_rich_content_block_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants_blocks_rich_content_block"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "grants_blocks_secondarycta_cta_button" ADD CONSTRAINT "grants_blocks_secondarycta_cta_button_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants_blocks_secondarycta"("id") ON DELETE cascade ON UPDATE no action;
+  `)
+
+  // chunk 34/121
+  await db.execute(sql`
   ALTER TABLE "grants_blocks_secondarycta_cta_button_locales" ADD CONSTRAINT "grants_blocks_secondarycta_cta_button_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants_blocks_secondarycta_cta_button"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "grants_blocks_secondarycta" ADD CONSTRAINT "grants_blocks_secondarycta_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "grants_blocks_secondarycta_locales" ADD CONSTRAINT "grants_blocks_secondarycta_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants_blocks_secondarycta"("id") ON DELETE cascade ON UPDATE no action;
@@ -12433,6 +11282,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "grants_blocks_list_crd_dck_locales" ADD CONSTRAINT "grants_blocks_list_crd_dck_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants_blocks_list_crd_dck"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "grants_blocks_faq_blk_faqs" ADD CONSTRAINT "grants_blocks_faq_blk_faqs_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants_blocks_faq_blk"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "grants_blocks_faq_blk_faqs_locales" ADD CONSTRAINT "grants_blocks_faq_blk_faqs_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants_blocks_faq_blk_faqs"("id") ON DELETE cascade ON UPDATE no action;
+  `)
+
+  // chunk 35/121
+  await db.execute(sql`
   ALTER TABLE "grants_blocks_faq_blk" ADD CONSTRAINT "grants_blocks_faq_blk_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "grants_blocks_faq_blk_locales" ADD CONSTRAINT "grants_blocks_faq_blk_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants_blocks_faq_blk"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "grants_blocks_pink_puffy_top_row" ADD CONSTRAINT "grants_blocks_pink_puffy_top_row_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
@@ -12483,6 +11336,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "grants_blocks_three_column_table_block_rows_locales" ADD CONSTRAINT "grants_blocks_three_column_table_block_rows_locales_paren_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants_blocks_three_column_table_block_rows"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "grants_blocks_three_column_table_block" ADD CONSTRAINT "grants_blocks_three_column_table_block_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "grants_blocks_three_column_table_block_locales" ADD CONSTRAINT "grants_blocks_three_column_table_block_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."grants_blocks_three_column_table_block"("id") ON DELETE cascade ON UPDATE no action;
+  `)
+
+  // chunk 36/121
+  await db.execute(sql`
   ALTER TABLE "grants" ADD CONSTRAINT "grants_grant_card_id_grantcards_id_fk" FOREIGN KEY ("grant_card_id") REFERENCES "public"."grantcards"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "grants" ADD CONSTRAINT "grants_created_by_id_users_id_fk" FOREIGN KEY ("created_by_id") REFERENCES "public"."users"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "grants" ADD CONSTRAINT "grants_updated_by_id_users_id_fk" FOREIGN KEY ("updated_by_id") REFERENCES "public"."users"("id") ON DELETE set null ON UPDATE no action;
@@ -12533,6 +11390,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "_grants_v_blocks_ylw_deck" ADD CONSTRAINT "_grants_v_blocks_ylw_deck_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_grants_v_blocks_ylw_deck_locales" ADD CONSTRAINT "_grants_v_blocks_ylw_deck_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v_blocks_ylw_deck"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_grants_v_blocks_feat_crd_tags" ADD CONSTRAINT "_grants_v_blocks_feat_crd_tags_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v_blocks_feat_crd"("id") ON DELETE cascade ON UPDATE no action;
+  `)
+
+  // chunk 37/121
+  await db.execute(sql`
   ALTER TABLE "_grants_v_blocks_feat_crd_tags_locales" ADD CONSTRAINT "_grants_v_blocks_feat_crd_tags_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v_blocks_feat_crd_tags"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_grants_v_blocks_feat_crd" ADD CONSTRAINT "_grants_v_blocks_feat_crd_image_id_media_cloud_id_fk" FOREIGN KEY ("image_id") REFERENCES "public"."media_cloud"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "_grants_v_blocks_feat_crd" ADD CONSTRAINT "_grants_v_blocks_feat_crd_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v"("id") ON DELETE cascade ON UPDATE no action;
@@ -12583,6 +11444,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "_grants_v_blocks_pillar_card_cards_locales" ADD CONSTRAINT "_grants_v_blocks_pillar_card_cards_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v_blocks_pillar_card_cards"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_grants_v_blocks_pillar_card" ADD CONSTRAINT "_grants_v_blocks_pillar_card_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_grants_v_blocks_pillar_card_locales" ADD CONSTRAINT "_grants_v_blocks_pillar_card_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v_blocks_pillar_card"("id") ON DELETE cascade ON UPDATE no action;
+  `)
+
+  // chunk 38/121
+  await db.execute(sql`
   ALTER TABLE "_grants_v_blocks_testimonial_deck_cards" ADD CONSTRAINT "_grants_v_blocks_testimonial_deck_cards_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v_blocks_testimonial_deck"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_grants_v_blocks_testimonial_deck_cards_locales" ADD CONSTRAINT "_grants_v_blocks_testimonial_deck_cards_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v_blocks_testimonial_deck_cards"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_grants_v_blocks_testimonial_deck" ADD CONSTRAINT "_grants_v_blocks_testimonial_deck_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_grants_v"("id") ON DELETE cascade ON UPDATE no action;
@@ -12633,6 +11498,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "grantcards_rels" ADD CONSTRAINT "grantcards_rels_pages_fk" FOREIGN KEY ("pages_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "grantcards_rels" ADD CONSTRAINT "grantcards_rels_blog_fk" FOREIGN KEY ("blog_id") REFERENCES "public"."blog"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "grantcards_rels" ADD CONSTRAINT "grantcards_rels_reports_fk" FOREIGN KEY ("reports_id") REFERENCES "public"."reports"("id") ON DELETE cascade ON UPDATE no action;
+  `)
+
+  // chunk 39/121
+  await db.execute(sql`
   ALTER TABLE "grantcards_rels" ADD CONSTRAINT "grantcards_rels_mmedia_fk" FOREIGN KEY ("mmedia_id") REFERENCES "public"."mmedia"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "grantcards_rels" ADD CONSTRAINT "grantcards_rels_documents_fk" FOREIGN KEY ("documents_id") REFERENCES "public"."documents"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "grantcards_rels" ADD CONSTRAINT "grantcards_rels_etests_fk" FOREIGN KEY ("etests_id") REFERENCES "public"."etests"("id") ON DELETE cascade ON UPDATE no action;
@@ -12683,6 +11552,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "_etests_v_locales" ADD CONSTRAINT "_etests_v_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_etests_v"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_etests_v_rels" ADD CONSTRAINT "_etests_v_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."_etests_v"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_etests_v_rels" ADD CONSTRAINT "_etests_v_rels_grants_fk" FOREIGN KEY ("grants_id") REFERENCES "public"."grants"("id") ON DELETE cascade ON UPDATE no action;
+  `)
+
+  // chunk 40/121
+  await db.execute(sql`
   ALTER TABLE "_etests_v_rels" ADD CONSTRAINT "_etests_v_rels_pages_fk" FOREIGN KEY ("pages_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_etests_v_rels" ADD CONSTRAINT "_etests_v_rels_blog_fk" FOREIGN KEY ("blog_id") REFERENCES "public"."blog"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_etests_v_rels" ADD CONSTRAINT "_etests_v_rels_reports_fk" FOREIGN KEY ("reports_id") REFERENCES "public"."reports"("id") ON DELETE cascade ON UPDATE no action;
@@ -12733,6 +11606,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "pages_blocks_feat_crd_acc_feat_crds_locales" ADD CONSTRAINT "pages_blocks_feat_crd_acc_feat_crds_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages_blocks_feat_crd_acc_feat_crds"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "pages_blocks_feat_crd_acc" ADD CONSTRAINT "pages_blocks_feat_crd_acc_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "pages_blocks_feat_crd_acc_locales" ADD CONSTRAINT "pages_blocks_feat_crd_acc_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages_blocks_feat_crd_acc"("id") ON DELETE cascade ON UPDATE no action;
+  `)
+
+  // chunk 41/121
+  await db.execute(sql`
   ALTER TABLE "pages_blocks_list_crd_dck_cards_tags" ADD CONSTRAINT "pages_blocks_list_crd_dck_cards_tags_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages_blocks_list_crd_dck_cards"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "pages_blocks_list_crd_dck_cards_tags_locales" ADD CONSTRAINT "pages_blocks_list_crd_dck_cards_tags_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages_blocks_list_crd_dck_cards_tags"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "pages_blocks_list_crd_dck_cards" ADD CONSTRAINT "pages_blocks_list_crd_dck_cards_image_id_media_cloud_id_fk" FOREIGN KEY ("image_id") REFERENCES "public"."media_cloud"("id") ON DELETE set null ON UPDATE no action;
@@ -12783,6 +11660,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "pages_blocks_min_card_gallery_cards_locales" ADD CONSTRAINT "pages_blocks_min_card_gallery_cards_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages_blocks_min_card_gallery_cards"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "pages_blocks_min_card_gallery" ADD CONSTRAINT "pages_blocks_min_card_gallery_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "pages_blocks_min_card_gallery_locales" ADD CONSTRAINT "pages_blocks_min_card_gallery_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages_blocks_min_card_gallery"("id") ON DELETE cascade ON UPDATE no action;
+  `)
+
+  // chunk 42/121
+  await db.execute(sql`
   ALTER TABLE "pages_blocks_id_card_gallery_cards" ADD CONSTRAINT "pages_blocks_id_card_gallery_cards_mascot_id_asset_cloud_id_fk" FOREIGN KEY ("mascot_id") REFERENCES "public"."asset_cloud"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "pages_blocks_id_card_gallery_cards" ADD CONSTRAINT "pages_blocks_id_card_gallery_cards_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages_blocks_id_card_gallery"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "pages_blocks_id_card_gallery_cards_locales" ADD CONSTRAINT "pages_blocks_id_card_gallery_cards_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages_blocks_id_card_gallery_cards"("id") ON DELETE cascade ON UPDATE no action;
@@ -12833,6 +11714,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "_pages_v_blocks_comparison_blk_rt_grp_rt_points" ADD CONSTRAINT "_pages_v_blocks_comparison_blk_rt_grp_rt_points_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_pages_v_blocks_comparison_blk"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_pages_v_blocks_comparison_blk_rt_grp_rt_points_locales" ADD CONSTRAINT "_pages_v_blocks_comparison_blk_rt_grp_rt_points_locales_p_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_pages_v_blocks_comparison_blk_rt_grp_rt_points"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_pages_v_blocks_comparison_blk_buttons" ADD CONSTRAINT "_pages_v_blocks_comparison_blk_buttons_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_pages_v_blocks_comparison_blk"("id") ON DELETE cascade ON UPDATE no action;
+  `)
+
+  // chunk 43/121
+  await db.execute(sql`
   ALTER TABLE "_pages_v_blocks_comparison_blk_buttons_locales" ADD CONSTRAINT "_pages_v_blocks_comparison_blk_buttons_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_pages_v_blocks_comparison_blk_buttons"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_pages_v_blocks_comparison_blk" ADD CONSTRAINT "_pages_v_blocks_comparison_blk_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_pages_v"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_pages_v_blocks_comparison_blk_locales" ADD CONSTRAINT "_pages_v_blocks_comparison_blk_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_pages_v_blocks_comparison_blk"("id") ON DELETE cascade ON UPDATE no action;
@@ -12883,6 +11768,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "_pages_v_blocks_funding_map_items" ADD CONSTRAINT "_pages_v_blocks_funding_map_items_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_pages_v_blocks_funding_map"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_pages_v_blocks_funding_map" ADD CONSTRAINT "_pages_v_blocks_funding_map_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_pages_v"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_pages_v_blocks_funding_map_locales" ADD CONSTRAINT "_pages_v_blocks_funding_map_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_pages_v_blocks_funding_map"("id") ON DELETE cascade ON UPDATE no action;
+  `)
+
+  // chunk 44/121
+  await db.execute(sql`
   ALTER TABLE "_pages_v_blocks_resource_feat_card" ADD CONSTRAINT "_pages_v_blocks_resource_feat_card_filter_by_doc_type_id_doctypes_id_fk" FOREIGN KEY ("filter_by_doc_type_id") REFERENCES "public"."doctypes"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "_pages_v_blocks_resource_feat_card" ADD CONSTRAINT "_pages_v_blocks_resource_feat_card_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_pages_v"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_pages_v_blocks_resource_feat_card_locales" ADD CONSTRAINT "_pages_v_blocks_resource_feat_card_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_pages_v_blocks_resource_feat_card"("id") ON DELETE cascade ON UPDATE no action;
@@ -12933,6 +11822,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "blog_hero_buttons" ADD CONSTRAINT "blog_hero_buttons_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."blog"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "blog_hero_buttons_locales" ADD CONSTRAINT "blog_hero_buttons_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."blog_hero_buttons"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "blog_blocks_rich_content_block" ADD CONSTRAINT "blog_blocks_rich_content_block_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."blog"("id") ON DELETE cascade ON UPDATE no action;
+  `)
+
+  // chunk 45/121
+  await db.execute(sql`
   ALTER TABLE "blog_blocks_rich_content_block_locales" ADD CONSTRAINT "blog_blocks_rich_content_block_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."blog_blocks_rich_content_block"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "blog_blocks_secondarycta_cta_button" ADD CONSTRAINT "blog_blocks_secondarycta_cta_button_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."blog_blocks_secondarycta"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "blog_blocks_secondarycta_cta_button_locales" ADD CONSTRAINT "blog_blocks_secondarycta_cta_button_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."blog_blocks_secondarycta_cta_button"("id") ON DELETE cascade ON UPDATE no action;
@@ -12983,6 +11876,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "blog_blocks_list_crd_dck_buttons_locales" ADD CONSTRAINT "blog_blocks_list_crd_dck_buttons_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."blog_blocks_list_crd_dck_buttons"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "blog_blocks_list_crd_dck" ADD CONSTRAINT "blog_blocks_list_crd_dck_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."blog"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "blog_blocks_list_crd_dck_locales" ADD CONSTRAINT "blog_blocks_list_crd_dck_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."blog_blocks_list_crd_dck"("id") ON DELETE cascade ON UPDATE no action;
+  `)
+
+  // chunk 46/121
+  await db.execute(sql`
   ALTER TABLE "blog_blocks_faq_blk_faqs" ADD CONSTRAINT "blog_blocks_faq_blk_faqs_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."blog_blocks_faq_blk"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "blog_blocks_faq_blk_faqs_locales" ADD CONSTRAINT "blog_blocks_faq_blk_faqs_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."blog_blocks_faq_blk_faqs"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "blog_blocks_faq_blk" ADD CONSTRAINT "blog_blocks_faq_blk_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."blog"("id") ON DELETE cascade ON UPDATE no action;
@@ -13033,6 +11930,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "blog_blocks_two_column_block_locales" ADD CONSTRAINT "blog_blocks_two_column_block_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."blog_blocks_two_column_block"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "blog_blocks_three_column_table_block_rows" ADD CONSTRAINT "blog_blocks_three_column_table_block_rows_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."blog_blocks_three_column_table_block"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "blog_blocks_three_column_table_block_rows_locales" ADD CONSTRAINT "blog_blocks_three_column_table_block_rows_locales_parent__fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."blog_blocks_three_column_table_block_rows"("id") ON DELETE cascade ON UPDATE no action;
+  `)
+
+  // chunk 47/121
+  await db.execute(sql`
   ALTER TABLE "blog_blocks_three_column_table_block" ADD CONSTRAINT "blog_blocks_three_column_table_block_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."blog"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "blog_blocks_three_column_table_block_locales" ADD CONSTRAINT "blog_blocks_three_column_table_block_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."blog_blocks_three_column_table_block"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "blog" ADD CONSTRAINT "blog_image_id_media_cloud_id_fk" FOREIGN KEY ("image_id") REFERENCES "public"."media_cloud"("id") ON DELETE set null ON UPDATE no action;
@@ -13083,6 +11984,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "_blog_v_blocks_ylw_deck_cards" ADD CONSTRAINT "_blog_v_blocks_ylw_deck_cards_mascot_id_asset_cloud_id_fk" FOREIGN KEY ("mascot_id") REFERENCES "public"."asset_cloud"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "_blog_v_blocks_ylw_deck_cards" ADD CONSTRAINT "_blog_v_blocks_ylw_deck_cards_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_blog_v_blocks_ylw_deck"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_blog_v_blocks_ylw_deck_cards_locales" ADD CONSTRAINT "_blog_v_blocks_ylw_deck_cards_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_blog_v_blocks_ylw_deck_cards"("id") ON DELETE cascade ON UPDATE no action;
+  `)
+
+  // chunk 48/121
+  await db.execute(sql`
   ALTER TABLE "_blog_v_blocks_ylw_deck" ADD CONSTRAINT "_blog_v_blocks_ylw_deck_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_blog_v"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_blog_v_blocks_ylw_deck_locales" ADD CONSTRAINT "_blog_v_blocks_ylw_deck_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_blog_v_blocks_ylw_deck"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_blog_v_blocks_feat_crd_tags" ADD CONSTRAINT "_blog_v_blocks_feat_crd_tags_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_blog_v_blocks_feat_crd"("id") ON DELETE cascade ON UPDATE no action;
@@ -13133,6 +12038,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "_blog_v_blocks_resource_gallery_locales" ADD CONSTRAINT "_blog_v_blocks_resource_gallery_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_blog_v_blocks_resource_gallery"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_blog_v_blocks_pillar_card_cards" ADD CONSTRAINT "_blog_v_blocks_pillar_card_cards_mascot_id_asset_cloud_id_fk" FOREIGN KEY ("mascot_id") REFERENCES "public"."asset_cloud"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "_blog_v_blocks_pillar_card_cards" ADD CONSTRAINT "_blog_v_blocks_pillar_card_cards_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_blog_v_blocks_pillar_card"("id") ON DELETE cascade ON UPDATE no action;
+  `)
+
+  // chunk 49/121
+  await db.execute(sql`
   ALTER TABLE "_blog_v_blocks_pillar_card_cards_locales" ADD CONSTRAINT "_blog_v_blocks_pillar_card_cards_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_blog_v_blocks_pillar_card_cards"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_blog_v_blocks_pillar_card" ADD CONSTRAINT "_blog_v_blocks_pillar_card_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_blog_v"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_blog_v_blocks_pillar_card_locales" ADD CONSTRAINT "_blog_v_blocks_pillar_card_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_blog_v_blocks_pillar_card"("id") ON DELETE cascade ON UPDATE no action;
@@ -13183,6 +12092,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "reports_blocks_secondarycta_locales" ADD CONSTRAINT "reports_blocks_secondarycta_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."reports_blocks_secondarycta"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "reports_blocks_mcol_info_block_multicols" ADD CONSTRAINT "reports_blocks_mcol_info_block_multicols_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."reports_blocks_mcol_info_block"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "reports_blocks_mcol_info_block_multicols_locales" ADD CONSTRAINT "reports_blocks_mcol_info_block_multicols_locales_parent_i_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."reports_blocks_mcol_info_block_multicols"("id") ON DELETE cascade ON UPDATE no action;
+  `)
+
+  // chunk 50/121
+  await db.execute(sql`
   ALTER TABLE "reports_blocks_mcol_info_block" ADD CONSTRAINT "reports_blocks_mcol_info_block_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."reports"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "reports_blocks_grant_card_grid_block" ADD CONSTRAINT "reports_blocks_grant_card_grid_block_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."reports"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "reports_blocks_grant_card_grid_block_locales" ADD CONSTRAINT "reports_blocks_grant_card_grid_block_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."reports_blocks_grant_card_grid_block"("id") ON DELETE cascade ON UPDATE no action;
@@ -13233,6 +12146,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "reports_blocks_pink_puffy_top_row" ADD CONSTRAINT "reports_blocks_pink_puffy_top_row_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."reports_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "reports_blocks_pink_puffy_top_row_locales" ADD CONSTRAINT "reports_blocks_pink_puffy_top_row_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."reports_blocks_pink_puffy_top_row"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "reports_blocks_pink_puffy_bot_row" ADD CONSTRAINT "reports_blocks_pink_puffy_bot_row_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."reports_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
+  `)
+
+  // chunk 51/121
+  await db.execute(sql`
   ALTER TABLE "reports_blocks_pink_puffy_bot_row_locales" ADD CONSTRAINT "reports_blocks_pink_puffy_bot_row_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."reports_blocks_pink_puffy_bot_row"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "reports_blocks_pink_puffy_links" ADD CONSTRAINT "reports_blocks_pink_puffy_links_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."reports_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "reports_blocks_pink_puffy_links_locales" ADD CONSTRAINT "reports_blocks_pink_puffy_links_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."reports_blocks_pink_puffy_links"("id") ON DELETE cascade ON UPDATE no action;
@@ -13283,6 +12200,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "reports" ADD CONSTRAINT "reports_updated_by_id_users_id_fk" FOREIGN KEY ("updated_by_id") REFERENCES "public"."users"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "reports" ADD CONSTRAINT "reports_meta_image_id_asset_cloud_id_fk" FOREIGN KEY ("meta_image_id") REFERENCES "public"."asset_cloud"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "reports" ADD CONSTRAINT "reports_folder_id_payload_folders_id_fk" FOREIGN KEY ("folder_id") REFERENCES "public"."payload_folders"("id") ON DELETE set null ON UPDATE no action;
+  `)
+
+  // chunk 52/121
+  await db.execute(sql`
   ALTER TABLE "reports_locales" ADD CONSTRAINT "reports_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."reports"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "reports_rels" ADD CONSTRAINT "reports_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."reports"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "reports_rels" ADD CONSTRAINT "reports_rels_doctypes_fk" FOREIGN KEY ("doctypes_id") REFERENCES "public"."doctypes"("id") ON DELETE cascade ON UPDATE no action;
@@ -13333,6 +12254,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "_reports_v_blocks_feat_crd" ADD CONSTRAINT "_reports_v_blocks_feat_crd_image_id_media_cloud_id_fk" FOREIGN KEY ("image_id") REFERENCES "public"."media_cloud"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "_reports_v_blocks_feat_crd" ADD CONSTRAINT "_reports_v_blocks_feat_crd_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_reports_v"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_reports_v_blocks_feat_crd_locales" ADD CONSTRAINT "_reports_v_blocks_feat_crd_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_reports_v_blocks_feat_crd"("id") ON DELETE cascade ON UPDATE no action;
+  `)
+
+  // chunk 53/121
+  await db.execute(sql`
   ALTER TABLE "_reports_v_blocks_feat_crd_acc_feat_crds" ADD CONSTRAINT "_reports_v_blocks_feat_crd_acc_feat_crds_mascot_id_asset_cloud_id_fk" FOREIGN KEY ("mascot_id") REFERENCES "public"."asset_cloud"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "_reports_v_blocks_feat_crd_acc_feat_crds" ADD CONSTRAINT "_reports_v_blocks_feat_crd_acc_feat_crds_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_reports_v_blocks_feat_crd_acc"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_reports_v_blocks_feat_crd_acc_feat_crds_locales" ADD CONSTRAINT "_reports_v_blocks_feat_crd_acc_feat_crds_locales_parent_i_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_reports_v_blocks_feat_crd_acc_feat_crds"("id") ON DELETE cascade ON UPDATE no action;
@@ -13383,6 +12308,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "_reports_v_blocks_testimonial_deck_cards_locales" ADD CONSTRAINT "_reports_v_blocks_testimonial_deck_cards_locales_parent_i_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_reports_v_blocks_testimonial_deck_cards"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_reports_v_blocks_testimonial_deck" ADD CONSTRAINT "_reports_v_blocks_testimonial_deck_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_reports_v"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_reports_v_blocks_testimonial_deck_locales" ADD CONSTRAINT "_reports_v_blocks_testimonial_deck_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_reports_v_blocks_testimonial_deck"("id") ON DELETE cascade ON UPDATE no action;
+  `)
+
+  // chunk 54/121
+  await db.execute(sql`
   ALTER TABLE "_reports_v_blocks_min_card_gallery_cards" ADD CONSTRAINT "_reports_v_blocks_min_card_gallery_cards_mascot_id_asset_cloud_id_fk" FOREIGN KEY ("mascot_id") REFERENCES "public"."asset_cloud"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "_reports_v_blocks_min_card_gallery_cards" ADD CONSTRAINT "_reports_v_blocks_min_card_gallery_cards_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_reports_v_blocks_min_card_gallery"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_reports_v_blocks_min_card_gallery_cards_locales" ADD CONSTRAINT "_reports_v_blocks_min_card_gallery_cards_locales_parent_i_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_reports_v_blocks_min_card_gallery_cards"("id") ON DELETE cascade ON UPDATE no action;
@@ -13433,6 +12362,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "mmedia_blocks_mstep_process_steps_details_locales" ADD CONSTRAINT "mmedia_blocks_mstep_process_steps_details_locales_parent__fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."mmedia_blocks_mstep_process_steps_details"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "mmedia_blocks_mstep_process_steps" ADD CONSTRAINT "mmedia_blocks_mstep_process_steps_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."mmedia_blocks_mstep_process"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "mmedia_blocks_mstep_process_steps_locales" ADD CONSTRAINT "mmedia_blocks_mstep_process_steps_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."mmedia_blocks_mstep_process_steps"("id") ON DELETE cascade ON UPDATE no action;
+  `)
+
+  // chunk 55/121
+  await db.execute(sql`
   ALTER TABLE "mmedia_blocks_mstep_process" ADD CONSTRAINT "mmedia_blocks_mstep_process_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."mmedia"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "mmedia_blocks_mstep_process_locales" ADD CONSTRAINT "mmedia_blocks_mstep_process_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."mmedia_blocks_mstep_process"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "mmedia_blocks_comparison_blk_lft_grp_lft_points" ADD CONSTRAINT "mmedia_blocks_comparison_blk_lft_grp_lft_points_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."mmedia_blocks_comparison_blk"("id") ON DELETE cascade ON UPDATE no action;
@@ -13483,6 +12416,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "mmedia_blocks_pink_puffy_locales" ADD CONSTRAINT "mmedia_blocks_pink_puffy_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."mmedia_blocks_pink_puffy"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "mmedia_blocks_beige_puffy_items" ADD CONSTRAINT "mmedia_blocks_beige_puffy_items_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."mmedia_blocks_beige_puffy"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "mmedia_blocks_beige_puffy_items_locales" ADD CONSTRAINT "mmedia_blocks_beige_puffy_items_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."mmedia_blocks_beige_puffy_items"("id") ON DELETE cascade ON UPDATE no action;
+  `)
+
+  // chunk 56/121
+  await db.execute(sql`
   ALTER TABLE "mmedia_blocks_beige_puffy" ADD CONSTRAINT "mmedia_blocks_beige_puffy_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."mmedia"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "mmedia_blocks_beige_puffy_locales" ADD CONSTRAINT "mmedia_blocks_beige_puffy_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."mmedia_blocks_beige_puffy"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "mmedia_blocks_funding_map_items_subitems" ADD CONSTRAINT "mmedia_blocks_funding_map_items_subitems_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."mmedia_blocks_funding_map_items"("id") ON DELETE cascade ON UPDATE no action;
@@ -13533,6 +12470,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "mmedia_rels" ADD CONSTRAINT "mmedia_rels_pages_fk" FOREIGN KEY ("pages_id") REFERENCES "public"."pages"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "mmedia_rels" ADD CONSTRAINT "mmedia_rels_blog_fk" FOREIGN KEY ("blog_id") REFERENCES "public"."blog"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "mmedia_rels" ADD CONSTRAINT "mmedia_rels_reports_fk" FOREIGN KEY ("reports_id") REFERENCES "public"."reports"("id") ON DELETE cascade ON UPDATE no action;
+  `)
+
+  // chunk 57/121
+  await db.execute(sql`
   ALTER TABLE "mmedia_rels" ADD CONSTRAINT "mmedia_rels_mmedia_fk" FOREIGN KEY ("mmedia_id") REFERENCES "public"."mmedia"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "mmedia_rels" ADD CONSTRAINT "mmedia_rels_documents_fk" FOREIGN KEY ("documents_id") REFERENCES "public"."documents"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "mmedia_rels" ADD CONSTRAINT "mmedia_rels_etests_fk" FOREIGN KEY ("etests_id") REFERENCES "public"."etests"("id") ON DELETE cascade ON UPDATE no action;
@@ -13583,6 +12524,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "_mmedia_v_blocks_feat_crd_acc_locales" ADD CONSTRAINT "_mmedia_v_blocks_feat_crd_acc_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_mmedia_v_blocks_feat_crd_acc"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_mmedia_v_blocks_list_crd_dck_cards_tags" ADD CONSTRAINT "_mmedia_v_blocks_list_crd_dck_cards_tags_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_mmedia_v_blocks_list_crd_dck_cards"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_mmedia_v_blocks_list_crd_dck_cards_tags_locales" ADD CONSTRAINT "_mmedia_v_blocks_list_crd_dck_cards_tags_locales_parent_i_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_mmedia_v_blocks_list_crd_dck_cards_tags"("id") ON DELETE cascade ON UPDATE no action;
+  `)
+
+  // chunk 58/121
+  await db.execute(sql`
   ALTER TABLE "_mmedia_v_blocks_list_crd_dck_cards" ADD CONSTRAINT "_mmedia_v_blocks_list_crd_dck_cards_image_id_media_cloud_id_fk" FOREIGN KEY ("image_id") REFERENCES "public"."media_cloud"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "_mmedia_v_blocks_list_crd_dck_cards" ADD CONSTRAINT "_mmedia_v_blocks_list_crd_dck_cards_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_mmedia_v_blocks_list_crd_dck"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_mmedia_v_blocks_list_crd_dck_cards_locales" ADD CONSTRAINT "_mmedia_v_blocks_list_crd_dck_cards_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_mmedia_v_blocks_list_crd_dck_cards"("id") ON DELETE cascade ON UPDATE no action;
@@ -13633,6 +12578,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "_mmedia_v_blocks_min_card_gallery_locales" ADD CONSTRAINT "_mmedia_v_blocks_min_card_gallery_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_mmedia_v_blocks_min_card_gallery"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_mmedia_v_blocks_id_card_gallery_cards" ADD CONSTRAINT "_mmedia_v_blocks_id_card_gallery_cards_mascot_id_asset_cloud_id_fk" FOREIGN KEY ("mascot_id") REFERENCES "public"."asset_cloud"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "_mmedia_v_blocks_id_card_gallery_cards" ADD CONSTRAINT "_mmedia_v_blocks_id_card_gallery_cards_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_mmedia_v_blocks_id_card_gallery"("id") ON DELETE cascade ON UPDATE no action;
+  `)
+
+  // chunk 59/121
+  await db.execute(sql`
   ALTER TABLE "_mmedia_v_blocks_id_card_gallery_cards_locales" ADD CONSTRAINT "_mmedia_v_blocks_id_card_gallery_cards_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_mmedia_v_blocks_id_card_gallery_cards"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_mmedia_v_blocks_id_card_gallery" ADD CONSTRAINT "_mmedia_v_blocks_id_card_gallery_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_mmedia_v"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_mmedia_v_blocks_id_card_gallery_locales" ADD CONSTRAINT "_mmedia_v_blocks_id_card_gallery_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_mmedia_v_blocks_id_card_gallery"("id") ON DELETE cascade ON UPDATE no action;
@@ -13683,6 +12632,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "forms_blocks_email_locales" ADD CONSTRAINT "forms_blocks_email_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."forms_blocks_email"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "forms_blocks_message" ADD CONSTRAINT "forms_blocks_message_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."forms"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "forms_blocks_message_locales" ADD CONSTRAINT "forms_blocks_message_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."forms_blocks_message"("id") ON DELETE cascade ON UPDATE no action;
+  `)
+
+  // chunk 60/121
+  await db.execute(sql`
   ALTER TABLE "forms_blocks_number" ADD CONSTRAINT "forms_blocks_number_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."forms"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "forms_blocks_number_locales" ADD CONSTRAINT "forms_blocks_number_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."forms_blocks_number"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "forms_blocks_select_options" ADD CONSTRAINT "forms_blocks_select_options_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."forms_blocks_select"("id") ON DELETE cascade ON UPDATE no action;
@@ -13733,6 +12686,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "payload_preferences_rels" ADD CONSTRAINT "payload_preferences_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."payload_preferences"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_preferences_rels" ADD CONSTRAINT "payload_preferences_rels_users_fk" FOREIGN KEY ("users_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "homepage_cta_button" ADD CONSTRAINT "homepage_cta_button_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."homepage"("id") ON DELETE cascade ON UPDATE no action;
+  `)
+
+  // chunk 61/121
+  await db.execute(sql`
   ALTER TABLE "homepage_cta_button_locales" ADD CONSTRAINT "homepage_cta_button_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."homepage_cta_button"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "homepage_blocks_rich_content_block" ADD CONSTRAINT "homepage_blocks_rich_content_block_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."homepage"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "homepage_blocks_rich_content_block_locales" ADD CONSTRAINT "homepage_blocks_rich_content_block_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."homepage_blocks_rich_content_block"("id") ON DELETE cascade ON UPDATE no action;
@@ -13783,6 +12740,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "homepage_blocks_list_crd_dck_cards_locales" ADD CONSTRAINT "homepage_blocks_list_crd_dck_cards_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."homepage_blocks_list_crd_dck_cards"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "homepage_blocks_list_crd_dck_buttons" ADD CONSTRAINT "homepage_blocks_list_crd_dck_buttons_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."homepage_blocks_list_crd_dck"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "homepage_blocks_list_crd_dck_buttons_locales" ADD CONSTRAINT "homepage_blocks_list_crd_dck_buttons_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."homepage_blocks_list_crd_dck_buttons"("id") ON DELETE cascade ON UPDATE no action;
+  `)
+
+  // chunk 62/121
+  await db.execute(sql`
   ALTER TABLE "homepage_blocks_list_crd_dck" ADD CONSTRAINT "homepage_blocks_list_crd_dck_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."homepage"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "homepage_blocks_list_crd_dck_locales" ADD CONSTRAINT "homepage_blocks_list_crd_dck_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."homepage_blocks_list_crd_dck"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "homepage_blocks_faq_blk_faqs" ADD CONSTRAINT "homepage_blocks_faq_blk_faqs_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."homepage_blocks_faq_blk"("id") ON DELETE cascade ON UPDATE no action;
@@ -13833,6 +12794,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "homepage_blocks_id_card_gallery_locales" ADD CONSTRAINT "homepage_blocks_id_card_gallery_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."homepage_blocks_id_card_gallery"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "homepage_blocks_two_column_block" ADD CONSTRAINT "homepage_blocks_two_column_block_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."homepage"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "homepage_blocks_two_column_block_locales" ADD CONSTRAINT "homepage_blocks_two_column_block_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."homepage_blocks_two_column_block"("id") ON DELETE cascade ON UPDATE no action;
+  `)
+
+  // chunk 63/121
+  await db.execute(sql`
   ALTER TABLE "homepage_blocks_three_column_table_block_rows" ADD CONSTRAINT "homepage_blocks_three_column_table_block_rows_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."homepage_blocks_three_column_table_block"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "homepage_blocks_three_column_table_block_rows_locales" ADD CONSTRAINT "homepage_blocks_three_column_table_block_rows_locales_par_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."homepage_blocks_three_column_table_block_rows"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "homepage_blocks_three_column_table_block" ADD CONSTRAINT "homepage_blocks_three_column_table_block_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."homepage"("id") ON DELETE cascade ON UPDATE no action;
@@ -13883,6 +12848,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "_homepage_v_blocks_ylw_deck_cards" ADD CONSTRAINT "_homepage_v_blocks_ylw_deck_cards_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_homepage_v_blocks_ylw_deck"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_homepage_v_blocks_ylw_deck_cards_locales" ADD CONSTRAINT "_homepage_v_blocks_ylw_deck_cards_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_homepage_v_blocks_ylw_deck_cards"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_homepage_v_blocks_ylw_deck" ADD CONSTRAINT "_homepage_v_blocks_ylw_deck_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_homepage_v"("id") ON DELETE cascade ON UPDATE no action;
+  `)
+
+  // chunk 64/121
+  await db.execute(sql`
   ALTER TABLE "_homepage_v_blocks_ylw_deck_locales" ADD CONSTRAINT "_homepage_v_blocks_ylw_deck_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_homepage_v_blocks_ylw_deck"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_homepage_v_blocks_feat_crd_tags" ADD CONSTRAINT "_homepage_v_blocks_feat_crd_tags_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_homepage_v_blocks_feat_crd"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_homepage_v_blocks_feat_crd_tags_locales" ADD CONSTRAINT "_homepage_v_blocks_feat_crd_tags_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_homepage_v_blocks_feat_crd_tags"("id") ON DELETE cascade ON UPDATE no action;
@@ -13933,6 +12902,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "_homepage_v_blocks_pillar_card_cards" ADD CONSTRAINT "_homepage_v_blocks_pillar_card_cards_mascot_id_asset_cloud_id_fk" FOREIGN KEY ("mascot_id") REFERENCES "public"."asset_cloud"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "_homepage_v_blocks_pillar_card_cards" ADD CONSTRAINT "_homepage_v_blocks_pillar_card_cards_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_homepage_v_blocks_pillar_card"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_homepage_v_blocks_pillar_card_cards_locales" ADD CONSTRAINT "_homepage_v_blocks_pillar_card_cards_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_homepage_v_blocks_pillar_card_cards"("id") ON DELETE cascade ON UPDATE no action;
+  `)
+
+  // chunk 65/121
+  await db.execute(sql`
   ALTER TABLE "_homepage_v_blocks_pillar_card" ADD CONSTRAINT "_homepage_v_blocks_pillar_card_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_homepage_v"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_homepage_v_blocks_pillar_card_locales" ADD CONSTRAINT "_homepage_v_blocks_pillar_card_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_homepage_v_blocks_pillar_card"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_homepage_v_blocks_testimonial_deck_cards" ADD CONSTRAINT "_homepage_v_blocks_testimonial_deck_cards_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_homepage_v_blocks_testimonial_deck"("id") ON DELETE cascade ON UPDATE no action;
@@ -13983,6 +12956,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "footer_badges" ADD CONSTRAINT "footer_badges_image_id_media_cloud_id_fk" FOREIGN KEY ("image_id") REFERENCES "public"."media_cloud"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "footer_badges" ADD CONSTRAINT "footer_badges_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."footer"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "footer" ADD CONSTRAINT "footer_logo_id_asset_cloud_id_fk" FOREIGN KEY ("logo_id") REFERENCES "public"."asset_cloud"("id") ON DELETE set null ON UPDATE no action;
+  `)
+
+  // chunk 66/121
+  await db.execute(sql`
   ALTER TABLE "footer_locales" ADD CONSTRAINT "footer_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."footer"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "nav_menu_items_nav_items" ADD CONSTRAINT "nav_menu_items_nav_items_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."nav_menu_items"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "nav_menu_items_nav_items_locales" ADD CONSTRAINT "nav_menu_items_nav_items_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."nav_menu_items_nav_items"("id") ON DELETE cascade ON UPDATE no action;
@@ -14033,6 +13010,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "grants_blocks_mstep_process_path_idx" ON "grants_blocks_mstep_process" USING btree ("_path");
   CREATE UNIQUE INDEX "grants_blocks_mstep_process_locales_locale_parent_id_unique" ON "grants_blocks_mstep_process_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "grants_blocks_comparison_blk_lft_grp_lft_points_order_idx" ON "grants_blocks_comparison_blk_lft_grp_lft_points" USING btree ("_order");
+  `)
+
+  // chunk 67/121
+  await db.execute(sql`
   CREATE INDEX "grants_blocks_comparison_blk_lft_grp_lft_points_parent_id_idx" ON "grants_blocks_comparison_blk_lft_grp_lft_points" USING btree ("_parent_id");
   CREATE UNIQUE INDEX "grants_blocks_comparison_blk_lft_grp_lft_points_locales_loca" ON "grants_blocks_comparison_blk_lft_grp_lft_points_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "grants_blocks_comparison_blk_rt_grp_rt_points_order_idx" ON "grants_blocks_comparison_blk_rt_grp_rt_points" USING btree ("_order");
@@ -14083,6 +13064,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "grants_blocks_list_crd_dck_buttons_parent_id_idx" ON "grants_blocks_list_crd_dck_buttons" USING btree ("_parent_id");
   CREATE UNIQUE INDEX "grants_blocks_list_crd_dck_buttons_locales_locale_parent_id_" ON "grants_blocks_list_crd_dck_buttons_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "grants_blocks_list_crd_dck_order_idx" ON "grants_blocks_list_crd_dck" USING btree ("_order");
+  `)
+
+  // chunk 68/121
+  await db.execute(sql`
   CREATE INDEX "grants_blocks_list_crd_dck_parent_id_idx" ON "grants_blocks_list_crd_dck" USING btree ("_parent_id");
   CREATE INDEX "grants_blocks_list_crd_dck_path_idx" ON "grants_blocks_list_crd_dck" USING btree ("_path");
   CREATE UNIQUE INDEX "grants_blocks_list_crd_dck_locales_locale_parent_id_unique" ON "grants_blocks_list_crd_dck_locales" USING btree ("_locale","_parent_id");
@@ -14133,6 +13118,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "grants_blocks_resource_gallery_filter_by_doc_type_idx" ON "grants_blocks_resource_gallery" USING btree ("filter_by_doc_type_id");
   CREATE UNIQUE INDEX "grants_blocks_resource_gallery_locales_locale_parent_id_uniq" ON "grants_blocks_resource_gallery_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "grants_blocks_pillar_card_cards_order_idx" ON "grants_blocks_pillar_card_cards" USING btree ("_order");
+  `)
+
+  // chunk 69/121
+  await db.execute(sql`
   CREATE INDEX "grants_blocks_pillar_card_cards_parent_id_idx" ON "grants_blocks_pillar_card_cards" USING btree ("_parent_id");
   CREATE INDEX "grants_blocks_pillar_card_cards_mascot_idx" ON "grants_blocks_pillar_card_cards" USING btree ("mascot_id");
   CREATE UNIQUE INDEX "grants_blocks_pillar_card_cards_locales_locale_parent_id_uni" ON "grants_blocks_pillar_card_cards_locales" USING btree ("_locale","_parent_id");
@@ -14183,6 +13172,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "grants_folder_idx" ON "grants" USING btree ("folder_id");
   CREATE INDEX "grants_updated_at_idx" ON "grants" USING btree ("updated_at");
   CREATE INDEX "grants_created_at_idx" ON "grants" USING btree ("created_at");
+  `)
+
+  // chunk 70/121
+  await db.execute(sql`
   CREATE INDEX "grants_deleted_at_idx" ON "grants" USING btree ("deleted_at");
   CREATE INDEX "grants__status_idx" ON "grants" USING btree ("_status");
   CREATE UNIQUE INDEX "grants_locales_locale_parent_id_unique" ON "grants_locales" USING btree ("_locale","_parent_id");
@@ -14233,6 +13226,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE UNIQUE INDEX "_grants_v_blocks_mstep_process_locales_locale_parent_id_uniq" ON "_grants_v_blocks_mstep_process_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_grants_v_blocks_comparison_blk_lft_grp_lft_points_order_idx" ON "_grants_v_blocks_comparison_blk_lft_grp_lft_points" USING btree ("_order");
   CREATE INDEX "_grants_v_blocks_comparison_blk_lft_grp_lft_points_parent_id_idx" ON "_grants_v_blocks_comparison_blk_lft_grp_lft_points" USING btree ("_parent_id");
+  `)
+
+  // chunk 71/121
+  await db.execute(sql`
   CREATE UNIQUE INDEX "_grants_v_blocks_comparison_blk_lft_grp_lft_points_locales_l" ON "_grants_v_blocks_comparison_blk_lft_grp_lft_points_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_grants_v_blocks_comparison_blk_rt_grp_rt_points_order_idx" ON "_grants_v_blocks_comparison_blk_rt_grp_rt_points" USING btree ("_order");
   CREATE INDEX "_grants_v_blocks_comparison_blk_rt_grp_rt_points_parent_id_idx" ON "_grants_v_blocks_comparison_blk_rt_grp_rt_points" USING btree ("_parent_id");
@@ -14283,6 +13280,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE UNIQUE INDEX "_grants_v_blocks_list_crd_dck_buttons_locales_locale_parent_" ON "_grants_v_blocks_list_crd_dck_buttons_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_grants_v_blocks_list_crd_dck_order_idx" ON "_grants_v_blocks_list_crd_dck" USING btree ("_order");
   CREATE INDEX "_grants_v_blocks_list_crd_dck_parent_id_idx" ON "_grants_v_blocks_list_crd_dck" USING btree ("_parent_id");
+  `)
+
+  // chunk 72/121
+  await db.execute(sql`
   CREATE INDEX "_grants_v_blocks_list_crd_dck_path_idx" ON "_grants_v_blocks_list_crd_dck" USING btree ("_path");
   CREATE UNIQUE INDEX "_grants_v_blocks_list_crd_dck_locales_locale_parent_id_uniqu" ON "_grants_v_blocks_list_crd_dck_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_grants_v_blocks_faq_blk_faqs_order_idx" ON "_grants_v_blocks_faq_blk_faqs" USING btree ("_order");
@@ -14333,6 +13334,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE UNIQUE INDEX "_grants_v_blocks_resource_gallery_locales_locale_parent_id_u" ON "_grants_v_blocks_resource_gallery_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_grants_v_blocks_pillar_card_cards_order_idx" ON "_grants_v_blocks_pillar_card_cards" USING btree ("_order");
   CREATE INDEX "_grants_v_blocks_pillar_card_cards_parent_id_idx" ON "_grants_v_blocks_pillar_card_cards" USING btree ("_parent_id");
+  `)
+
+  // chunk 73/121
+  await db.execute(sql`
   CREATE INDEX "_grants_v_blocks_pillar_card_cards_mascot_idx" ON "_grants_v_blocks_pillar_card_cards" USING btree ("mascot_id");
   CREATE UNIQUE INDEX "_grants_v_blocks_pillar_card_cards_locales_locale_parent_id_" ON "_grants_v_blocks_pillar_card_cards_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_grants_v_blocks_pillar_card_order_idx" ON "_grants_v_blocks_pillar_card" USING btree ("_order");
@@ -14383,6 +13388,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_grants_v_version_version_folder_idx" ON "_grants_v" USING btree ("version_folder_id");
   CREATE INDEX "_grants_v_version_version_updated_at_idx" ON "_grants_v" USING btree ("version_updated_at");
   CREATE INDEX "_grants_v_version_version_created_at_idx" ON "_grants_v" USING btree ("version_created_at");
+  `)
+
+  // chunk 74/121
+  await db.execute(sql`
   CREATE INDEX "_grants_v_version_version_deleted_at_idx" ON "_grants_v" USING btree ("version_deleted_at");
   CREATE INDEX "_grants_v_version_version__status_idx" ON "_grants_v" USING btree ("version__status");
   CREATE INDEX "_grants_v_created_at_idx" ON "_grants_v" USING btree ("created_at");
@@ -14433,6 +13442,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_grantcards_v_version_grant_specs_order_idx" ON "_grantcards_v_version_grant_specs" USING btree ("_order");
   CREATE INDEX "_grantcards_v_version_grant_specs_parent_id_idx" ON "_grantcards_v_version_grant_specs" USING btree ("_parent_id");
   CREATE UNIQUE INDEX "_grantcards_v_version_grant_specs_locales_locale_parent_id_u" ON "_grantcards_v_version_grant_specs_locales" USING btree ("_locale","_parent_id");
+  `)
+
+  // chunk 75/121
+  await db.execute(sql`
   CREATE INDEX "_grantcards_v_version_card_buttons_order_idx" ON "_grantcards_v_version_card_buttons" USING btree ("_order");
   CREATE INDEX "_grantcards_v_version_card_buttons_parent_id_idx" ON "_grantcards_v_version_card_buttons" USING btree ("_parent_id");
   CREATE UNIQUE INDEX "_grantcards_v_version_card_buttons_locales_locale_parent_id_" ON "_grantcards_v_version_card_buttons_locales" USING btree ("_locale","_parent_id");
@@ -14483,6 +13496,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE UNIQUE INDEX "etests_locales_locale_parent_id_unique" ON "etests_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "etests_rels_order_idx" ON "etests_rels" USING btree ("order");
   CREATE INDEX "etests_rels_parent_idx" ON "etests_rels" USING btree ("parent_id");
+  `)
+
+  // chunk 76/121
+  await db.execute(sql`
   CREATE INDEX "etests_rels_path_idx" ON "etests_rels" USING btree ("path");
   CREATE INDEX "etests_rels_grants_id_idx" ON "etests_rels" USING btree ("grants_id");
   CREATE INDEX "etests_rels_pages_id_idx" ON "etests_rels" USING btree ("pages_id");
@@ -14533,6 +13550,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE UNIQUE INDEX "pages_blocks_rich_content_block_locales_locale_parent_id_uni" ON "pages_blocks_rich_content_block_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "pages_blocks_secondarycta_cta_button_order_idx" ON "pages_blocks_secondarycta_cta_button" USING btree ("_order");
   CREATE INDEX "pages_blocks_secondarycta_cta_button_parent_id_idx" ON "pages_blocks_secondarycta_cta_button" USING btree ("_parent_id");
+  `)
+
+  // chunk 77/121
+  await db.execute(sql`
   CREATE UNIQUE INDEX "pages_blocks_secondarycta_cta_button_locales_locale_parent_i" ON "pages_blocks_secondarycta_cta_button_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "pages_blocks_secondarycta_order_idx" ON "pages_blocks_secondarycta" USING btree ("_order");
   CREATE INDEX "pages_blocks_secondarycta_parent_id_idx" ON "pages_blocks_secondarycta" USING btree ("_parent_id");
@@ -14583,6 +13604,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "pages_blocks_ylw_deck_path_idx" ON "pages_blocks_ylw_deck" USING btree ("_path");
   CREATE UNIQUE INDEX "pages_blocks_ylw_deck_locales_locale_parent_id_unique" ON "pages_blocks_ylw_deck_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "pages_blocks_feat_crd_tags_order_idx" ON "pages_blocks_feat_crd_tags" USING btree ("_order");
+  `)
+
+  // chunk 78/121
+  await db.execute(sql`
   CREATE INDEX "pages_blocks_feat_crd_tags_parent_id_idx" ON "pages_blocks_feat_crd_tags" USING btree ("_parent_id");
   CREATE UNIQUE INDEX "pages_blocks_feat_crd_tags_locales_locale_parent_id_unique" ON "pages_blocks_feat_crd_tags_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "pages_blocks_feat_crd_order_idx" ON "pages_blocks_feat_crd" USING btree ("_order");
@@ -14633,6 +13658,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "pages_blocks_pink_puffy_path_idx" ON "pages_blocks_pink_puffy" USING btree ("_path");
   CREATE UNIQUE INDEX "pages_blocks_pink_puffy_locales_locale_parent_id_unique" ON "pages_blocks_pink_puffy_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "pages_blocks_beige_puffy_items_order_idx" ON "pages_blocks_beige_puffy_items" USING btree ("_order");
+  `)
+
+  // chunk 79/121
+  await db.execute(sql`
   CREATE INDEX "pages_blocks_beige_puffy_items_parent_id_idx" ON "pages_blocks_beige_puffy_items" USING btree ("_parent_id");
   CREATE UNIQUE INDEX "pages_blocks_beige_puffy_items_locales_locale_parent_id_uniq" ON "pages_blocks_beige_puffy_items_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "pages_blocks_beige_puffy_order_idx" ON "pages_blocks_beige_puffy" USING btree ("_order");
@@ -14683,6 +13712,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE UNIQUE INDEX "pages_blocks_min_card_gallery_locales_locale_parent_id_uniqu" ON "pages_blocks_min_card_gallery_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "pages_blocks_id_card_gallery_cards_order_idx" ON "pages_blocks_id_card_gallery_cards" USING btree ("_order");
   CREATE INDEX "pages_blocks_id_card_gallery_cards_parent_id_idx" ON "pages_blocks_id_card_gallery_cards" USING btree ("_parent_id");
+  `)
+
+  // chunk 80/121
+  await db.execute(sql`
   CREATE INDEX "pages_blocks_id_card_gallery_cards_mascot_idx" ON "pages_blocks_id_card_gallery_cards" USING btree ("mascot_id");
   CREATE UNIQUE INDEX "pages_blocks_id_card_gallery_cards_locales_locale_parent_id_" ON "pages_blocks_id_card_gallery_cards_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "pages_blocks_id_card_gallery_order_idx" ON "pages_blocks_id_card_gallery" USING btree ("_order");
@@ -14733,6 +13766,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_pages_v_blocks_secondarycta_cta_button_order_idx" ON "_pages_v_blocks_secondarycta_cta_button" USING btree ("_order");
   CREATE INDEX "_pages_v_blocks_secondarycta_cta_button_parent_id_idx" ON "_pages_v_blocks_secondarycta_cta_button" USING btree ("_parent_id");
   CREATE UNIQUE INDEX "_pages_v_blocks_secondarycta_cta_button_locales_locale_paren" ON "_pages_v_blocks_secondarycta_cta_button_locales" USING btree ("_locale","_parent_id");
+  `)
+
+  // chunk 81/121
+  await db.execute(sql`
   CREATE INDEX "_pages_v_blocks_secondarycta_order_idx" ON "_pages_v_blocks_secondarycta" USING btree ("_order");
   CREATE INDEX "_pages_v_blocks_secondarycta_parent_id_idx" ON "_pages_v_blocks_secondarycta" USING btree ("_parent_id");
   CREATE INDEX "_pages_v_blocks_secondarycta_path_idx" ON "_pages_v_blocks_secondarycta" USING btree ("_path");
@@ -14783,6 +13820,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE UNIQUE INDEX "_pages_v_blocks_ylw_deck_locales_locale_parent_id_unique" ON "_pages_v_blocks_ylw_deck_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_pages_v_blocks_feat_crd_tags_order_idx" ON "_pages_v_blocks_feat_crd_tags" USING btree ("_order");
   CREATE INDEX "_pages_v_blocks_feat_crd_tags_parent_id_idx" ON "_pages_v_blocks_feat_crd_tags" USING btree ("_parent_id");
+  `)
+
+  // chunk 82/121
+  await db.execute(sql`
   CREATE UNIQUE INDEX "_pages_v_blocks_feat_crd_tags_locales_locale_parent_id_uniqu" ON "_pages_v_blocks_feat_crd_tags_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_pages_v_blocks_feat_crd_order_idx" ON "_pages_v_blocks_feat_crd" USING btree ("_order");
   CREATE INDEX "_pages_v_blocks_feat_crd_parent_id_idx" ON "_pages_v_blocks_feat_crd" USING btree ("_parent_id");
@@ -14833,6 +13874,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE UNIQUE INDEX "_pages_v_blocks_pink_puffy_locales_locale_parent_id_unique" ON "_pages_v_blocks_pink_puffy_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_pages_v_blocks_beige_puffy_items_order_idx" ON "_pages_v_blocks_beige_puffy_items" USING btree ("_order");
   CREATE INDEX "_pages_v_blocks_beige_puffy_items_parent_id_idx" ON "_pages_v_blocks_beige_puffy_items" USING btree ("_parent_id");
+  `)
+
+  // chunk 83/121
+  await db.execute(sql`
   CREATE UNIQUE INDEX "_pages_v_blocks_beige_puffy_items_locales_locale_parent_id_u" ON "_pages_v_blocks_beige_puffy_items_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_pages_v_blocks_beige_puffy_order_idx" ON "_pages_v_blocks_beige_puffy" USING btree ("_order");
   CREATE INDEX "_pages_v_blocks_beige_puffy_parent_id_idx" ON "_pages_v_blocks_beige_puffy" USING btree ("_parent_id");
@@ -14883,6 +13928,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_pages_v_blocks_id_card_gallery_cards_order_idx" ON "_pages_v_blocks_id_card_gallery_cards" USING btree ("_order");
   CREATE INDEX "_pages_v_blocks_id_card_gallery_cards_parent_id_idx" ON "_pages_v_blocks_id_card_gallery_cards" USING btree ("_parent_id");
   CREATE INDEX "_pages_v_blocks_id_card_gallery_cards_mascot_idx" ON "_pages_v_blocks_id_card_gallery_cards" USING btree ("mascot_id");
+  `)
+
+  // chunk 84/121
+  await db.execute(sql`
   CREATE UNIQUE INDEX "_pages_v_blocks_id_card_gallery_cards_locales_locale_parent_" ON "_pages_v_blocks_id_card_gallery_cards_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_pages_v_blocks_id_card_gallery_order_idx" ON "_pages_v_blocks_id_card_gallery" USING btree ("_order");
   CREATE INDEX "_pages_v_blocks_id_card_gallery_parent_id_idx" ON "_pages_v_blocks_id_card_gallery" USING btree ("_parent_id");
@@ -14933,6 +13982,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE UNIQUE INDEX "blog_hero_buttons_locales_locale_parent_id_unique" ON "blog_hero_buttons_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "blog_blocks_rich_content_block_order_idx" ON "blog_blocks_rich_content_block" USING btree ("_order");
   CREATE INDEX "blog_blocks_rich_content_block_parent_id_idx" ON "blog_blocks_rich_content_block" USING btree ("_parent_id");
+  `)
+
+  // chunk 85/121
+  await db.execute(sql`
   CREATE INDEX "blog_blocks_rich_content_block_path_idx" ON "blog_blocks_rich_content_block" USING btree ("_path");
   CREATE UNIQUE INDEX "blog_blocks_rich_content_block_locales_locale_parent_id_uniq" ON "blog_blocks_rich_content_block_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "blog_blocks_secondarycta_cta_button_order_idx" ON "blog_blocks_secondarycta_cta_button" USING btree ("_order");
@@ -14983,6 +14036,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "blog_blocks_ylw_deck_cards_mascot_idx" ON "blog_blocks_ylw_deck_cards" USING btree ("mascot_id");
   CREATE UNIQUE INDEX "blog_blocks_ylw_deck_cards_locales_locale_parent_id_unique" ON "blog_blocks_ylw_deck_cards_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "blog_blocks_ylw_deck_order_idx" ON "blog_blocks_ylw_deck" USING btree ("_order");
+  `)
+
+  // chunk 86/121
+  await db.execute(sql`
   CREATE INDEX "blog_blocks_ylw_deck_parent_id_idx" ON "blog_blocks_ylw_deck" USING btree ("_parent_id");
   CREATE INDEX "blog_blocks_ylw_deck_path_idx" ON "blog_blocks_ylw_deck" USING btree ("_path");
   CREATE UNIQUE INDEX "blog_blocks_ylw_deck_locales_locale_parent_id_unique" ON "blog_blocks_ylw_deck_locales" USING btree ("_locale","_parent_id");
@@ -15033,6 +14090,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "blog_blocks_pink_puffy_links_parent_id_idx" ON "blog_blocks_pink_puffy_links" USING btree ("_parent_id");
   CREATE UNIQUE INDEX "blog_blocks_pink_puffy_links_locales_locale_parent_id_unique" ON "blog_blocks_pink_puffy_links_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "blog_blocks_pink_puffy_order_idx" ON "blog_blocks_pink_puffy" USING btree ("_order");
+  `)
+
+  // chunk 87/121
+  await db.execute(sql`
   CREATE INDEX "blog_blocks_pink_puffy_parent_id_idx" ON "blog_blocks_pink_puffy" USING btree ("_parent_id");
   CREATE INDEX "blog_blocks_pink_puffy_path_idx" ON "blog_blocks_pink_puffy" USING btree ("_path");
   CREATE UNIQUE INDEX "blog_blocks_pink_puffy_locales_locale_parent_id_unique" ON "blog_blocks_pink_puffy_locales" USING btree ("_locale","_parent_id");
@@ -15083,6 +14144,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE UNIQUE INDEX "blog_blocks_min_card_gallery_cards_locales_locale_parent_id_" ON "blog_blocks_min_card_gallery_cards_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "blog_blocks_min_card_gallery_order_idx" ON "blog_blocks_min_card_gallery" USING btree ("_order");
   CREATE INDEX "blog_blocks_min_card_gallery_parent_id_idx" ON "blog_blocks_min_card_gallery" USING btree ("_parent_id");
+  `)
+
+  // chunk 88/121
+  await db.execute(sql`
   CREATE INDEX "blog_blocks_min_card_gallery_path_idx" ON "blog_blocks_min_card_gallery" USING btree ("_path");
   CREATE UNIQUE INDEX "blog_blocks_min_card_gallery_locales_locale_parent_id_unique" ON "blog_blocks_min_card_gallery_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "blog_blocks_id_card_gallery_cards_order_idx" ON "blog_blocks_id_card_gallery_cards" USING btree ("_order");
@@ -15133,6 +14198,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE UNIQUE INDEX "_blog_v_version_hero_buttons_locales_locale_parent_id_unique" ON "_blog_v_version_hero_buttons_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_blog_v_blocks_rich_content_block_order_idx" ON "_blog_v_blocks_rich_content_block" USING btree ("_order");
   CREATE INDEX "_blog_v_blocks_rich_content_block_parent_id_idx" ON "_blog_v_blocks_rich_content_block" USING btree ("_parent_id");
+  `)
+
+  // chunk 89/121
+  await db.execute(sql`
   CREATE INDEX "_blog_v_blocks_rich_content_block_path_idx" ON "_blog_v_blocks_rich_content_block" USING btree ("_path");
   CREATE UNIQUE INDEX "_blog_v_blocks_rich_content_block_locales_locale_parent_id_u" ON "_blog_v_blocks_rich_content_block_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_blog_v_blocks_secondarycta_cta_button_order_idx" ON "_blog_v_blocks_secondarycta_cta_button" USING btree ("_order");
@@ -15183,6 +14252,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_blog_v_blocks_ylw_deck_cards_mascot_idx" ON "_blog_v_blocks_ylw_deck_cards" USING btree ("mascot_id");
   CREATE UNIQUE INDEX "_blog_v_blocks_ylw_deck_cards_locales_locale_parent_id_uniqu" ON "_blog_v_blocks_ylw_deck_cards_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_blog_v_blocks_ylw_deck_order_idx" ON "_blog_v_blocks_ylw_deck" USING btree ("_order");
+  `)
+
+  // chunk 90/121
+  await db.execute(sql`
   CREATE INDEX "_blog_v_blocks_ylw_deck_parent_id_idx" ON "_blog_v_blocks_ylw_deck" USING btree ("_parent_id");
   CREATE INDEX "_blog_v_blocks_ylw_deck_path_idx" ON "_blog_v_blocks_ylw_deck" USING btree ("_path");
   CREATE UNIQUE INDEX "_blog_v_blocks_ylw_deck_locales_locale_parent_id_unique" ON "_blog_v_blocks_ylw_deck_locales" USING btree ("_locale","_parent_id");
@@ -15233,6 +14306,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_blog_v_blocks_pink_puffy_links_parent_id_idx" ON "_blog_v_blocks_pink_puffy_links" USING btree ("_parent_id");
   CREATE UNIQUE INDEX "_blog_v_blocks_pink_puffy_links_locales_locale_parent_id_uni" ON "_blog_v_blocks_pink_puffy_links_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_blog_v_blocks_pink_puffy_order_idx" ON "_blog_v_blocks_pink_puffy" USING btree ("_order");
+  `)
+
+  // chunk 91/121
+  await db.execute(sql`
   CREATE INDEX "_blog_v_blocks_pink_puffy_parent_id_idx" ON "_blog_v_blocks_pink_puffy" USING btree ("_parent_id");
   CREATE INDEX "_blog_v_blocks_pink_puffy_path_idx" ON "_blog_v_blocks_pink_puffy" USING btree ("_path");
   CREATE UNIQUE INDEX "_blog_v_blocks_pink_puffy_locales_locale_parent_id_unique" ON "_blog_v_blocks_pink_puffy_locales" USING btree ("_locale","_parent_id");
@@ -15283,6 +14360,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE UNIQUE INDEX "_blog_v_blocks_min_card_gallery_cards_locales_locale_parent_" ON "_blog_v_blocks_min_card_gallery_cards_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_blog_v_blocks_min_card_gallery_order_idx" ON "_blog_v_blocks_min_card_gallery" USING btree ("_order");
   CREATE INDEX "_blog_v_blocks_min_card_gallery_parent_id_idx" ON "_blog_v_blocks_min_card_gallery" USING btree ("_parent_id");
+  `)
+
+  // chunk 92/121
+  await db.execute(sql`
   CREATE INDEX "_blog_v_blocks_min_card_gallery_path_idx" ON "_blog_v_blocks_min_card_gallery" USING btree ("_path");
   CREATE UNIQUE INDEX "_blog_v_blocks_min_card_gallery_locales_locale_parent_id_uni" ON "_blog_v_blocks_min_card_gallery_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_blog_v_blocks_id_card_gallery_cards_order_idx" ON "_blog_v_blocks_id_card_gallery_cards" USING btree ("_order");
@@ -15333,6 +14414,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_blog_v_rels_mmedia_id_idx" ON "_blog_v_rels" USING btree ("mmedia_id");
   CREATE INDEX "_blog_v_rels_documents_id_idx" ON "_blog_v_rels" USING btree ("documents_id");
   CREATE INDEX "_blog_v_rels_etests_id_idx" ON "_blog_v_rels" USING btree ("etests_id");
+  `)
+
+  // chunk 93/121
+  await db.execute(sql`
   CREATE INDEX "_blog_v_rels_grantcards_id_idx" ON "_blog_v_rels" USING btree ("grantcards_id");
   CREATE INDEX "reports_hero_buttons_order_idx" ON "reports_hero_buttons" USING btree ("_order");
   CREATE INDEX "reports_hero_buttons_parent_id_idx" ON "reports_hero_buttons" USING btree ("_parent_id");
@@ -15383,6 +14468,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE UNIQUE INDEX "reports_blocks_comparison_blk_locales_locale_parent_id_uniqu" ON "reports_blocks_comparison_blk_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "reports_blocks_ylw_deck_cards_links_order_idx" ON "reports_blocks_ylw_deck_cards_links" USING btree ("_order");
   CREATE INDEX "reports_blocks_ylw_deck_cards_links_parent_id_idx" ON "reports_blocks_ylw_deck_cards_links" USING btree ("_parent_id");
+  `)
+
+  // chunk 94/121
+  await db.execute(sql`
   CREATE UNIQUE INDEX "reports_blocks_ylw_deck_cards_links_locales_locale_parent_id" ON "reports_blocks_ylw_deck_cards_links_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "reports_blocks_ylw_deck_cards_order_idx" ON "reports_blocks_ylw_deck_cards" USING btree ("_order");
   CREATE INDEX "reports_blocks_ylw_deck_cards_parent_id_idx" ON "reports_blocks_ylw_deck_cards" USING btree ("_parent_id");
@@ -15433,6 +14522,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "reports_blocks_pink_puffy_top_row_parent_id_idx" ON "reports_blocks_pink_puffy_top_row" USING btree ("_parent_id");
   CREATE UNIQUE INDEX "reports_blocks_pink_puffy_top_row_locales_locale_parent_id_u" ON "reports_blocks_pink_puffy_top_row_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "reports_blocks_pink_puffy_bot_row_order_idx" ON "reports_blocks_pink_puffy_bot_row" USING btree ("_order");
+  `)
+
+  // chunk 95/121
+  await db.execute(sql`
   CREATE INDEX "reports_blocks_pink_puffy_bot_row_parent_id_idx" ON "reports_blocks_pink_puffy_bot_row" USING btree ("_parent_id");
   CREATE UNIQUE INDEX "reports_blocks_pink_puffy_bot_row_locales_locale_parent_id_u" ON "reports_blocks_pink_puffy_bot_row_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "reports_blocks_pink_puffy_links_order_idx" ON "reports_blocks_pink_puffy_links" USING btree ("_order");
@@ -15483,6 +14576,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "reports_blocks_testimonial_deck_parent_id_idx" ON "reports_blocks_testimonial_deck" USING btree ("_parent_id");
   CREATE INDEX "reports_blocks_testimonial_deck_path_idx" ON "reports_blocks_testimonial_deck" USING btree ("_path");
   CREATE UNIQUE INDEX "reports_blocks_testimonial_deck_locales_locale_parent_id_uni" ON "reports_blocks_testimonial_deck_locales" USING btree ("_locale","_parent_id");
+  `)
+
+  // chunk 96/121
+  await db.execute(sql`
   CREATE INDEX "reports_blocks_min_card_gallery_cards_order_idx" ON "reports_blocks_min_card_gallery_cards" USING btree ("_order");
   CREATE INDEX "reports_blocks_min_card_gallery_cards_parent_id_idx" ON "reports_blocks_min_card_gallery_cards" USING btree ("_parent_id");
   CREATE INDEX "reports_blocks_min_card_gallery_cards_mascot_idx" ON "reports_blocks_min_card_gallery_cards" USING btree ("mascot_id");
@@ -15533,6 +14630,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "reports_rels_mmedia_id_idx" ON "reports_rels" USING btree ("mmedia_id");
   CREATE INDEX "reports_rels_documents_id_idx" ON "reports_rels" USING btree ("documents_id");
   CREATE INDEX "reports_rels_etests_id_idx" ON "reports_rels" USING btree ("etests_id");
+  `)
+
+  // chunk 97/121
+  await db.execute(sql`
   CREATE INDEX "reports_rels_grantcards_id_idx" ON "reports_rels" USING btree ("grantcards_id");
   CREATE INDEX "_reports_v_version_hero_buttons_order_idx" ON "_reports_v_version_hero_buttons" USING btree ("_order");
   CREATE INDEX "_reports_v_version_hero_buttons_parent_id_idx" ON "_reports_v_version_hero_buttons" USING btree ("_parent_id");
@@ -15583,6 +14684,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE UNIQUE INDEX "_reports_v_blocks_comparison_blk_locales_locale_parent_id_un" ON "_reports_v_blocks_comparison_blk_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_reports_v_blocks_ylw_deck_cards_links_order_idx" ON "_reports_v_blocks_ylw_deck_cards_links" USING btree ("_order");
   CREATE INDEX "_reports_v_blocks_ylw_deck_cards_links_parent_id_idx" ON "_reports_v_blocks_ylw_deck_cards_links" USING btree ("_parent_id");
+  `)
+
+  // chunk 98/121
+  await db.execute(sql`
   CREATE UNIQUE INDEX "_reports_v_blocks_ylw_deck_cards_links_locales_locale_parent" ON "_reports_v_blocks_ylw_deck_cards_links_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_reports_v_blocks_ylw_deck_cards_order_idx" ON "_reports_v_blocks_ylw_deck_cards" USING btree ("_order");
   CREATE INDEX "_reports_v_blocks_ylw_deck_cards_parent_id_idx" ON "_reports_v_blocks_ylw_deck_cards" USING btree ("_parent_id");
@@ -15633,6 +14738,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_reports_v_blocks_pink_puffy_top_row_parent_id_idx" ON "_reports_v_blocks_pink_puffy_top_row" USING btree ("_parent_id");
   CREATE UNIQUE INDEX "_reports_v_blocks_pink_puffy_top_row_locales_locale_parent_i" ON "_reports_v_blocks_pink_puffy_top_row_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_reports_v_blocks_pink_puffy_bot_row_order_idx" ON "_reports_v_blocks_pink_puffy_bot_row" USING btree ("_order");
+  `)
+
+  // chunk 99/121
+  await db.execute(sql`
   CREATE INDEX "_reports_v_blocks_pink_puffy_bot_row_parent_id_idx" ON "_reports_v_blocks_pink_puffy_bot_row" USING btree ("_parent_id");
   CREATE UNIQUE INDEX "_reports_v_blocks_pink_puffy_bot_row_locales_locale_parent_i" ON "_reports_v_blocks_pink_puffy_bot_row_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_reports_v_blocks_pink_puffy_links_order_idx" ON "_reports_v_blocks_pink_puffy_links" USING btree ("_order");
@@ -15683,6 +14792,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_reports_v_blocks_testimonial_deck_parent_id_idx" ON "_reports_v_blocks_testimonial_deck" USING btree ("_parent_id");
   CREATE INDEX "_reports_v_blocks_testimonial_deck_path_idx" ON "_reports_v_blocks_testimonial_deck" USING btree ("_path");
   CREATE UNIQUE INDEX "_reports_v_blocks_testimonial_deck_locales_locale_parent_id_" ON "_reports_v_blocks_testimonial_deck_locales" USING btree ("_locale","_parent_id");
+  `)
+
+  // chunk 100/121
+  await db.execute(sql`
   CREATE INDEX "_reports_v_blocks_min_card_gallery_cards_order_idx" ON "_reports_v_blocks_min_card_gallery_cards" USING btree ("_order");
   CREATE INDEX "_reports_v_blocks_min_card_gallery_cards_parent_id_idx" ON "_reports_v_blocks_min_card_gallery_cards" USING btree ("_parent_id");
   CREATE INDEX "_reports_v_blocks_min_card_gallery_cards_mascot_idx" ON "_reports_v_blocks_min_card_gallery_cards" USING btree ("mascot_id");
@@ -15733,6 +14846,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_reports_v_rels_path_idx" ON "_reports_v_rels" USING btree ("path");
   CREATE INDEX "_reports_v_rels_doctypes_id_idx" ON "_reports_v_rels" USING btree ("doctypes_id");
   CREATE INDEX "_reports_v_rels_grants_id_idx" ON "_reports_v_rels" USING btree ("grants_id");
+  `)
+
+  // chunk 101/121
+  await db.execute(sql`
   CREATE INDEX "_reports_v_rels_pages_id_idx" ON "_reports_v_rels" USING btree ("pages_id");
   CREATE INDEX "_reports_v_rels_blog_id_idx" ON "_reports_v_rels" USING btree ("blog_id");
   CREATE INDEX "_reports_v_rels_reports_id_idx" ON "_reports_v_rels" USING btree ("reports_id");
@@ -15783,6 +14900,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "mmedia_blocks_comparison_blk_buttons_order_idx" ON "mmedia_blocks_comparison_blk_buttons" USING btree ("_order");
   CREATE INDEX "mmedia_blocks_comparison_blk_buttons_parent_id_idx" ON "mmedia_blocks_comparison_blk_buttons" USING btree ("_parent_id");
   CREATE UNIQUE INDEX "mmedia_blocks_comparison_blk_buttons_locales_locale_parent_i" ON "mmedia_blocks_comparison_blk_buttons_locales" USING btree ("_locale","_parent_id");
+  `)
+
+  // chunk 102/121
+  await db.execute(sql`
   CREATE INDEX "mmedia_blocks_comparison_blk_order_idx" ON "mmedia_blocks_comparison_blk" USING btree ("_order");
   CREATE INDEX "mmedia_blocks_comparison_blk_parent_id_idx" ON "mmedia_blocks_comparison_blk" USING btree ("_parent_id");
   CREATE INDEX "mmedia_blocks_comparison_blk_path_idx" ON "mmedia_blocks_comparison_blk" USING btree ("_path");
@@ -15833,6 +14954,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE UNIQUE INDEX "mmedia_blocks_faq_blk_faqs_locales_locale_parent_id_unique" ON "mmedia_blocks_faq_blk_faqs_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "mmedia_blocks_faq_blk_order_idx" ON "mmedia_blocks_faq_blk" USING btree ("_order");
   CREATE INDEX "mmedia_blocks_faq_blk_parent_id_idx" ON "mmedia_blocks_faq_blk" USING btree ("_parent_id");
+  `)
+
+  // chunk 103/121
+  await db.execute(sql`
   CREATE INDEX "mmedia_blocks_faq_blk_path_idx" ON "mmedia_blocks_faq_blk" USING btree ("_path");
   CREATE UNIQUE INDEX "mmedia_blocks_faq_blk_locales_locale_parent_id_unique" ON "mmedia_blocks_faq_blk_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "mmedia_blocks_pink_puffy_top_row_order_idx" ON "mmedia_blocks_pink_puffy_top_row" USING btree ("_order");
@@ -15883,6 +15008,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "mmedia_blocks_pillar_card_path_idx" ON "mmedia_blocks_pillar_card" USING btree ("_path");
   CREATE UNIQUE INDEX "mmedia_blocks_pillar_card_locales_locale_parent_id_unique" ON "mmedia_blocks_pillar_card_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "mmedia_blocks_testimonial_deck_cards_order_idx" ON "mmedia_blocks_testimonial_deck_cards" USING btree ("_order");
+  `)
+
+  // chunk 104/121
+  await db.execute(sql`
   CREATE INDEX "mmedia_blocks_testimonial_deck_cards_parent_id_idx" ON "mmedia_blocks_testimonial_deck_cards" USING btree ("_parent_id");
   CREATE UNIQUE INDEX "mmedia_blocks_testimonial_deck_cards_locales_locale_parent_i" ON "mmedia_blocks_testimonial_deck_cards_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "mmedia_blocks_testimonial_deck_order_idx" ON "mmedia_blocks_testimonial_deck" USING btree ("_order");
@@ -15933,6 +15062,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "mmedia_rels_path_idx" ON "mmedia_rels" USING btree ("path");
   CREATE INDEX "mmedia_rels_doctypes_id_idx" ON "mmedia_rels" USING btree ("doctypes_id");
   CREATE INDEX "mmedia_rels_grants_id_idx" ON "mmedia_rels" USING btree ("grants_id");
+  `)
+
+  // chunk 105/121
+  await db.execute(sql`
   CREATE INDEX "mmedia_rels_pages_id_idx" ON "mmedia_rels" USING btree ("pages_id");
   CREATE INDEX "mmedia_rels_blog_id_idx" ON "mmedia_rels" USING btree ("blog_id");
   CREATE INDEX "mmedia_rels_reports_id_idx" ON "mmedia_rels" USING btree ("reports_id");
@@ -15983,6 +15116,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_mmedia_v_blocks_comparison_blk_buttons_order_idx" ON "_mmedia_v_blocks_comparison_blk_buttons" USING btree ("_order");
   CREATE INDEX "_mmedia_v_blocks_comparison_blk_buttons_parent_id_idx" ON "_mmedia_v_blocks_comparison_blk_buttons" USING btree ("_parent_id");
   CREATE UNIQUE INDEX "_mmedia_v_blocks_comparison_blk_buttons_locales_locale_paren" ON "_mmedia_v_blocks_comparison_blk_buttons_locales" USING btree ("_locale","_parent_id");
+  `)
+
+  // chunk 106/121
+  await db.execute(sql`
   CREATE INDEX "_mmedia_v_blocks_comparison_blk_order_idx" ON "_mmedia_v_blocks_comparison_blk" USING btree ("_order");
   CREATE INDEX "_mmedia_v_blocks_comparison_blk_parent_id_idx" ON "_mmedia_v_blocks_comparison_blk" USING btree ("_parent_id");
   CREATE INDEX "_mmedia_v_blocks_comparison_blk_path_idx" ON "_mmedia_v_blocks_comparison_blk" USING btree ("_path");
@@ -16033,6 +15170,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE UNIQUE INDEX "_mmedia_v_blocks_faq_blk_faqs_locales_locale_parent_id_uniqu" ON "_mmedia_v_blocks_faq_blk_faqs_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_mmedia_v_blocks_faq_blk_order_idx" ON "_mmedia_v_blocks_faq_blk" USING btree ("_order");
   CREATE INDEX "_mmedia_v_blocks_faq_blk_parent_id_idx" ON "_mmedia_v_blocks_faq_blk" USING btree ("_parent_id");
+  `)
+
+  // chunk 107/121
+  await db.execute(sql`
   CREATE INDEX "_mmedia_v_blocks_faq_blk_path_idx" ON "_mmedia_v_blocks_faq_blk" USING btree ("_path");
   CREATE UNIQUE INDEX "_mmedia_v_blocks_faq_blk_locales_locale_parent_id_unique" ON "_mmedia_v_blocks_faq_blk_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_mmedia_v_blocks_pink_puffy_top_row_order_idx" ON "_mmedia_v_blocks_pink_puffy_top_row" USING btree ("_order");
@@ -16083,6 +15224,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_mmedia_v_blocks_pillar_card_path_idx" ON "_mmedia_v_blocks_pillar_card" USING btree ("_path");
   CREATE UNIQUE INDEX "_mmedia_v_blocks_pillar_card_locales_locale_parent_id_unique" ON "_mmedia_v_blocks_pillar_card_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_mmedia_v_blocks_testimonial_deck_cards_order_idx" ON "_mmedia_v_blocks_testimonial_deck_cards" USING btree ("_order");
+  `)
+
+  // chunk 108/121
+  await db.execute(sql`
   CREATE INDEX "_mmedia_v_blocks_testimonial_deck_cards_parent_id_idx" ON "_mmedia_v_blocks_testimonial_deck_cards" USING btree ("_parent_id");
   CREATE UNIQUE INDEX "_mmedia_v_blocks_testimonial_deck_cards_locales_locale_paren" ON "_mmedia_v_blocks_testimonial_deck_cards_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_mmedia_v_blocks_testimonial_deck_order_idx" ON "_mmedia_v_blocks_testimonial_deck" USING btree ("_order");
@@ -16133,6 +15278,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_mmedia_v_snapshot_idx" ON "_mmedia_v" USING btree ("snapshot");
   CREATE INDEX "_mmedia_v_published_locale_idx" ON "_mmedia_v" USING btree ("published_locale");
   CREATE INDEX "_mmedia_v_latest_idx" ON "_mmedia_v" USING btree ("latest");
+  `)
+
+  // chunk 109/121
+  await db.execute(sql`
   CREATE UNIQUE INDEX "_mmedia_v_locales_locale_parent_id_unique" ON "_mmedia_v_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_mmedia_v_rels_order_idx" ON "_mmedia_v_rels" USING btree ("order");
   CREATE INDEX "_mmedia_v_rels_parent_idx" ON "_mmedia_v_rels" USING btree ("parent_id");
@@ -16183,6 +15332,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "users_assigned_languages_parent_idx" ON "users_assigned_languages" USING btree ("parent_id");
   CREATE INDEX "users_sessions_order_idx" ON "users_sessions" USING btree ("_order");
   CREATE INDEX "users_sessions_parent_id_idx" ON "users_sessions" USING btree ("_parent_id");
+  `)
+
+  // chunk 110/121
+  await db.execute(sql`
   CREATE INDEX "users_avatar_idx" ON "users" USING btree ("avatar_id");
   CREATE INDEX "users_updated_at_idx" ON "users" USING btree ("updated_at");
   CREATE INDEX "users_created_at_idx" ON "users" USING btree ("created_at");
@@ -16233,6 +15386,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "forms_blocks_text_parent_id_idx" ON "forms_blocks_text" USING btree ("_parent_id");
   CREATE INDEX "forms_blocks_text_path_idx" ON "forms_blocks_text" USING btree ("_path");
   CREATE UNIQUE INDEX "forms_blocks_text_locales_locale_parent_id_unique" ON "forms_blocks_text_locales" USING btree ("_locale","_parent_id");
+  `)
+
+  // chunk 111/121
+  await db.execute(sql`
   CREATE INDEX "forms_blocks_textarea_order_idx" ON "forms_blocks_textarea" USING btree ("_order");
   CREATE INDEX "forms_blocks_textarea_parent_id_idx" ON "forms_blocks_textarea" USING btree ("_parent_id");
   CREATE INDEX "forms_blocks_textarea_path_idx" ON "forms_blocks_textarea" USING btree ("_path");
@@ -16283,6 +15440,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "payload_locked_documents_rels_grants_id_idx" ON "payload_locked_documents_rels" USING btree ("grants_id");
   CREATE INDEX "payload_locked_documents_rels_grantcards_id_idx" ON "payload_locked_documents_rels" USING btree ("grantcards_id");
   CREATE INDEX "payload_locked_documents_rels_etests_id_idx" ON "payload_locked_documents_rels" USING btree ("etests_id");
+  `)
+
+  // chunk 112/121
+  await db.execute(sql`
   CREATE INDEX "payload_locked_documents_rels_pages_id_idx" ON "payload_locked_documents_rels" USING btree ("pages_id");
   CREATE INDEX "payload_locked_documents_rels_blog_id_idx" ON "payload_locked_documents_rels" USING btree ("blog_id");
   CREATE INDEX "payload_locked_documents_rels_reports_id_idx" ON "payload_locked_documents_rels" USING btree ("reports_id");
@@ -16333,6 +15494,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "homepage_blocks_mstep_process_steps_details_order_idx" ON "homepage_blocks_mstep_process_steps_details" USING btree ("_order");
   CREATE INDEX "homepage_blocks_mstep_process_steps_details_parent_id_idx" ON "homepage_blocks_mstep_process_steps_details" USING btree ("_parent_id");
   CREATE UNIQUE INDEX "homepage_blocks_mstep_process_steps_details_locales_locale_p" ON "homepage_blocks_mstep_process_steps_details_locales" USING btree ("_locale","_parent_id");
+  `)
+
+  // chunk 113/121
+  await db.execute(sql`
   CREATE INDEX "homepage_blocks_mstep_process_steps_order_idx" ON "homepage_blocks_mstep_process_steps" USING btree ("_order");
   CREATE INDEX "homepage_blocks_mstep_process_steps_parent_id_idx" ON "homepage_blocks_mstep_process_steps" USING btree ("_parent_id");
   CREATE UNIQUE INDEX "homepage_blocks_mstep_process_steps_locales_locale_parent_id" ON "homepage_blocks_mstep_process_steps_locales" USING btree ("_locale","_parent_id");
@@ -16383,6 +15548,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "homepage_blocks_list_crd_dck_cards_tags_order_idx" ON "homepage_blocks_list_crd_dck_cards_tags" USING btree ("_order");
   CREATE INDEX "homepage_blocks_list_crd_dck_cards_tags_parent_id_idx" ON "homepage_blocks_list_crd_dck_cards_tags" USING btree ("_parent_id");
   CREATE UNIQUE INDEX "homepage_blocks_list_crd_dck_cards_tags_locales_locale_paren" ON "homepage_blocks_list_crd_dck_cards_tags_locales" USING btree ("_locale","_parent_id");
+  `)
+
+  // chunk 114/121
+  await db.execute(sql`
   CREATE INDEX "homepage_blocks_list_crd_dck_cards_order_idx" ON "homepage_blocks_list_crd_dck_cards" USING btree ("_order");
   CREATE INDEX "homepage_blocks_list_crd_dck_cards_parent_id_idx" ON "homepage_blocks_list_crd_dck_cards" USING btree ("_parent_id");
   CREATE INDEX "homepage_blocks_list_crd_dck_cards_image_idx" ON "homepage_blocks_list_crd_dck_cards" USING btree ("image_id");
@@ -16433,6 +15602,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "homepage_blocks_resource_feat_card_order_idx" ON "homepage_blocks_resource_feat_card" USING btree ("_order");
   CREATE INDEX "homepage_blocks_resource_feat_card_parent_id_idx" ON "homepage_blocks_resource_feat_card" USING btree ("_parent_id");
   CREATE INDEX "homepage_blocks_resource_feat_card_path_idx" ON "homepage_blocks_resource_feat_card" USING btree ("_path");
+  `)
+
+  // chunk 115/121
+  await db.execute(sql`
   CREATE INDEX "homepage_blocks_resource_feat_card_filter_by_doc_type_idx" ON "homepage_blocks_resource_feat_card" USING btree ("filter_by_doc_type_id");
   CREATE UNIQUE INDEX "homepage_blocks_resource_feat_card_locales_locale_parent_id_" ON "homepage_blocks_resource_feat_card_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "homepage_blocks_resource_gallery_order_idx" ON "homepage_blocks_resource_gallery" USING btree ("_order");
@@ -16483,6 +15656,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "homepage_blocks_three_column_table_block_path_idx" ON "homepage_blocks_three_column_table_block" USING btree ("_path");
   CREATE UNIQUE INDEX "homepage_blocks_three_column_table_block_locales_locale_pare" ON "homepage_blocks_three_column_table_block_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "homepage_meta_meta_image_idx" ON "homepage" USING btree ("meta_image_id");
+  `)
+
+  // chunk 116/121
+  await db.execute(sql`
   CREATE INDEX "homepage_created_by_idx" ON "homepage" USING btree ("created_by_id");
   CREATE INDEX "homepage_updated_by_idx" ON "homepage" USING btree ("updated_by_id");
   CREATE INDEX "homepage__status_idx" ON "homepage" USING btree ("_status");
@@ -16533,6 +15710,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_homepage_v_blocks_mstep_process_path_idx" ON "_homepage_v_blocks_mstep_process" USING btree ("_path");
   CREATE UNIQUE INDEX "_homepage_v_blocks_mstep_process_locales_locale_parent_id_un" ON "_homepage_v_blocks_mstep_process_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_homepage_v_blocks_comparison_blk_lft_grp_lft_points_order_idx" ON "_homepage_v_blocks_comparison_blk_lft_grp_lft_points" USING btree ("_order");
+  `)
+
+  // chunk 117/121
+  await db.execute(sql`
   CREATE INDEX "_homepage_v_blocks_comparison_blk_lft_grp_lft_points_parent_id_idx" ON "_homepage_v_blocks_comparison_blk_lft_grp_lft_points" USING btree ("_parent_id");
   CREATE UNIQUE INDEX "_homepage_v_blocks_comparison_blk_lft_grp_lft_points_local_1" ON "_homepage_v_blocks_comparison_blk_lft_grp_lft_points_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_homepage_v_blocks_comparison_blk_rt_grp_rt_points_order_idx" ON "_homepage_v_blocks_comparison_blk_rt_grp_rt_points" USING btree ("_order");
@@ -16583,6 +15764,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_homepage_v_blocks_list_crd_dck_buttons_parent_id_idx" ON "_homepage_v_blocks_list_crd_dck_buttons" USING btree ("_parent_id");
   CREATE UNIQUE INDEX "_homepage_v_blocks_list_crd_dck_buttons_locales_locale_paren" ON "_homepage_v_blocks_list_crd_dck_buttons_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_homepage_v_blocks_list_crd_dck_order_idx" ON "_homepage_v_blocks_list_crd_dck" USING btree ("_order");
+  `)
+
+  // chunk 118/121
+  await db.execute(sql`
   CREATE INDEX "_homepage_v_blocks_list_crd_dck_parent_id_idx" ON "_homepage_v_blocks_list_crd_dck" USING btree ("_parent_id");
   CREATE INDEX "_homepage_v_blocks_list_crd_dck_path_idx" ON "_homepage_v_blocks_list_crd_dck" USING btree ("_path");
   CREATE UNIQUE INDEX "_homepage_v_blocks_list_crd_dck_locales_locale_parent_id_uni" ON "_homepage_v_blocks_list_crd_dck_locales" USING btree ("_locale","_parent_id");
@@ -16633,6 +15818,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_homepage_v_blocks_resource_gallery_filter_by_doc_type_idx" ON "_homepage_v_blocks_resource_gallery" USING btree ("filter_by_doc_type_id");
   CREATE UNIQUE INDEX "_homepage_v_blocks_resource_gallery_locales_locale_parent_id" ON "_homepage_v_blocks_resource_gallery_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_homepage_v_blocks_pillar_card_cards_order_idx" ON "_homepage_v_blocks_pillar_card_cards" USING btree ("_order");
+  `)
+
+  // chunk 119/121
+  await db.execute(sql`
   CREATE INDEX "_homepage_v_blocks_pillar_card_cards_parent_id_idx" ON "_homepage_v_blocks_pillar_card_cards" USING btree ("_parent_id");
   CREATE INDEX "_homepage_v_blocks_pillar_card_cards_mascot_idx" ON "_homepage_v_blocks_pillar_card_cards" USING btree ("mascot_id");
   CREATE UNIQUE INDEX "_homepage_v_blocks_pillar_card_cards_locales_locale_parent_i" ON "_homepage_v_blocks_pillar_card_cards_locales" USING btree ("_locale","_parent_id");
@@ -16683,6 +15872,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_homepage_v_snapshot_idx" ON "_homepage_v" USING btree ("snapshot");
   CREATE INDEX "_homepage_v_published_locale_idx" ON "_homepage_v" USING btree ("published_locale");
   CREATE INDEX "_homepage_v_latest_idx" ON "_homepage_v" USING btree ("latest");
+  `)
+
+  // chunk 120/121
+  await db.execute(sql`
   CREATE UNIQUE INDEX "_homepage_v_locales_locale_parent_id_unique" ON "_homepage_v_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "_homepage_v_rels_order_idx" ON "_homepage_v_rels" USING btree ("order");
   CREATE INDEX "_homepage_v_rels_parent_idx" ON "_homepage_v_rels" USING btree ("parent_id");
@@ -16733,13 +15926,19 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "nav_rels_documents_id_idx" ON "nav_rels" USING btree ("documents_id");
   CREATE INDEX "nav_rels_etests_id_idx" ON "nav_rels" USING btree ("etests_id");
   CREATE INDEX "contact_info_emails_order_idx" ON "contact_info_emails" USING btree ("_order");
+  `)
+
+  // chunk 121/121
+  await db.execute(sql`
   CREATE INDEX "contact_info_emails_parent_id_idx" ON "contact_info_emails" USING btree ("_parent_id");
-  CREATE UNIQUE INDEX "contact_info_emails_locales_locale_parent_id_unique" ON "contact_info_emails_locales" USING btree ("_locale","_parent_id");`)
+  CREATE UNIQUE INDEX "contact_info_emails_locales_locale_parent_id_unique" ON "contact_info_emails_locales" USING btree ("_locale","_parent_id");
+  `)
+
 }
 
 export async function down({ db, payload, req }: MigrateDownArgs): Promise<void> {
   await db.execute(sql`
-   DROP TABLE "grants_hero_buttons" CASCADE;
+  DROP TABLE "grants_hero_buttons" CASCADE;
   DROP TABLE "grants_hero_buttons_locales" CASCADE;
   DROP TABLE "grants_blocks_rich_content_block" CASCADE;
   DROP TABLE "grants_blocks_rich_content_block_locales" CASCADE;
@@ -18383,5 +17582,6 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TYPE "public"."enum_header_banner_link_type";
   DROP TYPE "public"."enum_footer_sm_links_group_sm_links_sm_type";
   DROP TYPE "public"."enum_nav_menu_items_nav_items_link_type";
-  DROP TYPE "public"."enum_contact_info_emails_email_type";`)
+  DROP TYPE "public"."enum_contact_info_emails_email_type";
+  `)
 }
