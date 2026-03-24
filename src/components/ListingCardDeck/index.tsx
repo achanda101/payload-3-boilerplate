@@ -192,7 +192,7 @@ export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({
       })
     }
     return cards || []
-  }, [dataSource, resourcePages, cards])
+  }, [dataSource, resourcePages, cards, selectedLanguage])
 
   // Early return if no cards
   if (!normalizedCards || normalizedCards.length === 0) {
@@ -298,7 +298,7 @@ export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({
           )}
         </Carousel>
         {buttons && (
-          <div className="pt-[1rem] md:pt-[3rem]">
+          <div className="pt-[1rem] md:pt-[2rem]">
             <ButtonArray btnArray={buttons} colStackOnMobile={true} />
           </div>
         )}

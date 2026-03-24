@@ -5,7 +5,13 @@
   position: relative;
   display: block;
   width: 100%;
-  height: 100vh;
+  // On mobile, let the SVG dictate height so % positions on hero-container
+  // are relative to the actual rendered SVG height (not the viewport).
+  height: auto;
+
+  @media (min-width: vars.$tablet) {
+    height: 100vh;
+  }
 
   &.short {
     height: 70vh;
@@ -20,11 +26,37 @@
 
 .hero-container {
   position: absolute;
-  top: 48%;
+  // Mobile: pin to blob bounds (y=160–520 out of 730 total SVG height).
+  // top = 160/730 ≈ 21.9%, bottom = (730-520)/730 ≈ 28.8%.
+  // Use flex + align-items:center to vertically centre content within this box.
+  top: calc(160 / 730 * 100%);
+  bottom: calc(210 / 730 * 100%);
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   width: 100%;
-  height: fit-content;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // Tablet landscape (768px–1023px): desktop SVG shown but viewport is narrower
+  // than the 1440px design. Raise the centre and widen content so the title
+  // wraps less and stays within the blob.
+  @media (min-width: vars.$tablet) and (max-width: #{vars.$desktop - 1px}) {
+    top: 45%;
+    bottom: auto;
+    transform: translate(-50%, -50%);
+    height: fit-content;
+    display: block;
+  }
+
+  @media (min-width: vars.$desktop) {
+    top: 48%;
+    bottom: auto;
+    transform: translate(-50%, -50%);
+    height: fit-content;
+    display: block;
+  }
 
   & > *:last-child {
     margin-top: 2rem;
@@ -39,7 +71,11 @@
     margin-bottom: vars.$spacing-sm;
     text-align: center;
     z-index: 5;
-    @media (min-width: vars.$tablet) {
+    // Tablet landscape: wider content = fewer line wraps = shorter total height
+    @media (min-width: vars.$tablet) and (max-width: #{vars.$desktop - 1px}) {
+      width: 45%;
+    }
+    @media (min-width: vars.$desktop) {
       // margin: 0 auto;
       width: 33%;
     }
