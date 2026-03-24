@@ -5,7 +5,12 @@ import { getServerSideURL } from '@/utilities/getURL'
 import { VALID_LOCALES } from '@/utilities/localeUtils'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const payload = await getPayload({ config })
+  let payload: Awaited<ReturnType<typeof getPayload>>
+  try {
+    payload = await getPayload({ config })
+  } catch {
+    return []
+  }
   const baseUrl = getServerSideURL()
   const sitemapEntries: MetadataRoute.Sitemap = []
 
