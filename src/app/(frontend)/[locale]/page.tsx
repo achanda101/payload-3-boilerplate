@@ -47,7 +47,11 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
 }
 
 export async function generateStaticParams() {
-  return VALID_LOCALES.map((locale) => ({
-    locale,
-  }))
+  try {
+    return VALID_LOCALES.map((locale) => ({
+      locale,
+    }))
+  } catch {
+    return []
+  }
 }

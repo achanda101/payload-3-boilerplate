@@ -86,34 +86,38 @@ export async function generateStaticParams() {
     return []
   }
 
-  const payload = await getPayload({ config: configPromise })
-  const params: Array<{ locale: string; slug: string }> = []
+  try {
+    const payload = await getPayload({ config: configPromise })
+    const params: Array<{ locale: string; slug: string }> = []
 
-  for (const locale of VALID_LOCALES) {
-    try {
-      const grants = await payload.find({
-        collection: 'grants',
-        limit: 1000,
-        locale: locale as any,
-        where: {
-          _status: {
-            equals: 'published',
+    for (const locale of VALID_LOCALES) {
+      try {
+        const grants = await payload.find({
+          collection: 'grants',
+          limit: 1000,
+          locale: locale as any,
+          where: {
+            _status: {
+              equals: 'published',
+            },
           },
-        },
-      })
+        })
 
-      for (const grant of grants.docs) {
-        if (grant.slug) {
-          params.push({
-            locale,
-            slug: grant.slug,
-          })
+        for (const grant of grants.docs) {
+          if (grant.slug) {
+            params.push({
+              locale,
+              slug: grant.slug,
+            })
+          }
         }
+      } catch (error) {
+        console.error(`Error generating static params for locale ${locale}:`, error)
       }
-    } catch (error) {
-      console.error(`Error generating static params for locale ${locale}:`, error)
     }
-  }
 
-  return params
+    return params
+  } catch {
+    return []
+  }
 }
