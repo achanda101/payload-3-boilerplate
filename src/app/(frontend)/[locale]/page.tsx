@@ -5,7 +5,7 @@ import { Homepage } from '@/globals/Homepage/Component'
 
 import { generateMeta } from '@/utilities/generateMeta'
 import { getCachedGlobal } from '@/utilities/getGlobals'
-import { isValidLocale, VALID_LOCALES } from '@/utilities/localeUtils'
+import { isValidLocale } from '@/utilities/localeUtils'
 
 // ISR Configuration
 export const revalidate = 60
@@ -41,5 +41,5 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
 }
 
 export async function generateStaticParams() {
-  return VALID_LOCALES.map((locale) => ({ locale }))
+  return []
 }

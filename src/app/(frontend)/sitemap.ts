@@ -4,6 +4,8 @@ import config from '@payload-config'
 import { getServerSideURL } from '@/utilities/getURL'
 import { VALID_LOCALES } from '@/utilities/localeUtils'
 
+export const dynamic = 'force-dynamic'
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let payload: Awaited<ReturnType<typeof getPayload>>
   try {
