@@ -7,7 +7,7 @@ import { getPayload } from 'payload'
 import { draftMode } from 'next/headers'
 import configPromise from '@payload-config'
 import { generateMeta } from '@/utilities/generateMeta'
-import { isValidLocale, VALID_LOCALES } from '@/utilities/localeUtils'
+import { isValidLocale } from '@/utilities/localeUtils'
 
 // ISR Configuration
 export const revalidate = 60
@@ -81,43 +81,5 @@ const queryPageBySlug = cache(async ({ slug, locale }: { slug: string; locale: s
 })
 
 export async function generateStaticParams() {
-  // Skip static generation in development to avoid Payload initialization loops
-  if (process.env.NODE_ENV === 'development') {
-    return []
-  }
-
-  try {
-    const payload = await getPayload({ config: configPromise })
-    const params: Array<{ locale: string; slug: string }> = []
-
-    for (const locale of VALID_LOCALES) {
-      try {
-        const pages = await payload.find({
-          collection: 'pages',
-          limit: 1000,
-          locale: locale as any,
-          where: {
-            _status: {
-              equals: 'published',
-            },
-          },
-        })
-
-        for (const page of pages.docs) {
-          if (page.slug && page.slug !== 'home') {
-            params.push({
-              locale,
-              slug: page.slug,
-            })
-          }
-        }
-      } catch (error) {
-        console.error(`Error generating static params for locale ${locale}:`, error)
-      }
-    }
-
-    return params
-  } catch {
-    return []
-  }
+  return []
 }
