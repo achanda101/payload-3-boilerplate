@@ -18,7 +18,7 @@ A multilingual grants and funding portal built with **Payload CMS v3**, **Next.j
 - **5 globals** — Homepage, Header, Footer, Navigation, Contact Info
 - **Role-based access control** — Admin, Editor, Writer, Translator roles
 - **Live preview** with mobile/tablet breakpoints
-- **Draft/publish workflow** with ISR revalidation
+- **Draft/publish workflow** with ISR revalidation — chosen over full SSG because the site serves 19 languages across hundreds of pages with frequently updated CMS content; pre-building all locale/page combinations at deploy time would be prohibitively slow, while ISR caches pages on first request and revalidates them automatically when content changes
 - **SEO optimization** with metadata and JSON-LD
 - **S3 media storage** with Cloudflare R2
 - **Full-text search** across all content collections
