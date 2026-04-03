@@ -3,9 +3,8 @@ import React from 'react'
 import { notFound } from 'next/navigation'
 import { Homepage } from '@/globals/Homepage/Component'
 
-import { getPayload } from 'payload'
-import configPromise from '@payload-config'
 import { generateMeta } from '@/utilities/generateMeta'
+import { getCachedGlobal } from '@/utilities/getGlobals'
 import { isValidLocale, VALID_LOCALES } from '@/utilities/localeUtils'
 
 // ISR Configuration
@@ -36,16 +35,11 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
     return {}
   }
 
-  const payload = await getPayload({ config: configPromise })
-  const homepage = await payload.findGlobal({
-    slug: 'homepage',
-    locale: locale as any,
-    depth: 1,
-  })
+  const homepage = await getCachedGlobal('homepage', 1, locale)()
 
   return generateMeta({ doc: homepage })
 }
 
 export async function generateStaticParams() {
-  return []
+  return VALID_LOCALES.map((locale) => ({ locale }))
 }

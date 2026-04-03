@@ -1,15 +1,17 @@
 import { HeaderClient } from './Component.client'
 import React from 'react'
-import { getGlobal } from '@/utilities/getGlobals'
+import { getCachedGlobal } from '@/utilities/getGlobals'
 
 interface HeaderProps {
   locale?: string
 }
 
 export async function Header({ locale = 'en' }: HeaderProps) {
-  const headerData = await getGlobal('header', 1, locale)
-  const navData = await getGlobal('nav', 1, locale)
-  const footerData = await getGlobal('footer', 1, locale)
+  const [headerData, navData, footerData] = await Promise.all([
+    getCachedGlobal('header', 1, locale)(),
+    getCachedGlobal('nav', 1, locale)(),
+    getCachedGlobal('footer', 1, locale)(),
+  ])
 
   return (
     <HeaderClient

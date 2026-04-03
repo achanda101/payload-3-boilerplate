@@ -42,9 +42,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({
   // Sync selectedLanguage with URL changes (e.g., navigating between locale routes)
   useEffect(() => {
     const detectedLocale = getLocaleFromUrl(pathname) ?? 'en'
-    if (detectedLocale !== selectedLanguage) {
-      setSelectedLanguageState(detectedLocale)
-    }
+    setSelectedLanguageState((prev) => (detectedLocale !== prev ? detectedLocale : prev))
   }, [pathname])
 
   const setSelectedLanguage = (language: string) => {

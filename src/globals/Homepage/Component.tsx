@@ -1,6 +1,5 @@
 import React from 'react'
-import { getPayload } from 'payload'
-import configPromise from '@payload-config'
+import { getCachedGlobal } from '@/utilities/getGlobals'
 import { HomeHero } from '@/app/(frontend)/components/HomeHero/HomeHero'
 import { PageContent } from '@/app/(frontend)/components/HomePageContent/PageContent'
 
@@ -9,13 +8,7 @@ type HomepageProps = {
 }
 
 export async function Homepage({ locale = 'en' }: HomepageProps) {
-  const payload = await getPayload({ config: configPromise })
-
-  const homepage = await payload.findGlobal({
-    slug: 'homepage',
-    locale: locale as any,
-    depth: 3,
-  })
+  const homepage = await getCachedGlobal('homepage', 3, locale)()
 
   return (
     <>

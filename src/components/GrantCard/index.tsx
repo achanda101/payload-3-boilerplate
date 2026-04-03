@@ -1,9 +1,34 @@
+'use client'
+
 import React, { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
 import Image from 'next/image'
 import { ButtonArray } from '@/components/ButtonArray'
 import { Heading } from '@/components/Heading'
 import { checkGrantPeriodStatus } from '@/utilities/checkGrantPeriod'
+import { useLanguage } from '@/providers/LanguageContext'
+
+const uiStrings: Record<string, { commonUses: string; readMore: string; readLess: string }> = {
+  en:       { commonUses: 'COMMON USES:',       readMore: 'Read More',          readLess: 'Read Less' },
+  ar:       { commonUses: 'الاستخدامات الشائعة:', readMore: 'اقرأ أكثر',         readLess: 'اقرأ أقل' },
+  bi:       { commonUses: 'PENGGUNAAN UMUM:',   readMore: 'Baca Lebih Lanjut',  readLess: 'Baca Lebih Sedikit' },
+  'bn-IN':  { commonUses: 'সাধারণ ব্যবহার:',     readMore: 'আরও পড়ুন',           readLess: 'কম পড়ুন' },
+  br:       { commonUses: 'အသုံးများသောနည်းလမ်း:', readMore: 'ပိုမိုဖတ်ရန်',        readLess: 'လျှော့ဖတ်ရန်' },
+  ch:       { commonUses: '常见用途：',            readMore: '阅读更多',              readLess: '收起' },
+  hi:       { commonUses: 'सामान्य उपयोग:',      readMore: 'और पढ़ें',             readLess: 'कम पढ़ें' },
+  km:       { commonUses: 'ការប្រើប្រាស់ទូទៅ:',   readMore: 'អានបន្ថែម',            readLess: 'អានតិច' },
+  ms:       { commonUses: 'KEGUNAAN BIASA:',    readMore: 'Baca Lagi',          readLess: 'Baca Kurang' },
+  ne:       { commonUses: 'सामान्य उपयोगहरू:',   readMore: 'थप पढ्नुहोस्',        readLess: 'कम पढ्नुहोस्' },
+  pcm:      { commonUses: 'COMMON USES:',       readMore: 'Read More',          readLess: 'Read Less' },
+  'prs-Arab': { commonUses: 'استفاده‌های رایج:', readMore: 'بیشتر بخوانید',       readLess: 'کمتر بخوانید' },
+  'ps-Arab':  { commonUses: 'عام کارونه:',      readMore: 'نور ولولئ',           readLess: 'لږ ولولئ' },
+  si:       { commonUses: 'සාමාන්‍ය භාවිත:',     readMore: 'තව කියවන්න',          readLess: 'අඩුවෙන් කියවන්න' },
+  ta:       { commonUses: 'பொதுவான பயன்பாடுகள்:', readMore: 'மேலும் படிக்க',      readLess: 'குறைவாக படிக்க' },
+  th:       { commonUses: 'การใช้งานทั่วไป:',     readMore: 'อ่านเพิ่มเติม',        readLess: 'อ่านน้อยลง' },
+  tl:       { commonUses: 'MGA KARANIWANG GAMIT:', readMore: 'Magbasa Pa',      readLess: 'Magbasa Nang Kaunti' },
+  ur:       { commonUses: 'عام استعمالات:',      readMore: 'مزید پڑھیں',          readLess: 'کم پڑھیں' },
+  vi:       { commonUses: 'MỤC ĐÍCH PHỔ BIẾN:', readMore: 'Đọc thêm',          readLess: 'Thu gọn' },
+}
 
 interface AssetCloud {
   id: string
@@ -70,6 +95,8 @@ export const GrantCard: React.FC<GrantCardProps> = ({
   endDate,
   msg,
 }) => {
+  const { selectedLanguage } = useLanguage()
+  const t = uiStrings[selectedLanguage] ?? uiStrings['en']
   const [isExpanded, setIsExpanded] = useState(false)
 
   // Calculate if Apply buttons should be disabled based on period
@@ -122,7 +149,7 @@ export const GrantCard: React.FC<GrantCardProps> = ({
             {grantUses && grantUses !== '' && (
               <div className="w-[95%] mx-auto">
                 <div className="flex items-start justify-center gap-[0.5rem]">
-                  <p className="tag whitespace-nowrap">COMMON USES:</p>
+                  <p className="tag whitespace-nowrap">{t.commonUses}</p>
                   <p className="tag sml text-center">{grantUses}</p>
                 </div>
               </div>
@@ -162,7 +189,7 @@ export const GrantCard: React.FC<GrantCardProps> = ({
                   onClick={() => setIsExpanded(!isExpanded)}
                   className="flex items-center justify-center mx-auto text-grant-text-dark font-medium hover:opacity-80 transition-opacity"
                 >
-                  Read More
+                  {t.readMore}
                   <ChevronDown className="ml-2 w-4 h-4" />
                 </button>
               </div>
@@ -195,7 +222,7 @@ export const GrantCard: React.FC<GrantCardProps> = ({
             {grantUses && grantUses !== '' && (
               <div className="w-[95%] mx-auto">
                 <div className="flex items-start justify-center gap-[0.5rem]">
-                  <p className="tag whitespace-nowrap">COMMON USES:</p>
+                  <p className="tag whitespace-nowrap">{t.commonUses}</p>
                   <p className="tag sml text-center">{grantUses}</p>
                 </div>
               </div>
@@ -215,7 +242,7 @@ export const GrantCard: React.FC<GrantCardProps> = ({
                   onClick={() => setIsExpanded(!isExpanded)}
                   className="flex items-center justify-center mx-auto text-grant-text-dark font-medium hover:opacity-80 transition-opacity"
                 >
-                  Read Less
+                  {t.readLess}
                   <ChevronDown className="ml-2 w-4 h-4 transform rotate-180" />
                 </button>
               </div>

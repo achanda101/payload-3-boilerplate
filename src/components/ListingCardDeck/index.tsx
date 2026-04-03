@@ -109,6 +109,28 @@ interface ListingCardDeckProps {
   }[]
 }
 
+const readMoreLabels: Record<string, string> = {
+  en: 'Read More',
+  ar: 'اقرأ أكثر',
+  bi: 'Baca Lebih Lanjut',
+  'bn-IN': 'আরও পড়ুন',
+  br: 'ပိုမိုဖတ်ရန်',
+  ch: '阅读更多',
+  hi: 'और पढ़ें',
+  km: 'អានបន្ថែម',
+  ms: 'Baca Lagi',
+  ne: 'थप पढ्नुहोस्',
+  pcm: 'Read More',
+  'prs-Arab': 'بیشتر بخوانید',
+  'ps-Arab': 'نور ولولئ',
+  si: 'තව කියවන්න',
+  ta: 'மேலும் படிக்க',
+  th: 'อ่านเพิ่มเติม',
+  tl: 'Magbasa Pa',
+  ur: 'مزید پڑھیں',
+  vi: 'Đọc thêm',
+}
+
 export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({
   title,
   dataSource = 'manual',
@@ -185,7 +207,7 @@ export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({
           link: {
             type: 'custom',
             url: `/${selectedLanguage}/${relationTo}/${doc.slug}`,
-            label: 'Read More',
+            label: readMoreLabels[selectedLanguage] ?? readMoreLabels['en'],
             arrowLink: true,
           },
         }
@@ -298,7 +320,7 @@ export const ListingCardDeck: React.FC<ListingCardDeckProps> = ({
           )}
         </Carousel>
         {buttons && (
-          <div className="pt-[1rem] md:pt-[2rem]">
+          <div className="pt-[1rem] md:pt-[2rem] pb-1">
             <ButtonArray btnArray={buttons} colStackOnMobile={true} />
           </div>
         )}

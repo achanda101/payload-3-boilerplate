@@ -1,6 +1,10 @@
+'use client'
+
 import React, { useState } from 'react'
 import Image from 'next/image'
 import { Heading } from '@/components/Heading'
+import { useLanguage } from '@/providers/LanguageContext'
+import { getLocalizedRegionLabel } from '@/blocks/FundingMap/regionLabels'
 
 interface FundingMapSubitem {
   id?: string | null
@@ -27,58 +31,15 @@ export const FundingMap: React.FC<FundingMapProps> = ({
   selectorLabel,
   items,
 }) => {
+  const { selectedLanguage } = useLanguage()
   const [selectedRegion, setSelectedRegion] = useState<string>(
     items && items.length > 0 ? items[0].regionName || '' : '',
   )
 
   const selectedItem = items?.find((item) => item.regionName === selectedRegion)
 
-  const getRegionLabel = (regionName?: string | null) => {
-    switch (regionName) {
-      case 'uaf-asia-pacific':
-        return 'Asia & Pacific'
-      case 'afghan':
-        return 'Afghanistan'
-      case 'aus':
-        return 'Australia'
-      case 'bangla':
-        return 'Bangladesh'
-      case 'cambodia':
-        return 'Cambodia'
-      case 'china':
-        return 'China'
-      case 'india':
-        return 'India'
-      case 'indonesia':
-        return 'Indonesia'
-      case 'korea':
-        return 'South Korea'
-      case 'laos':
-        return 'Laos'
-      case 'malaysia':
-        return 'Malaysia'
-      case 'mongolia':
-        return 'Mongolia'
-      case 'myanmar':
-        return 'Myanmar'
-      case 'nepal':
-        return 'Nepal'
-      case 'pak':
-        return 'Pakistan'
-      case 'papua':
-        return 'Papua New Guinea'
-      case 'philippines':
-        return 'Philippines'
-      case 'srilanka':
-        return 'Sri Lanka'
-      case 'thailand':
-        return 'Thailand'
-      case 'vietnam':
-        return 'Vietnam'
-      default:
-        return regionName || ''
-    }
-  }
+  const getRegionLabel = (regionName?: string | null) =>
+    getLocalizedRegionLabel(regionName || '', selectedLanguage)
 
   return (
     <div className="page_column_layout gap-6">
