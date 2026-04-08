@@ -27,7 +27,7 @@ export const GrantCards: CollectionConfig<'grantcards'> = {
       name: 'Content',
       order: '3',
     },
-    defaultColumns: ['title', 'createdBy', 'updatedBy', '_status', 'folder'],
+    defaultColumns: ['title', 'cardColour', 'mascot', '_status', 'folder'],
     useAsTitle: 'title',
     livePreview: {
       url: ({ data, locale }) => {

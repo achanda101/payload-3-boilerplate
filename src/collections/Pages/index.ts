@@ -53,7 +53,7 @@ export const Pages: CollectionConfig<'pages'> = {
       name: 'Content',
       order: '5',
     },
-    defaultColumns: ['heroTitle', 'createdBy', 'updatedBy', '_status', 'folder'],
+    defaultColumns: ['heroTitle', 'bgType', 'heroColour', 'mascot', '_status', 'folder'],
     livePreview: {
       url: ({ data, locale }) => {
         const path = generatePreviewPath({

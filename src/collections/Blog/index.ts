@@ -53,7 +53,7 @@ export const Blog: CollectionConfig<'blog'> = {
       name: 'Content',
       order: '6',
     },
-    defaultColumns: ['heroTitle', 'createdBy', 'updatedBy', '_status', 'folder'],
+    defaultColumns: ['heroTitle', 'pageType', 'image', 'docType', '_status', 'folder'],
     livePreview: {
       url: ({ data, locale }) => {
         const path = generatePreviewPath({
