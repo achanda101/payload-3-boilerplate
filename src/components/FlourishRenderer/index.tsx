@@ -79,12 +79,12 @@ export default function FlourishRenderer({
     isPrevSoundcloud ||
     isPrevFlourishEmbed
       ? 'mt-0'
-      : 'mt-[2rem] md:mt-[4rem]'
+      : 'mt-[1rem] md:mt-[2rem]'
 
   return (
     <div
       ref={wrapperRef}
-      className={`col-span-full md:col-span-6 md:col-start-2 lg:col-span-6 lg:col-start-4 ${topMargin} mb-[2rem] md:mb-[4rem] last:mb-0 transition-all duration-700 ease-out ${
+      className={`col-span-full md:col-span-6 md:col-start-2 lg:col-span-6 lg:col-start-4 ${topMargin} mb-[1rem] md:mb-[2rem] last:mb-0 transition-all duration-700 ease-out ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
     >

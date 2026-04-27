@@ -5,12 +5,30 @@
   position: relative;
   display: block;
   width: 100%;
-  // On mobile, let the SVG dictate height so % positions on hero-container
-  // are relative to the actual rendered SVG height (not the viewport).
+  overflow: hidden;
   height: auto;
 
   @media (min-width: vars.$tablet) {
     height: 100vh;
+  }
+
+  // Wavy full backgrounds only: stretch image to fill 100vw × 100vh on all screens
+  &.wavy-full {
+    height: 100vh;
+
+    img.mobile-image {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: fill;
+    }
+
+    @media (min-width: vars.$tablet) {
+      img.desktop-image {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: fill;
+      }
+    }
   }
 
   &.short {
@@ -29,13 +47,14 @@
   // Mobile: pin to blob bounds (y=160–520 out of 730 total SVG height).
   // top = 160/730 ≈ 21.9%, bottom = (730-520)/730 ≈ 28.8%.
   // Use flex + align-items:center to vertically centre content within this box.
-  top: calc(160 / 730 * 100%);
+  top: calc(110 / 730 * 100%);
   bottom: calc(210 / 730 * 100%);
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
   height: auto;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 
@@ -43,7 +62,7 @@
   // than the 1440px design. Raise the centre and widen content so the title
   // wraps less and stays within the blob.
   @media (min-width: vars.$tablet) and (max-width: #{vars.$desktop - 1px}) {
-    top: 45%;
+    top: 35%;
     bottom: auto;
     transform: translate(-50%, -50%);
     height: fit-content;
@@ -51,7 +70,7 @@
   }
 
   @media (min-width: vars.$desktop) {
-    top: 48%;
+    top: 38%;
     bottom: auto;
     transform: translate(-50%, -50%);
     height: fit-content;
@@ -105,8 +124,71 @@
   }
 
   .hero-mascot {
-    margin-top: 2rem;
-    max-width: 15rem;
-    // width: auto;
+    margin-top: 0.5rem;
+    height: 15rem;
+    width: auto;
+    max-width: none;
   }
+}
+
+.hero-banner.wavy-top {
+  height: 100vh;
+}
+
+.hero-banner.wavy-top .hero-mascot {
+  height: 10.5rem !important;
+  margin-top: 6rem;
+
+  @media (min-width: vars.$tablet) {
+    margin-top: 15rem;
+  }
+}
+
+.hero-banner.center-blob {
+  // Mobile: let image render at its natural proportions (no stretch)
+  height: auto;
+  margin-bottom: -4rem;
+
+  img.mobile-image {
+    height: auto !important;
+    object-fit: unset !important;
+  }
+
+  @media (min-width: vars.$tablet) {
+    height: 100vh;
+    margin-bottom: 0;
+  }
+}
+
+.hero-banner.center-blob .hero-container {
+  top: 10%;
+  bottom: auto;
+  transform: translate(-50%, 0);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  @media (min-width: vars.$tablet) {
+    top: 43%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.hero-banner.center-blob .hero-container .hero-content {
+  gap: 0;
+  align-items: center;
+  text-align: center;
+
+  h2, p {
+    text-align: center;
+    width: 100%;
+  }
+}
+
+.hero-banner.center-blob .hero-container .hero-mascot {
+  height: 17.6rem;
+  max-width: 19.8rem;
+  object-fit: contain;
+  margin-bottom: 0.25rem;
 }

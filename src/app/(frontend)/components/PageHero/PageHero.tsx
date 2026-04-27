@@ -109,7 +109,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
             alt="Header image"
             width={heroBlock.heroImage.width || 800}
             height={heroBlock.heroImage.height || 600}
-            style={{ width: '100%', height: 'auto' }}
+            style={{ width: 'auto' }}
             className='hero-mascot'
             priority
           />

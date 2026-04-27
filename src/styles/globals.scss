@@ -696,3 +696,8 @@ hr {
 .flourish-credit {
   display: none !important;
 }
+
+// Remove prose top margin from the first paragraph in Two/Three Column block columns
+.column-block-content > *:first-child p {
+  margin-top: 0;
+}

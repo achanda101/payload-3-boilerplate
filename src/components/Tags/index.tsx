@@ -17,7 +17,7 @@ export const Tags: React.FC<TagsProps> = ({ tags }) => {
   const tagTexts = tags.map((item) => item.tag).join(' • ')
 
   return (
-    <div className="text-center md:text-left">
+    <div className="text-left">
       <p className="tag">{tagTexts}</p>
     </div>
   )

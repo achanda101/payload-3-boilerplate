@@ -49,6 +49,7 @@ The Rich Content Block can contain:
 - **VimeoBlock** - Vimeo video embeds
 - **SpotifyTrackBlock** - Spotify track/playlist embeds
 - **SoundCloudEmbedBlock** - SoundCloud audio embeds
+- **FlourishBlock** - Interactive Flourish data visualisations (charts, maps, surveys)
 
 #### Configuration
 ```typescript
@@ -627,6 +628,37 @@ Embed SoundCloud audio tracks.
 #### Key Fields
 - **Track URL** - SoundCloud track link
 - **Track ID** - Extracted automatically
+
+---
+
+### Flourish Block
+
+**File:** `src/blocks/FlourishBlock/config.ts`
+**Slug:** `flourish-embed`
+**Renderer:** `src/components/FlourishRenderer/index.tsx`
+**Used within:** RichContentBlock only
+
+Embed interactive Flourish data visualisations — charts, maps, surveys, and more.
+
+#### Key Fields
+- **Visualisation ID** - Numeric ID from the Flourish embed snippet (e.g. `28711202` from `data-src="visualisation/28711202"`)
+- **Visualisation Type** - CSS class from the embed code (`flourish-chart`, `flourish-map`, `flourish-survey`, etc.)
+- **Caption** - Optional localised caption below the chart
+- **Height Override** - Optional fixed height (e.g. `600px`); leave blank for Flourish's responsive default
+
+#### Behaviour
+- Chart loads only when it scrolls into view (15% visibility threshold via `IntersectionObserver`)
+- Scroll-in fade + slide-up CSS animation wraps Flourish's own chart entrance animation
+- Flourish's "Made with Flourish" attribution link is hidden via `.flourish-credit { display: none }` in `globals.scss`
+- Multiple Flourish blocks on one page share a single `embed.js` load; subsequent blocks call `window.Flourish.loadEmbeds()`
+
+#### Editor Instructions
+1. In a Rich Content Block, click `+` and select **"Flourish Visualisation"**
+2. Paste only the **numeric ID** from the embed code (not the full URL)
+3. Set Visualisation Type if it differs from `flourish-chart`
+4. Optionally add a Caption or Height Override
+
+See: [flourish-block-implementation-plan.md](./flourish-block-implementation-plan.md)
 
 ---
 

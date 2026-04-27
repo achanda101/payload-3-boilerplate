@@ -19,6 +19,13 @@
   }
 }
 
+// In Two Column and Three Column Table blocks, pill buttons always stack vertically
+.column-block-content .btn-array {
+  @include mix.flex-column;
+  align-items: flex-start;
+  width: 100%;
+}
+
 button.pill-button {
   font-family: vars.$font-body;
   text-transform: capitalize;

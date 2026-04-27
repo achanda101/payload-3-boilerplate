@@ -31,9 +31,31 @@
 
   // Minimal CTA with borders
   &[data-ui-type="min_cta"] {
-    border-top: 1px solid vars.$color-body-text;
-    border-bottom: 1px solid vars.$color-body-text;
     padding-block: 3rem;
+    position: relative;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 75%;
+      height: 1px;
+      background-color: vars.$color-body-text;
+
+      @media (min-width: vars.$tablet) {
+        width: 50%;
+      }
+    }
+
+    &::before {
+      top: 0;
+    }
+
+    &::after {
+      bottom: 0;
+    }
   }
 
   // Puffy Beige CTA with background

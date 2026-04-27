@@ -168,7 +168,7 @@ export const UAFPage: React.FC<UAFPageProps> = ({ collection, docId, isDraft = f
 
   return (
     <>
-      <section className="hero-banner">
+      <section className={`hero-banner ${heroHeaderImg.startsWith('center_blob') ? 'center-blob' : ''} ${heroHeaderImg.startsWith('wavy_full') ? 'wavy-full' : ''} ${heroHeaderImg.startsWith('wavy_top') ? 'wavy-top' : ''}`}>
         <Image
           src={`/heroes/${heroHeaderImg}.png`}
           alt="Header image"
@@ -200,7 +200,7 @@ export const UAFPage: React.FC<UAFPageProps> = ({ collection, docId, isDraft = f
                 width={heroBlock.heroImage.width || 800}
                 height={heroBlock.heroImage.height || 600}
                 sizes="(max-width: 640px) 80vw, 33vw"
-                style={{ width: '100%', height: 'auto', maxWidth: 'clamp(80vw, 100%, 33vw)' }}
+                style={{ width: 'auto' }}
                 className="hero-mascot"
                 priority
               />

@@ -46,7 +46,7 @@ export const ThreeColumnTable: React.FC<ThreeColumnTableProps> = ({
       const children = columnData.root?.children
       if (Array.isArray(children) && children.length > 0) {
         return (
-          <div className="prose [&>*:first-child]:!mt-0 [&>*:first-child]:!pt-0 [&>*:first-child_img]:!mt-0 [&_p]:!mt-0 [&_li]:!text-[18px]">
+          <div className="column-block-content prose [&>*:first-child]:!mt-0 [&>*:first-child]:!pt-0 [&>*:first-child_img]:!mt-0 [&_p]:!mt-0 [&_li]:!text-[18px]">
             {serializeLexical({ nodes: children })}
           </div>
         )
@@ -74,7 +74,7 @@ export const ThreeColumnTable: React.FC<ThreeColumnTableProps> = ({
             <div className={`${getColumnWidthClass(0)} px-0 lg:px-4 first:lg:pl-0`}>
               {renderColumn(row.firstColumn)}
             </div>
-            <div className={`${getColumnWidthClass(1)} px-0 lg:px-4`}>
+            <div className={`${getColumnWidthClass(1)} px-0 lg:px-4 mt-4 lg:mt-0`}>
               {renderColumn(row.secondColumn)}
             </div>
             <div className={`${getColumnWidthClass(2)} px-0 lg:px-4 last:lg:pr-0`}>

@@ -265,7 +265,7 @@ export const GrantPage: React.FC<GrantPageProps> = ({ collection, docId, isDraft
 
   return (
     <>
-      <section className={`hero-banner${pageType === 'landing' ? ' short' : ''}`}>
+      <section className={`hero-banner${pageType === 'landing' ? ' short' : ''} ${heroHeaderImg.startsWith('center_blob') ? 'center-blob' : ''} ${heroHeaderImg.startsWith('wavy_full') ? 'wavy-full' : ''} ${heroHeaderImg.startsWith('wavy_top') ? 'wavy-top' : ''}`}>
         <Image
           src={`/heroes/${heroHeaderImg}.png`}
           alt="Header image"
@@ -296,7 +296,7 @@ export const GrantPage: React.FC<GrantPageProps> = ({ collection, docId, isDraft
                 alt={heroBlock.heroImage.alt || 'Hero Mascot Image'}
                 width={heroBlock.heroImage.width || 800}
                 height={heroBlock.heroImage.height || 600}
-                style={{ width: '100%', height: 'auto' }}
+                style={{ width: 'auto' }}
                 className="hero-mascot"
                 priority
               />
