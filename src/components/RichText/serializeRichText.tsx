@@ -5,6 +5,7 @@ import VideoPlayer from '@/components/VideoPlayer'
 import UploadRenderer from '@/components/UploadRenderer'
 import SpotifyTrackRenderer from '@/components/SpotifyTrackRenderer'
 import SoundCloudRenderer from '@/components/SoundCloudRenderer'
+import FlourishRenderer from '@/components/FlourishRenderer'
 import { FancyList } from '@/components/FancyList'
 import { Badge } from '@/components/Badge'
 import { PillButtons } from '@/components/PillButtons'
@@ -139,6 +140,15 @@ interface TagsBlockProps {
   blockType?: 'tagsBlock'
 }
 
+interface FlourishEmbedProps {
+  id?: string
+  visualisationId: string
+  visualisationType?: string
+  caption?: string
+  height?: string
+  blockType?: 'flourish-embed'
+}
+
 export type NodeTypes =
   | DefaultNodeTypes
   | SerializedBlockNode<
@@ -153,6 +163,7 @@ export type NodeTypes =
       | BadgeBlockProps
       | PillButtonsBlockProps
       | TagsBlockProps
+      | FlourishEmbedProps
     >
 
 type Props = {
@@ -190,6 +201,8 @@ export function serializeLexical({ nodes, insideHeading = false }: Props): JSX.E
           prevNode?.type === 'block' && prevNode?.fields?.blockType === 'pillButtonsBlock'
         const isPrevTags =
           prevNode?.type === 'block' && prevNode?.fields?.blockType === 'tagsBlock'
+        const isPrevFlourishEmbed =
+          prevNode?.type === 'block' && prevNode?.fields?.blockType === 'flourish-embed'
 
         if (node.type === 'text') {
           // Format currency symbols as superscript in headings (h1-h4)
@@ -424,6 +437,23 @@ export function serializeLexical({ nodes, insideHeading = false }: Props): JSX.E
                 >
                   <Tags {...block} />
                 </div>
+              )
+            case 'flourish-embed':
+              return (
+                <FlourishRenderer
+                  key={index}
+                  visualisationId={block.visualisationId}
+                  visualisationType={block.visualisationType}
+                  caption={block.caption}
+                  height={block.height}
+                  isPrevHeading={isPrevHeading}
+                  isPrevUpload={isPrevUpload}
+                  isPrevVideo={isPrevVideo}
+                  isPrevBlockquote={isPrevBlockquote}
+                  isPrevSpotify={isPrevSpotify}
+                  isPrevSoundcloud={isPrevSoundcloud}
+                  isPrevFlourishEmbed={isPrevFlourishEmbed}
+                />
               )
             default:
               return null

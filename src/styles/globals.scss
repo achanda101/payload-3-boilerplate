@@ -691,3 +691,8 @@ hr {
     }
   }
 }
+
+// Hide Flourish "Made with Flourish" attribution injected by embed.js
+.flourish-credit {
+  display: none !important;
+}

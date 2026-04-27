@@ -16,6 +16,7 @@ import { SoundCloudEmbedBlock } from '@/blocks/SoundCloudEmbedBlock/config'
 import { BlockQuote } from '@/blocks/BlockQuote/config'
 import { FancyListBlock } from '@/blocks/FancyListBlock/config'
 import { PillButtonsBlock } from '@/blocks/PillButtonsBlock/config'
+import { FlourishBlock } from '@/blocks/FlourishBlock/config'
 
 export const RichContentBlock: Block = {
   slug: 'richContentBlock',
@@ -47,6 +48,7 @@ export const RichContentBlock: Block = {
                 SoundCloudEmbedBlock,
                 FancyListBlock,
                 PillButtonsBlock,
+                FlourishBlock,
               ],
             }),
           ]

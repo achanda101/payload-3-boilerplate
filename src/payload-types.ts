@@ -14132,6 +14132,31 @@ export interface SoundCloudEmbed {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FlourishEmbed".
+ */
+export interface FlourishEmbed {
+  /**
+   * The numeric ID from your Flourish embed code — e.g. data-src="visualisation/28711202"
+   */
+  visualisationId: string;
+  /**
+   * The CSS class from the embed code, e.g. flourish-chart, flourish-map, flourish-survey. Defaults to flourish-chart.
+   */
+  visualisationType?: string | null;
+  /**
+   * Optional caption displayed below the visualisation
+   */
+  caption?: string | null;
+  /**
+   * Optional fixed height. Leave blank to use Flourish responsive default.
+   */
+  height?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'flourish-embed';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "auth".
  */
 export interface Auth {
